@@ -1,7 +1,20 @@
 import { useState, type FormEvent } from 'react'
+import { useConvex } from 'convex/react'
+import type { FunctionReference } from 'convex/server'
 import { Button } from '#/components/ui/button'
 import { Input } from '#/components/ui/input'
+import { isConvexConfigured } from '#/lib/convex/client'
 import { cn } from '#/lib/utils'
+
+// Phase 1: typed reference to the Convex insert mutation. Once `pnpm convex
+// dev` has run, this can be replaced with `api.subscribers.insert` from
+// convex/_generated/api — same runtime behaviour, sharper compile-time types.
+const insertMutation = 'subscribers:insert' as unknown as FunctionReference<
+  'mutation',
+  'public',
+  { email: string; source: string; leadMagnet?: string },
+  { ok: boolean; status: string }
+>
 
 export interface NewsletterCaptureProps {
   leadMagnet?: string
@@ -27,18 +40,27 @@ export function NewsletterCapture({
   const [state, setState] = useState<'idle' | 'submitting' | 'sent' | 'error'>(
     'idle',
   )
+  // Hooks must be unconditional. Read from React context — if no
+  // <ConvexProvider> wraps the tree (Phase 1 before convex dev) this
+  // returns a default that we treat as "not configured" via the flag below.
+  const convex = useConvex()
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (!email || state === 'submitting') return
     setState('submitting')
-    try {
-      // Phase 1 stub. Cluster C replaces this with a Convex mutation call.
-      // Intentional no-op delay so the UI flow can be tested end-to-end.
+
+    if (!isConvexConfigured) {
+      // Pre-`pnpm convex dev` fallback: simulate the submission so the UI
+      // still demos. The form goes "sent" without actually persisting.
+      // Cluster C completes once VITE_CONVEX_URL is populated.
       await new Promise((resolve) => setTimeout(resolve, 400))
-      // Reference values to avoid unused-var lints in Phase 1.
-      void leadMagnet
-      void source
+      setState('sent')
+      return
+    }
+
+    try {
+      await convex.mutation(insertMutation, { email, source, leadMagnet })
       setState('sent')
     } catch {
       setState('error')
