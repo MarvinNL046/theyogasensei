@@ -7,6 +7,8 @@ import {
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import { buildRootHead, SITE_URL } from '#/lib/seo/head'
+import { Header } from '#/components/site/header'
+import { Footer } from '#/components/site/footer'
 
 import appCss from '../styles.css?url'
 
@@ -29,7 +31,11 @@ function RootDocument() {
         <HeadContent />
       </head>
       <body className="font-sans antialiased">
-        <Outlet />
+        <Header />
+        <main id="main">
+          <Outlet />
+        </main>
+        <Footer />
         {import.meta.env.DEV && (
           <TanStackDevtools
             config={{ position: 'bottom-right' }}

@@ -1,5 +1,166 @@
-
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "tw-animate-css";
+
+/*
+ * Brand theme — terracotta accent on warm-neutral base. Calm yoga aesthetic
+ * per CLAUDE.md → Design. One accent colour, no gradients, generous spacing.
+ *
+ * Tailwind v4 CSS-first config: tokens declared here become utility classes
+ * (text-accent, bg-accent-50, etc.) and CSS custom properties (--color-accent).
+ */
+@theme {
+  /* Accent — terracotta */
+  --color-accent-50: #fbf2ee;
+  --color-accent-100: #f5dfd5;
+  --color-accent-200: #ebbeaa;
+  --color-accent-300: #de9b7a;
+  --color-accent-400: #d07954;
+  --color-accent-500: #c45a3e;
+  --color-accent-600: #a64931;
+  --color-accent-700: #843828;
+  --color-accent-800: #5e2820;
+  --color-accent-900: #3b1a16;
+
+  /* Stone-like neutrals — warmer than Tailwind's default stone for yoga calm */
+  --color-ink: #1c1917;
+  --color-ink-soft: #44403c;
+  --color-ink-muted: #78716c;
+  --color-paper: #fafaf9;
+  --color-paper-warm: #f5f5f4;
+
+  /* Typography */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+  /* Spacing rhythm — wider than default for the calm aesthetic */
+  --spacing-section: 6rem;
+}
+
+/*
+ * Shadcn semantic tokens — `bg-primary`, `text-foreground`, `border`, etc.
+ * Mapped to our brand: primary = terracotta accent-500, neutral base = stone.
+ * Light theme only (no dark mode in scope for Phase 1).
+ */
+:root {
+  --background: oklch(0.985 0.002 75);
+  --foreground: oklch(0.18 0.01 60);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.01 60);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.01 60);
+  --primary: oklch(0.555 0.124 38);
+  --primary-foreground: oklch(0.985 0.002 75);
+  --secondary: oklch(0.95 0.006 70);
+  --secondary-foreground: oklch(0.21 0.012 60);
+  --muted: oklch(0.95 0.006 70);
+  --muted-foreground: oklch(0.5 0.012 60);
+  --accent: oklch(0.95 0.006 70);
+  --accent-foreground: oklch(0.21 0.012 60);
+  --destructive: oklch(0.577 0.245 27);
+  --border: oklch(0.9 0.006 70);
+  --input: oklch(0.9 0.006 70);
+  --ring: oklch(0.555 0.124 38);
+  --chart-1: oklch(0.6 0.18 38);
+  --chart-2: oklch(0.6 0.12 200);
+  --chart-3: oklch(0.6 0.12 140);
+  --chart-4: oklch(0.6 0.18 80);
+  --chart-5: oklch(0.6 0.18 320);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0.002 75);
+  --sidebar-foreground: oklch(0.18 0.01 60);
+  --sidebar-primary: oklch(0.555 0.124 38);
+  --sidebar-primary-foreground: oklch(0.985 0.002 75);
+  --sidebar-accent: oklch(0.95 0.006 70);
+  --sidebar-accent-foreground: oklch(0.21 0.012 60);
+  --sidebar-border: oklch(0.9 0.006 70);
+  --sidebar-ring: oklch(0.555 0.124 38);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent-fg: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/*
+ * Custom prose variant per SEO-page-anatomy-guide.md → "Typography spec":
+ *   - Body 18px on desktop, 16px on mobile (Tailwind prose handles this)
+ *   - Generous line-height (1.7)
+ *   - Headings in slightly tighter line-height
+ *   - Links underlined and accent-coloured
+ *   - Blockquotes accent-bordered, italic-free (we are not a literary site)
+ */
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: var(--color-accent-100);
+    color: var(--color-accent-900);
+  }
+}
+
+@layer components {
+  /* Tailwind prose customisations: accent-coloured links, blockquote border,
+     and headings that breathe. Applied wherever .prose is used. */
+  .prose :where(a):not(:where([class~="not-prose"] *)) {
+    color: var(--color-accent-700);
+    text-decoration-color: var(--color-accent-200);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .prose :where(a:hover):not(:where([class~="not-prose"] *)) {
+    color: var(--color-accent-800);
+    text-decoration-color: var(--color-accent-500);
+  }
+  .prose :where(blockquote):not(:where([class~="not-prose"] *)) {
+    border-left-color: var(--color-accent-500);
+    font-style: normal;
+    color: var(--color-ink-soft);
+  }
+  .prose :where(h2):not(:where([class~="not-prose"] *)) {
+    margin-top: 2.5em;
+    line-height: 1.25;
+  }
+  .prose :where(h3):not(:where([class~="not-prose"] *)) {
+    margin-top: 1.75em;
+    line-height: 1.3;
+  }
+}
 
 * {
   box-sizing: border-box;
@@ -14,4 +175,3 @@ body,
 body {
   margin: 0;
 }
-
