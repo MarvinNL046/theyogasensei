@@ -1,5 +1,5 @@
 {
-  "name": "theyogasensei-scaffold",
+  "name": "theyogasensei",
   "private": true,
   "type": "module",
   "imports": {
@@ -7,12 +7,18 @@
   },
   "scripts": {
     "dev": "vite dev --port 3000",
-    "build": "vite build",
+    "build": "pnpm verify && pnpm generate-sitemap && vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "lint": "eslint",
     "format": "prettier --write . && eslint --fix",
-    "check": "prettier --check ."
+    "check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "verify": "tsx scripts/verify-frontmatter.ts && tsx scripts/verify-used-keywords.ts",
+    "verify:frontmatter": "tsx scripts/verify-frontmatter.ts",
+    "verify:keywords": "tsx scripts/verify-used-keywords.ts",
+    "generate-sitemap": "tsx scripts/generate-sitemap.ts",
+    "ping-indexnow": "tsx scripts/ping-indexnow.ts"
   },
   "dependencies": {
     "@mdx-js/rollup": "^3.1.1",
@@ -52,6 +58,7 @@
     "eslint": "^9.20.0",
     "jsdom": "^28.1.0",
     "prettier": "^3.8.1",
+    "tsx": "^4.21.0",
     "typescript": "^6.0.2",
     "vite": "^8.0.0",
     "vitest": "^4.1.5"

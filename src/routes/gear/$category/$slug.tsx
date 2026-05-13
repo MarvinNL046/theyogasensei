@@ -1,0 +1,61 @@
+import { createFileRoute, notFound } from '@tanstack/react-router'
+import { loadContent } from '#/lib/mdx/loader'
+import { resolveAuthor } from '#/lib/content/authors'
+import { buildHead, SITE_URL } from '#/lib/seo/head'
+
+export const Route = createFileRoute('/gear/$category/$slug')({
+  loader: async ({ params }) => {
+    try {
+      const { frontmatter, Component } = await loadContent(
+        'gear',
+        `${params.category}/${params.slug}`,
+      )
+      const author = resolveAuthor(frontmatter.author)
+      return { frontmatter, Component, author }
+    } catch {
+      throw notFound()
+    }
+  },
+  head: ({ loaderData, params }) => {
+    if (!loaderData) return {}
+    const fm = loaderData.frontmatter
+    return buildHead(fm, {
+      siteUrl: SITE_URL,
+      routePath: `/gear/${params.category}/${params.slug}`,
+      author: loaderData.author,
+      breadcrumbs: [
+        { name: 'Home', url: '/' },
+        { name: 'Gear', url: '/gear' },
+        {
+          name: params.category.charAt(0).toUpperCase() + params.category.slice(1),
+          url: `/gear/${params.category}`,
+        },
+        { name: fm.title },
+      ],
+    })
+  },
+  component: GearProductPage,
+})
+
+function GearProductPage() {
+  const { frontmatter, Component, author } = Route.useLoaderData()
+  const { category } = Route.useParams()
+  return (
+    <main className="prose prose-lg mx-auto max-w-3xl px-4 py-12">
+      <nav aria-label="Breadcrumb" className="not-prose mb-6 text-sm text-stone-600">
+        <a href="/">Home</a>
+        {' › '}
+        <a href="/gear">Gear</a>
+        {' › '}
+        <a href={`/gear/${category}`}>{category.charAt(0).toUpperCase() + category.slice(1)}</a>
+        {' › '}
+        <span>{frontmatter.title}</span>
+      </nav>
+      <h1>{frontmatter.title}</h1>
+      <p className="not-prose text-sm text-stone-600">
+        by {author.name} · Last reviewed {frontmatter.lastReviewedAt}
+      </p>
+      <Component />
+    </main>
+  )
+}
