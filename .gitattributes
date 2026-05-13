@@ -1,0 +1,13 @@
+# Normalize line endings: LF in repo, native on checkout (avoids the
+# noisy "LF will be replaced by CRLF" warnings on Windows checkouts).
+* text=auto eol=lf
+
+# Lockfiles + generated artefacts: never normalise.
+pnpm-lock.yaml -text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
