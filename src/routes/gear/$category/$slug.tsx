@@ -1,25 +1,24 @@
 import { createFileRoute, notFound } from '@tanstack/react-router'
-import { loadContent } from '#/lib/mdx/loader'
+import { loadContent, loadFrontmatter } from '#/lib/mdx/loader'
 import { resolveAuthor } from '#/lib/content/authors'
 import { buildHead, SITE_URL } from '#/lib/seo/head'
 
 export const Route = createFileRoute('/gear/$category/$slug')({
-  loader: async ({ params }) => {
+  loader: ({ params }) => {
     try {
-      const { frontmatter, Component } = await loadContent(
+      const { frontmatter } = loadFrontmatter(
         'gear',
         `${params.category}/${params.slug}`,
       )
       const author = resolveAuthor(frontmatter.author)
-      return { frontmatter, Component, author }
+      return { frontmatter, author }
     } catch {
       throw notFound()
     }
   },
   head: ({ loaderData, params }) => {
     if (!loaderData) return {}
-    const fm = loaderData.frontmatter
-    return buildHead(fm, {
+    return buildHead(loaderData.frontmatter, {
       siteUrl: SITE_URL,
       routePath: `/gear/${params.category}/${params.slug}`,
       author: loaderData.author,
@@ -30,7 +29,7 @@ export const Route = createFileRoute('/gear/$category/$slug')({
           name: params.category.charAt(0).toUpperCase() + params.category.slice(1),
           url: `/gear/${params.category}`,
         },
-        { name: fm.title },
+        { name: loaderData.frontmatter.title },
       ],
     })
   },
@@ -38,8 +37,9 @@ export const Route = createFileRoute('/gear/$category/$slug')({
 })
 
 function GearProductPage() {
-  const { frontmatter, Component, author } = Route.useLoaderData()
-  const { category } = Route.useParams()
+  const { frontmatter, author } = Route.useLoaderData()
+  const { category, slug } = Route.useParams()
+  const { Component } = loadContent('gear', `${category}/${slug}`)
   return (
     <main className="prose prose-lg mx-auto max-w-3xl px-4 py-12">
       <nav aria-label="Breadcrumb" className="not-prose mb-6 text-sm text-stone-600">

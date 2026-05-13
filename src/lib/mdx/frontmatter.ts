@@ -1,8 +1,13 @@
 import { z } from 'zod'
 
-const isoDate = z.string().refine((v) => !Number.isNaN(Date.parse(v)), {
-  message: 'must be an ISO date string',
-})
+// YAML parses `2026-05-13` as a JS Date; quoted "2026-05-13" stays a string.
+// Accept both; normalise to ISO YYYY-MM-DD.
+const isoDate = z
+  .union([z.string(), z.date()])
+  .transform((v) => (v instanceof Date ? v.toISOString().slice(0, 10) : v))
+  .refine((v) => !Number.isNaN(Date.parse(v)), {
+    message: 'must be an ISO date',
+  })
 
 const pinSchema = z.object({
   primaryImage: z.string().min(1),

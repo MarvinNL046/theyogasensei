@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 import { nitro } from 'nitro/vite'
 import mdx from '@mdx-js/rollup'
 import remarkFrontmatter from 'remark-frontmatter'
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
@@ -20,10 +21,17 @@ const config = defineConfig({
   resolve: { tsconfigPaths: true },
   plugins: [
     // MDX must run before viteReact so .mdx files become JSX before React's transform.
+    // No providerImportSource — we don't use MDXProvider context; pages just render
+    // the MDX as plain JSX with HTML elements (tweakable later via @mdx-js/react if needed).
     mdx({
-      remarkPlugins: [remarkFrontmatter, remarkGfm],
+      remarkPlugins: [
+        remarkFrontmatter,
+        // Exports YAML frontmatter as a named `frontmatter` ES export so
+        // routes can do: import Comp, { frontmatter } from '.../page.mdx'
+        [remarkMdxFrontmatter, { name: 'frontmatter' }],
+        remarkGfm,
+      ],
       rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'wrap' }]],
-      providerImportSource: '@mdx-js/react',
     }),
     devtools(),
     nitro({ rollupConfig: { external: [/^@sentry\//] } }),
