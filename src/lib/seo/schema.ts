@@ -1,4 +1,5 @@
 import type { Frontmatter } from '#/lib/mdx/frontmatter'
+import { buildImageUrl } from '#/lib/images/variants'
 
 export interface Author {
   slug: string
@@ -34,12 +35,11 @@ function absUrl(siteUrl: string, path: string): string {
   return `${base}${tail}`
 }
 
-function cfImage(siteUrl: string, id: string): string {
-  // Cloudflare Images IDs resolve to https://imagedelivery.net/<hash>/<id>/<variant>
-  // at runtime. For schema.org we emit the production canonical URL — the build
-  // doesn't know the hash, so we punt to siteUrl/images/ + id and let the route
-  // layer rewrite if needed. Placeholder during Phase 1.
-  return absUrl(siteUrl, `/images/${id}`)
+// Schema.org image fields want absolute URLs. Use the og variant (1200x630)
+// for primary image/hero refs in Article, HowTo, Review schemas — that's
+// what Google's rich-result preview thumbnails render at.
+function cfImage(_siteUrl: string, id: string): string {
+  return buildImageUrl(id, 'og')
 }
 
 export function buildOrganizationSchema(ctx: Pick<SchemaContext, 'siteUrl'>) {

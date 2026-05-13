@@ -1,4 +1,5 @@
 import type { Frontmatter } from '#/lib/mdx/frontmatter'
+import { buildImageUrl } from '#/lib/images/variants'
 import {
   buildArticleSchema,
   buildBreadcrumbListSchema,
@@ -47,11 +48,15 @@ function ldJsonScript(data: object): HeadScript {
   return { type: 'application/ld+json', children: JSON.stringify(data) }
 }
 
-function cfImage(siteUrl: string, id: string): string {
-  // Placeholder — matches schema.ts. Final URL shape comes from Cloudflare
-  // Images in Step 7.
-  const base = siteUrl.replace(/\/$/, '')
-  return `${base}/images/${id}`
+// Pin variant (1000×1500) is the canonical og:image — Pinterest and search
+// crawlers both pick it up. heroImage uses og variant (1200×630) since most
+// page-share previews render landscape.
+function pinImage(id: string): string {
+  return buildImageUrl(id, 'pin')
+}
+
+function ogImage(id: string): string {
+  return buildImageUrl(id, 'og')
 }
 
 function buildPrimarySchema(fm: Frontmatter, ctx: SchemaContext) {
@@ -80,8 +85,11 @@ function buildPrimarySchema(fm: Frontmatter, ctx: SchemaContext) {
  */
 export function buildHead(fm: Frontmatter, ctx: BuildHeadContext): HeadConfig {
   const canonical = `${ctx.siteUrl.replace(/\/$/, '')}${ctx.routePath}`
-  const ogImage = cfImage(ctx.siteUrl, fm.pin.primaryImage)
-  const heroImage = cfImage(ctx.siteUrl, fm.heroImage)
+  // Pin (1000x1500) doubles as og:image — Pinterest and OG share preview both
+  // accept vertical hero. Twitter prefers landscape, so we send the OG-cropped
+  // hero there.
+  const ogImageUrl = pinImage(fm.pin.primaryImage)
+  const twitterImageUrl = ogImage(fm.heroImage)
 
   const meta: Array<HeadMeta> = [
     { charSet: 'utf-8' },
@@ -97,7 +105,7 @@ export function buildHead(fm: Frontmatter, ctx: BuildHeadContext): HeadConfig {
     { property: 'og:description', content: fm.metaDescription },
     { property: 'og:url', content: canonical },
     { property: 'og:site_name', content: 'The Yoga Sensei' },
-    { property: 'og:image', content: ogImage },
+    { property: 'og:image', content: ogImageUrl },
     { property: 'og:image:width', content: '1000' },
     { property: 'og:image:height', content: '1500' },
     { property: 'article:published_time', content: fm.publishedAt },
@@ -112,7 +120,7 @@ export function buildHead(fm: Frontmatter, ctx: BuildHeadContext): HeadConfig {
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: fm.title },
     { name: 'twitter:description', content: fm.metaDescription },
-    { name: 'twitter:image', content: heroImage },
+    { name: 'twitter:image', content: twitterImageUrl },
   ]
 
   const links: Array<HeadLink> = [
