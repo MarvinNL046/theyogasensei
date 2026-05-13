@@ -56,14 +56,14 @@ Page-type specifics live in [`SEO-page-anatomy-guide.md`](./SEO-page-anatomy-gui
 
 Site-wide:
 
-- `app/routes/sitemap[.]xml.ts` — auto-generated from MDX file scan, regenerated every build
+- `src/routes/sitemap[.]xml.ts` — auto-generated from MDX file scan, regenerated every build
 - `public/robots.txt` — allows all crawlers, points to sitemap, disallows `/go/` and `/api/`
-- Canonical URLs on every page via `<SEOHead canonical={...} />`
+- Canonical URLs per route via the `head` function in `createFileRoute(...)` (`links: [{ rel: 'canonical', href }]`)
 - Open Graph images (1200×630) + Pinterest pins (1000×1500) — served from Cloudflare Images
 - Image width/height attributes for CLS prevention
 - Semantic HTML5 — `<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<aside>`, `<footer>`
-- Static pre-rendering — every content route exports `prerender: true`
-- Mobile viewport set in `app/__root.tsx`
+- Static pre-rendering — configured centrally in `vite.config.ts` via `tanstackStart({ prerender: { enabled: true, crawlLinks: true, failOnError: true } })`. TanStack Start has no per-route prerender flag; routes are discovered by link-crawling or by a `pages[]` array the MDX scanner script injects at build time.
+- Mobile viewport set in `src/routes/__root.tsx`
 - IndexNow ping on deploy via Vercel build hook
 - HSTS header configured on Vercel project
 
@@ -94,7 +94,7 @@ Premium, modern, elegant — calm yoga aesthetic. Subtle animations, generous sp
 - **Language:** TypeScript (strict)
 - **Framework:** TanStack Start
 - **Data fetching:** TanStack Query (hydrates from SSG payload, refetches dynamic bits client-side)
-- **Rendering:** Static Site Generation. Every content route has `prerender: true`. `.output/public/` is the deployable.
+- **Rendering:** Static Site Generation. Prerendering is configured centrally in `vite.config.ts` via the `tanstackStart` plugin's `prerender` option (no per-route flag exists). `.output/public/` is the deployable.
 - **Styling:** Tailwind CSS + Shadcn/UI
 - **Content:** MDX files in `/content/{poses,gear,guides,styles,authors}/*.mdx`. Frontmatter validated with Zod.
 - **Database:** Convex — scoped to email/lead capture only (`subscribers`, `emailEvents`). No product catalog in DB; products live in MDX frontmatter.
@@ -108,9 +108,9 @@ Premium, modern, elegant — calm yoga aesthetic. Subtle animations, generous sp
 - No reading request-time data (`cookies`, `headers`, `searchParams`) inside route loaders that should prerender.
 - No `cache: 'no-store'` or per-request fetches inside loaders for prerendered routes.
 - No runtime server routes for content. Dynamic data (subscriber count, live prices) is fetched **client-side** via TanStack Query against Convex or scheduled endpoints.
-- Dynamic routes (`/poses/$slug`, `/gear/$category/$slug`, `/guides/$slug`) must implement a `prerender` config that enumerates all slugs at build time.
+- Dynamic routes (`/poses/$slug`, `/gear/$category/$slug`, `/guides/$slug`) are prerendered via the **central** `tanstackStart({ prerender: ... })` config in `vite.config.ts`. Slugs are populated by the MDX scanner script (which writes the resolved `pages[]` array into the config at build time) and complemented by `crawlLinks: true` for discovery from internal anchor tags.
 - All content data is read from MDX at **build time**, not request time.
-- The escape hatch — if a single route genuinely needs SSR — set `prerender: false` on that route only, and document why in the route file.
+- The escape hatch — if a single route genuinely needs SSR — exclude it via `prerender.filter: ({ path }) => !path.startsWith('/excluded')` in `vite.config.ts`, and document why in a code comment next to the filter.
 
 ---
 
@@ -126,9 +126,10 @@ Premium, modern, elegant — calm yoga aesthetic. Subtle animations, generous sp
 # Organisation Rules
 
 - One component per file.
-- Shared components in `/components/`.
-- Page-type specific components (e.g. `<PillarBackLink>`, `<HowToSteps>`) in `/components/seo/`.
-- Schema.org builders in `/lib/seo/schema.ts`.
+- Shared components in `/src/components/`.
+- Page-type specific components (e.g. `<PillarBackLink>`, `<HowToSteps>`) in `/src/components/seo/`.
+- Schema.org builders in `/src/lib/seo/schema.ts`.
+- The SEO head helper (`buildHead(frontmatter, params)`) in `/src/lib/seo/head.ts`. **Not a React component** — TanStack Start consumes plain head config via the `head` option on `createFileRoute(...)`. See "SEO head pattern" section below.
 - Author bios in `/content/authors/<slug>.mdx`.
 - Convex schema + functions in `/convex/`.
 - Don't create new top-level folders without asking.
@@ -183,15 +184,40 @@ citations:                          # required wherever health/wellness claims a
 
 ## `schemaType` and how multi-schema emission works
 
-`schemaType` is the **primary** schema for the page. `<SEOHead>` automatically emits these alongside it:
+`schemaType` is the **primary** schema for the page. The `buildHead(frontmatter, params)` helper automatically emits these alongside it via the route's `head.scripts[]` array (TanStack Start's native head API — each `{ type: 'application/ld+json', children: JSON.stringify(...) }` entry becomes one `<script>` block at SSG time):
 
 - `BreadcrumbList` — always, on every content route
 - `FAQPage` — when `faq[]` is present and non-empty
 - `Person` — derived from the `author` field on every page
 
-So a pillar with `schemaType: Article` plus a faq array emits three JSON-LD blocks: Article + BreadcrumbList + FAQPage + Person. A subpillar gear-roundup with `schemaType: ItemList` emits ItemList + BreadcrumbList + (nested Review schemas inside ItemList per product) + Person. A cluster pose-page with `schemaType: HowTo` emits HowTo + BreadcrumbList + Person.
+So a pillar with `schemaType: Article` plus a faq array emits four JSON-LD blocks: Article + BreadcrumbList + FAQPage + Person. A subpillar gear-roundup with `schemaType: ItemList` emits ItemList + BreadcrumbList + (nested Review schemas inside ItemList per product) + Person. A cluster pose-page with `schemaType: HowTo` emits HowTo + BreadcrumbList + Person.
 
 Never set `schemaType` to BreadcrumbList, FAQPage, or Person — those are auto-emitted, not chosen.
+
+## SEO head pattern (TanStack Start native)
+
+TanStack Start exposes SEO via a route-level `head` function, not via a React component. Every content route imports `buildHead` from `src/lib/seo/head.ts` and wires it through `createFileRoute`:
+
+```tsx
+import { createFileRoute } from '@tanstack/react-router'
+import { buildHead } from '#/lib/seo/head'
+
+export const Route = createFileRoute('/guides/$slug')({
+  loader: async ({ params }) => loadMdx(params.slug),
+  head: ({ loaderData, params }) => buildHead(loaderData.frontmatter, { slug: params.slug, route: '/guides' }),
+  component: PageComponent,
+})
+```
+
+`buildHead(frontmatter, ctx)` returns a `HeadConfig` object with three keys:
+
+- `meta: Array<{ name?: string; property?: string; content: string; charSet?: string; title?: string }>` — title, description, OpenGraph, Twitter Card, viewport
+- `links: Array<{ rel: string; href: string }>` — canonical, alternate, apple-touch-icon
+- `scripts: Array<{ type: string; children: string }>` — JSON-LD blocks (one entry per schema)
+
+The schema builders in `src/lib/seo/schema.ts` (`buildArticleSchema`, `buildHowToSchema`, etc.) return plain objects ready for `JSON.stringify`. `buildHead` composes them into `scripts[]` based on the page's `schemaType` plus the auto-emitted BreadcrumbList / FAQPage / Person blocks.
+
+Why this matters: head is computed at SSG build time per route, no React render needed for meta tags, fully type-safe via TanStack's `HeadConfig`, and multi-schema emission falls out naturally from the `scripts[]` array. Don't try to recreate this as a `<SEOHead>` JSX component — it would be strictly worse.
 
 ## Per-type invariants the Zod schema enforces
 

@@ -87,7 +87,7 @@ The HTML Google indexes contains the *content*. The HTML Pinterest crawls contai
 
 - **On push** — every git commit triggers a Vercel rebuild (full SSG)
 - **Nightly cron** — Vercel Cron triggers a rebuild at 03:00 UTC so `lastReviewedAt` and price snapshots stay fresh
-- **On-demand** — if you ever need ISR-style behavior for a single route, TanStack Start supports route-level `prerender: false` to opt that one route into SSR. Use as escape hatch, not default.
+- **On-demand** — if you ever need ISR-style behavior for a single route, exclude it from the central prerender config via `prerender.filter: ({ path }) => !path.startsWith('/excluded')` in `vite.config.ts`. TanStack Start has no per-route prerender flag; all prerender control is central. Use as escape hatch, not default.
 
 ### When to revisit
 
@@ -379,8 +379,8 @@ Different cluster, different magnet, different tag in Convex — segment newslet
 ## Action Items — Week 1 to Launch
 
 ### Day 1 — Foundation
-- [ ] `pnpm create @tanstack/start` scaffold
-- [ ] **Configure SSG mode** — prerender all content routes; document the `prerender: false` escape hatch
+- [ ] `npx @tanstack/cli@latest create` scaffold (not the deprecated `create-start-app` or the gone `pnpm create @tanstack/start`)
+- [ ] **Configure SSG mode** — central `tanstackStart({ prerender: { enabled: true, crawlLinks: true, failOnError: true } })` in `vite.config.ts`; document the `prerender.filter` escape hatch
 - [ ] TanStack Query setup with hydration from SSG payload
 - [ ] Tailwind + Shadcn/UI
 - [ ] TypeScript strict, ESLint, Prettier
