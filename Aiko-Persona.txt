@@ -1,0 +1,253 @@
+in de design templates zie ik een yoga dama een aziatsche vrouw in yoga kleding. ik wil hier graag een consistente persona van maken die ik kan laten terug komen in de website
+
+Ja, dit is slim: een terugkerende persona maakt de site herkenbaar en minder generiek. Ik zou haar neerzetten als fictionele visual guide, niet als nep-auteur of expert.
+
+Nagedacht gedurende 2m 44s
+
+Ja — dit is een heel slimme branding move.
+
+Maak haar niet zomaar “een Aziatische yoga vrouw”, maar een vaste visual guide persona voor The Yoga Sensei. Dan krijgt je website direct herkenbaarheid, net zoals een merkmascotte, maar veel subtieler en premium.
+
+Ik zou haar behandelen als:
+
+The Yoga Sensei Guide
+
+Niet per se als echte founder of auteur, maar als terugkerende visuele gids door de website.
+
+Belangrijk voor trust/EEAT: gebruik haar niet alsof ze een echte gecertificeerde docent is, tenzij dat ook echt zo is. Laat haar vooral de visuele merkpersoonlijkheid zijn.
+
+Persona Concept
+Naam intern
+
+Voor prompts en image generation kun je haar intern noemen:
+
+Aiko
+
+Maar op de website hoeft haar naam niet overal zichtbaar te zijn. Publiekelijk kan ze gewoon onderdeel zijn van:
+
+The Yoga Sensei
+
+Of:
+
+Your quiet guide to better practice.
+
+Haar rol op de website
+
+Ze staat voor:
+
+rust
+discipline
+zachte kracht
+focus
+progressie
+practice over perfection
+geen influencer-vibes
+geen fake spiritual guru
+
+Dus niet:
+
+“Kijk mij eens flexibel zijn.”
+
+Maar:
+
+“Ik begeleid je rustig door je practice.”
+
+Visuele identiteit van de persona
+Uiterlijk
+Onderdeel	Richting
+Leeftijd	begin/midden 30
+Uitstraling	kalm, volwassen, professioneel
+Energie	rustig, gefocust, niet overdreven lachend
+Lichaamsbouw	fit, realistisch, niet fitness-model overdreven
+Haar	donkere haren, vaste nette bun
+Make-up	minimaal/natuurlijk
+Sieraden	geen of heel subtiel
+Gezicht	rustig, zachte expressie
+Kledingstijl
+
+Hou dit extreem consistent.
+
+Primaire outfit
+charcoal / black minimal yoga set
+high-neck sports top
+high-waisted leggings
+no visible logos
+clean silhouette
+Alternatieve outfit
+dark olive yoga set
+warm beige wrap / light linen layer
+minimal, premium, natural fabric feeling
+
+Niet doen:
+
+felle kleuren
+drukke patronen
+sexy/Instagram-achtige outfits
+sportmerk-logo’s
+neon gym look
+Omgeving
+
+Haar wereld moet altijd herkenbaar zijn.
+
+Vaste setting
+minimal Japanese-inspired yoga studio
+warm wooden floor
+shoji screen or soft wooden window frame
+warm morning light
+soft shadows
+ceramic vase
+small bonsai or olive branch
+sage green yoga mat
+cream plaster wall
+
+Dit wordt jouw “brand universe”.
+
+Houdingen / poses
+
+Gebruik haar steeds in praktische, rustige poses.
+
+Voor homepage
+zittend met rug naar camera
+meditatiehouding
+rustige hero pose
+back view werkt heel goed voor consistentie
+Voor routines
+cobra pose
+low lunge
+seated twist
+child’s pose
+downward dog
+warrior II
+Voor blog / philosophy
+zittend naast journal
+thee/kopje naast yogamat
+rustige contemplatieve houding
+Voor gear reviews
+handen op yogamat
+mat uitrollen
+close-up van practice
+niet te veel gezicht nodig
+Belangrijkste regel voor consistentie
+
+Gebruik haar niet alleen door hetzelfde gezicht te proberen te genereren.
+
+Dat gaat met AI vaak mis.
+
+Maak haar herkenbaar door een combinatie van:
+
+dezelfde haarstijl
+dezelfde outfit
+dezelfde setting
+dezelfde lichtval
+dezelfde matkleur
+dezelfde rustige lichaamstaal
+dezelfde compositie
+
+Voor jouw website werkt dit zelfs beter, omdat het meer premium en minder “AI-personage” voelt.
+
+Canonical Prompt voor haar
+
+Deze kun je gebruiken als vaste basisprompt:
+
+A calm fictional Asian female yoga guide in her early 30s, elegant and grounded, with dark hair in a neat bun, wearing a minimalist charcoal black high-neck yoga top and high-waisted leggings. She has a serene, focused expression and a realistic athletic body. She is practicing yoga in a minimalist Japanese-inspired studio with warm wooden floors, soft cream plaster walls, shoji screens, a sage green yoga mat, ceramic vase, small bonsai or olive branch, and warm morning sunlight casting soft shadows. Premium editorial wellness photography, calm atmosphere, natural materials, understated luxury, Japanese zen aesthetic, no logos, no flashy colors, no influencer pose.
+Negative Prompt
+
+Gebruik deze erbij:
+
+stock photo, fake smile, oversexualized, exaggerated flexibility, gym studio, neon colors, heavy makeup, visible brand logos, crowded background, cheap wellness aesthetic, fantasy clothing, overly spiritual props, random kanji, distorted hands, distorted face, unrealistic anatomy, plastic skin, Instagram influencer style
+Prompt variaties per pagina
+Homepage hero
+The Yoga Sensei guide sitting in meditation with her back to camera on a sage green yoga mat, warm morning light, Japanese-inspired studio, shoji screens, bonsai, calm premium editorial composition, spacious layout, serene and disciplined mood.
+Blog article
+The Yoga Sensei guide practicing child’s pose in a calm Japanese-inspired yoga studio, soft morning light, warm wooden floor, sage yoga mat, peaceful editorial wellness photography, minimal and grounded.
+Product review
+Close-up editorial scene of The Yoga Sensei guide rolling out a sage green yoga mat, hands visible, charcoal yoga outfit, ceramic vase and shoji screen in background, premium calm product review photography.
+Routine page
+The Yoga Sensei guide performing cobra pose on a sage green mat in a warm Japanese-inspired studio, soft sunlight, realistic yoga posture, calm instructional photography, clean editorial style.
+Philosophy page
+The Yoga Sensei guide sitting quietly beside a journal, ceramic tea cup, sage yoga mat, warm morning light, Japanese minimal interior, contemplative mood, premium editorial wellness photography.
+Hoe vaak terug laten komen?
+
+Niet op elke sectie. Dan wordt het te veel.
+
+Ik zou haar gebruiken als:
+
+Pagina	Gebruik
+Homepage	hero + misschien 1 practice image
+Blog overview	enkele artikelkaarten
+Single blog	hero/featured image
+Routine pages	veel, want instructief
+Pose library	veel, maar afgewisseld met close-ups
+Product reviews	subtiel, hands/practice context
+Newsletter	rustige lifestyle scene
+About page	voorzichtig, niet als nep-founder
+Philosophy	sterk, als visuele gids
+Persona Guidelines voor AGENTS.md
+
+Je kunt dit letterlijk toevoegen:
+
+## Visual Persona: The Yoga Sensei Guide
+
+The website uses a recurring fictional visual guide persona. She represents calm discipline, mindful practice, and practical guidance. She should never feel like a stock influencer, celebrity, or fake guru.
+
+### Persona Identity
+- Internal prompt name: Aiko
+- Public role: The Yoga Sensei Guide
+- Purpose: recurring visual brand presence
+- Do not present her as a real certified teacher or founder unless explicitly defined as such.
+
+### Visual Traits
+- Asian woman, early/mid 30s
+- Calm, grounded, focused expression
+- Dark hair in a neat bun
+- Minimal makeup
+- Realistic athletic build
+- No flashy jewelry or logos
+
+### Clothing
+- Primary: charcoal/black minimalist yoga set
+- Secondary: dark olive yoga set or light linen layer
+- No bright colors, patterns, or visible brand logos
+
+### Environment
+- Japanese-inspired minimalist yoga studio
+- Warm wooden floor
+- Shoji screens or soft wooden frames
+- Cream plaster walls
+- Sage green yoga mat
+- Ceramic vase, bonsai, olive branch, tea cup, journal
+- Warm morning light with soft shadows
+
+### Photography Style
+- Premium editorial wellness photography
+- Calm, spacious composition
+- Natural materials
+- Soft depth of field
+- Subtle Japanese zen aesthetic
+- Avoid stock-photo smiles, influencer poses, neon gym styling, and overly spiritual clichés.
+
+### Consistency Rules
+The persona should be recognizable through repeated visual language:
+- Same hair bun
+- Same outfit palette
+- Same calm body language
+- Same studio world
+- Same warm light
+- Same sage mat
+- Same premium editorial photography
+
+Do not rely only on face consistency. Back views, side profiles, hands, and practice-focused compositions are encouraged.
+Mijn advies
+
+Maak van haar jouw visuele merkanker.
+
+Niet als “AI vrouw op elke pagina”, maar als stille gids die steeds terugkomt in:
+
+routines
+poses
+hero visuals
+newsletters
+product context
+philosophy content
+
+Dat maakt The Yoga Sensei veel herkenbaarder dan een doorsnee affiliate site.
