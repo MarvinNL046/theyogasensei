@@ -168,29 +168,26 @@ function GuidesIndex() {
           className="pointer-events-none absolute left-3 top-1/2 hidden -translate-y-1/2 xl:block"
         />
         <Container size="wide">
-          <div className="grid items-center gap-10 py-16 md:grid-cols-12 md:gap-14 md:py-24">
-            <div className="md:col-span-7">
+          <div className="grid items-center gap-10 py-14 md:grid-cols-12 md:gap-12 md:py-20">
+            <div className="md:col-span-8">
               <Eyebrow tone="accent">The Journal</Eyebrow>
-              <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight text-[color:var(--color-ink)] md:text-[56px]">
+              <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight text-[color:var(--color-ink)] md:text-[44px]">
                 Yoga knowledge.
-                <br />
-                <span className="italic text-[color:var(--color-ink-soft)]">
-                  Real practice. Real life.
-                </span>
+                <span className="italic text-[color:var(--color-ink-soft)]"> Real practice. Real life.</span>
               </h1>
-              <p className="mt-7 max-w-md text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">
+              <p className="mt-6 max-w-xl text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">
                 In-depth articles, honest reviews, and practical advice from the mat. Routines you
                 can actually use, gear that actually matters, and the calm decisions that move your
                 practice forward.
               </p>
             </div>
-            <div className="hidden md:col-span-5 md:block">
-              <div className="ml-auto aspect-[4/3] max-w-md overflow-hidden rounded-[28px] ring-1 ring-[color:var(--color-border)]">
+            <div className="hidden md:col-span-4 md:block">
+              <div className="ml-auto aspect-square max-w-[240px] overflow-hidden rounded-2xl ring-1 ring-[color:var(--color-border)]">
                 <img
                   src="/images/brand/topic-yoga-tips.webp"
                   alt="An open leather journal, a ceramic tea cup with steam rising, and a sprig of olive leaves on a wooden surface"
-                  width={800}
-                  height={600}
+                  width={400}
+                  height={400}
                   loading="eager"
                   className="h-full w-full object-cover"
                 />
@@ -231,13 +228,54 @@ function GuidesIndex() {
 
       {/* ============================================================
           POST LIST + SIDEBAR — 8/4 split on md+
+          Featured post (POSTS[0]) renders above the regular list.
           ============================================================ */}
       <section className="bg-[color:var(--color-bg)]">
         <Container size="wide" className="py-16 md:py-20">
           <div className="grid gap-12 md:grid-cols-12 md:gap-12 lg:gap-16">
             <div className="md:col-span-8">
-              <ul className="flex flex-col divide-y divide-[color:var(--color-border)]/60">
-                {POSTS.map((post) => (
+              {/* Featured post */}
+              <article className="mb-14">
+                <Link
+                  to={POSTS[0].to}
+                  params={POSTS[0].params}
+                  className="group block"
+                >
+                  <div className="aspect-[3/2] overflow-hidden rounded-3xl bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
+                    <img
+                      src={POSTS[0].image}
+                      alt={POSTS[0].alt}
+                      width={1200}
+                      height={800}
+                      loading="eager"
+                      fetchPriority="high"
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                    />
+                  </div>
+                  <div className="mt-7">
+                    <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
+                      Featured · {POSTS[0].category}
+                    </p>
+                    <h2 className="mt-4 font-serif text-3xl leading-[1.15] tracking-tight text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)] md:text-[36px]">
+                      {POSTS[0].title}
+                    </h2>
+                    <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-[15px]">
+                      {POSTS[0].blurb}
+                    </p>
+                    <p className="mt-5 text-xs text-[color:var(--color-ink-muted)]">
+                      By {POSTS[0].author}
+                      <span className="mx-2 opacity-40">·</span>
+                      {POSTS[0].date}
+                      <span className="mx-2 opacity-40">·</span>
+                      {POSTS[0].readingTime}
+                    </p>
+                  </div>
+                </Link>
+              </article>
+
+              {/* Regular post list (everything except featured) */}
+              <ul className="flex flex-col divide-y divide-[color:var(--color-border)]/60 border-t border-[color:var(--color-border)]/60">
+                {POSTS.slice(1).map((post) => (
                   <li key={post.params.slug}>
                     <Link
                       to={post.to}
@@ -346,45 +384,44 @@ function GuidesIndex() {
                 </div>
               </div>
 
-              {/* Popular posts */}
+              {/* Popular posts — numbered editorial list */}
               <div className="mb-12">
                 <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
                   Popular posts
                 </p>
-                <ul className="space-y-5">
-                  {POSTS.slice(0, 4).map((post) => (
+                <ol className="space-y-0">
+                  {POSTS.slice(0, 5).map((post, i) => (
                     <li key={`popular-${post.params.slug}`}>
-                      <Link to={post.to} params={post.params} className="group flex gap-4">
-                        <div className="aspect-square w-20 flex-shrink-0 overflow-hidden rounded-lg bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
-                          <img
-                            src={post.image}
-                            alt=""
-                            width={160}
-                            height={160}
-                            loading="lazy"
-                            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.05]"
-                          />
-                        </div>
+                      <Link
+                        to={post.to}
+                        params={post.params}
+                        className="group flex items-start gap-5 border-b border-[color:var(--color-border)]/60 py-5 last:border-b-0"
+                      >
+                        <span className="font-serif text-2xl italic leading-none text-[color:var(--color-accent)]/70">
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
                         <div className="min-w-0 flex-1">
-                          <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
-                            {post.category}
-                          </p>
-                          <p className="mt-1.5 line-clamp-2 font-serif text-[15px] leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
+                          <p className="font-serif text-[15px] leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
                             {post.title}
+                          </p>
+                          <p className="mt-1.5 text-[11px] uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)]">
+                            {post.category}
+                            <span className="mx-1.5 opacity-40">·</span>
+                            {post.readingTime}
                           </p>
                         </div>
                       </Link>
                     </li>
                   ))}
-                </ul>
+                </ol>
               </div>
 
-              {/* Categories */}
+              {/* Categories — subtle accent dot per category */}
               <div className="mb-12">
                 <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
                   Categories
                 </p>
-                <ul className="divide-y divide-[color:var(--color-border)]/60">
+                <ul className="space-y-1">
                   {CATEGORIES.slice(1).map((cat) => {
                     const count = POSTS.filter((p) => p.category === cat).length
                     return (
@@ -392,9 +429,15 @@ function GuidesIndex() {
                         <button
                           type="button"
                           disabled
-                          className="flex w-full items-center justify-between py-3 text-sm text-[color:var(--color-ink-soft)] transition hover:text-[color:var(--color-accent-deep)]"
+                          className="group flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm transition hover:bg-[color:var(--color-surface)]"
                         >
-                          <span>{cat}</span>
+                          <span className="flex items-center gap-3 text-[color:var(--color-ink-soft)] transition group-hover:text-[color:var(--color-accent-deep)]">
+                            <span
+                              className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[color:var(--color-accent)]/60"
+                              aria-hidden="true"
+                            />
+                            {cat}
+                          </span>
                           <span className="text-xs tracking-wide text-[color:var(--color-ink-muted)]">
                             {count}
                           </span>
@@ -405,36 +448,47 @@ function GuidesIndex() {
                 </ul>
               </div>
 
-              {/* Newsletter mini */}
-              <div className="mb-12 rounded-2xl bg-[color:var(--color-surface-muted)] p-6">
-                <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
-                  Mindful inbox
-                </p>
-                <p className="mb-4 font-serif text-xl leading-snug text-[color:var(--color-ink)]">
-                  One short email a week
-                </p>
-                <p className="mb-5 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
-                  New articles, gear notes, and one thing I am researching right now.
-                </p>
-                <form action="#" method="post" className="flex flex-col gap-3">
-                  <label htmlFor="sidebar-newsletter" className="sr-only">
-                    Email address
-                  </label>
-                  <input
-                    id="sidebar-newsletter"
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="you@example.com"
-                    className="w-full rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-bg)] px-4 py-2.5 text-sm text-[color:var(--color-ink)] placeholder:text-[color:var(--color-ink-muted)] focus:border-[color:var(--color-accent)] focus:outline-none"
-                  />
-                  <button
-                    type="submit"
-                    className="w-full rounded-full bg-[color:var(--color-olive)] px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
-                  >
-                    Subscribe
-                  </button>
-                </form>
+              {/* Newsletter mini — bg image + dark overlay */}
+              <div className="relative mb-12 overflow-hidden rounded-2xl">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
+                  style={{ backgroundImage: "url('/images/brand/journal-newsletter-bg.webp')" }}
+                />
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/55 via-black/65 to-black/80"
+                />
+                <div className="relative p-6 text-[color:var(--color-bg)]">
+                  <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent-soft)]">
+                    Mindful inbox
+                  </p>
+                  <p className="mb-4 font-serif text-xl leading-snug">
+                    One short email a week
+                  </p>
+                  <p className="mb-5 text-sm leading-relaxed text-[color:var(--color-bg)]/75">
+                    New articles, gear notes, and one thing I am researching right now.
+                  </p>
+                  <form action="#" method="post" className="flex flex-col gap-3">
+                    <label htmlFor="sidebar-newsletter" className="sr-only">
+                      Email address
+                    </label>
+                    <input
+                      id="sidebar-newsletter"
+                      type="email"
+                      name="email"
+                      required
+                      placeholder="you@example.com"
+                      className="w-full rounded-full border border-[color:var(--color-bg)]/30 bg-transparent px-4 py-2.5 text-sm text-[color:var(--color-bg)] placeholder:text-[color:var(--color-bg)]/50 focus:border-[color:var(--color-accent)] focus:outline-none"
+                    />
+                    <button
+                      type="submit"
+                      className="w-full rounded-full bg-[color:var(--color-accent)] px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-accent-deep)]"
+                    >
+                      Subscribe
+                    </button>
+                  </form>
+                </div>
               </div>
 
               {/* Follow */}
@@ -471,16 +525,25 @@ function GuidesIndex() {
       </section>
 
       {/* ============================================================
-          BOTTOM CTA — quiet dark band before the footer
+          BOTTOM CTA — quiet dark band before the footer, bg image
           ============================================================ */}
       <Section tone="dark" padding="md" className="relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/brand/journal-cta-bg.webp')" }}
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-black/55"
+        />
         <JapaneseAccent
           phrase="stillness"
           vertical
           tone="onDark"
-          className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 xl:block"
+          className="pointer-events-none absolute right-3 top-1/2 z-10 hidden -translate-y-1/2 xl:block"
         />
-        <Container size="wide">
+        <Container size="wide" className="relative z-10">
           <div className="mx-auto max-w-2xl text-center">
             <Eyebrow tone="onDark">From the mat</Eyebrow>
             <h2 className="mt-5 font-serif text-3xl leading-[1.1] tracking-tight md:text-[44px]">
