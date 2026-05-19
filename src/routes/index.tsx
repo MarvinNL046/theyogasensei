@@ -372,18 +372,24 @@ function HomePage() {
       </Section>
 
       {/* ============================================================
-          FEATURED REVIEW (dark olive band)
+          FEATURED REVIEW (dark stone band)
+          Brand bg: enso brush + baked 集中 (focus) kanji on the left.
+          Full-opacity image, no tinted overlay — pure dark contrast
+          per template 1. Mat-foto stays right.
           ============================================================ */}
       <Section tone="dark" padding="md" className="relative overflow-hidden">
-        {/* Stillness — the quiet moment of long-form reading */}
-        <JapaneseAccent
-          phrase="stillness"
-          vertical
-          tone="onDark"
-          className="pointer-events-none absolute left-3 top-1/2 hidden -translate-y-1/2 xl:block"
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-cover bg-right bg-no-repeat"
+          style={{ backgroundImage: "url('/images/brand/japanese-zen-editorial-background.png')" }}
+        />
+        {/* Dark left-side fade for text legibility — pure black, no olive tint */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/65 from-0% via-black/30 via-30% to-transparent to-55%"
         />
 
-        <Container size="wide">
+        <Container size="wide" className="relative z-10">
           <div className="grid items-center gap-10 md:grid-cols-12 md:gap-14">
             <div className="md:col-span-5">
               <Eyebrow tone="onDark">Featured guide</Eyebrow>
@@ -408,14 +414,14 @@ function HomePage() {
               </Link>
             </div>
             <div className="md:col-span-7">
-              <div className="aspect-[5/3] overflow-hidden rounded-[28px] bg-[color:var(--color-olive-deep)]">
+              <div className="aspect-[5/3] overflow-hidden rounded-[28px] ring-1 ring-black/40">
                 <img
                   src="/images/aiko-persona/aiko-rolling-out-sage-yoga-mat.png"
                   alt="Hands rolling out a sage-green yoga mat on a warm wooden studio floor"
                   width={1400}
                   height={840}
                   loading="lazy"
-                  className="h-full w-full object-cover md:[-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_14%)] md:[mask-image:linear-gradient(to_right,transparent_0%,black_14%)]"
+                  className="h-full w-full object-cover"
                 />
               </div>
             </div>
