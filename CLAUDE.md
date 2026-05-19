@@ -4,6 +4,13 @@ theyogasensei.com — a yoga affiliate site optimised for SEO and Pinterest traf
 
 See [`ADR-001-theyogasensei-architecture.md`](./ADR-001-theyogasensei-architecture.md) for the full architecture decision record.
 
+## Companion docs — read alongside this file
+
+- [`AGENTS.md`](./AGENTS.md) — brand identity, voice principles, design direction, page-template catalogue, and product principles. Source of truth for **what the brand should feel like** and **what page types exist**. Read before any design or copy work. Where AGENTS.md and CLAUDE.md disagree on a technical detail (routes, schemas, file layout), CLAUDE.md wins — AGENTS.md is brand/UX, CLAUDE.md is implementation.
+- [`Aiko-Persona.txt`](./Aiko-Persona.txt) — full spec of Aiko, the recurring fictional visual guide persona (visual traits, clothing palette, studio environment, photography style, pose catalog). Read before generating Aiko imagery, writing prompts for new Aiko photos, or making layout decisions where Aiko appears. Recognise Aiko by hair bun + sage mat + Japanese studio + dark olive/charcoal outfit + warm morning light — never by face alone (AI face consistency is unreliable).
+- **Auto-memory** at `C:\Users\M_Smi\.claude\projects\C--Users-M-Smi-claudeProjecten-theyogasensei\memory\` — Claude's persistent context across sessions (user role, recurring feedback, project state, references to external systems). `MEMORY.md` is the index; individual `.md` files hold each entry. Always loaded into context at session start. Update when you learn anything non-obvious that future sessions will need.
+- **Obsidian ContentOps vault** at `C:\Users\M_Smi\Documents\ContentOps-Vault\` — cross-project SEO/CRO methodology source-of-truth (80+ point on-page checklist, pillar/subpillar/cluster architecture, SERP+PAA workflow, schema patterns, voice anti-patterns, CRO playbook, project templates). The repo files `on-page-seo.md` and `SEO-page-anatomy-guide.md` are working copies derived from this vault — when they diverge, the vault wins. If you're updating methodology in this repo, mention it so the user can sync to the vault.
+
 ---
 
 # Voice — read before writing any content
@@ -71,7 +78,55 @@ Site-wide:
 
 # Design
 
-Premium, modern, elegant — calm yoga aesthetic. Subtle animations, generous spacing, clear visual hierarchy. No emoji icons. No generic gradients. One accent colour (terracotta or sage — pick one and stick to it). Tailwind + Shadcn/UI for components; no custom design system outside that scope.
+Premium, modern, elegant — calm yoga aesthetic. Subtle animations, generous spacing, clear visual hierarchy. No emoji icons. No generic gradients. Tailwind + Shadcn/UI for components; no custom design system outside that scope.
+
+## Approved design direction — do not redesign unless explicitly asked
+
+The current visual identity is approved and locked. When implementing UI, **protect** these qualities:
+
+- premium Japanese-inspired minimalism
+- calm editorial wellness look
+- warm cream backgrounds, dark olive surface for footer/feature bands
+- one accent: warm clay (terracotta family)
+- large whitespace, elegant serif headings, practical anti-fluff copy
+- subtle affiliate integration
+- consistent Aiko visual persona
+- soft, spacious layouts
+
+Do **not** "improve" the design by making it louder, more colourful, more SaaS-like, more app-like, more playful, more trendy, or more conversion-aggressive. If there is a conflict between speed and design quality, choose design quality.
+
+## Design non-negotiables — never introduce without explicit approval
+
+- purple, blue, cyan, neon, or loud accent palettes
+- heavy gradients, harsh drop shadows, glassmorphism
+- bento SaaS UI / tech-startup dashboard styling
+- cartoon illustrations or colorful filled icons
+- stock-influencer photography, generic AI-anatomy poses, oversexualised framing
+- random or decorative kanji (only verified phrases via `JapaneseAccent`)
+- bright/aggressive CTA sections, cheap banner-style affiliate modules
+- dense cards with too much text, hard black/white contrast everywhere
+- generic Tailwind starter-page look (default shadcn styling unmodified, etc.)
+
+Required emotional feel: **a calm premium wellness magazine with useful interactive tools** — not a landing page template trying to sell something.
+
+## Design discipline — preventing regressions during unrelated work
+
+When fixing a bug or adding a feature, do **not** quietly change:
+
+- spacing, fonts, colours, border radii, image aspect ratios
+- card styles, button styles, divider styles
+- existing layout primitives or `Container` / `Section` usage
+- max-widths or container constraints elsewhere on the page
+
+Keep diffs small. If you notice a design issue while working on something unrelated, mention it — don't fix it silently inside the unrelated diff.
+
+Before creating a new component, check whether one exists in:
+
+- `src/components/ui/` (primitives: Container, Section, Eyebrow, JapaneseAccent, Button, Card, etc.)
+- `src/components/site/` (Header, Footer, NewsletterCapture, AffiliateDisclosure, NotFound)
+- `src/components/seo/` (page-type-specific: PillarBackLink, HowToSteps, etc.)
+
+If an existing component is close, extend it carefully instead of creating a duplicate.
 
 ---
 
@@ -84,6 +139,8 @@ Premium, modern, elegant — calm yoga aesthetic. Subtle animations, generous sp
 **Rule 3: Look before you create** — check existing files before creating new ones. Reuse components and helpers.
 
 **Rule 4: Test before you respond** — run `pnpm build` before saying "done".
+
+**Rule 5: Surface ambiguity, don't resolve it silently** — when a request has multiple plausible interpretations, list them and let the user pick. For multi-step work, write the plan as `step → verify` lines so each step has a concrete success check.
 
 **Core Rule** — do exactly what is asked. Nothing more, nothing less.
 
@@ -250,6 +307,23 @@ Before marking any task done:
 
 Never say "done" if the build is failing, there are console errors, the voice reads as AI, a schema validator fails, or the feature hasn't been tested in the browser at mobile width (375px).
 
+## Visual QA checklist — walk through before declaring UI work done
+
+- Does it still feel premium and calm — like a wellness magazine, not a SaaS landing page?
+- Are colours limited to the approved palette (cream / surface / olive / clay / ink)?
+- Are headings serif (Cormorant) and is body sans (Inter)?
+- Is there enough whitespace, or are sections cramped?
+- Are cards consistent in radius, padding, and border treatment?
+- Are CTAs subtle and uppercase-tracked — not pushy or shouting?
+- Are images warm, natural, Japanese-inspired (no influencer/stock-photo aesthetic)?
+- Does Aiko stay visually consistent (hair / outfit / setting / mat / light) where she appears?
+- Does mobile feel intentional, not just a squeezed desktop?
+- Is affiliate content transparent (disclosure visible) and not banner-style?
+- Are there no random/decorative kanji and no fake-transparency PNGs (checkerboard backgrounds baked into pixels)?
+- Did you preserve unrelated layout, spacing, and component styles?
+
+If any answer is no, fix it before saying done.
+
 ---
 
 # Scope
@@ -288,6 +362,8 @@ A page only ships after all 5 stages complete. Mark stage status in the PR descr
 | File | When to read |
 |------|--------------|
 | `CLAUDE.md` (this file) | Always, first. |
+| `AGENTS.md` | Before any design, copy, or page-template work. |
+| `Aiko-Persona.txt` | Before generating Aiko imagery or working on a page where Aiko appears. |
 | `on-page-seo.md` | Before generating or editing any page. |
 | `SEO-page-anatomy-guide.md` | Before generating a pillar, subpillar, or cluster article. |
 | `ADR-001-theyogasensei-architecture.md` | Before adding any new infrastructure, dependency, or data source. |
