@@ -118,31 +118,31 @@ const SENSEI_PICKS: Array<ProductPick> = [
     badge: 'Best overall',
     brand: 'Manduka',
     name: 'PRO Yoga Mat',
-    image: '/images/aiko-persona/aiko-cobra-pose-warm-yoga-studio.png',
+    image: '/images/brand/pick-manduka-pro.png',
   },
   {
     badge: 'Best budget',
     brand: 'Hugger Mugger',
     name: 'Cork Block Set',
-    image: '/images/aiko-persona/aiko-childs-pose-sage-yoga-mat.png',
+    image: '/images/brand/pick-cork-blocks.png',
   },
   {
     badge: 'Essential',
     brand: 'Lululemon',
     name: 'Cotton Yoga Strap',
-    image: '/images/aiko-persona/aiko-seated-twist-yoga-pose.png',
+    image: '/images/brand/pick-cotton-strap.png',
   },
   {
     badge: 'Restorative',
     brand: 'Halfmoon',
     name: 'Studio Bolster',
-    image: '/images/aiko-persona/aiko-warrior-ii-yoga-pose.png',
+    image: '/images/brand/pick-studio-bolster.png',
   },
   {
     badge: 'Flexibility',
     brand: 'Liforme',
     name: 'Yoga Wheel',
-    image: '/images/aiko-persona/aiko-upward-facing-dog-yoga-pose.png',
+    image: '/images/brand/pick-yoga-wheel.png',
   },
 ]
 
