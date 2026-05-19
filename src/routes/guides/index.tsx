@@ -1,5 +1,16 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
-import { ArrowLeft, ArrowRight, Search } from 'lucide-react'
+import {
+  Activity,
+  ArrowLeft,
+  ArrowRight,
+  Brain,
+  Coffee,
+  Package,
+  Search,
+  Sparkles,
+  Wind,
+} from 'lucide-react'
+import type { ComponentType, SVGProps } from 'react'
 import { cn } from '#/lib/utils'
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
@@ -33,6 +44,21 @@ const CATEGORIES = [
   'Breathwork',
   'Restorative',
 ] as const
+
+interface SidebarCategory {
+  name: string
+  count: number
+  icon: ComponentType<SVGProps<SVGSVGElement>>
+}
+
+const SIDEBAR_CATEGORIES: Array<SidebarCategory> = [
+  { name: 'Practice', count: 28, icon: Activity },
+  { name: 'Gear', count: 19, icon: Package },
+  { name: 'Meditation', count: 16, icon: Sparkles },
+  { name: 'Mindset', count: 14, icon: Brain },
+  { name: 'Breathwork', count: 12, icon: Wind },
+  { name: 'Lifestyle', count: 18, icon: Coffee },
+]
 
 interface BlogPost {
   to: '/guides/$slug' | '/poses/$slug'
@@ -158,41 +184,39 @@ function GuidesIndex() {
   return (
     <>
       {/* ============================================================
-          HERO STRIP — editorial intro to the journal
+          HERO — full-width with bg image + dark overlay
           ============================================================ */}
-      <section className="relative overflow-hidden bg-[color:var(--color-bg)]">
+      <section className="relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/brand/journal-hero-bg.webp')" }}
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/65 via-black/45 to-black/25"
+        />
         <JapaneseAccent
           phrase="practice"
           vertical
-          tone="soft"
-          className="pointer-events-none absolute left-3 top-1/2 hidden -translate-y-1/2 xl:block"
+          tone="onDark"
+          className="pointer-events-none absolute left-3 top-1/2 z-10 hidden -translate-y-1/2 xl:block"
         />
-        <Container size="wide">
-          <div className="grid items-center gap-10 py-14 md:grid-cols-12 md:gap-12 md:py-20">
-            <div className="md:col-span-8">
-              <Eyebrow tone="accent">The Journal</Eyebrow>
-              <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight text-[color:var(--color-ink)] md:text-[44px]">
-                Yoga knowledge.
-                <span className="italic text-[color:var(--color-ink-soft)]"> Real practice. Real life.</span>
-              </h1>
-              <p className="mt-6 max-w-xl text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">
-                In-depth articles, honest reviews, and practical advice from the mat. Routines you
-                can actually use, gear that actually matters, and the calm decisions that move your
-                practice forward.
-              </p>
-            </div>
-            <div className="hidden md:col-span-4 md:block">
-              <div className="ml-auto aspect-square max-w-[240px] overflow-hidden rounded-2xl ring-1 ring-[color:var(--color-border)]">
-                <img
-                  src="/images/brand/topic-yoga-tips.webp"
-                  alt="An open leather journal, a ceramic tea cup with steam rising, and a sprig of olive leaves on a wooden surface"
-                  width={400}
-                  height={400}
-                  loading="eager"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
+        <Container size="wide" className="relative z-10">
+          <div className="max-w-2xl py-20 md:py-32">
+            <Eyebrow tone="onDark">The Journal</Eyebrow>
+            <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight text-[color:var(--color-bg)] md:text-[56px]">
+              Yoga knowledge.
+              <br />
+              <span className="italic text-[color:var(--color-accent-soft)]">
+                Real practice. Real life.
+              </span>
+            </h1>
+            <p className="mt-7 max-w-lg text-sm leading-relaxed text-[color:var(--color-bg)]/80 md:text-base">
+              In-depth articles, honest reviews, and practical advice from the mat. Routines you
+              can actually use, gear that actually matters, and the calm decisions that move your
+              practice forward.
+            </p>
           </div>
         </Container>
       </section>
@@ -214,7 +238,7 @@ function GuidesIndex() {
                   className={cn(
                     'rounded-full px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] transition',
                     i === 0
-                      ? 'bg-[color:var(--color-ink)] text-[color:var(--color-bg)]'
+                      ? 'bg-[color:var(--color-olive)] text-[color:var(--color-bg)]'
                       : 'border border-[color:var(--color-border)] text-[color:var(--color-ink-muted)] hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent-deep)]',
                   )}
                 >
@@ -341,7 +365,7 @@ function GuidesIndex() {
                 className={cn(
                   'inline-flex h-10 min-w-10 items-center justify-center rounded-full px-3 text-sm transition',
                   page === 1
-                    ? 'bg-[color:var(--color-ink)] text-[color:var(--color-bg)]'
+                    ? 'bg-[color:var(--color-olive)] text-[color:var(--color-bg)]'
                     : 'border border-[color:var(--color-border)] text-[color:var(--color-ink-muted)]',
                 )}
               >
@@ -384,122 +408,129 @@ function GuidesIndex() {
                 </div>
               </div>
 
-              {/* Popular posts — simple text-list with date */}
-              <div className="mb-12">
-                <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
+              {/* Popular posts — boxed, numbered, thumbnail + category + title */}
+              <div className="mb-12 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
+                <p className="mb-7 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
                   Popular posts
                 </p>
-                <ul className="space-y-0">
-                  {POSTS.slice(0, 5).map((post) => (
+                <ol className="divide-y divide-[color:var(--color-border)]/60">
+                  {POSTS.slice(0, 4).map((post, i) => (
                     <li key={`popular-${post.params.slug}`}>
                       <Link
                         to={post.to}
                         params={post.params}
-                        className="group block border-b border-[color:var(--color-border)]/60 py-4 last:border-b-0"
+                        className="group flex items-start gap-4 py-10 first:pt-0 last:pb-0"
                       >
-                        <p className="font-serif text-[15px] leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
-                          {post.title}
-                        </p>
-                        <p className="mt-1.5 text-xs text-[color:var(--color-ink-muted)]">
-                          {post.date}
-                        </p>
+                        <span className="font-serif text-base italic leading-none text-[color:var(--color-accent)]/80">
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                        <div className="aspect-square w-14 flex-shrink-0 overflow-hidden rounded-md bg-[color:var(--color-bg)] ring-1 ring-[color:var(--color-border)]">
+                          <img
+                            src={post.image}
+                            alt=""
+                            width={120}
+                            height={120}
+                            loading="lazy"
+                            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.05]"
+                          />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="whitespace-nowrap text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
+                            {post.category}
+                          </p>
+                          <p className="mt-1 line-clamp-3 font-serif text-[14px] leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
+                            {post.title}
+                          </p>
+                        </div>
                       </Link>
                     </li>
                   ))}
-                </ul>
+                </ol>
               </div>
 
-              {/* Categories — subtle accent dot per category */}
-              <div className="mb-12">
-                <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
+              {/* Newsletter signup — bg image with cream-tinted overlay for subtle texture */}
+              <div className="relative mb-12 overflow-hidden rounded-2xl border border-[color:var(--color-border)]">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
+                  style={{ backgroundImage: "url('/images/brand/journal-newsletter-bg.webp')" }}
+                />
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 bg-[color:var(--color-surface)]/85"
+                />
+                <div className="relative p-8">
+                  <p className="text-[10px] font-medium uppercase leading-relaxed tracking-[0.22em] text-[color:var(--color-ink)]">
+                    Mindful insights,
+                    <br />
+                    straight to your inbox.
+                  </p>
+                  <p className="mt-5 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
+                    Practical tips, new guides and honest recommendations to support your practice.
+                  </p>
+                  <form action="#" method="post" className="mt-6 flex flex-col gap-3">
+                    <label htmlFor="sidebar-newsletter" className="sr-only">
+                      Email address
+                    </label>
+                    <input
+                      id="sidebar-newsletter"
+                      type="email"
+                      name="email"
+                      required
+                      placeholder="Your email address"
+                      className="w-full rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-bg)] px-4 py-2.5 text-sm text-[color:var(--color-ink)] placeholder:text-[color:var(--color-ink-muted)] focus:border-[color:var(--color-accent)] focus:outline-none"
+                    />
+                    <button
+                      type="submit"
+                      className="w-full rounded-full bg-[color:var(--color-olive)] px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
+                    >
+                      Join free
+                    </button>
+                  </form>
+                  <p className="mt-4 text-[11px] text-[color:var(--color-ink-muted)]">
+                    No spam. Unsubscribe anytime.
+                  </p>
+                </div>
+              </div>
+
+              {/* Categories — boxed, zen icons, counts, view all link */}
+              <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
+                <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
                   Categories
                 </p>
-                <ul className="space-y-1">
-                  {CATEGORIES.slice(1).map((cat) => {
-                    const count = POSTS.filter((p) => p.category === cat).length
-                    return (
-                      <li key={cat}>
-                        <button
-                          type="button"
-                          disabled
-                          className="group flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm transition hover:bg-[color:var(--color-surface)]"
-                        >
-                          <span className="flex items-center gap-3 text-[color:var(--color-ink-soft)] transition group-hover:text-[color:var(--color-accent-deep)]">
-                            <span
-                              className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[color:var(--color-accent)]/60"
-                              aria-hidden="true"
-                            />
-                            {cat}
-                          </span>
-                          <span className="text-xs tracking-wide text-[color:var(--color-ink-muted)]">
-                            {count}
-                          </span>
-                        </button>
-                      </li>
-                    )
-                  })}
+                <hr className="mb-2 mt-4 border-[color:var(--color-border)]" />
+                <ul className="space-y-0.5">
+                  {SIDEBAR_CATEGORIES.map((cat) => (
+                    <li key={cat.name}>
+                      <button
+                        type="button"
+                        disabled
+                        className="group flex w-full items-center justify-between rounded-lg px-2 py-3 transition hover:bg-[color:var(--color-bg)]"
+                      >
+                        <span className="flex items-center gap-3 text-sm text-[color:var(--color-ink-soft)] transition group-hover:text-[color:var(--color-accent-deep)]">
+                          <cat.icon
+                            className="h-4 w-4 flex-shrink-0 text-[color:var(--color-accent)]"
+                            strokeWidth={1.5}
+                            aria-hidden="true"
+                          />
+                          {cat.name}
+                        </span>
+                        <span className="text-xs tabular-nums text-[color:var(--color-ink-muted)]">
+                          {cat.count}
+                        </span>
+                      </button>
+                    </li>
+                  ))}
                 </ul>
-              </div>
-
-              {/* Newsletter mini — plain on page bg, no box, no bg image */}
-              <div className="mb-12 border-t border-[color:var(--color-border)]/60 pt-8">
-                <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
-                  Mindful inbox
-                </p>
-                <p className="mb-4 font-serif text-xl leading-snug text-[color:var(--color-ink)]">
-                  One short email a week
-                </p>
-                <p className="mb-5 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
-                  New articles, gear notes, and one thing I am researching right now.
-                </p>
-                <form action="#" method="post" className="flex flex-col gap-3">
-                  <label htmlFor="sidebar-newsletter" className="sr-only">
-                    Email address
-                  </label>
-                  <input
-                    id="sidebar-newsletter"
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="you@example.com"
-                    className="w-full rounded-full border border-[color:var(--color-border)] bg-transparent px-4 py-2.5 text-sm text-[color:var(--color-ink)] placeholder:text-[color:var(--color-ink-muted)] focus:border-[color:var(--color-accent)] focus:outline-none"
-                  />
-                  <button
-                    type="submit"
-                    className="w-full rounded-full bg-[color:var(--color-olive)] px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
+                <div className="mt-6 border-t border-[color:var(--color-border)] pt-5">
+                  <Link
+                    to="/guides"
+                    className="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent-deep)] transition hover:text-[color:var(--color-accent)]"
                   >
-                    Subscribe
-                  </button>
-                </form>
-              </div>
-
-              {/* Follow */}
-              <div>
-                <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
-                  Follow
-                </p>
-                <ul className="space-y-3 text-sm text-[color:var(--color-ink-soft)]">
-                  <li>
-                    <a
-                      href="https://pinterest.com/theyogasensei"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="transition hover:text-[color:var(--color-accent-deep)]"
-                    >
-                      Pinterest
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://instagram.com/theyogasensei"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="transition hover:text-[color:var(--color-accent-deep)]"
-                    >
-                      Instagram
-                    </a>
-                  </li>
-                </ul>
+                    View all categories
+                    <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+                  </Link>
+                </div>
               </div>
             </aside>
           </div>
