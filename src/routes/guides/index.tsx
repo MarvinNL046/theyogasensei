@@ -427,7 +427,7 @@ function GuidesIndex() {
                         <div className="aspect-square w-14 flex-shrink-0 overflow-hidden rounded-md bg-[color:var(--color-bg)] ring-1 ring-[color:var(--color-border)]">
                           <img
                             src={post.image}
-                            alt=""
+                            alt={post.alt}
                             width={120}
                             height={120}
                             loading="lazy"

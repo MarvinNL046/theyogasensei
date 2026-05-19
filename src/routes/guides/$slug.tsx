@@ -39,6 +39,7 @@ interface SidebarPost {
   category: string
   title: string
   image: string
+  alt: string
 }
 
 const POPULAR_POSTS: Array<SidebarPost> = [
@@ -48,6 +49,7 @@ const POPULAR_POSTS: Array<SidebarPost> = [
     category: 'Gear',
     title: '7 Best Yoga Mats for Every Practice (2024 Guide)',
     image: '/images/brand/pick-manduka-pro.webp',
+    alt: 'Premium dark sage-green yoga mat partially rolled on warm wooden studio floor',
   },
   {
     to: '/guides/$slug',
@@ -55,6 +57,7 @@ const POPULAR_POSTS: Array<SidebarPost> = [
     category: 'Meditation',
     title: 'How to Build a Consistent Meditation Habit',
     image: '/images/brand/topic-meditation.webp',
+    alt: 'Stack of five balanced river stones beside a small bonsai and an incense holder',
   },
   {
     to: '/guides/$slug',
@@ -62,6 +65,7 @@ const POPULAR_POSTS: Array<SidebarPost> = [
     category: 'Flexibility',
     title: '10 Stretches to Improve Your Flexibility Safely',
     image: '/images/aiko-persona/aiko-seated-twist-yoga-pose.webp',
+    alt: 'A practitioner in a seated spinal twist on a sage-green yoga mat',
   },
   {
     to: '/guides/$slug',
@@ -69,6 +73,7 @@ const POPULAR_POSTS: Array<SidebarPost> = [
     category: 'Lifestyle',
     title: 'Yoga Philosophy: 8 Lessons for a More Meaningful Life',
     image: '/images/brand/topic-yoga-styles.webp',
+    alt: 'A practitioner in Warrior II pose in a Japanese-inspired studio',
   },
   {
     to: '/guides/$slug',
@@ -76,6 +81,7 @@ const POPULAR_POSTS: Array<SidebarPost> = [
     category: 'Breathwork',
     title: 'Breathwork for Calm: 5 Techniques to Reduce Stress',
     image: '/images/brand/topic-breathwork.webp',
+    alt: 'Cropped close-up of a practitioner with hand on sternum, eyes closed',
   },
 ]
 
@@ -196,20 +202,27 @@ function GuidePage() {
       </section>
 
       {/* ============================================================
-          BLOG POST IMAGE — large landscape article image
+          BLOG POST IMAGE — large landscape article image + pose caption
           ============================================================ */}
       <section className="bg-[color:var(--color-bg)] py-12 md:py-16">
         <Container size="wide">
-          <div className="aspect-[3/2] overflow-hidden rounded-2xl bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
-            <img
-              src="/images/aiko-persona/aiko-cobra-pose-warm-yoga-studio.webp"
-              alt="The Yoga Sensei demonstrating cobra pose on a sage-green mat in a warm Japanese-inspired studio"
-              width={1536}
-              height={1024}
-              loading="lazy"
-              className="h-full w-full object-cover"
-            />
-          </div>
+          <figure>
+            <div className="aspect-[3/2] overflow-hidden rounded-2xl bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
+              <img
+                src="/images/aiko-persona/aiko-cobra-pose-warm-yoga-studio.webp"
+                alt="The Yoga Sensei demonstrating cobra pose on a sage-green mat in a warm Japanese-inspired studio"
+                width={1536}
+                height={1024}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <figcaption className="mt-4 text-center text-xs italic text-[color:var(--color-ink-muted)]">
+              Cobra Pose
+              <span className="mx-1.5 not-italic opacity-40">·</span>
+              <span className="not-italic uppercase tracking-[0.18em]">Bhujangasana</span>
+            </figcaption>
+          </figure>
         </Container>
       </section>
 
@@ -354,7 +367,7 @@ function GuidePage() {
                         <div className="aspect-square w-14 flex-shrink-0 overflow-hidden rounded-md bg-[color:var(--color-bg)] ring-1 ring-[color:var(--color-border)]">
                           <img
                             src={post.image}
-                            alt=""
+                            alt={post.alt}
                             width={120}
                             height={120}
                             loading="lazy"
