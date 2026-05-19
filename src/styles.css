@@ -2,79 +2,92 @@
 @plugin "@tailwindcss/typography";
 @import "tw-animate-css";
 
+/* Fonts — self-hosted via @fontsource */
+@import "@fontsource/cormorant-garamond/400.css";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/600.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/noto-serif-jp/400.css";
+@import "@fontsource/noto-serif-jp/500.css";
+
 /*
- * Brand theme — terracotta accent on warm-neutral base. Calm yoga aesthetic
- * per CLAUDE.md → Design. One accent colour, no gradients, generous spacing.
+ * Brand theme — Japanese-inspired premium wellness publisher.
+ * Source of truth: /public/images/design-templates + AGENTS.md.
  *
- * Tailwind v4 CSS-first config: tokens declared here become utility classes
- * (text-accent, bg-accent-50, etc.) and CSS custom properties (--color-accent).
+ * Single accent: warm clay. Olive is a dark *surface* (not an accent).
+ * Tailwind v4 CSS-first: @theme tokens become both utilities and CSS vars.
  */
 @theme {
-  /* Accent — terracotta */
-  --color-accent-50: #fbf2ee;
-  --color-accent-100: #f5dfd5;
-  --color-accent-200: #ebbeaa;
-  --color-accent-300: #de9b7a;
-  --color-accent-400: #d07954;
-  --color-accent-500: #c45a3e;
-  --color-accent-600: #a64931;
-  --color-accent-700: #843828;
-  --color-accent-800: #5e2820;
-  --color-accent-900: #3b1a16;
+  /* Warm neutral surface system */
+  --color-bg: #f6f1ea;        /* page background — warm cream */
+  --color-surface: #fffdf9;   /* card / panel background — warm white */
+  --color-surface-muted: #efe7dc;  /* recessed sections, table stripes */
+  --color-border: #e6ded3;    /* hairlines on warm surfaces */
 
-  /* Stone-like neutrals — warmer than Tailwind's default stone for yoga calm */
-  --color-ink: #1c1917;
-  --color-ink-soft: #44403c;
-  --color-ink-muted: #78716c;
-  --color-paper: #fafaf9;
-  --color-paper-warm: #f5f5f4;
+  /* Ink (text) */
+  --color-ink: #1f1f1c;       /* primary text — near black, slightly warm */
+  --color-ink-soft: #3a3a36;  /* secondary text */
+  --color-ink-muted: #6e6a64; /* tertiary / metadata */
+
+  /* Dark surface — olive, for footer & feature blocks */
+  --color-olive: #3f4a35;
+  --color-olive-soft: #6f7d62;
+  --color-olive-deep: #252d22;
+
+  /* THE single accent — warm clay / terracotta */
+  --color-accent: #b88e72;
+  --color-accent-soft: #d4b39a;
+  --color-accent-deep: #8a6a55;
 
   /* Typography */
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 
-  /* Spacing rhythm — wider than default for the calm aesthetic */
-  --spacing-section: 6rem;
+  /* Spacing rhythm — generous per design templates */
+  --spacing-section: 7rem;
 }
 
 /*
- * Shadcn semantic tokens — `bg-primary`, `text-foreground`, `border`, etc.
- * Mapped to our brand: primary = terracotta accent-500, neutral base = stone.
- * Light theme only (no dark mode in scope for Phase 1).
+ * Shadcn semantic tokens mapped to our palette.
+ * primary = olive (dark surface / dark buttons)
+ * accent  = warm clay (links, accent buttons, highlights)
+ * Light theme only.
  */
 :root {
-  --background: oklch(0.985 0.002 75);
-  --foreground: oklch(0.18 0.01 60);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.01 60);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.01 60);
-  --primary: oklch(0.555 0.124 38);
-  --primary-foreground: oklch(0.985 0.002 75);
-  --secondary: oklch(0.95 0.006 70);
-  --secondary-foreground: oklch(0.21 0.012 60);
-  --muted: oklch(0.95 0.006 70);
-  --muted-foreground: oklch(0.5 0.012 60);
-  --accent: oklch(0.95 0.006 70);
-  --accent-foreground: oklch(0.21 0.012 60);
+  --background: #f6f1ea;
+  --foreground: #1f1f1c;
+  --card: #fffdf9;
+  --card-foreground: #1f1f1c;
+  --popover: #fffdf9;
+  --popover-foreground: #1f1f1c;
+  --primary: #3f4a35;
+  --primary-foreground: #fffdf9;
+  --secondary: #efe7dc;
+  --secondary-foreground: #1f1f1c;
+  --muted: #efe7dc;
+  --muted-foreground: #6e6a64;
+  --accent: #b88e72;
+  --accent-foreground: #fffdf9;
   --destructive: oklch(0.577 0.245 27);
-  --border: oklch(0.9 0.006 70);
-  --input: oklch(0.9 0.006 70);
-  --ring: oklch(0.555 0.124 38);
-  --chart-1: oklch(0.6 0.18 38);
-  --chart-2: oklch(0.6 0.12 200);
-  --chart-3: oklch(0.6 0.12 140);
-  --chart-4: oklch(0.6 0.18 80);
-  --chart-5: oklch(0.6 0.18 320);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0.002 75);
-  --sidebar-foreground: oklch(0.18 0.01 60);
-  --sidebar-primary: oklch(0.555 0.124 38);
-  --sidebar-primary-foreground: oklch(0.985 0.002 75);
-  --sidebar-accent: oklch(0.95 0.006 70);
-  --sidebar-accent-foreground: oklch(0.21 0.012 60);
-  --sidebar-border: oklch(0.9 0.006 70);
-  --sidebar-ring: oklch(0.555 0.124 38);
+  --border: #e6ded3;
+  --input: #e6ded3;
+  --ring: #b88e72;
+  --chart-1: #b88e72;
+  --chart-2: #6f7d62;
+  --chart-3: #d4b39a;
+  --chart-4: #3f4a35;
+  --chart-5: #8a6a55;
+  --radius: 0.75rem;
+  --sidebar: #fffdf9;
+  --sidebar-foreground: #1f1f1c;
+  --sidebar-primary: #3f4a35;
+  --sidebar-primary-foreground: #fffdf9;
+  --sidebar-accent: #efe7dc;
+  --sidebar-accent-foreground: #1f1f1c;
+  --sidebar-border: #e6ded3;
+  --sidebar-ring: #b88e72;
 }
 
 @theme inline {
@@ -103,58 +116,66 @@
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+  --radius-3xl: calc(var(--radius) + 18px);
 }
 
-/*
- * Custom prose variant per SEO-page-anatomy-guide.md → "Typography spec":
- *   - Body 18px on desktop, 16px on mobile (Tailwind prose handles this)
- *   - Generous line-height (1.7)
- *   - Headings in slightly tighter line-height
- *   - Links underlined and accent-coloured
- *   - Blockquotes accent-bordered, italic-free (we are not a literary site)
- */
 @layer base {
   :root {
     color-scheme: light;
   }
 
   html {
-    background: var(--color-paper);
+    background: var(--color-bg);
     color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   body {
     font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  /* Headings default to serif — opt out with .font-sans where needed */
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
   }
 
   ::selection {
-    background: var(--color-accent-100);
-    color: var(--color-accent-900);
+    background: var(--color-accent);
+    color: var(--color-surface);
   }
 }
 
 @layer components {
-  /* Tailwind prose customisations: accent-coloured links, blockquote border,
-     and headings that breathe. Applied wherever .prose is used. */
+  /* Tailwind prose customisations — editorial blog feel */
   .prose :where(a):not(:where([class~="not-prose"] *)) {
-    color: var(--color-accent-700);
-    text-decoration-color: var(--color-accent-200);
+    color: var(--color-accent-deep);
+    text-decoration-color: var(--color-accent-soft);
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
   }
   .prose :where(a:hover):not(:where([class~="not-prose"] *)) {
-    color: var(--color-accent-800);
-    text-decoration-color: var(--color-accent-500);
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
   }
   .prose :where(blockquote):not(:where([class~="not-prose"] *)) {
-    border-left-color: var(--color-accent-500);
+    border-left-color: var(--color-accent);
     font-style: normal;
     color: var(--color-ink-soft);
   }
+  .prose :where(h1, h2, h3, h4):not(:where([class~="not-prose"] *)) {
+    font-family: var(--font-serif);
+    font-weight: 500;
+  }
   .prose :where(h2):not(:where([class~="not-prose"] *)) {
     margin-top: 2.5em;
-    line-height: 1.25;
+    line-height: 1.2;
   }
   .prose :where(h3):not(:where([class~="not-prose"] *)) {
     margin-top: 1.75em;

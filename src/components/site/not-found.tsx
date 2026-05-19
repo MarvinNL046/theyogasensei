@@ -12,7 +12,7 @@ import { Link } from '@tanstack/react-router'
 export function NotFound() {
   return (
     <main className="mx-auto max-w-2xl px-4 py-24 text-center">
-      <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-accent-700">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-accent">
         404
       </p>
       <h1 className="font-serif text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">
@@ -28,9 +28,9 @@ export function NotFound() {
         <Link
           to="/guides/$slug"
           params={{ slug: 'yoga-for-beginners' }}
-          className="rounded-2xl border border-stone-200 bg-white p-5 transition hover:border-accent-300 hover:shadow-sm"
+          className="rounded-2xl border border-stone-200 bg-white p-5 transition hover:border-accent hover:shadow-sm"
         >
-          <p className="text-xs font-semibold uppercase tracking-wide text-accent-700">
+          <p className="text-xs font-semibold uppercase tracking-wide text-accent">
             Pillar
           </p>
           <p className="mt-2 font-serif text-base font-semibold text-stone-900">
@@ -43,9 +43,9 @@ export function NotFound() {
         <Link
           to="/poses/$slug"
           params={{ slug: 'sun-salutation' }}
-          className="rounded-2xl border border-stone-200 bg-white p-5 transition hover:border-accent-300 hover:shadow-sm"
+          className="rounded-2xl border border-stone-200 bg-white p-5 transition hover:border-accent hover:shadow-sm"
         >
-          <p className="text-xs font-semibold uppercase tracking-wide text-accent-700">
+          <p className="text-xs font-semibold uppercase tracking-wide text-accent">
             Pose guide
           </p>
           <p className="mt-2 font-serif text-base font-semibold text-stone-900">
@@ -56,9 +56,9 @@ export function NotFound() {
         <Link
           to="/guides/$slug"
           params={{ slug: 'best-yoga-mats-for-beginners' }}
-          className="rounded-2xl border border-stone-200 bg-white p-5 transition hover:border-accent-300 hover:shadow-sm"
+          className="rounded-2xl border border-stone-200 bg-white p-5 transition hover:border-accent hover:shadow-sm"
         >
-          <p className="text-xs font-semibold uppercase tracking-wide text-accent-700">
+          <p className="text-xs font-semibold uppercase tracking-wide text-accent">
             Gear roundup
           </p>
           <p className="mt-2 font-serif text-base font-semibold text-stone-900">
@@ -72,7 +72,7 @@ export function NotFound() {
 
       <p className="mt-10 text-sm text-stone-500">
         Or head back to{' '}
-        <Link to="/" className="underline hover:text-accent-700">
+        <Link to="/" className="underline hover:text-accent">
           the home page
         </Link>
         .

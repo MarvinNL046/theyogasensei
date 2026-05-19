@@ -5,8 +5,8 @@ type CalloutType = 'tip' | 'note' | 'warning' | 'info'
 
 const STYLES: Record<CalloutType, { box: string; label: string; labelText: string }> = {
   tip: {
-    box: 'border-accent-300 bg-accent-50/60',
-    label: 'bg-accent-500 text-white',
+    box: 'border-accent bg-accent/10',
+    label: 'bg-accent text-white',
     labelText: 'Tip',
   },
   note: {

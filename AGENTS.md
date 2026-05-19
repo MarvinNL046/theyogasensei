@@ -2,6 +2,12 @@
 
 This file contains project guidance for AI coding agents working on **The Yoga Sensei**. Read this before making changes.
 
+## Companion docs — read alongside this file
+
+- [`CLAUDE.md`](./CLAUDE.md) — implementation rules: tech stack (TanStack Start + SSG, MDX, Convex, Resend, Cloudflare Images), SSG constraints, MDX frontmatter schema, SEO head pattern, content routing table, and development workflow. Source of truth for **how things are built**. AGENTS.md owns brand/voice/UX; CLAUDE.md owns architecture/code. Where they disagree on a technical detail (routes, file paths, schemas), CLAUDE.md wins.
+- **Auto-memory** (Claude Code only) at `C:\Users\M_Smi\.claude\projects\C--Users-M-Smi-claudeProjecten-theyogasensei\memory\` — persistent context across Claude sessions: user role, recurring feedback, project state, references to external systems. `MEMORY.md` is the index; individual `.md` files hold each entry. Other AI agents (Codex, Cursor) don't have access to this memory layer, so when in doubt, check the in-repo `.md` files first; Claude Code sessions can additionally rely on memory for cross-session continuity.
+- **Obsidian ContentOps vault** at `C:\Users\M_Smi\Documents\ContentOps-Vault\` (Marvin's local machine) — cross-project SEO/CRO methodology source-of-truth. Contains the 80+ point on-page checklist, pillar/subpillar/cluster architecture, SERP+PAA 8-step workflow, schema.org patterns per page type, voice "AI tells to delete" list, CRO landing page playbook, and reusable project templates. The repo files `on-page-seo.md` and `SEO-page-anatomy-guide.md` are derived working copies — when they diverge from the vault, the vault wins. Agents without local file access can rely on the in-repo copies; agents that can read the vault should prefer it.
+
 ## 1. Project identity
 
 **The Yoga Sensei** is a premium yoga editorial, affiliate, and community platform.
@@ -241,7 +247,7 @@ Use `next/image` for production images. Always provide useful alt text.
 
 ## 9. Japanese-inspired details
 
-Use Japanese details sparingly and respectfully.
+Use Japanese details sparingly and respectfully — as a **recurring premium branding detail**, never as decoration.
 
 Allowed design motifs:
 
@@ -249,19 +255,32 @@ Allowed design motifs:
 - shoji-inspired layout lines
 - subtle brush dividers
 - washi paper grain
-- vertical accent text, only when verified
+- vertical accent text (right edge, semi-transparent, only verified phrases)
 - asymmetry
 - natural imperfection
 
-Do not invent Japanese text. Do not use random kanji for decoration.
+### Verified phrase set — the canonical 6
 
-Verified phrases that may be used carefully:
+Render via the `<JapaneseAccent>` component (`src/components/ui/japanese-accent.tsx`). Never invent new strings, never use random kanji, never `<span lang="ja">` with raw Japanese inline.
 
-- `先生` — sensei / teacher
-- `継続は力なり` — persistence/continuance is strength
-- `練習・学び・成長` — practice, learn, grow
+| Phrase | Romaji | Meaning | Intended usage |
+|---|---|---|---|
+| `継続は力なり` | Keizoku wa chikara nari | "Consistency is strength" | **The recurring brand-mark phrase.** Hero edges, footer, decorative vertical accents site-wide. Default choice when in doubt. |
+| `練習・学び・成長する。` | Renshū, manabi, seichō suru | "Practice. Learn. Grow." | Practice / learning / how-to / pose-guide contexts. Hero kicker. |
+| `今ここ` | Ima koko | "Be here now" | Meditation / breathwork / mindfulness sections. Short — fits small spaces. |
+| `静けさ` | Shizukesa | "Stillness" | Quiet / reflective / long-form reading moments. Featured guide dark bands. |
+| `習慣が人生を作る` | Shūkan ga jinsei o tsukuru | "Habits create your life" | Routine / consistency / newsletter / daily-practice content. |
+| `先生` | Sensei | "Teacher" | Logo / wordmark contexts only. Not a freestanding accent. |
 
-When unsure, do not add Japanese copy.
+### Styling rules (enforced by `<JapaneseAccent>`)
+
+- Font: **Noto Serif JP** (loaded via `@fontsource/noto-serif-jp`), falls back to body serif
+- `letter-spacing: 0.2em`, opacity ~0.7–0.85
+- Vertical orientation: `writing-mode: vertical-rl` + `text-orientation: mixed`
+- Tone: warm clay accent on light surfaces, accent-soft on dark surfaces
+- Never: brush fonts, bright colours, large/loud sizing, drop shadows, animated entrance
+
+When unsure, do not add Japanese copy. When in doubt which phrase, use `persistence`.
 
 ---
 

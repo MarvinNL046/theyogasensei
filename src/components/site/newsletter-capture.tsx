@@ -80,7 +80,7 @@ export function NewsletterCapture({
       <p className="mt-2 max-w-prose text-sm text-stone-600 sm:text-base">{blurb}</p>
 
       {state === 'sent' ? (
-        <p className="mt-4 rounded-md bg-accent-50 px-4 py-3 text-sm text-accent-800">
+        <p className="mt-4 rounded-md bg-accent/10 px-4 py-3 text-sm text-accent">
           Check your inbox. The confirmation email lands in under a minute. Look in spam if it does
           not.
         </p>

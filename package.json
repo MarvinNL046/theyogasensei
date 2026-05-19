@@ -22,6 +22,9 @@
     "ping-indexnow": "tsx scripts/ping-indexnow.ts"
   },
   "dependencies": {
+    "@fontsource/cormorant-garamond": "^5.2.11",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/noto-serif-jp": "^5.2.8",
     "@mdx-js/rollup": "^3.1.1",
     "@react-email/components": "^1.0.12",
     "@tailwindcss/vite": "^4.1.18",
