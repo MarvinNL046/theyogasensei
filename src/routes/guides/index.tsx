@@ -1,9 +1,10 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Search } from 'lucide-react'
 import { cn } from '#/lib/utils'
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { JapaneseAccent } from '#/components/ui/japanese-accent'
+import { Section } from '#/components/ui/section'
 
 export const Route = createFileRoute('/guides/')({
   head: () => ({
@@ -229,18 +230,20 @@ function GuidesIndex() {
       </section>
 
       {/* ============================================================
-          POST LIST
+          POST LIST + SIDEBAR — 8/4 split on md+
           ============================================================ */}
       <section className="bg-[color:var(--color-bg)]">
         <Container size="wide" className="py-16 md:py-20">
-          <ul className="flex flex-col divide-y divide-[color:var(--color-border)]/60">
-            {POSTS.map((post) => (
-              <li key={post.href}>
-                <Link
-                  to={post.to}
-                  params={post.params}
-                  className="group grid items-start gap-6 py-10 md:grid-cols-12 md:gap-10"
-                >
+          <div className="grid gap-12 md:grid-cols-12 md:gap-12 lg:gap-16">
+            <div className="md:col-span-8">
+              <ul className="flex flex-col divide-y divide-[color:var(--color-border)]/60">
+                {POSTS.map((post) => (
+                  <li key={post.params.slug}>
+                    <Link
+                      to={post.to}
+                      params={post.params}
+                      className="group grid items-start gap-6 py-10 md:grid-cols-12 md:gap-8"
+                    >
                   <div className="md:col-span-4">
                     <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
                       <img
@@ -316,8 +319,197 @@ function GuidesIndex() {
               <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
             </button>
           </nav>
+            </div>
+
+            {/* ============================================================
+                SIDEBAR — search + popular + categories + newsletter + follow
+                ============================================================ */}
+            <aside className="md:col-span-4 md:pl-2 lg:pl-4">
+              {/* Search */}
+              <div className="mb-12">
+                <label htmlFor="journal-search" className="sr-only">
+                  Search the journal
+                </label>
+                <div className="relative">
+                  <Search
+                    className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[color:var(--color-ink-muted)]"
+                    strokeWidth={1.5}
+                    aria-hidden="true"
+                  />
+                  <input
+                    id="journal-search"
+                    type="search"
+                    placeholder="Search the journal..."
+                    disabled
+                    className="w-full rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] py-3 pl-11 pr-5 text-sm text-[color:var(--color-ink)] placeholder:text-[color:var(--color-ink-muted)] focus:border-[color:var(--color-accent)] focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              {/* Popular posts */}
+              <div className="mb-12">
+                <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
+                  Popular posts
+                </p>
+                <ul className="space-y-5">
+                  {POSTS.slice(0, 4).map((post) => (
+                    <li key={`popular-${post.params.slug}`}>
+                      <Link to={post.to} params={post.params} className="group flex gap-4">
+                        <div className="aspect-square w-20 flex-shrink-0 overflow-hidden rounded-lg bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
+                          <img
+                            src={post.image}
+                            alt=""
+                            width={160}
+                            height={160}
+                            loading="lazy"
+                            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.05]"
+                          />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
+                            {post.category}
+                          </p>
+                          <p className="mt-1.5 line-clamp-2 font-serif text-[15px] leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
+                            {post.title}
+                          </p>
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Categories */}
+              <div className="mb-12">
+                <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
+                  Categories
+                </p>
+                <ul className="divide-y divide-[color:var(--color-border)]/60">
+                  {CATEGORIES.slice(1).map((cat) => {
+                    const count = POSTS.filter((p) => p.category === cat).length
+                    return (
+                      <li key={cat}>
+                        <button
+                          type="button"
+                          disabled
+                          className="flex w-full items-center justify-between py-3 text-sm text-[color:var(--color-ink-soft)] transition hover:text-[color:var(--color-accent-deep)]"
+                        >
+                          <span>{cat}</span>
+                          <span className="text-xs tracking-wide text-[color:var(--color-ink-muted)]">
+                            {count}
+                          </span>
+                        </button>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+
+              {/* Newsletter mini */}
+              <div className="mb-12 rounded-2xl bg-[color:var(--color-surface-muted)] p-6">
+                <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
+                  Mindful inbox
+                </p>
+                <p className="mb-4 font-serif text-xl leading-snug text-[color:var(--color-ink)]">
+                  One short email a week
+                </p>
+                <p className="mb-5 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
+                  New articles, gear notes, and one thing I am researching right now.
+                </p>
+                <form action="#" method="post" className="flex flex-col gap-3">
+                  <label htmlFor="sidebar-newsletter" className="sr-only">
+                    Email address
+                  </label>
+                  <input
+                    id="sidebar-newsletter"
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="you@example.com"
+                    className="w-full rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-bg)] px-4 py-2.5 text-sm text-[color:var(--color-ink)] placeholder:text-[color:var(--color-ink-muted)] focus:border-[color:var(--color-accent)] focus:outline-none"
+                  />
+                  <button
+                    type="submit"
+                    className="w-full rounded-full bg-[color:var(--color-olive)] px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
+                  >
+                    Subscribe
+                  </button>
+                </form>
+              </div>
+
+              {/* Follow */}
+              <div>
+                <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
+                  Follow
+                </p>
+                <ul className="space-y-3 text-sm text-[color:var(--color-ink-soft)]">
+                  <li>
+                    <a
+                      href="https://pinterest.com/theyogasensei"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition hover:text-[color:var(--color-accent-deep)]"
+                    >
+                      Pinterest
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://instagram.com/theyogasensei"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition hover:text-[color:var(--color-accent-deep)]"
+                    >
+                      Instagram
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </aside>
+          </div>
         </Container>
       </section>
+
+      {/* ============================================================
+          BOTTOM CTA — quiet dark band before the footer
+          ============================================================ */}
+      <Section tone="dark" padding="md" className="relative overflow-hidden">
+        <JapaneseAccent
+          phrase="stillness"
+          vertical
+          tone="onDark"
+          className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 xl:block"
+        />
+        <Container size="wide">
+          <div className="mx-auto max-w-2xl text-center">
+            <Eyebrow tone="onDark">From the mat</Eyebrow>
+            <h2 className="mt-5 font-serif text-3xl leading-[1.1] tracking-tight md:text-[44px]">
+              Better practice.
+              <br />
+              <span className="italic text-[color:var(--color-accent-soft)]">Better you.</span>
+            </h2>
+            <p className="mx-auto mt-6 max-w-md text-sm leading-relaxed text-[color:var(--color-bg)]/70 md:text-base">
+              Real articles, honest gear notes, and a calm path through the practice. Start where
+              you are, not where you think you should be.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <Link
+                to="/start-here"
+                className="inline-flex items-center gap-2 rounded-full bg-[color:var(--color-accent)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-accent-deep)]"
+              >
+                Start here
+                <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+              </Link>
+              <Link
+                to="/poses"
+                className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-bg)]/30 px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent-soft)]"
+              >
+                Browse poses
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </Section>
     </>
   )
 }
