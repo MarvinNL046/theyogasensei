@@ -167,7 +167,7 @@ const LATEST_ARTICLES: Array<JournalCard> = [
       'A simple morning sequence to wake your body, clear your mind, and set the tone for a better day.',
     date: 'May 12, 2026',
     readingTime: '6 min read',
-    image: '/images/aiko-persona/aiko-yoga-pose-collage-japanese-studio.png',
+    image: '/images/aiko-persona/aiko-warrior-ii-yoga-pose.png',
   },
   {
     to: '/guides/$slug',
@@ -604,8 +604,15 @@ function HomePage() {
             </div>
 
             <div className="hidden md:col-span-5 md:block">
-              <div className="ml-auto flex aspect-[4/3] max-w-md items-center justify-center rounded-[28px] bg-[color:var(--color-olive-deep)] p-12">
-                <JapaneseAccent phrase="habits" vertical size="lg" tone="onDark" />
+              <div className="ml-auto aspect-[3/2] max-w-md overflow-hidden rounded-[28px] ring-1 ring-black/40">
+                <img
+                  src="/images/brand/newsletter-bonsai.png"
+                  alt="A small Japanese bonsai tree in a matte-charcoal ceramic pot on a warm wooden surface, soft morning light"
+                  width={1536}
+                  height={1024}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
               </div>
             </div>
           </div>
