@@ -1,39 +1,323 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
-import { listContentSlugs } from '#/lib/mdx/loader'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { cn } from '#/lib/utils'
+import { Container } from '#/components/ui/container'
+import { Eyebrow } from '#/components/ui/eyebrow'
+import { JapaneseAccent } from '#/components/ui/japanese-accent'
 
 export const Route = createFileRoute('/guides/')({
-  loader: () => ({ slugs: listContentSlugs('guides') }),
   head: () => ({
     meta: [
-      { title: 'Guides — The Yoga Sensei' },
+      { title: 'The Journal — The Yoga Sensei' },
       {
         name: 'description',
         content:
-          'Pillar guides and gear roundups. Yoga for beginners, the gear that actually matters, and the questions every new practitioner asks.',
+          'Yoga knowledge for real practice. Routines, pose guides, gear reviews, breathwork techniques, and the calm decisions that actually move your practice forward.',
       },
+      { property: 'og:title', content: 'The Journal — The Yoga Sensei' },
+      { property: 'og:url', content: 'https://theyogasensei.com/guides' },
+      { property: 'og:type', content: 'website' },
     ],
+    links: [{ rel: 'canonical', href: 'https://theyogasensei.com/guides' }],
   }),
   component: GuidesIndex,
 })
 
+const CATEGORIES = [
+  'All',
+  'Routines',
+  'Practice',
+  'Pose guides',
+  'Gear',
+  'Breathwork',
+  'Restorative',
+] as const
+
+interface BlogPost {
+  to: '/guides/$slug' | '/poses/$slug'
+  params: { slug: string }
+  category: string
+  title: string
+  blurb: string
+  author: string
+  date: string
+  readingTime: string
+  image: string
+  alt: string
+}
+
+const POSTS: Array<BlogPost> = [
+  {
+    to: '/guides/$slug',
+    params: { slug: 'morning-yoga-routine' },
+    category: 'Routines',
+    title: 'Morning Yoga Routine — 15 minutes to energise your day',
+    blurb:
+      'A simple sequence to wake the spine, clear the head, and set the tone before life takes over. No props needed. Works on tired legs.',
+    author: 'Marvin',
+    date: 'May 12, 2026',
+    readingTime: '6 min read',
+    image: '/images/aiko-persona/aiko-warrior-ii-yoga-pose.webp',
+    alt: 'A practitioner in Warrior II pose on a sage-green yoga mat in a warm Japanese-inspired studio',
+  },
+  {
+    to: '/guides/$slug',
+    params: { slug: 'build-meditation-habit' },
+    category: 'Practice',
+    title: 'How to build a consistent meditation habit',
+    blurb:
+      'Why a five-minute sit beats a perfect twenty-minute one, and the three cues that keep the habit alive when motivation fades.',
+    author: 'Marvin',
+    date: 'May 5, 2026',
+    readingTime: '8 min read',
+    image: '/images/brand/topic-meditation.webp',
+    alt: 'A stack of five balanced river stones beside a small bonsai and an incense holder on warm wooden floor',
+  },
+  {
+    to: '/guides/$slug',
+    params: { slug: 'best-yoga-mats-for-beginners' },
+    category: 'Gear',
+    title: '7 best yoga mats for every practice (2026 guide)',
+    blurb:
+      'Researched mats for sweaty flows, low-impact rest, travel days, and restorative work. The best overall pick, the budget choice, the one for tight knees.',
+    author: 'Marvin',
+    date: 'April 28, 2026',
+    readingTime: '12 min read',
+    image: '/images/brand/pick-manduka-pro.webp',
+    alt: 'A premium dark sage-green yoga mat partially rolled on a warm wooden studio floor',
+  },
+  {
+    to: '/poses/$slug',
+    params: { slug: 'sun-salutation' },
+    category: 'Pose guides',
+    title: 'Sun Salutation A, step by step',
+    blurb:
+      'Surya Namaskar A in twelve positions. Cues, breath count, common mistakes, and the modifications that beginners actually need.',
+    author: 'Marvin',
+    date: 'April 22, 2026',
+    readingTime: '9 min read',
+    image: '/images/aiko-persona/aiko-upward-facing-dog-yoga-pose.webp',
+    alt: 'A practitioner in Upward-Facing Dog pose on a sage-green yoga mat in a warm Japanese-inspired studio',
+  },
+  {
+    to: '/guides/$slug',
+    params: { slug: 'breathwork-for-calm' },
+    category: 'Breathwork',
+    title: 'Breathwork for calm — 4 techniques to lower stress',
+    blurb:
+      'Box breathing, nadi shodhana, extended exhales, and the one that nobody teaches but everyone needs at 3 PM on a Tuesday.',
+    author: 'Marvin',
+    date: 'April 14, 2026',
+    readingTime: '7 min read',
+    image: '/images/brand/topic-breathwork.webp',
+    alt: 'Cropped close-up of a practitioner in dark olive top, one hand on sternum and one on lower abdomen, eyes closed',
+  },
+  {
+    to: '/guides/$slug',
+    params: { slug: 'yin-yoga-for-sleep' },
+    category: 'Restorative',
+    title: 'Better sleep through yin yoga — a 20-minute evening sequence',
+    blurb:
+      'Five long holds that slow the nervous system. No flexibility required. Done in pyjamas on the bedroom floor before lights out.',
+    author: 'Marvin',
+    date: 'April 8, 2026',
+    readingTime: '10 min read',
+    image: '/images/aiko-persona/aiko-childs-pose-sage-yoga-mat.webp',
+    alt: 'A practitioner in child’s pose on a sage-green yoga mat in a Japanese-inspired studio with morning light',
+  },
+  {
+    to: '/guides/$slug',
+    params: { slug: 'cork-vs-foam-blocks' },
+    category: 'Gear',
+    title: 'Cork vs foam blocks — which yoga prop is right for you?',
+    blurb:
+      'The honest answer depends on your floor, your hands, and whether you sweat. The two situations where foam genuinely wins.',
+    author: 'Marvin',
+    date: 'April 1, 2026',
+    readingTime: '5 min read',
+    image: '/images/brand/pick-cork-blocks.webp',
+    alt: 'A pair of natural cork yoga blocks stacked on warm wooden studio floor',
+  },
+  {
+    to: '/guides/$slug',
+    params: { slug: 'seated-twists-for-mobility' },
+    category: 'Routines',
+    title: 'Seated twists for spinal mobility — a 10-minute routine',
+    blurb:
+      'A short floor sequence for desk-tight backs. Build the breath in, twist out. The cue that finally made it click for me.',
+    author: 'Marvin',
+    date: 'March 25, 2026',
+    readingTime: '7 min read',
+    image: '/images/aiko-persona/aiko-seated-twist-yoga-pose.webp',
+    alt: 'A practitioner in a seated spinal twist on a sage-green yoga mat in a Japanese-inspired studio',
+  },
+]
+
 function GuidesIndex() {
-  const { slugs } = Route.useLoaderData()
   return (
-    <main className="prose mx-auto max-w-3xl px-4 py-12">
-      <h1>Guides</h1>
-      {slugs.length === 0 ? (
-        <p>No guides yet.</p>
-      ) : (
-        <ul>
-          {slugs.map((slug) => (
-            <li key={slug}>
-              <Link to="/guides/$slug" params={{ slug }}>
-                {slug.replace(/-/g, ' ')}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
-    </main>
+    <>
+      {/* ============================================================
+          HERO STRIP — editorial intro to the journal
+          ============================================================ */}
+      <section className="relative overflow-hidden bg-[color:var(--color-bg)]">
+        <JapaneseAccent
+          phrase="practice"
+          vertical
+          tone="soft"
+          className="pointer-events-none absolute left-3 top-1/2 hidden -translate-y-1/2 xl:block"
+        />
+        <Container size="wide">
+          <div className="grid items-center gap-10 py-16 md:grid-cols-12 md:gap-14 md:py-24">
+            <div className="md:col-span-7">
+              <Eyebrow tone="accent">The Journal</Eyebrow>
+              <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight text-[color:var(--color-ink)] md:text-[56px]">
+                Yoga knowledge.
+                <br />
+                <span className="italic text-[color:var(--color-ink-soft)]">
+                  Real practice. Real life.
+                </span>
+              </h1>
+              <p className="mt-7 max-w-md text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">
+                In-depth articles, honest reviews, and practical advice from the mat. Routines you
+                can actually use, gear that actually matters, and the calm decisions that move your
+                practice forward.
+              </p>
+            </div>
+            <div className="hidden md:col-span-5 md:block">
+              <div className="ml-auto aspect-[4/3] max-w-md overflow-hidden rounded-[28px] ring-1 ring-[color:var(--color-border)]">
+                <img
+                  src="/images/brand/topic-yoga-tips.webp"
+                  alt="An open leather journal, a ceramic tea cup with steam rising, and a sprig of olive leaves on a wooden surface"
+                  width={800}
+                  height={600}
+                  loading="eager"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ============================================================
+          FILTER TABS
+          ============================================================ */}
+      <section className="border-y border-[color:var(--color-border)]/70 bg-[color:var(--color-bg)]">
+        <Container size="wide" className="py-5">
+          <ul
+            className="flex flex-wrap items-center gap-2 md:gap-3"
+            aria-label="Filter articles by category"
+          >
+            {CATEGORIES.map((cat, i) => (
+              <li key={cat}>
+                <button
+                  type="button"
+                  disabled
+                  className={cn(
+                    'rounded-full px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] transition',
+                    i === 0
+                      ? 'bg-[color:var(--color-ink)] text-[color:var(--color-bg)]'
+                      : 'border border-[color:var(--color-border)] text-[color:var(--color-ink-muted)] hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent-deep)]',
+                  )}
+                >
+                  {cat}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
+      {/* ============================================================
+          POST LIST
+          ============================================================ */}
+      <section className="bg-[color:var(--color-bg)]">
+        <Container size="wide" className="py-16 md:py-20">
+          <ul className="flex flex-col divide-y divide-[color:var(--color-border)]/60">
+            {POSTS.map((post) => (
+              <li key={post.href}>
+                <Link
+                  to={post.to}
+                  params={post.params}
+                  className="group grid items-start gap-6 py-10 md:grid-cols-12 md:gap-10"
+                >
+                  <div className="md:col-span-4">
+                    <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
+                      <img
+                        src={post.image}
+                        alt={post.alt}
+                        width={600}
+                        height={450}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                      />
+                    </div>
+                  </div>
+                  <div className="md:col-span-8">
+                    <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
+                      {post.category}
+                    </p>
+                    <h2 className="mt-3 font-serif text-2xl leading-tight tracking-tight text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)] md:text-[28px]">
+                      {post.title}
+                    </h2>
+                    <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-[15px]">
+                      {post.blurb}
+                    </p>
+                    <p className="mt-5 text-xs text-[color:var(--color-ink-muted)]">
+                      By {post.author}
+                      <span className="mx-2 opacity-40">·</span>
+                      {post.date}
+                      <span className="mx-2 opacity-40">·</span>
+                      {post.readingTime}
+                    </p>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* ============================================================
+              PAGINATION — placeholder (single page for now)
+              ============================================================ */}
+          <nav
+            className="mt-12 flex items-center justify-center gap-3"
+            aria-label="Article pagination"
+          >
+            <button
+              type="button"
+              disabled
+              aria-label="Previous page"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--color-border)] text-[color:var(--color-ink-muted)] opacity-50"
+            >
+              <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
+            </button>
+            {[1, 2, 3].map((page) => (
+              <button
+                key={page}
+                type="button"
+                disabled
+                aria-current={page === 1 ? 'page' : undefined}
+                className={cn(
+                  'inline-flex h-10 min-w-10 items-center justify-center rounded-full px-3 text-sm transition',
+                  page === 1
+                    ? 'bg-[color:var(--color-ink)] text-[color:var(--color-bg)]'
+                    : 'border border-[color:var(--color-border)] text-[color:var(--color-ink-muted)]',
+                )}
+              >
+                {page}
+              </button>
+            ))}
+            <button
+              type="button"
+              disabled
+              aria-label="Next page"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--color-border)] text-[color:var(--color-ink-muted)] opacity-50"
+            >
+              <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+            </button>
+          </nav>
+        </Container>
+      </section>
+    </>
   )
 }
