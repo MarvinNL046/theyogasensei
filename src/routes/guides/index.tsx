@@ -384,36 +384,29 @@ function GuidesIndex() {
                 </div>
               </div>
 
-              {/* Popular posts — numbered editorial list */}
+              {/* Popular posts — simple text-list with date */}
               <div className="mb-12">
                 <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
                   Popular posts
                 </p>
-                <ol className="space-y-0">
-                  {POSTS.slice(0, 5).map((post, i) => (
+                <ul className="space-y-0">
+                  {POSTS.slice(0, 5).map((post) => (
                     <li key={`popular-${post.params.slug}`}>
                       <Link
                         to={post.to}
                         params={post.params}
-                        className="group flex items-start gap-5 border-b border-[color:var(--color-border)]/60 py-5 last:border-b-0"
+                        className="group block border-b border-[color:var(--color-border)]/60 py-4 last:border-b-0"
                       >
-                        <span className="font-serif text-2xl italic leading-none text-[color:var(--color-accent)]/70">
-                          {String(i + 1).padStart(2, '0')}
-                        </span>
-                        <div className="min-w-0 flex-1">
-                          <p className="font-serif text-[15px] leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
-                            {post.title}
-                          </p>
-                          <p className="mt-1.5 text-[11px] uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)]">
-                            {post.category}
-                            <span className="mx-1.5 opacity-40">·</span>
-                            {post.readingTime}
-                          </p>
-                        </div>
+                        <p className="font-serif text-[15px] leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
+                          {post.title}
+                        </p>
+                        <p className="mt-1.5 text-xs text-[color:var(--color-ink-muted)]">
+                          {post.date}
+                        </p>
                       </Link>
                     </li>
                   ))}
-                </ol>
+                </ul>
               </div>
 
               {/* Categories — subtle accent dot per category */}
@@ -448,47 +441,36 @@ function GuidesIndex() {
                 </ul>
               </div>
 
-              {/* Newsletter mini — bg image + dark overlay */}
-              <div className="relative mb-12 overflow-hidden rounded-2xl">
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
-                  style={{ backgroundImage: "url('/images/brand/journal-newsletter-bg.webp')" }}
-                />
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/55 via-black/65 to-black/80"
-                />
-                <div className="relative p-6 text-[color:var(--color-bg)]">
-                  <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent-soft)]">
-                    Mindful inbox
-                  </p>
-                  <p className="mb-4 font-serif text-xl leading-snug">
-                    One short email a week
-                  </p>
-                  <p className="mb-5 text-sm leading-relaxed text-[color:var(--color-bg)]/75">
-                    New articles, gear notes, and one thing I am researching right now.
-                  </p>
-                  <form action="#" method="post" className="flex flex-col gap-3">
-                    <label htmlFor="sidebar-newsletter" className="sr-only">
-                      Email address
-                    </label>
-                    <input
-                      id="sidebar-newsletter"
-                      type="email"
-                      name="email"
-                      required
-                      placeholder="you@example.com"
-                      className="w-full rounded-full border border-[color:var(--color-bg)]/30 bg-transparent px-4 py-2.5 text-sm text-[color:var(--color-bg)] placeholder:text-[color:var(--color-bg)]/50 focus:border-[color:var(--color-accent)] focus:outline-none"
-                    />
-                    <button
-                      type="submit"
-                      className="w-full rounded-full bg-[color:var(--color-accent)] px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-accent-deep)]"
-                    >
-                      Subscribe
-                    </button>
-                  </form>
-                </div>
+              {/* Newsletter mini — plain on page bg, no box, no bg image */}
+              <div className="mb-12 border-t border-[color:var(--color-border)]/60 pt-8">
+                <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
+                  Mindful inbox
+                </p>
+                <p className="mb-4 font-serif text-xl leading-snug text-[color:var(--color-ink)]">
+                  One short email a week
+                </p>
+                <p className="mb-5 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
+                  New articles, gear notes, and one thing I am researching right now.
+                </p>
+                <form action="#" method="post" className="flex flex-col gap-3">
+                  <label htmlFor="sidebar-newsletter" className="sr-only">
+                    Email address
+                  </label>
+                  <input
+                    id="sidebar-newsletter"
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="you@example.com"
+                    className="w-full rounded-full border border-[color:var(--color-border)] bg-transparent px-4 py-2.5 text-sm text-[color:var(--color-ink)] placeholder:text-[color:var(--color-ink-muted)] focus:border-[color:var(--color-accent)] focus:outline-none"
+                  />
+                  <button
+                    type="submit"
+                    className="w-full rounded-full bg-[color:var(--color-olive)] px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
+                  >
+                    Subscribe
+                  </button>
+                </form>
               </div>
 
               {/* Follow */}
