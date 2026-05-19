@@ -9,7 +9,7 @@ import { JapaneseAccent } from '#/components/ui/japanese-accent'
  */
 export function Footer() {
   return (
-    <footer className="mt-20 bg-[color:var(--color-olive)] text-[color:var(--color-bg)]">
+    <footer className="bg-[color:var(--color-olive)] text-[color:var(--color-bg)]">
       <Container size="wide" className="py-16 md:py-20">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">

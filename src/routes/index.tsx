@@ -65,6 +65,7 @@ interface TopicTile {
   blurb: string
   to: '/poses' | '/styles' | '/guides' | '/gear' | '/start-here'
   image: string
+  alt: string
 }
 
 const TOPICS: Array<TopicTile> = [
@@ -72,37 +73,43 @@ const TOPICS: Array<TopicTile> = [
     label: 'Yoga Mats',
     blurb: 'Base of practice',
     to: '/gear',
-    image: '/images/brand/topic-yoga-mats.png',
+    image: '/images/brand/topic-yoga-mats.webp',
+    alt: 'A sage-green yoga mat half-rolled on warm wooden studio floor beside a ceramic vase with an olive branch',
   },
   {
     label: 'Yoga Tips',
     blurb: 'Small ideas that stick',
     to: '/guides',
-    image: '/images/brand/topic-yoga-tips.png',
+    image: '/images/brand/topic-yoga-tips.webp',
+    alt: 'An open leather journal, a ceramic tea cup with steam rising, and a sprig of olive leaves on a wooden surface',
   },
   {
     label: 'Beginner Yoga',
     blurb: 'A path you can follow',
     to: '/start-here',
-    image: '/images/brand/topic-beginner-yoga.png',
+    image: '/images/brand/topic-beginner-yoga.webp',
+    alt: 'A practitioner in child’s pose on a sage-green yoga mat in a Japanese-inspired studio with morning light',
   },
   {
     label: 'Meditation',
     blurb: 'Sit, breathe, stay',
     to: '/styles',
-    image: '/images/brand/topic-meditation.png',
+    image: '/images/brand/topic-meditation.webp',
+    alt: 'A stack of five balanced river stones beside a small bonsai and an incense holder on warm wooden floor',
   },
   {
     label: 'Breathwork',
     blurb: 'The first lesson',
     to: '/poses',
-    image: '/images/brand/topic-breathwork.png',
+    image: '/images/brand/topic-breathwork.webp',
+    alt: 'Cropped close-up of a practitioner in dark olive top, one hand on sternum and one on lower abdomen, eyes closed',
   },
   {
     label: 'Yoga Styles',
     blurb: 'Pick one for your week',
     to: '/styles',
-    image: '/images/brand/topic-yoga-styles.png',
+    image: '/images/brand/topic-yoga-styles.webp',
+    alt: 'A practitioner in Warrior II pose on a sage-green yoga mat in a Japanese-inspired studio with shoji screen',
   },
 ]
 
@@ -111,6 +118,7 @@ interface ProductPick {
   brand: string
   name: string
   image: string
+  alt: string
 }
 
 const SENSEI_PICKS: Array<ProductPick> = [
@@ -118,31 +126,36 @@ const SENSEI_PICKS: Array<ProductPick> = [
     badge: 'Best overall',
     brand: 'Manduka',
     name: 'PRO Yoga Mat',
-    image: '/images/brand/pick-manduka-pro.png',
+    image: '/images/brand/pick-manduka-pro.webp',
+    alt: 'A premium dark sage-green yoga mat partially rolled on a warm wooden studio floor with a ceramic vase and olive branch',
   },
   {
     badge: 'Best budget',
     brand: 'Hugger Mugger',
     name: 'Cork Block Set',
-    image: '/images/brand/pick-cork-blocks.png',
+    image: '/images/brand/pick-cork-blocks.webp',
+    alt: 'A pair of natural cork yoga blocks stacked on warm wooden studio floor with soft morning light',
   },
   {
     badge: 'Essential',
     brand: 'Lululemon',
     name: 'Cotton Yoga Strap',
-    image: '/images/brand/pick-cotton-strap.png',
+    image: '/images/brand/pick-cotton-strap.webp',
+    alt: 'A natural unbleached cotton yoga strap coiled into a loose loop with a matte-black metal D-ring buckle',
   },
   {
     badge: 'Restorative',
     brand: 'Halfmoon',
     name: 'Studio Bolster',
-    image: '/images/brand/pick-studio-bolster.png',
+    image: '/images/brand/pick-studio-bolster.webp',
+    alt: 'A dark olive linen yoga bolster pillow on warm wooden studio floor beside a ceramic vase with olive branch',
   },
   {
     badge: 'Flexibility',
     brand: 'Liforme',
     name: 'Yoga Wheel',
-    image: '/images/brand/pick-yoga-wheel.png',
+    image: '/images/brand/pick-yoga-wheel.webp',
+    alt: 'A matte-charcoal yoga wheel with cork-textured inner band standing upright on warm wooden studio floor',
   },
 ]
 
@@ -155,6 +168,7 @@ interface JournalCard {
   date: string
   readingTime: string
   image: string
+  alt: string
 }
 
 const LATEST_ARTICLES: Array<JournalCard> = [
@@ -167,7 +181,8 @@ const LATEST_ARTICLES: Array<JournalCard> = [
       'A simple morning sequence to wake your body, clear your mind, and set the tone for a better day.',
     date: 'May 12, 2026',
     readingTime: '6 min read',
-    image: '/images/aiko-persona/aiko-warrior-ii-yoga-pose.png',
+    image: '/images/aiko-persona/aiko-warrior-ii-yoga-pose.webp',
+    alt: 'A practitioner in Warrior II pose on a sage-green yoga mat in a warm Japanese-inspired studio',
   },
   {
     to: '/guides/$slug',
@@ -178,7 +193,8 @@ const LATEST_ARTICLES: Array<JournalCard> = [
       'Why a five-minute sit beats a perfect twenty-minute one, and the three cues that keep the habit alive.',
     date: 'May 5, 2026',
     readingTime: '8 min read',
-    image: '/images/aiko-persona/aiko-meditation-back-view-sage-yoga-mat.png',
+    image: '/images/aiko-persona/aiko-meditation-back-view-sage-yoga-mat.webp',
+    alt: 'A practitioner sitting in meditation seen from behind on a sage-green yoga mat in a calm studio',
   },
   {
     to: '/poses/$slug',
@@ -189,7 +205,8 @@ const LATEST_ARTICLES: Array<JournalCard> = [
       'Surya Namaskar A in twelve positions. Cues, breath count, common mistakes, and modifications.',
     date: 'April 28, 2026',
     readingTime: '9 min read',
-    image: '/images/aiko-persona/aiko-upward-facing-dog-yoga-pose.png',
+    image: '/images/aiko-persona/aiko-upward-facing-dog-yoga-pose.webp',
+    alt: 'A practitioner in Upward-Facing Dog pose on a sage-green yoga mat in a warm Japanese-inspired studio',
   },
 ]
 
@@ -275,7 +292,7 @@ function HomePage() {
             object-right keeps the baked 継続は力なり on the shoji visible. */}
         <div className="relative aspect-[3/2] w-full overflow-hidden bg-[color:var(--color-surface-muted)] lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[58%] lg:max-w-[920px] 2xl:max-w-[1100px]">
           <img
-            src="/images/hero/aiko-meditation-mountain-shoji.png"
+            src="/images/hero/aiko-meditation-mountain-shoji.webp"
             alt="A practitioner sits in lotus pose on a warm wooden floor; a forest view fills the open window on the left, a shoji screen and bonsai sit on the right with the Japanese phrase for 'consistency is strength' brushed vertically on the panel"
             width={1536}
             height={1024}
@@ -351,7 +368,7 @@ function HomePage() {
                   <div className="aspect-square overflow-hidden rounded-2xl bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)] transition group-hover:ring-[color:var(--color-accent)]/60">
                     <img
                       src={topic.image}
-                      alt=""
+                      alt={topic.alt}
                       width={300}
                       height={300}
                       loading="lazy"
@@ -381,7 +398,7 @@ function HomePage() {
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-cover bg-right bg-no-repeat"
-          style={{ backgroundImage: "url('/images/brand/japanese-zen-editorial-background.png')" }}
+          style={{ backgroundImage: "url('/images/brand/japanese-zen-editorial-background.webp')" }}
         />
         {/* Dark left-side fade for text legibility — pure black, no olive tint */}
         <div
@@ -416,7 +433,7 @@ function HomePage() {
             <div className="md:col-span-7">
               <div className="aspect-[5/3] overflow-hidden rounded-[28px] ring-1 ring-black/40">
                 <img
-                  src="/images/aiko-persona/aiko-rolling-out-sage-yoga-mat.png"
+                  src="/images/aiko-persona/aiko-rolling-out-sage-yoga-mat.webp"
                   alt="Hands rolling out a sage-green yoga mat on a warm wooden studio floor"
                   width={1400}
                   height={840}
@@ -472,7 +489,7 @@ function HomePage() {
                 <div className="aspect-square overflow-hidden bg-[color:var(--color-surface-muted)]">
                   <img
                     src={pick.image}
-                    alt=""
+                    alt={pick.alt}
                     width={400}
                     height={400}
                     loading="lazy"
@@ -528,7 +545,7 @@ function HomePage() {
                   <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-[color:var(--color-surface)]">
                     <img
                       src={card.image}
-                      alt=""
+                      alt={card.alt}
                       width={800}
                       height={600}
                       loading="lazy"
@@ -606,7 +623,7 @@ function HomePage() {
             <div className="hidden md:col-span-5 md:block">
               <div className="ml-auto aspect-[3/2] max-w-md overflow-hidden rounded-[28px] ring-1 ring-black/40">
                 <img
-                  src="/images/brand/newsletter-bonsai.png"
+                  src="/images/brand/newsletter-bonsai.webp"
                   alt="A small Japanese bonsai tree in a matte-charcoal ceramic pot on a warm wooden surface, soft morning light"
                   width={1536}
                   height={1024}
