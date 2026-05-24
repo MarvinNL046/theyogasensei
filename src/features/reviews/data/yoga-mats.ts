@@ -14,6 +14,12 @@ export type YogaMat = {
   priceLevel: '$' | '$$' | '$$$'
   affiliateUrl: string
   highlights?: Array<string>
+  /**
+   * Short editorial blurb shown in the FeaturedReview hero. Summarise
+   * publicly verifiable product traits — do NOT fabricate first-person
+   * testing claims or quote nonexistent reviewers.
+   */
+  reviewBlurb?: string
 }
 
 export const yogaMats: Array<YogaMat> = [
@@ -137,3 +143,32 @@ export const yogaMats: Array<YogaMat> = [
     affiliateUrl: '#',
   },
 ]
+
+/**
+ * Trust signals shown in the review-page hero strip. Strictly claims-safe:
+ * no fabricated testing counts, no fabricated experiential claims. Edit
+ * here — components (TrustStats, ReviewBadgeStrip) consume this export
+ * as the single source of truth.
+ */
+export const TRUST_STATS = [
+  {
+    label: 'Independently researched',
+    sub: 'No paid placements',
+    icon: 'shield-check',
+  },
+  {
+    label: 'Spec-verified',
+    sub: 'Cross-checked against brand pages',
+    icon: 'clipboard-check',
+  },
+  {
+    label: 'Practice-informed',
+    sub: 'Selected for real practice scenarios',
+    icon: 'person-standing',
+  },
+  {
+    label: 'Regularly updated',
+    sub: 'Refreshed every quarter',
+    icon: 'calendar-clock',
+  },
+] as const

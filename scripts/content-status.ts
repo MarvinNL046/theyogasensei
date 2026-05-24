@@ -11,7 +11,8 @@ interface KeywordRow {
   kd: number
   intent: string
   secondary_keywords: string
-  status: 'todo' | 'done' | string
+  status: 'todo' | 'briefed' | 'done' | string
+  brief_maker: string
   notes: string
 }
 
@@ -94,7 +95,8 @@ function readKeywordsCsv(path: string): {
       kd: Number(obj.kd ?? 0),
       intent: obj.intent ?? '',
       secondary_keywords: obj.secondary_keywords ?? '',
-      status: (obj.status as 'todo' | 'done') ?? 'todo',
+      status: (obj.status as 'todo' | 'briefed' | 'done') ?? 'todo',
+      brief_maker: obj.brief_maker ?? '',
       notes: obj.notes ?? '',
     })
   }
@@ -183,7 +185,7 @@ function main() {
     publishedRows.map((p) => [p.primary_keyword.toLowerCase(), p]),
   )
 
-  // Auto-sync: mark keywords.csv rows as `done` if their slug appears in used-keywords.md
+  // Auto-sync published pages from used-keywords.md without erasing brief-stage work.
   let syncedCount = 0
   for (const r of kwRows) {
     const derivedSlug = slugFromKeyword(r.primary_keyword)
@@ -192,7 +194,7 @@ function main() {
       r.primary_keyword.toLowerCase(),
     )
     const isPublished = matchedBySlug || matchedByKeyword
-    const desired = isPublished ? 'done' : 'todo'
+    const desired = isPublished ? 'done' : r.status === 'done' ? 'todo' : r.status
     if (r.status !== desired) {
       r.status = desired
       syncedCount++
@@ -218,9 +220,15 @@ function main() {
     else bucket.clusters.push(r)
   }
 
-  // Scan filesystem entries for stale-page detection
+  // Scan filesystem entries — used below for stale-page detection.
   const fsEntries = scanMdxEntries().filter((e) => e.type !== 'author')
-  const fsBySlug = new Map(fsEntries.map((e) => [e.slug, e]))
+
+  // TODO(content-ops): Stale-page detection — orphan/missing-MDX diff
+  // Diff fsEntries against rows (clusters.csv) to also surface:
+  //   - MDX files NOT registered in clusters.csv (orphan content)
+  //   - CSV entries with NO matching MDX file (planned-but-not-written)
+  // Wire into pnpm content:status report.
+  // const fsBySlug = new Map(fsEntries.map((e) => [e.slug, e]))
 
   // ── Header ─────────────────────────────────────
   console.log('')
@@ -246,14 +254,21 @@ function main() {
       `${COLORS.bold}PILLAR:${COLORS.reset} ${pillarSlug}  ${COLORS.dim}[${pillarDone}/1 pillar · ${subDone}/${bucket.subpillars.length} subpillar · ${clDone}/${bucket.clusters.length} cluster · ${done}/${total} total]${COLORS.reset}`,
     )
     for (const r of all) {
-      const mark = r.status === 'done' ? `${COLORS.green}✓${COLORS.reset}` : `${COLORS.dim}─${COLORS.reset}`
+      const mark =
+        r.status === 'done'
+          ? `${COLORS.green}✓${COLORS.reset}`
+          : r.status === 'briefed'
+            ? `${COLORS.yellow}◐${COLORS.reset}`
+            : `${COLORS.dim}─${COLORS.reset}`
       const typeColor =
         r.page_type === 'pillar' ? COLORS.cyan : r.page_type === 'subpillar' ? COLORS.yellow : ''
       const score = r.kd > 0 ? Math.round(r.volume / r.kd) : 0
       const tail =
         r.status === 'done'
           ? `${COLORS.dim}published${COLORS.reset}`
-          : `${COLORS.dim}TODO · kd:${r.kd} vol:${r.volume.toLocaleString()} · score:${score}${COLORS.reset}`
+          : r.status === 'briefed'
+            ? `${COLORS.dim}briefed · kd:${r.kd} vol:${r.volume.toLocaleString()} · score:${score}${COLORS.reset}`
+            : `${COLORS.dim}TODO · kd:${r.kd} vol:${r.volume.toLocaleString()} · score:${score}${COLORS.reset}`
       console.log(
         `  ${mark} ${pad(r.primary_keyword, 36)} ${typeColor}${pad(r.page_type, 10)}${COLORS.reset} ${tail}`,
       )

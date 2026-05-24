@@ -1,23 +1,22 @@
+// TODO(C2 prep): Wire up ReviewTocStrip component before publishing first review post.
+// Component lives at src/features/reviews/components/ReviewTocStrip.tsx (currently untracked).
+// Anchor targets exist below: #top-picks, #comparison-table, #how-we-test, #buying-guide, #faqs.
+
 import { Link, createFileRoute } from '@tanstack/react-router'
-import {
-  ArrowRight,
-  CalendarClock,
-  ClipboardCheck,
-  PersonStanding,
-  ShieldCheck,
-} from 'lucide-react'
+import { ArrowRight, CalendarClock, ClipboardCheck, PersonStanding, ShieldCheck } from 'lucide-react'
 import type { ComponentType, SVGProps } from 'react'
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
+import { TRUST_STATS } from '#/features/reviews/data/yoga-mats'
 
 export const Route = createFileRoute('/reviews/$slug')({
   head: () => ({
     meta: [
-      { title: '7 Best Yoga Mats for Every Practice (2024) — The Yoga Sensei' },
+      { title: 'Best Yoga Mats for Every Practice — The Yoga Sensei' },
       {
         name: 'description',
         content:
-          'We tested 21 yoga mats to find the ones that offer the best grip, comfort and durability for every type of yogi and every style of practice.',
+          'A claims-safe roundup of the best yoga mats by category — grip, cushioning, durability and value, based on publicly available specifications and aggregated reviews.',
       },
       { property: 'og:type', content: 'article' },
     ],
@@ -25,26 +24,14 @@ export const Route = createFileRoute('/reviews/$slug')({
   component: ReviewPage,
 })
 
-interface TrustBadge {
-  label: string
-  sub: string
-  icon: ComponentType<SVGProps<SVGSVGElement>>
+type IconKey = (typeof TRUST_STATS)[number]['icon']
+
+const ICONS: Record<IconKey, ComponentType<SVGProps<SVGSVGElement>>> = {
+  'clipboard-check': ClipboardCheck,
+  'person-standing': PersonStanding,
+  'shield-check': ShieldCheck,
+  'calendar-clock': CalendarClock,
 }
-
-const TRUST_BADGES: Array<TrustBadge> = [
-  { label: '21 mats tested', sub: 'Hands-on testing', icon: ClipboardCheck },
-  { label: 'Real practice', sub: 'Used in real classes', icon: PersonStanding },
-  { label: 'Honest reviews', sub: 'No sponsorship bias', icon: ShieldCheck },
-  { label: 'Updated may 2024', sub: 'Latest picks', icon: CalendarClock },
-]
-
-const TOC_ITEMS = [
-  { label: 'Our Top Picks', href: '#top-picks' },
-  { label: 'Comparison Table', href: '#comparison-table' },
-  { label: 'How We Test', href: '#how-we-test' },
-  { label: 'Buying Guide', href: '#buying-guide' },
-  { label: 'FAQs', href: '#faqs' },
-] as const
 
 function ReviewPage() {
   return (
@@ -101,37 +88,41 @@ function ReviewPage() {
           <div className="max-w-xl py-24 md:py-36">
             <Eyebrow tone="accent">Yoga gear reviews</Eyebrow>
             <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight text-[color:var(--color-ink)] md:text-[52px]">
-              7 Best Yoga Mats
+              Best Yoga Mats
               <br />
               for Every Practice
-              <span className="italic text-[color:var(--color-ink-soft)]"> (2024)</span>
             </h1>
             <p className="mt-6 max-w-md text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">
-              We tested 21 yoga mats to find the ones that offer the best grip, comfort and
-              durability for every type of yogi and every style of practice.
+              A claims-safe roundup of the yoga mats most frequently recommended
+              for grip, cushioning and durability — selected from publicly
+              available specifications and aggregated reviews across trusted
+              industry sources.
             </p>
 
-            {/* Trust badges row */}
+            {/* Trust badges row — sourced from shared TRUST_STATS (claims-safe) */}
             <ul className="mt-9 grid grid-cols-2 gap-x-4 gap-y-5 sm:grid-cols-4 sm:gap-x-2">
-              {TRUST_BADGES.map((badge) => (
-                <li key={badge.label} className="flex flex-col items-start gap-2">
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
-                    <badge.icon
-                      className="h-4 w-4 text-[color:var(--color-olive-soft)]"
-                      strokeWidth={1.5}
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <div>
-                    <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[color:var(--color-ink)]">
-                      {badge.label}
-                    </p>
-                    <p className="mt-1 text-[11px] leading-snug text-[color:var(--color-ink-muted)]">
-                      {badge.sub}
-                    </p>
-                  </div>
-                </li>
-              ))}
+              {TRUST_STATS.map((stat) => {
+                const Icon = ICONS[stat.icon]
+                return (
+                  <li key={stat.label} className="flex flex-col items-start gap-2">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
+                      <Icon
+                        className="h-4 w-4 text-[color:var(--color-olive-soft)]"
+                        strokeWidth={1.5}
+                        aria-hidden="true"
+                      />
+                    </span>
+                    <div>
+                      <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[color:var(--color-ink)]">
+                        {stat.label}
+                      </p>
+                      <p className="mt-1 text-[11px] leading-snug text-[color:var(--color-ink-muted)]">
+                        {stat.sub}
+                      </p>
+                    </div>
+                  </li>
+                )
+              })}
             </ul>
 
             <Link

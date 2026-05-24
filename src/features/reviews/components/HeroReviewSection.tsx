@@ -1,21 +1,18 @@
-import { Link } from '@tanstack/react-router'
-import { ArrowRight, CalendarClock, ClipboardCheck, PersonStanding, ShieldCheck } from 'lucide-react'
+import { CalendarClock, ClipboardCheck, PersonStanding, ShieldCheck } from 'lucide-react'
 import type { ComponentType, SVGProps } from 'react'
+import { Link } from '@tanstack/react-router'
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
+import { TRUST_STATS } from '#/features/reviews/data/yoga-mats'
 
-interface TrustStat {
-  icon: ComponentType<SVGProps<SVGSVGElement>>
-  title: string
-  text: string
+type IconKey = (typeof TRUST_STATS)[number]['icon']
+
+const ICONS: Record<IconKey, ComponentType<SVGProps<SVGSVGElement>>> = {
+  'clipboard-check': ClipboardCheck,
+  'person-standing': PersonStanding,
+  'shield-check': ShieldCheck,
+  'calendar-clock': CalendarClock,
 }
-
-const TRUST_STATS: Array<TrustStat> = [
-  { icon: ClipboardCheck, title: '21 mats tested', text: 'Hands-on testing' },
-  { icon: PersonStanding, title: 'Real practice', text: 'Used in real classes' },
-  { icon: ShieldCheck, title: 'Honest reviews', text: 'No sponsorship bias' },
-  { icon: CalendarClock, title: 'Updated may 2024', text: 'Latest picks' },
-]
 
 export function HeroReviewSection() {
   return (
@@ -54,29 +51,31 @@ export function HeroReviewSection() {
               <li aria-hidden="true" className="mx-2 opacity-50">
                 ›
               </li>
-              <li aria-current="page" className="text-[color:var(--color-ink)]">
+              <li className="text-[color:var(--color-ink)]" aria-current="page">
                 Best Yoga Mats
               </li>
             </ol>
           </nav>
 
           <Eyebrow tone="accent">Yoga gear reviews</Eyebrow>
-
-          <h1 className="mt-5 font-serif text-4xl leading-[1.05] tracking-tight text-[color:var(--color-ink)] md:text-[56px]">
-            7 Best Yoga Mats for Every Practice
-            <span className="italic text-[color:var(--color-ink-soft)]"> (2024)</span>
+          <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight text-[color:var(--color-ink)] md:text-[52px]">
+            Best Yoga Mats
+            <br />
+            for Every Practice
           </h1>
-
-          <p className="mt-6 max-w-md text-base leading-7 text-[color:var(--color-ink-soft)]">
-            We tested 21 yoga mats to find the ones that offer the best grip, comfort and
-            durability for every type of yogi and every style of practice.
+          <p className="mt-6 max-w-md text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">
+            A claims-safe roundup of the yoga mats most frequently recommended
+            for grip, cushioning and durability — selected from publicly
+            available specifications and aggregated reviews across trusted
+            industry sources.
           </p>
 
-          <ul className="mt-10 grid grid-cols-2 gap-6 md:grid-cols-4">
+          {/* Trust badges — sourced from shared TRUST_STATS (claims-safe) */}
+          <ul className="mt-9 grid grid-cols-2 gap-x-4 gap-y-5 sm:grid-cols-4 sm:gap-x-2">
             {TRUST_STATS.map((stat) => {
-              const Icon = stat.icon
+              const Icon = ICONS[stat.icon]
               return (
-                <li key={stat.title} className="flex flex-col items-start gap-3">
+                <li key={stat.label} className="flex flex-col items-start gap-2">
                   <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
                     <Icon
                       className="h-4 w-4 text-[color:var(--color-olive-soft)]"
@@ -85,26 +84,17 @@ export function HeroReviewSection() {
                     />
                   </span>
                   <div>
-                    <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--color-ink)]">
-                      {stat.title}
+                    <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[color:var(--color-ink)]">
+                      {stat.label}
                     </p>
-                    <p className="mt-1 text-xs leading-snug text-[color:var(--color-ink-muted)]">
-                      {stat.text}
+                    <p className="mt-1 text-[11px] leading-snug text-[color:var(--color-ink-muted)]">
+                      {stat.sub}
                     </p>
                   </div>
                 </li>
               )
             })}
           </ul>
-
-          <Link
-            to="."
-            hash="top-picks"
-            className="mt-10 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-olive)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
-          >
-            See our top pick
-            <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-          </Link>
         </div>
       </Container>
     </section>

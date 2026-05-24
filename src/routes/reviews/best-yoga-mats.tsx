@@ -11,11 +11,11 @@ import { yogaMats } from '#/features/reviews/data/yoga-mats'
 export const Route = createFileRoute('/reviews/best-yoga-mats')({
   head: () => ({
     meta: [
-      { title: '7 Best Yoga Mats for Every Practice (2024) — The Yoga Sensei' },
+      { title: 'Best Yoga Mats for Every Practice — The Yoga Sensei' },
       {
         name: 'description',
         content:
-          'We tested 21 yoga mats to find the ones that offer the best grip, comfort and durability for every type of yogi and every style of practice.',
+          'A claims-safe roundup of the best yoga mats by category — grip, cushioning, durability and value, based on publicly available specifications and aggregated reviews.',
       },
       { property: 'og:type', content: 'article' },
     ],
