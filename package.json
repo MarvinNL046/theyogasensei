@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "vite dev --port 3000",
-    "build": "pnpm verify && pnpm generate-sitemap && vite build",
+    "build": "pnpm typecheck && pnpm verify && pnpm generate-sitemap && vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "lint": "eslint",
@@ -35,6 +35,8 @@
     "@tanstack/react-router-ssr-query": "^1.166.19",
     "@tanstack/react-start": "^1.167.72",
     "@tanstack/router-plugin": "^1.167.42",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "convex": "^1.38.0",
