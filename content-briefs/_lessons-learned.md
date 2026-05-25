@@ -98,6 +98,16 @@ Update what's stale in the same commit if possible, in an immediate `chore(track
 
 ---
 
+## 11. Audit the webapp's routing state BEFORE planning content launch
+
+**Context.** C1 was content-ready (schemas perfect, anti-hallucination clean, validation green), but the pre-publish render check surfaced that `src/routes/guides/$slug.tsx` was a hardcoded "Morning Yoga Routine" design template — the route loaded frontmatter correctly so JSON-LD rendered fine, but the component body never called `loadContent()`. Publishing C1 would have shipped the wrong body to Google. A full audit then found 6 dynamic-needs-wiring routes, 5 design-template-only files, and 1 phantom dynamic route all sitting live in `src/routes/`.
+
+**Action.** Before planning any content launch on a TanStack-Start-style file-routed app, run a route audit: classify every file in `src/routes/` as ESSENTIAL / DYNAMIC-NEEDS-WIRING / DESIGN-TEMPLATE-ONLY / DELETE. Reference implementations (routes that already call `loadContent()` correctly) are your model for fixing the broken ones. Move design-only templates OUT of the file-route directory to a location like `src/design-system/templates/` so TanStack does not pick them up. Mark dead-data listing routes `noindex` until they iterate real MDX. Cluster launch order: (1) webapp routing clean, (2) MDX render pipeline verified on real content, (3) only then content publish.
+
+**Reference**: `_launch-readiness-route-audit.md` shows the format for a 26-route inventory + per-route classification + 5-phase migration plan.
+
+---
+
 ## Cluster-level retrospective slot
 
 After each cluster completes (all spokes + pillar published), append a short retrospective here:
