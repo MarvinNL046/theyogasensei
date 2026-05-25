@@ -3,9 +3,8 @@ import { Container } from '#/components/ui/container'
 import { JapaneseAccent } from '#/components/ui/japanese-accent'
 
 /**
- * Site footer. Dark olive surface per design template. Pinterest first —
- * primary traffic channel per ADR-001. Organization JSON-LD lives on every
- * page via buildRootHead; we do not re-emit it here.
+ * Site footer. Dark olive surface per design template. Organization JSON-LD
+ * lives on every page via buildRootHead; we do not re-emit it here.
  *
  * Phase B (minimal launch): collapsed from 4-column to 1-column. Practice/
  * Reviews/Mindful-inbox columns + legal row removed because every target
@@ -43,22 +42,6 @@ export function Footer() {
             <Link to="/about" className="transition hover:text-[color:var(--color-bg)]">
               About
             </Link>
-            <a
-              href="https://pinterest.com/theyogasensei"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition hover:text-[color:var(--color-bg)]"
-            >
-              Pinterest
-            </a>
-            <a
-              href="https://instagram.com/theyogasensei"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition hover:text-[color:var(--color-bg)]"
-            >
-              Instagram
-            </a>
           </div>
         </div>
 
