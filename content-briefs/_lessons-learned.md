@@ -108,6 +108,41 @@ Update what's stale in the same commit if possible, in an immediate `chore(track
 
 ---
 
+## 12. Visual review surfaces sitewide claims that code review misses
+
+**Context.** Marvin's visual review of the C1 page (commit 712719d render) caught a footer claim ("Instructional content is reviewed by certified yoga teachers") that was not in C1's code — it lived in `footer.tsx`. The sibling-violation sweep then found 4 more hits in `authors.ts` (Person schema bio), `marvin.mdx` (author MDX), and `index.tsx` (homepage meta description, twice). All sitewide, none visible during the C1 code review.
+
+**Action.** After every render-check, scan the **sitewide layer** explicitly:
+- `src/components/site/footer.tsx` + `header.tsx`
+- `src/lib/content/authors.ts` (Person schema feeds every JSON-LD)
+- `src/routes/index.tsx` `<head>` meta + og:description
+- Every author MDX in `content/authors/`
+
+Plus the standard sibling sweep: `grep -rnE "we tested|certified yoga teacher|reviewed by certified|\d+ mats tested" src/ content/ | grep -v design-references`.
+
+---
+
+## 13. Inbound link cascade matters more than "the page exists"
+
+**Context.** In Phase A I kept `/reviews/best-yoga-mats.tsx` and `/reviews/manduka-pro.tsx` live because they had 7+ and 3+ inbound links from CRO pages. Marvin pushed back: "inbound links to fake pages are also fake — strip the link rather than keep the fake page alive to support it." Phase B archived both pages AND archived the CRO pages they were linked from (gear/index, sensei-picks, start-here, search). End result: no links left to strip, no fake pages left to support.
+
+**Action.** When auditing for launch readiness, classify pages by **content honesty**, not by **how many other pages link to them**. If a page makes claims it cannot back up, archive it. Then sweep the inbound links separately — most will be in pages that are also archived for the same reason. The few that aren't get stripped in the same commit.
+
+The clean-slate principle: every live URL serves real content or is a functional endpoint. Period.
+
+---
+
+## 14. Convex CLI `init` modifies AGENTS.md / CLAUDE.md and `convex/tsconfig.json`
+
+**Context.** `npx convex dev` (first run) appended Convex AI pointers to AGENTS.md and CLAUDE.md, created `convex/_generated/ai/guidelines.md`, installed Convex skills into `.claude/skills/`, and created `convex/tsconfig.json` WITHOUT `"types": ["node"]` — which broke `process.env` references in `convex/email.ts` (TS2591 "Cannot find name 'process'").
+
+**Action.** After running `npx convex dev` for the first time on a project that already uses `process.env` in Convex functions:
+- Verify AGENTS.md/CLAUDE.md appends are non-destructive (Convex CLI is well-behaved — only appends with `<!-- convex-ai-start -->` / `<!-- convex-ai-end -->` markers)
+- Open `convex/tsconfig.json` and confirm `"types": ["node"]` is in the `compilerOptions` (or add it). `@types/node` is usually already in `package.json`.
+- Run `pnpm typecheck` from project root AND `npx tsc --noEmit` from inside `convex/` to confirm both check passes.
+
+---
+
 ## Cluster-level retrospective slot
 
 After each cluster completes (all spokes + pillar published), append a short retrospective here:

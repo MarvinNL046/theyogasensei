@@ -1,6 +1,6 @@
 # Minimal Launch Route Audit (Phase B)
 Date: 2026-05-25
-Status: inventory + plan only — no code changes, awaiting Marvin's answers to Section 10
+Status: **Phase B1–B8 executed in commit `61d8523`. Tracking-sync + pre-C2 checklist in follow-up commit. Ready for second-opinion audit.**
 
 Phase A (commits 712719d, 3628601) shipped a "noindex-and-ship" compromise: 26 routes stayed live, listing pages got `noindex`, the worst comparison page was archived, and the sitewide "certified teachers" fabrication + broken footer logo were fixed. Phase A treated hardcoded launch pages as keepable because they had inbound links.
 
