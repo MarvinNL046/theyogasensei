@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 import type { LucideIcon } from 'lucide-react'
 import {
   BadgePercent,
@@ -287,7 +287,7 @@ function HowThisSiteIsMade() {
       title: 'Affiliate transparency',
       icon: BadgePercent,
       text: 'This site uses affiliate links (Amazon Associates and others). Earned commissions never influence which products are recommended.',
-      cta: { label: 'See affiliate disclosure', to: '/affiliate-disclosure' as const },
+      cta: { label: 'Email Marvin', href: 'mailto:marvin@theyogasensei.com' as const },
     },
     {
       title: 'Updates and corrections',
@@ -343,12 +343,12 @@ function HowThisSiteIsMade() {
                     {p.text}
                   </p>
                   {'cta' in p && p.cta ? (
-                    <Link
-                      to={p.cta.to}
+                    <a
+                      href={p.cta.href}
                       className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-olive)] underline-offset-2 hover:underline"
                     >
                       {p.cta.label} <MoveRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-                    </Link>
+                    </a>
                   ) : null}
                 </div>
               </li>
@@ -480,12 +480,9 @@ function ImageryDisclosure() {
               AI-generated · disclosed sitewide
             </span>
             <span aria-hidden="true" className="opacity-40">·</span>
-            <Link
-              to="/affiliate-disclosure"
-              className="underline-offset-2 hover:text-[color:var(--color-ink)] hover:underline"
-            >
+            <a href="mailto:marvin@theyogasensei.com" className="underline-offset-2 hover:text-[color:var(--color-ink)] hover:underline">
               See affiliate disclosure
-            </Link>
+            </a>
           </div>
         </div>
 

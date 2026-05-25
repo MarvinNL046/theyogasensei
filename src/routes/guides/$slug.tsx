@@ -27,12 +27,6 @@ interface SidebarPost {
 const POPULAR_POSTS: Array<SidebarPost> = [
   {
     to: '/guides/$slug',
-    params: { slug: 'yoga-for-beginners' },
-    category: 'Guide',
-    title: 'Yoga for Beginners: A Complete Guide',
-  },
-  {
-    to: '/guides/$slug',
     params: { slug: 'how-to-clean-a-yoga-mat' },
     category: 'Mat care',
     title: 'How to Clean a Yoga Mat (Without Damaging It)',
@@ -132,7 +126,7 @@ function GuidePage() {
                 Home
               </Link>
               <span aria-hidden="true">›</span>
-              <Link to="/guides" className="transition hover:text-[color:var(--color-ink)]">
+              <Link to="/" className="transition hover:text-[color:var(--color-ink)]">
                 Guides
               </Link>
               <span aria-hidden="true">›</span>
@@ -259,55 +253,6 @@ function GuidePage() {
                 </ol>
               </div>
 
-              {/* Newsletter signup */}
-              <div className="relative mb-12 overflow-hidden rounded-2xl border border-[color:var(--color-border)]">
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
-                  style={{
-                    backgroundImage:
-                      "url('/images/brand/journal-newsletter-bg.webp')",
-                  }}
-                />
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 bg-[color:var(--color-surface)]/85"
-                />
-                <div className="relative p-8">
-                  <p className="font-serif text-xl leading-snug text-[color:var(--color-ink)]">
-                    Mindful insights.
-                    <br />
-                    Straight to your inbox.
-                  </p>
-                  <p className="mt-4 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
-                    Get practical tips, new guides and honest recommendations
-                    to support your practice.
-                  </p>
-                  <form action="#" method="post" className="mt-6 flex flex-col gap-3">
-                    <label htmlFor="article-sidebar-newsletter" className="sr-only">
-                      Email address
-                    </label>
-                    <input
-                      id="article-sidebar-newsletter"
-                      type="email"
-                      name="email"
-                      required
-                      placeholder="Your email address"
-                      className="w-full rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-bg)] px-4 py-2.5 text-sm text-[color:var(--color-ink)] placeholder:text-[color:var(--color-ink-muted)] focus:border-[color:var(--color-accent)] focus:outline-none"
-                    />
-                    <button
-                      type="submit"
-                      className="w-full rounded-full bg-[color:var(--color-olive)] px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
-                    >
-                      Join free
-                    </button>
-                  </form>
-                  <p className="mt-4 text-[11px] text-[color:var(--color-ink-muted)]">
-                    No spam. Unsubscribe anytime.
-                  </p>
-                </div>
-              </div>
-
               {/* Categories (display-only until we have real category routing) */}
               <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
                 <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
@@ -330,10 +275,10 @@ function GuidePage() {
                 </ul>
                 <div className="mt-6 border-t border-[color:var(--color-border)] pt-5">
                   <Link
-                    to="/guides"
+                    to="/"
                     className="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent-deep)] transition hover:text-[color:var(--color-accent)]"
                   >
-                    View all guides
+                    Back to home
                     <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
                   </Link>
                 </div>
@@ -363,10 +308,10 @@ function GuidePage() {
                 practice to the next level.
               </p>
               <Link
-                to="/guides"
+                to="/"
                 className="mt-9 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-olive)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
               >
-                Browse all guides
+                Read the about page
                 <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
               </Link>
             </div>

@@ -10,10 +10,6 @@ interface SitemapEntry {
 const STATIC_PAGES: Array<Omit<SitemapEntry, 'url'> & { path: string }> = [
   { path: '/', changefreq: 'weekly', priority: 1.0 },
   { path: '/about', changefreq: 'monthly', priority: 0.7 },
-  { path: '/start-here', changefreq: 'monthly', priority: 0.9 },
-  { path: '/privacy', changefreq: 'yearly', priority: 0.3 },
-  { path: '/terms', changefreq: 'yearly', priority: 0.3 },
-  { path: '/affiliate-disclosure', changefreq: 'yearly', priority: 0.3 },
 ]
 
 function buildEntries(siteUrl: string): Array<SitemapEntry> {

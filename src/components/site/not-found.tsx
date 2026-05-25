@@ -6,8 +6,8 @@ import { Link } from '@tanstack/react-router'
  * static (e.g. /typo) and dynamic (e.g. /poses/non-existent-slug).
  *
  * Voice-spec compliant: no "Oops", no exclamation marks, no
- * "Let's get you back on track". Direct, useful, points at three real
- * starting points instead of a single "back to home" button.
+ * "Let's get you back on track". Direct, useful, points at the real
+ * starting points that exist today.
  */
 export function NotFound() {
   return (
@@ -18,26 +18,24 @@ export function NotFound() {
       <h1 className="font-serif text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">
         That page is not here
       </h1>
-      <p className="mt-6 max-w-prose text-base leading-relaxed text-stone-700 sm:text-lg">
-        Either the URL is mistyped or a link somewhere on this site is out of
-        date. The three starting points below cover most of what people
-        come here for.
+      <p className="mt-3 text-base text-stone-600">
+        The URL may have moved, or it never existed. Try one of these.
       </p>
 
-      <div className="mt-10 grid gap-4 text-left sm:grid-cols-3">
+      <div className="mx-auto mt-10 grid max-w-xl gap-3 text-left sm:grid-cols-2">
         <Link
           to="/guides/$slug"
-          params={{ slug: 'yoga-for-beginners' }}
+          params={{ slug: 'how-to-clean-a-yoga-mat' }}
           className="rounded-2xl border border-stone-200 bg-white p-5 transition hover:border-accent hover:shadow-sm"
         >
           <p className="text-xs font-semibold uppercase tracking-wide text-accent">
-            Pillar
+            Guide · Mat care
           </p>
           <p className="mt-2 font-serif text-base font-semibold text-stone-900">
-            Yoga for Beginners
+            How to Clean a Yoga Mat
           </p>
           <p className="mt-2 text-sm text-stone-600">
-            The complete starter guide.
+            Daily wipe-downs, deep cleans, per-material care.
           </p>
         </Link>
         <Link
@@ -51,21 +49,8 @@ export function NotFound() {
           <p className="mt-2 font-serif text-base font-semibold text-stone-900">
             Sun Salutation
           </p>
-          <p className="mt-2 text-sm text-stone-600">Step by step, twelve poses.</p>
-        </Link>
-        <Link
-          to="/guides/$slug"
-          params={{ slug: 'best-yoga-mats-for-beginners' }}
-          className="rounded-2xl border border-stone-200 bg-white p-5 transition hover:border-accent hover:shadow-sm"
-        >
-          <p className="text-xs font-semibold uppercase tracking-wide text-accent">
-            Gear roundup
-          </p>
-          <p className="mt-2 font-serif text-base font-semibold text-stone-900">
-            Best yoga mats for beginners
-          </p>
           <p className="mt-2 text-sm text-stone-600">
-            Three tested picks under eighty dollars.
+            Step by step, twelve poses.
           </p>
         </Link>
       </div>

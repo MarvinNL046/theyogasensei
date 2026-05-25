@@ -4,13 +4,7 @@ import { Menu, Search, X } from 'lucide-react'
 import { Container } from '#/components/ui/container'
 import { cn } from '#/lib/utils'
 
-const NAV_LINKS = [
-  { to: '/guides', label: 'Guides' },
-  { to: '/gear', label: 'Reviews' },
-  { to: '/poses', label: 'Practice' },
-  { to: '/guides', label: 'Journal' },
-  { to: '/about', label: 'About' },
-] as const
+const NAV_LINKS = [{ to: '/about', label: 'About' }] as const
 
 export function Header() {
   const [open, setOpen] = useState(false)
@@ -47,7 +41,7 @@ export function Header() {
           </div>
         </Link>
 
-        {/* Desktop nav — uppercase, tracked, distinct from wordmark via sans */}
+        {/* Desktop nav — single About link */}
         <nav
           aria-label="Primary"
           className="hidden items-center gap-10 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-soft)] lg:flex"
@@ -64,14 +58,8 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Start Here CTA + search icon — far right */}
+        {/* Search icon — disabled placeholder until search index ships */}
         <div className="hidden items-center gap-3 lg:flex">
-          <Link
-            to="/start-here"
-            className="inline-flex items-center rounded-full bg-[color:var(--color-olive)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
-          >
-            Start here
-          </Link>
           <button
             type="button"
             aria-label="Search — coming soon"
@@ -115,13 +103,6 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          <Link
-            to="/start-here"
-            onClick={close}
-            className="mt-3 inline-flex items-center justify-center rounded-full bg-[color:var(--color-olive)] px-5 py-3 text-xs font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)]"
-          >
-            Start here
-          </Link>
         </Container>
       </nav>
     </header>

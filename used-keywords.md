@@ -20,9 +20,7 @@ Append one row per published page in this format:
 
 | Primary keyword | Slug | Page type | Cluster | Pillar | Published | Last reviewed |
 |---|---|---|---|---|---|---|
-| yoga for beginners | yoga-for-beginners | pillar | yoga-for-beginners | yoga-for-beginners | 2026-05-13 | 2026-05-13 |
 | sun salutation | sun-salutation | cluster | poses | yoga-for-beginners | 2026-05-13 | 2026-05-13 |
-| best yoga mat for beginners | best-yoga-mats-for-beginners | subpillar | gear/mats | yoga-for-beginners | 2026-05-13 | 2026-05-13 |
 | how to clean a yoga mat | how-to-clean-a-yoga-mat | cluster | yoga-mats | yoga-mat-buying-guide | 2026-05-25 | 2026-05-25 |
 
 ---

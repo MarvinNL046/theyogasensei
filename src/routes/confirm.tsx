@@ -137,13 +137,13 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
-              to="/guides"
+              to="/guides/$slug" params={{ slug: 'how-to-clean-a-yoga-mat' }}
               className="inline-flex items-center rounded-full bg-[color:var(--color-olive)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
             >
               Read the guides
             </Link>
             <Link
-              to="/start-here"
+              to="/"
               className="inline-flex items-center rounded-full border border-[color:var(--color-border)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-soft)] transition hover:bg-[color:var(--color-surface-muted)]"
             >
               Start here
@@ -163,7 +163,7 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
           </p>
           <div className="mt-8">
             <Link
-              to="/guides"
+              to="/guides/$slug" params={{ slug: 'how-to-clean-a-yoga-mat' }}
               className="inline-flex items-center rounded-full bg-[color:var(--color-olive)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
             >
               Read the guides
@@ -184,7 +184,7 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
           </p>
           <div className="mt-8">
             <Link
-              to="/start-here"
+              to="/"
               className="inline-flex items-center rounded-full bg-[color:var(--color-olive)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
             >
               Sign up again

@@ -56,6 +56,10 @@ export function scanMdxEntries(): Array<MdxEntry> {
     const fm = parsed.data as Record<string, unknown>
 
     const rel = relative(CONTENT_DIR, filePath).split(sep).join('/')
+    // Skip draft files — any path containing a `_drafts/` segment is
+    // intentionally out of the live route + sitemap surface.
+    if (rel.split('/').includes('_drafts')) continue
+
     const [folder, ...rest] = rel.split('/')
     const fileNameNoExt = rest.join('/').replace(/\.mdx$/, '')
 
