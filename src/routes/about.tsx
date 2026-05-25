@@ -110,7 +110,6 @@ function AboutPage() {
           <OriginSection />
           <BeliefsSection />
           <ImageryDisclosure />
-          <CommunityCta />
           <ValuesRow />
         </Container>
       </section>
@@ -366,25 +365,18 @@ function OriginSection() {
       <div>
         <SectionLabel>Why this platform exists</SectionLabel>
         <h2 className="mt-4 font-serif text-4xl leading-tight text-[color:var(--color-ink)]">
-          Tired of the noise.
+          Why this exists
         </h2>
         <div className="mt-6 space-y-4 text-sm leading-7 text-[color:var(--color-ink-soft)]">
-          <p>Overwhelming advice. Paid promotions. Copy-paste content.</p>
           <p>
-            Too many people get lost in the noise — buying the wrong gear, following shallow
-            advice, or thinking they are not flexible enough to even begin.
+            Most yoga gear content online is either paid promotion or copy-paste filler.
           </p>
           <p>
-            The Yoga Sensei is built differently: calm guidance, useful tools, and honest
-            recommendations that respect your time.
+            This site is the opposite: research-first, honestly written, and updated when
+            I find something better.
           </p>
+          <p>That is the whole pitch.</p>
         </div>
-        <a
-          href="/mindful-journal"
-          className="mt-7 inline-flex items-center gap-2 rounded-md bg-[color:var(--color-olive)] px-7 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
-        >
-          Our story <MoveRight className="h-4 w-4" />
-        </a>
       </div>
       <div className="grid overflow-hidden rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/70 shadow-sm md:grid-cols-[minmax(0,0.86fr)_minmax(0,1fr)]">
         <img
@@ -402,11 +394,14 @@ function OriginSection() {
           }}
         >
           <blockquote className="font-serif text-3xl leading-snug text-[color:var(--color-ink)] md:text-[34px]">
-            “Yoga is not about becoming someone new. It is about remembering who you already are.”
+            “Yoga is 99% practice and 1% theory.”
           </blockquote>
           <div className="mt-7 h-px w-12 bg-[color:var(--color-ink)]" />
           <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-ink)]">
-            The Yoga Sensei
+            Sri K. Pattabhi Jois
+          </p>
+          <p className="mt-2 text-xs leading-5 text-[color:var(--color-ink-soft)]">
+            Co-founder of Ashtanga Yoga
           </p>
         </div>
       </div>
@@ -507,50 +502,6 @@ function ImageryDisclosure() {
             Aiko · AI-generated visual character
           </div>
         </div>
-      </div>
-    </section>
-  )
-}
-
-function CommunityCta() {
-  return (
-    <section
-      className="mt-10 overflow-hidden rounded-md bg-[color:var(--color-olive-deep)] bg-cover bg-left-center p-6 text-[color:var(--color-bg)] md:p-9"
-      style={{
-        backgroundImage:
-          "linear-gradient(90deg, rgba(37,45,34,.18), rgba(37,45,34,.9) 36%, rgba(37,45,34,.98)), url('/images/brand/journal-cta-bg.webp')",
-      }}
-    >
-      <div className="ml-auto max-w-3xl">
-        <Eyebrow tone="onDark">Join our community</Eyebrow>
-        <h2 className="mt-3 font-serif text-3xl leading-tight md:text-4xl">
-          You do not have to figure it out alone.
-        </h2>
-        <p className="mt-3 max-w-xl text-sm leading-6 text-[color:var(--color-bg)]/76">
-          Get weekly mindful insights, practical routines and honest recommendations to support
-          your practice and your life.
-        </p>
-        <form className="mt-6 flex max-w-2xl flex-col gap-3 sm:flex-row">
-          <label htmlFor="about-newsletter-email" className="sr-only">
-            Email address
-          </label>
-          <input
-            id="about-newsletter-email"
-            type="email"
-            placeholder="Your email address"
-            className="h-12 flex-1 rounded-md border border-[color:var(--color-bg)]/15 bg-[color:var(--color-bg)] px-4 text-sm text-[color:var(--color-ink)] outline-none placeholder:text-[color:var(--color-ink-muted)]"
-          />
-          <button
-            type="submit"
-            className="h-12 rounded-md border border-[color:var(--color-bg)]/50 px-7 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-bg)]/10"
-          >
-            Join the journey
-          </button>
-        </form>
-        <p className="mt-3 flex items-center gap-2 text-xs text-[color:var(--color-bg)]/70">
-          <CheckCircle2 className="h-4 w-4" strokeWidth={1.6} />
-          No spam. Unsubscribe anytime.
-        </p>
       </div>
     </section>
   )
