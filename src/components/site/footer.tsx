@@ -15,7 +15,7 @@ export function Footer() {
           <div className="md:col-span-5">
             <Link to="/" className="inline-flex items-center gap-3" aria-label="The Yoga Sensei — home">
               <img
-                src="/logo/logo-mark.png"
+                src="/logo/logo-enso.png"
                 alt=""
                 width={44}
                 height={44}
@@ -30,8 +30,9 @@ export function Footer() {
               className="mt-6 block"
             />
             <p className="mt-3 max-w-md text-sm leading-relaxed text-[color:var(--color-bg)]/70">
-              A curated guide for finding the right gear and starting your practice. We research what
-              we recommend. Instructional content is reviewed by certified yoga teachers.
+              A curated guide for finding the right gear and starting your practice.
+              We research what we recommend. Written and edited by Marvin Smit, a
+              long-time practitioner.
             </p>
           </div>
 

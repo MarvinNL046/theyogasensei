@@ -21,13 +21,13 @@ export const Route = createFileRoute('/')({
       {
         name: 'description',
         content:
-          'A curated guide for finding the right gear and starting your practice. Honest reviews, beginner paths that work, and pose guides reviewed by certified teachers.',
+          'A curated guide for finding the right gear and starting your practice. Honest reviews, beginner paths that work, and pose guides written by a long-time practitioner.',
       },
       { property: 'og:title', content: 'The Yoga Sensei' },
       {
         property: 'og:description',
         content:
-          'A curated guide for finding the right gear and starting your practice. Honest reviews, beginner paths that work, and pose guides reviewed by certified teachers.',
+          'A curated guide for finding the right gear and starting your practice. Honest reviews, beginner paths that work, and pose guides written by a long-time practitioner.',
       },
       { property: 'og:url', content: 'https://theyogasensei.com/' },
       { property: 'og:type', content: 'website' },

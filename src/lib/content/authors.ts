@@ -7,7 +7,7 @@ const AUTHORS: Record<string, Author> = {
     slug: 'marvin',
     name: 'Marvin',
     jobTitle: 'Founder · Yoga gear curator',
-    bio: 'Founder of The Yoga Sensei. Tests mats, blocks, and yoga apps for this site. Practises but does not teach yoga — instructional content is reviewed by certified teachers.',
+    bio: 'Founder of The Yoga Sensei. Long-time practitioner, not a certified instructor. Every gear guide and recommendation on this site is written and edited by Marvin, based on publicly available specifications and aggregated user reviews.',
     knowsAbout: ['Yoga gear', 'Beginner yoga', 'Yoga lifestyle'],
     sameAs: [
       'https://pinterest.com/theyogasensei',
