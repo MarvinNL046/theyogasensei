@@ -352,15 +352,15 @@ function ImageryDisclosure() {
               or a product reviewer.
             </p>
             <p>
-              Aiko is purely a visual anchor. She is never used to teach poses, demonstrate
-              alignment, endorse products, or write content. Every article, review and
-              recommendation on this site is written by Marvin (above). For pose instruction
-              and anatomical guidance, we use photography of certified teachers, illustrations,
-              or embedded video from credentialed sources.
+              Aiko is a visual brand anchor. She is never used to endorse a product, give
+              an opinion, or appear as the author of any article — every piece of writing on
+              this site is by Marvin (above). When an Aiko image illustrates a pose or
+              practice, it is checked for anatomical accuracy before it goes live; anything
+              that misrepresents alignment is rejected or redrawn.
             </p>
             <p className="text-xs text-[color:var(--color-ink-muted)]">
-              If you ever see an Aiko image in a place where this distinction feels unclear,
-              please{' '}
+              If you ever see an image where this distinction feels unclear, or a pose that
+              looks off,{' '}
               <a
                 href="mailto:info@theyogasensei.com"
                 className="text-[color:var(--color-ink-soft)] underline-offset-2 hover:underline"
