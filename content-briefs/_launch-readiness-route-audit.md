@@ -1,7 +1,7 @@
 # Launch-Readiness Route Audit
 
 Date: 2026-05-25
-Status: **inventory + plan only — no code changes yet, awaiting Marvin's decisions on the questions in Section 3**
+Status: **Phase A1–A6 executed in commit `712719d`. Awaiting Phase A8 (publish flow).**
 
 Triggered by the C1 pre-publish render-check, which surfaced that `src/routes/guides/$slug.tsx` loads frontmatter correctly (JSON-LD schemas render perfectly) but its component body is a hardcoded "Morning Yoga Routine: 15 Minutes to Energize Your Day" design template — not the real MDX content. Without a route fix, publishing C1 ships placeholder body to Google.
 

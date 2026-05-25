@@ -383,7 +383,9 @@ The win is not just length. C1 beats the top rankers on:
 - [x] Anti-hallucination patterns spelled out for the writer
 - [x] MDX first draft written (2026-05-25, commit 7b950a5, 2541 words)
 - [x] Review round 1 patched (2026-05-25, commit 4a78433, 8 fixes, 2556 words)
-- [ ] Marvin review on draft
+- [x] Review round 2 patched (2026-05-25, commit c377ac6, 3 fixes — Manduka warranty, prose↔HowTo tone-match, sunlight nuance)
+- [x] Route render-blocker fixed (2026-05-25, commit 712719d — guides/$slug.tsx now wired to loadContent + <Component />)
+- [ ] Marvin review on rendered page
 - [ ] Schema validation via Google Rich Results Test
 - [ ] Publish + GSC URL submission
 - [ ] Post-publish: add forward links to C3/C4/C5/P1 once each ships
