@@ -22,7 +22,7 @@ export function NotFound() {
         The URL may have moved, or it never existed. Try one of these.
       </p>
 
-      <div className="mx-auto mt-10 grid max-w-xl gap-3 text-left sm:grid-cols-2">
+      <div className="mx-auto mt-10 grid max-w-xl gap-3 text-left">
         <Link
           to="/guides/$slug"
           params={{ slug: 'how-to-clean-a-yoga-mat' }}
@@ -36,21 +36,6 @@ export function NotFound() {
           </p>
           <p className="mt-2 text-sm text-stone-600">
             Daily wipe-downs, deep cleans, per-material care.
-          </p>
-        </Link>
-        <Link
-          to="/poses/$slug"
-          params={{ slug: 'sun-salutation' }}
-          className="rounded-2xl border border-stone-200 bg-white p-5 transition hover:border-accent hover:shadow-sm"
-        >
-          <p className="text-xs font-semibold uppercase tracking-wide text-accent">
-            Pose guide
-          </p>
-          <p className="mt-2 font-serif text-base font-semibold text-stone-900">
-            Sun Salutation
-          </p>
-          <p className="mt-2 text-sm text-stone-600">
-            Step by step, twelve poses.
           </p>
         </Link>
       </div>

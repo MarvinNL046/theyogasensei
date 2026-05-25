@@ -6,7 +6,7 @@ import {
 } from '#/lib/images/variants'
 
 export interface ImageProps {
-  /** Cloudflare Images ID (e.g. "poses/sun-salutation-hero"). */
+  /** Cloudflare Images ID (e.g. "guides/yoga-mat-cleaning-hero"). */
   id: string
   /** Variant — must match a name in IMAGE_VARIANTS. */
   variant: ImageVariant

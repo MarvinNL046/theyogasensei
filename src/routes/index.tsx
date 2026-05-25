@@ -39,14 +39,6 @@ const LATEST_WRITING = [
     description:
       'Daily wipe-downs, deep cleans, DIY sprays, and material-specific care for rubber, PVC, cork, polyurethane and TPE mats.',
   },
-  {
-    to: '/poses/$slug' as const,
-    params: { slug: 'sun-salutation' },
-    eyebrow: 'Pose · Beginner',
-    title: 'Sun Salutation: A Step-by-Step Beginner Guide',
-    description:
-      'The classic warm-up flow, broken down pose by pose. Modifications and breath cues for new practitioners.',
-  },
 ]
 
 function HomePage() {
@@ -102,14 +94,14 @@ function HomePage() {
         <Container size="wide">
           <Eyebrow tone="accent">Latest writing</Eyebrow>
           <h2 className="mt-4 max-w-2xl font-serif text-3xl leading-tight tracking-tight text-[color:var(--color-ink)] md:text-[40px]">
-            Two pieces to start with.
+            Start with the guide that exists today.
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-[color:var(--color-ink-muted)]">
             We publish slowly. Everything on this site is written and edited by
             Marvin — no ghostwriters, no faceless content team.
           </p>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-2">
+          <div className="mt-12 grid gap-8">
             {LATEST_WRITING.map((post) => (
               <article
                 key={post.params.slug}

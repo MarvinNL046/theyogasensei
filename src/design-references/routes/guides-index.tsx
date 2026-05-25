@@ -118,19 +118,6 @@ const POSTS: Array<BlogPost> = [
     alt: 'A premium dark sage-green yoga mat partially rolled on a warm wooden studio floor',
   },
   {
-    to: '/poses/$slug',
-    params: { slug: 'sun-salutation' },
-    category: 'Pose guides',
-    title: 'Sun Salutation A, step by step',
-    blurb:
-      'Surya Namaskar A in twelve positions. Cues, breath count, common mistakes, and the modifications that beginners actually need.',
-    author: 'Marvin',
-    date: 'April 22, 2026',
-    readingTime: '9 min read',
-    image: '/images/aiko-persona/aiko-upward-facing-dog-yoga-pose.webp',
-    alt: 'A practitioner in Upward-Facing Dog pose on a sage-green yoga mat in a warm Japanese-inspired studio',
-  },
-  {
     to: '/guides/$slug',
     params: { slug: 'breathwork-for-calm' },
     category: 'Breathwork',

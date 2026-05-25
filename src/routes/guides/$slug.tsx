@@ -19,7 +19,7 @@ import { Eyebrow } from '#/components/ui/eyebrow'
 // When new evergreen guides ship, add them here (or replace with a
 // listFrontmatter-driven Popular component once that helper exists).
 interface SidebarPost {
-  to: '/guides/$slug' | '/poses/$slug'
+  to: '/guides/$slug'
   params: { slug: string }
   category: string
   title: string
@@ -30,12 +30,6 @@ const POPULAR_POSTS: Array<SidebarPost> = [
     params: { slug: 'how-to-clean-a-yoga-mat' },
     category: 'Mat care',
     title: 'How to Clean a Yoga Mat (Without Damaging It)',
-  },
-  {
-    to: '/poses/$slug',
-    params: { slug: 'sun-salutation' },
-    category: 'Pose',
-    title: 'Sun Salutation: A Step-by-Step Beginner Guide',
   },
 ]
 
