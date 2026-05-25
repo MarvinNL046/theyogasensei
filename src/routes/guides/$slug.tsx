@@ -1,103 +1,61 @@
 import { Link, createFileRoute, notFound } from '@tanstack/react-router'
 import {
-  Activity,
   ArrowRight,
   Brain,
-  Check,
   Coffee,
   Package,
-  Sliders,
   Sparkles,
-  Sun,
-  Timer,
-  TrendingUp,
   Wind,
+  Activity,
 } from 'lucide-react'
 import type { ComponentType, SVGProps } from 'react'
-import { loadFrontmatter } from '#/lib/mdx/loader'
+import { loadContent, loadFrontmatter } from '#/lib/mdx/loader'
 import { resolveAuthor } from '#/lib/content/authors'
 import { buildHead, SITE_URL } from '#/lib/seo/head'
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 
-interface ArticleStat {
-  num: number
-  label: string
-  icon: ComponentType<SVGProps<SVGSVGElement>>
-}
-
-const ARTICLE_STATS: Array<ArticleStat> = [
-  { num: 1, label: 'Why it works', icon: Sun },
-  { num: 2, label: '15-minute routine', icon: Timer },
-  { num: 3, label: 'Modify it', icon: Sliders },
-  { num: 4, label: 'Stay consistent', icon: TrendingUp },
-]
-
+// Sidebar "Popular articles" — hand-curated, EXISTING slugs only.
+// When new evergreen guides ship, add them here (or replace with a
+// listFrontmatter-driven Popular component once that helper exists).
 interface SidebarPost {
   to: '/guides/$slug' | '/poses/$slug'
   params: { slug: string }
   category: string
   title: string
-  image: string
-  alt: string
 }
-
 const POPULAR_POSTS: Array<SidebarPost> = [
   {
     to: '/guides/$slug',
-    params: { slug: 'best-yoga-mats-for-beginners' },
-    category: 'Gear',
-    title: '7 Best Yoga Mats for Every Practice (2024 Guide)',
-    image: '/images/brand/pick-manduka-pro.webp',
-    alt: 'Premium dark sage-green yoga mat partially rolled on warm wooden studio floor',
+    params: { slug: 'yoga-for-beginners' },
+    category: 'Guide',
+    title: 'Yoga for Beginners: A Complete Guide',
   },
   {
     to: '/guides/$slug',
-    params: { slug: 'build-meditation-habit' },
-    category: 'Meditation',
-    title: 'How to Build a Consistent Meditation Habit',
-    image: '/images/brand/topic-meditation.webp',
-    alt: 'Stack of five balanced river stones beside a small bonsai and an incense holder',
+    params: { slug: 'how-to-clean-a-yoga-mat' },
+    category: 'Mat care',
+    title: 'How to Clean a Yoga Mat (Without Damaging It)',
   },
   {
-    to: '/guides/$slug',
-    params: { slug: 'seated-twists-for-mobility' },
-    category: 'Flexibility',
-    title: '10 Stretches to Improve Your Flexibility Safely',
-    image: '/images/aiko-persona/aiko-seated-twist-yoga-pose.webp',
-    alt: 'A practitioner in a seated spinal twist on a sage-green yoga mat',
-  },
-  {
-    to: '/guides/$slug',
-    params: { slug: 'yoga-philosophy-lessons' },
-    category: 'Lifestyle',
-    title: 'Yoga Philosophy: 8 Lessons for a More Meaningful Life',
-    image: '/images/brand/topic-yoga-styles.webp',
-    alt: 'A practitioner in Warrior II pose in a Japanese-inspired studio',
-  },
-  {
-    to: '/guides/$slug',
-    params: { slug: 'breathwork-for-calm' },
-    category: 'Breathwork',
-    title: 'Breathwork for Calm: 5 Techniques to Reduce Stress',
-    image: '/images/brand/topic-breathwork.webp',
-    alt: 'Cropped close-up of a practitioner with hand on sternum, eyes closed',
+    to: '/poses/$slug',
+    params: { slug: 'sun-salutation' },
+    category: 'Pose',
+    title: 'Sun Salutation: A Step-by-Step Beginner Guide',
   },
 ]
 
 interface SidebarCategory {
   name: string
-  count: number
   icon: ComponentType<SVGProps<SVGSVGElement>>
 }
-
 const SIDEBAR_CATEGORIES: Array<SidebarCategory> = [
-  { name: 'Practice', count: 28, icon: Activity },
-  { name: 'Gear', count: 19, icon: Package },
-  { name: 'Meditation', count: 16, icon: Sparkles },
-  { name: 'Mindset', count: 14, icon: Brain },
-  { name: 'Breathwork', count: 12, icon: Wind },
-  { name: 'Lifestyle', count: 18, icon: Coffee },
+  { name: 'Practice', icon: Activity },
+  { name: 'Gear', icon: Package },
+  { name: 'Meditation', icon: Sparkles },
+  { name: 'Mindset', icon: Brain },
+  { name: 'Breathwork', icon: Wind },
+  { name: 'Lifestyle', icon: Coffee },
 ]
 
 export const Route = createFileRoute('/guides/$slug')({
@@ -126,9 +84,22 @@ export const Route = createFileRoute('/guides/$slug')({
   component: GuidePage,
 })
 
+function formatDate(iso: string): string {
+  const d = new Date(iso)
+  if (Number.isNaN(d.getTime())) return iso
+  return d.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+}
+
 function GuidePage() {
-  // Placeholder design data for template 3 visual demo.
-  // Will be wired to frontmatter + MDX body once content matches the design.
+  const { frontmatter, author } = Route.useLoaderData()
+  const { slug } = Route.useParams()
+  const { Component } = loadContent('guides', slug)
+  const eyebrow = frontmatter.tags?.[0] ?? 'Guide'
+
   return (
     <>
       {/* ============================================================
@@ -137,33 +108,69 @@ function GuidePage() {
       <section className="relative overflow-hidden bg-[color:var(--color-bg)]">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-cover bg-right-top bg-no-repeat"
-          style={{ backgroundImage: "url('/images/brand/article-hero-morning-yoga.webp')" }}
+          className="pointer-events-none absolute inset-0 bg-cover bg-right-top bg-no-repeat opacity-90"
+          style={{
+            backgroundImage:
+              "url('/images/brand/article-hero-morning-yoga.webp')",
+          }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(90deg, var(--color-bg) 0%, rgba(246,241,234,.98) 36%, rgba(246,241,234,.42) 64%, rgba(246,241,234,0) 100%)',
+          }}
         />
         <Container size="wide" className="relative">
-          <div className="max-w-xl py-20 md:py-28">
-            <Eyebrow tone="accent">Practice</Eyebrow>
+          <div className="max-w-2xl py-20 md:py-28">
+            <nav
+              aria-label="Breadcrumb"
+              className="mb-8 flex items-center gap-3 text-xs text-[color:var(--color-ink-muted)]"
+            >
+              <Link to="/" className="transition hover:text-[color:var(--color-ink)]">
+                Home
+              </Link>
+              <span aria-hidden="true">›</span>
+              <Link to="/guides" className="transition hover:text-[color:var(--color-ink)]">
+                Guides
+              </Link>
+              <span aria-hidden="true">›</span>
+              <span className="font-medium text-[color:var(--color-ink)]">
+                {frontmatter.title}
+              </span>
+            </nav>
+            <Eyebrow tone="accent">{eyebrow}</Eyebrow>
             <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight text-[color:var(--color-ink)] md:text-[48px]">
-              Morning Yoga Routine: 15 Minutes to Energize Your Day
+              {frontmatter.title}
             </h1>
-            <p className="mt-6 max-w-md text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">
-              A simple morning sequence to wake up your body, clear your mind and set the tone for a
-              better day.
-            </p>
+            {frontmatter.metaDescription ? (
+              <p className="mt-6 max-w-xl text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">
+                {frontmatter.metaDescription}
+              </p>
+            ) : null}
             <div className="mt-9 flex items-center gap-4">
               <img
                 src="/images/brand/avatar-yoga-sensei.webp"
-                alt="The Yoga Sensei"
+                alt={`Avatar of ${author.name}`}
                 width={96}
                 height={96}
                 className="h-12 w-12 rounded-full object-cover ring-1 ring-[color:var(--color-border)]"
               />
               <div className="text-sm">
-                <p className="font-medium text-[color:var(--color-ink)]">By The Yoga Sensei</p>
+                <p className="font-medium text-[color:var(--color-ink)]">
+                  By{' '}
+                  <Link
+                    to="/about"
+                    className="underline-offset-2 hover:underline"
+                  >
+                    {author.name}
+                  </Link>
+                </p>
                 <p className="text-xs text-[color:var(--color-ink-muted)]">
-                  May 12, 2024
+                  {formatDate(frontmatter.publishedAt)}
                   <span className="mx-1.5 opacity-40">·</span>
-                  6 min read
+                  {frontmatter.estimatedReadingTime} min read
                 </p>
               </div>
             </div>
@@ -172,146 +179,17 @@ function GuidePage() {
       </section>
 
       {/* ============================================================
-          STATS / TOC strip — horizontal nav summary below hero
-          ============================================================ */}
-      <section className="border-y border-[color:var(--color-border)] bg-[color:var(--color-bg)]">
-        <Container size="wide">
-          <ul className="grid grid-cols-2 md:grid-cols-4 md:divide-x md:divide-[color:var(--color-border)]/70">
-            {ARTICLE_STATS.map((stat) => (
-              <li
-                key={stat.num}
-                className="flex items-center gap-4 px-2 py-6 md:px-8"
-              >
-                <stat.icon
-                  className="h-5 w-5 flex-shrink-0 text-[color:var(--color-olive-soft)]"
-                  strokeWidth={1.25}
-                  aria-hidden="true"
-                />
-                <div>
-                  <p className="font-serif text-base italic leading-none text-[color:var(--color-accent)]/80">
-                    {String(stat.num).padStart(2, '0')}
-                  </p>
-                  <p className="mt-2 text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--color-ink)]">
-                    {stat.label}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </section>
-
-      {/* ============================================================
-          BLOG POST IMAGE — large landscape article image + pose caption
-          ============================================================ */}
-      <section className="bg-[color:var(--color-bg)] py-12 md:py-16">
-        <Container size="wide">
-          <figure>
-            <div className="aspect-[3/2] overflow-hidden rounded-2xl bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
-              <img
-                src="/images/aiko-persona/aiko-cobra-pose-warm-yoga-studio.webp"
-                alt="The Yoga Sensei demonstrating cobra pose on a sage-green mat in a warm Japanese-inspired studio"
-                width={1536}
-                height={1024}
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <figcaption className="mt-4 text-center text-xs italic text-[color:var(--color-ink-muted)]">
-              Cobra Pose
-              <span className="mx-1.5 not-italic opacity-40">·</span>
-              <span className="not-italic uppercase tracking-[0.18em]">Bhujangasana</span>
-            </figcaption>
-          </figure>
-        </Container>
-      </section>
-
-      {/* ============================================================
-          BODY + SIDEBAR — 2-col layout: main content (8) + sidebar (4)
+          BODY + SIDEBAR — main MDX content + curated sidebar
           ============================================================ */}
       <section className="bg-[color:var(--color-bg)] pb-16 md:pb-24">
         <Container size="wide">
           <div className="grid gap-12 md:grid-cols-12 md:gap-12 lg:gap-16">
-            {/* Main column */}
-            <div className="md:col-span-8">
-              <p className="text-base leading-relaxed text-[color:var(--color-ink-soft)] md:text-[17px]">
-                Mornings set the tone for everything that follows. A few intentional minutes on your
-                mat can wake up your body, calm your mind and help you move through the day with
-                more clarity and energy.
-              </p>
-              <p className="mt-4 text-base leading-relaxed text-[color:var(--color-ink-soft)] md:text-[17px]">
-                This 15-minute routine is designed to do exactly that.
-              </p>
+            {/* Main column — real MDX body rendered through prose styling */}
+            <article className="prose prose-stone prose-lg max-w-none md:col-span-8 prose-headings:font-serif prose-headings:tracking-tight prose-headings:text-[color:var(--color-ink)] prose-p:text-[color:var(--color-ink-soft)] prose-a:text-[color:var(--color-olive)] prose-a:underline-offset-2 hover:prose-a:text-[color:var(--color-olive-deep)] prose-strong:text-[color:var(--color-ink)] prose-blockquote:border-l-[color:var(--color-olive)] prose-blockquote:text-[color:var(--color-ink-soft)] prose-code:text-[color:var(--color-ink)] prose-th:text-[color:var(--color-ink)] prose-td:text-[color:var(--color-ink-soft)]">
+              <Component />
+            </article>
 
-              <hr className="my-12 border-[color:var(--color-border)]/60" />
-
-              <h2 className="font-serif text-3xl leading-tight tracking-tight text-[color:var(--color-ink)] md:text-[34px]">
-                1. Why Morning Yoga Works
-              </h2>
-              <p className="mt-5 text-base leading-relaxed text-[color:var(--color-ink-soft)] md:text-[17px]">
-                After a night of rest, your body can feel stiff and your mind foggy. Gentle movement
-                increases circulation, improves mobility and boosts focus — without overstimulating
-                your system.
-              </p>
-              <ul className="mt-6 space-y-3 text-[color:var(--color-ink-soft)]">
-                {[
-                  'Increases energy naturally',
-                  'Improves mood and mental clarity',
-                  'Supports better posture and flexibility',
-                  'Creates a mindful start to your day',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[color:var(--color-olive)]/15">
-                      <Check
-                        className="h-3 w-3 text-[color:var(--color-olive-deep)]"
-                        strokeWidth={2.5}
-                        aria-hidden="true"
-                      />
-                    </span>
-                    <span className="text-base leading-relaxed md:text-[17px]">{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <h2 className="mt-14 font-serif text-3xl leading-tight tracking-tight text-[color:var(--color-ink)] md:text-[34px]">
-                2. The 15-Minute Morning Routine
-              </h2>
-              <p className="mt-5 text-base leading-relaxed text-[color:var(--color-ink-soft)] md:text-[17px]">
-                Move through the following sequence with your breath. Spend 3–5 breaths in each
-                pose.
-              </p>
-
-              {/* Pose card */}
-              <article className="mt-8 overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
-                <div className="grid items-center md:grid-cols-12">
-                  <div className="aspect-square md:col-span-4 md:aspect-auto md:h-full">
-                    <img
-                      src="/images/aiko-persona/aiko-childs-pose-sage-yoga-mat.webp"
-                      alt="The Yoga Sensei in Cat-Cow pose on a sage-green mat"
-                      width={600}
-                      height={600}
-                      loading="lazy"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <div className="p-6 md:col-span-8 md:p-8">
-                    <h3 className="font-serif text-xl leading-snug text-[color:var(--color-ink)] md:text-[22px]">
-                      1. Cat-Cow (Marjaryasana-Bitilasana)
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">
-                      Warm up your spine and connect with your breath.
-                    </p>
-                    <span className="mt-5 inline-flex items-center rounded-full bg-[color:var(--color-bg)] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-muted)] ring-1 ring-[color:var(--color-border)]">
-                      1 minute
-                    </span>
-                  </div>
-                </div>
-              </article>
-            </div>
-
-            {/* ============================================================
-                SIDEBAR — About Author + Popular + Newsletter + Categories
-                ============================================================ */}
+            {/* Sidebar */}
             <aside className="md:col-span-4 md:pl-2 lg:pl-4">
               {/* About the Author */}
               <div className="mb-12 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
@@ -322,7 +200,7 @@ function GuidePage() {
                 <div className="flex items-start gap-4">
                   <img
                     src="/images/brand/avatar-yoga-sensei.webp"
-                    alt="The Yoga Sensei avatar"
+                    alt={`Avatar of ${author.name}`}
                     width={96}
                     height={96}
                     loading="lazy"
@@ -330,11 +208,12 @@ function GuidePage() {
                   />
                   <div>
                     <p className="font-serif text-base leading-snug text-[color:var(--color-ink)]">
-                      The Yoga Sensei
+                      {author.name}
                     </p>
                     <p className="mt-2 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
-                      Yoga teacher, student and lifelong learner. Sharing honest insights to help
-                      you build a consistent practice that transforms.
+                      Founder of The Yoga Sensei. Long-time practitioner, not a
+                      certified instructor — every piece on this site is
+                      written and edited by Marvin.
                     </p>
                   </div>
                 </div>
@@ -347,53 +226,48 @@ function GuidePage() {
                 </Link>
               </div>
 
-              {/* Popular articles */}
+              {/* Popular articles — curated EXISTING slugs only */}
               <div className="mb-12 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
                 <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
-                  Popular articles
+                  Read next
                 </p>
                 <hr className="mb-2 mt-4 border-[color:var(--color-border)]" />
                 <ol className="divide-y divide-[color:var(--color-border)]/60">
-                  {POPULAR_POSTS.map((post, i) => (
-                    <li key={`popular-${post.params.slug}`}>
-                      <Link
-                        to={post.to}
-                        params={post.params}
-                        className="group flex items-start gap-4 py-6 first:pt-4 last:pb-0"
-                      >
-                        <span className="font-serif text-base leading-none text-[color:var(--color-ink-muted)]">
-                          {i + 1}
-                        </span>
-                        <div className="aspect-square w-14 flex-shrink-0 overflow-hidden rounded-md bg-[color:var(--color-bg)] ring-1 ring-[color:var(--color-border)]">
-                          <img
-                            src={post.image}
-                            alt={post.alt}
-                            width={120}
-                            height={120}
-                            loading="lazy"
-                            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.05]"
-                          />
-                        </div>
-                        <div className="min-w-0 flex-1">
-                          <p className="line-clamp-3 font-serif text-[14px] leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
-                            {post.title}
-                          </p>
-                          <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
-                            {post.category}
-                          </p>
-                        </div>
-                      </Link>
-                    </li>
-                  ))}
+                  {POPULAR_POSTS.filter((p) => p.params.slug !== slug).map(
+                    (post, i) => (
+                      <li key={`popular-${post.params.slug}`}>
+                        <Link
+                          to={post.to}
+                          params={post.params}
+                          className="group flex items-start gap-4 py-6 first:pt-4 last:pb-0"
+                        >
+                          <span className="font-serif text-base leading-none text-[color:var(--color-ink-muted)]">
+                            {i + 1}
+                          </span>
+                          <div className="min-w-0 flex-1">
+                            <p className="line-clamp-3 font-serif text-[14px] leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
+                              {post.title}
+                            </p>
+                            <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
+                              {post.category}
+                            </p>
+                          </div>
+                        </Link>
+                      </li>
+                    ),
+                  )}
                 </ol>
               </div>
 
-              {/* Newsletter signup — bg image with cream-tinted overlay */}
+              {/* Newsletter signup */}
               <div className="relative mb-12 overflow-hidden rounded-2xl border border-[color:var(--color-border)]">
                 <div
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
-                  style={{ backgroundImage: "url('/images/brand/journal-newsletter-bg.webp')" }}
+                  style={{
+                    backgroundImage:
+                      "url('/images/brand/journal-newsletter-bg.webp')",
+                  }}
                 />
                 <div
                   aria-hidden="true"
@@ -406,8 +280,8 @@ function GuidePage() {
                     Straight to your inbox.
                   </p>
                   <p className="mt-4 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
-                    Get practical tips, new guides and honest recommendations to support your
-                    practice.
+                    Get practical tips, new guides and honest recommendations
+                    to support your practice.
                   </p>
                   <form action="#" method="post" className="mt-6 flex flex-col gap-3">
                     <label htmlFor="article-sidebar-newsletter" className="sr-only">
@@ -434,7 +308,7 @@ function GuidePage() {
                 </div>
               </div>
 
-              {/* Categories — boxed, zen icons, counts, view all */}
+              {/* Categories (display-only until we have real category routing) */}
               <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
                 <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
                   Categories
@@ -443,23 +317,14 @@ function GuidePage() {
                 <ul className="space-y-0.5">
                   {SIDEBAR_CATEGORIES.map((cat) => (
                     <li key={cat.name}>
-                      <button
-                        type="button"
-                        disabled
-                        className="group flex w-full items-center justify-between rounded-lg px-2 py-3 transition hover:bg-[color:var(--color-bg)]"
-                      >
-                        <span className="flex items-center gap-3 text-sm text-[color:var(--color-ink-soft)] transition group-hover:text-[color:var(--color-accent-deep)]">
-                          <cat.icon
-                            className="h-4 w-4 flex-shrink-0 text-[color:var(--color-accent)]"
-                            strokeWidth={1.5}
-                            aria-hidden="true"
-                          />
-                          {cat.name}
-                        </span>
-                        <span className="text-xs tabular-nums text-[color:var(--color-ink-muted)]">
-                          {cat.count}
-                        </span>
-                      </button>
+                      <span className="group flex w-full items-center gap-3 rounded-lg px-2 py-3 text-sm text-[color:var(--color-ink-soft)]">
+                        <cat.icon
+                          className="h-4 w-4 flex-shrink-0 text-[color:var(--color-accent)]"
+                          strokeWidth={1.5}
+                          aria-hidden="true"
+                        />
+                        {cat.name}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -468,7 +333,7 @@ function GuidePage() {
                     to="/guides"
                     className="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent-deep)] transition hover:text-[color:var(--color-accent)]"
                   >
-                    View all categories
+                    View all guides
                     <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
                   </Link>
                 </div>
@@ -479,41 +344,31 @@ function GuidePage() {
       </section>
 
       {/* ============================================================
-          BOTTOM CTA — cream band, 2-col: text left + photo right
+          BOTTOM CTA
           ============================================================ */}
       <section className="bg-[color:var(--color-surface)]">
         <Container size="wide">
           <div className="grid items-center gap-10 py-16 md:grid-cols-12 md:gap-12 md:py-24">
-            <div className="md:col-span-6">
+            <div className="md:col-span-7">
               <Eyebrow tone="accent">Start your journey</Eyebrow>
               <h2 className="mt-5 font-serif text-3xl leading-[1.1] tracking-tight text-[color:var(--color-ink)] md:text-[44px]">
                 Better practice.
                 <br />
-                <span className="italic text-[color:var(--color-ink-soft)]">Better you.</span>
+                <span className="italic text-[color:var(--color-ink-soft)]">
+                  Better you.
+                </span>
               </h2>
               <p className="mt-6 max-w-md text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">
-                Explore our guides, reviews and resources and take your yoga practice to the next
-                level.
+                Explore our guides, reviews and resources and take your yoga
+                practice to the next level.
               </p>
               <Link
                 to="/guides"
                 className="mt-9 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-olive)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
               >
-                Explore guides
+                Browse all guides
                 <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
               </Link>
-            </div>
-            <div className="md:col-span-6">
-              <div className="aspect-[5/3] overflow-hidden rounded-2xl bg-[color:var(--color-bg)] ring-1 ring-[color:var(--color-border)]">
-                <img
-                  src="/images/brand/topic-yoga-mats.webp"
-                  alt="A sage-green yoga mat half-rolled on warm wooden studio floor with olive branch in ceramic vase"
-                  width={1200}
-                  height={720}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-              </div>
             </div>
           </div>
         </Container>

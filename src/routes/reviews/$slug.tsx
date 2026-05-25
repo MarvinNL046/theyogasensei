@@ -1,142 +1,69 @@
-// TODO(C2 prep): Wire up ReviewTocStrip component before publishing first review post.
-// Component lives at src/features/reviews/components/ReviewTocStrip.tsx (currently untracked).
-// Anchor targets exist below: #top-picks, #comparison-table, #how-we-test, #buying-guide, #faqs.
+// TODO(post-launch): Remove noindex below once the first MDX-backed review
+// ships at content/reviews/<slug>.mdx. Today the route 404s gracefully
+// (notFound() on missing MDX) and is noindex+nofollow so an empty
+// /reviews/$slug never leaks into Google's index. Reference pattern:
+// poses/$slug.tsx.
 
-import { Link, createFileRoute } from '@tanstack/react-router'
-import { ArrowRight, CalendarClock, ClipboardCheck, PersonStanding, ShieldCheck } from 'lucide-react'
-import type { ComponentType, SVGProps } from 'react'
-import { Container } from '#/components/ui/container'
-import { Eyebrow } from '#/components/ui/eyebrow'
-import { TRUST_STATS } from '#/features/reviews/data/yoga-mats'
+import { createFileRoute, notFound } from '@tanstack/react-router'
+import { loadContent, loadFrontmatter } from '#/lib/mdx/loader'
+import { resolveAuthor } from '#/lib/content/authors'
+import { buildHead, SITE_URL } from '#/lib/seo/head'
 
 export const Route = createFileRoute('/reviews/$slug')({
-  head: () => ({
-    meta: [
-      { title: 'Best Yoga Mats for Every Practice — The Yoga Sensei' },
-      {
-        name: 'description',
-        content:
-          'A claims-safe roundup of the best yoga mats by category — grip, cushioning, durability and value, based on publicly available specifications and aggregated reviews.',
-      },
-      { property: 'og:type', content: 'article' },
-    ],
-  }),
+  loader: ({ params }) => {
+    try {
+      const { frontmatter } = loadFrontmatter('reviews', params.slug)
+      const author = resolveAuthor(frontmatter.author)
+      return { frontmatter, author }
+    } catch {
+      throw notFound()
+    }
+  },
+  head: ({ loaderData, params }) => {
+    if (!loaderData) return {}
+    const head = buildHead(loaderData.frontmatter, {
+      siteUrl: SITE_URL,
+      routePath: `/reviews/${params.slug}`,
+      author: loaderData.author,
+      breadcrumbs: [
+        { name: 'Home', url: '/' },
+        { name: 'Reviews', url: '/gear' },
+        { name: loaderData.frontmatter.title },
+      ],
+    })
+    // Force noindex,nofollow until the reviews collection has real,
+    // editorially-approved MDX content. Override anything buildHead set.
+    return {
+      ...head,
+      meta: [
+        ...(head.meta ?? []).filter(
+          (m) => !(typeof m === 'object' && m && 'name' in m && m.name === 'robots'),
+        ),
+        { name: 'robots', content: 'noindex, nofollow' },
+      ],
+    }
+  },
   component: ReviewPage,
 })
 
-type IconKey = (typeof TRUST_STATS)[number]['icon']
-
-const ICONS: Record<IconKey, ComponentType<SVGProps<SVGSVGElement>>> = {
-  'clipboard-check': ClipboardCheck,
-  'person-standing': PersonStanding,
-  'shield-check': ShieldCheck,
-  'calendar-clock': CalendarClock,
-}
-
 function ReviewPage() {
+  const { frontmatter, author } = Route.useLoaderData()
+  const { slug } = Route.useParams()
+  const { Component } = loadContent('reviews', slug)
   return (
-    <>
-      {/* ============================================================
-          BREADCRUMBS — subtle text-only nav above hero
-          ============================================================ */}
-      <nav
-        aria-label="Breadcrumb"
-        className="bg-[color:var(--color-bg)] pt-8 md:pt-10"
-      >
-        <Container size="wide">
-          <ol className="flex flex-wrap items-center text-sm text-[color:var(--color-ink-muted)]">
-            <li>
-              <Link
-                to="/"
-                className="transition hover:text-[color:var(--color-accent-deep)]"
-              >
-                Home
-              </Link>
-            </li>
-            <li aria-hidden="true" className="mx-3 opacity-50">
-              ›
-            </li>
-            <li>
-              <Link
-                to="/gear"
-                className="transition hover:text-[color:var(--color-accent-deep)]"
-              >
-                Reviews
-              </Link>
-            </li>
-            <li aria-hidden="true" className="mx-3 opacity-50">
-              ›
-            </li>
-            <li className="text-[color:var(--color-ink)]" aria-current="page">
-              Best Yoga Mats
-            </li>
-          </ol>
-        </Container>
+    <main className="prose prose-stone prose-lg mx-auto max-w-3xl px-4 py-12">
+      <nav aria-label="Breadcrumb" className="not-prose mb-6 text-sm text-stone-600">
+        <a href="/">Home</a>
+        {' › '}
+        <a href="/gear">Reviews</a>
+        {' › '}
+        <span>{frontmatter.title}</span>
       </nav>
-
-      {/* ============================================================
-          HERO — full-bleed mat photo with fade-left baked in,
-          text + trust badges overlay left
-          ============================================================ */}
-      <section className="relative overflow-hidden bg-[color:var(--color-bg)]">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-cover bg-right bg-no-repeat"
-          style={{ backgroundImage: "url('/images/brand/review-hero-best-mats.webp')" }}
-        />
-        <Container size="wide" className="relative">
-          <div className="max-w-xl py-24 md:py-36">
-            <Eyebrow tone="accent">Yoga gear reviews</Eyebrow>
-            <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight text-[color:var(--color-ink)] md:text-[52px]">
-              Best Yoga Mats
-              <br />
-              for Every Practice
-            </h1>
-            <p className="mt-6 max-w-md text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">
-              A claims-safe roundup of the yoga mats most frequently recommended
-              for grip, cushioning and durability — selected from publicly
-              available specifications and aggregated reviews across trusted
-              industry sources.
-            </p>
-
-            {/* Trust badges row — sourced from shared TRUST_STATS (claims-safe) */}
-            <ul className="mt-9 grid grid-cols-2 gap-x-4 gap-y-5 sm:grid-cols-4 sm:gap-x-2">
-              {TRUST_STATS.map((stat) => {
-                const Icon = ICONS[stat.icon]
-                return (
-                  <li key={stat.label} className="flex flex-col items-start gap-2">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
-                      <Icon
-                        className="h-4 w-4 text-[color:var(--color-olive-soft)]"
-                        strokeWidth={1.5}
-                        aria-hidden="true"
-                      />
-                    </span>
-                    <div>
-                      <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[color:var(--color-ink)]">
-                        {stat.label}
-                      </p>
-                      <p className="mt-1 text-[11px] leading-snug text-[color:var(--color-ink-muted)]">
-                        {stat.sub}
-                      </p>
-                    </div>
-                  </li>
-                )
-              })}
-            </ul>
-
-            <Link
-              to="/reviews/$slug"
-              params={{ slug: 'best-yoga-mats' }}
-              hash="top-picks"
-              className="mt-10 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-olive)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
-            >
-              See our top pick
-              <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-            </Link>
-          </div>
-        </Container>
-      </section>
-    </>
+      <h1>{frontmatter.title}</h1>
+      <p className="not-prose text-sm text-stone-600">
+        by {author.name} · Last reviewed {frontmatter.lastReviewedAt}
+      </p>
+      <Component />
+    </main>
   )
 }

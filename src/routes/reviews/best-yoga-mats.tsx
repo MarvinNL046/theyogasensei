@@ -1,3 +1,8 @@
+// TODO(post-launch): Migrate to MDX-backed /reviews/$slug once that route
+// has its first real review content. Hand-coded launch page kept in place
+// because it has inbound links from /gear, /sensei-picks, /start-here,
+// /search, and /compare. Moving it would cascade-break those CRO pages.
+// See content-briefs/_launch-readiness-route-audit.md §5.
 import { createFileRoute } from '@tanstack/react-router'
 import { ComparisonTable } from '#/features/reviews/components/ComparisonTable'
 import { FeaturedReview } from '#/features/reviews/components/FeaturedReview'

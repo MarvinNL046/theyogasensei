@@ -11,6 +11,10 @@ export const Route = createFileRoute('/gear/$category/')({
   },
   head: ({ params }) => ({
     meta: [
+      {
+        name: 'robots',
+        content: 'noindex, nofollow',
+      },
       { title: `${capitalise(params.category)} — The Yoga Sensei` },
       {
         name: 'description',

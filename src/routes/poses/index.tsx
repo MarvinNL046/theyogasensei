@@ -5,6 +5,10 @@ export const Route = createFileRoute('/poses/')({
   loader: () => ({ slugs: listContentSlugs('poses') }),
   head: () => ({
     meta: [
+      {
+        name: 'robots',
+        content: 'noindex, nofollow',
+      },
       { title: 'Yoga Poses — The Yoga Sensei' },
       {
         name: 'description',

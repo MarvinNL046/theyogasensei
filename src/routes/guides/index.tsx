@@ -20,6 +20,10 @@ import { Section } from '#/components/ui/section'
 export const Route = createFileRoute('/guides/')({
   head: () => ({
     meta: [
+      {
+        name: 'robots',
+        content: 'noindex, nofollow',
+      },
       { title: 'The Journal — The Yoga Sensei' },
       {
         name: 'description',

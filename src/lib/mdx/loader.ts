@@ -35,6 +35,10 @@ const moduleByFolder: Record<string, Record<string, MdxModule>> = {
     string,
     MdxModule
   >,
+  reviews: import.meta.glob('/content/reviews/**/*.mdx', { eager: true }) as Record<
+    string,
+    MdxModule
+  >,
 }
 
 export interface LoadedFrontmatter {

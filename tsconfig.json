@@ -5,7 +5,8 @@
     "convex",
     "emails",
     ".output",
-    "dist"
+    "dist",
+    "src/design-references"
   ],
 
   "compilerOptions": {
