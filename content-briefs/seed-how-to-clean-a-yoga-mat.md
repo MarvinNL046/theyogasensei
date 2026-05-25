@@ -382,6 +382,7 @@ The win is not just length. C1 beats the top rankers on:
 - [x] Affiliate decision locked: ZERO affiliate links in C1
 - [x] Anti-hallucination patterns spelled out for the writer
 - [x] MDX first draft written (2026-05-25, commit 7b950a5, 2541 words)
+- [x] Review round 1 patched (2026-05-25, commit 4a78433, 8 fixes, 2556 words)
 - [ ] Marvin review on draft
 - [ ] Schema validation via Google Rich Results Test
 - [ ] Publish + GSC URL submission
