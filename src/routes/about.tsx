@@ -1,17 +1,22 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import type { LucideIcon } from 'lucide-react'
 import {
+  BadgePercent,
+  BookOpen,
   CheckCircle2,
+  FileSearch,
   Flower2,
   Heart,
   Info,
   Leaf,
   Mountain,
   MoveRight,
+  RefreshCw,
   Scale,
   ShieldCheck,
   Sparkles,
   Sprout,
+  User,
   Users,
 } from 'lucide-react'
 import { Container } from '#/components/ui/container'
@@ -101,6 +106,7 @@ function AboutPage() {
         <Container size="wide">
           <PillarBand />
           <MeetMarvin />
+          <HowThisSiteIsMade />
           <OriginSection />
           <BeliefsSection />
           <ImageryDisclosure />
@@ -181,7 +187,9 @@ function MeetMarvin() {
       aria-labelledby="meet-marvin-heading"
       className="mt-12 grid items-center gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)]"
     >
-      {/* Portrait — placeholder until Marvin uploads the real one */}
+      {/* Portrait — placeholder until Marvin uploads the real one.
+          To swap: replace src with the new file (e.g. marvin-portrait.webp)
+          and update the alt text. Recommended dimensions: square, ≥480x480. */}
       <figure className="relative mx-auto w-full max-w-sm">
         <div className="overflow-hidden rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-sm">
           <img
@@ -203,55 +211,150 @@ function MeetMarvin() {
           id="meet-marvin-heading"
           className="mt-4 font-serif text-4xl leading-tight text-[color:var(--color-ink)]"
         >
-          Hi, I&apos;m Marvin.
+          Hi, I&apos;m Marvin Smit.
         </h2>
         <div className="mt-6 space-y-4 text-sm leading-7 text-[color:var(--color-ink-soft)]">
           <p>
-            I&apos;m 37, based in the Netherlands, and yoga is my practice and my passion. I
-            started The Yoga Sensei because the yoga gear corner of the internet had become
-            loud, paid, and mostly unhelpful — and I knew I could do something quieter and more
-            honest.
+            I&apos;m 37, based in the Netherlands, and yoga has become my daily practice
+            over the past two years. I came to it looking for stress relief and better
+            flexibility — the usual reasons — and stayed because it works. What started
+            as a few evening sessions turned into a real practice, and along the way I
+            spent more time than I care to admit researching mats, blocks, and gear,
+            trying to figure out what was actually worth buying.
           </p>
           <p>
-            I&apos;m a long-time practitioner, not a certified instructor. That distinction
-            matters: when I write about a pose or a sequence, I&apos;m sharing what helps me as
-            a student, not prescribing technique. When I write about gear, I rely on
-            publicly available specifications, manufacturer documentation, and aggregated user
-            reviews. When I&apos;ve used something myself, I say so plainly. When I haven&apos;t,
-            I say that too.
+            I&apos;m a long-time beginner, not a certified instructor. That distinction
+            matters: everything on this site comes from research, public reviews, and
+            where applicable, my own practice — never from claims I can&apos;t back up.
+            When I haven&apos;t personally used a product, I say so. When I have,
+            I&apos;ll tell you what worked and what didn&apos;t, honestly.
           </p>
           <p>
-            Everything published on this site is written and edited by me. No ghostwriters,
-            no faceless content team. If you have a question or want to flag something I got
-            wrong, write to{' '}
+            Everything published on this site is written and edited by me. No
+            ghostwriters, no faceless content team. If you spot an error or have a
+            question, you can reach me at{' '}
             <a
-              href="mailto:info@theyogasensei.com"
+              href="mailto:marvin@theyogasensei.com"
               className="text-[color:var(--color-ink)] underline-offset-2 hover:underline"
             >
-              info@theyogasensei.com
+              marvin@theyogasensei.com
             </a>
-            .
+            {' '}— corrections happen fast and they&apos;re noted in the article.
           </p>
         </div>
 
         <ul className="mt-7 grid gap-3 text-[12px] text-[color:var(--color-ink-soft)] sm:grid-cols-2">
           <li className="flex items-start gap-2">
             <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--color-olive)]" strokeWidth={1.75} />
-            <span>Long-time yoga practitioner, not an instructor</span>
+            <span>Long-time practitioner, not an instructor</span>
           </li>
           <li className="flex items-start gap-2">
             <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--color-olive)]" strokeWidth={1.75} />
-            <span>Sole author and editor of every published piece</span>
+            <span>Sole author and editor of every article</span>
           </li>
           <li className="flex items-start gap-2">
             <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--color-olive)]" strokeWidth={1.75} />
-            <span>Based in the Netherlands, writing in English</span>
+            <span>NL-based, writing in English</span>
           </li>
           <li className="flex items-start gap-2">
             <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--color-olive)]" strokeWidth={1.75} />
-            <span>Transparent about sourcing, testing and affiliate links</span>
+            <span>Transparent sourcing on every claim</span>
           </li>
         </ul>
+      </div>
+    </section>
+  )
+}
+
+function HowThisSiteIsMade() {
+  const principles = [
+    {
+      title: 'Research-first',
+      icon: FileSearch,
+      text: 'Products are selected based on publicly available specifications, manufacturer documentation, and aggregated user reviews across multiple platforms — not paid placement or affiliate priority.',
+    },
+    {
+      title: 'Transparent sourcing',
+      icon: BookOpen,
+      text: "When claims appear in content, the source is identifiable. We don't invent statistics, testing periods, review counts, or specifications.",
+    },
+    {
+      title: 'Personal use, when applicable',
+      icon: User,
+      text: "Where Marvin has personally used a product, this is stated explicitly. Most products covered on this site have not been personally tested — instead, they're researched and compared.",
+    },
+    {
+      title: 'Affiliate transparency',
+      icon: BadgePercent,
+      text: 'This site uses affiliate links (Amazon Associates and others). Earned commissions never influence which products are recommended.',
+      cta: { label: 'See affiliate disclosure', to: '/affiliate-disclosure' as const },
+    },
+    {
+      title: 'Updates and corrections',
+      icon: RefreshCw,
+      text: 'Content is reviewed periodically. If you spot an error, email marvin@theyogasensei.com — corrections are made promptly and noted in the article.',
+    },
+  ] as const
+
+  return (
+    <section
+      id="how-this-site-is-made"
+      aria-labelledby="how-this-site-is-made-heading"
+      className="mt-12 rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/72 px-6 py-9 shadow-sm md:px-10 md:py-11"
+    >
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,0.32fr)_minmax(0,0.68fr)]">
+        <div>
+          <SectionLabel>Editorial methodology</SectionLabel>
+          <h2
+            id="how-this-site-is-made-heading"
+            className="mt-4 font-serif text-4xl leading-tight text-[color:var(--color-ink)]"
+          >
+            How this site is made.
+          </h2>
+          <p className="mt-6 text-sm leading-7 text-[color:var(--color-ink-soft)]">
+            Every product recommendation on this site follows a consistent methodology.
+            We publish this openly so you know exactly how we work — and what we will
+            never do.
+          </p>
+        </div>
+
+        <ol className="space-y-7">
+          {principles.map((p, index) => {
+            const Icon = p.icon
+            return (
+              <li key={p.title} className="grid gap-4 sm:grid-cols-[auto_minmax(0,1fr)]">
+                <div className="flex items-start gap-4">
+                  <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-bg)]">
+                    <Icon
+                      className="h-4 w-4 text-[color:var(--color-olive)]"
+                      strokeWidth={1.75}
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <p className="hidden text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-ink-muted)] sm:block">
+                    {String(index + 1).padStart(2, '0')}
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-serif text-xl leading-snug text-[color:var(--color-ink)]">
+                    {p.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-[color:var(--color-ink-soft)]">
+                    {p.text}
+                  </p>
+                  {'cta' in p && p.cta ? (
+                    <Link
+                      to={p.cta.to}
+                      className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-olive)] underline-offset-2 hover:underline"
+                    >
+                      {p.cta.label} <MoveRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+                    </Link>
+                  ) : null}
+                </div>
+              </li>
+            )
+          })}
+        </ol>
       </div>
     </section>
   )
@@ -362,7 +465,7 @@ function ImageryDisclosure() {
               If you ever see an image where this distinction feels unclear, or a pose that
               looks off,{' '}
               <a
-                href="mailto:info@theyogasensei.com"
+                href="mailto:marvin@theyogasensei.com"
                 className="text-[color:var(--color-ink-soft)] underline-offset-2 hover:underline"
               >
                 let us know
