@@ -37,4 +37,11 @@ export default defineSchema({
     timestamp: v.number(), // unix ms
     meta: v.optional(v.any()), // Resend webhook payload extras (clicked URL, bounce reason)
   }).index('by_subscriber', ['subscriberId']),
+
+  affiliateClicks: defineTable({
+    slug: v.string(),
+    day: v.string(), // UTC YYYY-MM-DD bucket; no IP/user/browser data stored.
+    count: v.number(),
+    updatedAt: v.number(), // unix ms
+  }).index('by_slug_and_day', ['slug', 'day']),
 })

@@ -12,10 +12,24 @@ import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
 import { scanMdxSlugs } from './scripts/scan-mdx-slugs'
+import { affiliateRedirectHeaders } from './src/lib/affiliate-redirect-headers'
 
 // Routes the MDX scanner discovers via /content/**/*.mdx frontmatter.
 // Empty during Phase 1 init — populates as sample pages land in Step 9.
 const contentPages = scanMdxSlugs()
+const contentPagePaths = new Set(contentPages.map((page) => page.path))
+
+function shouldPrerenderPath(path: string): boolean {
+  // /go/$slug is the affiliate redirect — must never be prerendered or indexed.
+  if (path.startsWith('/go/')) return false
+
+  // Forward links inside launch drafts may point at scheduled-but-not-yet-written
+  // guide URLs. Keep those hrefs in the HTML for editorial link planning, but
+  // don't let crawlLinks treat missing dynamic MDX routes as prerender failures.
+  if (path.startsWith('/guides/') && !contentPagePaths.has(path)) return false
+
+  return true
+}
 
 const config = defineConfig({
   resolve: { tsconfigPaths: true },
@@ -34,15 +48,19 @@ const config = defineConfig({
       rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'wrap' }]],
     }),
     devtools(),
-    nitro({ rollupConfig: { external: [/^@sentry\//] } }),
+    nitro({
+      rollupConfig: { external: [/^@sentry\//] },
+      routeRules: {
+        '/go/**': { headers: affiliateRedirectHeaders },
+      },
+    }),
     tailwindcss(),
     tanstackStart({
       prerender: {
         enabled: true,
         crawlLinks: true,
         failOnError: true,
-        // /go/$slug is the affiliate redirect — must never be prerendered or indexed.
-        filter: ({ path }) => !path.startsWith('/go/'),
+        filter: ({ path }) => shouldPrerenderPath(path),
       },
       // Explicit content routes from MDX scan. crawlLinks picks up the rest
       // (home, about, /poses/, /styles/, /gear/, etc. — they're linked from the home page).

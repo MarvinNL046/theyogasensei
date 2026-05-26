@@ -4,7 +4,20 @@ import { Menu, Search, X } from 'lucide-react'
 import { Container } from '#/components/ui/container'
 import { cn } from '#/lib/utils'
 
-const NAV_LINKS = [{ to: '/about', label: 'About' }] as const
+const NAV_LINKS = [
+  { to: '/', label: 'Home' },
+  {
+    to: '/guides/$slug',
+    params: { slug: 'how-to-choose-a-yoga-mat' },
+    label: 'Mat guide',
+  },
+  {
+    to: '/guides/$slug',
+    params: { slug: 'best-yoga-mat-for-hot-yoga' },
+    label: 'Hot yoga mats',
+  },
+  { to: '/about', label: 'About' },
+] as const
 
 export function Header() {
   const [open, setOpen] = useState(false)
@@ -41,21 +54,33 @@ export function Header() {
           </div>
         </Link>
 
-        {/* Desktop nav — single About link */}
+        {/* Desktop nav */}
         <nav
           aria-label="Primary"
           className="hidden items-center gap-10 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-soft)] lg:flex"
         >
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.label}
-              to={link.to}
-              className="transition hover:text-[color:var(--color-accent-deep)]"
-              activeProps={{ className: 'text-[color:var(--color-accent-deep)]' }}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) =>
+            'params' in link ? (
+              <Link
+                key={link.label}
+                to={link.to}
+                params={link.params}
+                className="transition hover:text-[color:var(--color-accent-deep)]"
+                activeProps={{ className: 'text-[color:var(--color-accent-deep)]' }}
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <Link
+                key={link.label}
+                to={link.to}
+                className="transition hover:text-[color:var(--color-accent-deep)]"
+                activeProps={{ className: 'text-[color:var(--color-accent-deep)]' }}
+              >
+                {link.label}
+              </Link>
+            ),
+          )}
         </nav>
 
         {/* Search icon — disabled placeholder until search index ships */}
@@ -92,17 +117,30 @@ export function Header() {
         )}
       >
         <Container size="wide" className="flex flex-col gap-1 py-4">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.label}
-              to={link.to}
-              onClick={close}
-              className="rounded-md px-2 py-3 text-sm uppercase tracking-[0.18em] text-[color:var(--color-ink-soft)] transition hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-accent-deep)]"
-              activeProps={{ className: 'text-[color:var(--color-accent-deep)]' }}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) =>
+            'params' in link ? (
+              <Link
+                key={link.label}
+                to={link.to}
+                params={link.params}
+                onClick={close}
+                className="rounded-md px-2 py-3 text-sm uppercase tracking-[0.18em] text-[color:var(--color-ink-soft)] transition hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-accent-deep)]"
+                activeProps={{ className: 'text-[color:var(--color-accent-deep)]' }}
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <Link
+                key={link.label}
+                to={link.to}
+                onClick={close}
+                className="rounded-md px-2 py-3 text-sm uppercase tracking-[0.18em] text-[color:var(--color-ink-soft)] transition hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-accent-deep)]"
+                activeProps={{ className: 'text-[color:var(--color-accent-deep)]' }}
+              >
+                {link.label}
+              </Link>
+            ),
+          )}
         </Container>
       </nav>
     </header>

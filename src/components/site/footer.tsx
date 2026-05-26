@@ -6,11 +6,10 @@ import { JapaneseAccent } from '#/components/ui/japanese-accent'
  * Site footer. Dark olive surface per design template. Organization JSON-LD
  * lives on every page via buildRootHead; we do not re-emit it here.
  *
- * Phase B (minimal launch): collapsed from 4-column to 1-column. Practice/
- * Reviews/Mindful-inbox columns + legal row removed because every target
- * route is archived (start-here, poses index, styles, guides index, gear,
- * privacy, terms, affiliate-disclosure). Newsletter subscribe removed
- * because no live signup backend exists yet (Convex flow pending).
+ * Phase B++ (minimal launch): collapsed from 4-column to 1-column. Practice/
+ * Reviews/Mindful-inbox columns are removed because those targets are archived.
+ * Affiliate disclosure is restored as a real legal/trust page because the live
+ * guide links to it and C2 will introduce affiliate links.
  */
 export function Footer() {
   return (
@@ -42,11 +41,26 @@ export function Footer() {
             <Link to="/about" className="transition hover:text-[color:var(--color-bg)]">
               About
             </Link>
+            <Link to="/contact" className="transition hover:text-[color:var(--color-bg)]">
+              Contact
+            </Link>
+            <Link to="/privacy" className="transition hover:text-[color:var(--color-bg)]">
+              Privacy
+            </Link>
+            <Link to="/terms" className="transition hover:text-[color:var(--color-bg)]">
+              Terms
+            </Link>
+            <Link to="/affiliate-disclosure" className="transition hover:text-[color:var(--color-bg)]">
+              Affiliate disclosure
+            </Link>
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-[color:var(--color-bg)]/15 pt-6 text-xs text-[color:var(--color-bg)]/60 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} The Yoga Sensei. All rights reserved.</p>
+        <div className="mt-14 border-t border-[color:var(--color-bg)]/15 pt-6 text-xs text-[color:var(--color-bg)]/60">
+          <p>
+            © {new Date().getFullYear()} The Yoga Sensei. All rights reserved. Operated by Marvin
+            Smit, The Netherlands.
+          </p>
         </div>
       </Container>
     </footer>

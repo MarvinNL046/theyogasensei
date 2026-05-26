@@ -1,0 +1,35 @@
+pillar_slug,cluster,cluster_type,status,target_article_count,published_count,next_keyword,last_brief_maker,notes
+yoga-for-beginners,yoga-for-beginners,pillar,active,10,1,how often should beginners do yoga,gpt,Main beginner pillar. Do not open another broad beginner pillar until this has enough supporting cluster content. Briefed hatha vs vinyasa on 2026-05-23. Briefed best yoga blocks on 2026-05-24.
+yoga-for-beginners,poses,cluster,active,10,1,,codex,Foundational beginner pose cluster. Build pose pages that link up to yoga-for-beginners. Briefed downward facing dog on 2026-05-21.
+yoga-for-beginners,gear/mats,subpillar,active,6,1,,,"Commercial mat subpillar. Expand only with distinct mat angles to avoid cannibalisation."
+yoga-for-beginners,styles,cluster,planned,6,0,,gpt,Style comparison cluster for beginners. Briefed hatha vs vinyasa on 2026-05-23.
+yoga-for-beginners,gear/blocks,subpillar,planned,5,0,,gpt,Affiliate gear cluster for props and support tools. Briefed best yoga blocks on 2026-05-24.
+yoga-for-beginners,blog,cluster,planned,8,0,how often should beginners do yoga,,Beginner question/PAA cluster.
+yoga-for-back-pain,yoga-for-back-pain,pillar,planned,10,0,yoga for back pain,,Open only when ready to support health claims with citations and safer medical wording.
+yoga-for-flexibility,yoga-for-flexibility,pillar,planned,10,0,yoga for flexibility,,Future pillar. Build after beginner cluster has more supporting content.
+chair-yoga-for-seniors,chair-yoga-for-seniors,pillar,planned,10,0,free chair yoga for seniors,gpt,Hit-now low KD senior/chair yoga pillar seed. Seed brief: content-briefs/seed-chair-yoga-for-seniors.md. Must use accessibility-first language YMYL safeguards sources and no medical claims. Briefed chair yoga for seniors on 2026-05-25.
+chair-yoga-for-seniors,free-chair-yoga,cluster,planned,6,0,free chair yoga for seniors,,Free chair yoga support cluster. Watch cannibalisation between free chair yoga variants.
+chair-yoga-for-seniors,printables,cluster,planned,4,0,printable chair yoga for seniors,,Printable resource cluster with downloadable/printable asset potential.
+chair-yoga-for-seniors,beginners,cluster,planned,5,0,free chair yoga for beginners,,Beginner chair yoga entry cluster.
+yoga-for-back-pain,poses,cluster,planned,8,0,best yoga poses for back pain,,Back pain pose cluster. Medical-adjacent: use cautious educational wording and cite reliable sources.
+yoga-for-back-pain,sciatica,cluster,planned,5,0,yoga for sciatica,,Sciatica-adjacent cluster. Needs strict medical disclaimers and source verification.
+yoga-for-back-pain,posture,cluster,planned,5,0,yoga for posture,,Posture support cluster. Avoid correction/guarantee claims.
+yoga-for-back-pain,digestive-support,cluster,planned,4,0,yoga for constipation,,Digestive support cluster seed. Validate whether this belongs under a separate wellness pillar before publishing.
+yoga-nidra-for-sleep,yoga-nidra-for-sleep,pillar,planned,8,0,yoga nidra for sleep,,Specialty sleep/yoga nidra pillar seed with strong low-KD opportunity. Good fit for bolsters blankets eye pillows.
+partner-yoga,partner-yoga,pillar,planned,8,0,yoga poses for two people,,Partner/group yoga pillar seed. Good visual/Pinterest potential and double gear-set affiliate angle.
+kids-yoga,kids-yoga,pillar,planned,8,0,yoga poses for kids,,Kids/family yoga seed. Needs age-safe language and parent-focused guidance.
+yoga-for-men,yoga-for-men,pillar,planned,8,0,yoga for men,,Men's yoga pillar seed. Validate demand and avoid bro-fitness tone.
+yoga-for-men,men-yoga-gear,subpillar,planned,5,0,yoga pants for men,,Men's yoga gear affiliate cluster seed.
+yoga-for-beginners,apps,subpillar,planned,5,0,best yoga app,,Yoga app review/roundup cluster. Verify app affiliate options and avoid fake usage claims.
+chair-yoga-for-seniors,chair-yoga-products,subpillar,planned,5,0,best chair yoga for seniors,,Chair yoga commercial support cluster for books videos DVDs and safe props.
+yoga-for-beginners,gear/bolsters,subpillar,planned,5,0,best yoga bolster,,Bolster/restorative gear affiliate cluster.
+yoga-for-beginners,books,cluster,planned,5,0,best yoga books,,Yoga books affiliate/editorial cluster.
+yoga-mat-reviews,brand-yoga-mats,subpillar,planned,12,0,lululemon yoga mat,,Brand-specific yoga mat reviews with high purchase intent. Must verify specs prices and claims from sources.
+yoga-mat-reviews,mat-comparisons,cluster,planned,8,0,manduka vs lululemon yoga mat,,Yoga mat comparison cluster for affiliate decision pages.
+yoga-mat-reviews,mat-care,cluster,planned,8,0,how to clean a yoga mat,,Mat care how-to cluster. Strong internal links to mat reviews and buying guides.
+yoga-mat-reviews,mat-buying-guide,cluster,planned,6,0,how thick should a yoga mat be,,Yoga mat buying-guide support cluster.
+yoga-mat-reviews,yoga-mat-reviews,pillar,planned,10,0,yoga mat buying guide,,Launch cluster pillar. Publish after 4-6 supporting mat cluster posts exist. See content-launch-cluster-strategy.md.
+yoga-for-back-pain,balance,cluster,planned,5,0,yoga for balance,,Balance support cluster. Could also support senior/chair yoga after SERP validation.
+face-yoga,face-yoga,pillar,planned,6,0,face yoga for jowls,,Face yoga seed. Validate brand fit and evidence quality before opening this pillar.
+yoga-for-flexibility,runners,cluster,planned,6,0,yoga for runners,,Runner mobility/flexibility cluster.
+partner-yoga,group-yoga,cluster,planned,5,0,yoga poses for 3,,Group yoga visual cluster with Pinterest/social potential.

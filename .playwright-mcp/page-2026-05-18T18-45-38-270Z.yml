@@ -1,0 +1,307 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "The Yoga Sensei — home" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]:
+          - generic [ref=e6]: The Yoga Sensei
+          - generic [ref=e7]: 練習
+      - navigation "Primary" [ref=e8]:
+        - link "Guides" [ref=e9] [cursor=pointer]:
+          - /url: /guides
+        - link "Reviews" [ref=e10] [cursor=pointer]:
+          - /url: /gear
+        - link "Practice" [ref=e11] [cursor=pointer]:
+          - /url: /poses
+        - link "Journal" [ref=e12] [cursor=pointer]:
+          - /url: /guides
+        - link "About" [ref=e13] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=e14]:
+        - link "Start here" [ref=e15] [cursor=pointer]:
+          - /url: /start-here
+        - button "Search — coming soon" [disabled] [ref=e16]:
+          - img [ref=e17]
+  - main [ref=e20]:
+    - generic [ref=e21]:
+      - generic "be here now": 今ここ
+      - generic [ref=e24]:
+        - generic "practice, learn, grow" [ref=e25]: 練習・学び・成長する。
+        - heading "Yoga is not about touching your toes. It’s about what you learn on the way down." [level=1] [ref=e26]:
+          - generic [ref=e27]: Yoga is not
+          - generic [ref=e28]: about touching
+          - generic [ref=e29]: your toes.
+          - generic [ref=e30]:
+            - text: It’s about what you
+            - text: learn on the way down.
+        - paragraph [ref=e31]: Honest reviews, in-depth guides, and practical advice to help you build a yoga practice that actually fits your busy real life.
+        - generic [ref=e32]:
+          - link "Explore journal" [ref=e33] [cursor=pointer]:
+            - /url: /guides
+            - text: Explore journal
+            - img [ref=e34]
+          - link "Start here" [ref=e36] [cursor=pointer]:
+            - /url: /start-here
+      - img "A practitioner sits in lotus pose on a warm wooden floor; a forest view fills the open window on the left, a shoji screen and bonsai sit on the right with the Japanese phrase for 'consistency is strength' brushed vertically on the panel" [ref=e39]
+    - region "Why The Yoga Sensei" [ref=e40]:
+      - list [ref=e42]:
+        - listitem [ref=e43]:
+          - img [ref=e44]
+          - generic [ref=e47]:
+            - paragraph [ref=e48]: Honest & Independent
+            - paragraph [ref=e49]: No sponsors. No BS. Only products we truly recommend.
+        - listitem [ref=e50]:
+          - img [ref=e51]
+          - generic [ref=e53]:
+            - paragraph [ref=e54]: In-Depth Guides
+            - paragraph [ref=e55]: Step-by-step advice for all levels, from beginner to advanced.
+        - listitem [ref=e56]:
+          - img [ref=e57]
+          - generic [ref=e61]:
+            - paragraph [ref=e62]: Practice First
+            - paragraph [ref=e63]: Because yoga is experience, not just information.
+        - listitem [ref=e64]:
+          - img [ref=e65]
+          - generic [ref=e70]:
+            - paragraph [ref=e71]: Mindful Living
+            - paragraph [ref=e72]: Yoga, meditation, breathwork and a balanced lifestyle.
+    - generic [ref=e74]:
+      - generic [ref=e75]:
+        - generic [ref=e76]: Outline by topic
+        - heading "Everything you need for your yoga journey." [level=2] [ref=e77]:
+          - text: Everything you need
+          - text: for your yoga journey.
+        - link "View all topics" [ref=e78] [cursor=pointer]:
+          - /url: /guides
+          - text: View all topics
+          - img [ref=e79]
+      - list [ref=e81]:
+        - listitem [ref=e82]:
+          - link "Yoga Mats Base of practice" [ref=e83] [cursor=pointer]:
+            - /url: /gear
+            - paragraph [ref=e85]: Yoga Mats
+            - paragraph [ref=e86]: Base of practice
+        - listitem [ref=e87]:
+          - link "Yoga Tips Small ideas that stick" [ref=e88] [cursor=pointer]:
+            - /url: /guides
+            - paragraph [ref=e90]: Yoga Tips
+            - paragraph [ref=e91]: Small ideas that stick
+        - listitem [ref=e92]:
+          - link "Beginner Yoga A path you can follow" [ref=e93] [cursor=pointer]:
+            - /url: /start-here
+            - paragraph [ref=e95]: Beginner Yoga
+            - paragraph [ref=e96]: A path you can follow
+        - listitem [ref=e97]:
+          - link "Meditation Sit, breathe, stay" [ref=e98] [cursor=pointer]:
+            - /url: /styles
+            - paragraph [ref=e100]: Meditation
+            - paragraph [ref=e101]: Sit, breathe, stay
+        - listitem [ref=e102]:
+          - link "Breathwork The first lesson" [ref=e103] [cursor=pointer]:
+            - /url: /poses
+            - paragraph [ref=e105]: Breathwork
+            - paragraph [ref=e106]: The first lesson
+        - listitem [ref=e107]:
+          - link "Yoga Styles Pick one for your week" [ref=e108] [cursor=pointer]:
+            - /url: /styles
+            - paragraph [ref=e110]: Yoga Styles
+            - paragraph [ref=e111]: Pick one for your week
+    - generic [ref=e112]:
+      - generic "stillness": 静けさ
+      - generic [ref=e114]:
+        - generic [ref=e115]:
+          - generic [ref=e116]: Featured guide
+          - heading "7 Best Yoga Mats For Every Practice (2026 Guide)" [level=2] [ref=e117]:
+            - generic [ref=e118]: 7 Best Yoga Mats
+            - generic [ref=e119]: For Every Practice
+            - generic [ref=e120]: (2026 Guide)
+          - paragraph [ref=e121]: Researched mats for every kind of student — sweaty, low-impact, travel, restorative. The best overall pick, the best budget, and the one for tight knees.
+          - link "Read the guide" [ref=e122] [cursor=pointer]:
+            - /url: /guides/best-yoga-mats-for-beginners
+            - text: Read the guide
+            - img [ref=e123]
+        - img "Hands rolling out a sage-green yoga mat on a warm wooden studio floor" [ref=e127]
+    - generic [ref=e129]:
+      - generic [ref=e130]:
+        - generic [ref=e131]:
+          - generic [ref=e132]: Top picks
+          - heading "Our top recommendations, tested and approved." [level=2] [ref=e133]:
+            - text: Our top recommendations,
+            - text: tested and approved.
+        - generic "Carousel controls (placeholder)" [ref=e134]:
+          - button "Previous picks" [disabled] [ref=e135]:
+            - img [ref=e136]
+          - button "Next picks" [disabled] [ref=e138]:
+            - img [ref=e139]
+      - list [ref=e141]:
+        - listitem [ref=e142]:
+          - generic [ref=e144]:
+            - paragraph [ref=e145]: Best overall
+            - paragraph [ref=e146]: PRO Yoga Mat
+            - paragraph [ref=e147]: Manduka
+            - generic [ref=e148]:
+              - generic "Rating not yet available" [ref=e149]:
+                - img [ref=e150]
+                - img [ref=e152]
+                - img [ref=e154]
+                - img [ref=e156]
+                - img [ref=e158]
+              - generic [ref=e160]: Coming soon
+        - listitem [ref=e161]:
+          - generic [ref=e163]:
+            - paragraph [ref=e164]: Best budget
+            - paragraph [ref=e165]: Cork Block Set
+            - paragraph [ref=e166]: Hugger Mugger
+            - generic [ref=e167]:
+              - generic "Rating not yet available" [ref=e168]:
+                - img [ref=e169]
+                - img [ref=e171]
+                - img [ref=e173]
+                - img [ref=e175]
+                - img [ref=e177]
+              - generic [ref=e179]: Coming soon
+        - listitem [ref=e180]:
+          - generic [ref=e182]:
+            - paragraph [ref=e183]: Essential
+            - paragraph [ref=e184]: Cotton Yoga Strap
+            - paragraph [ref=e185]: Lululemon
+            - generic [ref=e186]:
+              - generic "Rating not yet available" [ref=e187]:
+                - img [ref=e188]
+                - img [ref=e190]
+                - img [ref=e192]
+                - img [ref=e194]
+                - img [ref=e196]
+              - generic [ref=e198]: Coming soon
+        - listitem [ref=e199]:
+          - generic [ref=e201]:
+            - paragraph [ref=e202]: Restorative
+            - paragraph [ref=e203]: Studio Bolster
+            - paragraph [ref=e204]: Halfmoon
+            - generic [ref=e205]:
+              - generic "Rating not yet available" [ref=e206]:
+                - img [ref=e207]
+                - img [ref=e209]
+                - img [ref=e211]
+                - img [ref=e213]
+                - img [ref=e215]
+              - generic [ref=e217]: Coming soon
+        - listitem [ref=e218]:
+          - generic [ref=e220]:
+            - paragraph [ref=e221]: Flexibility
+            - paragraph [ref=e222]: Yoga Wheel
+            - paragraph [ref=e223]: Liforme
+            - generic [ref=e224]:
+              - generic "Rating not yet available" [ref=e225]:
+                - img [ref=e226]
+                - img [ref=e228]
+                - img [ref=e230]
+                - img [ref=e232]
+                - img [ref=e234]
+              - generic [ref=e236]: Coming soon
+    - generic [ref=e238]:
+      - generic [ref=e239]:
+        - generic [ref=e240]:
+          - generic [ref=e241]: From the journal
+          - heading "Latest articles & insights" [level=2] [ref=e242]
+        - link "View all articles" [ref=e243] [cursor=pointer]:
+          - /url: /guides
+          - text: View all articles
+          - img [ref=e244]
+      - list [ref=e246]:
+        - listitem [ref=e247]:
+          - link "Routine Morning Yoga Routine — 15 minutes to energise your day A simple morning sequence to wake your body, clear your mind, and set the tone for a better day. May 12, 2026 · 6 min read" [ref=e248] [cursor=pointer]:
+            - /url: /guides/yoga-for-beginners
+            - generic [ref=e250]:
+              - paragraph [ref=e251]: Routine
+              - heading "Morning Yoga Routine — 15 minutes to energise your day" [level=3] [ref=e252]
+              - paragraph [ref=e253]: A simple morning sequence to wake your body, clear your mind, and set the tone for a better day.
+              - paragraph [ref=e254]: May 12, 2026 · 6 min read
+        - listitem [ref=e255]:
+          - link "Practice How to build a consistent meditation habit Why a five-minute sit beats a perfect twenty-minute one, and the three cues that keep the habit alive. May 5, 2026 · 8 min read" [ref=e256] [cursor=pointer]:
+            - /url: /guides/yoga-for-beginners
+            - generic [ref=e258]:
+              - paragraph [ref=e259]: Practice
+              - heading "How to build a consistent meditation habit" [level=3] [ref=e260]
+              - paragraph [ref=e261]: Why a five-minute sit beats a perfect twenty-minute one, and the three cues that keep the habit alive.
+              - paragraph [ref=e262]: May 5, 2026 · 8 min read
+        - listitem [ref=e263]:
+          - link "Pose guide Sun Salutation, step by step Surya Namaskar A in twelve positions. Cues, breath count, common mistakes, and modifications. April 28, 2026 · 9 min read" [ref=e264] [cursor=pointer]:
+            - /url: /poses/sun-salutation
+            - generic [ref=e266]:
+              - paragraph [ref=e267]: Pose guide
+              - heading "Sun Salutation, step by step" [level=3] [ref=e268]
+              - paragraph [ref=e269]: Surya Namaskar A in twelve positions. Cues, breath count, common mistakes, and modifications.
+              - paragraph [ref=e270]: April 28, 2026 · 9 min read
+    - generic [ref=e273]:
+      - generic [ref=e274]:
+        - generic [ref=e275]: Mindful inbox
+        - heading "Mindful insights. Straight to your inbox." [level=2] [ref=e276]:
+          - text: Mindful insights.
+          - text: Straight to your inbox.
+        - paragraph [ref=e277]: One short email a week. New articles, gear notes, and one thing I am researching right now. No filler, unsubscribe in one click.
+        - form "Newsletter subscription" [ref=e278]:
+          - generic [ref=e279]: Email address
+          - textbox "Email address" [ref=e280]:
+            - /placeholder: you@example.com
+          - button "Join" [ref=e281]
+        - paragraph [ref=e282]: No spam. Unsubscribe anytime.
+      - generic "habits create your life" [ref=e285]: 習慣が人生を作る
+  - contentinfo [ref=e286]:
+    - generic [ref=e287]:
+      - generic [ref=e288]:
+        - generic [ref=e289]:
+          - link "The Yoga Sensei — home" [ref=e290] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e291]: The Yoga Sensei
+          - generic "consistency is strength" [ref=e292]: 継続は力なり
+          - paragraph [ref=e293]: A curated guide for finding the right gear and starting your practice. We research what we recommend. Instructional content is reviewed by certified yoga teachers.
+        - generic [ref=e294]:
+          - paragraph [ref=e295]: Practice
+          - list [ref=e296]:
+            - listitem [ref=e297]:
+              - link "Start here" [ref=e298] [cursor=pointer]:
+                - /url: /start-here
+            - listitem [ref=e299]:
+              - link "Poses" [ref=e300] [cursor=pointer]:
+                - /url: /poses
+            - listitem [ref=e301]:
+              - link "Styles" [ref=e302] [cursor=pointer]:
+                - /url: /styles
+            - listitem [ref=e303]:
+              - link "Guides" [ref=e304] [cursor=pointer]:
+                - /url: /guides
+        - generic [ref=e305]:
+          - paragraph [ref=e306]: Reviews
+          - list [ref=e307]:
+            - listitem [ref=e308]:
+              - link "Gear" [ref=e309] [cursor=pointer]:
+                - /url: /gear
+            - listitem [ref=e310]:
+              - link "About" [ref=e311] [cursor=pointer]:
+                - /url: /about
+          - paragraph [ref=e312]: Follow
+          - list [ref=e313]:
+            - listitem [ref=e314]:
+              - link "Pinterest" [ref=e315] [cursor=pointer]:
+                - /url: https://pinterest.com/theyogasensei
+            - listitem [ref=e316]:
+              - link "Instagram" [ref=e317] [cursor=pointer]:
+                - /url: https://instagram.com/theyogasensei
+        - generic [ref=e318]:
+          - paragraph [ref=e319]: Mindful inbox
+          - paragraph [ref=e320]: One quiet email a week. New articles, practice notes, no filler.
+          - link "Subscribe" [ref=e321] [cursor=pointer]:
+            - /url: /start-here
+      - generic [ref=e322]:
+        - paragraph [ref=e323]: © 2026 The Yoga Sensei. All rights reserved.
+        - list [ref=e324]:
+          - listitem [ref=e325]:
+            - link "Privacy" [ref=e326] [cursor=pointer]:
+              - /url: /privacy
+          - listitem [ref=e327]:
+            - link "Terms" [ref=e328] [cursor=pointer]:
+              - /url: /terms
+          - listitem [ref=e329]:
+            - link "Affiliate disclosure" [ref=e330] [cursor=pointer]:
+              - /url: /affiliate-disclosure

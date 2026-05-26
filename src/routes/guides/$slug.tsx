@@ -12,6 +12,7 @@ import type { ComponentType, SVGProps } from 'react'
 import { loadContent, loadFrontmatter } from '#/lib/mdx/loader'
 import { resolveAuthor } from '#/lib/content/authors'
 import { buildHead, SITE_URL } from '#/lib/seo/head'
+import { buildImageUrl } from '#/lib/images/variants'
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 
@@ -64,7 +65,7 @@ export const Route = createFileRoute('/guides/$slug')({
       author: loaderData.author,
       breadcrumbs: [
         { name: 'Home', url: '/' },
-        { name: 'Guides', url: '/guides' },
+        { name: 'Guides' },
         { name: loaderData.frontmatter.title },
       ],
     })
@@ -87,6 +88,7 @@ function GuidePage() {
   const { slug } = Route.useParams()
   const { Component } = loadContent('guides', slug)
   const eyebrow = frontmatter.tags?.[0] ?? 'Guide'
+  const heroImageUrl = buildImageUrl(frontmatter.heroImage, 'og')
 
   return (
     <>
@@ -98,8 +100,7 @@ function GuidePage() {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-cover bg-right-top bg-no-repeat opacity-90"
           style={{
-            backgroundImage:
-              "url('/images/brand/article-hero-morning-yoga.webp')",
+            backgroundImage: `url('${heroImageUrl}')`,
           }}
         />
         <div
@@ -120,9 +121,7 @@ function GuidePage() {
                 Home
               </Link>
               <span aria-hidden="true">›</span>
-              <Link to="/" className="transition hover:text-[color:var(--color-ink)]">
-                Guides
-              </Link>
+              <span className="text-[color:var(--color-ink-muted)]">Guides</span>
               <span aria-hidden="true">›</span>
               <span className="font-medium text-[color:var(--color-ink)]">
                 {frontmatter.title}

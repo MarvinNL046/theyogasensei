@@ -1,5 +1,6 @@
 import { createFileRoute, notFound } from '@tanstack/react-router'
 import { resolveAuthor } from '#/lib/content/authors'
+import { buildAbsoluteImageUrl } from '#/lib/images/variants'
 import { buildPersonSchema } from '#/lib/seo/schema'
 import { SITE_URL } from '#/lib/seo/head'
 
@@ -16,6 +17,9 @@ export const Route = createFileRoute('/authors/$slug')({
     if (!loaderData) return {}
     const a = loaderData.author
     const canonical = `${SITE_URL.replace(/\/$/, '')}/authors/${params.slug}`
+    const image = a.image
+      ? buildAbsoluteImageUrl(a.image, 'og', SITE_URL)
+      : 'https://theyogasensei.com/images/brand/avatar-yoga-sensei.webp'
     return {
       meta: [
         { title: `${a.name} — The Yoga Sensei` },
@@ -24,6 +28,13 @@ export const Route = createFileRoute('/authors/$slug')({
         ...(a.bio ? [{ property: 'og:description', content: a.bio }] : []),
         { property: 'og:url', content: canonical },
         { property: 'og:type', content: 'profile' },
+        { property: 'og:image', content: image },
+        { property: 'og:site_name', content: 'The Yoga Sensei' },
+        { property: 'og:locale', content: 'en_US' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: `${a.name} — The Yoga Sensei` },
+        ...(a.bio ? [{ name: 'twitter:description', content: a.bio }] : []),
+        { name: 'twitter:image', content: image },
       ],
       links: [{ rel: 'canonical', href: canonical }],
       scripts: [

@@ -54,7 +54,7 @@ const base = z.object({
   title: z
     .string()
     .min(20, 'titles under 20 chars rarely have keyword + benefit')
-    .max(70, 'titles over 60–70 chars get truncated in SERPs'),
+    .max(100, 'titles over 100 chars are too long for readable article heads'),
   slug: z
     .string()
     .min(1)
@@ -94,7 +94,7 @@ const subpillarSchema = base.extend({
 const clusterSchema = base.extend({
   type: z.literal('cluster'),
   schemaType: z.enum(['Article', 'HowTo', 'Review']),
-  faq: z.array(faqEntry).min(4, 'clusters require ≥ 4 FAQ entries'),
+  faq: z.array(faqEntry).min(3, 'clusters require ≥ 3 FAQ entries'),
   howTo: howToSchema.optional(),
 })
 

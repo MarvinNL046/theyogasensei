@@ -129,6 +129,7 @@
   html {
     background: var(--color-bg);
     color: var(--color-ink);
+    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;

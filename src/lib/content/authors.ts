@@ -5,14 +5,10 @@ import type { Author } from '#/lib/seo/schema'
 const AUTHORS: Record<string, Author> = {
   marvin: {
     slug: 'marvin',
-    name: 'Marvin',
+    name: 'Marvin Smit',
     jobTitle: 'Founder · Yoga gear curator',
     bio: 'Founder of The Yoga Sensei. Long-time practitioner, not a certified instructor. Every gear guide and recommendation on this site is written and edited by Marvin, based on publicly available specifications and aggregated user reviews.',
     knowsAbout: ['Yoga gear', 'Beginner yoga', 'Yoga lifestyle'],
-    sameAs: [
-      'https://pinterest.com/theyogasensei',
-      'https://instagram.com/theyogasensei',
-    ],
     image: 'authors/marvin-headshot',
   },
 }

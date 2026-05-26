@@ -1,5 +1,5 @@
 import type { Frontmatter } from '#/lib/mdx/frontmatter'
-import { buildImageUrl } from '#/lib/images/variants'
+import { buildAbsoluteImageUrl } from '#/lib/images/variants'
 import {
   buildArticleSchema,
   buildBreadcrumbListSchema,
@@ -48,15 +48,14 @@ function ldJsonScript(data: object): HeadScript {
   return { type: 'application/ld+json', children: JSON.stringify(data) }
 }
 
-// Pin variant (1000×1500) is the canonical og:image — Pinterest and search
-// crawlers both pick it up. heroImage uses og variant (1200×630) since most
-// page-share previews render landscape.
+// Pin variant (1000×1500) is kept available for Pinterest workflows.
+// heroImage uses og variant (1200×630) for Article schema and social cards.
 function pinImage(id: string): string {
-  return buildImageUrl(id, 'pin')
+  return buildAbsoluteImageUrl(id, 'pin', SITE_URL)
 }
 
 function ogImage(id: string): string {
-  return buildImageUrl(id, 'og')
+  return buildAbsoluteImageUrl(id, 'og', SITE_URL)
 }
 
 function buildPrimarySchema(fm: Frontmatter, ctx: SchemaContext) {
@@ -85,11 +84,12 @@ function buildPrimarySchema(fm: Frontmatter, ctx: SchemaContext) {
  */
 export function buildHead(fm: Frontmatter, ctx: BuildHeadContext): HeadConfig {
   const canonical = `${ctx.siteUrl.replace(/\/$/, '')}${ctx.routePath}`
-  // Pin (1000x1500) doubles as og:image — Pinterest and OG share preview both
-  // accept vertical hero. Twitter prefers landscape, so we send the OG-cropped
-  // hero there.
-  const ogImageUrl = pinImage(fm.pin.primaryImage)
+  // Use the article-specific 1200x630 hero for social previews and schema.
+  // Keep the vertical pin available as an alternate image asset for Pinterest
+  // workflows without making it the default OG/Twitter card.
+  const ogImageUrl = ogImage(fm.heroImage)
   const twitterImageUrl = ogImage(fm.heroImage)
+  const pinImageUrl = pinImage(fm.pin.primaryImage)
 
   const meta: Array<HeadMeta> = [
     { charSet: 'utf-8' },
@@ -106,8 +106,8 @@ export function buildHead(fm: Frontmatter, ctx: BuildHeadContext): HeadConfig {
     { property: 'og:url', content: canonical },
     { property: 'og:site_name', content: 'The Yoga Sensei' },
     { property: 'og:image', content: ogImageUrl },
-    { property: 'og:image:width', content: '1000' },
-    { property: 'og:image:height', content: '1500' },
+    { property: 'og:image:width', content: '1200' },
+    { property: 'og:image:height', content: '630' },
     { property: 'article:published_time', content: fm.publishedAt },
     { property: 'article:modified_time', content: fm.lastReviewedAt },
     { property: 'article:author', content: ctx.author.name },
@@ -125,6 +125,7 @@ export function buildHead(fm: Frontmatter, ctx: BuildHeadContext): HeadConfig {
 
   const links: Array<HeadLink> = [
     { rel: 'canonical', href: canonical },
+    { rel: 'alternate', href: pinImageUrl },
   ]
 
   const schemaCtx: SchemaContext = {
@@ -136,6 +137,7 @@ export function buildHead(fm: Frontmatter, ctx: BuildHeadContext): HeadConfig {
 
   const scripts: Array<HeadScript> = [
     ldJsonScript(buildPrimarySchema(fm, schemaCtx)),
+    ...(fm.schemaType === 'Article' ? [] : [ldJsonScript(buildArticleSchema(fm, schemaCtx))]),
     ldJsonScript(buildBreadcrumbListSchema(schemaCtx)),
     ldJsonScript(buildPersonSchema(ctx.author, ctx.siteUrl)),
   ]
@@ -169,16 +171,13 @@ export function buildRootHead(siteUrl: string): HeadConfig {
       ldJsonScript({
         '@context': 'https://schema.org',
         '@type': 'Organization',
+        '@id': `${siteUrl.replace(/\/$/, '')}/#organization`,
         name: 'The Yoga Sensei',
         url: siteUrl,
         logo: {
           '@type': 'ImageObject',
-          url: `${siteUrl.replace(/\/$/, '')}/logo.png`,
+          url: `${siteUrl.replace(/\/$/, '')}/logo192.png`,
         },
-        sameAs: [
-          'https://pinterest.com/theyogasensei',
-          'https://instagram.com/theyogasensei',
-        ],
       }),
     ],
   }

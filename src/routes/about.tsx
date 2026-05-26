@@ -33,7 +33,16 @@ export const Route = createFileRoute('/about')({
           'The Yoga Sensei is an independent yoga editorial run by Marvin Smit. Honest gear guides, calm guidance, and a clear note on how the site is made.',
       },
       { property: 'og:title', content: 'About - The Yoga Sensei' },
+      {
+        property: 'og:description',
+        content:
+          'The Yoga Sensei is an independent yoga editorial run by Marvin Smit. Honest gear guides, calm guidance, and transparent sourcing.',
+      },
+      { property: 'og:url', content: 'https://theyogasensei.com/about' },
       { property: 'og:type', content: 'website' },
+      { property: 'og:image', content: 'https://theyogasensei.com/images/brand/review-hero-best-mats.webp' },
+      { property: 'og:site_name', content: 'The Yoga Sensei' },
+      { property: 'og:locale', content: 'en_US' },
     ],
     links: [{ rel: 'canonical', href: 'https://theyogasensei.com/about' }],
   }),
@@ -145,7 +154,7 @@ function AboutHero() {
 
           <Eyebrow tone="accent">About The Yoga Sensei</Eyebrow>
           <h1 className="mt-5 font-serif text-5xl leading-[0.98] text-[color:var(--color-ink)] md:text-[64px]">
-            Practice over
+            Practice over{' '}
             <br />
             perfection.
           </h1>

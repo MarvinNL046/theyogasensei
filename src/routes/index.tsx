@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { JapaneseAccent } from '#/components/ui/japanese-accent'
+import { buildImageUrl } from '#/lib/images/variants'
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -33,11 +34,39 @@ export const Route = createFileRoute('/')({
 const LATEST_WRITING = [
   {
     to: '/guides/$slug' as const,
+    params: { slug: 'best-yoga-mat-for-hot-yoga' },
+    eyebrow: 'Affiliate guide · Hot yoga',
+    title: "Best Yoga Mat for Hot Yoga (2026): A Practitioner's Honest Guide",
+    description:
+      'A practical hot-yoga buying guide covering wet grip, natural rubber, towel pairings and honest mat trade-offs.',
+    image: 'guides/best-yoga-mat-for-hot-yoga/hero',
+  },
+  {
+    to: '/guides/$slug' as const,
+    params: { slug: 'how-to-choose-a-yoga-mat' },
+    eyebrow: 'Pillar guide · Yoga mats',
+    title: 'How to Choose a Yoga Mat: A Practical Buying Guide',
+    description:
+      'A clear, honest framework for choosing the right material, thickness, grip, size and durability without fake testing claims.',
+    image: 'guides/how-to-choose-a-yoga-mat/hero',
+  },
+  {
+    to: '/guides/$slug' as const,
+    params: { slug: 'how-thick-should-a-yoga-mat-be' },
+    eyebrow: 'Guide · Mat thickness',
+    title: 'How Thick Should a Yoga Mat Be? A Practical Thickness Guide',
+    description:
+      'A clear breakdown of 3mm, 4–5mm and thicker mats for beginners, hot yoga, pilates, travel and joint comfort.',
+    image: 'guides/how-thick-should-a-yoga-mat-be/hero',
+  },
+  {
+    to: '/guides/$slug' as const,
     params: { slug: 'how-to-clean-a-yoga-mat' },
     eyebrow: 'Guide · Mat care',
     title: 'How to Clean a Yoga Mat (Without Damaging It)',
     description:
       'Daily wipe-downs, deep cleans, DIY sprays, and material-specific care for rubber, PVC, cork, polyurethane and TPE mats.',
+    image: 'yoga-mats/how-to-clean-a-yoga-mat/hero',
   },
 ]
 
@@ -77,10 +106,10 @@ function HomePage() {
             </p>
             <Link
               to="/guides/$slug"
-              params={{ slug: 'how-to-clean-a-yoga-mat' }}
+              params={{ slug: 'how-to-choose-a-yoga-mat' }}
               className="mt-9 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-olive)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
             >
-              Read the latest guide
+              Read the yoga mat guide
               <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
             </Link>
           </div>
@@ -94,42 +123,54 @@ function HomePage() {
         <Container size="wide">
           <Eyebrow tone="accent">Latest writing</Eyebrow>
           <h2 className="mt-4 max-w-2xl font-serif text-3xl leading-tight tracking-tight text-[color:var(--color-ink)] md:text-[40px]">
-            Start with the guide that exists today.
+            Start with the yoga mat buying guide.
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-[color:var(--color-ink-muted)]">
             We publish slowly. Everything on this site is written and edited by
             Marvin — no ghostwriters, no faceless content team.
           </p>
 
-          <div className="mt-12 grid gap-8">
+          <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
             {LATEST_WRITING.map((post) => (
               <article
                 key={post.params.slug}
-                className="group rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8 transition hover:border-[color:var(--color-accent)]/40"
+                className="group overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] transition hover:border-[color:var(--color-accent)]/40"
               >
-                <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
-                  {post.eyebrow}
-                </p>
-                <h3 className="mt-4 font-serif text-2xl leading-snug text-[color:var(--color-ink)]">
+                <Link to={post.to} params={post.params} className="block">
+                  <img
+                    src={buildImageUrl(post.image, 'card')}
+                    alt=""
+                    loading="lazy"
+                    width={800}
+                    height={1067}
+                    className="aspect-[16/9] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                  />
+                </Link>
+                <div className="p-8">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
+                    {post.eyebrow}
+                  </p>
+                  <h3 className="mt-4 font-serif text-2xl leading-snug text-[color:var(--color-ink)]">
+                    <Link
+                      to={post.to}
+                      params={post.params}
+                      className="transition group-hover:text-[color:var(--color-accent-deep)]"
+                    >
+                      {post.title}
+                    </Link>
+                  </h3>
+                  <p className="mt-4 text-sm leading-relaxed text-[color:var(--color-ink-soft)]">
+                    {post.description}
+                  </p>
                   <Link
                     to={post.to}
                     params={post.params}
-                    className="transition group-hover:text-[color:var(--color-accent-deep)]"
+                    className="mt-6 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent-deep)] transition hover:text-[color:var(--color-accent)]"
                   >
-                    {post.title}
+                    Read
+                    <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
                   </Link>
-                </h3>
-                <p className="mt-4 text-sm leading-relaxed text-[color:var(--color-ink-soft)]">
-                  {post.description}
-                </p>
-                <Link
-                  to={post.to}
-                  params={post.params}
-                  className="mt-6 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent-deep)] transition hover:text-[color:var(--color-accent)]"
-                >
-                  Read
-                  <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-                </Link>
+                </div>
               </article>
             ))}
           </div>

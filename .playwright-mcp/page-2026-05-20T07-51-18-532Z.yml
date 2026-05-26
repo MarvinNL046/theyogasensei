@@ -1,0 +1,107 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "The Yoga Sensei — home" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]:
+          - generic [ref=e6]: The Yoga Sensei
+          - generic [ref=e7]: 練習
+      - navigation "Primary" [ref=e8]:
+        - link "Guides" [ref=e9] [cursor=pointer]:
+          - /url: /guides
+        - link "Reviews" [ref=e10] [cursor=pointer]:
+          - /url: /gear
+        - link "Practice" [ref=e11] [cursor=pointer]:
+          - /url: /poses
+        - link "Journal" [ref=e12] [cursor=pointer]:
+          - /url: /guides
+        - link "About" [ref=e13] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=e14]:
+        - link "Start here" [ref=e15] [cursor=pointer]:
+          - /url: /start-here
+        - button "Search — coming soon" [disabled] [ref=e16]:
+          - img [ref=e17]
+  - main [ref=e20]:
+    - generic [ref=e23]:
+      - navigation "Breadcrumb" [ref=e24]:
+        - list [ref=e25]:
+          - listitem [ref=e26]:
+            - link "Home" [ref=e27] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e28]: ›
+          - listitem [ref=e29]:
+            - link "Reviews" [ref=e30] [cursor=pointer]:
+              - /url: /gear
+          - listitem [ref=e31]: ›
+          - listitem [ref=e32]: Yoga Mats
+          - listitem [ref=e33]: ›
+          - listitem [ref=e34]: Manduka PRO Review
+      - generic [ref=e35]: Yoga Mat Review
+      - heading "Manduka PRO Yoga Mat Review" [level=1] [ref=e36]:
+        - text: Manduka PRO
+        - text: Yoga Mat Review
+      - paragraph [ref=e37]: The Manduka PRO sets the standard for performance, durability and support. Here is our full, honest review after weeks of real practice.
+      - generic [ref=e38]:
+        - img "The Yoga Sensei" [ref=e39]
+        - generic [ref=e40]:
+          - paragraph [ref=e41]: By The Yoga Sensei
+          - paragraph [ref=e42]: May 12, 2024 · 8 min read
+  - contentinfo [ref=e43]:
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - link "The Yoga Sensei — home" [ref=e47] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e48]: The Yoga Sensei
+          - generic "consistency is strength" [ref=e49]: 継続は力なり
+          - paragraph [ref=e50]: A curated guide for finding the right gear and starting your practice. We research what we recommend. Instructional content is reviewed by certified yoga teachers.
+        - generic [ref=e51]:
+          - paragraph [ref=e52]: Practice
+          - list [ref=e53]:
+            - listitem [ref=e54]:
+              - link "Start here" [ref=e55] [cursor=pointer]:
+                - /url: /start-here
+            - listitem [ref=e56]:
+              - link "Poses" [ref=e57] [cursor=pointer]:
+                - /url: /poses
+            - listitem [ref=e58]:
+              - link "Styles" [ref=e59] [cursor=pointer]:
+                - /url: /styles
+            - listitem [ref=e60]:
+              - link "Guides" [ref=e61] [cursor=pointer]:
+                - /url: /guides
+        - generic [ref=e62]:
+          - paragraph [ref=e63]: Reviews
+          - list [ref=e64]:
+            - listitem [ref=e65]:
+              - link "Gear" [ref=e66] [cursor=pointer]:
+                - /url: /gear
+            - listitem [ref=e67]:
+              - link "About" [ref=e68] [cursor=pointer]:
+                - /url: /about
+          - paragraph [ref=e69]: Follow
+          - list [ref=e70]:
+            - listitem [ref=e71]:
+              - link "Pinterest" [ref=e72] [cursor=pointer]:
+                - /url: https://pinterest.com/theyogasensei
+            - listitem [ref=e73]:
+              - link "Instagram" [ref=e74] [cursor=pointer]:
+                - /url: https://instagram.com/theyogasensei
+        - generic [ref=e75]:
+          - paragraph [ref=e76]: Mindful inbox
+          - paragraph [ref=e77]: One quiet email a week. New articles, practice notes, no filler.
+          - link "Subscribe" [ref=e78] [cursor=pointer]:
+            - /url: /start-here
+      - generic [ref=e79]:
+        - paragraph [ref=e80]: © 2026 The Yoga Sensei. All rights reserved.
+        - list [ref=e81]:
+          - listitem [ref=e82]:
+            - link "Privacy" [ref=e83] [cursor=pointer]:
+              - /url: /privacy
+          - listitem [ref=e84]:
+            - link "Terms" [ref=e85] [cursor=pointer]:
+              - /url: /terms
+          - listitem [ref=e86]:
+            - link "Affiliate disclosure" [ref=e87] [cursor=pointer]:
+              - /url: /affiliate-disclosure

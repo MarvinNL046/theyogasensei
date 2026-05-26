@@ -24,19 +24,46 @@ export const IMAGE_VARIANTS = {
 export type ImageVariant = keyof typeof IMAGE_VARIANTS
 
 const ACCOUNT_HASH = import.meta.env.VITE_CLOUDFLARE_IMAGES_ACCOUNT_HASH ?? ''
+const SITE_URL = import.meta.env.VITE_SITE_URL ?? 'https://theyogasensei.com'
+
+const LOCAL_FALLBACK_IMAGES: Record<ImageVariant, string> = {
+  pin: '/images/brand/review-hero-best-mats.webp',
+  og: '/images/brand/article-hero-morning-yoga.webp',
+  card: '/images/brand/article-hero-morning-yoga.webp',
+  thumb: '/images/brand/avatar-yoga-sensei.webp',
+}
+
+function localImagePath(id: string): string | null {
+  if (id.startsWith('http://') || id.startsWith('https://')) return id
+  if (id.startsWith('/')) return id
+  if (id.startsWith('guides/')) return `/images/${id}.webp`
+  return null
+}
 
 /**
  * Build a Cloudflare Images delivery URL for a given image id + variant.
- * Returns a placeholder path when the account hash is unset — useful for
- * Phase 1 local dev before the CF account is hooked up.
+ * Visible page rendering should use root-relative local assets so images work
+ * in dev, preview and production before Cloudflare Images is configured.
+ * SEO/social metadata can wrap this with buildAbsoluteImageUrl().
  */
 export function buildImageUrl(id: string, variant: ImageVariant): string {
-  if (!ACCOUNT_HASH) {
-    // Placeholder served from /public/ if it exists; otherwise a 404. Real
-    // URLs land once VITE_CLOUDFLARE_IMAGES_ACCOUNT_HASH is set.
-    return `/images/${id}-${variant}.placeholder`
-  }
+  const localPath = localImagePath(id)
+  if (localPath) return localPath
+  if (!ACCOUNT_HASH) return LOCAL_FALLBACK_IMAGES[variant]
   return `https://imagedelivery.net/${ACCOUNT_HASH}/${encodeURIComponent(id)}/${variant}`
+}
+
+export function buildAbsoluteImageUrl(
+  id: string,
+  variant: ImageVariant,
+  siteUrl = SITE_URL,
+): string {
+  return absLocalWithBase(buildImageUrl(id, variant), siteUrl)
+}
+
+function absLocalWithBase(path: string, siteUrl: string): string {
+  if (path.startsWith('http://') || path.startsWith('https://')) return path
+  return `${siteUrl.replace(/\/$/, '')}${path}`
 }
 
 export function imageDimensions(variant: ImageVariant): {

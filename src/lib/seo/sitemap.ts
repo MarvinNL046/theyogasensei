@@ -10,6 +10,10 @@ interface SitemapEntry {
 const STATIC_PAGES: Array<Omit<SitemapEntry, 'url'> & { path: string }> = [
   { path: '/', changefreq: 'weekly', priority: 1.0 },
   { path: '/about', changefreq: 'monthly', priority: 0.7 },
+  { path: '/affiliate-disclosure', changefreq: 'yearly', priority: 0.3 },
+  { path: '/privacy', changefreq: 'yearly', priority: 0.3 },
+  { path: '/terms', changefreq: 'yearly', priority: 0.3 },
+  { path: '/contact', changefreq: 'monthly', priority: 0.4 },
 ]
 
 function buildEntries(siteUrl: string): Array<SitemapEntry> {
@@ -31,7 +35,13 @@ function buildEntries(siteUrl: string): Array<SitemapEntry> {
     priority: e.type === 'pillar' ? 0.9 : 0.6,
   }))
 
-  return [...staticEntries, ...contentEntries]
+  // Pre-launch sitemap order mirrors the launch audit brief:
+  // identity pages, live editorial content, then legal/contact pages.
+  return [
+    ...staticEntries.slice(0, 2),
+    ...contentEntries,
+    ...staticEntries.slice(2),
+  ]
 }
 
 function escapeXml(s: string): string {

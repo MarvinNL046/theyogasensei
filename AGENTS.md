@@ -5,6 +5,11 @@ This file contains project guidance for AI coding agents working on **The Yoga S
 ## Companion docs — read alongside this file
 
 - [`CLAUDE.md`](./CLAUDE.md) — implementation rules: tech stack (TanStack Start + SSG, MDX, Convex, Resend, Cloudflare Images), SSG constraints, MDX frontmatter schema, SEO head pattern, content routing table, and development workflow. Source of truth for **how things are built**. AGENTS.md owns brand/voice/UX; CLAUDE.md owns architecture/code. Where they disagree on a technical detail (routes, file paths, schemas), CLAUDE.md wins.
+- [`content-quality-checklist.md`](./content-quality-checklist.md) — practical ContentOps guardrails and pre-publish checklist for SEO articles, affiliate content, and YMYL/senior-health pages. Use it before creating briefs, drafts, or publish-ready MDX.
+- [`content-strategy-notes.md`](./content-strategy-notes.md) — project-specific ContentOps strategy notes: priority clusters, seed briefs, automation behavior, and 90-day content direction.
+- [`content-launch-cluster-strategy.md`](./content-launch-cluster-strategy.md) — launch strategy recommending the yoga mats cluster first, with publication sequence and launch readiness checklist.
+- [`content-page-structure-guide.md`](./content-page-structure-guide.md) — search intent and page anatomy guide for informational, commercial, visual/video, and YMYL/senior content.
+- [`content-link-and-image-seo-guide.md`](./content-link-and-image-seo-guide.md) — internal/external/affiliate anchor text, alt text, image filenames, lazy loading, and link rel rules.
 - **Auto-memory** (Claude Code only) at `C:\Users\M_Smi\.claude\projects\C--Users-M-Smi-claudeProjecten-theyogasensei\memory\` — persistent context across Claude sessions: user role, recurring feedback, project state, references to external systems. `MEMORY.md` is the index; individual `.md` files hold each entry. Other AI agents (Codex, Cursor) don't have access to this memory layer, so when in doubt, check the in-repo `.md` files first; Claude Code sessions can additionally rely on memory for cross-session continuity.
 - **Obsidian ContentOps vault** at `C:\Users\M_Smi\Documents\ContentOps-Vault\` (Marvin's local machine) — cross-project SEO/CRO methodology source-of-truth. Contains the 80+ point on-page checklist, pillar/subpillar/cluster architecture, SERP+PAA 8-step workflow, schema.org patterns per page type, voice "AI tells to delete" list, CRO landing page playbook, and reusable project templates. The repo files `on-page-seo.md` and `SEO-page-anatomy-guide.md` are derived working copies — when they diverge from the vault, the vault wins. Agents without local file access can rely on the in-repo copies; agents that can read the vault should prefer it.
 
@@ -649,6 +654,28 @@ Must include:
 
 ## 11. SEO and content rules
 
+Before briefing, drafting, or publishing content, also use [`content-quality-checklist.md`](./content-quality-checklist.md). In short:
+
+- Never invent testing, PAA questions, ratings, prices, review counts, medical claims, credentials, or first-hand experience.
+- Keep affiliate disclosures visible before affiliate CTAs.
+- Separate verified PAA from related/source-research questions.
+- Treat health, pain, senior, kids, and medical-adjacent topics as YMYL-adjacent: use cautious wording, reliable sources, visible disclaimers, and no treatment promises.
+- Match the page format to live SERP intent before writing.
+
+Use [`content-page-structure-guide.md`](./content-page-structure-guide.md) to choose the correct page anatomy by intent:
+
+- Informational pages should lead with a direct answer, steps, and FAQ.
+- Commercial pages should lead with disclosure, methodology, top picks, and comparison tables.
+- Visual/video intent needs image-led or video-supported pages.
+- Senior/YMYL pages need safety, sources, disclaimers, references, and no fake reviewer or credential claims.
+
+Use [`content-link-and-image-seo-guide.md`](./content-link-and-image-seo-guide.md) for anchors and media:
+
+- Internal link anchors should be descriptive, natural, and varied.
+- Affiliate links should use `rel="sponsored nofollow"` and `noopener` when opened in a new tab.
+- Meaningful images need concise descriptive alt text; decorative images use `alt=""`.
+- Image filenames should be descriptive kebab-case, and images need stable dimensions to avoid layout shift.
+
 Use semantic HTML and structured data where appropriate.
 
 Recommended schema types:
@@ -1075,3 +1102,16 @@ The winning direction is:
 
 > Premium editorial design, practical yoga guidance, honest product recommendations, and calm interactive tools.
 
+<!-- convex-ai-start -->
+
+This project uses [Convex](https://convex.dev) as its backend.
+
+When working on Convex code, **always read
+`convex/_generated/ai/guidelines.md` first** for important guidelines on
+how to correctly use Convex APIs and patterns. The file contains rules that
+override what you may have learned about Convex from training data.
+
+Convex agent skills for common tasks can be installed by running
+`npx convex ai-files install`.
+
+<!-- convex-ai-end -->

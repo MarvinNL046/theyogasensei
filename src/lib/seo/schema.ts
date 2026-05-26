@@ -1,5 +1,5 @@
 import type { Frontmatter } from '#/lib/mdx/frontmatter'
-import { buildImageUrl } from '#/lib/images/variants'
+import { buildAbsoluteImageUrl } from '#/lib/images/variants'
 
 export interface Author {
   slug: string
@@ -26,7 +26,7 @@ export interface SchemaContext {
 }
 
 const ORG_NAME = 'The Yoga Sensei'
-const ORG_LOGO_PATH = '/logo.png'
+const ORG_LOGO_PATH = '/logo192.png'
 
 function absUrl(siteUrl: string, path: string): string {
   if (path.startsWith('http')) return path
@@ -39,23 +39,20 @@ function absUrl(siteUrl: string, path: string): string {
 // for primary image/hero refs in Article, HowTo, Review schemas — that's
 // what Google's rich-result preview thumbnails render at.
 function cfImage(_siteUrl: string, id: string): string {
-  return buildImageUrl(id, 'og')
+  return buildAbsoluteImageUrl(id, 'og', _siteUrl)
 }
 
 export function buildOrganizationSchema(ctx: Pick<SchemaContext, 'siteUrl'>) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': `${ctx.siteUrl.replace(/\/$/, '')}/#organization`,
     name: ORG_NAME,
     url: ctx.siteUrl,
     logo: {
       '@type': 'ImageObject',
       url: absUrl(ctx.siteUrl, ORG_LOGO_PATH),
     },
-    sameAs: [
-      'https://pinterest.com/theyogasensei',
-      'https://instagram.com/theyogasensei',
-    ],
   }
 }
 
@@ -64,13 +61,17 @@ export function buildPersonSchema(author: Author, siteUrl: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': `${personUrl}#person`,
     name: author.name,
     url: personUrl,
     ...(author.jobTitle && { jobTitle: author.jobTitle }),
     ...(author.knowsAbout && { knowsAbout: author.knowsAbout }),
     ...(author.alumniOf && { alumniOf: author.alumniOf }),
     ...(author.bio && { description: author.bio }),
-    ...(author.image && { image: cfImage(siteUrl, author.image) }),
+    // Do not emit an author image here unless we have a real, resolvable author
+    // image asset. buildAbsoluteImageUrl() falls back to the generic brand hero
+    // for non-local image ids without Cloudflare configured, which made guide
+    // pages expose a second, misleading JSON-LD image unrelated to the article.
     ...(author.sameAs && { sameAs: author.sameAs }),
   }
 }
@@ -112,20 +113,8 @@ export function buildArticleSchema(fm: Frontmatter, ctx: SchemaContext) {
     image: cfImage(ctx.siteUrl, fm.heroImage),
     datePublished: fm.publishedAt,
     dateModified: fm.lastReviewedAt,
-    author: {
-      '@type': 'Person',
-      name: ctx.author.name,
-      url: absUrl(ctx.siteUrl, `/authors/${ctx.author.slug}`),
-      ...(ctx.author.jobTitle && { jobTitle: ctx.author.jobTitle }),
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: ORG_NAME,
-      logo: {
-        '@type': 'ImageObject',
-        url: absUrl(ctx.siteUrl, ORG_LOGO_PATH),
-      },
-    },
+    author: { '@id': absUrl(ctx.siteUrl, `/authors/${ctx.author.slug}#person`) },
+    publisher: { '@id': `${ctx.siteUrl.replace(/\/$/, '')}/#organization` },
     mainEntityOfPage: absUrl(ctx.siteUrl, ctx.routePath),
     keywords: fm.tags.join(', '),
     ...(fm.citations.length > 0 && {
@@ -150,6 +139,11 @@ export function buildHowToSchema(fm: Frontmatter, ctx: SchemaContext) {
     name: fm.title,
     description: fm.metaDescription,
     image: cfImage(ctx.siteUrl, fm.heroImage),
+    author: { '@id': absUrl(ctx.siteUrl, `/authors/${ctx.author.slug}#person`) },
+    publisher: { '@id': `${ctx.siteUrl.replace(/\/$/, '')}/#organization` },
+    datePublished: fm.publishedAt,
+    dateModified: fm.lastReviewedAt,
+    mainEntityOfPage: absUrl(ctx.siteUrl, ctx.routePath),
     totalTime: fm.howTo.totalTime,
     step: fm.howTo.step.map((s, i) => ({
       '@type': 'HowToStep',

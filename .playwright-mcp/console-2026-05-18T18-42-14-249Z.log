@@ -1,0 +1,7 @@
+[    1355ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/node_modules/.vite/deps/react-dom_client.js?v=ba786e5d:14337
+[  141324ms] [ERROR] [vite] ReferenceError: Compass is not defined
+    at http://localhost:3000/src/routes/index.tsx?t=1779129874532&tsr-split=component:12:9 @ http://localhost:3000/src/routes/__root.tsx?t=1779129466309:65
+[  141325ms] [ERROR] [vite] Failed to reload /src/routes/index.tsx?tsr-split=component. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:3000/src/routes/__root.tsx?t=1779129466309:65
+[  149733ms] [ERROR] Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `HomePage`.  @ http://localhost:3000/src/routes/__root.tsx?t=1779129466309:65
