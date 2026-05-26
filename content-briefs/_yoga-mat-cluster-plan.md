@@ -24,9 +24,11 @@
 Pillar: /guides/how-to-choose-a-yoga-mat    [INFO] [DRAFT 2026-05-28]
   ├─ /guides/how-thick-should-a-yoga-mat-be [INFO] [DRAFT 2026-05-29]
   ├─ /guides/best-yoga-mat-for-hot-yoga     [AFFILIATE — C2 DRAFT 2026-05-30]
+  ├─ /guides/best-yoga-mats-2026            [AFFILIATE HUB — C3 PUBLISHED 2026-05-26]
+  ├─ /guides/eco-friendly-yoga-mat          [AFFILIATE SPOKE — DRAFT 2026-05-26]
   └─ /guides/how-to-clean-a-yoga-mat        [EXISTING — PILLAR + THICKNESS LINKS UPDATED 2026-05-29]
 
-Cluster draft status: complete as of the C2 affiliate-spoke draft. Final publication still needs Marvin review, affiliate destination mapping and final live QA.
+Cluster draft status: expanded after C3 with an eco-friendly commercial spoke targeting `eco friendly yoga mat` (vol 1.2K, KD 24). Final publication still needs Marvin review, affiliate destination mapping and final live QA.
 ```
 
 ## Per post — definitieve specs
@@ -63,13 +65,29 @@ Cluster draft status: complete as of the C2 affiliate-spoke draft. Final publica
 - **Affiliate state at launch:** all product CTAs route through `/go/<slug>` placeholders. Real Amazon/Product mappings activate after Marvin's Associates approval.
 - **URL note:** onder `/guides/` om taxonomie consistent te houden. Verplaats later naar `/reviews/` als die taxonomie ooit komt.
 
+### 4. AFFILIATE HUB — `/guides/best-yoga-mats-2026` — PUBLISHED
+- **Primary keyword:** `best yoga mats`
+- **Role:** general commercial hub for all mat types; links out to focused spokes.
+- **Schema:** Article + ItemList + FAQPage (geen Product/Review schema — no first-party testing dataset).
+- **Lineup:** 7 picks across premium, hot-yoga, alignment, natural rubber, beginner/value, cushion and travel.
+
+### 5. AFFILIATE SPOKE — `/guides/eco-friendly-yoga-mat` — DRAFT
+- **Primary keyword:** `eco friendly yoga mat` (vol 1.2K, KD 24, intent I+C+T)
+- **Role:** eco/natural-material commercial spoke; complements C3 without fully duplicating the general hub.
+- **Word count:** 2,500–3,200 target.
+- **Lineup:** 5 picks — Manduka eKO 5mm, Liforme Original, Jade Harmony, Manduka eKO Lite 4mm, Gaiam Cork Yoga Mat.
+- **Schema:** Article + ItemList + FAQPage (geen Product/Review schema — no first-party testing dataset).
+- **Affiliate state:** all product CTAs route through `/go/<slug>` placeholders. `gaiam-cork-yoga-mat` added as the new cork slug; redirects remain disabled until Associates approval.
+
 ## Internal linking map
 
 ```text
-pillar (how-to-choose) → thickness, hot-yoga, cleaning
+pillar (how-to-choose) → thickness, hot-yoga, cleaning, best-mats hub, eco-friendly
 thickness → pillar, hot-yoga
-hot-yoga → pillar, cleaning, thickness
-cleaning (existing) → pillar, hot-yoga, thickness
+hot-yoga → pillar, cleaning, thickness, best-mats hub
+best-mats hub → pillar, hot-yoga, thickness, cleaning, eco-friendly
+eco-friendly → pillar, best-mats hub, cleaning, thickness
+cleaning (existing) → pillar, hot-yoga, thickness, eco-friendly
 ```
 
 **Concrete anchor locations:**

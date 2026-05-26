@@ -43,6 +43,15 @@ const LATEST_WRITING = [
   },
   {
     to: '/guides/$slug' as const,
+    params: { slug: 'eco-friendly-yoga-mat' },
+    eyebrow: 'Affiliate guide · Eco mats',
+    title: 'Best Eco-Friendly Yoga Mats: 5 Honest Picks',
+    description:
+      'A calm material-first guide to natural rubber, cork, PU, latex risk and the greenwashing traps around eco yoga mats.',
+    image: 'guides/eco-friendly-yoga-mat/hero',
+  },
+  {
+    to: '/guides/$slug' as const,
     params: { slug: 'best-yoga-mat-for-hot-yoga' },
     eyebrow: 'Affiliate guide · Hot yoga',
     title: "Best Yoga Mat for Hot Yoga (2026): A Practitioner's Honest Guide",
@@ -139,7 +148,7 @@ function HomePage() {
             Marvin — no ghostwriters, no faceless content team.
           </p>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-5">
+          <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
             {LATEST_WRITING.map((post) => (
               <article
                 key={post.params.slug}

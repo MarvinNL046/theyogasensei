@@ -13,6 +13,11 @@ const NAV_LINKS = [
   },
   {
     to: '/guides/$slug',
+    params: { slug: 'eco-friendly-yoga-mat' },
+    label: 'Eco mats',
+  },
+  {
+    to: '/guides/$slug',
     params: { slug: 'how-to-choose-a-yoga-mat' },
     label: 'Mat guide',
   },
