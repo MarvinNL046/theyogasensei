@@ -6,6 +6,9 @@
  * post so every monetised outbound link is auditable in git history.
  */
 export const affiliateLinks: Record<string, string> = {
+  'manduka-pro-6mm': 'https://www.amazon.com/dp/B005NZ7PEQ',
+  'liforme-original': 'https://www.amazon.com/dp/B01CGLCGRA',
+  'gaiam-premium-6mm': 'https://www.amazon.com/dp/B0D4MDKW3V',
   'manduka-eko-5mm': 'https://www.amazon.com/dp/B078YB99H8',
   'manduka-grp-adapt': 'https://www.amazon.com/dp/B0CK3NM2YP',
   'jade-harmony': 'https://www.amazon.com/dp/B000ECBQXE',

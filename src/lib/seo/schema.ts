@@ -156,33 +156,28 @@ export function buildHowToSchema(fm: Frontmatter, ctx: SchemaContext) {
 }
 
 export function buildItemListSchema(fm: Frontmatter, ctx: SchemaContext) {
-  if (fm.type !== 'subpillar' || !fm.products) {
-    throw new Error(
-      'buildItemListSchema requires subpillar frontmatter with products',
-    )
+  const items =
+    fm.itemList ??
+    (fm.type === 'subpillar'
+      ? fm.products?.map((p) => ({ name: p.name, url: p.url }))
+      : undefined)
+
+  if (!items || items.length === 0) {
+    throw new Error('buildItemListSchema requires itemList[] or subpillar products[]')
   }
+
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: fm.title,
     description: fm.metaDescription,
-    itemListElement: fm.products.map((p, i) => ({
+    itemListElement: items.map((p, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       item: {
-        '@type': 'Product',
+        '@type': 'Thing',
         name: p.name,
         url: absUrl(ctx.siteUrl, p.url),
-        ...(p.price && {
-          offers: { '@type': 'Offer', price: p.price, priceCurrency: 'USD' },
-        }),
-        ...(p.rating && {
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: p.rating,
-            bestRating: 5,
-          },
-        }),
       },
     })),
   }

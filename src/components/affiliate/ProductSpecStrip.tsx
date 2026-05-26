@@ -1,4 +1,5 @@
-import { Dumbbell, Layers3, Ruler, type LucideIcon } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
+import { Dumbbell, Layers3, Ruler } from 'lucide-react'
 import { cn } from '#/lib/utils'
 
 type ProductSpec = {

@@ -1,4 +1,5 @@
 import type { Frontmatter } from '#/lib/mdx/frontmatter'
+import type { Author, BreadcrumbCrumb, SchemaContext } from '#/lib/seo/schema'
 import { buildAbsoluteImageUrl } from '#/lib/images/variants'
 import {
   buildArticleSchema,
@@ -8,9 +9,6 @@ import {
   buildItemListSchema,
   buildPersonSchema,
   buildReviewSchema,
-  type Author,
-  type BreadcrumbCrumb,
-  type SchemaContext,
 } from '#/lib/seo/schema'
 
 export interface HeadMeta {
@@ -138,6 +136,9 @@ export function buildHead(fm: Frontmatter, ctx: BuildHeadContext): HeadConfig {
   const scripts: Array<HeadScript> = [
     ldJsonScript(buildPrimarySchema(fm, schemaCtx)),
     ...(fm.schemaType === 'Article' ? [] : [ldJsonScript(buildArticleSchema(fm, schemaCtx))]),
+    ...(fm.schemaType === 'ItemList' || !fm.itemList
+      ? []
+      : [ldJsonScript(buildItemListSchema(fm, schemaCtx))]),
     ldJsonScript(buildBreadcrumbListSchema(schemaCtx)),
     ldJsonScript(buildPersonSchema(ctx.author, ctx.siteUrl)),
   ]

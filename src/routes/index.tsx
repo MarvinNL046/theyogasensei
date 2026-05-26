@@ -34,6 +34,15 @@ export const Route = createFileRoute('/')({
 const LATEST_WRITING = [
   {
     to: '/guides/$slug' as const,
+    params: { slug: 'best-yoga-mats-2026' },
+    eyebrow: 'Affiliate hub · Yoga mats',
+    title: 'Best Yoga Mats of 2026: 7 Honest Picks Compared',
+    description:
+      'A practitioner-led review hub comparing seven standout mats by material, grip, cushion, portability and honest trade-offs.',
+    image: 'guides/best-yoga-mats-2026/hero',
+  },
+  {
+    to: '/guides/$slug' as const,
     params: { slug: 'best-yoga-mat-for-hot-yoga' },
     eyebrow: 'Affiliate guide · Hot yoga',
     title: "Best Yoga Mat for Hot Yoga (2026): A Practitioner's Honest Guide",
@@ -130,7 +139,7 @@ function HomePage() {
             Marvin — no ghostwriters, no faceless content team.
           </p>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-5">
             {LATEST_WRITING.map((post) => (
               <article
                 key={post.params.slug}

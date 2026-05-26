@@ -50,6 +50,11 @@ const productEntry = z.object({
   url: z.string().min(1),
 })
 
+const editorialItemEntry = z.object({
+  name: z.string().min(2),
+  url: z.string().min(1),
+})
+
 const base = z.object({
   title: z
     .string()
@@ -75,6 +80,7 @@ const base = z.object({
   estimatedReadingTime: z.number().int().min(1).max(60),
   heroImage: z.string().min(1),
   pin: pinSchema,
+  itemList: z.array(editorialItemEntry).optional(),
   citations: z.array(citationSchema).default([]),
 })
 

@@ -8,6 +8,11 @@ const NAV_LINKS = [
   { to: '/', label: 'Home' },
   {
     to: '/guides/$slug',
+    params: { slug: 'best-yoga-mats-2026' },
+    label: 'Best mats',
+  },
+  {
+    to: '/guides/$slug',
     params: { slug: 'how-to-choose-a-yoga-mat' },
     label: 'Mat guide',
   },
