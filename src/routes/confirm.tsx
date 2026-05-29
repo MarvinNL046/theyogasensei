@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { createFileRoute, Link, useSearch } from '@tanstack/react-router'
-import { useConvex } from 'convex/react'
+import { ConvexProvider, useConvex } from 'convex/react'
 import type { FunctionReference } from 'convex/server'
 import { z } from 'zod'
-import { isConvexConfigured } from '#/lib/convex/client'
+import { convex, isConvexConfigured } from '#/lib/convex/client'
 
 // Phase 1: typed reference to the Convex confirm mutation. Once
 // `pnpm convex dev` has run, this can be replaced with
@@ -34,8 +34,20 @@ export const Route = createFileRoute('/confirm')({
       { name: 'robots', content: 'noindex, nofollow' },
     ],
   }),
-  component: ConfirmPage,
+  component: ConfirmRoute,
 })
+
+// Convex lives only here, not in the app root — so content pages never bundle
+// the Convex client. /confirm is the one route that talks to Convex at runtime,
+// so it provides its own <ConvexProvider> (and code-splits the client into this
+// route's chunk).
+function ConfirmRoute() {
+  return (
+    <ConvexProvider client={convex}>
+      <ConfirmPage />
+    </ConvexProvider>
+  )
+}
 
 type ConfirmState =
   | { status: 'idle' }

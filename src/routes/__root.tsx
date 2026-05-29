@@ -6,13 +6,11 @@ import {
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
-import { ConvexProvider } from 'convex/react'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import { buildRootHead, SITE_URL } from '#/lib/seo/head'
 import { Header } from '#/components/site/header'
 import { Footer } from '#/components/site/footer'
-import { convex } from '#/lib/convex/client'
 
 import appCss from '../styles.css?url'
 
@@ -42,13 +40,11 @@ function RootDocument() {
         >
           Skip to content
         </a>
-        <ConvexProvider client={convex}>
-          <Header />
-          <main id="main">
-            <Outlet />
-          </main>
-          <Footer />
-        </ConvexProvider>
+        <Header />
+        <main id="main">
+          <Outlet />
+        </main>
+        <Footer />
         {import.meta.env.DEV && (
           <TanStackDevtools
             config={{ position: 'bottom-right' }}
