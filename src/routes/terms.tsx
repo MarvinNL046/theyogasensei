@@ -20,12 +20,12 @@ export const Route = createFileRoute('/terms')({
         content:
           'Plain-language terms for using The Yoga Sensei. Editorial site, no warranties on third-party products.',
       },
-      { property: 'og:url', content: 'https://theyogasensei.com/terms' },
+      { property: 'og:url', content: 'https://www.theyogasensei.com/terms' },
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'The Yoga Sensei' },
       { property: 'og:locale', content: 'en_US' },
     ],
-    links: [{ rel: 'canonical', href: 'https://theyogasensei.com/terms' }],
+    links: [{ rel: 'canonical', href: 'https://www.theyogasensei.com/terms' }],
   }),
   component: TermsPage,
 })

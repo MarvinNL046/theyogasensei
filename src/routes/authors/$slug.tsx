@@ -19,7 +19,7 @@ export const Route = createFileRoute('/authors/$slug')({
     const canonical = `${SITE_URL.replace(/\/$/, '')}/authors/${params.slug}`
     const image = a.image
       ? buildAbsoluteImageUrl(a.image, 'og', SITE_URL)
-      : 'https://theyogasensei.com/images/brand/avatar-yoga-sensei.webp'
+      : 'https://www.theyogasensei.com/images/brand/avatar-yoga-sensei.webp'
     return {
       meta: [
         { title: `${a.name} — The Yoga Sensei` },

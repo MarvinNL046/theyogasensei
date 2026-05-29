@@ -20,12 +20,12 @@ export const Route = createFileRoute('/privacy')({
         content:
           'How The Yoga Sensei handles your data. Short, plain, and honest — no dark patterns.',
       },
-      { property: 'og:url', content: 'https://theyogasensei.com/privacy' },
+      { property: 'og:url', content: 'https://www.theyogasensei.com/privacy' },
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'The Yoga Sensei' },
       { property: 'og:locale', content: 'en_US' },
     ],
-    links: [{ rel: 'canonical', href: 'https://theyogasensei.com/privacy' }],
+    links: [{ rel: 'canonical', href: 'https://www.theyogasensei.com/privacy' }],
   }),
   component: PrivacyPage,
 })

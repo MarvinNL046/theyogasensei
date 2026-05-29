@@ -38,13 +38,13 @@ export const Route = createFileRoute('/about')({
         content:
           'The Yoga Sensei is an independent yoga editorial run by Marvin Smit. Honest gear guides, calm guidance, and transparent sourcing.',
       },
-      { property: 'og:url', content: 'https://theyogasensei.com/about' },
+      { property: 'og:url', content: 'https://www.theyogasensei.com/about' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:image', content: 'https://theyogasensei.com/images/brand/review-hero-best-mats.webp' },
+      { property: 'og:image', content: 'https://www.theyogasensei.com/images/brand/review-hero-best-mats.webp' },
       { property: 'og:site_name', content: 'The Yoga Sensei' },
       { property: 'og:locale', content: 'en_US' },
     ],
-    links: [{ rel: 'canonical', href: 'https://theyogasensei.com/about' }],
+    links: [{ rel: 'canonical', href: 'https://www.theyogasensei.com/about' }],
   }),
   component: AboutPage,
 })

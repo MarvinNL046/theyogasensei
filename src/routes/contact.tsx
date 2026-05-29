@@ -17,12 +17,12 @@ export const Route = createFileRoute('/contact')({
         content:
           'Get in touch with Marvin. Corrections, questions, partnerships — one email address, no forms.',
       },
-      { property: 'og:url', content: 'https://theyogasensei.com/contact' },
+      { property: 'og:url', content: 'https://www.theyogasensei.com/contact' },
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'The Yoga Sensei' },
       { property: 'og:locale', content: 'en_US' },
     ],
-    links: [{ rel: 'canonical', href: 'https://theyogasensei.com/contact' }],
+    links: [{ rel: 'canonical', href: 'https://www.theyogasensei.com/contact' }],
   }),
   component: ContactPage,
 })

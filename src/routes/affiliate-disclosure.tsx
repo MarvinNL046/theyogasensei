@@ -17,14 +17,14 @@ export const Route = createFileRoute('/affiliate-disclosure')({
         content:
           'How affiliate partnerships work on The Yoga Sensei: what we may earn, how links are marked, and what never changes our editorial judgement.',
       },
-      { property: 'og:url', content: 'https://theyogasensei.com/affiliate-disclosure' },
+      { property: 'og:url', content: 'https://www.theyogasensei.com/affiliate-disclosure' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:image', content: 'https://theyogasensei.com/images/brand/article-hero-morning-yoga.webp' },
+      { property: 'og:image', content: 'https://www.theyogasensei.com/images/brand/article-hero-morning-yoga.webp' },
       { property: 'og:site_name', content: 'The Yoga Sensei' },
       { property: 'og:locale', content: 'en_US' },
     ],
     links: [
-      { rel: 'canonical', href: 'https://theyogasensei.com/affiliate-disclosure' },
+      { rel: 'canonical', href: 'https://www.theyogasensei.com/affiliate-disclosure' },
     ],
   }),
   component: AffiliateDisclosurePage,
