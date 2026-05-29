@@ -33,7 +33,7 @@ Update quarterly — every January, April, July, October. Append to the changelo
 | Product | Category | Weeks used | Total hours on it | Started | Notes |
 |---|---|---|---|---|---|
 | _e.g. Manduka PROlite_ | _mat_ | _6_ | _~50h_ | _2026-05-01_ | _first product tested_ |
-| | | | | | |
+| Lululemon Reversible Mat 5mm | mat | ~78 (≈1.5 yr) | — | ~late 2024 | Personal daily-practice mat (dark green). First-hand ownership/use, NOT a formal lab test — the basis for the first-person notes in the Lululemon review. |
 
 Use these numbers in product reviews. "I tested the Manduka PROlite for six weeks across ~50 hours of practice" — comes from this table verbatim, no rounding.
 
@@ -83,3 +83,4 @@ Useful for the eventual "how we built this site" lifestyle/case-study post — h
 ## Changelog
 
 - **2026-05-12** — File created, all author stats set to honest baseline (start-of-project, no products tested yet).
+- **2026-05-29** — Logged Marvin's personal Lululemon Reversible Mat 5mm (~1.5 yr of daily-practice use, dark green) as first-hand ownership context for the Lululemon review. This is owned/used, not formal lab testing. Other author stats (years practicing, mats formally tested, etc.) remain placeholders pending Marvin's real numbers.

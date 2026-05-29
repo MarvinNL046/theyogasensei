@@ -30,6 +30,7 @@ Append one row per published page in this format:
 | best yoga mat for bad knees | best-yoga-mat-for-bad-knees | cluster | yoga-mats | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29 |
 | cork vs rubber yoga mat | cork-vs-rubber-yoga-mat | subpillar | yoga-mats | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29 |
 | how to store a yoga mat | how-to-store-a-yoga-mat | cluster | mat-care | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29 |
+| lululemon yoga mat | lululemon-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29 |
 
 ---
 
