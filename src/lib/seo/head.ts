@@ -1,6 +1,6 @@
 import type { Frontmatter } from '#/lib/mdx/frontmatter'
 import type { Author, BreadcrumbCrumb, SchemaContext } from '#/lib/seo/schema'
-import { buildAbsoluteImageUrl } from '#/lib/images/variants'
+import { buildAbsoluteImageUrl, buildImageUrl } from '#/lib/images/variants'
 import {
   buildArticleSchema,
   buildBreadcrumbListSchema,
@@ -22,6 +22,8 @@ export interface HeadMeta {
 export interface HeadLink {
   rel: string
   href: string
+  as?: string
+  fetchPriority?: 'high' | 'low' | 'auto'
 }
 
 export interface HeadScript {
@@ -121,7 +123,14 @@ export function buildHead(fm: Frontmatter, ctx: BuildHeadContext): HeadConfig {
     { name: 'twitter:image', content: twitterImageUrl },
   ]
 
+  // Preload the LCP hero image. The guide route paints it as a CSS
+  // background-image (discovered late, after CSSOM), which is the main LCP
+  // cost on mobile. This href must match the background-image URL exactly
+  // (root-relative local path, same 'og' variant) so the fetch dedupes.
+  const heroPreloadUrl = buildImageUrl(fm.heroImage, 'og')
+
   const links: Array<HeadLink> = [
+    { rel: 'preload', href: heroPreloadUrl, as: 'image', fetchPriority: 'high' },
     { rel: 'canonical', href: canonical },
     { rel: 'alternate', href: pinImageUrl },
   ]

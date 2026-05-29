@@ -2,6 +2,13 @@
 @plugin "@tailwindcss/typography";
 @import "tw-animate-css";
 
+/*
+ * Keep generated CSS lean: design-references/ are unshipped template/reference
+ * routes, not part of the live site. Excluding them from Tailwind's content
+ * scan drops the utilities only they use, shrinking the render-blocking CSS.
+ */
+@source not "./design-references";
+
 /* Fonts — self-hosted via @fontsource */
 @import "@fontsource/cormorant-garamond/400.css";
 @import "@fontsource/cormorant-garamond/500.css";
