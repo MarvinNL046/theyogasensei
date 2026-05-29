@@ -20,10 +20,25 @@ export const Route = createFileRoute('/')({
         content:
           'Honest yoga gear guidance and practice notes. Written by Marvin Smit, a long-time practitioner, grounded in research and aggregated user reviews — never invented testing.',
       },
-      { property: 'og:url', content: 'https://theyogasensei.com/' },
+      { property: 'og:url', content: 'https://www.theyogasensei.com/' },
       { property: 'og:type', content: 'website' },
+      {
+        property: 'og:image',
+        content: 'https://www.theyogasensei.com/images/brand/home-og.webp',
+      },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'The Yoga Sensei' },
+      {
+        name: 'twitter:description',
+        content:
+          'Honest yoga gear guidance and practice notes. Written by Marvin Smit, a long-time practitioner, grounded in research and aggregated user reviews — never invented testing.',
+      },
+      {
+        name: 'twitter:image',
+        content: 'https://www.theyogasensei.com/images/brand/home-og.webp',
+      },
     ],
-    links: [{ rel: 'canonical', href: 'https://theyogasensei.com/' }],
+    links: [{ rel: 'canonical', href: 'https://www.theyogasensei.com/' }],
   }),
   component: HomePage,
 })
