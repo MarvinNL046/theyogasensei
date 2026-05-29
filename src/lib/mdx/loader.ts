@@ -41,6 +41,20 @@ const moduleByFolder: Record<string, Record<string, MdxModule>> = {
   >,
 }
 
+export interface TocHeading {
+  text: string
+  id: string
+}
+
+// Per-guide H2 outline, extracted from raw MDX at build time and inlined here
+// via vite `define` (see vite.config.ts). The compiled MDX module exposes no
+// headings export and the MDX plugin intercepts `?raw` imports, so a build-time
+// scan is the reliable way to get this — and `define` bakes it into the bundle
+// so the route loader can read it both at prerender time and on client-side
+// navigation. Ids are slugged with the same slugger rehype-slug uses, so the
+// TOC jump-links match the anchors on the rendered <h2> elements.
+declare const __GUIDE_HEADINGS__: Record<string, Array<TocHeading>>
+
 export interface LoadedFrontmatter {
   frontmatter: Frontmatter
 }
@@ -78,6 +92,20 @@ export function loadContent(
   if (!mod) throw new Error(`MDX not found: ${fullPath}`)
   const frontmatter = validateFrontmatter(mod.frontmatter, fullPath)
   return { frontmatter, Component: mod.default }
+}
+
+/**
+ * Return the H2 outline for a guide (build-time scanned, inlined via `define`).
+ * The TOC is non-essential chrome, so this must NEVER throw — the route loader
+ * treats any throw as notFound(), which would 404 the whole guide. On any
+ * unexpected shape, degrade to "no TOC".
+ */
+export function extractGuideHeadings(slugPath: string): Array<TocHeading> {
+  try {
+    return __GUIDE_HEADINGS__[slugPath] ?? []
+  } catch {
+    return []
+  }
 }
 
 export function listContentSlugs(

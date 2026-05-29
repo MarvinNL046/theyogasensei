@@ -9,12 +9,17 @@ import {
   Activity,
 } from 'lucide-react'
 import type { ComponentType, SVGProps } from 'react'
-import { loadContent, loadFrontmatter } from '#/lib/mdx/loader'
+import {
+  extractGuideHeadings,
+  loadContent,
+  loadFrontmatter,
+} from '#/lib/mdx/loader'
 import { resolveAuthor } from '#/lib/content/authors'
 import { buildHead, SITE_URL } from '#/lib/seo/head'
 import { buildImageUrl } from '#/lib/images/variants'
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
+import { GuideToc } from '#/components/seo/GuideToc'
 
 // Sidebar "Popular articles" — hand-curated, EXISTING slugs only.
 // When new evergreen guides ship, add them here (or replace with a
@@ -52,7 +57,8 @@ export const Route = createFileRoute('/guides/$slug')({
     try {
       const { frontmatter } = loadFrontmatter('guides', params.slug)
       const author = resolveAuthor(frontmatter.author)
-      return { frontmatter, author }
+      const headings = extractGuideHeadings(params.slug)
+      return { frontmatter, author, headings }
     } catch {
       throw notFound()
     }
@@ -84,7 +90,7 @@ function formatDate(iso: string): string {
 }
 
 function GuidePage() {
-  const { frontmatter, author } = Route.useLoaderData()
+  const { frontmatter, author, headings } = Route.useLoaderData()
   const { slug } = Route.useParams()
   const { Component } = loadContent('guides', slug)
   const eyebrow = frontmatter.tags?.[0] ?? 'Guide'
@@ -168,11 +174,12 @@ function GuidePage() {
       {/* ============================================================
           BODY + SIDEBAR — main MDX content + curated sidebar
           ============================================================ */}
-      <section className="bg-[color:var(--color-bg)] pb-16 md:pb-24">
+      <section className="bg-[color:var(--color-bg)] pb-16 pt-12 md:pb-24 md:pt-16">
         <Container size="wide">
           <div className="grid gap-12 md:grid-cols-12 md:gap-12 lg:gap-16">
             {/* Main column — real MDX body rendered through prose styling */}
-            <article className="prose prose-stone prose-lg max-w-none md:col-span-8 prose-headings:font-serif prose-headings:tracking-tight prose-headings:text-[color:var(--color-ink)] prose-p:text-[color:var(--color-ink-soft)] prose-a:text-[color:var(--color-olive)] prose-a:underline-offset-2 hover:prose-a:text-[color:var(--color-olive-deep)] prose-strong:text-[color:var(--color-ink)] prose-blockquote:border-l-[color:var(--color-olive)] prose-blockquote:text-[color:var(--color-ink-soft)] prose-code:text-[color:var(--color-ink)] prose-th:text-[color:var(--color-ink)] prose-td:text-[color:var(--color-ink-soft)]">
+            <article className="prose prose-stone prose-lg max-w-none md:col-span-8 prose-headings:scroll-mt-28 prose-headings:font-serif prose-headings:tracking-tight prose-headings:text-[color:var(--color-ink)] prose-p:text-[color:var(--color-ink-soft)] prose-a:text-[color:var(--color-olive)] prose-a:underline-offset-2 hover:prose-a:text-[color:var(--color-olive-deep)] prose-strong:text-[color:var(--color-ink)] prose-blockquote:border-l-[color:var(--color-olive)] prose-blockquote:text-[color:var(--color-ink-soft)] prose-code:text-[color:var(--color-ink)] prose-th:text-[color:var(--color-ink)] prose-td:text-[color:var(--color-ink-soft)]">
+              <GuideToc headings={headings} />
               <Component />
             </article>
 
