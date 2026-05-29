@@ -20,6 +20,7 @@ import { buildImageUrl } from '#/lib/images/variants'
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { GuideToc } from '#/components/seo/GuideToc'
+import { AffiliateDisclosure } from '#/components/site/AffiliateDisclosure'
 
 // Sidebar "Popular articles" — hand-curated, EXISTING slugs only.
 // When new evergreen guides ship, add them here (or replace with a
@@ -179,6 +180,9 @@ function GuidePage() {
           <div className="grid min-w-0 gap-12 md:grid-cols-12 md:gap-12 lg:gap-16">
             {/* Main column — real MDX body rendered through prose styling */}
             <article className="prose prose-stone prose-lg min-w-0 max-w-full md:col-span-8 prose-headings:scroll-mt-28 prose-headings:font-serif prose-headings:tracking-tight prose-headings:text-[color:var(--color-ink)] prose-p:text-[color:var(--color-ink-soft)] prose-a:text-[color:var(--color-olive)] prose-a:underline-offset-2 hover:prose-a:text-[color:var(--color-olive-deep)] prose-strong:text-[color:var(--color-ink)] prose-blockquote:border-l-[color:var(--color-olive)] prose-blockquote:text-[color:var(--color-ink-soft)] prose-code:text-[color:var(--color-ink)] prose-th:text-[color:var(--color-ink)] prose-td:text-[color:var(--color-ink-soft)]">
+              {frontmatter.clusters?.includes('affiliate') ? (
+                <AffiliateDisclosure />
+              ) : null}
               <GuideToc headings={headings} />
               <Component />
             </article>
