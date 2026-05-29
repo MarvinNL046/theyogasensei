@@ -14,6 +14,7 @@ interface KeywordRow {
   status: 'todo' | 'briefed' | 'done' | string
   brief_maker: string
   notes: string
+  content_format: string
 }
 
 interface PublishedRow {
@@ -98,6 +99,7 @@ function readKeywordsCsv(path: string): {
       status: (obj.status as 'todo' | 'briefed' | 'done') ?? 'todo',
       brief_maker: obj.brief_maker ?? '',
       notes: obj.notes ?? '',
+      content_format: obj.content_format ?? '',
     })
   }
   return { header, rows }

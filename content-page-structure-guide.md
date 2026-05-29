@@ -292,6 +292,31 @@ Schema:
 - `VideoObject` only when real video metadata is available.
 - Avoid `MedicalWebPage` unless the page truly qualifies and does not imply professional medical advice.
 
+## Content Format Variation (anti-scaled-content footprint)
+
+**The risk (verified by audit 2026-05-29):** all 7 current mat guides share one skeleton — a comparison table + an FAQ section + 8–12 H2s. Even the how-tos and the pillar carry that table-plus-FAQ stamp. That repeated structure is exactly the "template footprint" that scaled-content detection flags. Page format must be varied **deliberately**, not defaulted.
+
+Tracked per page via the `content_format` column in `keywords.csv` (vocabulary: **roundup · how-to · versus · deep-dive · concept**). This is SEPARATE from `page_type` (pillar/subpillar/cluster/review/comparison = cluster role) — do not conflate the two columns.
+
+### The five content formats (structure signatures)
+
+- **roundup** ("best X for Y") — multiple picks; comparison table allowed; FAQ allowed. Use sparingly — not every new page. _(Live: best-yoga-mats hub, bad-knees, eco, hot-yoga.)_
+- **how-to** ("how to clean / store / roll a mat") — step-by-step; NO comparison table; at most a short checklist; FAQ optional. _(Live: how-to-clean.)_
+- **versus** ("cork vs rubber", "Manduka vs Liforme") — head-to-head prose; max ONE comparison table; a conclusion paragraph; NO picks grid.
+- **deep-dive** ("is the Manduka PRO worth it", "what is a TPE mat") — deep prose; no picks grid; no mandatory table; optionally one spec strip.
+- **concept** ("what thickness", "open vs closed cell") — explanatory; no picks; table only when it genuinely clarifies. _(Live: how-thick, how-to-choose pillar.)_
+
+### Hard variation rules
+
+- **FAQ is OPTIONAL, not default** — at most ~half the pages, and only where there are genuinely repeated reader questions. Stop stamping an FAQ on everything.
+- **Comparison table only on roundup and versus.** Not on how-to / deep-dive / concept.
+- **Vary the shape deliberately:** intro form, number of H2s, and heading phrasing should differ between articles. Avoid identical section order in consecutive pieces.
+- One format does not own a cluster — mix formats across the cluster.
+
+### Publication tempo
+
+Fresh domain → **2–4 thorough articles per week**, paced on **GSC indexing signals**: if new pages sit in "Crawled / Discovered – currently not indexed", slow down and let existing pages earn trust before adding more. **Finish one cluster before opening a second** (see the cluster-discipline rule in `pnpm content:status`).
+
 ## Semantic HTML Rules
 
 Use semantic HTML:
