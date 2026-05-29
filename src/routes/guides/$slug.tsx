@@ -176,15 +176,15 @@ function GuidePage() {
           ============================================================ */}
       <section className="bg-[color:var(--color-bg)] pb-16 pt-12 md:pb-24 md:pt-16">
         <Container size="wide">
-          <div className="grid gap-12 md:grid-cols-12 md:gap-12 lg:gap-16">
+          <div className="grid min-w-0 gap-12 md:grid-cols-12 md:gap-12 lg:gap-16">
             {/* Main column — real MDX body rendered through prose styling */}
-            <article className="prose prose-stone prose-lg max-w-none md:col-span-8 prose-headings:scroll-mt-28 prose-headings:font-serif prose-headings:tracking-tight prose-headings:text-[color:var(--color-ink)] prose-p:text-[color:var(--color-ink-soft)] prose-a:text-[color:var(--color-olive)] prose-a:underline-offset-2 hover:prose-a:text-[color:var(--color-olive-deep)] prose-strong:text-[color:var(--color-ink)] prose-blockquote:border-l-[color:var(--color-olive)] prose-blockquote:text-[color:var(--color-ink-soft)] prose-code:text-[color:var(--color-ink)] prose-th:text-[color:var(--color-ink)] prose-td:text-[color:var(--color-ink-soft)]">
+            <article className="prose prose-stone prose-lg min-w-0 max-w-full md:col-span-8 prose-headings:scroll-mt-28 prose-headings:font-serif prose-headings:tracking-tight prose-headings:text-[color:var(--color-ink)] prose-p:text-[color:var(--color-ink-soft)] prose-a:text-[color:var(--color-olive)] prose-a:underline-offset-2 hover:prose-a:text-[color:var(--color-olive-deep)] prose-strong:text-[color:var(--color-ink)] prose-blockquote:border-l-[color:var(--color-olive)] prose-blockquote:text-[color:var(--color-ink-soft)] prose-code:text-[color:var(--color-ink)] prose-th:text-[color:var(--color-ink)] prose-td:text-[color:var(--color-ink-soft)]">
               <GuideToc headings={headings} />
               <Component />
             </article>
 
             {/* Sidebar */}
-            <aside className="md:col-span-4 md:pl-2 lg:pl-4">
+            <aside className="min-w-0 max-w-full md:col-span-4 md:pl-2 lg:pl-4">
               {/* About the Author */}
               <div className="mb-12 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
                 <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">

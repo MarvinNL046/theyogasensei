@@ -12,17 +12,17 @@ const MIN_HEADINGS = 6
 
 function TocLinks({ headings }: GuideTocProps) {
   return (
-    <ol className="grid gap-x-10 gap-y-3 sm:grid-cols-2">
+    <ol className="grid min-w-0 gap-x-10 gap-y-3 sm:grid-cols-2">
       {headings.map((heading, i) => (
-        <li key={heading.id}>
+        <li key={heading.id} className="min-w-0">
           <a
             href={`#${heading.id}`}
-            className="group flex items-baseline gap-3 text-sm leading-snug text-[color:var(--color-ink-soft)] transition hover:text-[color:var(--color-accent-deep)]"
+            className="group flex min-w-0 items-baseline gap-3 text-sm leading-snug text-[color:var(--color-ink-soft)] transition hover:text-[color:var(--color-accent-deep)]"
           >
             <span className="font-serif text-[13px] leading-none text-[color:var(--color-ink-muted)] transition group-hover:text-[color:var(--color-accent)]">
               {String(i + 1).padStart(2, '0')}
             </span>
-            <span>{heading.text}</span>
+            <span className="min-w-0">{heading.text}</span>
           </a>
         </li>
       ))}
@@ -44,7 +44,7 @@ export function GuideToc({ headings }: GuideTocProps) {
       {/* Desktop — always expanded */}
       <nav
         aria-label="On this page"
-        className="not-prose mb-12 hidden rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-7 py-6 md:block"
+        className="not-prose mb-12 hidden min-w-0 max-w-full rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-7 py-6 md:block"
       >
         <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-muted)]">
           In this guide
@@ -54,7 +54,7 @@ export function GuideToc({ headings }: GuideTocProps) {
       </nav>
 
       {/* Mobile — collapsible, collapsed by default to stay compact */}
-      <details className="not-prose group mb-10 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-4 md:hidden">
+      <details className="not-prose group mb-10 min-w-0 max-w-full rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-4 md:hidden">
         <summary className="flex cursor-pointer list-none items-center justify-between text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-muted)] [&::-webkit-details-marker]:hidden">
           In this guide
           <ChevronDown
