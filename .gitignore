@@ -17,3 +17,5 @@ todos.json
 public/sitemap.xml
 src/routeTree.gen.ts
 
+
+.vercel
