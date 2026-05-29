@@ -164,8 +164,9 @@ export function buildRootHead(siteUrl: string): HeadConfig {
       { property: 'og:locale', content: 'en_US' },
     ],
     links: [
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
       { rel: 'icon', href: '/favicon.ico' },
-      { rel: 'apple-touch-icon', href: '/logo192.png' },
+      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       { rel: 'manifest', href: '/manifest.json' },
     ],
     scripts: [
