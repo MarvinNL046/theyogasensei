@@ -186,4 +186,4 @@ export function buildRootHead(siteUrl: string): HeadConfig {
 
 export const SITE_URL =
   (typeof process !== 'undefined' && process.env.SITE_URL) ||
-  'https://theyogasensei.com'
+  'https://www.theyogasensei.com'

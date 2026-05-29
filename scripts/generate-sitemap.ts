@@ -3,7 +3,7 @@ import { join } from 'node:path'
 import { renderSitemap, sitemapEntryCount } from '../src/lib/seo/sitemap'
 
 function main() {
-  const siteUrl = process.env.SITE_URL ?? 'https://theyogasensei.com'
+  const siteUrl = process.env.SITE_URL ?? 'https://www.theyogasensei.com'
   const xml = renderSitemap(siteUrl)
   const target = join(process.cwd(), 'public', 'sitemap.xml')
 
