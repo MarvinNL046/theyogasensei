@@ -26,9 +26,12 @@ Pillar: /guides/how-to-choose-a-yoga-mat    [INFO] [DRAFT 2026-05-28]
   ├─ /guides/best-yoga-mat-for-hot-yoga     [AFFILIATE — C2 DRAFT 2026-05-30]
   ├─ /guides/best-yoga-mats-2026            [AFFILIATE HUB — C3 PUBLISHED 2026-05-26]
   ├─ /guides/eco-friendly-yoga-mat          [AFFILIATE SPOKE — DRAFT 2026-05-26]
+  ├─ /guides/best-yoga-mat-for-bad-knees    [AFFILIATE SPOKE — DRAFT 2026-05-29]
   └─ /guides/how-to-clean-a-yoga-mat        [EXISTING — PILLAR + THICKNESS LINKS UPDATED 2026-05-29]
 
 Cluster draft status: expanded after C3 with an eco-friendly commercial spoke targeting `eco friendly yoga mat` (vol 1.2K, KD 24). Final publication still needs Marvin review, affiliate destination mapping and final live QA.
+
+**Update 2026-05-29 — added spoke `best-yoga-mat-for-bad-knees`** (primary `best yoga mat for bad knees`, vol ~100, KD 0, intent I+C). Parent hub = best-yoga-mats-2026, pillar = how-to-choose-a-yoga-mat. Reuses 3 existing slugs (NO new slugs): `manduka-pro-6mm`, `gaiam-premium-6mm`, `liforme-original`. Honest-framing discipline (no fabricated testing, no prices/ratings, medical-caution line). Hub back-link added in the "How to pick the right yoga mat" section. Live cluster tracking is via `used-keywords.md` + `pnpm content:status` (MDX frontmatter) — no separate cluster-map file created, to avoid diverging from that source of truth.
 ```
 
 ## Per post — definitieve specs

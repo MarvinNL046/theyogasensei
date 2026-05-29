@@ -27,6 +27,7 @@ Append one row per published page in this format:
 | best yoga mat for hot yoga | best-yoga-mat-for-hot-yoga | cluster | yoga-mats | how-to-choose-a-yoga-mat | 2026-05-30 | 2026-05-30 |
 | best yoga mats | best-yoga-mats-2026 | cluster | yoga-mats | how-to-choose-a-yoga-mat | 2026-05-26 | 2026-05-26 |
 | eco friendly yoga mat | eco-friendly-yoga-mat | cluster | yoga-mats | how-to-choose-a-yoga-mat | 2026-05-26 | 2026-05-26 |
+| best yoga mat for bad knees | best-yoga-mat-for-bad-knees | cluster | yoga-mats | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29 |
 
 ---
 

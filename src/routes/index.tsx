@@ -61,6 +61,15 @@ const LATEST_WRITING = [
   },
   {
     to: '/guides/$slug' as const,
+    params: { slug: 'best-yoga-mat-for-bad-knees' },
+    eyebrow: 'Affiliate guide · Bad knees',
+    title: 'Best Yoga Mats for Bad Knees: Cushion vs Stability',
+    description:
+      'How to balance cushion and stability for sore knees — three honest picks, the real thickness trade-off, and cheaper fixes to try first.',
+    image: 'guides/best-yoga-mat-for-bad-knees/hero',
+  },
+  {
+    to: '/guides/$slug' as const,
     params: { slug: 'how-to-choose-a-yoga-mat' },
     eyebrow: 'Pillar guide · Yoga mats',
     title: 'How to Choose a Yoga Mat: A Practical Buying Guide',
