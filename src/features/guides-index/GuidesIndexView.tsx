@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Container } from '#/components/ui/container'
 import { GuidesHero } from '#/features/guides-index/components/GuidesHero'
 import { GuideFilters } from '#/features/guides-index/components/GuideFilters'
@@ -14,16 +13,24 @@ import {
 
 export interface GuidesIndexViewProps {
   data: GuidesData
+  /** Active category — controlled by the route's ?category= search param. */
+  active: GuideCategory
+  /** Called when a chip is picked; the route writes it to the URL. */
+  onSelect: (category: GuideCategory) => void
 }
 
 /**
  * Assembles the guides index. Renders the unfiltered "All" view on the server
  * (SSG), then becomes interactive: the filter chips narrow the list client-side
- * with no extra request. The featured pillar shows only in the "All" view; once
- * a category is selected the list is a flat set of that category's guides.
+ * with no extra request. The active category is driven by the URL (?category=)
+ * so views are shareable + deep-linkable. The featured pillar shows only in the
+ * "All" view; once a category is selected the list is a flat set of its guides.
  */
-export function GuidesIndexView({ data }: GuidesIndexViewProps) {
-  const [active, setActive] = useState<GuideCategory>('All')
+export function GuidesIndexView({
+  data,
+  active,
+  onSelect,
+}: GuidesIndexViewProps) {
   const counts = countByCategory(data.guides)
 
   const showFeatured = active === 'All' && data.featured !== null
@@ -35,7 +42,7 @@ export function GuidesIndexView({ data }: GuidesIndexViewProps) {
   return (
     <>
       <GuidesHero />
-      <GuideFilters active={active} counts={counts} onSelect={setActive} />
+      <GuideFilters active={active} counts={counts} onSelect={onSelect} />
 
       <section className="bg-[color:var(--color-bg)]">
         <Container size="wide" className="py-16 md:py-20">

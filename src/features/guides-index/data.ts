@@ -90,6 +90,17 @@ export function countByCategory(
   return counts
 }
 
+/** URL slug for a category, e.g. 'Buying guides' → 'buying-guides'. */
+export function categorySlug(c: GuideCategory): string {
+  return c.toLowerCase().replace(/\s+/g, '-')
+}
+
+/** Resolve a URL slug back to a category label; unknown/empty → 'All'. */
+export function categoryFromSlug(slug: string | undefined): GuideCategory {
+  if (!slug) return 'All'
+  return GUIDE_CATEGORIES.find((c) => categorySlug(c) === slug) ?? 'All'
+}
+
 export function formatGuideDate(iso: string): string {
   const d = new Date(iso)
   if (Number.isNaN(d.getTime())) return iso
