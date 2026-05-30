@@ -4,6 +4,7 @@ import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { JapaneseAccent } from '#/components/ui/japanese-accent'
 import { buildImageUrl } from '#/lib/images/variants'
+import { HomeFeaturedGuide } from '#/features/home/HomeFeaturedGuide'
 import { HomeLeadCapture } from '#/features/home/HomeLeadCapture'
 
 export const Route = createFileRoute('/')({
@@ -185,6 +186,11 @@ function HomePage() {
           </div>
         </Container>
       </section>
+
+      {/* ============================================================
+          FEATURED GUIDE — dark split band highlighting the flagship roundup
+          ============================================================ */}
+      <HomeFeaturedGuide />
 
       {/* ============================================================
           LATEST WRITING — hand-curated list of pieces that exist
