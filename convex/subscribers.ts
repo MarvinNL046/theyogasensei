@@ -1,5 +1,5 @@
 import { v } from 'convex/values'
-import { internalQuery, mutation, query } from './_generated/server'
+import { internalMutation, internalQuery, mutation, query } from './_generated/server'
 import { internal } from './_generated/api'
 import type { Id } from './_generated/dataModel'
 
@@ -171,6 +171,38 @@ export const confirmedCount = query({
   handler: async (ctx) => {
     const all = await ctx.db.query('subscribers').collect()
     return all.filter((s) => s.confirmedAt && !s.unsubscribedAt).length
+  },
+})
+
+/**
+ * Internal admin utility — hard-delete a subscriber and their email events by
+ * address. Not exposed to the client (run via `npx convex run` / dashboard).
+ * Backs GDPR erasure requests (the privacy page promises manual deletion) and
+ * test-row cleanup.
+ */
+export const deleteByEmail = internalMutation({
+  args: { email: v.string() },
+  handler: async (ctx, args) => {
+    const normalized = args.email.trim().toLowerCase()
+    const subscriber = await ctx.db
+      .query('subscribers')
+      .withIndex('by_email', (q) => q.eq('email', normalized))
+      .first()
+
+    if (!subscriber) {
+      return { ok: false as const, status: 'not-found' as const }
+    }
+
+    const events = await ctx.db
+      .query('emailEvents')
+      .withIndex('by_subscriber', (q) => q.eq('subscriberId', subscriber._id))
+      .collect()
+    for (const event of events) {
+      await ctx.db.delete(event._id)
+    }
+    await ctx.db.delete(subscriber._id)
+
+    return { ok: true as const, status: 'deleted' as const, events: events.length }
   },
 })
 
