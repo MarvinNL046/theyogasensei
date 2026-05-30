@@ -4,6 +4,7 @@ import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { JapaneseAccent } from '#/components/ui/japanese-accent'
 import { buildImageUrl } from '#/lib/images/variants'
+import { HomeLeadCapture } from '#/features/home/HomeLeadCapture'
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -282,6 +283,11 @@ function HomePage() {
           </div>
         </Container>
       </section>
+
+      {/* ============================================================
+          LEAD CAPTURE — dark ensō band, closing the homepage
+          ============================================================ */}
+      <HomeLeadCapture />
     </>
   )
 }
