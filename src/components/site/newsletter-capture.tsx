@@ -28,9 +28,9 @@ export interface NewsletterCaptureProps {
 }
 
 /**
- * Newsletter capture form. Phase 1 stub — the form posts to a no-op handler
- * and shows a "submitted" state. Cluster C wires the actual Convex mutation
- * (insertSubscriber) that triggers a Resend double-opt-in email.
+ * Newsletter capture form. Submits to the Convex `subscribers:insert` mutation
+ * (single opt-in): the subscriber is added immediately and a welcome email goes
+ * out via Resend — no confirmation step.
  *
  * The submission logic is shared; only the presentation forks on `tone`.
  */
@@ -118,8 +118,8 @@ export function NewsletterCapture({
               : 'bg-accent/10 text-accent',
           )}
         >
-          Check your inbox. The confirmation email lands in under a minute. Look in spam if it does
-          not.
+          You are subscribed. Your first email is on its way — look in spam if it does not land in
+          a minute or two.
         </p>
       ) : onDark ? (
         <form
@@ -197,7 +197,7 @@ export function NewsletterCapture({
           onDark ? 'text-[color:var(--color-bg)]/55' : 'text-stone-500',
         )}
       >
-        Double opt-in. One unsubscribe link per email. No third-party sharing.
+        One unsubscribe link in every email. No third-party sharing.
       </p>
     </section>
   )

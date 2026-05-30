@@ -44,22 +44,22 @@ export function Welcome({ siteUrl, leadMagnet }: WelcomeProps) {
               subject line "Your download from The Yoga Sensei".
             </Text>
           ) : null}
-          <Text style={styles.body_text}>While you wait, three starting points:</Text>
+          <Text style={styles.body_text}>A few good places to start:</Text>
           <Text style={styles.body_text}>
             ·{' '}
-            <Link href={`${siteUrl}/guides/yoga-for-beginners`} style={{ color: '#843828' }}>
-              Yoga for Beginners — the complete guide
+            <Link href={`${siteUrl}/guides/how-to-choose-a-yoga-mat`} style={{ color: '#843828' }}>
+              How to choose a yoga mat — the complete guide
             </Link>
             <br />·{' '}
-            <Link href={`${siteUrl}/poses/sun-salutation`} style={{ color: '#843828' }}>
-              Sun Salutation, step by step
+            <Link href={`${siteUrl}/guides/best-yoga-mats-2026`} style={{ color: '#843828' }}>
+              Best yoga mats for 2026
             </Link>
             <br />·{' '}
             <Link
-              href={`${siteUrl}/guides/best-yoga-mats-for-beginners`}
+              href={`${siteUrl}/guides/how-to-clean-a-yoga-mat`}
               style={{ color: '#843828' }}
             >
-              Best yoga mats for beginners
+              How to clean a yoga mat
             </Link>
           </Text>
           <Hr style={styles.hr} />

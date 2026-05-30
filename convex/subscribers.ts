@@ -2,12 +2,18 @@ import { v } from 'convex/values'
 import { internalQuery, mutation, query } from './_generated/server'
 import { internal } from './_generated/api'
 
+// Pragmatic email-format check. Single opt-in means there is no confirmation
+// click to weed out typos and fake addresses, so we reject obviously-malformed
+// input before it lands on the list and bounces against a young sending domain.
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
 /**
- * Capture a new subscriber and schedule the double-opt-in email.
+ * Capture a subscriber (single opt-in) and schedule the welcome email.
  *
- * Idempotent on email: a re-submit returns ok with status "already-pending"
- * or "already-confirmed" instead of duplicating the row. Resend the
- * confirmation if the existing row is unconfirmed.
+ * The subscriber is confirmed the moment they submit — no double-opt-in step.
+ * Idempotent on email: a re-submit of an already-subscribed address is a no-op
+ * that returns "already-subscribed" instead of re-sending the welcome. A legacy
+ * unconfirmed row (from the old double-opt-in era) is upgraded to subscribed.
  */
 export const insert = mutation({
   args: {
@@ -18,6 +24,10 @@ export const insert = mutation({
   handler: async (ctx, args) => {
     const normalized = args.email.trim().toLowerCase()
 
+    if (!EMAIL_RE.test(normalized)) {
+      return { ok: false as const, status: 'invalid-email' as const }
+    }
+
     const existing = await ctx.db
       .query('subscribers')
       .withIndex('by_email', (q) => q.eq('email', normalized))
@@ -25,35 +35,49 @@ export const insert = mutation({
 
     if (existing) {
       if (existing.confirmedAt) {
-        return { ok: true as const, status: 'already-confirmed' as const }
+        return { ok: true as const, status: 'already-subscribed' as const }
       }
-      // Re-send the double-opt-in for the existing pending row.
-      await ctx.scheduler.runAfter(0, internal.email.sendDoubleOptIn, {
+      // Legacy pending row: treat this submit as the subscription itself.
+      await ctx.db.patch(existing._id, { confirmedAt: Date.now() })
+      await ctx.scheduler.runAfter(0, internal.email.sendWelcome, {
         subscriberId: existing._id,
         email: existing.email,
-        optInToken: existing.optInToken,
-        leadMagnet: existing.leadMagnet,
+        leadMagnet: existing.leadMagnet ?? args.leadMagnet,
       })
-      return { ok: true as const, status: 'resent-confirmation' as const }
+      if (existing.leadMagnet ?? args.leadMagnet) {
+        await ctx.scheduler.runAfter(0, internal.email.sendLeadMagnet, {
+          subscriberId: existing._id,
+          email: existing.email,
+          leadMagnet: (existing.leadMagnet ?? args.leadMagnet)!,
+        })
+      }
+      return { ok: true as const, status: 'subscribed' as const }
     }
 
     const optInToken = crypto.randomUUID()
     const subscriberId = await ctx.db.insert('subscribers', {
       email: normalized,
       source: args.source,
+      confirmedAt: Date.now(),
       optInToken,
       leadMagnet: args.leadMagnet,
       tags: [],
     })
 
-    await ctx.scheduler.runAfter(0, internal.email.sendDoubleOptIn, {
+    await ctx.scheduler.runAfter(0, internal.email.sendWelcome, {
       subscriberId,
       email: normalized,
-      optInToken,
       leadMagnet: args.leadMagnet,
     })
+    if (args.leadMagnet) {
+      await ctx.scheduler.runAfter(0, internal.email.sendLeadMagnet, {
+        subscriberId,
+        email: normalized,
+        leadMagnet: args.leadMagnet,
+      })
+    }
 
-    return { ok: true as const, status: 'pending-confirm' as const }
+    return { ok: true as const, status: 'subscribed' as const }
   },
 })
 

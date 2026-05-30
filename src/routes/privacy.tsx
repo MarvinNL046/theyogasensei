@@ -60,10 +60,10 @@ function PrivacyPage() {
           <PolicySection title="What we collect">
             <h3>Email address (only if you subscribe to the newsletter).</h3>
             <p>
-              We use Resend to send newsletter emails and confirmation messages. Your email is
-              stored in our database (Convex) along with a timestamp of when you confirmed your
-              subscription. We do not collect your name, location, or any other personal information
-              unless you send it to us in an email yourself.
+              We use Resend to send the newsletter and the welcome email. Your email is stored in
+              our database (Convex) along with a timestamp of when you subscribed. We do not collect
+              your name, location, or any other personal information unless you send it to us in an
+              email yourself.
             </p>
 
             <h3>Analytics and performance.</h3>
