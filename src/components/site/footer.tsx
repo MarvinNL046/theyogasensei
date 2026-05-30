@@ -38,6 +38,9 @@ export function Footer() {
             long-time practitioner.
           </p>
           <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-[color:var(--color-bg)]/85">
+            <Link to="/guides" className="transition hover:text-[color:var(--color-bg)]">
+              Guides
+            </Link>
             <Link to="/about" className="transition hover:text-[color:var(--color-bg)]">
               About
             </Link>

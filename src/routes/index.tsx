@@ -85,12 +85,30 @@ const LATEST_WRITING = [
   },
   {
     to: '/guides/$slug' as const,
+    params: { slug: 'lululemon-yoga-mat' },
+    eyebrow: 'Review · Lululemon',
+    title: 'Lululemon Yoga Mat Review: Is The Mat Worth It?',
+    description:
+      'An honest look at Lululemon’s reversible mat — grip, cushion, the real downsides, latex caution, and who should buy or skip it.',
+    image: 'guides/lululemon-yoga-mat/hero',
+  },
+  {
+    to: '/guides/$slug' as const,
     params: { slug: 'how-to-choose-a-yoga-mat' },
     eyebrow: 'Pillar guide · Yoga mats',
     title: 'How to Choose a Yoga Mat: A Practical Buying Guide',
     description:
       'A clear, honest framework for choosing the right material, thickness, grip, size and durability without fake testing claims.',
     image: 'guides/how-to-choose-a-yoga-mat/hero',
+  },
+  {
+    to: '/guides/$slug' as const,
+    params: { slug: 'cork-vs-rubber-yoga-mat' },
+    eyebrow: 'Comparison · Cork vs rubber',
+    title: 'Cork vs Rubber Yoga Mat: Which One Fits Your Practice',
+    description:
+      'A material-first comparison — grip wet vs dry, cushion, weight, durability, latex risk, and which surface suits how you actually practise.',
+    image: 'guides/cork-vs-rubber-yoga-mat/hero',
   },
   {
     to: '/guides/$slug' as const,
@@ -108,7 +126,16 @@ const LATEST_WRITING = [
     title: 'How to Clean a Yoga Mat (Without Damaging It)',
     description:
       'Daily wipe-downs, deep cleans, DIY sprays, and material-specific care for rubber, PVC, cork, polyurethane and TPE mats.',
-    image: 'yoga-mats/how-to-clean-a-yoga-mat/hero',
+    image: 'guides/how-to-clean-a-yoga-mat/hero',
+  },
+  {
+    to: '/guides/$slug' as const,
+    params: { slug: 'how-to-store-a-yoga-mat' },
+    eyebrow: 'Guide · Mat care',
+    title: 'How to Store a Yoga Mat So It Lasts (and Stays Fresh)',
+    description:
+      'Clean and dry it first, roll it practice-side in, keep it out of sun and damp, and skip the storage gear you do not actually need.',
+    image: 'guides/how-to-store-a-yoga-mat/hero',
   },
 ]
 
@@ -215,6 +242,16 @@ function HomePage() {
                 </div>
               </article>
             ))}
+          </div>
+
+          <div className="mt-12">
+            <Link
+              to="/guides"
+              className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-olive)] px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-olive)] transition hover:bg-[color:var(--color-olive)] hover:text-[color:var(--color-bg)]"
+            >
+              View all guides
+              <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+            </Link>
           </div>
         </Container>
       </section>
