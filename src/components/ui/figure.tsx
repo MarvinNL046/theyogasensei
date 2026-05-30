@@ -33,7 +33,7 @@ export function Figure({
 }: FigureProps) {
   return (
     <figure className={cn('not-prose my-8', className)}>
-      <div className="overflow-hidden rounded-xl border border-stone-200 bg-stone-50">
+      <div className="overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
         <Image
           id={id}
           variant={variant}
@@ -43,7 +43,7 @@ export function Figure({
         />
       </div>
       {caption ? (
-        <figcaption className="mt-3 text-sm leading-relaxed text-stone-500">
+        <figcaption className="mt-3 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
           {caption}
         </figcaption>
       ) : null}
