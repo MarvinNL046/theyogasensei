@@ -7,15 +7,15 @@
  */
 export const affiliateLinks: Record<string, string> = {
   'manduka-pro-6mm': 'https://www.amazon.com/dp/B005NZ7PEQ',
-  'liforme-original': 'https://www.amazon.com/dp/B01CGLCGRA',
+  'liforme-original': 'https://www.amazon.com/dp/B09X66N6GX',
   'gaiam-premium-6mm': 'https://www.amazon.com/dp/B0D4MDKW3V',
   'gaiam-cork-yoga-mat': 'https://www.amazon.com/dp/B079W4FX8B',
   'manduka-eko-5mm': 'https://www.amazon.com/dp/B078YB99H8',
   'manduka-grp-adapt': 'https://www.amazon.com/dp/B0CK3NM2YP',
   'jade-harmony': 'https://www.amazon.com/dp/B000ECBQXE',
   'manduka-eko-lite': 'https://www.amazon.com/dp/B08LNP5XG5',
-  'manduka-yogitoes': 'https://www.amazon.com/dp/B09MXDWWDH',
-  'manduka-equa-towel': 'https://www.amazon.com/dp/B0CK4985F7',
+  'manduka-yogitoes': 'https://www.amazon.com/dp/B0D5ZR3R1M',
+  'manduka-equa-towel': 'https://www.amazon.com/dp/B00DGMS8XU',
   'manduka-mat-wash-lavender': 'https://www.amazon.com/dp/B08Q775558',
 }
 
@@ -28,7 +28,7 @@ export function affiliateRedirectsEnabled(): boolean {
   return env === 'true' || env === '1'
 }
 
-// REVIEW: replace with the actual Amazon Associates tracking ID once issued.
+// Amazon Associates store/tracking ID — approved and live (2026-05-30).
 export const AMAZON_ASSOCIATES_TAG = 'theyogasensei-20'
 
 export function withAffiliateTag(rawUrl: string): string {
