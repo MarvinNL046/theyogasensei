@@ -1,9 +1,8 @@
 import { useState, type FormEvent } from 'react'
-import { useConvex } from 'convex/react'
 import type { FunctionReference } from 'convex/server'
 import { Button } from '#/components/ui/button'
 import { Input } from '#/components/ui/input'
-import { isConvexConfigured } from '#/lib/convex/client'
+import { convex, isConvexConfigured } from '#/lib/convex/client'
 import { cn } from '#/lib/utils'
 
 // Phase 1: typed reference to the Convex insert mutation. Once `pnpm convex
@@ -48,10 +47,10 @@ export function NewsletterCapture({
   const [state, setState] = useState<'idle' | 'submitting' | 'sent' | 'error'>(
     'idle',
   )
-  // Hooks must be unconditional. Read from React context — if no
-  // <ConvexProvider> wraps the tree (Phase 1 before convex dev) this
-  // returns a default that we treat as "not configured" via the flag below.
-  const convex = useConvex()
+  // Use the shared ConvexReactClient singleton directly for this one-off
+  // mutation, NOT useConvex() — the <ConvexProvider> is scoped to /confirm,
+  // so a context hook would have no client on the pages this form lives on.
+  // A standalone client.mutation() works without a provider.
   const onDark = tone === 'onDark'
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
