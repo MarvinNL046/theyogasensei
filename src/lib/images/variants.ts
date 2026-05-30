@@ -17,6 +17,8 @@ export const IMAGE_VARIANTS = {
   og: { width: 1200, height: 630, fit: 'cover' },
   /** In-page card thumbnails — featured-card grids on home + indexes. */
   card: { width: 800, height: 1067, fit: 'cover' },
+  /** In-body editorial figure — 3:2 landscape, sits between text in articles. */
+  inline: { width: 1280, height: 854, fit: 'cover' },
   /** Tiny preview — author headshots, inline pose thumbnails. */
   thumb: { width: 400, height: 533, fit: 'cover' },
 } as const
@@ -30,6 +32,7 @@ const LOCAL_FALLBACK_IMAGES: Record<ImageVariant, string> = {
   pin: '/images/brand/review-hero-best-mats.webp',
   og: '/images/brand/article-hero-morning-yoga.webp',
   card: '/images/brand/article-hero-morning-yoga.webp',
+  inline: '/images/brand/article-hero-morning-yoga.webp',
   thumb: '/images/brand/avatar-yoga-sensei.webp',
 }
 
