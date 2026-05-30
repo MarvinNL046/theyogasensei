@@ -12,6 +12,7 @@ import {
 
 export interface WelcomeProps {
   siteUrl: string
+  unsubscribeUrl: string
   leadMagnet?: string
 }
 
@@ -24,7 +25,7 @@ const styles = {
   fine: { fontSize: '13px', color: '#78716c', lineHeight: '1.5' },
 }
 
-export function Welcome({ siteUrl, leadMagnet }: WelcomeProps) {
+export function Welcome({ siteUrl, unsubscribeUrl, leadMagnet }: WelcomeProps) {
   return (
     <Html>
       <Head />
@@ -64,7 +65,10 @@ export function Welcome({ siteUrl, leadMagnet }: WelcomeProps) {
           </Text>
           <Hr style={styles.hr} />
           <Text style={styles.fine}>
-            Unsubscribe at any time from the footer of any email. We never share your address.
+            <Link href={unsubscribeUrl} style={{ color: '#78716c', textDecoration: 'underline' }}>
+              Unsubscribe
+            </Link>{' '}
+            at any time — one click, no questions. We never share your address.
           </Text>
           <Text style={styles.fine}>The Yoga Sensei · hello@theyogasensei.com</Text>
         </Container>

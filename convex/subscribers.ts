@@ -1,6 +1,7 @@
 import { v } from 'convex/values'
 import { internalQuery, mutation, query } from './_generated/server'
 import { internal } from './_generated/api'
+import type { Id } from './_generated/dataModel'
 
 // Pragmatic email-format check. Single opt-in means there is no confirmation
 // click to weed out typos and fake addresses, so we reject obviously-malformed
@@ -28,29 +29,53 @@ export const insert = mutation({
       return { ok: false as const, status: 'invalid-email' as const }
     }
 
+    // Schedule the welcome (+ lead-magnet) emails. optInToken doubles as the
+    // unsubscribe token embedded in every email's footer + List-Unsubscribe.
+    const sendOnboarding = async (
+      subscriberId: Id<'subscribers'>,
+      email: string,
+      optInToken: string,
+      leadMagnet: string | undefined,
+    ) => {
+      await ctx.scheduler.runAfter(0, internal.email.sendWelcome, {
+        subscriberId,
+        email,
+        optInToken,
+        leadMagnet,
+      })
+      if (leadMagnet) {
+        await ctx.scheduler.runAfter(0, internal.email.sendLeadMagnet, {
+          subscriberId,
+          email,
+          optInToken,
+          leadMagnet,
+        })
+      }
+    }
+
     const existing = await ctx.db
       .query('subscribers')
       .withIndex('by_email', (q) => q.eq('email', normalized))
       .first()
 
     if (existing) {
+      const leadMagnet = existing.leadMagnet ?? args.leadMagnet
+      if (existing.unsubscribedAt) {
+        // A deliberate re-signup after opting out is fresh consent — reactivate
+        // the suppressed row rather than spawning a duplicate.
+        await ctx.db.patch(existing._id, {
+          confirmedAt: Date.now(),
+          unsubscribedAt: undefined,
+        })
+        await sendOnboarding(existing._id, existing.email, existing.optInToken, leadMagnet)
+        return { ok: true as const, status: 'resubscribed' as const }
+      }
       if (existing.confirmedAt) {
         return { ok: true as const, status: 'already-subscribed' as const }
       }
-      // Legacy pending row: treat this submit as the subscription itself.
+      // Legacy pending row (old double-opt-in era): treat this as the signup.
       await ctx.db.patch(existing._id, { confirmedAt: Date.now() })
-      await ctx.scheduler.runAfter(0, internal.email.sendWelcome, {
-        subscriberId: existing._id,
-        email: existing.email,
-        leadMagnet: existing.leadMagnet ?? args.leadMagnet,
-      })
-      if (existing.leadMagnet ?? args.leadMagnet) {
-        await ctx.scheduler.runAfter(0, internal.email.sendLeadMagnet, {
-          subscriberId: existing._id,
-          email: existing.email,
-          leadMagnet: (existing.leadMagnet ?? args.leadMagnet)!,
-        })
-      }
+      await sendOnboarding(existing._id, existing.email, existing.optInToken, leadMagnet)
       return { ok: true as const, status: 'subscribed' as const }
     }
 
@@ -63,19 +88,7 @@ export const insert = mutation({
       leadMagnet: args.leadMagnet,
       tags: [],
     })
-
-    await ctx.scheduler.runAfter(0, internal.email.sendWelcome, {
-      subscriberId,
-      email: normalized,
-      leadMagnet: args.leadMagnet,
-    })
-    if (args.leadMagnet) {
-      await ctx.scheduler.runAfter(0, internal.email.sendLeadMagnet, {
-        subscriberId,
-        email: normalized,
-        leadMagnet: args.leadMagnet,
-      })
-    }
+    await sendOnboarding(subscriberId, normalized, optInToken, args.leadMagnet)
 
     return { ok: true as const, status: 'subscribed' as const }
   },
@@ -105,6 +118,7 @@ export const confirm = mutation({
     await ctx.scheduler.runAfter(0, internal.email.sendWelcome, {
       subscriberId: subscriber._id,
       email: subscriber.email,
+      optInToken: subscriber.optInToken,
       leadMagnet: subscriber.leadMagnet,
     })
 
@@ -112,6 +126,7 @@ export const confirm = mutation({
       await ctx.scheduler.runAfter(0, internal.email.sendLeadMagnet, {
         subscriberId: subscriber._id,
         email: subscriber.email,
+        optInToken: subscriber.optInToken,
         leadMagnet: subscriber.leadMagnet,
       })
     }
@@ -121,14 +136,41 @@ export const confirm = mutation({
 })
 
 /**
- * Light read-only stat for the homepage / footer ("Join N yogis…"). Only
- * counts confirmed subscribers so spam signups do not inflate the number.
+ * Unsubscribe via the per-subscriber token (the link in every email footer and
+ * the List-Unsubscribe header). Suppression, not deletion: the row stays with
+ * `unsubscribedAt` set, so a future bulk re-add cannot silently resubscribe the
+ * person. A deliberate form re-signup reactivates the row (see `insert`).
+ */
+export const unsubscribe = mutation({
+  args: { token: v.string() },
+  handler: async (ctx, args) => {
+    const subscriber = await ctx.db
+      .query('subscribers')
+      .withIndex('by_token', (q) => q.eq('optInToken', args.token))
+      .first()
+
+    if (!subscriber) {
+      return { ok: false as const, status: 'invalid-token' as const }
+    }
+    if (subscriber.unsubscribedAt) {
+      return { ok: true as const, status: 'already-unsubscribed' as const }
+    }
+
+    await ctx.db.patch(subscriber._id, { unsubscribedAt: Date.now() })
+    return { ok: true as const, status: 'unsubscribed' as const }
+  },
+})
+
+/**
+ * Light read-only stat for the homepage / footer ("Join N yogis…"). Counts
+ * only active confirmed subscribers — unconfirmed and unsubscribed rows are
+ * excluded so the number reflects the real live list.
  */
 export const confirmedCount = query({
   args: {},
   handler: async (ctx) => {
     const all = await ctx.db.query('subscribers').collect()
-    return all.filter((s) => s.confirmedAt).length
+    return all.filter((s) => s.confirmedAt && !s.unsubscribedAt).length
   },
 })
 

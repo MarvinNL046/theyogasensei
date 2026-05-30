@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -23,6 +24,11 @@ import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
 import { Route as GoSlugRouteImport } from './routes/go/$slug'
 import { Route as AuthorsSlugRouteImport } from './routes/authors/$slug'
 
+const UnsubscribeRoute = UnsubscribeRouteImport.update({
+  id: '/unsubscribe',
+  path: '/unsubscribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -97,6 +103,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
@@ -112,6 +119,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
@@ -128,6 +136,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
@@ -145,6 +154,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/privacy'
     | '/terms'
+    | '/unsubscribe'
     | '/authors/$slug'
     | '/go/$slug'
     | '/guides/$slug'
@@ -160,6 +170,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/privacy'
     | '/terms'
+    | '/unsubscribe'
     | '/authors/$slug'
     | '/go/$slug'
     | '/guides/$slug'
@@ -175,6 +186,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/privacy'
     | '/terms'
+    | '/unsubscribe'
     | '/authors/$slug'
     | '/go/$slug'
     | '/guides/$slug'
@@ -191,6 +203,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
+  UnsubscribeRoute: typeof UnsubscribeRoute
   AuthorsSlugRoute: typeof AuthorsSlugRoute
   GoSlugRoute: typeof GoSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
@@ -201,6 +214,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/unsubscribe': {
+      id: '/unsubscribe'
+      path: '/unsubscribe'
+      fullPath: '/unsubscribe'
+      preLoaderRoute: typeof UnsubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -303,6 +323,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
+  UnsubscribeRoute: UnsubscribeRoute,
   AuthorsSlugRoute: AuthorsSlugRoute,
   GoSlugRoute: GoSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,

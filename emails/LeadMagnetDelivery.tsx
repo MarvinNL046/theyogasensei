@@ -14,6 +14,7 @@ import {
 export interface LeadMagnetDeliveryProps {
   leadMagnet: string
   downloadUrl: string
+  unsubscribeUrl: string
 }
 
 const styles = {
@@ -41,7 +42,11 @@ const MAGNET_TITLES: Record<string, string> = {
   'style-quiz-results': 'Which Yoga Style Fits You — Quiz Results',
 }
 
-export function LeadMagnetDelivery({ leadMagnet, downloadUrl }: LeadMagnetDeliveryProps) {
+export function LeadMagnetDelivery({
+  leadMagnet,
+  downloadUrl,
+  unsubscribeUrl,
+}: LeadMagnetDeliveryProps) {
   const title = MAGNET_TITLES[leadMagnet] ?? 'Your download'
   return (
     <Html>
@@ -70,7 +75,12 @@ export function LeadMagnetDelivery({ leadMagnet, downloadUrl }: LeadMagnetDelive
           <Text style={styles.fine}>
             Hit reply if the link does not work — that goes straight to my inbox.
           </Text>
-          <Text style={styles.fine}>The Yoga Sensei · hello@theyogasensei.com</Text>
+          <Text style={styles.fine}>
+            <Link href={unsubscribeUrl} style={{ color: '#78716c', textDecoration: 'underline' }}>
+              Unsubscribe
+            </Link>{' '}
+            · The Yoga Sensei · hello@theyogasensei.com
+          </Text>
         </Container>
       </Body>
     </Html>

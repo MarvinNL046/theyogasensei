@@ -56,13 +56,18 @@ export const sendWelcome = internalAction({
   args: {
     subscriberId: v.id('subscribers'),
     email: v.string(),
+    optInToken: v.string(),
     leadMagnet: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
-    const html = await render(Welcome({ siteUrl: SITE, leadMagnet: args.leadMagnet }))
-    const text = await render(Welcome({ siteUrl: SITE, leadMagnet: args.leadMagnet }), {
-      plainText: true,
-    })
+    const unsubscribeUrl = `${SITE}/unsubscribe?token=${encodeURIComponent(args.optInToken)}`
+    const html = await render(
+      Welcome({ siteUrl: SITE, leadMagnet: args.leadMagnet, unsubscribeUrl }),
+    )
+    const text = await render(
+      Welcome({ siteUrl: SITE, leadMagnet: args.leadMagnet, unsubscribeUrl }),
+      { plainText: true },
+    )
 
     const resend = getResend()
     await resend.emails.send({
@@ -71,6 +76,7 @@ export const sendWelcome = internalAction({
       subject: 'Welcome to The Yoga Sensei',
       html,
       text,
+      headers: { 'List-Unsubscribe': `<${unsubscribeUrl}>` },
       tags: [{ name: 'template', value: 'welcome' }],
     })
 
@@ -86,18 +92,20 @@ export const sendLeadMagnet = internalAction({
   args: {
     subscriberId: v.id('subscribers'),
     email: v.string(),
+    optInToken: v.string(),
     leadMagnet: v.string(),
   },
   handler: async (ctx, args) => {
     // Real PDF URLs live in Vercel Blob or a public bucket once authored.
     // For Phase 1 we ship a placeholder URL — Phase 2 replaces it.
     const downloadUrl = `${SITE}/lead-magnets/${args.leadMagnet}.pdf`
+    const unsubscribeUrl = `${SITE}/unsubscribe?token=${encodeURIComponent(args.optInToken)}`
 
     const html = await render(
-      LeadMagnetDelivery({ leadMagnet: args.leadMagnet, downloadUrl }),
+      LeadMagnetDelivery({ leadMagnet: args.leadMagnet, downloadUrl, unsubscribeUrl }),
     )
     const text = await render(
-      LeadMagnetDelivery({ leadMagnet: args.leadMagnet, downloadUrl }),
+      LeadMagnetDelivery({ leadMagnet: args.leadMagnet, downloadUrl, unsubscribeUrl }),
       { plainText: true },
     )
 
@@ -108,6 +116,7 @@ export const sendLeadMagnet = internalAction({
       subject: 'Your download from The Yoga Sensei',
       html,
       text,
+      headers: { 'List-Unsubscribe': `<${unsubscribeUrl}>` },
       tags: [
         { name: 'template', value: 'lead-magnet' },
         { name: 'magnet', value: args.leadMagnet },

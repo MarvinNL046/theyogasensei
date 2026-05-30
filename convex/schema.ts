@@ -16,7 +16,8 @@ export default defineSchema({
     email: v.string(),
     source: v.string(), // "homepage", "pillar:yoga-for-beginners", "exit-intent", etc.
     confirmedAt: v.optional(v.number()), // unix ms; set at signup (single opt-in). absent = legacy never-confirmed row
-    optInToken: v.string(), // uuid v4; legacy opt-in token, reusable for unsubscribe links
+    unsubscribedAt: v.optional(v.number()), // unix ms; set on unsubscribe (suppression record). absent = active
+    optInToken: v.string(), // uuid v4; opt-in + unsubscribe token (per-subscriber, used in email links)
     leadMagnet: v.optional(v.string()), // "30-day-beginner-path", "mat-cheatsheet", etc.
     tags: v.array(v.string()), // for future segmentation
   })
