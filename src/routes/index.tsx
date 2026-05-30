@@ -141,6 +141,33 @@ const LATEST_WRITING = [
       'Clean and dry it first, roll it practice-side in, keep it out of sun and damp, and skip the storage gear you do not actually need.',
     image: 'guides/how-to-store-a-yoga-mat/hero',
   },
+  {
+    to: '/guides/$slug' as const,
+    params: { slug: 'best-yoga-blocks' },
+    eyebrow: 'Accessory · Yoga blocks',
+    title: 'Best Yoga Blocks: Foam vs Cork, Honestly Compared',
+    description:
+      'Foam vs cork compared, with three honest picks for support, balance and budget — plus an honest note on when you do not need one yet.',
+    image: 'guides/best-yoga-blocks/hero',
+  },
+  {
+    to: '/guides/$slug' as const,
+    params: { slug: 'best-yoga-bolster' },
+    eyebrow: 'Accessory · Yoga bolsters',
+    title: 'Best Yoga Bolsters: Shapes, Fills and Two Honest Picks',
+    description:
+      'Rectangular vs round, fill and firmness explained, with two honest picks for restorative practice — and when a stack of blankets does the job instead.',
+    image: 'guides/best-yoga-bolster/hero',
+  },
+  {
+    to: '/guides/$slug' as const,
+    params: { slug: 'best-yoga-mat-bag' },
+    eyebrow: 'Accessory · Bags & carriers',
+    title: 'Best Yoga Mat Bags and Carriers: A Practical Guide',
+    description:
+      'Bag vs sling vs carrier, how to check your mat actually fits, and two honest picks for the commute — including the rolled-diameter trap thick mats hit.',
+    image: 'guides/best-yoga-mat-bag/hero',
+  },
 ]
 
 function HomePage() {

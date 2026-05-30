@@ -7,6 +7,7 @@ export const GUIDE_CATEGORIES = [
   'Roundups',
   'Comparisons',
   'Reviews',
+  'Accessories',
   'Care',
 ] as const
 
@@ -28,6 +29,9 @@ const CATEGORY_BY_SLUG: Record<string, GuideCategory> = {
   'best-yoga-mat-for-bad-knees': 'Roundups',
   'cork-vs-rubber-yoga-mat': 'Comparisons',
   'lululemon-yoga-mat': 'Reviews',
+  'best-yoga-blocks': 'Accessories',
+  'best-yoga-bolster': 'Accessories',
+  'best-yoga-mat-bag': 'Accessories',
   'how-to-clean-a-yoga-mat': 'Care',
   'how-to-store-a-yoga-mat': 'Care',
 }
