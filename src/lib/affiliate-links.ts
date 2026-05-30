@@ -22,7 +22,7 @@ export const affiliateLinks: Record<string, string> = {
   // guide/button references the slug.
   'manduka-yoga-block': 'https://www.amazon.com/dp/B000VUAGAS',
   'gaiam-cork-yoga-block': 'https://www.amazon.com/dp/B008R71FI4',
-  'manduka-align-strap': 'https://www.amazon.com/dp/B01ABWKUXI',
+  'manduka-yoga-strap': 'https://www.amazon.com/dp/B01ABWKUXI',
   'manduka-breathe-easy-carrier': 'https://www.amazon.com/dp/B077BJ8315',
   'hugger-mugger-bolster': 'https://www.amazon.com/dp/B000C9LZRQ',
   // Gaiam "best value" second picks for the accessory roundups.
