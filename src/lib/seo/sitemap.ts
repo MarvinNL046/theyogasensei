@@ -9,6 +9,9 @@ interface SitemapEntry {
 
 const STATIC_PAGES: Array<Omit<SitemapEntry, 'url'> & { path: string }> = [
   { path: '/', changefreq: 'weekly', priority: 1.0 },
+  // /guides is the editorial hub (route, not MDX) — list it with the identity
+  // pages, above the individual content entries.
+  { path: '/guides', changefreq: 'weekly', priority: 0.8 },
   { path: '/about', changefreq: 'monthly', priority: 0.7 },
   { path: '/affiliate-disclosure', changefreq: 'yearly', priority: 0.3 },
   { path: '/privacy', changefreq: 'yearly', priority: 0.3 },
@@ -36,11 +39,12 @@ function buildEntries(siteUrl: string): Array<SitemapEntry> {
   }))
 
   // Pre-launch sitemap order mirrors the launch audit brief:
-  // identity pages, live editorial content, then legal/contact pages.
+  // identity pages (home, guides hub, about), live editorial content, then
+  // legal/contact pages.
   return [
-    ...staticEntries.slice(0, 2),
+    ...staticEntries.slice(0, 3),
     ...contentEntries,
-    ...staticEntries.slice(2),
+    ...staticEntries.slice(3),
   ]
 }
 
