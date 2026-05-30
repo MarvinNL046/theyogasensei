@@ -5,6 +5,7 @@ import { Eyebrow } from '#/components/ui/eyebrow'
 import { JapaneseAccent } from '#/components/ui/japanese-accent'
 import { buildImageUrl } from '#/lib/images/variants'
 import { HomeTrustBar } from '#/features/home/HomeTrustBar'
+import { HomeTopicGrid } from '#/features/home/HomeTopicGrid'
 import { HomeFeaturedGuide } from '#/features/home/HomeFeaturedGuide'
 import { HomeLeadCapture } from '#/features/home/HomeLeadCapture'
 
@@ -192,6 +193,11 @@ function HomePage() {
           TRUST BAR — quiet credibility strip under the hero
           ============================================================ */}
       <HomeTrustBar />
+
+      {/* ============================================================
+          TOPIC GRID — browse-by-category, deep-links to /guides?category=
+          ============================================================ */}
+      <HomeTopicGrid />
 
       {/* ============================================================
           FEATURED GUIDE — dark split band highlighting the flagship roundup
