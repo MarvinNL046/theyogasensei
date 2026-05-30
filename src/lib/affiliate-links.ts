@@ -17,6 +17,14 @@ export const affiliateLinks: Record<string, string> = {
   'manduka-yogitoes': 'https://www.amazon.com/dp/B0D5ZR3R1M',
   'manduka-equa-towel': 'https://www.amazon.com/dp/B00DGMS8XU',
   'manduka-mat-wash-lavender': 'https://www.amazon.com/dp/B08Q775558',
+  // Accessories — verified 2026-05-30, brand-consistent picks (bolster has no
+  // Manduka equivalent → Hugger Mugger, the category standard). Inert until a
+  // guide/button references the slug.
+  'manduka-yoga-block': 'https://www.amazon.com/dp/B000VUAGAS',
+  'gaiam-cork-yoga-block': 'https://www.amazon.com/dp/B008R71FI4',
+  'manduka-align-strap': 'https://www.amazon.com/dp/B01ABWKUXI',
+  'manduka-breathe-easy-carrier': 'https://www.amazon.com/dp/B077BJ8315',
+  'hugger-mugger-bolster': 'https://www.amazon.com/dp/B000C9LZRQ',
 }
 
 // Keep all outbound affiliate redirects disabled until Associates approval.
