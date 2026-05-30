@@ -83,7 +83,7 @@ export function HomeTopicGrid() {
                 <div className="overflow-hidden rounded-2xl bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
                   <img
                     src={topic.image}
-                    alt=""
+                    alt={`${topic.label}: ${topic.subtitle}`}
                     width={1280}
                     height={854}
                     loading="lazy"

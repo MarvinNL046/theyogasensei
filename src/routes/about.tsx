@@ -43,6 +43,8 @@ export const Route = createFileRoute('/about')({
       { property: 'og:image', content: 'https://www.theyogasensei.com/images/brand/review-hero-best-mats.webp' },
       { property: 'og:site_name', content: 'The Yoga Sensei' },
       { property: 'og:locale', content: 'en_US' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:image', content: 'https://www.theyogasensei.com/images/brand/review-hero-best-mats.webp' },
     ],
     links: [{ rel: 'canonical', href: 'https://www.theyogasensei.com/about' }],
   }),

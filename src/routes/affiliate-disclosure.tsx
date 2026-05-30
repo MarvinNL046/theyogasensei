@@ -22,6 +22,8 @@ export const Route = createFileRoute('/affiliate-disclosure')({
       { property: 'og:image', content: 'https://www.theyogasensei.com/images/brand/article-hero-morning-yoga.webp' },
       { property: 'og:site_name', content: 'The Yoga Sensei' },
       { property: 'og:locale', content: 'en_US' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:image', content: 'https://www.theyogasensei.com/images/brand/article-hero-morning-yoga.webp' },
     ],
     links: [
       { rel: 'canonical', href: 'https://www.theyogasensei.com/affiliate-disclosure' },

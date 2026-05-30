@@ -20,12 +20,14 @@ export const Route = createFileRoute('/authors/$slug')({
     const image = a.image
       ? buildAbsoluteImageUrl(a.image, 'og', SITE_URL)
       : 'https://www.theyogasensei.com/images/brand/avatar-yoga-sensei.webp'
+    // Concise, SERP-length description (the full bio renders on the page itself).
+    const description = `${a.name} of The Yoga Sensei — a long-time practitioner, not a certified instructor, who writes and edits every honest yoga gear guide on the site.`
     return {
       meta: [
         { title: `${a.name} — The Yoga Sensei` },
-        ...(a.bio ? [{ name: 'description', content: a.bio }] : []),
+        { name: 'description', content: description },
         { property: 'og:title', content: `${a.name} — The Yoga Sensei` },
-        ...(a.bio ? [{ property: 'og:description', content: a.bio }] : []),
+        { property: 'og:description', content: description },
         { property: 'og:url', content: canonical },
         { property: 'og:type', content: 'profile' },
         { property: 'og:image', content: image },
@@ -33,7 +35,7 @@ export const Route = createFileRoute('/authors/$slug')({
         { property: 'og:locale', content: 'en_US' },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: `${a.name} — The Yoga Sensei` },
-        ...(a.bio ? [{ name: 'twitter:description', content: a.bio }] : []),
+        { name: 'twitter:description', content: description },
         { name: 'twitter:image', content: image },
       ],
       links: [{ rel: 'canonical', href: canonical }],

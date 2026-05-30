@@ -16,13 +16,13 @@ export const Route = createFileRoute('/')({
       {
         name: 'description',
         content:
-          'Honest yoga gear guidance and practice notes. Written by Marvin Smit, a long-time practitioner, grounded in research and aggregated user reviews — never invented testing.',
+          'Honest yoga gear guides and practice notes from Marvin Smit, a long-time practitioner — grounded in research and aggregated reviews, never invented testing.',
       },
       { property: 'og:title', content: 'The Yoga Sensei' },
       {
         property: 'og:description',
         content:
-          'Honest yoga gear guidance and practice notes. Written by Marvin Smit, a long-time practitioner, grounded in research and aggregated user reviews — never invented testing.',
+          'Honest yoga gear guides and practice notes from Marvin Smit, a long-time practitioner — grounded in research and aggregated reviews, never invented testing.',
       },
       { property: 'og:url', content: 'https://www.theyogasensei.com/' },
       { property: 'og:type', content: 'website' },
@@ -35,7 +35,7 @@ export const Route = createFileRoute('/')({
       {
         name: 'twitter:description',
         content:
-          'Honest yoga gear guidance and practice notes. Written by Marvin Smit, a long-time practitioner, grounded in research and aggregated user reviews — never invented testing.',
+          'Honest yoga gear guides and practice notes from Marvin Smit, a long-time practitioner — grounded in research and aggregated reviews, never invented testing.',
       },
       {
         name: 'twitter:image',
@@ -254,7 +254,7 @@ function HomePage() {
                 <Link to={post.to} params={post.params} className="block">
                   <img
                     src={buildImageUrl(post.image, 'card')}
-                    alt=""
+                    alt={post.title}
                     loading="lazy"
                     width={800}
                     height={1067}

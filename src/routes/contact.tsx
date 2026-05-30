@@ -21,6 +21,15 @@ export const Route = createFileRoute('/contact')({
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'The Yoga Sensei' },
       { property: 'og:locale', content: 'en_US' },
+      {
+        property: 'og:image',
+        content: 'https://www.theyogasensei.com/images/brand/home-og.webp',
+      },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      {
+        name: 'twitter:image',
+        content: 'https://www.theyogasensei.com/images/brand/home-og.webp',
+      },
     ],
     links: [{ rel: 'canonical', href: 'https://www.theyogasensei.com/contact' }],
   }),

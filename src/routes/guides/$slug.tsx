@@ -157,7 +157,8 @@ function GuidePage() {
                 <p className="font-medium text-[color:var(--color-ink)]">
                   By{' '}
                   <Link
-                    to="/about"
+                    to="/authors/$slug"
+                    params={{ slug: author.slug }}
                     className="underline-offset-2 hover:underline"
                   >
                     {author.name}
@@ -218,7 +219,8 @@ function GuidePage() {
                   </div>
                 </div>
                 <Link
-                  to="/about"
+                  to="/authors/$slug"
+                  params={{ slug: author.slug }}
                   className="mt-6 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent-deep)] transition hover:text-[color:var(--color-accent)]"
                 >
                   More about me
