@@ -195,14 +195,13 @@ function MeetMarvin() {
       aria-labelledby="meet-marvin-heading"
       className="mt-12 grid items-center gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)]"
     >
-      {/* Portrait — placeholder until Marvin uploads the real one.
-          To swap: replace src with the new file (e.g. marvin-portrait.webp)
-          and update the alt text. Recommended dimensions: square, ≥480x480. */}
+      {/* Portrait — real photo at /images/team/marvin.webp (256×256 source).
+          For a crisper retina render here, swap in a ≥480×480 version. */}
       <figure className="relative mx-auto w-full max-w-sm">
         <div className="overflow-hidden rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-sm">
           <img
-            src="/images/team/marvin-portrait-placeholder.svg"
-            alt="Portrait of Marvin Smit — placeholder until a real photo is uploaded"
+            src="/images/team/marvin.webp"
+            alt="Portrait of Marvin Smit, founder and editor of The Yoga Sensei"
             width={480}
             height={480}
             className="aspect-square h-full w-full object-cover"

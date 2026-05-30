@@ -9,7 +9,7 @@ const AUTHORS: Record<string, Author> = {
     jobTitle: 'Founder · Yoga gear curator',
     bio: 'Founder of The Yoga Sensei. Long-time practitioner, not a certified instructor. Every gear guide and recommendation on this site is written and edited by Marvin, based on publicly available specifications and aggregated user reviews.',
     knowsAbout: ['Yoga gear', 'Beginner yoga', 'Yoga lifestyle'],
-    image: 'authors/marvin-headshot',
+    image: '/images/team/marvin.webp',
   },
 }
 

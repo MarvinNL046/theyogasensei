@@ -68,10 +68,12 @@ export function buildPersonSchema(author: Author, siteUrl: string) {
     ...(author.knowsAbout && { knowsAbout: author.knowsAbout }),
     ...(author.alumniOf && { alumniOf: author.alumniOf }),
     ...(author.bio && { description: author.bio }),
-    // Do not emit an author image here unless we have a real, resolvable author
-    // image asset. buildAbsoluteImageUrl() falls back to the generic brand hero
-    // for non-local image ids without Cloudflare configured, which made guide
-    // pages expose a second, misleading JSON-LD image unrelated to the article.
+    // Author image — emitted only when it is a real, resolvable local asset
+    // (root-relative path), so we never fall back to the generic brand hero and
+    // expose a misleading author photo. Absolute URL for valid JSON-LD.
+    ...(author.image?.startsWith('/') && {
+      image: buildAbsoluteImageUrl(author.image, 'og', siteUrl),
+    }),
     ...(author.sameAs && { sameAs: author.sameAs }),
   }
 }

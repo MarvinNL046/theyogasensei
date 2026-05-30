@@ -147,7 +147,7 @@ function GuidePage() {
             ) : null}
             <div className="mt-9 flex items-center gap-4">
               <img
-                src="/images/brand/avatar-yoga-sensei.webp"
+                src="/images/team/marvin.webp"
                 alt={`Avatar of ${author.name}`}
                 width={96}
                 height={96}
@@ -199,7 +199,7 @@ function GuidePage() {
                 <hr className="mb-6 mt-4 border-[color:var(--color-border)]" />
                 <div className="flex items-start gap-4">
                   <img
-                    src="/images/brand/avatar-yoga-sensei.webp"
+                    src="/images/team/marvin.webp"
                     alt={`Avatar of ${author.name}`}
                     width={96}
                     height={96}
