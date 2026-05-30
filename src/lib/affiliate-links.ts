@@ -25,6 +25,10 @@ export const affiliateLinks: Record<string, string> = {
   'manduka-align-strap': 'https://www.amazon.com/dp/B01ABWKUXI',
   'manduka-breathe-easy-carrier': 'https://www.amazon.com/dp/B077BJ8315',
   'hugger-mugger-bolster': 'https://www.amazon.com/dp/B000C9LZRQ',
+  // Gaiam "best value" second picks for the accessory roundups.
+  'gaiam-yoga-block': 'https://www.amazon.com/dp/B075W63K67',
+  'gaiam-yoga-bolster': 'https://www.amazon.com/dp/B01ICBTPTK',
+  'gaiam-mat-bag': 'https://www.amazon.com/dp/B011NQZBAI',
 }
 
 // Keep all outbound affiliate redirects disabled until Associates approval.
