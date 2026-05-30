@@ -80,7 +80,7 @@ function ConfirmPage() {
           setState({
             status: 'error',
             message:
-              'Confirmation service is not configured yet. Email info@theyogasensei.com to confirm manually.',
+              'Confirmation service is not configured yet. Email hello@theyogasensei.com to confirm manually.',
           })
         }
         return
@@ -233,7 +233,7 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
           </h1>
           <p className="mt-4 text-base leading-7 text-[color:var(--color-ink-soft)]">
             {state.message} Try the link again in a minute. If it still fails,
-            email <strong>info@theyogasensei.com</strong> and we will confirm
+            email <strong>hello@theyogasensei.com</strong> and we will confirm
             you manually.
           </p>
         </>

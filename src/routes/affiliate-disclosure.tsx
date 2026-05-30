@@ -101,7 +101,7 @@ function AffiliateDisclosurePage() {
             </h2>
             <p className="mt-3 text-sm leading-7 text-[color:var(--color-ink-soft)]">
               If you notice an unclear disclosure or an outdated affiliate link,
-              email <a href="mailto:marvin@theyogasensei.com" className="underline underline-offset-4">marvin@theyogasensei.com</a>.
+              email <a href="mailto:hello@theyogasensei.com" className="underline underline-offset-4">hello@theyogasensei.com</a>.
               See also our{' '}
               <a href="/privacy" className="underline underline-offset-4">privacy policy</a>{' '}
               and{' '}

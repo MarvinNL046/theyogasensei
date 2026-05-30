@@ -187,7 +187,7 @@ export function NewsletterCapture({
             onDark ? 'text-red-300' : 'text-red-700',
           )}
         >
-          Something went wrong. Try again, or send your email to info@theyogasensei.com.
+          Something went wrong. Try again, or send your email to hello@theyogasensei.com.
         </p>
       )}
 

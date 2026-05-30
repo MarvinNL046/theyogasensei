@@ -134,7 +134,7 @@ function TermsPage() {
 
           <TermsSection title="Contact">
             <p>
-              <a href="mailto:marvin@theyogasensei.com">marvin@theyogasensei.com</a>
+              <a href="mailto:hello@theyogasensei.com">hello@theyogasensei.com</a>
             </p>
           </TermsSection>
         </div>

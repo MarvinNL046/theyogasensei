@@ -243,10 +243,10 @@ function MeetMarvin() {
             ghostwriters, no faceless content team. If you spot an error or have a
             question, you can reach me at{' '}
             <a
-              href="mailto:marvin@theyogasensei.com"
+              href="mailto:hello@theyogasensei.com"
               className="text-[color:var(--color-ink)] underline-offset-2 hover:underline"
             >
-              marvin@theyogasensei.com
+              hello@theyogasensei.com
             </a>
             {' '}— corrections happen fast and they&apos;re noted in the article.
           </p>
@@ -296,12 +296,12 @@ function HowThisSiteIsMade() {
       title: 'Affiliate transparency',
       icon: BadgePercent,
       text: 'This site uses affiliate links (Amazon Associates and others). Earned commissions never influence which products are recommended.',
-      cta: { label: 'Email Marvin', href: 'mailto:marvin@theyogasensei.com' as const },
+      cta: { label: 'Email Marvin', href: 'mailto:hello@theyogasensei.com' as const },
     },
     {
       title: 'Updates and corrections',
       icon: RefreshCw,
-      text: 'Content is reviewed periodically. If you spot an error, email marvin@theyogasensei.com — corrections are made promptly and noted in the article.',
+      text: 'Content is reviewed periodically. If you spot an error, email hello@theyogasensei.com — corrections are made promptly and noted in the article.',
     },
   ] as const
 
@@ -470,7 +470,7 @@ function ImageryDisclosure() {
               If you ever see an image where this distinction feels unclear, or a pose that
               looks off,{' '}
               <a
-                href="mailto:marvin@theyogasensei.com"
+                href="mailto:hello@theyogasensei.com"
                 className="text-[color:var(--color-ink-soft)] underline-offset-2 hover:underline"
               >
                 let us know
@@ -485,7 +485,7 @@ function ImageryDisclosure() {
               AI-generated · disclosed sitewide
             </span>
             <span aria-hidden="true" className="opacity-40">·</span>
-            <a href="mailto:marvin@theyogasensei.com" className="underline-offset-2 hover:text-[color:var(--color-ink)] hover:underline">
+            <a href="mailto:hello@theyogasensei.com" className="underline-offset-2 hover:text-[color:var(--color-ink)] hover:underline">
               See affiliate disclosure
             </a>
           </div>

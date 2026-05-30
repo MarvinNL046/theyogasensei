@@ -73,7 +73,7 @@ const LATEST_WRITING = [
     to: '/guides/$slug' as const,
     params: { slug: 'best-yoga-mat-for-hot-yoga' },
     eyebrow: 'Affiliate guide · Hot yoga',
-    title: "Best Yoga Mat for Hot Yoga (2026): A Practitioner's Honest Guide",
+    title: 'Best Yoga Mat for Hot Yoga: Grip That Survives Sweat',
     description:
       'A practical hot-yoga buying guide covering wet grip, natural rubber, towel pairings and honest mat trade-offs.',
     image: 'guides/best-yoga-mat-for-hot-yoga/hero',

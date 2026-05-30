@@ -9,13 +9,13 @@ export const Route = createFileRoute('/contact')({
       {
         name: 'description',
         content:
-          'Get in touch with Marvin. Corrections, questions, partnerships — one email address, no forms.',
+          'Get in touch with Marvin at The Yoga Sensei — corrections, questions and partnerships go to one email address. No forms, usually a same-day reply.',
       },
       { property: 'og:title', content: 'Contact — The Yoga Sensei' },
       {
         property: 'og:description',
         content:
-          'Get in touch with Marvin. Corrections, questions, partnerships — one email address, no forms.',
+          'Get in touch with Marvin at The Yoga Sensei — corrections, questions and partnerships go to one email address. No forms, usually a same-day reply.',
       },
       { property: 'og:url', content: 'https://www.theyogasensei.com/contact' },
       { property: 'og:type', content: 'website' },
@@ -49,8 +49,8 @@ function ContactPage() {
           usually a same-day reply.
         </p>
         <p className="mt-6 text-lg font-medium text-[color:var(--color-ink)]">
-          <a href="mailto:marvin@theyogasensei.com" className="underline underline-offset-4">
-            marvin@theyogasensei.com
+          <a href="mailto:hello@theyogasensei.com" className="underline underline-offset-4">
+            hello@theyogasensei.com
           </a>
         </p>
 

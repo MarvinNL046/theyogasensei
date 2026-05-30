@@ -12,13 +12,13 @@ export const Route = createFileRoute('/privacy')({
       {
         name: 'description',
         content:
-          'How The Yoga Sensei handles your data. Short, plain, and honest — no dark patterns.',
+          'How The Yoga Sensei handles your data: what we collect, why, and your choices. Short, plain and honest, no dark patterns and no selling of your data.',
       },
       { property: 'og:title', content: 'Privacy — The Yoga Sensei' },
       {
         property: 'og:description',
         content:
-          'How The Yoga Sensei handles your data. Short, plain, and honest — no dark patterns.',
+          'How The Yoga Sensei handles your data: what we collect, why, and your choices. Short, plain and honest, no dark patterns and no selling of your data.',
       },
       { property: 'og:url', content: 'https://www.theyogasensei.com/privacy' },
       { property: 'og:type', content: 'website' },
@@ -121,7 +121,7 @@ function PrivacyPage() {
               Practically: if you are subscribed and want out, the unsubscribe link in every
               newsletter does the job instantly. If you want a copy of what we have on you or want
               us to delete it, email{' '}
-              <a href="mailto:marvin@theyogasensei.com">marvin@theyogasensei.com</a> and it is done
+              <a href="mailto:hello@theyogasensei.com">hello@theyogasensei.com</a> and it is done
               within a few days.
             </p>
           </PolicySection>
@@ -157,7 +157,7 @@ function PrivacyPage() {
           <PolicySection title="Contact">
             <p>
               Marvin Smit<br />
-              <a href="mailto:marvin@theyogasensei.com">marvin@theyogasensei.com</a>
+              <a href="mailto:hello@theyogasensei.com">hello@theyogasensei.com</a>
               <br />
               The Netherlands
             </p>
