@@ -55,6 +55,8 @@ const SIDEBAR_CATEGORIES: Array<SidebarCategory> = [
 
 export const Route = createFileRoute('/guides/$slug')({
   loader: ({ params }) => {
+    // Drafts live under content/guides/_drafts/ — never routable, even directly.
+    if (params.slug.split('/').includes('_drafts')) throw notFound()
     try {
       const { frontmatter } = loadFrontmatter('guides', params.slug)
       const author = resolveAuthor(frontmatter.author)

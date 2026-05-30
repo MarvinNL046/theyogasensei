@@ -114,5 +114,8 @@ export function listContentSlugs(
   const prefix = `/content/${folder}/`
   return Object.keys(moduleByFolder[folder] ?? {})
     .map((p) => p.slice(prefix.length).replace(/\.mdx$/, ''))
+    // Skip drafts — mirror scanMdxEntries: any `_drafts/` segment is
+    // intentionally out of the live route + index + sitemap surface.
+    .filter((slugPath) => !slugPath.split('/').includes('_drafts'))
     .sort()
 }
