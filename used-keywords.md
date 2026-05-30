@@ -33,6 +33,7 @@ Append one row per published page in this format:
 | lululemon yoga mat | lululemon-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29 |
 | yoga blocks | best-yoga-blocks | cluster | yoga-accessories | how-to-choose-a-yoga-mat | 2026-05-30 | 2026-05-30 |
 | yoga bolster | best-yoga-bolster | cluster | yoga-accessories | how-to-choose-a-yoga-mat | 2026-05-30 | 2026-05-30 |
+| yoga mat bag | best-yoga-mat-bag | cluster | yoga-accessories | how-to-choose-a-yoga-mat | 2026-05-30 | 2026-05-30 |
 
 ---
 
