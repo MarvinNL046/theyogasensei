@@ -1,5 +1,5 @@
 - [Content tracking system](content-tracking.md) — `pnpm content:status` is the single source of truth for cluster health; auto-syncs keywords.csv from used-keywords.md
-- [Obsidian ContentOps vault](obsidian-vault.md) — cross-project SEO/CRO methodology lives in `C:\Users\M_Smi\Documents\ContentOps-Vault`
+- [Obsidian ContentOps vault](obsidian-vault.md) — cross-project SEO/CRO methodology lives in `C:\Users\M_Smi\OneDrive\ContentOps-Vault` (moved to OneDrive 2026-06-01 for cross-machine sync)
 - [User role](user-role.md) — Marvin, building theyogasensei.com as a solo yoga affiliate site
 - [Design system decisions](design-system-decisions.md) — palette/fonts/primitives reconciliation between CLAUDE.md & AGENTS.md; /public/images/design-templates is visual source of truth
 - [Feedback: slow page-by-page pace](feedback-pace.md) — one template per session, study the reference image in detail before any code, focus on design (layout/typography/dividers) not asset fidelity yet

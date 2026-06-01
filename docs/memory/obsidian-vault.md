@@ -9,7 +9,11 @@ metadata:
 
 The user maintains a cross-project content/SEO knowledge base in Obsidian:
 
-`C:\Users\M_Smi\Documents\ContentOps-Vault\`
+`C:\Users\M_Smi\OneDrive\ContentOps-Vault\`
+
+(Moved from `Documents\ContentOps-Vault` into OneDrive on 2026-06-01 for
+cross-machine sync. On a second PC the OneDrive root may differ — look under that
+machine's `OneDrive\ContentOps-Vault`.)
 
 It contains:
 - SEO methodology (on-page checklist, pillar/subpillar/cluster architecture, SERP+PAA workflow, schema, voice)
