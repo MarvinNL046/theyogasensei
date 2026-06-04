@@ -11,6 +11,7 @@ import { SpeedInsights } from '@vercel/speed-insights/react'
 import { buildRootHead, SITE_URL } from '#/lib/seo/head'
 import { Header } from '#/components/site/header'
 import { Footer } from '#/components/site/footer'
+import { ConsentBanner } from '#/components/site/consent-banner'
 
 import appCss from '../styles.css?url'
 
@@ -56,9 +57,11 @@ function RootDocument() {
             ]}
           />
         )}
-        {/* Cookieless analytics — no consent banner required */}
+        {/* Vercel Analytics is cookieless. GA4 (gtag) defaults to denied via
+            Consent Mode v2; the banner lets visitors opt in. */}
         <Analytics />
         <SpeedInsights />
+        <ConsentBanner />
         <Scripts />
       </body>
     </html>
