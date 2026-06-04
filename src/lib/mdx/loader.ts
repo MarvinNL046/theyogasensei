@@ -4,8 +4,13 @@ import {
   type Frontmatter,
 } from '#/lib/mdx/frontmatter'
 
+// Compiled MDX bodies accept an optional `components` prop to override how
+// intrinsic elements (e.g. `a`) render. `mdx/types` isn't installed, so the
+// prop is typed loosely here; the concrete map is `contentMdxComponents`.
+export type MdxContentComponent = ComponentType<{ components?: unknown }>
+
 interface MdxModule {
-  default: ComponentType
+  default: MdxContentComponent
   frontmatter: unknown
 }
 
@@ -61,7 +66,7 @@ export interface LoadedFrontmatter {
 
 export interface LoadedContent {
   frontmatter: Frontmatter
-  Component: ComponentType
+  Component: MdxContentComponent
 }
 
 /**

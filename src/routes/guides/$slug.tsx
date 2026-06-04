@@ -21,6 +21,7 @@ import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { GuideToc } from '#/components/seo/GuideToc'
 import { AffiliateDisclosure } from '#/components/site/AffiliateDisclosure'
+import { contentMdxComponents } from '#/lib/mdx/components'
 
 // Sidebar "Popular articles" — hand-curated, EXISTING slugs only.
 // When new evergreen guides ship, add them here (or replace with a
@@ -187,7 +188,7 @@ function GuidePage() {
                 <AffiliateDisclosure />
               ) : null}
               <GuideToc headings={headings} />
-              <Component />
+              <Component components={contentMdxComponents} />
             </article>
 
             {/* Sidebar */}

@@ -2,6 +2,7 @@ import { createFileRoute, notFound } from '@tanstack/react-router'
 import { loadContent, loadFrontmatter } from '#/lib/mdx/loader'
 import { resolveAuthor } from '#/lib/content/authors'
 import { buildHead, SITE_URL } from '#/lib/seo/head'
+import { contentMdxComponents } from '#/lib/mdx/components'
 
 export const Route = createFileRoute('/poses/$slug')({
   loader: ({ params }) => {
@@ -46,7 +47,7 @@ function PosePage() {
       <p className="not-prose text-sm text-stone-600">
         by {author.name} · Last reviewed {frontmatter.lastReviewedAt}
       </p>
-      <Component />
+      <Component components={contentMdxComponents} />
     </main>
   )
 }
