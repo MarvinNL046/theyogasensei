@@ -27,8 +27,10 @@ export interface HeadLink {
 }
 
 export interface HeadScript {
-  type: string
-  children: string
+  type?: string
+  children?: string
+  src?: string
+  async?: boolean
 }
 
 export interface HeadConfig {
@@ -190,9 +192,43 @@ export function buildRootHead(siteUrl: string): HeadConfig {
           url: `${siteUrl.replace(/\/$/, '')}/logo192.png`,
         },
       }),
+      // Google Analytics 4 (gtag.js) — runs alongside Vercel Analytics.
+      // Only emitted when a measurement ID is configured.
+      ...(GA_MEASUREMENT_ID
+        ? [
+            {
+              src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`,
+              async: true,
+            },
+            {
+              // Consent Mode v2: default everything to denied, then read any
+              // stored choice before the first config call. analytics_storage
+              // is only granted once the visitor accepts via the banner; until
+              // then GA4 runs in cookieless (modeled) mode.
+              children: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+var __gaConsent=(function(){try{return localStorage.getItem('ga-consent')}catch(e){return null}})();
+gtag('consent', 'default', {
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  analytics_storage: __gaConsent === 'granted' ? 'granted' : 'denied',
+  wait_for_update: 500
+});
+gtag('js', new Date());
+gtag('config', '${GA_MEASUREMENT_ID}');`,
+            },
+          ]
+        : []),
     ],
   }
 }
+
+// Google Analytics 4 measurement ID. Override per environment via the
+// GA_MEASUREMENT_ID env var; falls back to the production property.
+export const GA_MEASUREMENT_ID =
+  (typeof process !== 'undefined' && process.env.GA_MEASUREMENT_ID) ||
+  'G-7F7ZGQ25J4'
 
 export const SITE_URL =
   (typeof process !== 'undefined' && process.env.SITE_URL) ||
