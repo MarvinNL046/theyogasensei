@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { scanMdxEntries } from './scan-mdx-slugs'
 
-const HOST = 'theyogasensei.com'
+const HOST = 'www.theyogasensei.com'
 const KEY_FILE = join(process.cwd(), 'public', 'indexnow-key.txt')
 
 interface IndexNowPayload {
