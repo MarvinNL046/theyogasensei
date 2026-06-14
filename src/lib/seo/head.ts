@@ -171,6 +171,8 @@ export function buildRootHead(siteUrl: string): HeadConfig {
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'theme-color', content: '#c45a3e' },
+      // Pinterest domain verification (claim → Rich Pins + analytics).
+      { name: 'p:domain_verify', content: 'd73b2c07bb45df578b26e07b1669870a' },
       { property: 'og:site_name', content: 'The Yoga Sensei' },
       { property: 'og:locale', content: 'en_US' },
     ],
