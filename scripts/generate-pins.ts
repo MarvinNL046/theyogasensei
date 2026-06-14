@@ -291,6 +291,18 @@ const GUIDES: Guide[] = [
       ['Who Should Skip', 'Three Reasons to Skip This Mat', 'It is not the right pick for everyone.', 76],
     ],
   },
+  {
+    slug: 'retrospec-solana-yoga-mat',
+    hashtags: '#retrospecsolana #yogamat #thickyogamat #yogareview',
+    desc: 'An honest Retrospec Solana yoga mat review: why the thick NBR foam is brilliant for sore knees and floor work, where the squish costs you in balance, and who should skip it.',
+    hooks: [
+      ['Honest Review', 'Retrospec Solana: Cushion vs Stability', 'Brilliant for sore knees, wobbly for balance.', 80],
+      ['Common Problem', 'Sore Knees on a Thin Mat?', 'Why thick foam helps, and where it does not.', 78],
+      ['At a Glance', 'Half Inch vs One Inch: Which Solana?', 'Cushion, balance and what each is for.', 80],
+      ['The Yoga Sensei', 'Is the Retrospec Solana Right for You?', '', 84],
+      ['Who Should Skip', 'Three Reasons to Skip This Budget Mat', 'Hot yoga, balance, and one label to check.', 74],
+    ],
+  },
 ]
 
 const ANGLE_IDS = ['01-listicle', '02-problem', '03-comparison', '04-aesthetic', '05-checklist']

@@ -143,6 +143,18 @@ The clean-slate principle: every live URL serves real content or is a functional
 
 ---
 
+## 15. Budget foam mats (NBR/PVC) carry a California Prop 65 warning — check the label before drafting
+
+**Context.** The first draft of the Retrospec Solana review framed NBR foam benignly ("latex-free + phthalate-free = a safe pick"). The SERP/PAA pass then surfaced that both the ½" and 1" Solana ship with a Prop 65 warning for **acrylonitrile** ("known to the State of California to cause cancer"), verified across multiple independent sources and consistent with NBR chemistry (NBR = acrylonitrile-butadiene rubber). Shipping the rosy framing would have been a real E-E-A-T/trust miss on a health-adjacent purchase. The official Retrospec page hid the warning in dynamic/below-fold content, so a static page-fetch alone missed it.
+
+**Action.** For ANY budget foam or PVC mat review (NBR, TPE-foam, PVC), before writing the material section:
+- Search "<product> Proposition 65 warning" and check the Amazon listing + advocacy sources (Mamavation, htsyoga Prop 65 guides), not just the brand's own static page.
+- If a warning exists, disclose it verbatim in a `Callout`, add a dedicated "is it toxic / Prop 65" FAQ, and link the official [p65warnings.ca.gov](https://www.p65warnings.ca.gov/) for context.
+- YMYL-cautious framing only: disclose + contextualise (broad CA labeling law, not proof of harm in normal use) + offer the natural-rubber/cork/TPE alternative. No medical claims in either direction — neither "this is dangerous" nor "this is totally safe."
+- Don't assert "phthalate-free / non-toxic" as fact unless the brand states it AND it isn't contradicted by a Prop 65 label.
+
+---
+
 ## Cluster-level retrospective slot
 
 After each cluster completes (all spokes + pillar published), append a short retrospective here:

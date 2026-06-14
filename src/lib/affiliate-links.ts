@@ -29,6 +29,9 @@ export const affiliateLinks: Record<string, string> = {
   'gaiam-yoga-block': 'https://www.amazon.com/dp/B075W63K67',
   'gaiam-yoga-bolster': 'https://www.amazon.com/dp/B01ICBTPTK',
   'gaiam-mat-bag': 'https://www.amazon.com/dp/B011NQZBAI',
+  // Budget NBR-foam mat — anchor for the Retrospec Solana review (the ½" /
+  // XL version with strap). Specs verified from retrospec.com 2026-06-14.
+  'retrospec-solana-half-inch': 'https://www.amazon.com/dp/B0CLCB23V1',
 }
 
 // Keep all outbound affiliate redirects disabled until Associates approval.
