@@ -35,6 +35,9 @@ Append one row per published page in this format:
 | yoga bolster | best-yoga-bolster | cluster | yoga-accessories | how-to-choose-a-yoga-mat | 2026-05-30 | 2026-05-30 |
 | yoga mat bag | best-yoga-mat-bag | cluster | yoga-accessories | how-to-choose-a-yoga-mat | 2026-05-30 | 2026-05-30 |
 | retrospec solana yoga mat | retrospec-solana-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14 |
+| manduka yoga mat | manduka-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14 |
+| gaiam yoga mat | gaiam-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14 |
+| manduka vs lululemon yoga mat | manduka-vs-lululemon-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14 |
 
 ---
 

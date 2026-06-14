@@ -303,6 +303,42 @@ const GUIDES: Guide[] = [
       ['Who Should Skip', 'Three Reasons to Skip This Budget Mat', 'Hot yoga, balance, and one label to check.', 74],
     ],
   },
+  {
+    slug: 'manduka-yoga-mat',
+    hashtags: '#manduka #yogamat #yogagear #yogareview',
+    desc: 'An honest Manduka yoga mat review: why the PRO earns its lifetime-guarantee reputation, the break-in catch nobody warns you about, and how the eKO, GRP and PROlite compare so you pick the right one.',
+    hooks: [
+      ['Honest Review', 'Manduka: Which Mat Is Right for You?', 'PRO vs eKO vs GRP, decoded honestly.', 82],
+      ['Common Problem', 'Bought the Famous Manduka? It Might Be Wrong', 'The PRO is not the right pick for everyone.', 74],
+      ['At a Glance', 'Manduka PRO vs eKO vs GRP', 'Durability, eco, or hot-yoga grip — pick one.', 84],
+      ['The Yoga Sensei', 'The Lifetime Mat, Honestly Reviewed', '', 86],
+      ['Before You Buy', 'The Manduka Break-In Nobody Warns You About', 'Why a new PRO feels slippery, and what helps.', 74],
+    ],
+  },
+  {
+    slug: 'gaiam-yoga-mat',
+    hashtags: '#gaiam #yogamat #yogaforbeginners #budgetyoga',
+    desc: 'An honest Gaiam yoga mat review: why the cushioned, stylish Premium 6mm is one of the best budget beginner mats, where it falls short — sweat, length and the initial smell — and who should skip it.',
+    hooks: [
+      ['Honest Review', 'Gaiam Yoga Mat: Best Budget Beginner Mat?', 'Real cushion, low price, a few catches.', 78],
+      ['Common Problem', 'New to Yoga and Overwhelmed by Mats?', 'Why the cushioned Gaiam is an easy first pick.', 76],
+      ['At a Glance', 'Is the Gaiam Premium Worth It?', 'Cushion, style and price vs the compromises.', 82],
+      ['The Yoga Sensei', 'The Best First Yoga Mat on a Budget?', '', 84],
+      ['Who Should Skip', 'Three Reasons the Gaiam Is Not for You', 'Hot yoga, tall frames, and the initial smell.', 76],
+    ],
+  },
+  {
+    slug: 'manduka-vs-lululemon-yoga-mat',
+    hashtags: '#manduka #lululemon #yogamat #yogareview',
+    desc: 'Manduka PRO vs the Lululemon Reversible Mat, compared honestly: grip out of the box, the latex difference, durability, staining and price — and a clear pick for each kind of practitioner.',
+    hooks: [
+      ['Comparison', 'Manduka vs Lululemon: Which Mat Wins?', 'Grip, latex, durability and price, honestly.', 80],
+      ['Which One?', 'Grip Now or a Mat for Life?', 'The real difference between Manduka and Lululemon.', 76],
+      ['At a Glance', 'Manduka PRO vs Lululemon The Mat', 'Latex, break-in, staining and lifespan compared.', 80],
+      ['The Yoga Sensei', 'Manduka or Lululemon? A Clear Answer', '', 86],
+      ['Quick Tip', 'Latex-Sensitive? This Decides It Instantly', 'One mat is latex-free, the other is not.', 78],
+    ],
+  },
 ]
 
 const ANGLE_IDS = ['01-listicle', '02-problem', '03-comparison', '04-aesthetic', '05-checklist']
