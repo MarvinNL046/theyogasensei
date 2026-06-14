@@ -41,6 +41,9 @@ export function Footer() {
             <Link to="/guides" className="transition hover:text-[color:var(--color-bg)]">
               Guides
             </Link>
+            <Link to="/poses" className="transition hover:text-[color:var(--color-bg)]">
+              Poses
+            </Link>
             <Link to="/about" className="transition hover:text-[color:var(--color-bg)]">
               About
             </Link>

@@ -26,6 +26,7 @@ const NAV_LINKS = [
     params: { slug: 'best-yoga-mat-for-hot-yoga' },
     label: 'Hot yoga mats',
   },
+  { to: '/poses', label: 'Poses' },
   { to: '/about', label: 'About' },
 ] as const
 
