@@ -35,8 +35,8 @@
 
   /* Ink (text) */
   --color-ink: #1f1f1c;       /* primary text — near black, slightly warm */
-  --color-ink-soft: #3a3a36;  /* secondary text */
-  --color-ink-muted: #6e6a64; /* tertiary / metadata */
+  --color-ink-soft: #3a3a36;  /* secondary text — charcoal */
+  --color-ink-muted: #3a3a36; /* tertiary / metadata — charcoal, for legibility */
 
   /* Dark surface — olive, for footer & feature blocks */
   --color-olive: #3f4a35;
@@ -63,6 +63,10 @@
  * Light theme only.
  */
 :root {
+  /* Heading colour token — serif headings default to brand olive.
+     Dark surfaces override this to cream via [--color-heading:...]. */
+  --color-heading: var(--color-olive);
+
   --background: #f6f1ea;
   --foreground: #1f1f1c;
   --card: #fffdf9;
@@ -158,6 +162,19 @@
     background: var(--color-accent);
     color: var(--color-surface);
   }
+}
+
+/*
+ * Single source of truth for heading colour. Unlayered so it overrides any
+ * Tailwind utility (text-[...]) still on a heading — no per-component colour.
+ * Headings read --color-heading (olive by default); dark surfaces override the
+ * token via [--color-heading:var(--color-bg)] on their container.
+ */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-heading);
 }
 
 @layer components {

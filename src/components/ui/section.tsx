@@ -7,7 +7,7 @@ type SectionPadding = 'sm' | 'md' | 'lg' | 'none'
 const TONE: Record<SectionTone, string> = {
   default: '',
   muted: 'bg-[color:var(--color-surface-muted)]',
-  dark: 'bg-[color:var(--color-olive)] text-[color:var(--color-bg)]',
+  dark: 'bg-[color:var(--color-olive)] text-[color:var(--color-bg)] [--color-heading:var(--color-bg)]',
 }
 
 const PADDING: Record<SectionPadding, string> = {
