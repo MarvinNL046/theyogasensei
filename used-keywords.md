@@ -40,6 +40,10 @@ Append one row per published page in this format:
 | manduka vs lululemon yoga mat | manduka-vs-lululemon-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14 |
 | jade yoga mat | jade-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14 |
 | downward facing dog | downward-facing-dog | cluster | poses | yoga-for-beginners | 2026-06-14 | 2026-06-14 |
+| child's pose | childs-pose | cluster | poses | yoga-for-beginners | 2026-06-14 | 2026-06-14 |
+| warrior ii | warrior-ii | cluster | poses | yoga-for-beginners | 2026-06-14 | 2026-06-14 |
+| cobra pose | cobra-pose | cluster | poses | yoga-for-beginners | 2026-06-14 | 2026-06-14 |
+| pigeon pose | pigeon-pose | cluster | poses | yoga-for-beginners | 2026-06-14 | 2026-06-14 |
 
 ---
 
