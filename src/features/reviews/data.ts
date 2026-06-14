@@ -39,8 +39,6 @@ export interface MatPick {
   price: 1 | 2 | 3
 }
 
-const FALLBACK_IMG = '/images/guides/best-yoga-mats-2026/mat-lineup.webp'
-
 export const MAT_PICKS: MatPick[] = [
   {
     rank: 1,
@@ -63,7 +61,7 @@ export const MAT_PICKS: MatPick[] = [
     badge: 'Best for Hot Yoga',
     name: 'Manduka GRP Adapt 2.0',
     reviewSlug: null,
-    image: FALLBACK_IMG,
+    image: '/images/reviews/grp.webp',
     overall: 4.4,
     scores: { grip: 4.8, cushion: 4.0, durability: 4.5, value: 3.5, eco: 2.5 },
     blurb:
@@ -79,7 +77,7 @@ export const MAT_PICKS: MatPick[] = [
     badge: 'Best for Alignment',
     name: 'Liforme Original',
     reviewSlug: null,
-    image: FALLBACK_IMG,
+    image: '/images/reviews/liforme.webp',
     overall: 4.3,
     scores: { grip: 4.7, cushion: 4.0, durability: 4.0, value: 3.0, eco: 4.0 },
     blurb:
@@ -127,7 +125,7 @@ export const MAT_PICKS: MatPick[] = [
     badge: 'Best All-Round Cushion',
     name: 'Manduka eKO 5mm',
     reviewSlug: null,
-    image: FALLBACK_IMG,
+    image: '/images/reviews/eko.webp',
     overall: 4.2,
     scores: { grip: 4.3, cushion: 4.3, durability: 4.0, value: 3.8, eco: 4.5 },
     blurb:
@@ -143,7 +141,7 @@ export const MAT_PICKS: MatPick[] = [
     badge: 'Best Travel / Lightweight',
     name: 'Manduka eKO Lite 4mm',
     reviewSlug: null,
-    image: FALLBACK_IMG,
+    image: '/images/reviews/eko-lite.webp',
     overall: 4.0,
     scores: { grip: 4.2, cushion: 3.0, durability: 3.8, value: 4.0, eco: 4.5 },
     blurb:
