@@ -7,6 +7,7 @@ import { buildImageUrl } from '#/lib/images/variants'
 import { HomeTrustBar } from '#/features/home/HomeTrustBar'
 import { HomeTopicGrid } from '#/features/home/HomeTopicGrid'
 import { HomeFeaturedGuide } from '#/features/home/HomeFeaturedGuide'
+import { HomeTopPicks } from '#/features/home/HomeTopPicks'
 import { HomeLeadCapture } from '#/features/home/HomeLeadCapture'
 
 export const Route = createFileRoute('/')({
@@ -231,6 +232,11 @@ function HomePage() {
           FEATURED GUIDE — dark split band highlighting the flagship roundup
           ============================================================ */}
       <HomeFeaturedGuide />
+
+      {/* ============================================================
+          TOP PICKS — editorial-scored mat recommendations -> reviews
+          ============================================================ */}
+      <HomeTopPicks />
 
       {/* ============================================================
           LATEST WRITING — hand-curated list of pieces that exist

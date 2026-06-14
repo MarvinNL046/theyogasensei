@@ -26,6 +26,8 @@ export interface MatPick {
   name: string
   /** Review-page slug under /guides/ if we have a dedicated review, else null. */
   reviewSlug: string | null
+  /** Redesigned single-product detail route (e.g. /reviews/manduka-pro), if any. */
+  detailPath?: string
   image: string
   /** Editorial overall score, 0–5, one decimal. */
   overall: number
@@ -45,6 +47,7 @@ export const MAT_PICKS: MatPick[] = [
     badge: 'Best Overall',
     name: 'Manduka PRO 6mm',
     reviewSlug: 'manduka-yoga-mat',
+    detailPath: '/reviews/manduka-pro',
     image: '/images/guides/manduka-yoga-mat/hero.webp',
     overall: 4.6,
     scores: { grip: 4.0, cushion: 4.5, durability: 5.0, value: 3.5, eco: 2.5 },

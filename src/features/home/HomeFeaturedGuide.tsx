@@ -30,8 +30,7 @@ export function HomeFeaturedGuide() {
               for travel, sweat, sore knees and everyday home practice.
             </p>
             <Link
-              to="/guides/$slug"
-              params={{ slug: 'best-yoga-mats-2026' }}
+              to="/reviews/best-yoga-mats"
               className="mt-9 inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-accent)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-accent-deep)]"
             >
               Read the guide

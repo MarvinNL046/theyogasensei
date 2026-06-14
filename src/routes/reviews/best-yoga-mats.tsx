@@ -54,10 +54,20 @@ const IN_THIS_GUIDE = [
   { href: '#faqs', label: 'FAQs' },
 ]
 
-const reviewHref = (slug: string | null) =>
-  slug
-    ? { to: '/guides/$slug' as const, params: { slug } }
-    : { to: '/guides/$slug' as const, params: { slug: 'best-yoga-mats-2026' } }
+type ReviewLink =
+  | { to: '/reviews/manduka-pro' }
+  | { to: '/guides/$slug'; params: { slug: string } }
+
+const reviewHref = (pick: {
+  reviewSlug: string | null
+  detailPath?: string
+}): ReviewLink =>
+  pick.detailPath
+    ? { to: '/reviews/manduka-pro' }
+    : {
+        to: '/guides/$slug',
+        params: { slug: pick.reviewSlug ?? 'best-yoga-mats-2026' },
+      }
 
 function ReviewsOverviewPage() {
   const topPick = MAT_PICKS[0]
@@ -207,7 +217,7 @@ function ReviewsOverviewPage() {
                     {pick.blurb}
                   </p>
                   <Link
-                    {...reviewHref(pick.reviewSlug)}
+                    {...reviewHref(pick)}
                     className="mt-5 inline-flex items-center gap-2 self-start rounded-sm bg-[color:var(--color-olive)] px-4 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-charcoal)]"
                   >
                     {pick.reviewSlug ? 'Read review' : 'See on the list'}
@@ -278,7 +288,7 @@ function ReviewsOverviewPage() {
                     </td>
                     <td className="py-4 pl-3 text-right">
                       <Link
-                        {...reviewHref(pick.reviewSlug)}
+                        {...reviewHref(pick)}
                         className="inline-flex items-center gap-1.5 rounded-sm bg-[color:var(--color-olive)] px-3.5 py-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-charcoal)]"
                       >
                         View
@@ -371,7 +381,7 @@ function ReviewsOverviewPage() {
                       </div>
                     </div>
                     <Link
-                      {...reviewHref(pick.reviewSlug)}
+                      {...reviewHref(pick)}
                       className="mt-7 inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-olive)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.2em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-charcoal)]"
                     >
                       {pick.reviewSlug
@@ -560,7 +570,7 @@ function ReviewsOverviewPage() {
           </h2>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
-              {...reviewHref(topPick.reviewSlug)}
+              {...reviewHref(topPick)}
               className="inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-bg)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-olive)] transition hover:bg-[color:var(--color-surface)]"
             >
               Read the {topPick.name} review
