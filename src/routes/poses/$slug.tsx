@@ -88,69 +88,75 @@ function PosePage() {
   return (
     <>
       {/* ARTICLE HERO — fade-left illustration right, title + byline left */}
-      <section className="relative overflow-hidden bg-[color:var(--color-bg)]">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-cover bg-right-top bg-no-repeat opacity-90"
-          style={{ backgroundImage: `url('${heroImageUrl}')` }}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(90deg, var(--color-bg) 0%, rgba(246,241,234,.98) 36%, rgba(246,241,234,.42) 64%, rgba(246,241,234,0) 100%)',
-          }}
-        />
-        <Container size="wide" className="relative">
-          <div className="max-w-2xl py-20 md:py-28">
-            <nav
-              aria-label="Breadcrumb"
-              className="mb-8 flex items-center gap-3 text-xs text-[color:var(--color-ink-muted)]"
-            >
-              <Link to="/" className="transition hover:text-[color:var(--color-ink)]">
-                Home
-              </Link>
-              <span aria-hidden="true">›</span>
-              <span className="text-[color:var(--color-ink-muted)]">Poses</span>
-              <span aria-hidden="true">›</span>
-              <span className="font-medium text-[color:var(--color-ink)]">
+      <section className="bg-[color:var(--color-bg)]">
+        <Container size="wide">
+          <div className="grid items-center gap-10 py-12 md:grid-cols-12 md:gap-12 md:py-16 lg:gap-16">
+            {/* Left — breadcrumb, title, byline */}
+            <div className="md:col-span-6 lg:col-span-5">
+              <nav
+                aria-label="Breadcrumb"
+                className="mb-8 flex flex-wrap items-center gap-3 text-xs text-[color:var(--color-ink-muted)]"
+              >
+                <Link to="/" className="transition hover:text-[color:var(--color-ink)]">
+                  Home
+                </Link>
+                <span aria-hidden="true">›</span>
+                <Link
+                  to="/poses"
+                  className="transition hover:text-[color:var(--color-ink)]"
+                >
+                  Poses
+                </Link>
+                <span aria-hidden="true">›</span>
+                <span className="font-medium text-[color:var(--color-ink)]">
+                  {frontmatter.title}
+                </span>
+              </nav>
+              <Eyebrow tone="accent">{eyebrow}</Eyebrow>
+              <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight text-[color:var(--color-ink)] md:text-[44px]">
                 {frontmatter.title}
-              </span>
-            </nav>
-            <Eyebrow tone="accent">{eyebrow}</Eyebrow>
-            <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight text-[color:var(--color-ink)] md:text-[48px]">
-              {frontmatter.title}
-            </h1>
-            {frontmatter.metaDescription ? (
-              <p className="mt-6 max-w-xl text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">
-                {frontmatter.metaDescription}
-              </p>
-            ) : null}
-            <div className="mt-9 flex items-center gap-4">
-              <img
-                src="/images/team/marvin.webp"
-                alt={`Avatar of ${author.name}`}
-                width={96}
-                height={96}
-                className="h-12 w-12 rounded-full object-cover ring-1 ring-[color:var(--color-border)]"
-              />
-              <div className="text-sm">
-                <p className="font-medium text-[color:var(--color-ink)]">
-                  By{' '}
-                  <Link
-                    to="/authors/$slug"
-                    params={{ slug: author.slug }}
-                    className="underline-offset-2 hover:underline"
-                  >
-                    {author.name}
-                  </Link>
+              </h1>
+              {frontmatter.metaDescription ? (
+                <p className="mt-6 text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">
+                  {frontmatter.metaDescription}
                 </p>
-                <p className="text-xs text-[color:var(--color-ink-muted)]">
-                  {formatDate(frontmatter.publishedAt)}
-                  <span className="mx-1.5 opacity-40">·</span>
-                  {frontmatter.estimatedReadingTime} min read
-                </p>
+              ) : null}
+              <div className="mt-9 flex items-center gap-4">
+                <img
+                  src="/images/team/marvin.webp"
+                  alt={`Avatar of ${author.name}`}
+                  width={96}
+                  height={96}
+                  className="h-12 w-12 rounded-full object-cover ring-1 ring-[color:var(--color-border)]"
+                />
+                <div className="text-sm">
+                  <p className="font-medium text-[color:var(--color-ink)]">
+                    By{' '}
+                    <Link
+                      to="/authors/$slug"
+                      params={{ slug: author.slug }}
+                      className="underline-offset-2 hover:underline"
+                    >
+                      {author.name}
+                    </Link>
+                  </p>
+                  <p className="text-xs text-[color:var(--color-ink-muted)]">
+                    {formatDate(frontmatter.publishedAt)}
+                    <span className="mx-1.5 opacity-40">·</span>
+                    {frontmatter.estimatedReadingTime} min read
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* Right — clean full pose image panel */}
+            <div className="md:col-span-6 lg:col-span-7">
+              <div className="overflow-hidden rounded-3xl ring-1 ring-[color:var(--color-border)] shadow-sm">
+                <img
+                  src={heroImageUrl}
+                  alt={`${frontmatter.title}, demonstrated in a calm studio`}
+                  className="aspect-[16/10] w-full object-cover"
+                  loading="eager"
+                />
               </div>
             </div>
           </div>
