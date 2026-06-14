@@ -179,10 +179,11 @@ function HomePage() {
       <section className="relative overflow-hidden bg-[color:var(--color-bg)]">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-cover bg-right-top bg-no-repeat"
+          className="pointer-events-none absolute inset-0 bg-right bg-no-repeat"
           style={{
             backgroundImage:
               "url('/images/brand/home-og.webp')",
+            backgroundSize: 'auto 100%',
           }}
         />
         <div
