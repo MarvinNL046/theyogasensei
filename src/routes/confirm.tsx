@@ -128,7 +128,7 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
     case 'pending':
       return (
         <>
-          <h1 className="mt-3 font-serif text-3xl leading-tight tracking-tight text-[color:var(--color-ink)] sm:text-4xl">
+          <h1 className="mt-3 font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
             Confirming your subscription…
           </h1>
           <p className="mt-4 text-base leading-7 text-[color:var(--color-ink-soft)]">
@@ -139,7 +139,7 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
     case 'confirmed':
       return (
         <>
-          <h1 className="mt-3 font-serif text-3xl leading-tight tracking-tight text-[color:var(--color-ink)] sm:text-4xl">
+          <h1 className="mt-3 font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
             Welcome to the practice.
           </h1>
           <p className="mt-4 text-base leading-7 text-[color:var(--color-ink-soft)]">
@@ -166,7 +166,7 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
     case 'already-confirmed':
       return (
         <>
-          <h1 className="mt-3 font-serif text-3xl leading-tight tracking-tight text-[color:var(--color-ink)] sm:text-4xl">
+          <h1 className="mt-3 font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
             Already confirmed.
           </h1>
           <p className="mt-4 text-base leading-7 text-[color:var(--color-ink-soft)]">
@@ -186,7 +186,7 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
     case 'invalid-token':
       return (
         <>
-          <h1 className="mt-3 font-serif text-3xl leading-tight tracking-tight text-[color:var(--color-ink)] sm:text-4xl">
+          <h1 className="mt-3 font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
             That link is no longer valid.
           </h1>
           <p className="mt-4 text-base leading-7 text-[color:var(--color-ink-soft)]">
@@ -207,7 +207,7 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
     case 'missing-token':
       return (
         <>
-          <h1 className="mt-3 font-serif text-3xl leading-tight tracking-tight text-[color:var(--color-ink)] sm:text-4xl">
+          <h1 className="mt-3 font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
             No confirmation token.
           </h1>
           <p className="mt-4 text-base leading-7 text-[color:var(--color-ink-soft)]">
@@ -228,7 +228,7 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
     case 'error':
       return (
         <>
-          <h1 className="mt-3 font-serif text-3xl leading-tight tracking-tight text-[color:var(--color-ink)] sm:text-4xl">
+          <h1 className="mt-3 font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
             Something went wrong.
           </h1>
           <p className="mt-4 text-base leading-7 text-[color:var(--color-ink-soft)]">

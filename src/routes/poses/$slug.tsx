@@ -112,8 +112,8 @@ function PosePage() {
                   {frontmatter.title}
                 </span>
               </nav>
-              <Eyebrow tone="accent">{eyebrow}</Eyebrow>
-              <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight text-[color:var(--color-ink)] md:text-[44px]">
+              <Eyebrow tone="default">{eyebrow}</Eyebrow>
+              <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight md:text-[44px]">
                 {frontmatter.title}
               </h1>
               {frontmatter.metaDescription ? (
@@ -229,7 +229,7 @@ function PosePage() {
                           <p className="line-clamp-3 font-serif text-[14px] leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
                             {post.title}
                           </p>
-                          <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
+                          <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-muted)]">
                             {post.category}
                           </p>
                         </div>
@@ -279,8 +279,8 @@ function PosePage() {
         <Container size="wide">
           <div className="grid items-center gap-10 py-16 md:grid-cols-12 md:gap-12 md:py-24">
             <div className="md:col-span-7">
-              <Eyebrow tone="accent">Start your journey</Eyebrow>
-              <h2 className="mt-5 font-serif text-3xl leading-[1.1] tracking-tight text-[color:var(--color-ink)] md:text-[44px]">
+              <Eyebrow tone="default">Start your journey</Eyebrow>
+              <h2 className="mt-5 font-serif text-3xl leading-[1.1] tracking-tight md:text-[44px]">
                 Better practice.
                 <br />
                 <span className="italic text-[color:var(--color-ink-soft)]">

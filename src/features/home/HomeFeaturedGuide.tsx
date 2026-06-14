@@ -17,7 +17,7 @@ export function HomeFeaturedGuide() {
         <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
           <div>
             <Eyebrow tone="onDark">Featured guide · Yoga mats</Eyebrow>
-            <h2 className="mt-5 font-serif text-3xl leading-[1.12] tracking-tight text-[color:var(--color-bg)] md:text-[42px]">
+            <h2 className="mt-5 font-serif text-3xl leading-[1.12] tracking-tight md:text-[42px]">
               The 7 best yoga mats of 2026,
               <br />
               <span className="italic text-[color:var(--color-accent-soft)]">

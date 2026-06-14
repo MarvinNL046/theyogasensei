@@ -80,8 +80,8 @@ export function HomeTopicGrid() {
       <Container size="wide">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <Eyebrow tone="accent">Browse by topic</Eyebrow>
-            <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight text-[color:var(--color-ink)] md:text-[40px]">
+            <Eyebrow tone="default">Browse by topic</Eyebrow>
+            <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight md:text-[40px]">
               Find the guide you need.
             </h2>
           </div>

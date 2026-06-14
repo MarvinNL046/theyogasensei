@@ -30,10 +30,10 @@ export function FeaturedGuide({ guide }: FeaturedGuideProps) {
           />
         </div>
         <div className="mt-7">
-          <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
+          <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-muted)]">
             Start here · {guide.category}
           </p>
-          <h2 className="mt-4 font-serif text-3xl leading-[1.15] tracking-tight text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)] md:text-[36px]">
+          <h2 className="mt-4 font-serif text-3xl leading-[1.15] tracking-tight transition group-hover:[--color-heading:var(--color-accent-deep)] md:text-[36px]">
             {guide.title}
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-[15px]">

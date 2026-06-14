@@ -9,7 +9,7 @@ import { JapaneseAccent } from '#/components/ui/japanese-accent'
  */
 export function GuidesHero() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden [--color-heading:var(--color-bg)]">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -28,7 +28,7 @@ export function GuidesHero() {
       <Container size="wide" className="relative z-10">
         <div className="max-w-2xl py-20 md:py-32">
           <Eyebrow tone="onDark">Guides</Eyebrow>
-          <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight text-[color:var(--color-bg)] md:text-[56px]">
+          <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight md:text-[56px]">
             Honest yoga mat guides.
             <br />
             <span className="italic text-[color:var(--color-accent-soft)]">

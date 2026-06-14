@@ -56,8 +56,8 @@ function PosesIndex() {
       <section className="relative overflow-hidden bg-[color:var(--color-bg)]">
         <Container size="wide" className="relative">
           <div className="max-w-2xl py-20 md:py-28">
-            <Eyebrow tone="accent">Pose library</Eyebrow>
-            <h1 className="mt-5 font-serif text-4xl leading-[1.05] tracking-tight text-[color:var(--color-ink)] md:text-[56px]">
+            <Eyebrow tone="default">Pose library</Eyebrow>
+            <h1 className="mt-5 font-serif text-4xl leading-[1.05] tracking-tight md:text-[56px]">
               Find. Learn.{' '}
               <span className="italic text-[color:var(--color-ink-soft)]">
                 Practice.
@@ -75,8 +75,8 @@ function PosesIndex() {
       {/* POSE GRID */}
       <section className="bg-[color:var(--color-bg)] pb-20 pt-4 md:pb-28">
         <Container size="wide">
-          <Eyebrow tone="accent">The poses</Eyebrow>
-          <h2 className="mt-4 mb-10 font-serif text-2xl leading-tight tracking-tight text-[color:var(--color-ink)] md:text-[32px]">
+          <Eyebrow tone="default">The poses</Eyebrow>
+          <h2 className="mt-4 mb-10 font-serif text-2xl leading-tight tracking-tight md:text-[32px]">
             Foundational poses, one clear page at a time
           </h2>
 
@@ -102,11 +102,11 @@ function PosesIndex() {
                     />
                     <div className="p-6">
                       {pose.sanskrit ? (
-                        <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
+                        <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-muted)]">
                           {pose.sanskrit}
                         </p>
                       ) : null}
-                      <h3 className="mt-2 font-serif text-xl leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
+                      <h3 className="mt-2 font-serif text-xl leading-snug transition group-hover:[--color-heading:var(--color-accent-deep)]">
                         {pose.title}
                       </h3>
                       <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">

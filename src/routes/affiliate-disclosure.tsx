@@ -36,8 +36,8 @@ function AffiliateDisclosurePage() {
   return (
     <section className="bg-[color:var(--color-bg)] py-16 md:py-24">
       <Container size="narrow">
-        <Eyebrow tone="accent">Affiliate disclosure</Eyebrow>
-        <h1 className="mt-5 font-serif text-4xl leading-tight tracking-tight text-[color:var(--color-ink)] md:text-5xl">
+        <Eyebrow tone="default">Affiliate disclosure</Eyebrow>
+        <h1 className="mt-5 font-serif text-4xl leading-tight tracking-tight md:text-5xl">
           How affiliate links work on The Yoga Sensei
         </h1>
         <p className="mt-6 text-base leading-8 text-[color:var(--color-ink-soft)]">
@@ -48,7 +48,7 @@ function AffiliateDisclosurePage() {
 
         <div className="mt-10 space-y-9 rounded-3xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-sm md:p-9">
           <section>
-            <h2 className="font-serif text-2xl text-[color:var(--color-ink)]">
+            <h2 className="font-serif text-2xl">
               Current status
             </h2>
             <p className="mt-3 text-sm leading-7 text-[color:var(--color-ink-soft)]">
@@ -60,7 +60,7 @@ function AffiliateDisclosurePage() {
           </section>
 
           <section>
-            <h2 className="font-serif text-2xl text-[color:var(--color-ink)]">
+            <h2 className="font-serif text-2xl">
               Programs we may use
             </h2>
             <p className="mt-3 text-sm leading-7 text-[color:var(--color-ink-soft)]">
@@ -72,7 +72,7 @@ function AffiliateDisclosurePage() {
           </section>
 
           <section>
-            <h2 className="font-serif text-2xl text-[color:var(--color-ink)]">
+            <h2 className="font-serif text-2xl">
               What commissions do not change
             </h2>
             <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-7 text-[color:var(--color-ink-soft)]">
@@ -84,7 +84,7 @@ function AffiliateDisclosurePage() {
           </section>
 
           <section>
-            <h2 className="font-serif text-2xl text-[color:var(--color-ink)]">
+            <h2 className="font-serif text-2xl">
               How recommendations are made
             </h2>
             <p className="mt-3 text-sm leading-7 text-[color:var(--color-ink-soft)]">
@@ -96,7 +96,7 @@ function AffiliateDisclosurePage() {
           </section>
 
           <section>
-            <h2 className="font-serif text-2xl text-[color:var(--color-ink)]">
+            <h2 className="font-serif text-2xl">
               Questions or corrections
             </h2>
             <p className="mt-3 text-sm leading-7 text-[color:var(--color-ink-soft)]">

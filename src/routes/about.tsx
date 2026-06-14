@@ -154,8 +154,8 @@ function AboutHero() {
             <span className="font-medium text-[color:var(--color-ink)]">About</span>
           </nav>
 
-          <Eyebrow tone="accent">About The Yoga Sensei</Eyebrow>
-          <h1 className="mt-5 font-serif text-5xl leading-[0.98] text-[color:var(--color-ink)] md:text-[64px]">
+          <Eyebrow tone="default">About The Yoga Sensei</Eyebrow>
+          <h1 className="mt-5 font-serif text-5xl leading-[0.98] md:text-[64px]">
             Practice over{' '}
             <br />
             perfection.
@@ -345,7 +345,7 @@ function HowThisSiteIsMade() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-serif text-xl leading-snug text-[color:var(--color-ink)]">
+                  <h3 className="font-serif text-xl leading-snug">
                     {p.title}
                   </h3>
                   <p className="mt-2 text-sm leading-7 text-[color:var(--color-ink-soft)]">
@@ -374,7 +374,7 @@ function OriginSection() {
     <section className="mt-12 grid items-center gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
       <div>
         <SectionLabel>Why this platform exists</SectionLabel>
-        <h2 className="mt-4 font-serif text-4xl leading-tight text-[color:var(--color-ink)]">
+        <h2 className="mt-4 font-serif text-4xl leading-tight">
           Why this exists
         </h2>
         <div className="mt-6 space-y-4 text-sm leading-7 text-[color:var(--color-ink-soft)]">
@@ -560,7 +560,7 @@ function IconPanel({
       ].join(' ')}
     >
       <Icon className={['h-10 w-10 text-[color:var(--color-olive)]', centered ? 'mx-auto' : ''].join(' ')} strokeWidth={1.35} />
-      <h3 className="mt-5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-ink)]">
+      <h3 className="mt-5 text-[11px] font-semibold uppercase tracking-[0.16em]">
         {item.title}
       </h3>
       <p

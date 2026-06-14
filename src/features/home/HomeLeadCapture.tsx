@@ -32,7 +32,7 @@ export function HomeLeadCapture() {
       <Container size="wide" className="relative z-10">
         <div className="max-w-xl py-4 md:py-8">
           <Eyebrow tone="onDark">The weekly email</Eyebrow>
-          <h2 className="mt-5 font-serif text-3xl leading-[1.1] tracking-tight text-[color:var(--color-bg)] md:text-[44px]">
+          <h2 className="mt-5 font-serif text-3xl leading-[1.1] tracking-tight md:text-[44px]">
             Calm guidance,
             <br />
             <span className="italic text-[color:var(--color-accent-soft)]">

@@ -197,7 +197,7 @@ function HomePage() {
         <Container size="wide" className="relative">
           <div className="max-w-xl py-24 md:py-32">
             <JapaneseAccent phrase="presence" size="md" className="block" />
-            <h1 className="mt-6 font-serif text-4xl leading-[1.05] tracking-tight text-[color:var(--color-ink)] md:text-[56px]">
+            <h1 className="mt-6 font-serif text-4xl leading-[1.05] tracking-tight md:text-[56px]">
               Calm guidance for a real yoga practice.
             </h1>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-[color:var(--color-ink-muted)] md:text-[17px]">
@@ -237,8 +237,8 @@ function HomePage() {
           ============================================================ */}
       <section className="bg-[color:var(--color-bg)] py-16 md:py-24">
         <Container size="wide">
-          <Eyebrow tone="accent">Latest writing</Eyebrow>
-          <h2 className="mt-4 max-w-2xl font-serif text-3xl leading-tight tracking-tight text-[color:var(--color-ink)] md:text-[40px]">
+          <Eyebrow tone="default">Latest writing</Eyebrow>
+          <h2 className="mt-4 max-w-2xl font-serif text-3xl leading-tight tracking-tight md:text-[40px]">
             Start with the yoga mat buying guide.
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-[color:var(--color-ink-muted)]">
@@ -263,10 +263,10 @@ function HomePage() {
                   />
                 </Link>
                 <div className="p-8">
-                  <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-muted)]">
                     {post.eyebrow}
                   </p>
-                  <h3 className="mt-4 font-serif text-2xl leading-snug text-[color:var(--color-ink)]">
+                  <h3 className="mt-4 font-serif text-2xl leading-snug">
                     <Link
                       to={post.to}
                       params={post.params}
@@ -310,8 +310,8 @@ function HomePage() {
         <Container size="wide">
           <div className="flex flex-col items-start gap-6 py-16 md:flex-row md:items-center md:justify-between md:py-20">
             <div className="max-w-xl">
-              <Eyebrow tone="accent">Who writes this</Eyebrow>
-              <h2 className="mt-4 font-serif text-2xl leading-tight tracking-tight text-[color:var(--color-ink)] md:text-[32px]">
+              <Eyebrow tone="default">Who writes this</Eyebrow>
+              <h2 className="mt-4 font-serif text-2xl leading-tight tracking-tight md:text-[32px]">
                 Written by Marvin Smit. Long-time practitioner, not a certified instructor.
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">

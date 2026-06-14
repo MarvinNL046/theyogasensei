@@ -43,8 +43,8 @@ function PrivacyPage() {
   return (
     <section className="bg-[color:var(--color-bg)] py-16 md:py-24">
       <Container size="narrow">
-        <Eyebrow tone="accent">Privacy</Eyebrow>
-        <h1 className="mt-5 font-serif text-4xl leading-tight tracking-tight text-[color:var(--color-ink)] md:text-5xl">
+        <Eyebrow tone="default">Privacy</Eyebrow>
+        <h1 className="mt-5 font-serif text-4xl leading-tight tracking-tight md:text-5xl">
           How we handle your data
         </h1>
         <p className="mt-6 text-base leading-8 text-[color:var(--color-ink-soft)]">
@@ -175,7 +175,7 @@ function PrivacyPage() {
 function PolicySection({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="space-y-3 text-sm leading-7 text-[color:var(--color-ink-soft)] [&_a]:underline [&_a]:underline-offset-4 [&_h3]:pt-2 [&_h3]:font-semibold [&_h3]:text-[color:var(--color-ink)] [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5">
-      <h2 className="font-serif text-2xl text-[color:var(--color-ink)]">{title}</h2>
+      <h2 className="font-serif text-2xl">{title}</h2>
       {children}
     </section>
   )

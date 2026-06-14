@@ -40,8 +40,8 @@ function ContactPage() {
   return (
     <section className="bg-[color:var(--color-bg)] py-16 md:py-24">
       <Container size="narrow">
-        <Eyebrow tone="accent">Contact</Eyebrow>
-        <h1 className="mt-5 font-serif text-4xl leading-tight tracking-tight text-[color:var(--color-ink)] md:text-5xl">
+        <Eyebrow tone="default">Contact</Eyebrow>
+        <h1 className="mt-5 font-serif text-4xl leading-tight tracking-tight md:text-5xl">
           Reach Marvin
         </h1>
         <p className="mt-6 text-base leading-8 text-[color:var(--color-ink-soft)]">
@@ -56,7 +56,7 @@ function ContactPage() {
 
         <div className="mt-10 space-y-9 rounded-3xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-sm md:p-9">
           <section>
-            <h2 className="font-serif text-2xl text-[color:var(--color-ink)]">
+            <h2 className="font-serif text-2xl">
               What to email about
             </h2>
             <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-7 text-[color:var(--color-ink-soft)]">
@@ -68,7 +68,7 @@ function ContactPage() {
           </section>
 
           <section>
-            <h2 className="font-serif text-2xl text-[color:var(--color-ink)]">
+            <h2 className="font-serif text-2xl">
               What not to email about
             </h2>
             <p className="mt-3 text-sm leading-7 text-[color:var(--color-ink-soft)]">
@@ -78,7 +78,7 @@ function ContactPage() {
           </section>
 
           <section>
-            <h2 className="font-serif text-2xl text-[color:var(--color-ink)]">
+            <h2 className="font-serif text-2xl">
               About reply times
             </h2>
             <p className="mt-3 text-sm leading-7 text-[color:var(--color-ink-soft)]">
@@ -87,7 +87,7 @@ function ContactPage() {
           </section>
 
           <section>
-            <h2 className="font-serif text-2xl text-[color:var(--color-ink)]">Mail</h2>
+            <h2 className="font-serif text-2xl">Mail</h2>
             <p className="mt-3 text-sm leading-7 text-[color:var(--color-ink-soft)]">
               Marvin Smit
               <br />
