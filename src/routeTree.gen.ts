@@ -20,6 +20,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as PosesIndexRouteImport } from './routes/poses/index'
 import { Route as GuidesIndexRouteImport } from './routes/guides/index'
 import { Route as GoIndexRouteImport } from './routes/go/index'
+import { Route as ReviewsMandukaProRouteImport } from './routes/reviews/manduka-pro'
 import { Route as ReviewsBestYogaMatsRouteImport } from './routes/reviews/best-yoga-mats'
 import { Route as PosesSlugRouteImport } from './routes/poses/$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
@@ -81,6 +82,11 @@ const GoIndexRoute = GoIndexRouteImport.update({
   path: '/go/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReviewsMandukaProRoute = ReviewsMandukaProRouteImport.update({
+  id: '/reviews/manduka-pro',
+  path: '/reviews/manduka-pro',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsBestYogaMatsRoute = ReviewsBestYogaMatsRouteImport.update({
   id: '/reviews/best-yoga-mats',
   path: '/reviews/best-yoga-mats',
@@ -121,6 +127,7 @@ export interface FileRoutesByFullPath {
   '/guides/$slug': typeof GuidesSlugRoute
   '/poses/$slug': typeof PosesSlugRoute
   '/reviews/best-yoga-mats': typeof ReviewsBestYogaMatsRoute
+  '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
   '/go/': typeof GoIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/poses/': typeof PosesIndexRoute
@@ -139,6 +146,7 @@ export interface FileRoutesByTo {
   '/guides/$slug': typeof GuidesSlugRoute
   '/poses/$slug': typeof PosesSlugRoute
   '/reviews/best-yoga-mats': typeof ReviewsBestYogaMatsRoute
+  '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
   '/go': typeof GoIndexRoute
   '/guides': typeof GuidesIndexRoute
   '/poses': typeof PosesIndexRoute
@@ -158,6 +166,7 @@ export interface FileRoutesById {
   '/guides/$slug': typeof GuidesSlugRoute
   '/poses/$slug': typeof PosesSlugRoute
   '/reviews/best-yoga-mats': typeof ReviewsBestYogaMatsRoute
+  '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
   '/go/': typeof GoIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/poses/': typeof PosesIndexRoute
@@ -178,6 +187,7 @@ export interface FileRouteTypes {
     | '/guides/$slug'
     | '/poses/$slug'
     | '/reviews/best-yoga-mats'
+    | '/reviews/manduka-pro'
     | '/go/'
     | '/guides/'
     | '/poses/'
@@ -196,6 +206,7 @@ export interface FileRouteTypes {
     | '/guides/$slug'
     | '/poses/$slug'
     | '/reviews/best-yoga-mats'
+    | '/reviews/manduka-pro'
     | '/go'
     | '/guides'
     | '/poses'
@@ -214,6 +225,7 @@ export interface FileRouteTypes {
     | '/guides/$slug'
     | '/poses/$slug'
     | '/reviews/best-yoga-mats'
+    | '/reviews/manduka-pro'
     | '/go/'
     | '/guides/'
     | '/poses/'
@@ -233,6 +245,7 @@ export interface RootRouteChildren {
   GuidesSlugRoute: typeof GuidesSlugRoute
   PosesSlugRoute: typeof PosesSlugRoute
   ReviewsBestYogaMatsRoute: typeof ReviewsBestYogaMatsRoute
+  ReviewsMandukaProRoute: typeof ReviewsMandukaProRoute
   GoIndexRoute: typeof GoIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   PosesIndexRoute: typeof PosesIndexRoute
@@ -317,6 +330,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GoIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reviews/manduka-pro': {
+      id: '/reviews/manduka-pro'
+      path: '/reviews/manduka-pro'
+      fullPath: '/reviews/manduka-pro'
+      preLoaderRoute: typeof ReviewsMandukaProRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews/best-yoga-mats': {
       id: '/reviews/best-yoga-mats'
       path: '/reviews/best-yoga-mats'
@@ -369,6 +389,7 @@ const rootRouteChildren: RootRouteChildren = {
   GuidesSlugRoute: GuidesSlugRoute,
   PosesSlugRoute: PosesSlugRoute,
   ReviewsBestYogaMatsRoute: ReviewsBestYogaMatsRoute,
+  ReviewsMandukaProRoute: ReviewsMandukaProRoute,
   GoIndexRoute: GoIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   PosesIndexRoute: PosesIndexRoute,
