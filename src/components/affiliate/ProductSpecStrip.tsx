@@ -40,13 +40,13 @@ function ProductSpecStrip({ productName, specs }: ProductSpecStripProps) {
   return (
     <aside
       aria-label={`${productName} product specs`}
-      className="not-prose my-5 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/80 p-4 shadow-sm"
+      className="not-prose my-5 rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/80 p-4 shadow-sm"
     >
       <div className="flex flex-wrap gap-2.5">
         {items.map(({ key, label, value, icon: Icon }) => (
           <div
             key={key}
-            className="inline-flex items-center gap-2 rounded-full bg-[color:var(--color-surface-muted)] px-3 py-1.5 text-xs text-[color:var(--color-ink-soft)]"
+            className="inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-surface-muted)] px-3 py-1.5 text-xs text-[color:var(--color-ink-soft)]"
           >
             <Icon aria-hidden="true" className="h-3.5 w-3.5 text-[color:var(--color-accent-deep)]" />
             <span className="font-medium text-[color:var(--color-ink)]">{label}:</span>

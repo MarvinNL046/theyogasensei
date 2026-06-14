@@ -18,7 +18,7 @@ export function FeaturedGuide({ guide }: FeaturedGuideProps) {
         params={{ slug: guide.slug }}
         className="group block"
       >
-        <div className="aspect-[3/2] overflow-hidden rounded-3xl bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
+        <div className="aspect-[3/2] overflow-hidden rounded-sm bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
           <img
             src={buildImageUrl(guide.heroImage, 'inline')}
             alt={guide.title}

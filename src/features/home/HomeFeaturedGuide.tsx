@@ -32,14 +32,14 @@ export function HomeFeaturedGuide() {
             <Link
               to="/guides/$slug"
               params={{ slug: 'best-yoga-mats-2026' }}
-              className="mt-9 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-accent)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-accent-deep)]"
+              className="mt-9 inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-accent)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-accent-deep)]"
             >
               Read the guide
               <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
             </Link>
           </div>
 
-          <div className="overflow-hidden rounded-2xl ring-1 ring-black/30">
+          <div className="overflow-hidden rounded-sm ring-1 ring-black/30">
             <img
               src="/images/brand/review-hero-best-mats.webp"
               alt="A rolled olive yoga mat on a warm wooden studio floor beside an olive branch in a ceramic vase"

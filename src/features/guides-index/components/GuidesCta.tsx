@@ -43,14 +43,14 @@ export function GuidesCta() {
             <Link
               to="/guides/$slug"
               params={{ slug: FEATURED_SLUG }}
-              className="inline-flex items-center gap-2 rounded-full bg-[color:var(--color-accent)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-accent-deep)]"
+              className="inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-accent)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-accent-deep)]"
             >
               Read the mat guide
               <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
             </Link>
             <Link
               to="/about"
-              className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-bg)]/30 px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent-soft)]"
+              className="inline-flex items-center gap-2 rounded-sm border border-[color:var(--color-bg)]/30 px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent-soft)]"
             >
               About the method
             </Link>

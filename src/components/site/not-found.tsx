@@ -26,7 +26,7 @@ export function NotFound() {
         <Link
           to="/guides/$slug"
           params={{ slug: 'how-to-clean-a-yoga-mat' }}
-          className="rounded-2xl border border-stone-200 bg-white p-5 transition hover:border-accent hover:shadow-sm"
+          className="rounded-sm border border-stone-200 bg-white p-5 transition hover:border-accent hover:shadow-sm"
         >
           <p className="text-xs font-semibold uppercase tracking-wide text-accent">
             Guide · Mat care

@@ -44,7 +44,7 @@ export function GuideToc({ headings }: GuideTocProps) {
       {/* Desktop — always expanded */}
       <nav
         aria-label="On this page"
-        className="not-prose mb-12 hidden min-w-0 max-w-full rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-7 py-6 md:block"
+        className="not-prose mb-12 hidden min-w-0 max-w-full rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-7 py-6 md:block"
       >
         <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-muted)]">
           In this guide
@@ -54,7 +54,7 @@ export function GuideToc({ headings }: GuideTocProps) {
       </nav>
 
       {/* Mobile — collapsible, collapsed by default to stay compact */}
-      <details className="not-prose group mb-10 min-w-0 max-w-full rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-4 md:hidden">
+      <details className="not-prose group mb-10 min-w-0 max-w-full rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-4 md:hidden">
         <summary className="flex cursor-pointer list-none items-center justify-between text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-muted)] [&::-webkit-details-marker]:hidden">
           In this guide
           <ChevronDown

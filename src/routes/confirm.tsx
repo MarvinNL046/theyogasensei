@@ -112,7 +112,7 @@ function ConfirmPage() {
 
   return (
     <section className="mx-auto max-w-2xl px-6 py-20 md:py-28">
-      <div className="rounded-3xl border border-[color:var(--color-border)]/70 bg-[color:var(--color-surface)]/80 p-8 shadow-sm backdrop-blur-sm sm:p-12">
+      <div className="rounded-sm border border-[color:var(--color-border)]/70 bg-[color:var(--color-surface)]/80 p-8 shadow-sm backdrop-blur-sm sm:p-12">
         <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-ink-muted)]">
           Subscription
         </p>
@@ -150,13 +150,13 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               to="/guides/$slug" params={{ slug: 'how-to-clean-a-yoga-mat' }}
-              className="inline-flex items-center rounded-full bg-[color:var(--color-olive)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
+              className="inline-flex items-center rounded-sm bg-[color:var(--color-olive)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
             >
               Read the guides
             </Link>
             <Link
               to="/"
-              className="inline-flex items-center rounded-full border border-[color:var(--color-border)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-soft)] transition hover:bg-[color:var(--color-surface-muted)]"
+              className="inline-flex items-center rounded-sm border border-[color:var(--color-border)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-soft)] transition hover:bg-[color:var(--color-surface-muted)]"
             >
               Start here
             </Link>
@@ -176,7 +176,7 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
           <div className="mt-8">
             <Link
               to="/guides/$slug" params={{ slug: 'how-to-clean-a-yoga-mat' }}
-              className="inline-flex items-center rounded-full bg-[color:var(--color-olive)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
+              className="inline-flex items-center rounded-sm bg-[color:var(--color-olive)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
             >
               Read the guides
             </Link>
@@ -197,7 +197,7 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
           <div className="mt-8">
             <Link
               to="/"
-              className="inline-flex items-center rounded-full bg-[color:var(--color-olive)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
+              className="inline-flex items-center rounded-sm bg-[color:var(--color-olive)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
             >
               Sign up again
             </Link>
@@ -218,7 +218,7 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
           <div className="mt-8">
             <Link
               to="/"
-              className="inline-flex items-center rounded-full border border-[color:var(--color-border)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-soft)] transition hover:bg-[color:var(--color-surface-muted)]"
+              className="inline-flex items-center rounded-sm border border-[color:var(--color-border)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-soft)] transition hover:bg-[color:var(--color-surface-muted)]"
             >
               Go home
             </Link>

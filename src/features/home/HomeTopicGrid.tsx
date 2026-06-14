@@ -98,7 +98,7 @@ export function HomeTopicGrid() {
           {TOPICS.map((topic) => {
             const inner = (
               <>
-                <div className="overflow-hidden rounded-2xl bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
+                <div className="overflow-hidden rounded-sm bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
                   <img
                     src={topic.image}
                     alt={`${topic.label}: ${topic.subtitle}`}

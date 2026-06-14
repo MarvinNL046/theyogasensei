@@ -208,7 +208,7 @@ function HomePage() {
             <Link
               to="/guides/$slug"
               params={{ slug: 'how-to-choose-a-yoga-mat' }}
-              className="mt-9 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-olive)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
+              className="mt-9 inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-olive)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
             >
               Read the yoga mat guide
               <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
@@ -250,7 +250,7 @@ function HomePage() {
             {LATEST_WRITING.map((post) => (
               <article
                 key={post.params.slug}
-                className="group overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] transition hover:border-[color:var(--color-accent)]/40"
+                className="group overflow-hidden rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] transition hover:border-[color:var(--color-accent)]/40"
               >
                 <Link to={post.to} params={post.params} className="block">
                   <img
@@ -294,7 +294,7 @@ function HomePage() {
           <div className="mt-12">
             <Link
               to="/guides"
-              className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-olive)] px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-olive)] transition hover:bg-[color:var(--color-olive)] hover:text-[color:var(--color-bg)]"
+              className="inline-flex items-center gap-2 rounded-sm border border-[color:var(--color-olive)] px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-olive)] transition hover:bg-[color:var(--color-olive)] hover:text-[color:var(--color-bg)]"
             >
               View all guides
               <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
@@ -321,7 +321,7 @@ function HomePage() {
             </div>
             <Link
               to="/about"
-              className="inline-flex flex-shrink-0 items-center gap-2 rounded-full border border-[color:var(--color-olive)] px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-olive)] transition hover:bg-[color:var(--color-olive)] hover:text-[color:var(--color-bg)]"
+              className="inline-flex flex-shrink-0 items-center gap-2 rounded-sm border border-[color:var(--color-olive)] px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-olive)] transition hover:bg-[color:var(--color-olive)] hover:text-[color:var(--color-bg)]"
             >
               About the author
               <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />

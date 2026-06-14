@@ -56,7 +56,7 @@ function PrivacyPage() {
           Last updated: <time dateTime={LAST_UPDATED}>{LAST_UPDATED}</time>
         </p>
 
-        <div className="mt-10 space-y-9 rounded-3xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-sm md:p-9">
+        <div className="mt-10 space-y-9 rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-sm md:p-9">
           <PolicySection title="What we collect">
             <h3>Email address (only if you subscribe to the newsletter).</h3>
             <p>

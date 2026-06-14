@@ -33,7 +33,7 @@ export function Figure({
 }: FigureProps) {
   return (
     <figure className={cn('not-prose my-8', className)}>
-      <div className="overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
+      <div className="overflow-hidden rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
         <Image
           id={id}
           variant={variant}

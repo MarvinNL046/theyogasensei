@@ -54,7 +54,7 @@ function ContactPage() {
           </a>
         </p>
 
-        <div className="mt-10 space-y-9 rounded-3xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-sm md:p-9">
+        <div className="mt-10 space-y-9 rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-sm md:p-9">
           <section>
             <h2 className="font-serif text-2xl">
               What to email about

@@ -81,7 +81,7 @@ export function NewsletterCapture({
         'not-prose',
         onDark
           ? ''
-          : 'rounded-2xl border border-stone-200 bg-white p-6 sm:p-8',
+          : 'rounded-sm border border-stone-200 bg-white p-6 sm:p-8',
         className,
       )}
     >
@@ -139,12 +139,12 @@ export function NewsletterCapture({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             disabled={state === 'submitting'}
-            className="flex-1 rounded-full border border-[color:var(--color-bg)]/30 bg-[color:var(--color-bg)]/10 px-5 py-3 text-sm text-[color:var(--color-bg)] placeholder:text-[color:var(--color-bg)]/50 focus:border-[color:var(--color-accent)] focus:outline-none"
+            className="flex-1 rounded-sm border border-[color:var(--color-bg)]/30 bg-[color:var(--color-bg)]/10 px-5 py-3 text-sm text-[color:var(--color-bg)] placeholder:text-[color:var(--color-bg)]/50 focus:border-[color:var(--color-accent)] focus:outline-none"
           />
           <button
             type="submit"
             disabled={state === 'submitting' || !email}
-            className="rounded-full bg-[color:var(--color-accent)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-accent-deep)] disabled:opacity-60 sm:w-auto"
+            className="rounded-sm bg-[color:var(--color-accent)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-accent-deep)] disabled:opacity-60 sm:w-auto"
           >
             {state === 'submitting' ? 'Sending…' : 'Subscribe'}
           </button>

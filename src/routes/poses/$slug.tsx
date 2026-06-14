@@ -150,7 +150,7 @@ function PosePage() {
             </div>
             {/* Right — clean full pose image panel */}
             <div className="md:col-span-6 lg:col-span-7">
-              <div className="overflow-hidden rounded-3xl ring-1 ring-[color:var(--color-border)] shadow-sm">
+              <div className="overflow-hidden rounded-sm ring-1 ring-[color:var(--color-border)] shadow-sm">
                 <img
                   src={heroImageUrl}
                   alt={`${frontmatter.title}, demonstrated in a calm studio`}
@@ -173,7 +173,7 @@ function PosePage() {
 
             <aside className="min-w-0 max-w-full md:col-span-4 md:pl-2 lg:pl-4">
               {/* About the Author */}
-              <div className="mb-12 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
+              <div className="mb-12 rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
                 <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
                   About the Author
                 </p>
@@ -209,7 +209,7 @@ function PosePage() {
               </div>
 
               {/* Related guides */}
-              <div className="mb-12 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
+              <div className="mb-12 rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
                 <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
                   Practise it better
                 </p>
@@ -240,7 +240,7 @@ function PosePage() {
               </div>
 
               {/* Categories (display-only) */}
-              <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
+              <div className="rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
                 <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
                   Explore
                 </p>
@@ -293,7 +293,7 @@ function PosePage() {
               </p>
               <Link
                 to="/"
-                className="mt-9 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-olive)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
+                className="mt-9 inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-olive)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
               >
                 Read the about page
                 <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />

@@ -30,7 +30,7 @@ export function DiagramFrame({
 }: DiagramFrameProps) {
   return (
     <figure className={cn('not-prose my-8', className)}>
-      <div className="overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 sm:p-7">
+      <div className="overflow-hidden rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 sm:p-7">
         {(eyebrow || illustrative) && (
           <div className="mb-4 flex items-baseline justify-between gap-4">
             {eyebrow ? (

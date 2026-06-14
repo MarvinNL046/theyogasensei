@@ -55,7 +55,7 @@ function TermsPage() {
           Last updated: <time dateTime={LAST_UPDATED}>{LAST_UPDATED}</time>
         </p>
 
-        <div className="mt-10 space-y-9 rounded-3xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-sm md:p-9">
+        <div className="mt-10 space-y-9 rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-sm md:p-9">
           <TermsSection title="What this site is">
             <p>
               The Yoga Sensei publishes guides about yoga gear, beginner practice and related

@@ -34,7 +34,7 @@ export function GuideFilters({ active, counts, onSelect }: GuideFiltersProps) {
                   onClick={() => onSelect(cat)}
                   aria-pressed={isActive}
                   className={cn(
-                    'rounded-full px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] transition',
+                    'rounded-sm px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] transition',
                     isActive
                       ? 'bg-[color:var(--color-olive)] text-[color:var(--color-bg)]'
                       : 'border border-[color:var(--color-border)] text-[color:var(--color-ink-muted)] hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent-deep)]',

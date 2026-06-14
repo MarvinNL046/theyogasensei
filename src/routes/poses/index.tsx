@@ -91,7 +91,7 @@ function PosesIndex() {
                   <Link
                     to="/poses/$slug"
                     params={{ slug: pose.slug }}
-                    className="group block overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] transition hover:border-[color:var(--color-accent-soft)] hover:shadow-sm"
+                    className="group block overflow-hidden rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] transition hover:border-[color:var(--color-accent-soft)] hover:shadow-sm"
                   >
                     <div
                       className="aspect-[16/10] bg-cover bg-center"

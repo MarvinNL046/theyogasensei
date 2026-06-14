@@ -34,7 +34,7 @@ function AffiliateButton({
       target="_blank"
       data-affiliate-slug={slug}
       className={cn(
-        'not-prose inline-flex w-fit items-center justify-center gap-2 rounded-full font-medium no-underline transition-colors duration-200 outline-none focus-visible:ring-3 focus-visible:ring-[color:var(--color-ring)]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--color-bg)]',
+        'not-prose inline-flex w-fit items-center justify-center gap-2 rounded-sm font-medium no-underline transition-colors duration-200 outline-none focus-visible:ring-3 focus-visible:ring-[color:var(--color-ring)]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--color-bg)]',
         variantClasses[variant],
         sizeClasses[size],
       )}
