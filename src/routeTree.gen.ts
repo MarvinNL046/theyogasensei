@@ -17,6 +17,7 @@ import { Route as ConfirmRouteImport } from './routes/confirm'
 import { Route as AffiliateDisclosureRouteImport } from './routes/affiliate-disclosure'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PosesIndexRouteImport } from './routes/poses/index'
 import { Route as GuidesIndexRouteImport } from './routes/guides/index'
 import { Route as GoIndexRouteImport } from './routes/go/index'
 import { Route as PosesSlugRouteImport } from './routes/poses/$slug'
@@ -62,6 +63,11 @@ const AboutRoute = AboutRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PosesIndexRoute = PosesIndexRouteImport.update({
+  id: '/poses/',
+  path: '/poses/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GuidesIndexRoute = GuidesIndexRouteImport.update({
@@ -110,6 +116,7 @@ export interface FileRoutesByFullPath {
   '/poses/$slug': typeof PosesSlugRoute
   '/go/': typeof GoIndexRoute
   '/guides/': typeof GuidesIndexRoute
+  '/poses/': typeof PosesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -126,6 +133,7 @@ export interface FileRoutesByTo {
   '/poses/$slug': typeof PosesSlugRoute
   '/go': typeof GoIndexRoute
   '/guides': typeof GuidesIndexRoute
+  '/poses': typeof PosesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -143,6 +151,7 @@ export interface FileRoutesById {
   '/poses/$slug': typeof PosesSlugRoute
   '/go/': typeof GoIndexRoute
   '/guides/': typeof GuidesIndexRoute
+  '/poses/': typeof PosesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -161,6 +170,7 @@ export interface FileRouteTypes {
     | '/poses/$slug'
     | '/go/'
     | '/guides/'
+    | '/poses/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -177,6 +187,7 @@ export interface FileRouteTypes {
     | '/poses/$slug'
     | '/go'
     | '/guides'
+    | '/poses'
   id:
     | '__root__'
     | '/'
@@ -193,6 +204,7 @@ export interface FileRouteTypes {
     | '/poses/$slug'
     | '/go/'
     | '/guides/'
+    | '/poses/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -210,6 +222,7 @@ export interface RootRouteChildren {
   PosesSlugRoute: typeof PosesSlugRoute
   GoIndexRoute: typeof GoIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
+  PosesIndexRoute: typeof PosesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -268,6 +281,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/poses/': {
+      id: '/poses/'
+      path: '/poses'
+      fullPath: '/poses/'
+      preLoaderRoute: typeof PosesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/guides/': {
@@ -330,6 +350,7 @@ const rootRouteChildren: RootRouteChildren = {
   PosesSlugRoute: PosesSlugRoute,
   GoIndexRoute: GoIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
+  PosesIndexRoute: PosesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

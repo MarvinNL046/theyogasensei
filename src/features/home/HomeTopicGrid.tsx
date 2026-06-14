@@ -31,7 +31,7 @@ const TOPICS: Array<Topic> = [
     to: '/poses',
     label: 'Poses',
     subtitle: 'Step-by-step guides',
-    image: '/images/poses/downward-facing-dog/hero.webp',
+    image: '/images/poses/_library/tile.webp',
   },
   {
     kind: 'guide',
