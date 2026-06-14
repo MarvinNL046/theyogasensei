@@ -16,7 +16,8 @@ export function HomeLeadCapture() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-cover bg-right bg-no-repeat"
         style={{
-          backgroundImage: "url('/images/brand/zen-enso-dark-texture-bg.webp')",
+          backgroundImage:
+            "url('/images/brand/zen-enso-editorial-dark-bg.webp')",
         }}
       />
       {/* left-weighted scrim so copy stays legible while the ensō shows at right */}
