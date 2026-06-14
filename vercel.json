@@ -58,6 +58,11 @@
       "source": "/guides/best-yoga-mats-2026",
       "destination": "/reviews/best-yoga-mats",
       "permanent": true
+    },
+    {
+      "source": "/guides/manduka-yoga-mat",
+      "destination": "/reviews/manduka-pro",
+      "permanent": true
     }
   ],
   "cleanUrls": true,

@@ -16,7 +16,28 @@ export const Route = createFileRoute('/reviews/manduka-pro')({
         content:
           'An honest, research-led Manduka PRO review — grip, cushion, durability, specs and who it’s really for. Editorial scores, no invented lab tests.',
       },
-      { name: 'robots', content: 'noindex' },
+      { property: 'og:title', content: D.title },
+      {
+        property: 'og:description',
+        content:
+          'An honest, research-led Manduka PRO review — grip, cushion, durability, specs and who it’s really for.',
+      },
+      {
+        property: 'og:url',
+        content: 'https://www.theyogasensei.com/reviews/manduka-pro',
+      },
+      { property: 'og:type', content: 'article' },
+      {
+        property: 'og:image',
+        content:
+          'https://www.theyogasensei.com/images/guides/manduka-yoga-mat/hero.webp',
+      },
+    ],
+    links: [
+      {
+        rel: 'canonical',
+        href: 'https://www.theyogasensei.com/reviews/manduka-pro',
+      },
     ],
   }),
   component: MandukaProReviewPage,

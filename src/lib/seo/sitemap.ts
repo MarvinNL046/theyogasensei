@@ -13,6 +13,7 @@ const STATIC_PAGES: Array<Omit<SitemapEntry, 'url'> & { path: string }> = [
   // pages, above the individual content entries.
   { path: '/guides', changefreq: 'weekly', priority: 0.8 },
   { path: '/reviews/best-yoga-mats', changefreq: 'monthly', priority: 0.9 },
+  { path: '/reviews/manduka-pro', changefreq: 'monthly', priority: 0.7 },
   { path: '/poses', changefreq: 'weekly', priority: 0.8 },
   { path: '/about', changefreq: 'monthly', priority: 0.7 },
   { path: '/affiliate-disclosure', changefreq: 'yearly', priority: 0.3 },
