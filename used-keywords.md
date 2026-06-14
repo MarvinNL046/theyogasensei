@@ -38,6 +38,7 @@ Append one row per published page in this format:
 | manduka yoga mat | manduka-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14 |
 | gaiam yoga mat | gaiam-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14 |
 | manduka vs lululemon yoga mat | manduka-vs-lululemon-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14 |
+| jade yoga mat | jade-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14 |
 
 ---
 

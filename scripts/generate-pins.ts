@@ -339,6 +339,18 @@ const GUIDES: Guide[] = [
       ['Quick Tip', 'Latex-Sensitive? This Decides It Instantly', 'One mat is latex-free, the other is not.', 78],
     ],
   },
+  {
+    slug: 'jade-yoga-mat',
+    hashtags: '#jadeyoga #yogamat #ecoyoga #yogareview',
+    desc: 'An honest Jade Harmony yoga mat review: the grippiest natural-rubber eco mat, made in the USA with a tree planted per mat — plus the wet-grip and latex caveats, and who should skip it.',
+    hooks: [
+      ['Honest Review', 'Jade Harmony: The Grippiest Eco Mat?', 'Best-in-class dry grip, with one real catch.', 80],
+      ['Common Problem', 'Sliding Around on Your Mat?', 'Why natural-rubber grip fixes it — and when it does not.', 74],
+      ['At a Glance', 'Jade Harmony: Grip, Eco, Latex', 'What the teacher-favourite gets right and wrong.', 82],
+      ['The Yoga Sensei', 'Is the Jade Harmony Right for You?', '', 84],
+      ['Quick Tip', 'Love the Grip? Avoid It for Hot Yoga', 'Open-cell rubber drinks sweat and turns slick.', 76],
+    ],
+  },
 ]
 
 const ANGLE_IDS = ['01-listicle', '02-problem', '03-comparison', '04-aesthetic', '05-checklist']

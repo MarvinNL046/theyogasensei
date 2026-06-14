@@ -33,6 +33,7 @@ const CATEGORY_BY_SLUG: Record<string, GuideCategory> = {
   'retrospec-solana-yoga-mat': 'Reviews',
   'manduka-yoga-mat': 'Reviews',
   'gaiam-yoga-mat': 'Reviews',
+  'jade-yoga-mat': 'Reviews',
   'best-yoga-blocks': 'Accessories',
   'best-yoga-bolster': 'Accessories',
   'best-yoga-mat-bag': 'Accessories',
