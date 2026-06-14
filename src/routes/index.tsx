@@ -182,7 +182,7 @@ function HomePage() {
           className="pointer-events-none absolute inset-0 bg-cover bg-right-top bg-no-repeat opacity-90"
           style={{
             backgroundImage:
-              "url('/images/brand/article-hero-morning-yoga.webp')",
+              "url('/images/brand/home-og.webp')",
           }}
         />
         <div
@@ -195,7 +195,7 @@ function HomePage() {
         />
         <Container size="wide" className="relative">
           <div className="max-w-xl py-24 md:py-32">
-            <JapaneseAccent phrase="persistence" size="md" className="block" />
+            <JapaneseAccent phrase="presence" size="md" className="block" />
             <h1 className="mt-6 font-serif text-4xl leading-[1.05] tracking-tight text-[color:var(--color-ink)] md:text-[56px]">
               Calm guidance for a real yoga practice.
             </h1>
