@@ -6,11 +6,7 @@ import { cn } from '#/lib/utils'
 
 const NAV_LINKS = [
   { to: '/', label: 'Home' },
-  {
-    to: '/guides/$slug',
-    params: { slug: 'best-yoga-mats-2026' },
-    label: 'Best mats',
-  },
+  { to: '/reviews/best-yoga-mats', label: 'Best mats' },
   {
     to: '/guides/$slug',
     params: { slug: 'eco-friendly-yoga-mat' },
@@ -26,7 +22,6 @@ const NAV_LINKS = [
     params: { slug: 'best-yoga-mat-for-hot-yoga' },
     label: 'Hot yoga mats',
   },
-  { to: '/reviews/best-yoga-mats', label: 'Reviews' },
   { to: '/poses', label: 'Poses' },
   { to: '/about', label: 'About' },
 ] as const

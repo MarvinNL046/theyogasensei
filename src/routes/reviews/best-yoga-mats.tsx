@@ -32,7 +32,28 @@ export const Route = createFileRoute('/reviews/best-yoga-mats')({
         content:
           'Our seven best yoga mats for 2026, scored on grip, cushion, durability, value and eco — research-led, honestly compared, no invented testing.',
       },
-      { name: 'robots', content: 'noindex' },
+      { property: 'og:title', content: 'Best Yoga Mats for Every Practice (2026)' },
+      {
+        property: 'og:description',
+        content:
+          'Seven best yoga mats, scored on grip, cushion, durability, value and eco — research-led and honestly compared.',
+      },
+      {
+        property: 'og:url',
+        content: 'https://www.theyogasensei.com/reviews/best-yoga-mats',
+      },
+      { property: 'og:type', content: 'article' },
+      {
+        property: 'og:image',
+        content:
+          'https://www.theyogasensei.com/images/guides/best-yoga-mats-2026/hero.webp',
+      },
+    ],
+    links: [
+      {
+        rel: 'canonical',
+        href: 'https://www.theyogasensei.com/reviews/best-yoga-mats',
+      },
     ],
   }),
   component: ReviewsOverviewPage,
@@ -54,8 +75,24 @@ const IN_THIS_GUIDE = [
   { href: '#faqs', label: 'FAQs' },
 ]
 
+const RELATED_GUIDES = [
+  { slug: 'how-to-choose-a-yoga-mat', label: 'How to choose a yoga mat', note: 'The full decision framework' },
+  { slug: 'best-yoga-mat-for-hot-yoga', label: 'Best mats for hot yoga', note: 'Solve wet grip first' },
+  { slug: 'eco-friendly-yoga-mat', label: 'Eco-friendly yoga mats', note: 'Natural materials, honestly' },
+  { slug: 'how-thick-should-a-yoga-mat-be', label: 'How thick should a mat be?', note: '4 vs 5 vs 6 mm' },
+  { slug: 'best-yoga-mat-for-bad-knees', label: 'Best mats for bad knees', note: 'Cushion vs stability' },
+  { slug: 'how-to-clean-a-yoga-mat', label: 'How to clean a yoga mat', note: 'Material-by-material care' },
+]
+
+const ACCESSORIES = [
+  { slug: 'best-yoga-blocks', label: 'Yoga blocks', note: 'Height & support for folds and balance' },
+  { slug: 'best-yoga-bolster', label: 'Yoga bolsters', note: 'Firm support for restorative practice' },
+  { slug: 'best-yoga-mat-bag', label: 'Mat bags & carriers', note: 'Carry it to class without the under-arm shuffle' },
+]
+
 type ReviewLink =
   | { to: '/reviews/manduka-pro' }
+  | { to: '/reviews/best-yoga-mats' }
   | { to: '/guides/$slug'; params: { slug: string } }
 
 const reviewHref = (pick: {
@@ -64,10 +101,9 @@ const reviewHref = (pick: {
 }): ReviewLink =>
   pick.detailPath
     ? { to: '/reviews/manduka-pro' }
-    : {
-        to: '/guides/$slug',
-        params: { slug: pick.reviewSlug ?? 'best-yoga-mats-2026' },
-      }
+    : pick.reviewSlug
+      ? { to: '/guides/$slug', params: { slug: pick.reviewSlug } }
+      : { to: '/reviews/best-yoga-mats' }
 
 function ReviewsOverviewPage() {
   const topPick = MAT_PICKS[0]
@@ -474,6 +510,22 @@ function ReviewsOverviewPage() {
                 pretend lab, and we don&rsquo;t borrow star counts we can&rsquo;t
                 verify. Where we&rsquo;re unsure, we say so in the full review.
               </p>
+              <p className="mt-4 text-base leading-relaxed text-[color:var(--color-ink-soft)]">
+                This page is a cross-referenced shortlist, not a lab-test report.
+                The picks come from three layers — stable product specs,
+                manufacturer documentation, and broad consensus across serious
+                review publications and practitioner communities. It tells you
+                what can be known from the outside: material, thickness,
+                construction, care, recurring praise and recurring complaints.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-[color:var(--color-ink-soft)]">
+                We also separate <em>best</em> from <em>most premium</em>. A mat
+                can be the best beginner buy because it removes friction, even if
+                it isn&rsquo;t the one a teacher keeps for ten years. So every pick
+                is framed by use case first, then material, then the trade-off —
+                and live prices and review counts, which change constantly, are
+                kept out of evergreen copy on purpose.
+              </p>
             </div>
             <div className="md:col-span-7">
               <dl className="grid gap-px overflow-hidden rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-border)] sm:grid-cols-2">
@@ -536,6 +588,74 @@ function ReviewsOverviewPage() {
         </Container>
       </section>
 
+      {/* ===================== RELATED + ACCESSORIES ===================== */}
+      <section className="bg-[color:var(--color-bg)] py-16 md:py-20">
+        <Container size="wide">
+          <div className="grid gap-12 md:grid-cols-2 md:gap-16">
+            <div>
+              <Eyebrow tone="default">Keep reading</Eyebrow>
+              <h2 className="mt-4 font-serif text-2xl leading-tight tracking-tight md:text-[28px]">
+                Related guides
+              </h2>
+              <ul className="mt-6 divide-y divide-[color:var(--color-border)] border-t border-[color:var(--color-border)]">
+                {RELATED_GUIDES.map((g) => (
+                  <li key={g.slug}>
+                    <Link
+                      to="/guides/$slug"
+                      params={{ slug: g.slug }}
+                      className="group flex items-center justify-between gap-4 py-3.5"
+                    >
+                      <span>
+                        <span className="font-serif text-lg leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
+                          {g.label}
+                        </span>
+                        <span className="mt-0.5 block text-sm text-[color:var(--color-ink-muted)]">
+                          {g.note}
+                        </span>
+                      </span>
+                      <ArrowRight
+                        className="h-4 w-4 flex-shrink-0 text-[color:var(--color-ink-muted)] transition group-hover:translate-x-0.5 group-hover:text-[color:var(--color-accent-deep)]"
+                        strokeWidth={1.75}
+                      />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <Eyebrow tone="default">Round out your kit</Eyebrow>
+              <h2 className="mt-4 font-serif text-2xl leading-tight tracking-tight md:text-[28px]">
+                Essential accessories
+              </h2>
+              <ul className="mt-6 divide-y divide-[color:var(--color-border)] border-t border-[color:var(--color-border)]">
+                {ACCESSORIES.map((a) => (
+                  <li key={a.slug}>
+                    <Link
+                      to="/guides/$slug"
+                      params={{ slug: a.slug }}
+                      className="group flex items-center justify-between gap-4 py-3.5"
+                    >
+                      <span>
+                        <span className="font-serif text-lg leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
+                          {a.label}
+                        </span>
+                        <span className="mt-0.5 block text-sm text-[color:var(--color-ink-muted)]">
+                          {a.note}
+                        </span>
+                      </span>
+                      <ArrowRight
+                        className="h-4 w-4 flex-shrink-0 text-[color:var(--color-ink-muted)] transition group-hover:translate-x-0.5 group-hover:text-[color:var(--color-accent-deep)]"
+                        strokeWidth={1.75}
+                      />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* ===================== FAQ ===================== */}
       <section
         id="faqs"
@@ -561,6 +681,46 @@ function ReviewsOverviewPage() {
         </Container>
       </section>
 
+      {/* ===================== FINAL VERDICT ===================== */}
+      <section className="bg-[color:var(--color-surface-muted)] py-16 md:py-20">
+        <Container size="wide">
+          <Eyebrow tone="default">The verdict</Eyebrow>
+          <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight md:text-[40px]">
+            What I&rsquo;d actually buy.
+          </h2>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-[color:var(--color-ink-soft)]">
+            No single mat wins for everyone — the right pick is the one that
+            fits how you actually practise. Three honest shortcuts:
+          </p>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {[
+              { when: 'For one serious long-term mat', pick: MAT_PICKS[0] },
+              { when: 'If you practise hot yoga often', pick: MAT_PICKS[1] },
+              { when: 'If you’re starting from scratch', pick: MAT_PICKS[4] },
+            ].map(({ when, pick }) => (
+              <Link
+                key={pick.name}
+                {...reviewHref(pick)}
+                className="group flex flex-col justify-between border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 transition hover:border-[color:var(--color-olive)]/40"
+              >
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-ink-muted)]">
+                  {when}
+                </p>
+                <p className="mt-4 font-serif text-2xl leading-snug transition group-hover:text-[color:var(--color-accent-deep)]">
+                  {pick.name}
+                </p>
+                <div className="mt-3 flex items-center gap-2">
+                  <RatingStars score={pick.overall} size={14} />
+                  <span className="text-sm font-medium text-[color:var(--color-ink)]">
+                    {pick.overall.toFixed(1)}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* ===================== BOTTOM CTA ===================== */}
       <section className="bg-[color:var(--color-olive)] py-16 [--color-heading:var(--color-bg)] md:py-20">
         <Container size="wide">
@@ -578,10 +738,10 @@ function ReviewsOverviewPage() {
             </Link>
             <Link
               to="/guides/$slug"
-              params={{ slug: 'best-yoga-mats-2026' }}
+              params={{ slug: 'how-to-choose-a-yoga-mat' }}
               className="inline-flex items-center gap-2 rounded-sm border border-[color:var(--color-bg)]/40 px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:border-[color:var(--color-bg)]"
             >
-              The full buying guide
+              How to choose a mat
               <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
             </Link>
           </div>

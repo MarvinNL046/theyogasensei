@@ -53,7 +53,13 @@
       ]
     }
   ],
-  "redirects": [],
+  "redirects": [
+    {
+      "source": "/guides/best-yoga-mats-2026",
+      "destination": "/reviews/best-yoga-mats",
+      "permanent": true
+    }
+  ],
   "cleanUrls": true,
   "trailingSlash": false
 }

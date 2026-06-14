@@ -54,15 +54,6 @@ export const Route = createFileRoute('/')({
 const LATEST_WRITING = [
   {
     to: '/guides/$slug' as const,
-    params: { slug: 'best-yoga-mats-2026' },
-    eyebrow: 'Affiliate hub · Yoga mats',
-    title: 'Best Yoga Mats of 2026: 7 Honest Picks Compared',
-    description:
-      'A practitioner-led review hub comparing seven standout mats by material, grip, cushion, portability and honest trade-offs.',
-    image: 'guides/best-yoga-mats-2026/hero',
-  },
-  {
-    to: '/guides/$slug' as const,
     params: { slug: 'eco-friendly-yoga-mat' },
     eyebrow: 'Affiliate guide · Eco mats',
     title: 'Best Eco-Friendly Yoga Mats: 5 Honest Picks',
