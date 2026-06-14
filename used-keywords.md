@@ -39,6 +39,7 @@ Append one row per published page in this format:
 | gaiam yoga mat | gaiam-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14 |
 | manduka vs lululemon yoga mat | manduka-vs-lululemon-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14 |
 | jade yoga mat | jade-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14 |
+| downward facing dog | downward-facing-dog | cluster | poses | yoga-for-beginners | 2026-06-14 | 2026-06-14 |
 
 ---
 
