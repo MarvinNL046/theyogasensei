@@ -39,7 +39,8 @@ const LOCAL_FALLBACK_IMAGES: Record<ImageVariant, string> = {
 function localImagePath(id: string): string | null {
   if (id.startsWith('http://') || id.startsWith('https://')) return id
   if (id.startsWith('/')) return id
-  if (id.startsWith('guides/')) return `/images/${id}.webp`
+  if (id.startsWith('guides/') || id.startsWith('poses/'))
+    return `/images/${id}.webp`
   return null
 }
 
