@@ -25,10 +25,20 @@ async function main() {
 
   const siteUrl = process.env.SITE_URL ?? `https://${HOST}`
   const entries = scanMdxEntries()
+  // Component routes that aren't MDX (the redesigned review pages + indexes).
+  const ROUTE_PAGES = [
+    '/poses',
+    '/reviews/best-yoga-mats',
+    '/reviews/manduka-pro',
+    '/reviews/jade',
+    '/reviews/gaiam',
+    '/reviews/lululemon',
+    '/reviews/retrospec',
+  ]
   const urlList = [
     `${siteUrl}/`,
     `${siteUrl}/about`,
-    `${siteUrl}/start-here`,
+    ...ROUTE_PAGES.map((p) => `${siteUrl}${p}`),
     ...entries.map((e) => `${siteUrl}${e.routePath}`),
   ]
 
