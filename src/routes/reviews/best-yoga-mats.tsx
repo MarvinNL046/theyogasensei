@@ -92,18 +92,18 @@ const ACCESSORIES = [
 
 type ReviewLink =
   | { to: '/reviews/manduka-pro' }
+  | { to: '/reviews/jade' }
+  | { to: '/reviews/gaiam' }
   | { to: '/reviews/best-yoga-mats' }
-  | { to: '/guides/$slug'; params: { slug: string } }
 
-const reviewHref = (pick: {
-  reviewSlug: string | null
-  detailPath?: string
-}): ReviewLink =>
-  pick.detailPath
+const reviewHref = (pick: { detailPath?: string }): ReviewLink =>
+  pick.detailPath === '/reviews/manduka-pro'
     ? { to: '/reviews/manduka-pro' }
-    : pick.reviewSlug
-      ? { to: '/guides/$slug', params: { slug: pick.reviewSlug } }
-      : { to: '/reviews/best-yoga-mats' }
+    : pick.detailPath === '/reviews/jade'
+      ? { to: '/reviews/jade' }
+      : pick.detailPath === '/reviews/gaiam'
+        ? { to: '/reviews/gaiam' }
+        : { to: '/reviews/best-yoga-mats' }
 
 function ReviewsOverviewPage() {
   const topPick = MAT_PICKS[0]

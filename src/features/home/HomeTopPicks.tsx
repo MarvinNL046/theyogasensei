@@ -9,18 +9,18 @@ const PICKS = MAT_PICKS.slice(0, 5)
 
 type PickLink =
   | { to: '/reviews/manduka-pro' }
-  | { to: '/guides/$slug'; params: { slug: string } }
+  | { to: '/reviews/jade' }
+  | { to: '/reviews/gaiam' }
   | { to: '/reviews/best-yoga-mats' }
 
-const pickHref = (pick: {
-  reviewSlug: string | null
-  detailPath?: string
-}): PickLink =>
-  pick.detailPath
+const pickHref = (pick: { detailPath?: string }): PickLink =>
+  pick.detailPath === '/reviews/manduka-pro'
     ? { to: '/reviews/manduka-pro' }
-    : pick.reviewSlug
-      ? { to: '/guides/$slug', params: { slug: pick.reviewSlug } }
-      : { to: '/reviews/best-yoga-mats' }
+    : pick.detailPath === '/reviews/jade'
+      ? { to: '/reviews/jade' }
+      : pick.detailPath === '/reviews/gaiam'
+        ? { to: '/reviews/gaiam' }
+        : { to: '/reviews/best-yoga-mats' }
 
 /**
  * Top-picks rail on the homepage: our editorial-scored mat recommendations,

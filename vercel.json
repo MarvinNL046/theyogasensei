@@ -63,6 +63,26 @@
       "source": "/guides/manduka-yoga-mat",
       "destination": "/reviews/manduka-pro",
       "permanent": true
+    },
+    {
+      "source": "/guides/jade-yoga-mat",
+      "destination": "/reviews/jade",
+      "permanent": true
+    },
+    {
+      "source": "/guides/gaiam-yoga-mat",
+      "destination": "/reviews/gaiam",
+      "permanent": true
+    },
+    {
+      "source": "/guides/lululemon-yoga-mat",
+      "destination": "/reviews/lululemon",
+      "permanent": true
+    },
+    {
+      "source": "/guides/retrospec-solana-yoga-mat",
+      "destination": "/reviews/retrospec",
+      "permanent": true
     }
   ],
   "cleanUrls": true,

@@ -1,50 +1,18 @@
-/**
- * Manduka PRO single-product review content.
- * Prose extracted from our own review MDX via a workflow (extract -> adversarial
- * verify) and grounded in those files. Scores live in data.ts (MAT_PICKS[0]);
- * sub-ratings, byline, section images and at-a-glance are editorial.
- */
+import type { DetailReview } from '#/components/reviews/ReviewDetail'
 
-export interface SubRating { label: string; score: number }
-
-export interface ReviewSection {
-  id: string
-  title: string
-  body: string
-  image?: string
-  ratings?: SubRating[]
-  rating?: number
-}
-
-export interface DetailReview {
-  productName: string
-  title: string
-  intro: string
-  byline: { author: string; date: string; readTime: string }
-  affiliateSlug: string
-  whoForImage: string
-  pros: string[]
-  cons: string[]
-  features: { title: string; body: string }[]
-  sections: ReviewSection[]
-  specs: { label: string; value: string }[]
-  whoFor: string[]
-  notIdealFor: string
-  atAGlance: { label: string; value: string }[]
-  verdict: string
-}
-
-export const MANDUKA_PRO: DetailReview = {
+/** Auto-generated from our MDX review via workflow (extract -> verify); scores/sub-ratings editorial. */
+export const DETAIL: DetailReview = {
   "productName": "Manduka PRO 6mm",
   "title": "Manduka PRO Yoga Mat Review",
   "intro": "The Manduka PRO is the mat people mean when they say \"the one that lasts forever\" — a dense, closed-cell PVC slab made in Germany and backed by a lifetime guarantee. It earns that reputation, but only if you understand the trade-offs the reputation skips: the weight, the price, and the break-in nobody warns you about.",
   "byline": {
     "author": "The Yoga Sensei",
-    "date": "June 14, 2026",
+    "date": "June 15, 2026",
     "readTime": "8 min read"
   },
   "affiliateSlug": "manduka-pro-6mm",
-  "whoForImage": "/images/reviews/manduka/whofor.webp",
+  "heroImage": "/images/guides/manduka-yoga-mat/hero.webp",
+  "overall": 4.6,
   "pros": [
     "Built for roughly ten years of use and backed by a lifetime guarantee",
     "Dense, closed-cell PVC that softens rather than crumbles over time",
@@ -173,7 +141,7 @@ export const MANDUKA_PRO: DetailReview = {
     "You need a latex-free mat and prefer PVC over rubber"
   ],
   "notIdealFor": "Skip the PRO if you commute with your mat daily (it is heavy at ~7.5 lb), you are a beginner wanting grip out of the box, or you primarily practise in very sweaty, heated rooms.",
-  "verdict": "Buy the PRO if you practise regularly in one place and want one mat for the next decade — its durability and lifetime guarantee are the real deal, and spread over ten years it often costs less than replacing cheap mats. Just go in knowing the catch: it is slick when new and needs a real break-in, and at ~7.5 lb it stays put beautifully but travels terribly. If you commute daily, sweat heavily, or are a beginner who wants grip on day one, a different Manduka — or a different brand — is the honest answer.",
+  "whoForImage": "/images/reviews/manduka/whofor.webp",
   "atAGlance": [
     {
       "label": "Best for",
@@ -198,6 +166,37 @@ export const MANDUKA_PRO: DetailReview = {
     {
       "label": "Price",
       "value": "$$$"
+    }
+  ],
+  "verdict": "Buy the PRO if you practise regularly in one place and want one mat for the next decade — its durability and lifetime guarantee are the real deal, and spread over ten years it often costs less than replacing cheap mats. Just go in knowing the catch: it is slick when new and needs a real break-in, and at ~7.5 lb it stays put beautifully but travels terribly. If you commute daily, sweat heavily, or are a beginner who wants grip on day one, a different Manduka — or a different brand — is the honest answer.",
+  "alternatives": [
+    {
+      "name": "Jade Harmony",
+      "badge": "Best Natural Rubber",
+      "overall": 4.2,
+      "image": "/images/guides/jade-yoga-mat/hero.webp",
+      "href": "/reviews/jade"
+    },
+    {
+      "name": "Gaiam Premium 6mm",
+      "badge": "Best Value / Beginners",
+      "overall": 3.9,
+      "image": "/images/guides/gaiam-yoga-mat/hero.webp",
+      "href": "/reviews/gaiam"
+    },
+    {
+      "name": "Lululemon The Mat",
+      "badge": "Best Studio Feel",
+      "overall": 4.2,
+      "image": "/images/guides/lululemon-yoga-mat/hero.webp",
+      "href": "/reviews/lululemon"
+    },
+    {
+      "name": "Retrospec Solana",
+      "badge": "Best Cushion / Budget",
+      "overall": 3.8,
+      "image": "/images/guides/retrospec-solana-yoga-mat/hero.webp",
+      "href": "/reviews/retrospec"
     }
   ]
 }

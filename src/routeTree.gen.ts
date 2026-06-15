@@ -20,7 +20,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as PosesIndexRouteImport } from './routes/poses/index'
 import { Route as GuidesIndexRouteImport } from './routes/guides/index'
 import { Route as GoIndexRouteImport } from './routes/go/index'
+import { Route as ReviewsRetrospecRouteImport } from './routes/reviews/retrospec'
 import { Route as ReviewsMandukaProRouteImport } from './routes/reviews/manduka-pro'
+import { Route as ReviewsLululemonRouteImport } from './routes/reviews/lululemon'
+import { Route as ReviewsJadeRouteImport } from './routes/reviews/jade'
+import { Route as ReviewsGaiamRouteImport } from './routes/reviews/gaiam'
 import { Route as ReviewsBestYogaMatsRouteImport } from './routes/reviews/best-yoga-mats'
 import { Route as PosesSlugRouteImport } from './routes/poses/$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
@@ -82,9 +86,29 @@ const GoIndexRoute = GoIndexRouteImport.update({
   path: '/go/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReviewsRetrospecRoute = ReviewsRetrospecRouteImport.update({
+  id: '/reviews/retrospec',
+  path: '/reviews/retrospec',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsMandukaProRoute = ReviewsMandukaProRouteImport.update({
   id: '/reviews/manduka-pro',
   path: '/reviews/manduka-pro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsLululemonRoute = ReviewsLululemonRouteImport.update({
+  id: '/reviews/lululemon',
+  path: '/reviews/lululemon',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsJadeRoute = ReviewsJadeRouteImport.update({
+  id: '/reviews/jade',
+  path: '/reviews/jade',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsGaiamRoute = ReviewsGaiamRouteImport.update({
+  id: '/reviews/gaiam',
+  path: '/reviews/gaiam',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReviewsBestYogaMatsRoute = ReviewsBestYogaMatsRouteImport.update({
@@ -127,7 +151,11 @@ export interface FileRoutesByFullPath {
   '/guides/$slug': typeof GuidesSlugRoute
   '/poses/$slug': typeof PosesSlugRoute
   '/reviews/best-yoga-mats': typeof ReviewsBestYogaMatsRoute
+  '/reviews/gaiam': typeof ReviewsGaiamRoute
+  '/reviews/jade': typeof ReviewsJadeRoute
+  '/reviews/lululemon': typeof ReviewsLululemonRoute
   '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
+  '/reviews/retrospec': typeof ReviewsRetrospecRoute
   '/go/': typeof GoIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/poses/': typeof PosesIndexRoute
@@ -146,7 +174,11 @@ export interface FileRoutesByTo {
   '/guides/$slug': typeof GuidesSlugRoute
   '/poses/$slug': typeof PosesSlugRoute
   '/reviews/best-yoga-mats': typeof ReviewsBestYogaMatsRoute
+  '/reviews/gaiam': typeof ReviewsGaiamRoute
+  '/reviews/jade': typeof ReviewsJadeRoute
+  '/reviews/lululemon': typeof ReviewsLululemonRoute
   '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
+  '/reviews/retrospec': typeof ReviewsRetrospecRoute
   '/go': typeof GoIndexRoute
   '/guides': typeof GuidesIndexRoute
   '/poses': typeof PosesIndexRoute
@@ -166,7 +198,11 @@ export interface FileRoutesById {
   '/guides/$slug': typeof GuidesSlugRoute
   '/poses/$slug': typeof PosesSlugRoute
   '/reviews/best-yoga-mats': typeof ReviewsBestYogaMatsRoute
+  '/reviews/gaiam': typeof ReviewsGaiamRoute
+  '/reviews/jade': typeof ReviewsJadeRoute
+  '/reviews/lululemon': typeof ReviewsLululemonRoute
   '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
+  '/reviews/retrospec': typeof ReviewsRetrospecRoute
   '/go/': typeof GoIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/poses/': typeof PosesIndexRoute
@@ -187,7 +223,11 @@ export interface FileRouteTypes {
     | '/guides/$slug'
     | '/poses/$slug'
     | '/reviews/best-yoga-mats'
+    | '/reviews/gaiam'
+    | '/reviews/jade'
+    | '/reviews/lululemon'
     | '/reviews/manduka-pro'
+    | '/reviews/retrospec'
     | '/go/'
     | '/guides/'
     | '/poses/'
@@ -206,7 +246,11 @@ export interface FileRouteTypes {
     | '/guides/$slug'
     | '/poses/$slug'
     | '/reviews/best-yoga-mats'
+    | '/reviews/gaiam'
+    | '/reviews/jade'
+    | '/reviews/lululemon'
     | '/reviews/manduka-pro'
+    | '/reviews/retrospec'
     | '/go'
     | '/guides'
     | '/poses'
@@ -225,7 +269,11 @@ export interface FileRouteTypes {
     | '/guides/$slug'
     | '/poses/$slug'
     | '/reviews/best-yoga-mats'
+    | '/reviews/gaiam'
+    | '/reviews/jade'
+    | '/reviews/lululemon'
     | '/reviews/manduka-pro'
+    | '/reviews/retrospec'
     | '/go/'
     | '/guides/'
     | '/poses/'
@@ -245,7 +293,11 @@ export interface RootRouteChildren {
   GuidesSlugRoute: typeof GuidesSlugRoute
   PosesSlugRoute: typeof PosesSlugRoute
   ReviewsBestYogaMatsRoute: typeof ReviewsBestYogaMatsRoute
+  ReviewsGaiamRoute: typeof ReviewsGaiamRoute
+  ReviewsJadeRoute: typeof ReviewsJadeRoute
+  ReviewsLululemonRoute: typeof ReviewsLululemonRoute
   ReviewsMandukaProRoute: typeof ReviewsMandukaProRoute
+  ReviewsRetrospecRoute: typeof ReviewsRetrospecRoute
   GoIndexRoute: typeof GoIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   PosesIndexRoute: typeof PosesIndexRoute
@@ -330,11 +382,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GoIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reviews/retrospec': {
+      id: '/reviews/retrospec'
+      path: '/reviews/retrospec'
+      fullPath: '/reviews/retrospec'
+      preLoaderRoute: typeof ReviewsRetrospecRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews/manduka-pro': {
       id: '/reviews/manduka-pro'
       path: '/reviews/manduka-pro'
       fullPath: '/reviews/manduka-pro'
       preLoaderRoute: typeof ReviewsMandukaProRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews/lululemon': {
+      id: '/reviews/lululemon'
+      path: '/reviews/lululemon'
+      fullPath: '/reviews/lululemon'
+      preLoaderRoute: typeof ReviewsLululemonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews/jade': {
+      id: '/reviews/jade'
+      path: '/reviews/jade'
+      fullPath: '/reviews/jade'
+      preLoaderRoute: typeof ReviewsJadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews/gaiam': {
+      id: '/reviews/gaiam'
+      path: '/reviews/gaiam'
+      fullPath: '/reviews/gaiam'
+      preLoaderRoute: typeof ReviewsGaiamRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reviews/best-yoga-mats': {
@@ -389,7 +469,11 @@ const rootRouteChildren: RootRouteChildren = {
   GuidesSlugRoute: GuidesSlugRoute,
   PosesSlugRoute: PosesSlugRoute,
   ReviewsBestYogaMatsRoute: ReviewsBestYogaMatsRoute,
+  ReviewsGaiamRoute: ReviewsGaiamRoute,
+  ReviewsJadeRoute: ReviewsJadeRoute,
+  ReviewsLululemonRoute: ReviewsLululemonRoute,
   ReviewsMandukaProRoute: ReviewsMandukaProRoute,
+  ReviewsRetrospecRoute: ReviewsRetrospecRoute,
   GoIndexRoute: GoIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   PosesIndexRoute: PosesIndexRoute,

@@ -81,15 +81,6 @@ const LATEST_WRITING = [
   },
   {
     to: '/guides/$slug' as const,
-    params: { slug: 'lululemon-yoga-mat' },
-    eyebrow: 'Review · Lululemon',
-    title: 'Lululemon Yoga Mat Review: Is The Mat Worth It?',
-    description:
-      'An honest look at Lululemon’s reversible mat — grip, cushion, the real downsides, latex caution, and who should buy or skip it.',
-    image: 'guides/lululemon-yoga-mat/hero',
-  },
-  {
-    to: '/guides/$slug' as const,
     params: { slug: 'how-to-choose-a-yoga-mat' },
     eyebrow: 'Pillar guide · Yoga mats',
     title: 'How to Choose a Yoga Mat: A Practical Buying Guide',
