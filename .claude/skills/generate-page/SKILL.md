@@ -64,7 +64,13 @@ Do NOT skip this. Skipping it is the difference between a post that ranks and a 
 
 Also check `/used-keywords.md` at the repo root. If the primary keyword is already logged there, stop and ask the user — either pick a different keyword or refresh the existing page instead of opening a duplicate.
 
-If the environment has no web search, ask the user to paste the SERP top-3 URLs and PAA questions. Do not proceed without this data — flag it as a blocker.
+**Preferred data source — the DataForSEO MCP (`dfs-mcp`, configured at user scope):**
+
+- **SERP top-3, format, length + real People Also Ask:** `mcp__dfs-mcp__serp_organic_live_advanced` with `{ keyword, language_code: "en", location_name: "United States", depth: 10, people_also_ask_click_depth: 1 }`. Use the `organic` items for the top-3 (match format + length), the `people_also_ask` items for verified FAQ questions, and `related_searches` for secondary angles. This replaces the old "PAA unavailable in run" gap — pull PAA verbatim from here.
+- **Real volume + KD + intent:** `mcp__dfs-mcp__dataforseo_labs_keyword_overview` (volume + keyword_difficulty + intent in one call), or `mcp__dfs-mcp__dataforseo_labs_bulk_keyword_difficulty` + `mcp__dfs-mcp__kw_data_google_ads_search_volume` + `mcp__dfs-mcp__dataforseo_labs_search_intent`. To refresh the whole backlog at once instead, run `npx tsx scripts/seo-research.ts update` (writes real volume/kd into `keywords.csv`).
+- Each call costs a few cents — fine for one page's research.
+
+If the `dfs-mcp` MCP is unavailable, fall back to WebSearch; only as a last resort ask the user to paste the SERP top-3 URLs and PAA questions. Do not proceed without this data — flag it as a blocker.
 
 After publishing, append the primary keyword and slug to `/used-keywords.md`.
 
