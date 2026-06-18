@@ -75,7 +75,7 @@ export const Route = createFileRoute('/guides/$slug')({
       author: loaderData.author,
       breadcrumbs: [
         { name: 'Home', url: '/' },
-        { name: 'Guides' },
+        { name: 'Guides', url: '/guides' },
         { name: loaderData.frontmatter.title },
       ],
     })
