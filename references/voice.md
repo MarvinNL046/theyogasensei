@@ -113,6 +113,8 @@ What we **can** write (curator voice, no certifications needed):
 - "In my own practice, I found..."
 - "[Certified teacher name, RYT-500] notes that..." — when we have a quote/review on file
 
+**FAQ answers are claims too.** Pull the FAQ *questions* from real People Also Ask, but **research each answer** — read the ranking pages or an authoritative source, and cite any factual or health/wellness claim. Never write an FAQ answer from memory alone, especially on YMYL topics. A real question with a made-up answer is worse than no FAQ.
+
 ---
 
 ## Formatting rules
