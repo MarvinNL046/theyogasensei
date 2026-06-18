@@ -102,6 +102,9 @@ const clusterSchema = base.extend({
   schemaType: z.enum(['Article', 'HowTo', 'Review']),
   faq: z.array(faqEntry).min(3, 'clusters require ≥ 3 FAQ entries'),
   howTo: howToSchema.optional(),
+  // Editorial overall score (0–5) for Review-type clusters; powers the
+  // reviewRating in the Review JSON-LD (required when schemaType=Review).
+  reviewRating: z.number().min(0).max(5).optional(),
 })
 
 export const frontmatterSchema = z
@@ -144,6 +147,15 @@ export const frontmatterSchema = z
         code: z.ZodIssueCode.custom,
         message: 'cluster with schemaType=HowTo requires howTo.step[]',
         path: ['howTo'],
+      })
+    }
+
+    if (data.type === 'cluster' && data.schemaType === 'Review' && data.reviewRating == null) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message:
+          'cluster with schemaType=Review requires reviewRating (0–5) for the review-snippet star rating',
+        path: ['reviewRating'],
       })
     }
 

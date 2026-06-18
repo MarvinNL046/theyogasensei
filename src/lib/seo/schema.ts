@@ -192,16 +192,30 @@ export function buildReviewSchema(fm: Frontmatter, ctx: SchemaContext) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Review',
+    name: fm.title,
     itemReviewed: {
       '@type': 'Product',
       name: fm.title,
       image: cfImage(ctx.siteUrl, fm.heroImage),
     },
+    ...(fm.reviewRating != null && {
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: fm.reviewRating,
+        bestRating: 5,
+        worstRating: 1,
+      },
+    }),
     reviewBody: fm.metaDescription,
     author: {
       '@type': 'Person',
       name: ctx.author.name,
       url: absUrl(ctx.siteUrl, `/authors/${ctx.author.slug}`),
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: ORG_NAME,
+      url: ctx.siteUrl,
     },
     datePublished: fm.publishedAt,
   }
