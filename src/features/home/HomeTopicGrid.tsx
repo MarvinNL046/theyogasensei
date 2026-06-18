@@ -35,6 +35,13 @@ const TOPICS: Array<Topic> = [
   },
   {
     kind: 'guide',
+    category: 'Chair yoga',
+    label: 'Chair yoga',
+    subtitle: 'Gentle seated practice',
+    image: '/images/guides/chair-yoga-for-seniors/hero.webp',
+  },
+  {
+    kind: 'guide',
     category: 'Buying guides',
     label: 'Buying guides',
     subtitle: 'Choose the right mat',
@@ -94,7 +101,7 @@ export function HomeTopicGrid() {
           </Link>
         </div>
 
-        <ul className="mt-12 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-6">
+        <ul className="mt-12 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-7">
           {TOPICS.map((topic) => {
             const inner = (
               <>

@@ -7,6 +7,7 @@ import { cn } from '#/lib/utils'
 const NAV_LINKS = [
   { to: '/', label: 'Home' },
   { to: '/reviews/best-yoga-mats', label: 'Best mats' },
+  { to: '/guides', label: 'Guides' },
   {
     to: '/guides/$slug',
     params: { slug: 'eco-friendly-yoga-mat' },
