@@ -353,6 +353,61 @@ const GUIDES: Guide[] = [
       ['Quick Tip', 'Love the Grip? Avoid It for Hot Yoga', 'Open-cell rubber drinks sweat and turns slick.', 76],
     ],
   },
+  // Chair-yoga cluster. These pages have a single on-brand portrait photo each
+  // (pin.webp), so bg pins all five angles to it — same calm background, five
+  // hooks. Copy is 12-year-old readable, honest, "educational not medical".
+  {
+    slug: 'chair-yoga-for-seniors',
+    hashtags: '#chairyoga #chairyogaforseniors #gentleyoga #yogaforseniors #seniorfitness',
+    desc: 'Chair yoga for seniors, explained simply: a safety-first setup, twelve gentle seated poses, a 10-minute routine, and honest guidance. Educational, not medical advice.',
+    bg: Array(5).fill('public/images/guides/chair-yoga-for-seniors/pin.webp'),
+    hooks: [
+      ['Chair Yoga', 'Chair Yoga for Seniors: 12 Gentle Poses', 'A safe, seated way to move more — no floor needed.', 74],
+      ['Gentle Movement', 'Hard to Get Down to the Floor?', 'Chair yoga keeps you moving, safely seated.', 80],
+      ['At a Glance', 'A Safe 10-Minute Chair Yoga Routine', 'Twelve gentle poses, in a calm order.', 80],
+      ['The Yoga Sensei', 'A Kinder Way to Move', '', 88],
+      ['Before You Start', 'Chair Yoga Safety, the Honest Way', 'When to take it easy, and when to ask your doctor.', 74],
+    ],
+  },
+  {
+    slug: 'chair-yoga-for-beginners',
+    hashtags: '#chairyoga #chairyogaforbeginners #beginneryoga #gentleyoga #accessibleyoga',
+    desc: 'Chair yoga for beginners, explained simply: what it is, six easy starter poses, a 5-minute routine, and what to expect. Educational, not medical advice.',
+    bg: Array(5).fill('public/images/guides/chair-yoga-for-beginners/pin.webp'),
+    hooks: [
+      ['Beginner Guide', 'Chair Yoga for Beginners: 6 Easy Poses', 'Start seated, keep it small, build from there.', 76],
+      ['New to Yoga?', 'Floor Classes Feel Too Hard?', 'Chair yoga is the easiest way to begin.', 82],
+      ['At a Glance', 'A Simple 5-Minute Chair Yoga Routine', 'Six gentle poses to link together.', 80],
+      ['The Yoga Sensei', 'An Easy Way to Start Yoga', '', 88],
+      ['Before You Start', '5 Beginner Chair Yoga Mistakes to Avoid', 'Small and gentle beats big and forced.', 74],
+    ],
+  },
+  {
+    slug: 'free-chair-yoga-for-seniors',
+    hashtags: '#chairyoga #freeyoga #chairyogaforseniors #yogaforseniors #gentleyoga',
+    desc: 'Free chair yoga for seniors: a short routine you can do at home today, plus where to find free classes and safe video routines. Educational, not medical advice.',
+    bg: Array(5).fill('public/images/guides/free-chair-yoga-for-seniors/pin.webp'),
+    hooks: [
+      ['Free at Home', 'Free Chair Yoga for Seniors', 'A short routine you can do today — no class needed.', 78],
+      ['No Budget?', 'Chair Yoga Costs Nothing to Start', 'All you need is a sturdy chair you already own.', 78],
+      ['Where to Look', 'Where to Find Free Chair Yoga', 'Libraries, community centres and safe videos.', 80],
+      ['The Yoga Sensei', 'Gentle Movement, Free', '', 88],
+      ['Stay Safe', 'How to Pick a Safe Free Routine', 'What a good instructor always shows you.', 74],
+    ],
+  },
+  {
+    slug: 'printable-chair-yoga-for-seniors',
+    hashtags: '#chairyoga #printableyoga #chairyogaforseniors #yogaforseniors #gentleyoga',
+    desc: 'A printable chair yoga routine for seniors: a simple, large-step chart you can print and keep by the chair. Free to use. Educational, not medical advice.',
+    bg: Array(5).fill('public/images/guides/printable-chair-yoga-for-seniors/pin.webp'),
+    hooks: [
+      ['Printable Chart', 'Printable Chair Yoga for Seniors', 'A simple chart to print and keep by the chair.', 76],
+      ['Easy to Follow', 'Hard to Remember the Poses?', 'A large-step printed chart keeps it simple.', 80],
+      ['At a Glance', 'The Whole Routine on One Page', 'Clear steps, big text, easy to follow.', 82],
+      ['The Yoga Sensei', 'Keep the Routine Within Reach', '', 88],
+      ['How to Use It', 'Print It, Keep It by the Chair', 'A few tips to get the most from the chart.', 76],
+    ],
+  },
   // Mindful Living board — pose page (route /poses/, calm Aiko imagery, no guide folder).
   {
     slug: 'childs-pose',
