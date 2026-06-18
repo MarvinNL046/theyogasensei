@@ -92,6 +92,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Printable Chair Yoga for Seniors: A Routine Chart',
     category: 'Chair yoga',
   },
+  'chair-yoga-for-beginners': {
+    href: '/guides/chair-yoga-for-beginners',
+    title: 'Chair Yoga for Beginners: How to Start',
+    category: 'Chair yoga',
+  },
 
   // Reviews — keyed by their old content slug; resolve to the live /reviews/* URL.
   'best-yoga-mats-2026': {
