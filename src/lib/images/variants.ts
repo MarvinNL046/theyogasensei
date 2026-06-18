@@ -39,8 +39,14 @@ const LOCAL_FALLBACK_IMAGES: Record<ImageVariant, string> = {
 function localImagePath(id: string): string | null {
   if (id.startsWith('http://') || id.startsWith('https://')) return id
   if (id.startsWith('/')) return id
-  if (id.startsWith('guides/') || id.startsWith('poses/'))
-    return `/images/${id}.webp`
+  if (id.startsWith('guides/') || id.startsWith('poses/')) {
+    // Cache-bust the chair-yoga cluster only. Those pages went live ~1.5h
+    // before their image files were added, so Vercel's CDN negatively cached
+    // 404s on the bare paths and kept serving them on some edges. A version
+    // query is a fresh cache key → guaranteed 200. Bump v if it ever recurs.
+    const v = id.includes('chair-yoga') ? '?v=2' : ''
+    return `/images/${id}.webp${v}`
+  }
   return null
 }
 
