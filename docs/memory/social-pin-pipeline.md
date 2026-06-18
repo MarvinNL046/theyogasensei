@@ -45,3 +45,21 @@ claimed teacher), no medical claims, no emoji/exclamation.
 
 Status: **DONE** — 65 pins + 9 IG starter posts generated and visually QA'd.
 [[feedback-pace]] (approve-before-scale honoured).
+
+**Update 2026-06-18 — pose pins + the live count.** The generator now spans **19
+entries (18 guides + 1 pose) = 95 pins**. `generate-pins.ts` gained two optional
+fields on a `Guide` entry — `route` (URL segment, default `guides`; use `poses`
+for `/poses/<slug>` pages) and `bg` (an explicit 5-background array that bypasses
+the guide-folder readdir, for pages with no `public/images/guides/<slug>/` folder)
+— plus an optional slug-filter arg (`npx tsx scripts/generate-pins.ts childs-pose`
+builds just that one, so you don't regenerate all 90). First pose pin: `childs-pose`
+(Mindful Living board), built from the existing local Aiko photos
+(`aiko-childs-pose-sage-yoga-mat.webp`, `aiko-meditation-back-view-sage-yoga-mat.webp`)
+— no new Higgsfield generation.
+
+**Update 2026-06-18 — starter comments are now standard.** After publishing a pin,
+add one brand-voice starter comment under it ("om het gesprek op gang te brengen"):
+first-person, honest, ends on a question, no emoji/exclamation, tied to the pin's
+topic. Done for all 10 then-live pins on 2026-06-18. Low priority for the click-KPI
+(KPI = outbound clicks, not comments) — it's an engagement-signal nicety, not a
+main lever.

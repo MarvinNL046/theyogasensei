@@ -68,6 +68,8 @@ interface Guide {
   hashtags: string
   desc: string // base pin description (from metaDescription), reused per angle
   hooks: Hook[] // exactly 5, in angle order: list / problem / comparison / aesthetic / checklist
+  route?: string // URL segment under theyogasensei.com (default 'guides'; e.g. 'poses')
+  bg?: string[] // explicit 5 backgrounds (bypasses imagesFor — for pages with no guide photo folder)
 }
 
 function PinLayout(eyebrow: string, title: string, subtitle: string, titleSize: number) {
@@ -351,18 +353,42 @@ const GUIDES: Guide[] = [
       ['Quick Tip', 'Love the Grip? Avoid It for Hot Yoga', 'Open-cell rubber drinks sweat and turns slick.', 76],
     ],
   },
+  // Mindful Living board — pose page (route /poses/, calm Aiko imagery, no guide folder).
+  {
+    slug: 'childs-pose',
+    route: 'poses',
+    hashtags: '#childspose #balasana #restorativeyoga #yogaforbeginners #mindfulliving',
+    desc: "Child's Pose (Balasana), explained calmly: how to rest into it, the common mistakes like forcing the hips down or holding the breath, the props that make it comfortable, and who should take it easy.",
+    bg: [
+      'public/images/aiko-persona/aiko-childs-pose-sage-yoga-mat.webp',
+      'public/images/aiko-persona/aiko-childs-pose-sage-yoga-mat.webp',
+      'public/images/aiko-persona/aiko-childs-pose-sage-yoga-mat.webp',
+      'public/images/aiko-persona/aiko-meditation-back-view-sage-yoga-mat.webp',
+      'public/images/aiko-persona/aiko-childs-pose-sage-yoga-mat.webp',
+    ],
+    hooks: [
+      ['Mindful Living', "Child's Pose: How to Truly Rest", 'The calming shape you can return to any time.', 82],
+      ['Common Problem', "Can't Sit Back on Your Heels?", 'Tight hips are normal. Let a prop bring the floor up.', 76],
+      ['How To', "Child's Pose, Step by Step", 'Beginner cues, common mistakes, and the right props.', 84],
+      ['The Yoga Sensei', 'A Calmer Way to Pause', '', 88],
+      ['Take It Easy', "When to Skip Child's Pose", 'Knee injury and late pregnancy: gentler options.', 78],
+    ],
+  },
 ]
 
 const ANGLE_IDS = ['01-listicle', '02-problem', '03-comparison', '04-aesthetic', '05-checklist']
 
 async function main() {
+  // Optional slug filter: `npx tsx scripts/generate-pins.ts childs-pose` builds just that one.
+  const only = process.argv[2]
   let count = 0
   for (let g = 0; g < GUIDES.length; g++) {
     const guide = GUIDES[g]
+    if (only && guide.slug !== only) continue
     const outDir = resolve(ROOT, 'public/images/pins', guide.slug)
     mkdirSync(outDir, { recursive: true })
-    const imgs = imagesFor(guide.slug, g)
-    const url = `https://www.theyogasensei.com/guides/${guide.slug}`
+    const imgs = guide.bg ?? imagesFor(guide.slug, g)
+    const url = `https://www.theyogasensei.com/${guide.route ?? 'guides'}/${guide.slug}`
     const lines: string[] = [
       `# Pinterest pins — ${guide.slug}`,
       '',
