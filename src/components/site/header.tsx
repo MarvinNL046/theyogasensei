@@ -1,28 +1,27 @@
 import { useState } from 'react'
 import { Link } from '@tanstack/react-router'
-import { Menu, Search, X } from 'lucide-react'
+import { ChevronDown, Menu, Search, X } from 'lucide-react'
 import { Container } from '#/components/ui/container'
 import { cn } from '#/lib/utils'
 
-const NAV_LINKS = [
+// Lean top bar: a few clear hubs only. Specific guides + clusters live inside
+// the Guides dropdown, not on the bar — keep this list short (~5 items).
+const LEADING = [
   { to: '/', label: 'Home' },
   { to: '/reviews/best-yoga-mats', label: 'Best mats' },
-  { to: '/guides', label: 'Guides' },
-  {
-    to: '/guides/$slug',
-    params: { slug: 'eco-friendly-yoga-mat' },
-    label: 'Eco mats',
-  },
-  {
-    to: '/guides/$slug',
-    params: { slug: 'how-to-choose-a-yoga-mat' },
-    label: 'Mat guide',
-  },
-  {
-    to: '/guides/$slug',
-    params: { slug: 'best-yoga-mat-for-hot-yoga' },
-    label: 'Hot yoga mats',
-  },
+] as const
+
+// Items inside the "Guides" dropdown. The parent "Guides" link goes to the full
+// index (/guides); these are the high-intent shortcuts + the chair-yoga cluster.
+const GUIDES_ITEMS = [
+  { slug: 'how-to-choose-a-yoga-mat', label: 'How to choose a mat' },
+  { slug: 'eco-friendly-yoga-mat', label: 'Eco-friendly mats' },
+  { slug: 'best-yoga-mat-for-hot-yoga', label: 'Hot yoga mats' },
+  { slug: 'best-yoga-mat-for-bad-knees', label: 'Mats for bad knees' },
+  { slug: 'chair-yoga-for-seniors', label: 'Chair yoga' },
+] as const
+
+const TRAILING = [
   { to: '/poses', label: 'Poses' },
   { to: '/about', label: 'About' },
 ] as const
@@ -30,6 +29,9 @@ const NAV_LINKS = [
 export function Header() {
   const [open, setOpen] = useState(false)
   const close = () => setOpen(false)
+
+  const topLinkClass =
+    'transition hover:text-[color:var(--color-accent-deep)]'
 
   return (
     <header className="sticky top-0 z-40 border-b border-[color:var(--color-border)]/60 bg-[color:var(--color-bg)]/85 backdrop-blur-md">
@@ -65,30 +67,65 @@ export function Header() {
         {/* Desktop nav */}
         <nav
           aria-label="Primary"
-          className="hidden items-center gap-10 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-soft)] lg:flex"
+          className="hidden items-center gap-9 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-soft)] lg:flex"
         >
-          {NAV_LINKS.map((link) =>
-            'params' in link ? (
-              <Link
-                key={link.label}
-                to={link.to}
-                params={link.params}
-                className="transition hover:text-[color:var(--color-accent-deep)]"
-                activeProps={{ className: 'text-[color:var(--color-accent-deep)]' }}
-              >
-                {link.label}
-              </Link>
-            ) : (
-              <Link
-                key={link.label}
-                to={link.to}
-                className="transition hover:text-[color:var(--color-accent-deep)]"
-                activeProps={{ className: 'text-[color:var(--color-accent-deep)]' }}
-              >
-                {link.label}
-              </Link>
-            ),
-          )}
+          {LEADING.map((link) => (
+            <Link
+              key={link.label}
+              to={link.to}
+              className={topLinkClass}
+              activeProps={{ className: 'text-[color:var(--color-accent-deep)]' }}
+            >
+              {link.label}
+            </Link>
+          ))}
+
+          {/* Guides dropdown — opens on hover and on keyboard focus-within */}
+          <div className="group relative">
+            <Link
+              to="/guides"
+              className={cn(topLinkClass, 'inline-flex items-center gap-1.5')}
+              activeProps={{ className: 'text-[color:var(--color-accent-deep)]' }}
+            >
+              Guides
+              <ChevronDown
+                className="h-3 w-3 transition group-hover:rotate-180"
+                strokeWidth={2}
+                aria-hidden="true"
+              />
+            </Link>
+            <div className="invisible absolute left-0 top-full z-50 pt-4 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <div className="min-w-[230px] rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-bg)] p-2 shadow-[0_16px_44px_-16px_rgba(35,38,28,0.30)]">
+                {GUIDES_ITEMS.map((item) => (
+                  <Link
+                    key={item.slug}
+                    to="/guides/$slug"
+                    params={{ slug: item.slug }}
+                    className="block rounded-sm px-3 py-2 text-[13px] normal-case tracking-normal text-[color:var(--color-ink-soft)] transition hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-accent-deep)]"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                <Link
+                  to="/guides"
+                  className="mt-1 block rounded-sm border-t border-[color:var(--color-border)]/60 px-3 pb-1 pt-2.5 text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-accent-deep)] transition hover:bg-[color:var(--color-surface-muted)]"
+                >
+                  All guides
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {TRAILING.map((link) => (
+            <Link
+              key={link.label}
+              to={link.to}
+              className={topLinkClass}
+              activeProps={{ className: 'text-[color:var(--color-accent-deep)]' }}
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
         {/* Search icon — disabled placeholder until search index ships */}
@@ -125,30 +162,52 @@ export function Header() {
         )}
       >
         <Container size="wide" className="flex flex-col gap-1 py-4">
-          {NAV_LINKS.map((link) =>
-            'params' in link ? (
+          {LEADING.map((link) => (
+            <Link
+              key={link.label}
+              to={link.to}
+              onClick={close}
+              className="rounded-md px-2 py-3 text-sm uppercase tracking-[0.18em] text-[color:var(--color-ink-soft)] transition hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-accent-deep)]"
+              activeProps={{ className: 'text-[color:var(--color-accent-deep)]' }}
+            >
+              {link.label}
+            </Link>
+          ))}
+
+          {/* Guides group — parent link + indented shortcuts */}
+          <Link
+            to="/guides"
+            onClick={close}
+            className="rounded-md px-2 py-3 text-sm uppercase tracking-[0.18em] text-[color:var(--color-ink-soft)] transition hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-accent-deep)]"
+            activeProps={{ className: 'text-[color:var(--color-accent-deep)]' }}
+          >
+            Guides
+          </Link>
+          <div className="ml-3 flex flex-col border-l border-[color:var(--color-border)] pl-3">
+            {GUIDES_ITEMS.map((item) => (
               <Link
-                key={link.label}
-                to={link.to}
-                params={link.params}
+                key={item.slug}
+                to="/guides/$slug"
+                params={{ slug: item.slug }}
                 onClick={close}
-                className="rounded-md px-2 py-3 text-sm uppercase tracking-[0.18em] text-[color:var(--color-ink-soft)] transition hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-accent-deep)]"
-                activeProps={{ className: 'text-[color:var(--color-accent-deep)]' }}
+                className="rounded-md px-2 py-2.5 text-[13px] text-[color:var(--color-ink-muted)] transition hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-accent-deep)]"
               >
-                {link.label}
+                {item.label}
               </Link>
-            ) : (
-              <Link
-                key={link.label}
-                to={link.to}
-                onClick={close}
-                className="rounded-md px-2 py-3 text-sm uppercase tracking-[0.18em] text-[color:var(--color-ink-soft)] transition hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-accent-deep)]"
-                activeProps={{ className: 'text-[color:var(--color-accent-deep)]' }}
-              >
-                {link.label}
-              </Link>
-            ),
-          )}
+            ))}
+          </div>
+
+          {TRAILING.map((link) => (
+            <Link
+              key={link.label}
+              to={link.to}
+              onClick={close}
+              className="rounded-md px-2 py-3 text-sm uppercase tracking-[0.18em] text-[color:var(--color-ink-soft)] transition hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-accent-deep)]"
+              activeProps={{ className: 'text-[color:var(--color-accent-deep)]' }}
+            >
+              {link.label}
+            </Link>
+          ))}
         </Container>
       </nav>
     </header>
