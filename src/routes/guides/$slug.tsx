@@ -15,6 +15,7 @@ import {
   loadFrontmatter,
 } from '#/lib/mdx/loader'
 import { resolveAuthor } from '#/lib/content/authors'
+import { resolveRelated } from '#/lib/content/related'
 import { buildHead, SITE_URL } from '#/lib/seo/head'
 import { buildImageUrl } from '#/lib/images/variants'
 import { Container } from '#/components/ui/container'
@@ -99,6 +100,18 @@ function GuidePage() {
   const { Component } = loadContent('guides', slug)
   const eyebrow = frontmatter.tags?.[0] ?? 'Guide'
   const heroImageUrl = buildImageUrl(frontmatter.heroImage, 'og')
+
+  // Sidebar "Read next": prefer this guide's curated related[] (resolved to live,
+  // hop-free URLs); fall back to the hand-picked POPULAR_POSTS when none resolve.
+  const related = resolveRelated(frontmatter.related, { exclude: slug, limit: 5 })
+  const readNext: Array<{ href: string; title: string; category: string }> =
+    related.length > 0
+      ? related
+      : POPULAR_POSTS.filter((p) => p.params.slug !== slug).map((p) => ({
+          href: `/guides/${p.params.slug}`,
+          title: p.title,
+          category: p.category,
+        }))
 
   return (
     <>
@@ -236,29 +249,26 @@ function GuidePage() {
                 </p>
                 <hr className="mb-2 mt-4 border-[color:var(--color-border)]" />
                 <ol className="divide-y divide-[color:var(--color-border)]/60">
-                  {POPULAR_POSTS.filter((p) => p.params.slug !== slug).map(
-                    (post, i) => (
-                      <li key={`popular-${post.params.slug}`}>
-                        <Link
-                          to={post.to}
-                          params={post.params}
-                          className="group flex items-start gap-4 py-6 first:pt-4 last:pb-0"
-                        >
-                          <span className="font-serif text-base leading-none text-[color:var(--color-ink-muted)]">
-                            {i + 1}
-                          </span>
-                          <div className="min-w-0 flex-1">
-                            <p className="line-clamp-3 font-serif text-[14px] leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
-                              {post.title}
-                            </p>
-                            <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-muted)]">
-                              {post.category}
-                            </p>
-                          </div>
-                        </Link>
-                      </li>
-                    ),
-                  )}
+                  {readNext.map((post, i) => (
+                    <li key={`readnext-${post.href}`}>
+                      <a
+                        href={post.href}
+                        className="group flex items-start gap-4 py-6 first:pt-4 last:pb-0"
+                      >
+                        <span className="font-serif text-base leading-none text-[color:var(--color-ink-muted)]">
+                          {i + 1}
+                        </span>
+                        <div className="min-w-0 flex-1">
+                          <p className="line-clamp-3 font-serif text-[14px] leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
+                            {post.title}
+                          </p>
+                          <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-muted)]">
+                            {post.category}
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                  ))}
                 </ol>
               </div>
 
