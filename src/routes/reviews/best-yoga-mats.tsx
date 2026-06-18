@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { Link, createFileRoute } from '@tanstack/react-router'
 import {
   ArrowRight,
@@ -14,6 +15,7 @@ import { RatingStars } from '#/components/reviews/RatingStars'
 import { RadarChart } from '#/components/reviews/RadarChart'
 import {
   MAT_PICKS,
+  type MatPick,
   SCORING_RUBRIC,
   priceTier,
 } from '#/features/reviews/data'
@@ -105,6 +107,34 @@ const reviewHref = (pick: { detailPath?: string }): ReviewLink =>
         ? { to: '/reviews/gaiam' }
         : { to: '/reviews/best-yoga-mats' }
 
+/**
+ * CTA for a pick. Mats with a dedicated review page link straight to it; mats
+ * that only appear in this roundup scroll to their own entry in the detailed-
+ * reviews section (#pick-N) instead of dead-ending back on the current page.
+ */
+function PickCta({
+  pick,
+  className,
+  children,
+}: {
+  pick: MatPick
+  className?: string
+  children: ReactNode
+}) {
+  if (pick.detailPath) {
+    return (
+      <Link {...reviewHref(pick)} className={className}>
+        {children}
+      </Link>
+    )
+  }
+  return (
+    <a href={`#pick-${pick.rank}`} className={className}>
+      {children}
+    </a>
+  )
+}
+
 function ReviewsOverviewPage() {
   const topPick = MAT_PICKS[0]
   return (
@@ -117,14 +147,6 @@ function ReviewsOverviewPage() {
               <nav className="text-[11px] uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)]">
                 <Link to="/" className="hover:text-[color:var(--color-ink)]">
                   Home
-                </Link>{' '}
-                ·{' '}
-                <Link
-                  to="/guides"
-                  search={{ category: 'reviews' }}
-                  className="hover:text-[color:var(--color-ink)]"
-                >
-                  Reviews
                 </Link>{' '}
                 · <span className="text-[color:var(--color-ink)]">Best Yoga Mats</span>
               </nav>
@@ -252,13 +274,13 @@ function ReviewsOverviewPage() {
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-[color:var(--color-ink-soft)]">
                     {pick.blurb}
                   </p>
-                  <Link
-                    {...reviewHref(pick)}
+                  <PickCta
+                    pick={pick}
                     className="mt-5 inline-flex items-center gap-2 self-start rounded-sm bg-[color:var(--color-olive)] px-4 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-charcoal)]"
                   >
-                    {pick.reviewSlug ? 'Read review' : 'See on the list'}
+                    {pick.detailPath ? 'Read review' : 'See on the list'}
                     <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-                  </Link>
+                  </PickCta>
                 </div>
               </li>
             ))}
@@ -323,13 +345,13 @@ function ReviewsOverviewPage() {
                       {priceTier(pick.price)}
                     </td>
                     <td className="py-4 pl-3 text-right">
-                      <Link
-                        {...reviewHref(pick)}
+                      <PickCta
+                        pick={pick}
                         className="inline-flex items-center gap-1.5 rounded-sm bg-[color:var(--color-olive)] px-3.5 py-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-charcoal)]"
                       >
                         View
                         <ArrowRight className="h-3 w-3" strokeWidth={2} />
-                      </Link>
+                      </PickCta>
                     </td>
                   </tr>
                 ))}
@@ -416,15 +438,15 @@ function ReviewsOverviewPage() {
                         </ul>
                       </div>
                     </div>
-                    <Link
-                      {...reviewHref(pick)}
-                      className="mt-7 inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-olive)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.2em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-charcoal)]"
-                    >
-                      {pick.reviewSlug
-                        ? 'Read the full review'
-                        : 'See it on the list'}
-                      <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-                    </Link>
+                    {pick.detailPath ? (
+                      <Link
+                        {...reviewHref(pick)}
+                        className="mt-7 inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-olive)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.2em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-charcoal)]"
+                      >
+                        Read the full review
+                        <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+                      </Link>
+                    ) : null}
                   </div>
 
                   {/* summary card */}
@@ -698,9 +720,9 @@ function ReviewsOverviewPage() {
               { when: 'If you practise hot yoga often', pick: MAT_PICKS[1] },
               { when: 'If you’re starting from scratch', pick: MAT_PICKS[4] },
             ].map(({ when, pick }) => (
-              <Link
+              <PickCta
                 key={pick.name}
-                {...reviewHref(pick)}
+                pick={pick}
                 className="group flex flex-col justify-between border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 transition hover:border-[color:var(--color-olive)]/40"
               >
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-ink-muted)]">
@@ -715,7 +737,7 @@ function ReviewsOverviewPage() {
                     {pick.overall.toFixed(1)}
                   </span>
                 </div>
-              </Link>
+              </PickCta>
             ))}
           </div>
         </Container>

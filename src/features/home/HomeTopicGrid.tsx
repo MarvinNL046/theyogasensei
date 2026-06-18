@@ -19,7 +19,7 @@ type Topic =
     }
   | {
       kind: 'route'
-      to: '/poses'
+      to: '/poses' | '/reviews/best-yoga-mats'
       label: string
       subtitle: string
       image: string
@@ -55,8 +55,8 @@ const TOPICS: Array<Topic> = [
     image: '/images/guides/cork-vs-rubber-yoga-mat/cork-vs-rubber.webp',
   },
   {
-    kind: 'guide',
-    category: 'Reviews',
+    kind: 'route',
+    to: '/reviews/best-yoga-mats',
     label: 'Reviews',
     subtitle: 'Honest mat verdicts',
     image: '/images/guides/lululemon-yoga-mat/hero.webp',
