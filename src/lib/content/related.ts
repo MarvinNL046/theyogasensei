@@ -76,6 +76,23 @@ const REGISTRY: Record<string, RelatedItem> = {
     category: 'Comparison',
   },
 
+  // Chair yoga for seniors cluster (pillar + spokes)
+  'chair-yoga-for-seniors': {
+    href: '/guides/chair-yoga-for-seniors',
+    title: 'Chair Yoga for Seniors: Safe Poses and a Gentle Plan',
+    category: 'Chair yoga',
+  },
+  'free-chair-yoga-for-seniors': {
+    href: '/guides/free-chair-yoga-for-seniors',
+    title: 'Free Chair Yoga for Seniors: Routines and Classes',
+    category: 'Chair yoga',
+  },
+  'printable-chair-yoga-for-seniors': {
+    href: '/guides/printable-chair-yoga-for-seniors',
+    title: 'Printable Chair Yoga for Seniors: A Routine Chart',
+    category: 'Chair yoga',
+  },
+
   // Reviews — keyed by their old content slug; resolve to the live /reviews/* URL.
   'best-yoga-mats-2026': {
     href: '/reviews/best-yoga-mats',
