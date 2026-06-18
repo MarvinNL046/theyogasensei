@@ -44,6 +44,13 @@ export function Footer() {
             <Link to="/poses" className="transition hover:text-[color:var(--color-bg)]">
               Poses
             </Link>
+            <Link
+              to="/guides/$slug"
+              params={{ slug: 'chair-yoga-for-seniors' }}
+              className="transition hover:text-[color:var(--color-bg)]"
+            >
+              Chair yoga
+            </Link>
             <Link to="/about" className="transition hover:text-[color:var(--color-bg)]">
               About
             </Link>

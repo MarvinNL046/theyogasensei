@@ -54,6 +54,42 @@ export const Route = createFileRoute('/')({
 const LATEST_WRITING = [
   {
     to: '/guides/$slug' as const,
+    params: { slug: 'chair-yoga-for-seniors' },
+    eyebrow: 'Pillar · Chair yoga',
+    title: 'Chair Yoga for Seniors: Safe Poses and a Gentle Plan',
+    description:
+      'A safety-first setup, twelve gentle seated poses, and a calm 10-minute routine for older adults. Educational, not medical advice.',
+    image: 'guides/chair-yoga-for-seniors/hero',
+  },
+  {
+    to: '/guides/$slug' as const,
+    params: { slug: 'chair-yoga-for-beginners' },
+    eyebrow: 'Guide · Chair yoga',
+    title: 'Chair Yoga for Beginners: How to Start (6 Easy Poses)',
+    description:
+      'What chair yoga is, six easy starter poses, and a 5-minute routine — the easiest way to begin. Educational, not medical advice.',
+    image: 'guides/chair-yoga-for-beginners/hero',
+  },
+  {
+    to: '/guides/$slug' as const,
+    params: { slug: 'free-chair-yoga-for-seniors' },
+    eyebrow: 'Guide · Chair yoga',
+    title: 'Free Chair Yoga for Seniors: Routines and Where to Find Classes',
+    description:
+      'A short routine you can do at home today, plus where to find free classes and safe video routines.',
+    image: 'guides/free-chair-yoga-for-seniors/hero',
+  },
+  {
+    to: '/guides/$slug' as const,
+    params: { slug: 'printable-chair-yoga-for-seniors' },
+    eyebrow: 'Guide · Chair yoga',
+    title: 'Printable Chair Yoga for Seniors: A Simple Routine Chart',
+    description:
+      'A simple, large-step chart you can print and keep by the chair. Free to use, educational only.',
+    image: 'guides/printable-chair-yoga-for-seniors/hero',
+  },
+  {
+    to: '/guides/$slug' as const,
     params: { slug: 'eco-friendly-yoga-mat' },
     eyebrow: 'Affiliate guide · Eco mats',
     title: 'Best Eco-Friendly Yoga Mats: 5 Honest Picks',
