@@ -52,10 +52,53 @@ export interface DetailReview {
 
 const SITE = 'https://www.theyogasensei.com'
 
-/** Build the route head (title, description, OG, self-canonical) for a detail page. */
+// Reviews are editorial: the reviewer/publisher is the brand (not a Person),
+// and the scores are our own editorial ratings on a 1–5 scale.
+const REVIEW_ORG = { '@type': 'Organization', name: 'The Yoga Sensei', url: SITE } as const
+
+/** "June 15, 2026" -> "2026-06-15"; falls back to the raw string if unparseable. */
+function reviewDateIso(human: string): string {
+  const d = new Date(human)
+  return Number.isNaN(d.getTime()) ? human : d.toISOString().slice(0, 10)
+}
+
+/** Build the route head (title, description, OG, self-canonical, JSON-LD) for a detail page. */
 export function buildReviewHead(detail: DetailReview, slug: string) {
   const url = `${SITE}/reviews/${slug}`
+  const image = `${SITE}${detail.heroImage}`
   const desc = `An honest, research-led ${detail.productName} review — grip, cushion, durability, specs and who it’s really for. Editorial scores, no invented lab tests.`
+
+  // Review snippet — itemReviewed Product + our editorial reviewRating (stars).
+  const reviewSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    name: detail.title,
+    itemReviewed: { '@type': 'Product', name: detail.productName, image },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: detail.overall,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    reviewBody: desc,
+    author: REVIEW_ORG,
+    publisher: REVIEW_ORG,
+    datePublished: reviewDateIso(detail.byline.date),
+    url,
+  }
+
+  // Mirrors the visible breadcrumb: Home › Reviews › product. Every crumb but
+  // the last carries `item` (the last is optional per Google's spec).
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Reviews', item: `${SITE}/reviews/best-yoga-mats` },
+      { '@type': 'ListItem', position: 3, name: detail.productName },
+    ],
+  }
+
   return {
     meta: [
       { title: `${detail.title} | The Yoga Sensei` },
@@ -64,9 +107,13 @@ export function buildReviewHead(detail: DetailReview, slug: string) {
       { property: 'og:description', content: desc },
       { property: 'og:url', content: url },
       { property: 'og:type', content: 'article' },
-      { property: 'og:image', content: `${SITE}${detail.heroImage}` },
+      { property: 'og:image', content: image },
     ],
     links: [{ rel: 'canonical', href: url }],
+    scripts: [
+      { type: 'application/ld+json', children: JSON.stringify(reviewSchema) },
+      { type: 'application/ld+json', children: JSON.stringify(breadcrumbSchema) },
+    ],
   }
 }
 
