@@ -47,6 +47,7 @@ Append one row per published page in this format:
 | chair yoga for seniors | chair-yoga-for-seniors | pillar | chair-yoga-for-seniors | chair-yoga-for-seniors | 2026-06-18 | 2026-06-18 |
 | free chair yoga for seniors | free-chair-yoga-for-seniors | cluster | chair-yoga-for-seniors | chair-yoga-for-seniors | 2026-06-18 | 2026-06-18 |
 | printable chair yoga for seniors | printable-chair-yoga-for-seniors | cluster | chair-yoga-for-seniors | chair-yoga-for-seniors | 2026-06-18 | 2026-06-18 |
+| chair yoga for beginners | chair-yoga-for-beginners | cluster | chair-yoga-for-seniors | chair-yoga-for-seniors | 2026-06-18 | 2026-06-18 |
 
 ---
 
