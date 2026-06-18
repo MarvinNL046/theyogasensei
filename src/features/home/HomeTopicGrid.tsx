@@ -38,7 +38,7 @@ const TOPICS: Array<Topic> = [
     category: 'Chair yoga',
     label: 'Chair yoga',
     subtitle: 'Gentle seated practice',
-    image: '/images/guides/chair-yoga-for-seniors/hero.webp',
+    image: '/images/guides/chair-yoga-for-seniors/hero.webp?v=2',
   },
   {
     kind: 'guide',
