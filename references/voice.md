@@ -52,6 +52,20 @@ When (not if) we add a reviewer, the bio gains: "Instructional content on this p
 
 ---
 
+## Readability — write for a 12-year-old
+
+**Every page must be readable by a 12-year-old. This is a hard rule, not a nice-to-have.** Most readers skim on a phone, and plain writing both ranks and converts better.
+
+- **Target ~Grade 6–7** (Flesch Reading Ease roughly 60–70+).
+- **Short sentences.** Average around 12–16 words; almost never over 25. If a sentence has two commas and an "and", split it.
+- **Common words over jargon.** "Move your joints", not "articulate the joints". "Studies suggest", not "the literature indicates". If a term is unavoidable (a Sanskrit name, a medical word on a YMYL page), define it in plain words right after.
+- **Active voice, one idea per sentence.**
+- **Read it aloud.** If you run out of breath or stumble, the sentence is too long — cut it.
+
+This sits on top of the curator voice, not instead of it: still first-person, honest, real numbers. Plain ≠ dumbed-down — keep the substance, lose the long words and long sentences.
+
+---
+
 ## Vocabulary
 
 ### Use freely
