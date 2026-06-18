@@ -60,7 +60,7 @@ Do NOT skip this. Skipping it is the difference between a post that ranks and a 
 5. **Cover every topic the top 3 all talk about** — if all three mention "common mistakes", you must too. These shared topics are the implicit search intent.
 6. **Add 1–2 extra topics they missed** — this is what makes your page rankable above theirs. Pull from Reddit threads (`site:reddit.com [keyword]`), niche forums, or your own teaching experience.
 7. **Answer the main question directly at the top** in 2–4 sentences (the TLDR / featured snippet target). The first paragraph must satisfy the searcher in 5 seconds, before they scroll.
-8. **Include an FAQ section with 4–8 questions verbatim from "People Also Ask"** — these have known volume and earn PAA carousel placement.
+8. **Include an FAQ section with 4–8 questions verbatim from "People Also Ask"** — these have known volume and earn PAA carousel placement. Pull the *questions* verbatim, but **research each answer** — don't write a plausible-sounding answer from memory. Read how the top-ranking pages answer it (`mcp__dfs-mcp__on_page_instant_pages` / `on_page_content_parsing`, or WebSearch the question) and **ground every factual or health/wellness answer in a cited source** (add it to `citations[]`). On YMYL topics this is mandatory: an unsourced FAQ answer is a claim you can't stand behind.
 
 Also check `/used-keywords.md` at the repo root. If the primary keyword is already logged there, stop and ask the user — either pick a different keyword or refresh the existing page instead of opening a duplicate.
 
