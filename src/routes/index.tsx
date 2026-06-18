@@ -4,6 +4,7 @@ import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { JapaneseAccent } from '#/components/ui/japanese-accent'
 import { buildImageUrl } from '#/lib/images/variants'
+import { listContentSlugs, loadFrontmatter } from '#/lib/mdx/loader'
 import { HomeTrustBar } from '#/features/home/HomeTrustBar'
 import { HomeTopicGrid } from '#/features/home/HomeTopicGrid'
 import { HomeFeaturedGuide } from '#/features/home/HomeFeaturedGuide'
@@ -45,6 +46,20 @@ export const Route = createFileRoute('/')({
     ],
     links: [{ rel: 'canonical', href: 'https://www.theyogasensei.com/' }],
   }),
+  // Poses are surfaced on the homepage from real MDX so new pose pages appear
+  // here automatically (SSG: read at build time). Short title = text before the
+  // first colon/em-dash in the frontmatter title.
+  loader: () => {
+    const poses = listContentSlugs('poses').map((slug) => {
+      const { frontmatter: fm } = loadFrontmatter('poses', slug)
+      return {
+        slug,
+        title: fm.title.split(/[:—]/)[0]?.trim() ?? fm.title,
+        heroImage: fm.heroImage,
+      }
+    })
+    return { poses }
+  },
   component: HomePage,
 })
 
@@ -190,6 +205,7 @@ const LATEST_WRITING = [
 ]
 
 function HomePage() {
+  const { poses } = Route.useLoaderData()
   return (
     <>
       {/* ============================================================
@@ -326,6 +342,60 @@ function HomePage() {
           </div>
         </Container>
       </section>
+
+      {/* ============================================================
+          POSE GUIDES — surface the pose library on the homepage
+          ============================================================ */}
+      {poses.length > 0 ? (
+        <section className="bg-[color:var(--color-surface-muted)] py-16 md:py-24">
+          <Container size="wide">
+            <Eyebrow tone="default">Pose guides</Eyebrow>
+            <h2 className="mt-4 max-w-2xl font-serif text-3xl leading-tight tracking-tight md:text-[40px]">
+              Learn the foundational poses.
+            </h2>
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-[color:var(--color-ink-muted)]">
+              Calm, step-by-step pose guides — beginner cues, common mistakes,
+              and honest notes on who should take it easy.
+            </p>
+
+            <ul className="mt-12 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
+              {poses.map((pose) => (
+                <li key={pose.slug}>
+                  <Link
+                    to="/poses/$slug"
+                    params={{ slug: pose.slug }}
+                    className="group block"
+                  >
+                    <div className="overflow-hidden rounded-sm bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
+                      <img
+                        src={buildImageUrl(pose.heroImage, 'card')}
+                        alt={pose.title}
+                        width={800}
+                        height={600}
+                        loading="lazy"
+                        className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                      />
+                    </div>
+                    <p className="mt-4 font-serif text-lg leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
+                      {pose.title}
+                    </p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-12">
+              <Link
+                to="/poses"
+                className="inline-flex items-center gap-2 rounded-sm border border-[color:var(--color-olive)] px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-olive)] transition hover:bg-[color:var(--color-olive)] hover:text-[color:var(--color-bg)]"
+              >
+                View all poses
+                <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+              </Link>
+            </div>
+          </Container>
+        </section>
+      ) : null}
 
       {/* ============================================================
           ABOUT TEASER — single line of trust, link to about page

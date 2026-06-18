@@ -92,6 +92,16 @@ const ACCESSORIES = [
   { slug: 'best-yoga-mat-bag', label: 'Mat bags & carriers', note: 'Carry it to class without the under-arm shuffle' },
 ]
 
+// Single-product deep-dives. Surfaced here so every full review is reachable
+// from the roundup hub — not just the three picks that link out inline.
+const FULL_REVIEWS = [
+  { to: '/reviews/manduka-pro', label: 'Manduka PRO', note: 'The buy-it-for-life benchmark' },
+  { to: '/reviews/jade', label: 'Jade Harmony', note: 'Grippy natural rubber' },
+  { to: '/reviews/gaiam', label: 'Gaiam Premium', note: 'Best budget beginner mat' },
+  { to: '/reviews/lululemon', label: 'Lululemon The Mat', note: 'The grip that tops the lists' },
+  { to: '/reviews/retrospec', label: 'Retrospec Solana', note: 'Thick foam for sore knees' },
+] as const
+
 type ReviewLink =
   | { to: '/reviews/manduka-pro' }
   | { to: '/reviews/jade' }
@@ -613,7 +623,7 @@ function ReviewsOverviewPage() {
       {/* ===================== RELATED + ACCESSORIES ===================== */}
       <section className="bg-[color:var(--color-bg)] py-16 md:py-20">
         <Container size="wide">
-          <div className="grid gap-12 md:grid-cols-2 md:gap-16">
+          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3 md:gap-12">
             <div>
               <Eyebrow tone="default">Keep reading</Eyebrow>
               <h2 className="mt-4 font-serif text-2xl leading-tight tracking-tight md:text-[28px]">
@@ -663,6 +673,35 @@ function ReviewsOverviewPage() {
                         </span>
                         <span className="mt-0.5 block text-sm text-[color:var(--color-ink-muted)]">
                           {a.note}
+                        </span>
+                      </span>
+                      <ArrowRight
+                        className="h-4 w-4 flex-shrink-0 text-[color:var(--color-ink-muted)] transition group-hover:translate-x-0.5 group-hover:text-[color:var(--color-accent-deep)]"
+                        strokeWidth={1.75}
+                      />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <Eyebrow tone="default">Go deeper</Eyebrow>
+              <h2 className="mt-4 font-serif text-2xl leading-tight tracking-tight md:text-[28px]">
+                Full reviews
+              </h2>
+              <ul className="mt-6 divide-y divide-[color:var(--color-border)] border-t border-[color:var(--color-border)]">
+                {FULL_REVIEWS.map((r) => (
+                  <li key={r.to}>
+                    <Link
+                      to={r.to}
+                      className="group flex items-center justify-between gap-4 py-3.5"
+                    >
+                      <span>
+                        <span className="font-serif text-lg leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
+                          {r.label}
+                        </span>
+                        <span className="mt-0.5 block text-sm text-[color:var(--color-ink-muted)]">
+                          {r.note}
                         </span>
                       </span>
                       <ArrowRight
