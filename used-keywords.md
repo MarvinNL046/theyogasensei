@@ -45,6 +45,8 @@ Append one row per published page in this format:
 | cobra pose | cobra-pose | cluster | poses | yoga-for-beginners | 2026-06-14 | 2026-06-14 |
 | pigeon pose | pigeon-pose | cluster | poses | yoga-for-beginners | 2026-06-14 | 2026-06-14 |
 | chair yoga for seniors | chair-yoga-for-seniors | pillar | chair-yoga-for-seniors | chair-yoga-for-seniors | 2026-06-18 | 2026-06-18 |
+| free chair yoga for seniors | free-chair-yoga-for-seniors | cluster | chair-yoga-for-seniors | chair-yoga-for-seniors | 2026-06-18 | 2026-06-18 |
+| printable chair yoga for seniors | printable-chair-yoga-for-seniors | cluster | chair-yoga-for-seniors | chair-yoga-for-seniors | 2026-06-18 | 2026-06-18 |
 
 ---
 
