@@ -6,9 +6,9 @@ export const GUIDE_CATEGORIES = [
   'Buying guides',
   'Roundups',
   'Comparisons',
-  'Reviews',
   'Accessories',
   'Care',
+  'Chair yoga',
 ] as const
 
 export type GuideCategory = (typeof GUIDE_CATEGORIES)[number]
@@ -20,25 +20,27 @@ export const FEATURED_SLUG = 'how-to-choose-a-yoga-mat'
 // Zod schema is a closed discriminated union) and `tags` overlap across types
 // (the pillar also carries `mat-care`), so an explicit map is the honest way to
 // label these. New guides fall back to 'Buying guides' until added here.
+//
+// NOTE: individual product reviews now live under /reviews/* (their own route
+// files), not as guide MDX — so there is no 'Reviews' category here. Keep this
+// map limited to slugs that actually exist in /content/guides.
 const CATEGORY_BY_SLUG: Record<string, GuideCategory> = {
   'how-to-choose-a-yoga-mat': 'Buying guides',
   'how-thick-should-a-yoga-mat-be': 'Buying guides',
-  'best-yoga-mats-2026': 'Roundups',
   'eco-friendly-yoga-mat': 'Roundups',
   'best-yoga-mat-for-hot-yoga': 'Roundups',
   'best-yoga-mat-for-bad-knees': 'Roundups',
   'cork-vs-rubber-yoga-mat': 'Comparisons',
   'manduka-vs-lululemon-yoga-mat': 'Comparisons',
-  'lululemon-yoga-mat': 'Reviews',
-  'retrospec-solana-yoga-mat': 'Reviews',
-  'manduka-yoga-mat': 'Reviews',
-  'gaiam-yoga-mat': 'Reviews',
-  'jade-yoga-mat': 'Reviews',
   'best-yoga-blocks': 'Accessories',
   'best-yoga-bolster': 'Accessories',
   'best-yoga-mat-bag': 'Accessories',
   'how-to-clean-a-yoga-mat': 'Care',
   'how-to-store-a-yoga-mat': 'Care',
+  'chair-yoga-for-seniors': 'Chair yoga',
+  'chair-yoga-for-beginners': 'Chair yoga',
+  'free-chair-yoga-for-seniors': 'Chair yoga',
+  'printable-chair-yoga-for-seniors': 'Chair yoga',
 }
 
 export interface GuideCard {
