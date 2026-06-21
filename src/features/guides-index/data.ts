@@ -31,6 +31,7 @@ const CATEGORY_BY_SLUG: Record<string, GuideCategory> = {
   'eco-friendly-yoga-mat': 'Roundups',
   'best-yoga-mat-for-hot-yoga': 'Roundups',
   'best-yoga-mat-for-bad-knees': 'Roundups',
+  'best-yoga-mat-for-beginners': 'Roundups',
   'cork-vs-rubber-yoga-mat': 'Comparisons',
   'manduka-vs-lululemon-yoga-mat': 'Comparisons',
   'best-yoga-blocks': 'Accessories',
