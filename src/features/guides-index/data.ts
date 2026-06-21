@@ -3,6 +3,7 @@ import { resolveAuthor } from '#/lib/content/authors'
 
 export const GUIDE_CATEGORIES = [
   'All',
+  'Getting started',
   'Buying guides',
   'Roundups',
   'Comparisons',
@@ -41,6 +42,7 @@ const CATEGORY_BY_SLUG: Record<string, GuideCategory> = {
   'chair-yoga-for-beginners': 'Chair yoga',
   'free-chair-yoga-for-seniors': 'Chair yoga',
   'printable-chair-yoga-for-seniors': 'Chair yoga',
+  'yoga-for-beginners': 'Getting started',
 }
 
 export interface GuideCard {
