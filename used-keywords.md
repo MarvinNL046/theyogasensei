@@ -49,6 +49,7 @@ Append one row per published page in this format:
 | printable chair yoga for seniors | printable-chair-yoga-for-seniors | cluster | chair-yoga-for-seniors | chair-yoga-for-seniors | 2026-06-18 | 2026-06-18 |
 | chair yoga for beginners | chair-yoga-for-beginners | cluster | chair-yoga-for-seniors | chair-yoga-for-seniors | 2026-06-18 | 2026-06-18 |
 | yoga for beginners | yoga-for-beginners | pillar | yoga-for-beginners | yoga-for-beginners | 2026-06-21 | 2026-06-21 |
+| best yoga mat for beginners | best-yoga-mat-for-beginners | cluster | yoga-mats | yoga-for-beginners | 2026-06-21 | 2026-06-21 |
 
 ---
 
