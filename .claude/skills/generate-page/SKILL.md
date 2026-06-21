@@ -64,6 +64,8 @@ Do NOT skip this. Skipping it is the difference between a post that ranks and a 
 
 Also check `/used-keywords.md` at the repo root. If the primary keyword is already logged there, stop and ask the user — either pick a different keyword or refresh the existing page instead of opening a duplicate.
 
+**Run the cannibalisation checker** before writing: `pnpm content:cannibalization` (or `npx tsx scripts/check-cannibalization.ts`). A manual scan only catches exact duplicates; the checker also catches the silent collisions that surface in Search Console months later — a candidate primary that's already a **secondary** keyword on another page, reversed/duplicate comparisons ("A vs B" == "B vs A"), "best X" competing with "X", and near-duplicate primaries. Resolve any HARD collision (merge, re-angle, or drop) before writing the page.
+
 **Preferred data source — the DataForSEO MCP (`dfs-mcp`, configured at user scope):**
 
 - **SERP top-3, format, length + real People Also Ask:** `mcp__dfs-mcp__serp_organic_live_advanced` with `{ keyword, language_code: "en", location_name: "United States", depth: 10, people_also_ask_click_depth: 1 }`. Use the `organic` items for the top-3 (match format + length), the `people_also_ask` items for verified FAQ questions, and `related_searches` for secondary angles. This replaces the old "PAA unavailable in run" gap — pull PAA verbatim from here.
