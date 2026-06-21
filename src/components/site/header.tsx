@@ -14,6 +14,7 @@ const LEADING = [
 // Items inside the "Guides" dropdown. The parent "Guides" link goes to the full
 // index (/guides); these are the high-intent shortcuts + the chair-yoga cluster.
 const GUIDES_ITEMS = [
+  { slug: 'yoga-for-beginners', label: 'Yoga for beginners' },
   { slug: 'how-to-choose-a-yoga-mat', label: 'How to choose a mat' },
   { slug: 'eco-friendly-yoga-mat', label: 'Eco-friendly mats' },
   { slug: 'best-yoga-mat-for-hot-yoga', label: 'Hot yoga mats' },

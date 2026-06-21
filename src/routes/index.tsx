@@ -69,6 +69,15 @@ export const Route = createFileRoute('/')({
 const LATEST_WRITING = [
   {
     to: '/guides/$slug' as const,
+    params: { slug: 'yoga-for-beginners' },
+    eyebrow: 'Pillar · Getting started',
+    title: 'Yoga for Beginners: How to Start a Calm Home Practice',
+    description:
+      'A calm, honest beginner guide: how to start at home, the best first poses, a simple 15-minute routine, and the mistakes to skip. No experience needed.',
+    image: 'guides/yoga-for-beginners/hero',
+  },
+  {
+    to: '/guides/$slug' as const,
     params: { slug: 'chair-yoga-for-seniors' },
     eyebrow: 'Pillar · Chair yoga',
     title: 'Chair Yoga for Seniors: Safe Poses and a Gentle Plan',
