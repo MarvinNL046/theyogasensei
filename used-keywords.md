@@ -20,7 +20,7 @@ Append one row per published page in this format:
 
 | Primary keyword | Slug | Page type | Cluster | Pillar | Published | Last reviewed |
 |---|---|---|---|---|---|---|
-| sun salutation | sun-salutation | cluster | poses | yoga-for-beginners | 2026-05-13 | 2026-05-13 |
+| sun salutation | sun-salutation | cluster | poses | yoga-for-beginners | 2026-05-13 | 2026-06-22 |
 | how to clean a yoga mat | how-to-clean-a-yoga-mat | cluster | yoga-mats | how-to-choose-a-yoga-mat | 2026-05-25 | 2026-05-28 |
 | how to choose a yoga mat | how-to-choose-a-yoga-mat | pillar | yoga-mats | how-to-choose-a-yoga-mat | 2026-05-28 | 2026-05-28 |
 | how thick should a yoga mat be | how-thick-should-a-yoga-mat-be | cluster | yoga-mats | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29 |
