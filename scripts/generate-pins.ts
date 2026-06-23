@@ -486,6 +486,76 @@ const GUIDES: Guide[] = [
       ['Make It Stick', 'How to Build a Morning Yoga Habit', 'Small, daily, and easy to keep up.', 76],
     ],
   },
+  // Affiliate spoke + remaining beginner pose pages (hooks QA'd via workflow).
+  {
+    slug: 'best-yoga-mat-for-beginners',
+    hashtags: '#yogamat #yogaforbeginners #beginneryoga #yogagear #yogaessentials',
+    desc: 'An honest guide to the best yoga mats for beginners - five picks from budget to buy-it-for-life, with the thickness, grip and latex details that actually matter.',
+    bg: Array(5).fill('public/images/guides/best-yoga-mat-for-beginners/pin.webp'),
+    hooks: [
+      ['Gear Guide', 'Best Yoga Mat for Beginners, by Budget', 'Five honest picks, from cheap-and-cheerful to buy-it-for-life.', 76],
+      ['New To Yoga', 'Your Mat Keeps Sliding? Start Here', "Why cheap foam wobbles, and the beginner mats that don't.", 82],
+      ['At a Glance', '5 Beginner Yoga Mats Compared', 'Thickness, grip and latex flags, side by side.', 84],
+      ['The Yoga Sensei', "The First Mat You'll Actually Unroll", '', 82],
+      ['Before You Buy', 'How Thick Should a Beginner Mat Be?', "4 to 6mm is the sweet spot. Here's why.", 78],
+    ],
+  },
+  {
+    slug: 'downward-facing-dog',
+    route: 'poses',
+    hashtags: '#downwarddog #downwardfacingdog #yogaforbeginners #yogaposes #adhomukhasvanasana',
+    desc: 'Downward Facing Dog, explained calmly: beginner cues, the common mistakes (rounded back, locked knees, weight in the wrists), modifications with blocks, and who should take it easy.',
+    bg: Array(5).fill('public/images/poses/downward-facing-dog/in-pose.webp'),
+    hooks: [
+      ['How To', 'Downward Facing Dog, Step by Step', 'Six calm beginner cues that actually matter.', 80],
+      ['Common Problem', "You're Overthinking Downward Dog", "You don't need flat heels or straight legs.", 84],
+      ['At a Glance', 'Downward Dog: What Really Matters', 'A straight back beats straight legs, every time.', 82],
+      ['The Yoga Sensei', 'One Long, Easy Breath Upside Down', '', 82],
+      ['Take It Easy', 'When to Go Gentle in Downward Dog', 'Sore wrists, carpal tunnel, late pregnancy.', 80],
+    ],
+  },
+  {
+    slug: 'warrior-ii',
+    route: 'poses',
+    hashtags: '#warrior2 #warriorii #virabhadrasana #yogaforbeginners #yogaposes',
+    desc: 'Warrior II (Virabhadrasana II), explained calmly: beginner alignment cues, the common mistakes, modifications, and who should take it easy. A steady standing pose for strength and focus.',
+    bg: Array(5).fill('public/images/aiko-persona/aiko-warrior-ii-yoga-pose.webp'),
+    hooks: [
+      ['How To', 'Warrior II, Step by Step', 'Set the feet, stack the knee, reach long.', 86],
+      ['Common Problem', 'Why Your Front Knee Hurts in Warrior II', 'It is almost always alignment. Here is the fix.', 74],
+      ['At a Glance', 'Warrior II at a Glance', 'Targets, hold time, and props in one quick look.', 88],
+      ['The Yoga Sensei', 'Strong Legs, Soft Gaze', '', 90],
+      ['Take It Easy', '4 Warrior II Mistakes to Avoid', 'Knee caving, sliding past the ankle, and more.', 82],
+    ],
+  },
+  {
+    slug: 'cobra-pose',
+    route: 'poses',
+    hashtags: '#cobrapose #bhujangasana #yogaforbeginners #yogaposes #backbend',
+    desc: 'Cobra Pose (Bhujangasana), explained calmly: how to lift from the back not the arms, the common mistakes, gentler variations like Baby Cobra and Sphinx, and who should take it easy.',
+    bg: Array(5).fill('public/images/aiko-persona/aiko-cobra-pose-warm-yoga-studio.webp'),
+    hooks: [
+      ['How To', 'Cobra Pose, Step by Step', 'Lift from your back, keep the hands light.', 86],
+      ['Common Problem', 'Why Cobra Pose Hurts Your Lower Back', "You're lifting too high. Here's the gentler fix.", 76],
+      ['At a Glance', 'Cobra vs. Baby Cobra vs. Sphinx', 'Three gentle backbends, from softest to fuller.', 80],
+      ['The Yoga Sensei', 'A Quiet Opening for the Chest', '', 86],
+      ['Take It Easy', 'When to Skip Cobra Pose', 'Back injury and pregnancy: kinder options instead.', 88],
+    ],
+  },
+  {
+    slug: 'pigeon-pose',
+    route: 'poses',
+    hashtags: '#pigeonpose #hipopener #yogaforbeginners #yogaposes #ekapadarajakapotasana',
+    desc: 'Pigeon Pose (Eka Pada Rajakapotasana), explained calmly: beginner cues to open tight hips without straining the knee, the common mistakes, props, and who should take it easy.',
+    bg: Array(5).fill('public/images/poses/pigeon-pose/in-pose.webp'),
+    hooks: [
+      ['How To', 'How to Do Pigeon Pose Safely', 'Beginner cues to open tight hips without hurting the knee.', 82],
+      ['Common Problem', 'Tight Hips in Pigeon Pose?', 'Why your hip floats off the mat, and the prop that fixes it.', 88],
+      ['At a Glance', 'Pigeon Pose vs. the Figure-4', 'Same deep hip stretch, no weight on the knee.', 82],
+      ['The Yoga Sensei', 'A Slow Opening for the Hips', '', 86],
+      ['Take It Easy', 'Pigeon Pose Sore? Read This First', 'Knee, hip, or SI pain and pregnancy: gentler options.', 80],
+    ],
+  },
 ]
 
 const ANGLE_IDS = ['01-listicle', '02-problem', '03-comparison', '04-aesthetic', '05-checklist']
