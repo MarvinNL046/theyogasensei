@@ -44,6 +44,7 @@ const CATEGORY_BY_SLUG: Record<string, GuideCategory> = {
   'free-chair-yoga-for-seniors': 'Chair yoga',
   'printable-chair-yoga-for-seniors': 'Chair yoga',
   'yoga-for-beginners': 'Getting started',
+  'morning-yoga-routine': 'Getting started',
 }
 
 export interface GuideCard {

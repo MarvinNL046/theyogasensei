@@ -50,6 +50,7 @@ Append one row per published page in this format:
 | chair yoga for beginners | chair-yoga-for-beginners | cluster | chair-yoga-for-seniors | chair-yoga-for-seniors | 2026-06-18 | 2026-06-18 |
 | yoga for beginners | yoga-for-beginners | pillar | yoga-for-beginners | yoga-for-beginners | 2026-06-21 | 2026-06-21 |
 | best yoga mat for beginners | best-yoga-mat-for-beginners | cluster | yoga-mats | yoga-for-beginners | 2026-06-21 | 2026-06-21 |
+| morning yoga routine | morning-yoga-routine | cluster | getting-started | yoga-for-beginners | 2026-06-23 | 2026-06-23 |
 
 ---
 
