@@ -429,6 +429,63 @@ const GUIDES: Guide[] = [
       ['Take It Easy', "When to Skip Child's Pose", 'Knee injury and late pregnancy: gentler options.', 78],
     ],
   },
+  // Yoga-for-beginners cluster — Sun Salutation A/B/C (pose pages) + morning routine (guide).
+  // Each has a single on-brand portrait pin.webp, so bg fills all five angles to it.
+  {
+    slug: 'sun-salutation',
+    route: 'poses',
+    hashtags: '#sunsalutation #suryanamaskar #yogaforbeginners #morningyoga #yogaflow',
+    desc: 'Sun Salutation A in twelve steps — beginner cues, the breath count, the common mistakes, and easy modifications. The calm, no-hype walkthrough of Surya Namaskar A.',
+    bg: Array(5).fill('public/images/poses/sun-salutation/pin.webp'),
+    hooks: [
+      ['How To', 'Sun Salutation A: All 12 Steps for Beginners', 'The breath, the order, and the common mistakes.', 72],
+      ['New to It?', 'Lost in Your First Sun Salutation?', 'One breath, one move — the calm way to learn it.', 80],
+      ['At a Glance', 'Sun Salutation A, Step by Step', 'The 12-pose flow at the heart of every class.', 82],
+      ['The Yoga Sensei', 'Begin the Day With Sun Salutation', '', 88],
+      ['Before You Flow', 'Sun Salutation: 5 Beginner Mistakes to Avoid', 'Slow the breath, bend the knees, skip the rush.', 72],
+    ],
+  },
+  {
+    slug: 'sun-salutation-b',
+    route: 'poses',
+    hashtags: '#sunsalutationb #suryanamaskar #vinyasa #yogaforbeginners #yogaflow',
+    desc: 'Sun Salutation B (Surya Namaskar B), step by step — the full sequence with Sanskrit names and breath cues, how it differs from A, common mistakes, and modifications.',
+    bg: Array(5).fill('public/images/poses/sun-salutation-b/pin.webp'),
+    hooks: [
+      ['How To', 'Sun Salutation B: The Full 17-Step Flow', 'Chair Pose, Warrior I, and the breath that links them.', 70],
+      ['Ready for More?', 'Mastered Sun Salutation A?', 'Sun Salutation B is the stronger next step.', 82],
+      ['At a Glance', 'Sun Salutation A vs B', 'What B adds, and when to move up.', 88],
+      ['The Yoga Sensei', 'A Stronger Sun Salutation', '', 88],
+      ['Watch For', 'Sun Salutation B: 5 Common Mistakes', 'Knees down, breath slow, Warrior I steady.', 72],
+    ],
+  },
+  {
+    slug: 'sun-salutation-c',
+    route: 'poses',
+    hashtags: '#sunsalutationc #suryanamaskar #yogaforbeginners #gentleyoga #vinyasa',
+    desc: 'Sun Salutation C (Surya Namaskar C), step by step — the gentler salutation with low lunges and Cobra, how it differs from A and B, and beginner modifications.',
+    bg: Array(5).fill('public/images/poses/sun-salutation-c/pin.webp'),
+    hooks: [
+      ['How To', 'Sun Salutation C: A Gentler Flow', 'Low lunges and Cobra instead of Chaturanga.', 78],
+      ['Sore Wrists?', 'A Sun Salutation Kinder on the Wrists', 'Sun Salutation C skips the hard push-ups.', 78],
+      ['At a Glance', 'Sun Salutation A, B and C', 'How the three flows differ — and which to pick.', 82],
+      ['The Yoga Sensei', 'A Calm, Grounding Sun Salutation', '', 88],
+      ['Good to Know', 'Sun Salutation C, Step by Step', 'The gentle salutation, explained simply.', 80],
+    ],
+  },
+  {
+    slug: 'morning-yoga-routine',
+    hashtags: '#morningyoga #yogaforbeginners #morningroutine #yogaflow #yogaposes',
+    desc: 'A gentle 10-minute morning yoga routine for beginners — eight simple poses to wake up your body, with 5, 15 and 30-minute options. No experience needed.',
+    bg: Array(5).fill('public/images/guides/morning-yoga-routine/pin.webp'),
+    hooks: [
+      ['Morning Routine', 'A Gentle 10-Minute Morning Yoga Routine', 'Eight simple poses to wake up the body.', 74],
+      ['New to Yoga?', 'Start Your Day With 10 Minutes of Yoga', 'A calm, beginner-friendly morning flow.', 78],
+      ['At a Glance', '5, 15 or 30 Minutes of Morning Yoga', 'The same gentle flow, any length you like.', 80],
+      ['The Yoga Sensei', 'Wake Up With Gentle Yoga', '', 88],
+      ['Make It Stick', 'How to Build a Morning Yoga Habit', 'Small, daily, and easy to keep up.', 76],
+    ],
+  },
 ]
 
 const ANGLE_IDS = ['01-listicle', '02-problem', '03-comparison', '04-aesthetic', '05-checklist']
