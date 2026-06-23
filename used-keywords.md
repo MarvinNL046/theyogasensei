@@ -52,6 +52,7 @@ Append one row per published page in this format:
 | best yoga mat for beginners | best-yoga-mat-for-beginners | cluster | yoga-mats | yoga-for-beginners | 2026-06-21 | 2026-06-21 |
 | morning yoga routine | morning-yoga-routine | cluster | getting-started | yoga-for-beginners | 2026-06-23 | 2026-06-23 |
 | sun salutation b | sun-salutation-b | cluster | poses | yoga-for-beginners | 2026-06-23 | 2026-06-23 |
+| sun salutation c | sun-salutation-c | cluster | poses | yoga-for-beginners | 2026-06-23 | 2026-06-23 |
 
 ---
 
