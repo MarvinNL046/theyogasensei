@@ -118,8 +118,9 @@ export function NewsletterCapture({
               : 'bg-accent/10 text-accent',
           )}
         >
-          You are subscribed. Your first email is on its way — look in spam if it does not land in
-          a minute or two.
+          {leadMagnet
+            ? 'You are subscribed — your free guide is on its way. Look in spam if it does not land in a minute or two.'
+            : 'You are subscribed. Your first email is on its way — look in spam if it does not land in a minute or two.'}
         </p>
       ) : onDark ? (
         <form
