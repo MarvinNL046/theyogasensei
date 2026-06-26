@@ -69,6 +69,7 @@ interface Guide {
   desc: string // base pin description (from metaDescription), reused per angle
   hooks: Hook[] // exactly 5, in angle order: list / problem / comparison / aesthetic / checklist
   route?: string // URL segment under theyogasensei.com (default 'guides'; e.g. 'poses')
+  url?: string // full target URL override (for pages outside the /route/slug pattern, e.g. /starter-guide)
   bg?: string[] // explicit 5 backgrounds (bypasses imagesFor — for pages with no guide photo folder)
 }
 
@@ -486,6 +487,28 @@ const GUIDES: Guide[] = [
       ['Make It Stick', 'How to Build a Morning Yoga Habit', 'Small, daily, and easy to keep up.', 76],
     ],
   },
+  // Lead-magnet landing page — the free Starter Guide. Offer pin → /starter-guide
+  // opt-in (captures an email) rather than a content page. Full URL override.
+  {
+    slug: 'starter-guide',
+    url: 'https://www.theyogasensei.com/starter-guide',
+    hashtags: '#yogaforbeginners #beginneryoga #freeyoga #yogatips #yogaposes',
+    desc: 'Get the free Yoga for Beginners Starter Guide: the gear worth buying, eight foundational poses, and a 10-minute morning routine. Calm, honest, no fluff.',
+    bg: [
+      'public/images/aiko-persona/aiko-rolling-out-sage-yoga-mat.webp',
+      'public/images/brand/topic-beginner-yoga.webp',
+      'public/images/aiko-persona/aiko-meditation-back-view-sage-yoga-mat.webp',
+      'public/images/aiko-persona/aiko-childs-pose-sage-yoga-mat.webp',
+      'public/images/aiko-persona/aiko-seated-twist-yoga-pose.webp',
+    ],
+    hooks: [
+      ['Free PDF Guide', 'The Free Yoga for Beginners Starter Guide', 'Gear, eight poses, and a 10-minute morning routine.', 74],
+      ['New to Yoga?', 'Starting Yoga Feels Like a Lot. It Does Not Have To.', 'One free guide: what to buy, what to do, where to begin.', 74],
+      ['What Is Inside', 'Everything a Beginner Needs, in One Free Guide', 'The gear, the poses, the morning routine.', 76],
+      ['The Yoga Sensei', 'Start Yoga, the Calm Way', '', 92],
+      ['Free Download', '8 Poses, 1 Routine, the Right Gear', 'Grab the free beginner starter guide.', 80],
+    ],
+  },
   // Affiliate spoke + remaining beginner pose pages (hooks QA'd via workflow).
   {
     slug: 'best-yoga-mat-for-beginners',
@@ -570,7 +593,7 @@ async function main() {
     const outDir = resolve(ROOT, 'public/images/pins', guide.slug)
     mkdirSync(outDir, { recursive: true })
     const imgs = guide.bg ?? imagesFor(guide.slug, g)
-    const url = `https://www.theyogasensei.com/${guide.route ?? 'guides'}/${guide.slug}`
+    const url = guide.url ?? `https://www.theyogasensei.com/${guide.route ?? 'guides'}/${guide.slug}`
     const lines: string[] = [
       `# Pinterest pins — ${guide.slug}`,
       '',
