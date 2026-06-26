@@ -31,22 +31,24 @@ export function HomeLeadCapture() {
       />
       <Container size="wide" className="relative z-10">
         <div className="max-w-xl py-4 md:py-8">
-          <Eyebrow tone="onDark">The weekly email</Eyebrow>
+          <Eyebrow tone="onDark">Free starter guide</Eyebrow>
           <h2 className="mt-5 font-serif text-3xl leading-[1.1] tracking-tight md:text-[44px]">
-            Calm guidance,
+            Start yoga,
             <br />
             <span className="italic text-[color:var(--color-accent-soft)]">
-              once a week.
+              the calm way.
             </span>
           </h2>
           <p className="mt-6 max-w-md text-sm leading-relaxed text-[color:var(--color-bg)]/75 md:text-base">
-            New guides, honest gear notes, and the one thing I am testing right
-            now. No spam — unsubscribe in one click.
+            Get the free Yoga for Beginners Starter Guide — the gear worth
+            buying, eight foundational poses, and a 10-minute routine. Plus one
+            short, honest email a week. Unsubscribe in one click.
           </p>
           <NewsletterCapture
             tone="onDark"
             showHeader={false}
             source="home-lead"
+            leadMagnet="yoga-for-beginners-starter"
             className="mt-8 max-w-md"
           />
         </div>

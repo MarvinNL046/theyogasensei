@@ -37,6 +37,7 @@ const styles = {
 }
 
 const MAGNET_TITLES: Record<string, string> = {
+  'yoga-for-beginners-starter': 'The Yoga for Beginners Starter Guide',
   '30-day-beginner-path': 'The 30-Day Beginner Yoga Path',
   'mat-cheatsheet': "The Yoga Mat Buyer's Cheat Sheet",
   'style-quiz-results': 'Which Yoga Style Fits You — Quiz Results',
