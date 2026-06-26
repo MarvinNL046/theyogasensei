@@ -96,16 +96,16 @@ export const sendLeadMagnet = internalAction({
     leadMagnet: v.string(),
   },
   handler: async (ctx, args) => {
-    // Real PDF URLs live in Vercel Blob or a public bucket once authored.
-    // For Phase 1 we ship a placeholder URL — Phase 2 replaces it.
-    const downloadUrl = `${SITE}/lead-magnets/${args.leadMagnet}.pdf`
+    // Friendly public URL — a Vercel rewrite (/free/:slug → /lead-magnets/:slug.pdf)
+    // serves the static PDF without exposing the internal folder or the .pdf suffix.
+    const downloadUrl = `${SITE}/free/${args.leadMagnet}`
     const unsubscribeUrl = `${SITE}/unsubscribe?token=${encodeURIComponent(args.optInToken)}`
 
     const html = await render(
-      LeadMagnetDelivery({ leadMagnet: args.leadMagnet, downloadUrl, unsubscribeUrl }),
+      LeadMagnetDelivery({ siteUrl: SITE, leadMagnet: args.leadMagnet, downloadUrl, unsubscribeUrl }),
     )
     const text = await render(
-      LeadMagnetDelivery({ leadMagnet: args.leadMagnet, downloadUrl, unsubscribeUrl }),
+      LeadMagnetDelivery({ siteUrl: SITE, leadMagnet: args.leadMagnet, downloadUrl, unsubscribeUrl }),
       { plainText: true },
     )
 

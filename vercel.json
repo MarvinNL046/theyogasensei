@@ -53,6 +53,12 @@
       ]
     }
   ],
+  "rewrites": [
+    {
+      "source": "/free/:slug",
+      "destination": "/lead-magnets/:slug.pdf"
+    }
+  ],
   "redirects": [
     {
       "source": "/guides/best-yoga-mats-2026",
