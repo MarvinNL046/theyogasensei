@@ -23,6 +23,7 @@ import { Eyebrow } from '#/components/ui/eyebrow'
 import { GuideToc } from '#/components/seo/GuideToc'
 import { AffiliateDisclosure } from '#/components/site/AffiliateDisclosure'
 import { contentMdxComponents } from '#/lib/mdx/components'
+import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band'
 
 // Sidebar "Popular articles" — hand-curated, EXISTING slugs only.
 // When new evergreen guides ship, add them here (or replace with a
@@ -308,35 +309,9 @@ function GuidePage() {
       </section>
 
       {/* ============================================================
-          BOTTOM CTA
+          CLOSING NEWSLETTER CAPTURE
           ============================================================ */}
-      <section className="bg-[color:var(--color-surface)]">
-        <Container size="wide">
-          <div className="grid items-center gap-10 py-16 md:grid-cols-12 md:gap-12 md:py-24">
-            <div className="md:col-span-7">
-              <Eyebrow tone="default">Start your journey</Eyebrow>
-              <h2 className="mt-5 font-serif text-3xl leading-[1.1] tracking-tight md:text-[44px]">
-                Better practice.
-                <br />
-                <span className="italic text-[color:var(--color-ink-soft)]">
-                  Better you.
-                </span>
-              </h2>
-              <p className="mt-6 max-w-md text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">
-                Explore our guides, reviews and resources and take your yoga
-                practice to the next level.
-              </p>
-              <Link
-                to="/"
-                className="mt-9 inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-olive)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
-              >
-                Read the about page
-                <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <ArticleNewsletterBand source={`guide:${slug}`} />
     </>
   )
 }

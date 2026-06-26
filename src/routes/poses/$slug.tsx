@@ -8,6 +8,7 @@ import { buildImageUrl } from '#/lib/images/variants'
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { contentMdxComponents } from '#/lib/mdx/components'
+import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band'
 
 // Related reading shown in the pose sidebar. Curated EXISTING slugs only.
 // Poses cross-link to the gear guides that matter most for practising them
@@ -274,34 +275,8 @@ function PosePage() {
         </Container>
       </section>
 
-      {/* BOTTOM CTA */}
-      <section className="bg-[color:var(--color-surface)]">
-        <Container size="wide">
-          <div className="grid items-center gap-10 py-16 md:grid-cols-12 md:gap-12 md:py-24">
-            <div className="md:col-span-7">
-              <Eyebrow tone="default">Start your journey</Eyebrow>
-              <h2 className="mt-5 font-serif text-3xl leading-[1.1] tracking-tight md:text-[44px]">
-                Better practice.
-                <br />
-                <span className="italic text-[color:var(--color-ink-soft)]">
-                  Better you.
-                </span>
-              </h2>
-              <p className="mt-6 max-w-md text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">
-                Explore our guides, reviews and resources and take your yoga
-                practice to the next level.
-              </p>
-              <Link
-                to="/"
-                className="mt-9 inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-olive)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
-              >
-                Read the about page
-                <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </section>
+      {/* CLOSING NEWSLETTER CAPTURE */}
+      <ArticleNewsletterBand source={`pose:${slug}`} />
     </>
   )
 }
