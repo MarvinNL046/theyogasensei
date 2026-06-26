@@ -4,6 +4,7 @@ import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { RatingStars } from '#/components/reviews/RatingStars'
 import { AffiliateButton } from '#/components/affiliate/AffiliateButton'
+import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band'
 
 export interface SubRating {
   label: string
@@ -610,6 +611,9 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
           </p>
         </Container>
       </section>
+
+      {/* ===================== CLOSING NEWSLETTER CAPTURE ===================== */}
+      <ArticleNewsletterBand source={`review:${d.productName}`} />
     </>
   )
 }

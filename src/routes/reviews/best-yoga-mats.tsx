@@ -13,6 +13,7 @@ import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { RatingStars } from '#/components/reviews/RatingStars'
 import { RadarChart } from '#/components/reviews/RadarChart'
+import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band'
 import {
   MAT_PICKS,
   type MatPick,
@@ -808,6 +809,9 @@ function ReviewsOverviewPage() {
           </div>
         </Container>
       </section>
+
+      {/* ===================== CLOSING NEWSLETTER CAPTURE ===================== */}
+      <ArticleNewsletterBand source="review:best-yoga-mats" />
     </>
   )
 }
