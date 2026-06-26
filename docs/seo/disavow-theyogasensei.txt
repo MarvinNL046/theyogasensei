@@ -1,0 +1,121 @@
+# Google disavow file — theyogasensei.com
+#
+# STATUS: PREPARED, NOT SUBMITTED (2026-06-26).
+# Do NOT upload this to Google yet. Google generally ignores obvious spam/PBN
+# links automatically, and there is no manual action on the site. Submitting a
+# disavow is only worth it if (a) a manual action appears in Search Console, or
+# (b) rankings clearly drop and this profile keeps growing. Keep this file as a
+# ready-to-go artifact and monitor.
+#
+# SOURCE: Ahrefs > Site Explorer > Referring domains (2026-06-26). Every single
+# referring domain was flagged SPAM by Ahrefs; Domain Rating is 0. This is a
+# textbook auto-generated spam / PBN footprint pointing at a 4-week-old site
+# (the "seoexpress" PBN network + a wall of buy-backlinks/.shop domains).
+#
+# COVERAGE: the 100 highest-DR referring domains (Ahrefs caps the on-screen list
+# at 100; ~224 referring domains total, all the same pattern). To complete the
+# list before any submission, Ahrefs > Referring domains > Export, then append
+# the remaining domains as `domain:` lines below.
+#
+# Format: one entry per domain (disavows the whole domain, not single URLs).
+
+domain:activeshop.shop
+domain:advanced-search-seoexpress-pros.store
+domain:authentic-seoexpress-keyword-firm.store
+domain:authentic-tier-1-partners-seoexpress.store
+domain:authoritybacklinks.shop
+domain:best-seoexpress-off-page-network.store
+domain:buyseobacklinks.shop
+domain:certified-seoexpress-organic-services.store
+domain:ekenkoshop.shop
+domain:elite-domain-seoexpress-consultants.store
+domain:exclusive-keyword-team-seoexpress.store
+domain:exclusive-webpage-center-seoexpress.store
+domain:expert-organic-seoexpress.store
+domain:expert-search-seoexpress-team.store
+domain:expert-seoexpress-authority-directory.store
+domain:first-class-seoexpress-keyword-exchange.store
+domain:fiverr-quality-seo-at-affordable-rates.site
+domain:global-digital-seoexpress-portal.store
+domain:grow-fast.website
+domain:highseo.shop
+domain:highseoranking.shop
+domain:itxoft-affordable-seo-solutions.site
+domain:itxoft-cost-effective-seo-services.site
+domain:itxoft-results-focused-seo.site
+domain:kawaiishop.shop
+domain:kmoshops.shop
+domain:linkly.agency
+domain:linkrankboost.shop
+domain:linkrankpro.shop
+domain:linkrankseo.shop
+domain:linkseopro.shop
+domain:linkspro.agency
+domain:lixil-reformshop.shop
+domain:luxury-niche-edit-seoexpress-services.store
+domain:master-digital-studio-seoexpress.store
+domain:master-seoexpress-content-consultants.store
+domain:master-seoexpress-search-agency.store
+domain:modern-authority-seoexpress.store
+domain:modern-guest-post-consultants-seoexpress.store
+domain:modern-organic-group-seoexpress.store
+domain:mysky-shop.shop
+domain:pbnseolinks.shop
+domain:premiumseolinks.shop
+domain:prime-high-da-seoexpress.store
+domain:primeseo.xyz
+domain:professional-seoexpress-marketing-studio.store
+domain:rankgrowth.agency
+domain:rankinghighseo.shop
+domain:rankingseohigh.shop
+domain:rankio.agency
+domain:ranklinkerpro.shop
+domain:ranklinkpro.shop
+domain:ranklinkx.shop
+domain:rankxlinks.shop
+domain:rent-a-shop.shop
+domain:rglinks.org
+domain:seodaro.com
+domain:seoexpress-digital-system.store
+domain:seoexpress-dr-90-group.store
+domain:seoexpress-leading-dofollow-pros.store
+domain:seoexpress-master-digital-portal.store
+domain:seoexpress-professional-white-hat-team.store
+domain:seoexpress-superior-on-page-house.store
+domain:seoexpress-verified-website-system.store
+domain:seoexpress.online
+domain:seoexpress.shop
+domain:seoexpress.space
+domain:seoexpress.store
+domain:seoexpress.website
+domain:seogeko.shop
+domain:seogrow.agency
+domain:seogrow.pro
+domain:seohighranking.shop
+domain:seolinkpro.shop
+domain:seonix.agency
+domain:seopxl-organic-boost-lab.shop
+domain:seopxl-performance-authority-engine.shop
+domain:seorankflow.shop
+domain:seorankinghigh.shop
+domain:sideenhancer.online
+domain:simplywebshop.shop
+domain:smart-marketing-seoexpress.store
+domain:thebacklink.shop
+domain:thebacklinks.shop
+domain:theguestpost.shop
+domain:theguestposts.shop
+domain:thehighrankseo.shop
+domain:thehighseo.shop
+domain:therankboostseo.shop
+domain:therankinghighseo.shop
+domain:therankingseohigh.shop
+domain:theseohighranking.shop
+domain:theseomasterhigh.shop
+domain:theseorankinghigh.shop
+domain:toplinkranker.shop
+domain:trafficspike.shop
+domain:trusted-dofollow-team-seoexpress.store
+domain:trusted-organic-seoexpress-house.store
+domain:verified-seoexpress-search-directory.store
+domain:zoldexlinks.shop
