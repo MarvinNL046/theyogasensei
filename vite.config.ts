@@ -73,7 +73,9 @@ const config = defineConfig({
       },
       // Explicit content routes from MDX scan. crawlLinks picks up the rest
       // (home, about, /poses/, /styles/, /gear/, etc. — they're linked from the home page).
-      pages: contentPages,
+      // /starter-guide is a deliberately unlinked lead-magnet landing page (reached
+      // from Pinterest, not internal nav), so crawlLinks can't find it — list it here.
+      pages: [...contentPages, { path: '/starter-guide' }],
     }),
     viteReact(),
   ],

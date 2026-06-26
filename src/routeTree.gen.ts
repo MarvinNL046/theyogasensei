@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as StarterGuideRouteImport } from './routes/starter-guide'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConfirmRouteImport } from './routes/confirm'
@@ -39,6 +40,11 @@ const UnsubscribeRoute = UnsubscribeRouteImport.update({
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StarterGuideRoute = StarterGuideRouteImport.update({
+  id: '/starter-guide',
+  path: '/starter-guide',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -144,6 +150,7 @@ export interface FileRoutesByFullPath {
   '/confirm': typeof ConfirmRoute
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
+  '/starter-guide': typeof StarterGuideRoute
   '/terms': typeof TermsRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/authors/$slug': typeof AuthorsSlugRoute
@@ -167,6 +174,7 @@ export interface FileRoutesByTo {
   '/confirm': typeof ConfirmRoute
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
+  '/starter-guide': typeof StarterGuideRoute
   '/terms': typeof TermsRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/authors/$slug': typeof AuthorsSlugRoute
@@ -191,6 +199,7 @@ export interface FileRoutesById {
   '/confirm': typeof ConfirmRoute
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
+  '/starter-guide': typeof StarterGuideRoute
   '/terms': typeof TermsRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/authors/$slug': typeof AuthorsSlugRoute
@@ -216,6 +225,7 @@ export interface FileRouteTypes {
     | '/confirm'
     | '/contact'
     | '/privacy'
+    | '/starter-guide'
     | '/terms'
     | '/unsubscribe'
     | '/authors/$slug'
@@ -239,6 +249,7 @@ export interface FileRouteTypes {
     | '/confirm'
     | '/contact'
     | '/privacy'
+    | '/starter-guide'
     | '/terms'
     | '/unsubscribe'
     | '/authors/$slug'
@@ -262,6 +273,7 @@ export interface FileRouteTypes {
     | '/confirm'
     | '/contact'
     | '/privacy'
+    | '/starter-guide'
     | '/terms'
     | '/unsubscribe'
     | '/authors/$slug'
@@ -286,6 +298,7 @@ export interface RootRouteChildren {
   ConfirmRoute: typeof ConfirmRoute
   ContactRoute: typeof ContactRoute
   PrivacyRoute: typeof PrivacyRoute
+  StarterGuideRoute: typeof StarterGuideRoute
   TermsRoute: typeof TermsRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
   AuthorsSlugRoute: typeof AuthorsSlugRoute
@@ -317,6 +330,13 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/starter-guide': {
+      id: '/starter-guide'
+      path: '/starter-guide'
+      fullPath: '/starter-guide'
+      preLoaderRoute: typeof StarterGuideRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -462,6 +482,7 @@ const rootRouteChildren: RootRouteChildren = {
   ConfirmRoute: ConfirmRoute,
   ContactRoute: ContactRoute,
   PrivacyRoute: PrivacyRoute,
+  StarterGuideRoute: StarterGuideRoute,
   TermsRoute: TermsRoute,
   UnsubscribeRoute: UnsubscribeRoute,
   AuthorsSlugRoute: AuthorsSlugRoute,
