@@ -1,4 +1,4 @@
-import type { AnchorHTMLAttributes } from 'react'
+import type { AnchorHTMLAttributes, HTMLAttributes, OlHTMLAttributes, TableHTMLAttributes, ThHTMLAttributes, TdHTMLAttributes } from 'react'
 import { ExternalLink } from 'lucide-react'
 import { cn } from '#/lib/utils'
 
@@ -11,6 +11,11 @@ import { cn } from '#/lib/utils'
  * authors keep writing simple markdown (`[Check price](/go/slug)`) and get
  * an on-brand button for free. All other links fall through to the normal
  * prose-styled anchor.
+ *
+ * Tables get a contained, scannable treatment: a hairline frame, horizontal
+ * scroll on narrow viewports, an uppercase header rule, and a faint zebra.
+ * Empty header cells (markdown 2-col key/value "at a glance" tables emit an
+ * empty header row) collapse via `empty:hidden` so no blank band shows.
  */
 
 function isGoLink(href: string | undefined): href is string {
@@ -52,6 +57,62 @@ function MdxAnchor({
   )
 }
 
+function MdxTable(props: TableHTMLAttributes<HTMLTableElement>) {
+  return (
+    <div className="not-prose my-7 overflow-x-auto rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
+      <table className="w-full border-collapse text-left text-[15px] leading-relaxed" {...props} />
+    </div>
+  )
+}
+
+function MdxTh({ className, ...rest }: ThHTMLAttributes<HTMLTableCellElement>) {
+  return (
+    <th
+      className={cn(
+        'border-b border-[color:var(--color-border)] px-4 py-3 text-left align-bottom',
+        'text-[11px] font-semibold uppercase tracking-[0.12em] text-[color:var(--color-ink)]',
+        'empty:hidden',
+        className,
+      )}
+      {...rest}
+    />
+  )
+}
+
+function MdxTr({ className, ...rest }: HTMLAttributes<HTMLTableRowElement>) {
+  return <tr className={cn('even:bg-[color:var(--color-surface-muted)]/40', className)} {...rest} />
+}
+
+function MdxTd({ className, ...rest }: TdHTMLAttributes<HTMLTableCellElement>) {
+  return (
+    <td
+      className={cn(
+        'border-t border-[color:var(--color-border)] px-4 py-3 align-top text-[color:var(--color-ink-soft)]',
+        '[&>strong]:font-medium [&>strong]:text-[color:var(--color-ink)]',
+        className,
+      )}
+      {...rest}
+    />
+  )
+}
+
+// Numbered lists read as step sequences (pose "how to do", routines). The markers
+// get the serif clay treatment in place — no reorder, and `ol`-only so bullet
+// (`ul`) lists are untouched.
+function MdxOl(props: OlHTMLAttributes<HTMLOListElement>) {
+  return (
+    <ol
+      className="marker:font-serif marker:font-semibold marker:text-[color:var(--color-accent-deep)]"
+      {...props}
+    />
+  )
+}
+
 export const contentMdxComponents = {
   a: MdxAnchor,
+  ol: MdxOl,
+  table: MdxTable,
+  th: MdxTh,
+  tr: MdxTr,
+  td: MdxTd,
 }

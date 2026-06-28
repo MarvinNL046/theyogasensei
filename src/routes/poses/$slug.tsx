@@ -9,6 +9,7 @@ import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { contentMdxComponents } from '#/lib/mdx/components'
 import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band'
+import { Faq } from '#/components/seo/Faq'
 
 // Related reading shown in the pose sidebar. Curated EXISTING slugs only.
 // Poses cross-link to the gear guides that matter most for practising them
@@ -85,6 +86,7 @@ function PosePage() {
   const { Component } = loadContent('poses', slug)
   const eyebrow = frontmatter.tags?.[0] ?? 'Pose'
   const heroImageUrl = buildImageUrl(frontmatter.heroImage, 'og')
+  const faqItems = 'faq' in frontmatter && frontmatter.faq ? frontmatter.faq : []
 
   return (
     <>
@@ -170,6 +172,7 @@ function PosePage() {
           <div className="grid min-w-0 gap-12 md:grid-cols-12 md:gap-12 lg:gap-16">
             <article className="prose prose-stone prose-lg min-w-0 max-w-full md:col-span-8 prose-headings:scroll-mt-28 prose-headings:font-serif prose-headings:tracking-tight prose-headings:text-[color:var(--color-ink)] prose-p:text-[color:var(--color-ink-soft)] prose-a:text-[color:var(--color-olive)] prose-a:underline-offset-2 hover:prose-a:text-[color:var(--color-olive-deep)] prose-strong:text-[color:var(--color-ink)] prose-blockquote:border-l-[color:var(--color-olive)] prose-blockquote:text-[color:var(--color-ink-soft)] prose-th:text-[color:var(--color-ink)] prose-td:text-[color:var(--color-ink-soft)]">
               <Component components={contentMdxComponents} />
+              {faqItems.length > 0 ? <Faq items={faqItems} /> : null}
             </article>
 
             <aside className="min-w-0 max-w-full md:col-span-4 md:pl-2 lg:pl-4">

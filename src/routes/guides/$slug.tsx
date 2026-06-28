@@ -24,6 +24,7 @@ import { GuideToc } from '#/components/seo/GuideToc'
 import { AffiliateDisclosure } from '#/components/site/AffiliateDisclosure'
 import { contentMdxComponents } from '#/lib/mdx/components'
 import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band'
+import { Faq } from '#/components/seo/Faq'
 
 // Sidebar "Popular articles" — hand-curated, EXISTING slugs only.
 // When new evergreen guides ship, add them here (or replace with a
@@ -101,6 +102,7 @@ function GuidePage() {
   const { Component } = loadContent('guides', slug)
   const eyebrow = frontmatter.tags?.[0] ?? 'Guide'
   const heroImageUrl = buildImageUrl(frontmatter.heroImage, 'og')
+  const faqItems = 'faq' in frontmatter && frontmatter.faq ? frontmatter.faq : []
 
   // Sidebar "Read next": prefer this guide's curated related[] (resolved to live,
   // hop-free URLs); fall back to the hand-picked POPULAR_POSTS when none resolve.
@@ -203,6 +205,7 @@ function GuidePage() {
               ) : null}
               <GuideToc headings={headings} />
               <Component components={contentMdxComponents} />
+              {faqItems.length > 0 ? <Faq items={faqItems} /> : null}
             </article>
 
             {/* Sidebar */}
