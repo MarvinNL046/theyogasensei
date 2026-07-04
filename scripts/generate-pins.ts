@@ -32,7 +32,18 @@ const H = 1500
 
 const CREAM = '#faf6ef'
 const CLAY = '#c45a3e'
+const RED = '#d63a2c' // A/B colour test: charcoal + red variant accent (hero-inspired)
 const BRAND_MARK = '継続は力なり'
+
+type PinStyle = 'default' | 'darkred'
+// Full-height scrim per style. default = warm olive (current pins);
+// darkred = moody charcoal warming into deep red at the base (hero-inspired A/B).
+const SCRIM: Record<PinStyle, string> = {
+  default:
+    'linear-gradient(to bottom, rgba(35,38,28,0.30) 0%, rgba(35,38,28,0.05) 26%, rgba(35,38,28,0.10) 52%, rgba(35,38,28,0.74) 86%, rgba(35,38,28,0.90) 100%)',
+  darkred:
+    'linear-gradient(to bottom, rgba(26,22,21,0.44) 0%, rgba(26,22,21,0.16) 24%, rgba(42,20,18,0.34) 50%, rgba(64,20,16,0.86) 84%, rgba(76,18,14,0.95) 100%)',
+}
 
 const font = (file: string) => readFileSync(resolve(FONT_DIR, file))
 const fonts = [
@@ -70,29 +81,31 @@ interface Guide {
   hooks: Hook[] // exactly 5, in angle order: list / problem / comparison / aesthetic / checklist
   route?: string // URL segment under theyogasensei.com (default 'guides'; e.g. 'poses')
   url?: string // full target URL override (for pages outside the /route/slug pattern, e.g. /starter-guide)
+  style?: PinStyle // colour treatment (default = olive; 'darkred' = charcoal+red A/B variant)
   bg?: string[] // explicit 5 backgrounds (bypasses imagesFor — for pages with no guide photo folder)
 }
 
-function PinLayout(eyebrow: string, title: string, subtitle: string, titleSize: number) {
+function PinLayout(eyebrow: string, title: string, subtitle: string, titleSize: number, style: PinStyle = 'default') {
+  const accent = style === 'darkred' ? RED : CLAY
   return h(
     'div',
     { style: { width: W, height: H, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', position: 'relative', fontFamily: 'Inter' } },
     h('div', {
       style: {
         position: 'absolute', top: 0, left: 0, width: W, height: H,
-        background: 'linear-gradient(to bottom, rgba(35,38,28,0.30) 0%, rgba(35,38,28,0.05) 26%, rgba(35,38,28,0.10) 52%, rgba(35,38,28,0.74) 86%, rgba(35,38,28,0.90) 100%)',
+        background: SCRIM[style],
       },
     }),
     h(
       'div',
       { style: { position: 'absolute', top: 72, left: 80, display: 'flex', alignItems: 'center' } },
-      h('div', { style: { width: 11, height: 11, borderRadius: 11, backgroundColor: CLAY, marginRight: 16 } }),
+      h('div', { style: { width: 11, height: 11, borderRadius: 11, backgroundColor: accent, marginRight: 16 } }),
       h('div', { style: { fontFamily: 'Inter', fontWeight: 600, fontSize: 24, letterSpacing: 6, color: CREAM, textTransform: 'uppercase' } }, eyebrow),
     ),
     h(
       'div',
       { style: { display: 'flex', flexDirection: 'column', padding: '0 80px 94px 80px' } },
-      h('div', { style: { width: 72, height: 4, backgroundColor: CLAY, marginBottom: 34 } }),
+      h('div', { style: { width: 72, height: 4, backgroundColor: accent, marginBottom: 34 } }),
       h('div', { style: { fontFamily: 'Cormorant Garamond', fontWeight: 700, fontSize: titleSize, lineHeight: 1.04, color: CREAM } }, title),
       subtitle
         ? h('div', { style: { fontFamily: 'Inter', fontWeight: 500, fontSize: 30, lineHeight: 1.35, color: 'rgba(250,246,239,0.88)', marginTop: 28, maxWidth: 770 } }, subtitle)
@@ -107,9 +120,9 @@ function PinLayout(eyebrow: string, title: string, subtitle: string, titleSize: 
   )
 }
 
-async function renderPin(image: string, hook: Hook, out: string) {
+async function renderPin(image: string, hook: Hook, out: string, style: PinStyle = 'default') {
   const [eyebrow, title, subtitle, titleSize] = hook
-  const svg = await satori(PinLayout(eyebrow, title, subtitle, titleSize ?? 86) as any, { width: W, height: H, fonts, embedFont: true })
+  const svg = await satori(PinLayout(eyebrow, title, subtitle, titleSize ?? 86, style) as any, { width: W, height: H, fonts, embedFont: true })
   const overlay = await sharp(Buffer.from(svg)).png().toBuffer()
   const bg = await sharp(resolve(ROOT, image)).resize(W, H, { fit: 'cover', position: 'centre' }).toBuffer()
   await sharp(bg).composite([{ input: overlay }]).png().toFile(out)
@@ -509,6 +522,29 @@ const GUIDES: Guide[] = [
       ['Free Download', '8 Poses, 1 Routine, the Right Gear', 'Grab the free beginner starter guide.', 80],
     ],
   },
+  // Money page — Best Yoga Mats review (/reviews/best-yoga-mats). A/B COLOUR TEST:
+  // rendered in the 'darkred' charcoal+red variant to compare engagement vs the olive pins.
+  {
+    slug: 'best-yoga-mats',
+    url: 'https://www.theyogasensei.com/reviews/best-yoga-mats',
+    style: 'darkred',
+    hashtags: '#yogamat #bestyogamats #yogagear #yogaforbeginners #yogaessentials',
+    desc: 'An honest 2026 yoga mat guide comparing seven standout picks by material, grip, cushion and trade-offs, without fake lab-testing claims — from budget to buy-it-for-life.',
+    bg: [
+      'public/images/brand/review-hero-best-mats.webp',
+      'public/images/brand/topic-yoga-mats.webp',
+      'public/images/brand/review-hero-best-mats.webp',
+      'public/images/aiko-persona/aiko-rolling-out-sage-yoga-mat.webp',
+      'public/images/brand/topic-yoga-mats.webp',
+    ],
+    hooks: [
+      ['Gear Guide · 2026', 'The Honest Yoga Mat Guide for 2026', 'Seven picks for every body and budget — and when not to buy.', 82],
+      ['Before You Buy', 'Wobbly, Slippy or Too Thin?', 'How to pick a mat that lasts years, not months.', 88],
+      ['At a Glance', 'Thick vs Thin: Which Mat Suits You?', 'Grip, cushion and material, compared honestly.', 82],
+      ['The Yoga Sensei', 'The Only Yoga Mat Guide You Need', '', 90],
+      ['7 Honest Picks', '7 Yoga Mats Worth Your Money', 'From budget to buy-it-for-life.', 84],
+    ],
+  },
   // Affiliate spoke + remaining beginner pose pages (hooks QA'd via workflow).
   {
     slug: 'best-yoga-mat-for-beginners',
@@ -605,7 +641,7 @@ async function main() {
     for (let a = 0; a < 5; a++) {
       const id = ANGLE_IDS[a]
       const out = resolve(outDir, `${id}.png`)
-      await renderPin(imgs[a], guide.hooks[a], out)
+      await renderPin(imgs[a], guide.hooks[a], out, guide.style ?? 'default')
       count++
       const rel = out.replace(ROOT, '').replace(/^[\\/]/, '').replace(/\\/g, '/')
       console.log('OK', rel)
