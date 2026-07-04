@@ -531,11 +531,11 @@ const GUIDES: Guide[] = [
     hashtags: '#yogamat #bestyogamats #yogagear #yogaforbeginners #yogaessentials',
     desc: 'An honest 2026 yoga mat guide comparing seven standout picks by material, grip, cushion and trade-offs, without fake lab-testing claims — from budget to buy-it-for-life.',
     bg: [
-      'public/images/brand/review-hero-best-mats.webp',
-      'public/images/brand/topic-yoga-mats.webp',
-      'public/images/brand/review-hero-best-mats.webp',
-      'public/images/aiko-persona/aiko-rolling-out-sage-yoga-mat.webp',
-      'public/images/brand/topic-yoga-mats.webp',
+      'public/images/brand/best-mats-charcoal.webp',
+      'public/images/brand/best-mats-charcoal.webp',
+      'public/images/brand/best-mats-warm.webp',
+      'public/images/brand/best-mats-warm.webp',
+      'public/images/brand/best-mats-charcoal.webp',
     ],
     hooks: [
       ['Gear Guide · 2026', 'The Honest Yoga Mat Guide for 2026', 'Seven picks for every body and budget — and when not to buy.', 82],
