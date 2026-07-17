@@ -5,6 +5,8 @@ import { Eyebrow } from '#/components/ui/eyebrow'
 import { RatingStars } from '#/components/reviews/RatingStars'
 import { AffiliateButton } from '#/components/affiliate/AffiliateButton'
 import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band'
+import { ReadNext } from '#/components/site/read-next'
+import { resolveRelated } from '#/lib/content/related'
 
 export interface SubRating {
   label: string
@@ -611,6 +613,17 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
           </p>
         </Container>
       </section>
+
+      {/* ===================== READ NEXT ===================== */}
+      {/* Same trio on every individual mat review (roundup + choosing + care):
+          always relevant, never self-referencing. */}
+      <ReadNext
+        items={resolveRelated([
+          'best-yoga-mats-2026',
+          'how-to-choose-a-yoga-mat',
+          'how-to-clean-a-yoga-mat',
+        ])}
+      />
 
       {/* ===================== CLOSING NEWSLETTER CAPTURE ===================== */}
       <ArticleNewsletterBand source={`review:${d.productName}`} />

@@ -3,12 +3,14 @@ import { ArrowRight, Activity, Package, Sparkles } from 'lucide-react'
 import type { ComponentType, SVGProps } from 'react'
 import { loadContent, loadFrontmatter } from '#/lib/mdx/loader'
 import { resolveAuthor } from '#/lib/content/authors'
+import { resolveRelated } from '#/lib/content/related'
 import { buildHead, SITE_URL } from '#/lib/seo/head'
 import { buildImageUrl } from '#/lib/images/variants'
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { contentMdxComponents } from '#/lib/mdx/components'
 import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band'
+import { ReadNext } from '#/components/site/read-next'
 import { Faq } from '#/components/seo/Faq'
 
 // Related reading shown in the pose sidebar. Curated EXISTING slugs only.
@@ -277,6 +279,9 @@ function PosePage() {
           </div>
         </Container>
       </section>
+
+      {/* READ NEXT — this pose's curated related[] links, hop-free via the registry */}
+      <ReadNext items={resolveRelated(frontmatter.related, { exclude: slug, limit: 3 })} />
 
       {/* CLOSING NEWSLETTER CAPTURE */}
       <ArticleNewsletterBand source={`pose:${slug}`} />

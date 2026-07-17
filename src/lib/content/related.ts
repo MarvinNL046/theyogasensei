@@ -130,6 +130,38 @@ const REGISTRY: Record<string, RelatedItem> = {
     category: 'Reviews',
   },
 
+  // Yoga-for-beginners cluster (pillar + spokes)
+  'yoga-for-beginners': {
+    href: '/guides/yoga-for-beginners',
+    title: 'Yoga for Beginners: How to Start a Calm Home Practice',
+    category: 'Beginners',
+  },
+  'best-yoga-mat-for-beginners': {
+    href: '/guides/best-yoga-mat-for-beginners',
+    title: 'Best Yoga Mat for Beginners: 5 Picks for Every Budget',
+    category: 'Buying guide',
+  },
+  'morning-yoga-routine': {
+    href: '/guides/morning-yoga-routine',
+    title: 'Morning Yoga Routine: A Gentle 10-Minute Flow for Beginners',
+    category: 'Practice',
+  },
+  'sun-salutation': {
+    href: '/poses/sun-salutation',
+    title: "Sun Salutation: A Step-by-Step Beginner's Guide to Surya Namaskar A",
+    category: 'Poses',
+  },
+  'sun-salutation-b': {
+    href: '/poses/sun-salutation-b',
+    title: 'Sun Salutation B: A Step-by-Step Guide to Surya Namaskar B',
+    category: 'Poses',
+  },
+  'sun-salutation-c': {
+    href: '/poses/sun-salutation-c',
+    title: 'Sun Salutation C: A Step-by-Step Guide to Surya Namaskar C',
+    category: 'Poses',
+  },
+
   // Poses (live at /poses/<slug>)
   'childs-pose': {
     href: '/poses/childs-pose',
