@@ -1,0 +1,54 @@
+# The Yoga Sensei
+
+> An independent yoga editorial at theyogasensei.com, written and edited by Marvin Smit. Honest, research-based yoga gear guides and calm pose tutorials: no fake lab tests, sources cited, and clear notes on when *not* to buy a product or practise a pose.
+
+Key facts:
+
+- Every article is written and edited by Marvin Smit, a long-time practitioner (not a certified instructor — stated on every page).
+- Product recommendations are research-based (public specifications + aggregated reviews across platforms). When a product has been personally used, that is disclosed explicitly.
+- The site earns Amazon Associates commissions; commissions never influence which products are recommended. Disclosure on every commercial page.
+- Health and wellness claims link to primary sources (NCCIH, peer-reviewed studies, CDC).
+- The Yoga Sensei is not affiliated with "Yoga With Tim" (Tim Senesi) — a different, unrelated entity.
+- Official profile: https://www.pinterest.com/theyogasensei/
+
+## Gear guides
+
+- [Best yoga mats 2026](https://www.theyogasensei.com/reviews/best-yoga-mats): seven picks compared by material, grip, cushion and trade-offs
+- [How to choose a yoga mat](https://www.theyogasensei.com/guides/how-to-choose-a-yoga-mat): the buying guide — thickness, material, grip, care
+- [How thick should a yoga mat be](https://www.theyogasensei.com/guides/how-thick-should-a-yoga-mat-be): 3mm–10mm compared by practice style
+- [Best yoga mat for hot yoga](https://www.theyogasensei.com/guides/best-yoga-mat-for-hot-yoga): wet grip and sweat handling
+- [Best yoga mat for bad knees](https://www.theyogasensei.com/guides/best-yoga-mat-for-bad-knees): cushion vs stability
+- [Best yoga mat for beginners](https://www.theyogasensei.com/guides/best-yoga-mat-for-beginners): five picks by budget
+- [How to clean a yoga mat](https://www.theyogasensei.com/guides/how-to-clean-a-yoga-mat): per-material care routines
+- [How to store a yoga mat](https://www.theyogasensei.com/guides/how-to-store-a-yoga-mat): roll direction, hanging, bags
+
+## Product reviews
+
+- [Manduka PRO review](https://www.theyogasensei.com/reviews/manduka-pro)
+- [Lululemon The Mat review](https://www.theyogasensei.com/reviews/lululemon)
+- [Jade Harmony review](https://www.theyogasensei.com/reviews/jade)
+- [Gaiam Premium review](https://www.theyogasensei.com/reviews/gaiam)
+
+## Poses
+
+- [Sun Salutation A step by step](https://www.theyogasensei.com/poses/sun-salutation)
+- [Sun Salutation B step by step](https://www.theyogasensei.com/poses/sun-salutation-b)
+- [Sun Salutation C step by step](https://www.theyogasensei.com/poses/sun-salutation-c)
+- [Downward Facing Dog](https://www.theyogasensei.com/poses/downward-facing-dog)
+- [Child's Pose](https://www.theyogasensei.com/poses/childs-pose)
+- [Warrior II](https://www.theyogasensei.com/poses/warrior-ii)
+
+## Beginners
+
+- [Yoga for beginners](https://www.theyogasensei.com/guides/yoga-for-beginners): the starting-out pillar guide
+- [Morning yoga routine](https://www.theyogasensei.com/guides/morning-yoga-routine): a gentle 10-minute flow
+- [Chair yoga for seniors](https://www.theyogasensei.com/guides/chair-yoga-for-seniors): safe seated practice, with a free printable routine
+
+## About
+
+- [About the site and methodology](https://www.theyogasensei.com/about): who writes it, how products are chosen, imagery disclosure
+- [Affiliate disclosure](https://www.theyogasensei.com/affiliate-disclosure)
+
+## Optional
+
+- [Sitemap](https://www.theyogasensei.com/sitemap.xml)
