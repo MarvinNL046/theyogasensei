@@ -28,6 +28,15 @@ export interface SchemaContext {
 const ORG_NAME = 'The Yoga Sensei'
 const ORG_LOGO_PATH = '/logo192.png'
 
+// Entity disambiguation: official off-site profiles for The Yoga Sensei.
+// "yoga sensei" is dominated by an unrelated entity (Tim Senesi / "Yoga With
+// Tim"), so sameAs explicitly tells Google which profiles are ours. Append
+// new Tier-1 profiles (Crunchbase, Medium, LinkedIn, …) as they go live —
+// use the exact profile URL, and keep name/bio identical across profiles.
+export const ORG_SAME_AS = [
+  'https://www.pinterest.com/theyogasensei/',
+]
+
 function absUrl(siteUrl: string, path: string): string {
   if (path.startsWith('http')) return path
   const base = siteUrl.replace(/\/$/, '')
@@ -53,6 +62,7 @@ export function buildOrganizationSchema(ctx: Pick<SchemaContext, 'siteUrl'>) {
       '@type': 'ImageObject',
       url: absUrl(ctx.siteUrl, ORG_LOGO_PATH),
     },
+    sameAs: ORG_SAME_AS,
   }
 }
 

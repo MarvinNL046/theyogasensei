@@ -2,6 +2,7 @@ import type { Frontmatter } from '#/lib/mdx/frontmatter'
 import type { Author, BreadcrumbCrumb, SchemaContext } from '#/lib/seo/schema'
 import { buildAbsoluteImageUrl, buildImageUrl } from '#/lib/images/variants'
 import {
+  ORG_SAME_AS,
   buildArticleSchema,
   buildBreadcrumbListSchema,
   buildFAQPageSchema,
@@ -193,6 +194,7 @@ export function buildRootHead(siteUrl: string): HeadConfig {
           '@type': 'ImageObject',
           url: `${siteUrl.replace(/\/$/, '')}/logo192.png`,
         },
+        sameAs: ORG_SAME_AS,
       }),
       // Google Analytics 4 (gtag.js) — runs alongside Vercel Analytics.
       // Only emitted when a measurement ID is configured.
