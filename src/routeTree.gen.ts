@@ -24,6 +24,7 @@ import { Route as GoIndexRouteImport } from './routes/go/index'
 import { Route as ReviewsRetrospecRouteImport } from './routes/reviews/retrospec'
 import { Route as ReviewsMandukaProRouteImport } from './routes/reviews/manduka-pro'
 import { Route as ReviewsLululemonRouteImport } from './routes/reviews/lululemon'
+import { Route as ReviewsLiformeRouteImport } from './routes/reviews/liforme'
 import { Route as ReviewsJadeRouteImport } from './routes/reviews/jade'
 import { Route as ReviewsGaiamRouteImport } from './routes/reviews/gaiam'
 import { Route as ReviewsBestYogaMatsRouteImport } from './routes/reviews/best-yoga-mats'
@@ -107,6 +108,11 @@ const ReviewsLululemonRoute = ReviewsLululemonRouteImport.update({
   path: '/reviews/lululemon',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReviewsLiformeRoute = ReviewsLiformeRouteImport.update({
+  id: '/reviews/liforme',
+  path: '/reviews/liforme',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsJadeRoute = ReviewsJadeRouteImport.update({
   id: '/reviews/jade',
   path: '/reviews/jade',
@@ -160,6 +166,7 @@ export interface FileRoutesByFullPath {
   '/reviews/best-yoga-mats': typeof ReviewsBestYogaMatsRoute
   '/reviews/gaiam': typeof ReviewsGaiamRoute
   '/reviews/jade': typeof ReviewsJadeRoute
+  '/reviews/liforme': typeof ReviewsLiformeRoute
   '/reviews/lululemon': typeof ReviewsLululemonRoute
   '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
   '/reviews/retrospec': typeof ReviewsRetrospecRoute
@@ -184,6 +191,7 @@ export interface FileRoutesByTo {
   '/reviews/best-yoga-mats': typeof ReviewsBestYogaMatsRoute
   '/reviews/gaiam': typeof ReviewsGaiamRoute
   '/reviews/jade': typeof ReviewsJadeRoute
+  '/reviews/liforme': typeof ReviewsLiformeRoute
   '/reviews/lululemon': typeof ReviewsLululemonRoute
   '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
   '/reviews/retrospec': typeof ReviewsRetrospecRoute
@@ -209,6 +217,7 @@ export interface FileRoutesById {
   '/reviews/best-yoga-mats': typeof ReviewsBestYogaMatsRoute
   '/reviews/gaiam': typeof ReviewsGaiamRoute
   '/reviews/jade': typeof ReviewsJadeRoute
+  '/reviews/liforme': typeof ReviewsLiformeRoute
   '/reviews/lululemon': typeof ReviewsLululemonRoute
   '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
   '/reviews/retrospec': typeof ReviewsRetrospecRoute
@@ -235,6 +244,7 @@ export interface FileRouteTypes {
     | '/reviews/best-yoga-mats'
     | '/reviews/gaiam'
     | '/reviews/jade'
+    | '/reviews/liforme'
     | '/reviews/lululemon'
     | '/reviews/manduka-pro'
     | '/reviews/retrospec'
@@ -259,6 +269,7 @@ export interface FileRouteTypes {
     | '/reviews/best-yoga-mats'
     | '/reviews/gaiam'
     | '/reviews/jade'
+    | '/reviews/liforme'
     | '/reviews/lululemon'
     | '/reviews/manduka-pro'
     | '/reviews/retrospec'
@@ -283,6 +294,7 @@ export interface FileRouteTypes {
     | '/reviews/best-yoga-mats'
     | '/reviews/gaiam'
     | '/reviews/jade'
+    | '/reviews/liforme'
     | '/reviews/lululemon'
     | '/reviews/manduka-pro'
     | '/reviews/retrospec'
@@ -308,6 +320,7 @@ export interface RootRouteChildren {
   ReviewsBestYogaMatsRoute: typeof ReviewsBestYogaMatsRoute
   ReviewsGaiamRoute: typeof ReviewsGaiamRoute
   ReviewsJadeRoute: typeof ReviewsJadeRoute
+  ReviewsLiformeRoute: typeof ReviewsLiformeRoute
   ReviewsLululemonRoute: typeof ReviewsLululemonRoute
   ReviewsMandukaProRoute: typeof ReviewsMandukaProRoute
   ReviewsRetrospecRoute: typeof ReviewsRetrospecRoute
@@ -423,6 +436,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReviewsLululemonRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reviews/liforme': {
+      id: '/reviews/liforme'
+      path: '/reviews/liforme'
+      fullPath: '/reviews/liforme'
+      preLoaderRoute: typeof ReviewsLiformeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews/jade': {
       id: '/reviews/jade'
       path: '/reviews/jade'
@@ -492,6 +512,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReviewsBestYogaMatsRoute: ReviewsBestYogaMatsRoute,
   ReviewsGaiamRoute: ReviewsGaiamRoute,
   ReviewsJadeRoute: ReviewsJadeRoute,
+  ReviewsLiformeRoute: ReviewsLiformeRoute,
   ReviewsLululemonRoute: ReviewsLululemonRoute,
   ReviewsMandukaProRoute: ReviewsMandukaProRoute,
   ReviewsRetrospecRoute: ReviewsRetrospecRoute,

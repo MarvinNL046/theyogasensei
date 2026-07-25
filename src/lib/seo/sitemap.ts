@@ -18,6 +18,7 @@ const STATIC_PAGES: Array<Omit<SitemapEntry, 'url'> & { path: string }> = [
   { path: '/reviews/gaiam', changefreq: 'monthly', priority: 0.7 },
   { path: '/reviews/lululemon', changefreq: 'monthly', priority: 0.7 },
   { path: '/reviews/retrospec', changefreq: 'monthly', priority: 0.7 },
+  { path: '/reviews/liforme', changefreq: 'monthly', priority: 0.7 },
   { path: '/poses', changefreq: 'weekly', priority: 0.8 },
   { path: '/about', changefreq: 'monthly', priority: 0.7 },
   { path: '/affiliate-disclosure', changefreq: 'yearly', priority: 0.3 },

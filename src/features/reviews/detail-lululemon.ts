@@ -195,11 +195,11 @@ export const DETAIL: DetailReview = {
       "href": "/reviews/gaiam"
     },
     {
-      "name": "Retrospec Solana",
-      "badge": "Best Cushion / Budget",
-      "overall": 3.8,
-      "image": "/images/guides/retrospec-solana-yoga-mat/hero.webp",
-      "href": "/reviews/retrospec"
+      "name": "Liforme Classic",
+      "badge": "Best for Alignment",
+      "overall": 4.0,
+      "image": "/images/reviews/liforme/hero.webp",
+      "href": "/reviews/liforme"
     }
   ]
 }

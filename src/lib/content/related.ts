@@ -129,6 +129,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Retrospec Solana Yoga Mat Review',
     category: 'Reviews',
   },
+  'liforme-yoga-mat': {
+    href: '/reviews/liforme',
+    title: 'Liforme Yoga Mat Review',
+    category: 'Reviews',
+  },
 
   // Yoga-for-beginners cluster (pillar + spokes)
   'yoga-for-beginners': {

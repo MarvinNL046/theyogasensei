@@ -121,15 +121,19 @@ export function buildReviewHead(detail: DetailReview, slug: string) {
   }
 }
 
-const SECTION_NAV = [
-  { href: '#overview', label: 'Overview' },
-  { href: '#grip', label: 'Grip & Performance' },
-  { href: '#comfort', label: 'Comfort & Support' },
-  { href: '#durability', label: 'Durability' },
-  { href: '#specs', label: 'Specs' },
-  { href: '#who', label: "Who It's For" },
-  { href: '#verdict', label: 'Verdict' },
-]
+/**
+ * The nav is derived from the review's own sections so it can never point at an
+ * anchor the page does not render. The trailing three are rendered by this
+ * component for every review, so they are always present.
+ */
+function sectionNav(sections: ReviewSection[]) {
+  return [
+    ...sections.map((s) => ({ href: `#${s.id}`, label: s.title })),
+    { href: '#specs', label: 'Specs' },
+    { href: '#who', label: "Who It's For" },
+    { href: '#verdict', label: 'Verdict' },
+  ]
+}
 
 function Paragraphs({ body }: { body: string }) {
   return (
@@ -244,12 +248,14 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
       {/* ===================== SECTION NAV ===================== */}
       <section className="sticky top-0 z-30 border-y border-[color:var(--color-border)] bg-[color:var(--color-bg)]/90 backdrop-blur">
         <Container size="wide">
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 py-3.5">
-            {SECTION_NAV.map((item) => (
+          {/* Scrolls as one row on mobile — wrapping a long section list turned the
+              sticky bar into a quarter of the viewport. Unchanged from md up. */}
+          <div className="flex flex-nowrap items-center gap-x-5 overflow-x-auto py-3.5 md:flex-wrap md:gap-y-2 md:overflow-x-visible">
+            {sectionNav(d.sections).map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="text-[12px] text-[color:var(--color-ink-soft)] transition hover:text-[color:var(--color-accent-deep)]"
+                className="whitespace-nowrap text-[12px] text-[color:var(--color-ink-soft)] transition hover:text-[color:var(--color-accent-deep)]"
               >
                 {item.label}
               </a>
