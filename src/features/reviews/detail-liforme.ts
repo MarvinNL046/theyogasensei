@@ -170,11 +170,11 @@ export const DETAIL: DetailReview = {
       href: '/reviews/jade',
     },
     {
-      name: 'Gaiam Premium 6mm',
-      badge: 'Best Value / Beginners',
-      overall: 3.9,
-      image: '/images/guides/gaiam-yoga-mat/hero.webp',
-      href: '/reviews/gaiam',
+      name: 'Manduka GRP Adapt',
+      badge: 'Best Grip for Hot Yoga',
+      overall: 4.1,
+      image: '/images/reviews/manduka-grp-adapt/hero.webp',
+      href: '/reviews/manduka-grp-adapt',
     },
   ],
 }

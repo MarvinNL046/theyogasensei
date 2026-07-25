@@ -19,12 +19,15 @@ const expectedProducts = [
   },
   {
     slug: 'manduka-grp-adapt',
-    productName: 'Manduka GRP Adapt 2.0',
+    productName: 'Manduka GRP Adapt',
     specs: {
       thickness: '5 mm',
-      weight: '~6.2 lb',
+      // Manduka publishes 5.8 lb; Amazon and OutdoorGearLab both say 5.5.
+      weight: '~5.8 lb',
       material: 'PU top + rubber base',
-      latexFlag: false,
+      // Manduka lists latex on every current GRP page and warns against it for
+      // latex sensitivities. This was false here until 2026-07-25.
+      latexFlag: true,
     },
   },
   {
@@ -136,8 +139,12 @@ for (const product of expectedProducts) {
   }
 }
 
+// 4 since 2026-07-25: the GRP Adapt was flagged latex-free here, but Manduka
+// lists latex on every current GRP product page and advises against it for
+// latex sensitivities. Raising this count is deliberate, not a rubber stamp —
+// if it fails again, check whether a real latex flag was flipped by mistake.
 const latexTrueCount = countMatches(c2, /latexFlag: true/g)
-if (latexTrueCount !== 3) fail(`expected exactly 3 latexFlag true values, found ${latexTrueCount}`)
+if (latexTrueCount !== 4) fail(`expected exactly 4 latexFlag true values, found ${latexTrueCount}`)
 
 const goSlugs = Array.from(c2.matchAll(/\/go\/([a-z0-9-]+)/g)).map((m) => m[1])
 const unexpectedGoLinks = goSlugs.filter((slug) => !expectedProducts.some((product) => product.slug === slug))

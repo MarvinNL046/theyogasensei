@@ -11,7 +11,13 @@ export const affiliateLinks: Record<string, string> = {
   'gaiam-premium-6mm': 'https://www.amazon.com/dp/B0D4MDKW3V',
   'gaiam-cork-yoga-mat': 'https://www.amazon.com/dp/B079W4FX8B',
   'manduka-eko-5mm': 'https://www.amazon.com/dp/B078YB99H8',
-  'manduka-grp-adapt': 'https://www.amazon.com/dp/B0CK3NM2YP',
+  // Repointed 2026-07-25. B0CK3NM2YP is a genuine 5mm GRP Adapt but in Jet
+  // Black, a colourway Manduka no longer lists for either generation.
+  // B0D5ZMVQKD (Terracotta) matches a live Manduka colourway. Note that
+  // Amazon US carries no GRP Adapt 2.0 and no Lite 2.1 at all — this link
+  // buys the previous 5mm generation, which the review states plainly.
+  'manduka-grp-adapt': 'https://www.amazon.com/dp/B0D5ZMVQKD',
+  'manduka-grp-adapt-travel': 'https://www.amazon.com/dp/B0F641D1QJ',
   'jade-harmony': 'https://www.amazon.com/dp/B000ECBQXE',
   'manduka-eko-lite': 'https://www.amazon.com/dp/B08LNP5XG5',
   'manduka-yogitoes': 'https://www.amazon.com/dp/B0D5ZR3R1M',

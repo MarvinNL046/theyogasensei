@@ -23,6 +23,7 @@ import { Route as GuidesIndexRouteImport } from './routes/guides/index'
 import { Route as GoIndexRouteImport } from './routes/go/index'
 import { Route as ReviewsRetrospecRouteImport } from './routes/reviews/retrospec'
 import { Route as ReviewsMandukaProRouteImport } from './routes/reviews/manduka-pro'
+import { Route as ReviewsMandukaGrpAdaptRouteImport } from './routes/reviews/manduka-grp-adapt'
 import { Route as ReviewsLululemonRouteImport } from './routes/reviews/lululemon'
 import { Route as ReviewsLiformeRouteImport } from './routes/reviews/liforme'
 import { Route as ReviewsJadeRouteImport } from './routes/reviews/jade'
@@ -103,6 +104,11 @@ const ReviewsMandukaProRoute = ReviewsMandukaProRouteImport.update({
   path: '/reviews/manduka-pro',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReviewsMandukaGrpAdaptRoute = ReviewsMandukaGrpAdaptRouteImport.update({
+  id: '/reviews/manduka-grp-adapt',
+  path: '/reviews/manduka-grp-adapt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsLululemonRoute = ReviewsLululemonRouteImport.update({
   id: '/reviews/lululemon',
   path: '/reviews/lululemon',
@@ -168,6 +174,7 @@ export interface FileRoutesByFullPath {
   '/reviews/jade': typeof ReviewsJadeRoute
   '/reviews/liforme': typeof ReviewsLiformeRoute
   '/reviews/lululemon': typeof ReviewsLululemonRoute
+  '/reviews/manduka-grp-adapt': typeof ReviewsMandukaGrpAdaptRoute
   '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
   '/reviews/retrospec': typeof ReviewsRetrospecRoute
   '/go/': typeof GoIndexRoute
@@ -193,6 +200,7 @@ export interface FileRoutesByTo {
   '/reviews/jade': typeof ReviewsJadeRoute
   '/reviews/liforme': typeof ReviewsLiformeRoute
   '/reviews/lululemon': typeof ReviewsLululemonRoute
+  '/reviews/manduka-grp-adapt': typeof ReviewsMandukaGrpAdaptRoute
   '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
   '/reviews/retrospec': typeof ReviewsRetrospecRoute
   '/go': typeof GoIndexRoute
@@ -219,6 +227,7 @@ export interface FileRoutesById {
   '/reviews/jade': typeof ReviewsJadeRoute
   '/reviews/liforme': typeof ReviewsLiformeRoute
   '/reviews/lululemon': typeof ReviewsLululemonRoute
+  '/reviews/manduka-grp-adapt': typeof ReviewsMandukaGrpAdaptRoute
   '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
   '/reviews/retrospec': typeof ReviewsRetrospecRoute
   '/go/': typeof GoIndexRoute
@@ -246,6 +255,7 @@ export interface FileRouteTypes {
     | '/reviews/jade'
     | '/reviews/liforme'
     | '/reviews/lululemon'
+    | '/reviews/manduka-grp-adapt'
     | '/reviews/manduka-pro'
     | '/reviews/retrospec'
     | '/go/'
@@ -271,6 +281,7 @@ export interface FileRouteTypes {
     | '/reviews/jade'
     | '/reviews/liforme'
     | '/reviews/lululemon'
+    | '/reviews/manduka-grp-adapt'
     | '/reviews/manduka-pro'
     | '/reviews/retrospec'
     | '/go'
@@ -296,6 +307,7 @@ export interface FileRouteTypes {
     | '/reviews/jade'
     | '/reviews/liforme'
     | '/reviews/lululemon'
+    | '/reviews/manduka-grp-adapt'
     | '/reviews/manduka-pro'
     | '/reviews/retrospec'
     | '/go/'
@@ -322,6 +334,7 @@ export interface RootRouteChildren {
   ReviewsJadeRoute: typeof ReviewsJadeRoute
   ReviewsLiformeRoute: typeof ReviewsLiformeRoute
   ReviewsLululemonRoute: typeof ReviewsLululemonRoute
+  ReviewsMandukaGrpAdaptRoute: typeof ReviewsMandukaGrpAdaptRoute
   ReviewsMandukaProRoute: typeof ReviewsMandukaProRoute
   ReviewsRetrospecRoute: typeof ReviewsRetrospecRoute
   GoIndexRoute: typeof GoIndexRoute
@@ -429,6 +442,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReviewsMandukaProRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reviews/manduka-grp-adapt': {
+      id: '/reviews/manduka-grp-adapt'
+      path: '/reviews/manduka-grp-adapt'
+      fullPath: '/reviews/manduka-grp-adapt'
+      preLoaderRoute: typeof ReviewsMandukaGrpAdaptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews/lululemon': {
       id: '/reviews/lululemon'
       path: '/reviews/lululemon'
@@ -514,6 +534,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReviewsJadeRoute: ReviewsJadeRoute,
   ReviewsLiformeRoute: ReviewsLiformeRoute,
   ReviewsLululemonRoute: ReviewsLululemonRoute,
+  ReviewsMandukaGrpAdaptRoute: ReviewsMandukaGrpAdaptRoute,
   ReviewsMandukaProRoute: ReviewsMandukaProRoute,
   ReviewsRetrospecRoute: ReviewsRetrospecRoute,
   GoIndexRoute: GoIndexRoute,
