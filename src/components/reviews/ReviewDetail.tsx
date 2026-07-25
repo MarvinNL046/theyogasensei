@@ -4,6 +4,7 @@ import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { RatingStars } from '#/components/reviews/RatingStars'
 import { AffiliateButton } from '#/components/affiliate/AffiliateButton'
+import { AffiliateDisclosure } from '#/components/site/AffiliateDisclosure'
 import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band'
 import { ReadNext } from '#/components/site/read-next'
 import { resolveRelated } from '#/lib/content/related'
@@ -260,6 +261,10 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
       {/* ===================== BODY ===================== */}
       <section className="bg-[color:var(--color-bg)] py-14 md:py-16">
         <Container size="wide">
+          {/* FTC/Amazon: disclosure sits above the affiliate links in the body. */}
+          <div className="max-w-2xl">
+            <AffiliateDisclosure />
+          </div>
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
             {/* MAIN */}
             <div className="lg:col-span-8">

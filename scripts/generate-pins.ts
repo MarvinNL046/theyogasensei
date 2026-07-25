@@ -35,7 +35,9 @@ const CLAY = '#c45a3e'
 const RED = '#d63a2c' // A/B colour test: charcoal + red variant accent (hero-inspired)
 const BRAND_MARK = '継続は力なり'
 
-type PinStyle = 'default' | 'darkred'
+const INK = '#191614' // near-black block for the bold layout
+
+type PinStyle = 'default' | 'darkred' | 'bold'
 // Full-height scrim per style. default = warm olive (current pins);
 // darkred = moody charcoal warming into deep red at the base (hero-inspired A/B).
 const SCRIM: Record<PinStyle, string> = {
@@ -43,7 +45,13 @@ const SCRIM: Record<PinStyle, string> = {
     'linear-gradient(to bottom, rgba(35,38,28,0.30) 0%, rgba(35,38,28,0.05) 26%, rgba(35,38,28,0.10) 52%, rgba(35,38,28,0.74) 86%, rgba(35,38,28,0.90) 100%)',
   darkred:
     'linear-gradient(to bottom, rgba(26,22,21,0.44) 0%, rgba(26,22,21,0.16) 24%, rgba(42,20,18,0.34) 50%, rgba(64,20,16,0.86) 84%, rgba(76,18,14,0.95) 100%)',
+  // 'bold' draws opaque blocks instead of a scrim — see BoldLayout.
+  bold: 'none',
 }
+
+// Bold layout geometry: solid headline block, photo window, CTA bar.
+const BOLD_TOP = 640
+const BOLD_BAR = 200
 
 const font = (file: string) => readFileSync(resolve(FONT_DIR, file))
 const fonts = [
@@ -52,7 +60,10 @@ const fonts = [
   { name: 'Cormorant Garamond', data: font('CormorantGaramond-700.ttf'), weight: 700 as const, style: 'normal' as const },
   { name: 'Inter', data: font('Inter-500.ttf'), weight: 500 as const, style: 'normal' as const },
   { name: 'Inter', data: font('Inter-600.ttf'), weight: 600 as const, style: 'normal' as const },
+  { name: 'Inter', data: font('Inter-800.ttf'), weight: 800 as const, style: 'normal' as const },
   { name: 'Noto Serif JP', data: font('NotoSerifJP-600.ttf'), weight: 600 as const, style: 'normal' as const },
+  // Condensed heavy display face for the 'bold' pin layout (Pinterest listicle style).
+  { name: 'Anton', data: font('Anton-400.ttf'), weight: 400 as const, style: 'normal' as const },
 ]
 
 // Calm Aiko photos used for the broad-reach "aesthetic" angle (decorative only).
@@ -85,7 +96,79 @@ interface Guide {
   bg?: string[] // explicit 5 backgrounds (bypasses imagesFor — for pages with no guide photo folder)
 }
 
+/**
+ * High-contrast "listicle" layout for Pinterest money pages: opaque headline
+ * block on top, a window that lets the photo through, and a CTA bar at the
+ * bottom. Structure follows the format that performs on Pinterest search;
+ * palette stays inside the brand (ink / clay / cream) so pins still read as ours.
+ *
+ * Hook fields are reused: eyebrow = accent chip, title = headline, subtitle = CTA bar.
+ */
+function BoldLayout(eyebrow: string, title: string, subtitle: string, titleSize: number) {
+  return h(
+    'div',
+    { style: { width: W, height: H, display: 'flex', flexDirection: 'column', fontFamily: 'Inter' } },
+    // ---- headline block ----
+    h(
+      'div',
+      {
+        style: {
+          width: W, height: BOLD_TOP, backgroundColor: INK, display: 'flex',
+          flexDirection: 'column', justifyContent: 'center', padding: '0 66px',
+        },
+      },
+      // satori ignores "\n" inside a text node, so each line is its own div.
+      ...title.split('\n').map((line) =>
+        h('div', {
+          style: {
+            fontFamily: 'Anton', fontSize: titleSize, lineHeight: 1.0, color: CREAM,
+            textTransform: 'uppercase', letterSpacing: -1,
+          },
+        }, line),
+      ),
+      eyebrow
+        ? h(
+            'div',
+            { style: { display: 'flex', marginTop: 26 } },
+            h('div', {
+              style: {
+                backgroundColor: CLAY, color: CREAM, fontFamily: 'Anton',
+                fontSize: Math.round(titleSize * 0.78), lineHeight: 1.0,
+                textTransform: 'uppercase', padding: '14px 26px 20px 26px', letterSpacing: -0.5,
+              },
+            }, eyebrow),
+          )
+        : null,
+    ),
+    // ---- photo window (transparent: the composited photo shows through) ----
+    h('div', { style: { width: W, height: H - BOLD_TOP - BOLD_BAR, display: 'flex' } }),
+    // ---- CTA bar ----
+    h(
+      'div',
+      {
+        style: {
+          width: W, height: BOLD_BAR, backgroundColor: INK, display: 'flex',
+          flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '0 60px',
+        },
+      },
+      h('div', {
+        style: {
+          fontFamily: 'Inter', fontWeight: 800, fontSize: 40, lineHeight: 1.2,
+          color: CREAM, textTransform: 'uppercase', textAlign: 'center', letterSpacing: 0.5,
+        },
+      }, subtitle),
+      h('div', {
+        style: {
+          fontFamily: 'Inter', fontWeight: 600, fontSize: 23, letterSpacing: 4,
+          color: CLAY, textTransform: 'uppercase', marginTop: 16,
+        },
+      }, 'theyogasensei.com'),
+    ),
+  )
+}
+
 function PinLayout(eyebrow: string, title: string, subtitle: string, titleSize: number, style: PinStyle = 'default') {
+  if (style === 'bold') return BoldLayout(eyebrow, title, subtitle, titleSize)
   const accent = style === 'darkred' ? RED : CLAY
   return h(
     'div',
@@ -122,8 +205,24 @@ function PinLayout(eyebrow: string, title: string, subtitle: string, titleSize: 
 
 async function renderPin(image: string, hook: Hook, out: string, style: PinStyle = 'default') {
   const [eyebrow, title, subtitle, titleSize] = hook
-  const svg = await satori(PinLayout(eyebrow, title, subtitle, titleSize ?? 86, style) as any, { width: W, height: H, fonts, embedFont: true })
+  const size = titleSize ?? (style === 'bold' ? 104 : 86)
+  const svg = await satori(PinLayout(eyebrow, title, subtitle, size, style) as any, { width: W, height: H, fonts, embedFont: true })
   const overlay = await sharp(Buffer.from(svg)).png().toBuffer()
+
+  if (style === 'bold') {
+    // Photo fills only the window between the headline block and the CTA bar,
+    // so nothing interesting is hidden behind the opaque panels.
+    const windowH = H - BOLD_TOP - BOLD_BAR
+    const photo = await sharp(resolve(ROOT, image))
+      .resize(W, windowH, { fit: 'cover', position: 'centre' })
+      .toBuffer()
+    await sharp({ create: { width: W, height: H, channels: 4, background: INK } })
+      .composite([{ input: photo, top: BOLD_TOP, left: 0 }, { input: overlay }])
+      .png()
+      .toFile(out)
+    return
+  }
+
   const bg = await sharp(resolve(ROOT, image)).resize(W, H, { fit: 'cover', position: 'centre' }).toBuffer()
   await sharp(bg).composite([{ input: overlay }]).png().toFile(out)
 }
@@ -543,6 +642,29 @@ const GUIDES: Guide[] = [
       ['At a Glance', 'Thick vs Thin: Which Mat Suits You?', 'Grip, cushion and material, compared honestly.', 82],
       ['The Yoga Sensei', 'The Only Yoga Mat Guide You Need', '', 90],
       ['7 Honest Picks', '7 Yoga Mats Worth Your Money', 'From budget to buy-it-for-life.', 84],
+    ],
+  },
+  {
+    // A/B arm 3: high-contrast "listicle" layout (Pinterest search style).
+    // Same destination as the darkred set — only the visual treatment differs,
+    // so click-through can be compared per style in Pinterest analytics.
+    // Hooks stay literally true to the page: 7 picks, five scored criteria,
+    // research-led. No price claims (page uses $/$$/$$$ tiers, and Amazon
+    // forbids showing static prices outside their API).
+    slug: 'best-yoga-mats-bold',
+    url: 'https://www.theyogasensei.com/reviews/best-yoga-mats',
+    style: 'bold',
+    hashtags: '#yogamat #bestyogamats #yogagear #yogaforbeginners #yogaessentials',
+    desc: 'An honest 2026 yoga mat guide comparing seven standout picks by grip, cushion, durability, value and eco — research-led, no invented lab tests.',
+    // Product-forward flat-lay: the bold layout shows the photo in a window,
+    // so it needs the gear visible — not an atmospheric room shot.
+    bg: Array(5).fill('public/images/brand/mats-flatlay-oak.webp'),
+    hooks: [
+      ['For every practice', 'Best\nYoga Mats', '7 mats, honestly ranked', 112],
+      ['For hot yoga', 'Best\nYoga Mat', 'Grip that survives the sweat', 112],
+      ['For beginners', 'Best\nYoga Mat', 'Start without overpaying', 112],
+      ['Compared', 'Manduka\nJade\nLululemon', 'Seven mats, side by side', 96],
+      ['Worth the money', 'Yoga Mats', 'No fake lab tests. Sources cited.', 116],
     ],
   },
   // Affiliate spoke + remaining beginner pose pages (hooks QA'd via workflow).

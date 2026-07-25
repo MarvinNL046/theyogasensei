@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
+import { AffiliateDisclosure } from '#/components/site/AffiliateDisclosure'
 import { RatingStars } from '#/components/reviews/RatingStars'
 import { RadarChart } from '#/components/reviews/RadarChart'
 import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band'
@@ -249,6 +250,11 @@ function ReviewsOverviewPage() {
           <h2 className="mt-4 max-w-2xl font-serif text-3xl leading-tight tracking-tight md:text-[40px]">
             Seven mats, honestly ranked.
           </h2>
+
+          {/* FTC/Amazon: disclosure sits above the first affiliate link on the page. */}
+          <div className="mt-6 max-w-2xl">
+            <AffiliateDisclosure />
+          </div>
 
           <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {MAT_PICKS.map((pick) => (
