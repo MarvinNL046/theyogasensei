@@ -531,6 +531,20 @@ const GUIDES: Guide[] = [
     ],
   },
   {
+    slug: 'best-yoga-mat-towel',
+    style: 'structured',
+    hashtags: '#yogamattowel #hotyoga #yogatowel #yogagear',
+    desc: 'A yoga mat towel fixes one kind of slipping and makes another worse. How to tell which problem you have, when to skip the towel, and four honest picks.',
+    // structured style: subtitle field = concrete CTA, not a description
+    hooks: [
+      ['Gear Guide', 'The 4 Best Yoga Mat Towels', 'See the 4 picks', 66],
+      ['Common Problem', 'Sweaty Mat or Sweaty Hands?', 'Find your fix', 66],
+      ['At a Glance', 'Nubbed vs Smooth Yoga Towels', 'See the comparison', 62],
+      ['The Yoga Sensei', 'The Towel Question, Answered', 'Read the guide', 64],
+      ['Before You Buy', 'When to Skip the Yoga Towel', 'Read this first', 64],
+    ],
+  },
+  {
     slug: 'cork-vs-rubber-yoga-mat',
     hashtags: '#corkyogamat #ecoyoga #yogamat #yogagear',
     desc: 'Cork vs rubber yoga mat, compared honestly on grip, cushion, weight, care, eco and latex risk, with a clear pick for sweaty, dry and latex-sensitive practice.',
