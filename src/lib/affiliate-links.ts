@@ -36,6 +36,18 @@ export const affiliateLinks: Record<string, string> = {
   'kinesis-knee-pad': 'https://www.amazon.com/dp/B06WD3HGJX',
   'gaiam-knee-pads': 'https://www.amazon.com/dp/B07G1R42MS',
   'sukhamat-firm-knee-pad': 'https://www.amazon.com/dp/B0BH9F1485',
+  // Pilates grip socks — every ASIN verified live 2026-07-25, title checked
+  // against structured fields, and pack size confirmed in a structured field
+  // or the brand's own comparison table (not from the title alone).
+  // Deliberately NOT included: Gaiam B0DNR8F333, whose Style field says
+  // "2 Pair" while Unit Count says "3 Count" and whose own table contradicts
+  // its description on toe style.
+  'skibeaut-grip-socks': 'https://www.amazon.com/dp/B0CFD3XP7T',
+  'tavi-savvy-grip-socks': 'https://www.amazon.com/dp/B0GFPBRQD2',
+  'tavi-kai-crew-grip-socks': 'https://www.amazon.com/dp/B0C9F11YND',
+  'ozaiic-grip-socks': 'https://www.amazon.com/dp/B07CQM36X3',
+  'ozaiic-five-toe-socks': 'https://www.amazon.com/dp/B07FY79LKW',
+  'tucketts-allegro-toeless': 'https://www.amazon.com/dp/B088JGTHYL',
   'jade-harmony': 'https://www.amazon.com/dp/B000ECBQXE',
   'manduka-eko-lite': 'https://www.amazon.com/dp/B08LNP5XG5',
   'manduka-yogitoes': 'https://www.amazon.com/dp/B0D5ZR3R1M',

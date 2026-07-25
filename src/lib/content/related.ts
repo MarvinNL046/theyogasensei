@@ -154,6 +154,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Best Yoga Knee Pads: Or Would a Folded Blanket Do?',
     category: 'Props',
   },
+  'best-pilates-grip-socks': {
+    href: '/guides/best-pilates-grip-socks',
+    title: 'Best Pilates Grip Socks: What Matters and What Is Just Price',
+    category: 'Gear',
+  },
 
   // Yoga-for-beginners cluster (pillar + spokes)
   'yoga-for-beginners': {
