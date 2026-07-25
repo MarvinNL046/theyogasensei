@@ -110,14 +110,22 @@ type ReviewLink =
   | { to: '/reviews/gaiam' }
   | { to: '/reviews/best-yoga-mats' }
 
+// Every mat with its own review page must appear here, or its CTA silently
+// falls through to this same roundup. Add a line when a review ships.
+const REVIEW_PATHS = [
+  '/reviews/manduka-pro',
+  '/reviews/jade',
+  '/reviews/gaiam',
+  '/reviews/lululemon',
+  '/reviews/retrospec',
+  '/reviews/liforme',
+  '/reviews/manduka-grp-adapt',
+] as const
+
 const reviewHref = (pick: { detailPath?: string }): ReviewLink =>
-  pick.detailPath === '/reviews/manduka-pro'
-    ? { to: '/reviews/manduka-pro' }
-    : pick.detailPath === '/reviews/jade'
-      ? { to: '/reviews/jade' }
-      : pick.detailPath === '/reviews/gaiam'
-        ? { to: '/reviews/gaiam' }
-        : { to: '/reviews/best-yoga-mats' }
+  REVIEW_PATHS.includes(pick.detailPath as (typeof REVIEW_PATHS)[number])
+    ? ({ to: pick.detailPath } as ReviewLink)
+    : { to: '/reviews/best-yoga-mats' }
 
 /**
  * CTA for a pick. Mats with a dedicated review page link straight to it; mats

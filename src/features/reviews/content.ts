@@ -35,7 +35,7 @@ export const PICK_DETAILS: Record<string, PickDetail> = {
       "durability": "~10-year build, lifetime guarantee"
     }
   },
-  "Manduka GRP Adapt 2.0": {
+  "Manduka GRP Adapt": {
     "whyPicked": "This is the most sweat-specific mat in the lineup, which is why it earns its own spot rather than being folded into the generic premium category. The published specs list a PU top with a rubber base at 5mm and a weight around 6.2 lb, and that construction is built around the real hot-yoga problem: not just cushion, but traction once sweat appears. Polyurethane-style tops can feel grippy under damp hands in a way basic foam and many dry-grip surfaces do not, and Manduka positions the GRP line around sweat readiness, with established reviewers broadly treating it as a serious hot-yoga option.",
     "pros": [
       "PU-style top is built for wet grip and can hold traction once your hands get damp, where dry-grip mats often fail",
@@ -57,7 +57,7 @@ export const PICK_DETAILS: Record<string, PickDetail> = {
       "durability": "PU top wears differently than PVC; needs careful drying"
     }
   },
-  "Liforme Original": {
+  "Liforme Classic (Original)": {
     "whyPicked": "It earns the Best for Alignment spot because it solves a different problem than \"which mat is grippiest\" — its AlignForMe guide-line system prints a visual map into the surface to help you place hands, set foot angles and judge stance width. That matters because many practitioners aren't failing for lack of effort; they're guessing where the hands go in downward dog or how wide to stand in warrior, and a visual reference makes those corrections less abstract.",
     "pros": [
       "AlignForMe guide lines give concrete placement cues for hands, feet and stance width",
@@ -219,7 +219,7 @@ export const REVIEW_FAQS: { q: string; a: string }[] = [
   },
   {
     "q": "Which mats here use natural rubber, and why does that matter?",
-    "a": "Four picks use natural rubber or a rubber base: the Liforme Original, Jade Harmony, Manduka eKO 5mm and Manduka eKO Lite. That matters if you are latex-sensitive — don't gamble on those mats; choose a latex-free alternative from the start. Rubber mats also tend to smell at first and need proper drying rather than being rolled up wet."
+    "a": "Five picks use natural rubber or a rubber base: the Liforme, the Manduka GRP Adapt, Jade Harmony, Manduka eKO 5mm and Manduka eKO Lite. That matters if you are latex-sensitive — don't gamble on those mats; choose a latex-free alternative from the start. Rubber mats also tend to smell at first and need proper drying rather than being rolled up wet."
   },
   {
     "q": "Did you actually lab-test these mats?",
