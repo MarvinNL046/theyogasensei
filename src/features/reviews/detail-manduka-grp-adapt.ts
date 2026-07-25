@@ -76,6 +76,11 @@ export const DETAIL: DetailReview = {
       id: 'open-vs-closed',
       title: 'Open-cell or closed-cell: the only question that matters',
       body: 'If you take one thing from this page, take this. Manduka sells two flagship mats built on opposite principles, and choosing between them is not about which is better.\n\nThe PRO is closed-cell: sealed, so nothing gets in. Manduka\'s own 2026 article states "The PRO mat is built for stability and support, not for sweat absorption due to its closed-cell construction." Sweat sits on the surface. You wipe it off. You can disinfect it. It is covered for approximately ten years of regular use.\n\nThe GRP is open-cell: porous, so sweat is drawn in rather than pooling. That is why it grips when you are dripping. It is also why you can never disinfect it, never use soap on it, never submerge it, and must dry it completely before rolling.\n\nManduka states the trade-off itself, and this is the most useful sentence the company has published about the mat: the open-cell construction "will show signs of wear over time with use more quickly than a mat of closed-cell construction." Then it does something manufacturers almost never do — it routes you away from its own product: "If you have a more vigorous practice we recommend the PRO Series as this mat is designed to withstand such practices."\n\nThere is a third option the whole search results page ignores: the PRO plus a towel. Manduka\'s own article says the PRO is not built for sweat absorption and that a yoga towel is the answer in heated classes. That combination costs more upfront and lasts far longer.\n\n**The choosing rule:** does your practice already force you to use a towel? If yes, the GRP is the mat that removes it, and you are accepting a consumable in exchange. If no, you are taking on every maintenance restriction for a benefit you do not need.',
+      cta: {
+        slug: 'manduka-pro-6mm',
+        productName: 'Manduka PRO 6mm',
+        label: 'Manduka routes vigorous practices to this one instead:',
+      },
     },
     {
       id: 'warranty',
@@ -97,6 +102,11 @@ export const DETAIL: DetailReview = {
       id: 'care',
       title: 'Care — the real ownership cost',
       body: 'This is where the mat asks something of you, and where the ranking pages are most out of date.\n\nManduka\'s current rules, from its own pages: wipe with Manduka\'s Mat Wash and a damp cloth after practice. Never use any type of soap — the company says it compromises performance and integrity. Never soak or submerge. Never use harsh chemicals. Allow the mat to dry fully before rolling, roll it with the top surface facing in, and store it out of direct sunlight.\n\nAnd one rule with a hygiene consequence people do not expect: "Mats designed to absorb moisture (like the GRP Series) should never be treated with disinfectant as the liquid will be absorbed into the mat and then cannot be thoroughly removed." If you studio-hop, share a mat, or rely on a studio\'s disinfectant spray, this is the wrong mat.\n\nThere is a live conflict here worth knowing about rather than papering over. OutdoorGearLab recommends a deep clean once or twice a month with a diluted mild dish soap mixture. Manduka says do not use any type of soap. Wirecutter, separately, still tells readers Manduka suggests scrubbing with salt and water to break the mat in — advice Manduka\'s current pages do not carry for this line. I would follow the manufacturer on a mat with no warranty behind it, but you should know the sources disagree.\n\nOutdoorGearLab scored Care and Cleaning 7.0, the mat\'s lowest score of any category, and reports it takes a long time to dry fully.',
+      cta: {
+        slug: 'manduka-mat-wash-lavender',
+        productName: 'Manduka Mat Wash',
+        label: 'The only cleaner Manduka permits on this surface:',
+      },
     },
     {
       id: 'complaints',

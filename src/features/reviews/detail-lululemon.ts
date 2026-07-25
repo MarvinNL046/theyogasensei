@@ -48,13 +48,18 @@ export const DETAIL: DetailReview = {
     {
       "id": "overview",
       "title": "Overview",
-      "body": "The mat most people mean by \"the Lululemon yoga mat\" is officially The Reversible Mat 5mm — most just shorten it to \"The Mat.\" It is a natural rubber base bonded to a polyurethane top, with two usable faces, built as one do-everything mat for a regular home or studio practice.\n\nThis is a research-and-experience take, not a lab test. I practise on a 5mm Lululemon mat and draw on hands-on testing from reviewers like OutdoorGearLab and Live Science, with Wirecutter also citing it as a top overall pick. There is no invented scorecard and no price frozen in time — it sits in the premium tier, and the exact figure moves with colourway and version, so check the current one.\n\nBuy it if you want one mat for hot flow, inversions and long restorative holds and you care more about grip and joint comfort than about carrying it around. Skip it if you commute with your mat, have a latex allergy, or want something that stays looking new."
+      "body": "The mat most people mean by \"the Lululemon yoga mat\" is officially The Reversible Mat 5mm — most just shorten it to \"The Mat.\" It is a natural rubber base bonded to a polyurethane top, with two usable faces, built as one do-everything mat for a regular home or studio practice.\n\nThis is a research-and-experience take, not a lab test. I practise on a 5mm Lululemon mat and draw on hands-on testing from reviewers like OutdoorGearLab and Live Science, with Wirecutter also citing it as a top overall pick. There is no invented scorecard and no price frozen in time — it sits in the premium tier, and the exact figure moves with colourway and version, so check the current one.\n\nBuy it if you want one mat for hot flow, inversions and long restorative holds and you care more about grip and joint comfort than about carrying it around. Skip it if you commute with your mat, have a latex allergy, or want something that stays looking new.\n\nOne practical note before you read on: Lululemon sells this mat direct and not through Amazon, so there is no link on this page that buys it. We earn nothing either way, which is worth knowing when you weigh what follows. Where we can point you at something buyable, we do, and we say what it is instead."
     },
     {
       "id": "grip",
       "title": "Grip & Performance",
       "body": "Grip is the mat's whole argument. OutdoorGearLab singles out its wet grip as one of the best in their lineup, and unlike some natural-rubber mats it grips from the first roll-out — no salt-and-vinegar break-in week.\n\nThe reversible design is where people get confused. Lululemon markets the smooth polyurethane side as the sweat side because it absorbs moisture rather than letting it pool, while some reviewers prefer the textured rubber side for raw friction once they are really sweating. There is no single correct face — try both and keep whichever stays put for your practice and your floor.\n\nMy own experience lines up with the testers, with one honest limit: at about a year and a half of mixed hatha and vinyasa, the grip has stayed solid. The most consistent long-term complaint, though, is that the stickiness softens after a few years of regular use — and I have not had the mat long enough to confirm or deny that yet. If you do heated classes daily, plan on a towel eventually.",
       "image": "/images/reviews/lululemon/grip.webp",
+      "cta": {
+        "slug": "manduka-yogitoes",
+        "productName": "Manduka Yogitoes",
+        "label": "The towel the section above says you will eventually want:"
+      },
       "ratings": [
         {
           "label": "Dry grip",
@@ -103,6 +108,11 @@ export const DETAIL: DetailReview = {
       "title": "Durability",
       "body": "This is a multi-year mat, not a lifetime one. Independent testers report roughly four to six years of regular practice before the top starts to wear or peel. Daily intensive hot yoga shortens that; lighter, careful use extends it.\n\nThe absorbent polyurethane top is the catch. The same property that grips when you sweat also soaks up body oil, sunscreen, makeup and dragged-toe marks, so they sink in rather than wipe off — reviewers call the marks \"nearly impossible\" to remove, worst on light colours. My dark-green mat hides the staining that owners of pale and marble colours complain about, so colour choice matters more here than on most mats.\n\nCare keeps the grip alive. Wipe it down after every practice and deep-clean roughly monthly, but skip vinegar, essential oils and harsh chemical cleaners — reviewers and Lululemon's own guidance agree those strip the grippy texture. Air-dry fully, out of direct sun, which degrades the rubber. Mine still cleans up well at a year and a half on a plain wipe-and-dry routine.",
       "image": "/images/reviews/lululemon/durability.webp",
+      "cta": {
+        "slug": "manduka-pro-6mm",
+        "productName": "Manduka PRO 6mm",
+        "label": "If you want a decade rather than four to six years, this is the mat that carries a guarantee:"
+      },
       "rating": 4
     }
   ],

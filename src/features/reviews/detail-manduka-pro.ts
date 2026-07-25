@@ -56,6 +56,11 @@ export const DETAIL: DetailReview = {
       "title": "Grip & Performance",
       "body": "Here is the part most reviews bury: a new PRO is slippery, and this trips up more first-time buyers than anything else. It is not a residue you can scrub off — Manduka's own guidance says the slickness is the nature of the closed-cell surface, so the old salt-scrub trick does little. The grip only comes in with weeks to months of regular practice.\n\nUntil it breaks in, plan for it. Use a towel or a grip gel, especially if you sweat. This break-in is the single most common Manduka complaint, and it is real — if you want grip on day one, the eKO is the better Manduka.\n\nThe closed-cell surface also has a performance downside in heat: the PRO can feel slick in a hot room. For sweaty, heated classes the GRP Adapt, with its absorbent top that grips more as it gets wet, is the better tool. The PRO is a durable all-rounder, not a sweat specialist.",
       "image": "/images/reviews/manduka/grip.webp",
+      "cta": {
+        "slug": "manduka-grp-adapt",
+        "productName": "Manduka GRP Adapt",
+        "label": "The section above sends sweaty practices here instead:"
+      },
       "ratings": [
         {
           "label": "Dry grip",

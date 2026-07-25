@@ -19,8 +19,16 @@ export interface ReviewSection {
   title: string
   body: string
   image?: string
+  /** Overrides the auto-generated "<product> — <section>" alt, which reads badly. */
+  imageAlt?: string
   ratings?: SubRating[]
   rating?: number
+  /**
+   * Routing CTA for a section that tells the reader to buy something else.
+   * Only use it where the copy genuinely sends them elsewhere — a review that
+   * sprouts a button under every paragraph stops reading as a review.
+   */
+  cta?: { slug: string; productName: string; label?: string }
 }
 
 export interface AltMat {
@@ -313,7 +321,7 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
                       <div className="overflow-hidden rounded-sm ring-1 ring-[color:var(--color-border)]">
                         <img
                           src={s.image}
-                          alt={`${d.productName} — ${s.title}`}
+                          alt={s.imageAlt ?? `${d.productName} — ${s.title}`}
                           width={800}
                           height={600}
                           loading="lazy"
@@ -335,6 +343,18 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
                       </div>
                     ) : null}
                   </div>
+                  {s.cta && (
+                    <div className="mt-6">
+                      <p className="mb-3 text-sm text-[color:var(--color-ink-muted)]">
+                        {s.cta.label ?? 'Mentioned above:'}
+                      </p>
+                      <AffiliateButton
+                        slug={s.cta.slug}
+                        productName={s.cta.productName}
+                        variant="secondary"
+                      />
+                    </div>
+                  )}
                 </div>
               ))}
 

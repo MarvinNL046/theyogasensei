@@ -85,6 +85,11 @@ export const DETAIL: DetailReview = {
       title: 'Durability — where the honest argument is',
       body: 'Liforme gives no lifespan figure on its site, only that "most customers find that their Liforme Yoga Mat lasts several years while still performing at a high level". The one number traceable to the company is much more specific and much less flattering. Founder James Armitage, quoted by Healthista, said the mat "was calculated to start to lose its grip after between 300 and 500 uses". Practising five times a week, that is somewhere between fourteen months and two years.\n\nOwner reports genuinely split, and the split is the story. On the pessimistic side, one long-term owner practising ashtanga and vinyasa reported considerable wear after two years and replaced the mat; another described wear concentrated at the front and back, exactly where hands and feet land; a third could not restore the grip even after following Liforme\'s emailed deep-clean advice. On the optimistic side, Laura Try at five years says "the grip is going a little bit but five years on it\'s still super sticky", and another five-year owner who admits to careless cleaning reports it still performing. Alexia Koletsou, also at five years, splits the difference: it does not peel or flake, but the high-grip layer fades and becomes noticeably less sticky.\n\nThe pattern across all of them is the same: intensity decides. Sweaty, dynamic, frequent practice wears it fast. Gentler practice does not.\n\nIndependent testers price that in. OutdoorGearLab placed it sixth of nineteen mats at 76 out of 100, against the Manduka PRO\'s 91 — and their PRO showed "virtually no signs of wear" after three years of daily practice. Treeline Review declines to recommend the Liforme on value outright.',
       image: '/images/reviews/liforme/durability.webp',
+      cta: {
+        slug: 'manduka-pro-6mm',
+        productName: 'Manduka PRO 6mm',
+        label: 'The mat that beat it in the same test, and does carry a guarantee:',
+      },
       ratings: [
         { label: 'Structural durability', score: 4.0 },
         { label: 'Grip retention over years', score: 3.0 },
