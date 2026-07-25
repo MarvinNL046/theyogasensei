@@ -15,7 +15,16 @@ export const affiliateLinks: Record<string, string> = {
   'jade-harmony': 'https://www.amazon.com/dp/B000ECBQXE',
   'manduka-eko-lite': 'https://www.amazon.com/dp/B08LNP5XG5',
   'manduka-yogitoes': 'https://www.amazon.com/dp/B0D5ZR3R1M',
-  'manduka-equa-towel': 'https://www.amazon.com/dp/B00DGMS8XU',
+  // Repointed 2026-07-25. The previous target B00DGMS8XU is titled "72-inch mat
+  // towel" but every structured field on the listing says hand towel (Product
+  // Style "eQua Hand Towel", 26.5 x 16, MPN EQ/HAND/MIDNIGHT) — so the hot-yoga
+  // guide was sending mat-towel readers to a hand towel. B0GW137Y9V is the real
+  // mat-sized eQua (71 x 24, "eQua Mat Towel"), verified on the listing.
+  'manduka-equa-towel': 'https://www.amazon.com/dp/B0GW137Y9V',
+  // Towel roundup picks — ASINs verified against the live listings 2026-07-25.
+  'manduka-yogitoes-hand-towel': 'https://www.amazon.com/dp/B09HWYRS45',
+  'eunzel-grip-dot-towel': 'https://www.amazon.com/dp/B0B46S9MWP',
+  'heathyoga-silicone-towel': 'https://www.amazon.com/dp/B07ZF9YXVZ',
   'manduka-mat-wash-lavender': 'https://www.amazon.com/dp/B08Q775558',
   // Accessories — verified 2026-05-30, brand-consistent picks (bolster has no
   // Manduka equivalent → Hugger Mugger, the category standard). Inert until a

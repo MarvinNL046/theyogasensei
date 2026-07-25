@@ -134,6 +134,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Liforme Yoga Mat Review',
     category: 'Reviews',
   },
+  'best-yoga-mat-towel': {
+    href: '/guides/best-yoga-mat-towel',
+    title: 'Best Yoga Mat Towel: Which Slipping Problem Do You Have?',
+    category: 'Gear',
+  },
 
   // Yoga-for-beginners cluster (pillar + spokes)
   'yoga-for-beginners': {
