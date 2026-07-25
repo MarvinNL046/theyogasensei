@@ -451,6 +451,18 @@ const GUIDES: Guide[] = [
     ],
   },
   {
+    slug: 'best-non-slip-yoga-mat',
+    hashtags: '#yogamat #nonslip #yogagear #yogaforbeginners',
+    desc: 'Compare the best non-slip yoga mats by surface type — polyurethane, natural rubber and budget foam — plus the free fixes that make the mat you already own grippier.',
+    hooks: [
+      ['Gear Guide', 'The 5 Best Non-Slip Yoga Mats', 'Ranked by real grip, not marketing.', 84],
+      ['Common Problem', 'Slipping in Downward Dog?', 'It is probably your mat surface. Here is what grips.', 88],
+      ['At a Glance', 'PU vs Rubber vs Foam: Which Grips Best?', 'Dry hands and sweaty hands need different mats.', 74],
+      ['The Yoga Sensei', 'A Mat That Holds Every Pose', '', 88],
+      ['Before You Buy', '5 Free Fixes for a Slippery Yoga Mat', 'Try these before you buy anything new.', 76],
+    ],
+  },
+  {
     slug: 'cork-vs-rubber-yoga-mat',
     hashtags: '#corkyogamat #ecoyoga #yogamat #yogagear',
     desc: 'Cork vs rubber yoga mat, compared honestly on grip, cushion, weight, care, eco and latex risk, with a clear pick for sweaty, dry and latex-sensitive practice.',

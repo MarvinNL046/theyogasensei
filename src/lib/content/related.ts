@@ -40,6 +40,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Best Yoga Mat for Hot Yoga: Grip That Survives Sweat',
     category: 'Buying guide',
   },
+  'best-non-slip-yoga-mat': {
+    href: '/guides/best-non-slip-yoga-mat',
+    title: 'Best Non-Slip Yoga Mat: 5 Grippy Picks That Hold',
+    category: 'Buying guide',
+  },
   'cork-vs-rubber-yoga-mat': {
     href: '/guides/cork-vs-rubber-yoga-mat',
     title: 'Cork vs Rubber Yoga Mat: Which One Fits Your Practice',

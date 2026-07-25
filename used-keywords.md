@@ -55,6 +55,7 @@ Append one row per published page in this format:
 | sun salutation c | sun-salutation-c | cluster | poses | yoga-for-beginners | 2026-06-23 | 2026-06-23 |
 | pilates mat | best-pilates-mat | cluster | yoga-mats | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25 |
 | liforme yoga mat | liforme-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25 |
+| best non-slip yoga mat | best-non-slip-yoga-mat | cluster | yoga-mats | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25 |
 | yoga mat towel | best-yoga-mat-towel | cluster | yoga-accessories | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25 |
 | manduka grp yoga mat | manduka-grp-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25 |
 | foldable yoga mat | best-foldable-yoga-mat | cluster | yoga-mats | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25 |
