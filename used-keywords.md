@@ -57,6 +57,7 @@ Append one row per published page in this format:
 | liforme yoga mat | liforme-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25 |
 | yoga mat towel | best-yoga-mat-towel | cluster | yoga-accessories | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25 |
 | manduka grp yoga mat | manduka-grp-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25 |
+| foldable yoga mat | best-foldable-yoga-mat | cluster | yoga-mats | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25 |
 
 ---
 

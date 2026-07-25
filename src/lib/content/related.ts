@@ -144,6 +144,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Best Yoga Mat Towel: Which Slipping Problem Do You Have?',
     category: 'Gear',
   },
+  'best-foldable-yoga-mat': {
+    href: '/guides/best-foldable-yoga-mat',
+    title: 'Best Foldable Yoga Mat: Two Kinds, and Most Guides Mix Them Up',
+    category: 'Gear',
+  },
 
   // Yoga-for-beginners cluster (pillar + spokes)
   'yoga-for-beginners': {

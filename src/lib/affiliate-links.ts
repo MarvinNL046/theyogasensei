@@ -18,6 +18,15 @@ export const affiliateLinks: Record<string, string> = {
   // buys the previous 5mm generation, which the review states plainly.
   'manduka-grp-adapt': 'https://www.amazon.com/dp/B0D5ZMVQKD',
   'manduka-grp-adapt-travel': 'https://www.amazon.com/dp/B0F641D1QJ',
+  // Foldable roundup picks — every ASIN verified against the live listing
+  // 2026-07-25. The eKO SuperLite ships as three colour variants of parent
+  // B0B5479GY2; one is pinned here so the on-page specs match what the reader
+  // lands on. The Jade Voyager ASIN circulating in competitor content
+  // (B08LZX13TH) is stale — B0FJBRL4GL is the live listing.
+  'stakt-foldable-mat': 'https://www.amazon.com/dp/B0BHBYS1ML',
+  'jade-voyager': 'https://www.amazon.com/dp/B0FJBRL4GL',
+  'manduka-eko-superlite': 'https://www.amazon.com/dp/B07WWC5B95',
+  'gaiam-foldable-mat': 'https://www.amazon.com/dp/B073WRCQQK',
   'jade-harmony': 'https://www.amazon.com/dp/B000ECBQXE',
   'manduka-eko-lite': 'https://www.amazon.com/dp/B08LNP5XG5',
   'manduka-yogitoes': 'https://www.amazon.com/dp/B0D5ZR3R1M',
