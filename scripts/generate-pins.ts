@@ -37,7 +37,7 @@ const BRAND_MARK = '継続は力なり'
 
 const INK = '#191614' // near-black block for the bold layout
 
-type PinStyle = 'default' | 'darkred' | 'bold'
+type PinStyle = 'default' | 'darkred' | 'bold' | 'structured'
 // Full-height scrim per style. default = warm olive (current pins);
 // darkred = moody charcoal warming into deep red at the base (hero-inspired A/B).
 const SCRIM: Record<PinStyle, string> = {
@@ -45,13 +45,23 @@ const SCRIM: Record<PinStyle, string> = {
     'linear-gradient(to bottom, rgba(35,38,28,0.30) 0%, rgba(35,38,28,0.05) 26%, rgba(35,38,28,0.10) 52%, rgba(35,38,28,0.74) 86%, rgba(35,38,28,0.90) 100%)',
   darkred:
     'linear-gradient(to bottom, rgba(26,22,21,0.44) 0%, rgba(26,22,21,0.16) 24%, rgba(42,20,18,0.34) 50%, rgba(64,20,16,0.86) 84%, rgba(76,18,14,0.95) 100%)',
-  // 'bold' draws opaque blocks instead of a scrim — see BoldLayout.
+  // 'bold' and 'structured' draw opaque blocks instead of a scrim.
   bold: 'none',
+  structured: 'none',
 }
 
 // Bold layout geometry: solid headline block, photo window, CTA bar.
 const BOLD_TOP = 640
 const BOLD_BAR = 200
+
+// Structured layout geometry — Marvin's pin spec (2026-07-25), the DEFAULT for
+// all NEW guides and their variants: top 20% search-focused headline, middle
+// 60% imagery, bottom 20% concrete CTA + small branding. One central message,
+// two typefaces (Cormorant headline + Inter UI; the kanji brand mark is the
+// logo element), high contrast for mobile. On this EN site every pin links to
+// its EN page; on NL sites, NL pins must link to NL pages.
+const STRUCT_TOP = 300
+const STRUCT_BAR = 300
 
 const font = (file: string) => readFileSync(resolve(FONT_DIR, file))
 const fonts = [
@@ -307,8 +317,62 @@ function BoldLayout(eyebrow: string, title: string, subtitle: string, titleSize:
   )
 }
 
+// 20/60/20 layout per Marvin's pin spec. The hook's subtitle field is the
+// concrete CTA ("See the 5 picks"), not a description — keep it short.
+function StructuredLayout(eyebrow: string, title: string, cta: string, titleSize: number) {
+  return h(
+    'div',
+    { style: { width: W, height: H, display: 'flex', flexDirection: 'column', fontFamily: 'Inter' } },
+    // ---- top 20%: search-focused headline on a high-contrast block ----
+    h(
+      'div',
+      {
+        style: {
+          width: W, height: STRUCT_TOP, backgroundColor: INK, display: 'flex',
+          flexDirection: 'column', justifyContent: 'center', padding: '0 64px',
+        },
+      },
+      eyebrow
+        ? h(
+            'div',
+            { style: { display: 'flex', alignItems: 'center', marginBottom: 14 } },
+            h('div', { style: { width: 10, height: 10, borderRadius: 10, backgroundColor: CLAY, marginRight: 14 } }),
+            h('div', { style: { fontFamily: 'Inter', fontWeight: 600, fontSize: 22, letterSpacing: 5, color: CREAM, textTransform: 'uppercase' } }, eyebrow),
+          )
+        : null,
+      h('div', { style: { fontFamily: 'Cormorant Garamond', fontWeight: 700, fontSize: titleSize, lineHeight: 1.02, color: CREAM } }, title),
+    ),
+    // ---- middle 60%: photo window (composited photo shows through) ----
+    h('div', { style: { width: W, height: H - STRUCT_TOP - STRUCT_BAR, display: 'flex' } }),
+    // ---- bottom 20%: concrete CTA + small branding ----
+    h(
+      'div',
+      {
+        style: {
+          width: W, height: STRUCT_BAR, backgroundColor: INK, display: 'flex',
+          flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '0 60px',
+        },
+      },
+      h('div', {
+        style: {
+          backgroundColor: CLAY, color: CREAM, fontFamily: 'Inter', fontWeight: 700,
+          fontSize: 34, lineHeight: 1.0, textTransform: 'uppercase', letterSpacing: 2,
+          padding: '24px 46px 26px 46px', borderRadius: 6,
+        },
+      }, cta),
+      h(
+        'div',
+        { style: { display: 'flex', alignItems: 'center', marginTop: 30 } },
+        h('div', { style: { fontFamily: 'Inter', fontWeight: 600, fontSize: 22, letterSpacing: 4, color: 'rgba(250,246,239,0.85)', textTransform: 'uppercase' } }, 'theyogasensei.com'),
+        h('div', { style: { fontFamily: 'Noto Serif JP', fontWeight: 600, fontSize: 24, color: 'rgba(250,246,239,0.55)', marginLeft: 28 } }, BRAND_MARK),
+      ),
+    ),
+  )
+}
+
 function PinLayout(eyebrow: string, title: string, subtitle: string, titleSize: number, style: PinStyle = 'default') {
   if (style === 'bold') return BoldLayout(eyebrow, title, subtitle, titleSize)
+  if (style === 'structured') return StructuredLayout(eyebrow, title, subtitle, titleSize)
   const accent = style === 'darkred' ? RED : CLAY
   return h(
     'div',
@@ -345,19 +409,21 @@ function PinLayout(eyebrow: string, title: string, subtitle: string, titleSize: 
 
 async function renderPin(image: string, hook: Hook, out: string, style: PinStyle = 'default') {
   const [eyebrow, title, subtitle, titleSize] = hook
-  const size = titleSize ?? (style === 'bold' ? 104 : 86)
+  const size = titleSize ?? (style === 'bold' ? 104 : style === 'structured' ? 68 : 86)
   const svg = await satori(PinLayout(eyebrow, title, subtitle, size, style) as any, { width: W, height: H, fonts, embedFont: true })
   const overlay = await sharp(Buffer.from(svg)).png().toBuffer()
 
-  if (style === 'bold') {
+  if (style === 'bold' || style === 'structured') {
     // Photo fills only the window between the headline block and the CTA bar,
     // so nothing interesting is hidden behind the opaque panels.
-    const windowH = H - BOLD_TOP - BOLD_BAR
+    const top = style === 'bold' ? BOLD_TOP : STRUCT_TOP
+    const bar = style === 'bold' ? BOLD_BAR : STRUCT_BAR
+    const windowH = H - top - bar
     const photo = await sharp(resolve(ROOT, image))
       .resize(W, windowH, { fit: 'cover', position: 'centre' })
       .toBuffer()
     await sharp({ create: { width: W, height: H, channels: 4, background: INK } })
-      .composite([{ input: photo, top: BOLD_TOP, left: 0 }, { input: overlay }])
+      .composite([{ input: photo, top, left: 0 }, { input: overlay }])
       .png()
       .toFile(out)
     return
@@ -452,14 +518,16 @@ const GUIDES: Guide[] = [
   },
   {
     slug: 'best-non-slip-yoga-mat',
+    style: 'structured',
     hashtags: '#yogamat #nonslip #yogagear #yogaforbeginners',
     desc: 'Compare the best non-slip yoga mats by surface type — polyurethane, natural rubber and budget foam — plus the free fixes that make the mat you already own grippier.',
+    // structured style: subtitle field = concrete CTA, not a description
     hooks: [
-      ['Gear Guide', 'The 5 Best Non-Slip Yoga Mats', 'Ranked by real grip, not marketing.', 84],
-      ['Common Problem', 'Slipping in Downward Dog?', 'It is probably your mat surface. Here is what grips.', 88],
-      ['At a Glance', 'PU vs Rubber vs Foam: Which Grips Best?', 'Dry hands and sweaty hands need different mats.', 74],
-      ['The Yoga Sensei', 'A Mat That Holds Every Pose', '', 88],
-      ['Before You Buy', '5 Free Fixes for a Slippery Yoga Mat', 'Try these before you buy anything new.', 76],
+      ['Gear Guide', 'The 5 Best Non-Slip Yoga Mats', 'See the 5 picks', 66],
+      ['Common Problem', 'Slipping in Downward Dog?', 'Read what actually grips', 68],
+      ['At a Glance', 'PU vs Rubber vs Foam: Which Grips Best?', 'See the comparison', 60],
+      ['The Yoga Sensei', 'A Mat That Holds Every Pose', 'Read the guide', 68],
+      ['Before You Buy', '5 Free Fixes for a Slippery Yoga Mat', 'Get the fixes', 62],
     ],
   },
   {
