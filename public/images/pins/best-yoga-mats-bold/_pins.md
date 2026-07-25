@@ -7,39 +7,34 @@
 ## 01-listicle
 
 - **Image:** `public/images/pins/best-yoga-mats-bold/01-listicle.png`
-- **Pin title:** Best
-Yoga Mats
-- **Pin description:** An honest 2026 yoga mat guide comparing seven standout picks by grip, cushion, durability, value and eco — research-led, no invented lab tests. #yogamat #bestyogamats #yogagear #yogaforbeginners #yogaessentials
+- **Pin title:** Best Yoga Mats for Every Practice (2026)
+- **Pin description:** Looking for the best yoga mat? Seven mats compared and honestly ranked on grip, cushion, durability, value and eco impact — from a budget beginner mat to a buy-it-for-life one. No invented lab tests, every claim sourced, and clear notes on who should skip each mat. #yogamat #bestyogamats #yogagear #yogaforbeginners #yogaessentials
 - **Link:** https://www.theyogasensei.com/reviews/best-yoga-mats
 
 ## 02-problem
 
 - **Image:** `public/images/pins/best-yoga-mats-bold/02-problem.png`
-- **Pin title:** Best
-Yoga Mat
-- **Pin description:** An honest 2026 yoga mat guide comparing seven standout picks by grip, cushion, durability, value and eco — research-led, no invented lab tests. #yogamat #bestyogamats #yogagear #yogaforbeginners #yogaessentials
+- **Pin title:** Best Yoga Mat for Hot Yoga: Grip That Survives Sweat
+- **Pin description:** Sliding out of down dog in a heated class? This is the grip problem, solved. Seven yoga mats compared on wet grip, sweat handling and material — including which ones need a towel and which hold on their own. Honest picks, no fake testing claims. #yogamat #bestyogamats #yogagear #yogaforbeginners #yogaessentials
 - **Link:** https://www.theyogasensei.com/reviews/best-yoga-mats
 
 ## 03-comparison
 
 - **Image:** `public/images/pins/best-yoga-mats-bold/03-comparison.png`
-- **Pin title:** Best
-Yoga Mat
-- **Pin description:** An honest 2026 yoga mat guide comparing seven standout picks by grip, cushion, durability, value and eco — research-led, no invented lab tests. #yogamat #bestyogamats #yogagear #yogaforbeginners #yogaessentials
+- **Pin title:** Best Yoga Mat for Beginners: 7 Mats Compared
+- **Pin description:** Buying your first yoga mat? Here are seven mats compared on grip, cushion, thickness and price tier, so you can start without overpaying. Includes the beginner value pick, what thickness actually suits home practice, and when a cheaper mat is genuinely fine. #yogamat #bestyogamats #yogagear #yogaforbeginners #yogaessentials
 - **Link:** https://www.theyogasensei.com/reviews/best-yoga-mats
 
 ## 04-aesthetic
 
 - **Image:** `public/images/pins/best-yoga-mats-bold/04-aesthetic.png`
-- **Pin title:** Manduka
-Jade
-Lululemon
-- **Pin description:** An honest 2026 yoga mat guide comparing seven standout picks by grip, cushion, durability, value and eco — research-led, no invented lab tests. #yogamat #bestyogamats #yogagear #yogaforbeginners #yogaessentials
+- **Pin title:** Non Slip Yoga Mat: 7 Mats Ranked by Grip
+- **Pin description:** A non slip yoga mat is the difference between holding a pose and sliding out of it. Seven mats ranked on grip — dry and sweaty — plus the material that grips best, why texture beats price, and which mats only grip once broken in. #yogamat #bestyogamats #yogagear #yogaforbeginners #yogaessentials
 - **Link:** https://www.theyogasensei.com/reviews/best-yoga-mats
 
 ## 05-checklist
 
 - **Image:** `public/images/pins/best-yoga-mats-bold/05-checklist.png`
-- **Pin title:** Yoga Mats
-- **Pin description:** An honest 2026 yoga mat guide comparing seven standout picks by grip, cushion, durability, value and eco — research-led, no invented lab tests. #yogamat #bestyogamats #yogagear #yogaforbeginners #yogaessentials
+- **Pin title:** Yoga Mat Comparison: 7 Mats Scored Side by Side
+- **Pin description:** A straight yoga mat comparison: seven mats scored on grip, cushion, durability, value and eco impact, with the trade-off spelled out for each. Research-led from specs and aggregated reviews — no invented lab tests, and honest about when not to buy. #yogamat #bestyogamats #yogagear #yogaforbeginners #yogaessentials
 - **Link:** https://www.theyogasensei.com/reviews/best-yoga-mats

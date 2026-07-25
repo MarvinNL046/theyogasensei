@@ -85,6 +85,40 @@ const BRAND_POOL = [
 ]
 
 type Hook = [eyebrow: string, title: string, subtitle: string, titleSize?: number]
+
+/**
+ * Per-pin Pinterest SEO copy, keyed by `${slug}/${angle-id}`.
+ * Pinterest is a search engine: the title must read like the phrase people
+ * type, not like the on-image headline. Volumes below are US/month from
+ * DataForSEO (checked 2026-07-25) — they decide which angle gets which pin.
+ */
+const PIN_SEO: Record<string, { title: string; desc: string }> = {
+  // "best yoga mats" — 4,400/mo
+  'best-yoga-mats-bold/01-listicle': {
+    title: 'Best Yoga Mats for Every Practice (2026)',
+    desc: 'Looking for the best yoga mat? Seven mats compared and honestly ranked on grip, cushion, durability, value and eco impact — from a budget beginner mat to a buy-it-for-life one. No invented lab tests, every claim sourced, and clear notes on who should skip each mat.',
+  },
+  // "best yoga mat for hot yoga" — 4,400/mo
+  'best-yoga-mats-bold/02-problem': {
+    title: 'Best Yoga Mat for Hot Yoga: Grip That Survives Sweat',
+    desc: 'Sliding out of down dog in a heated class? This is the grip problem, solved. Seven yoga mats compared on wet grip, sweat handling and material — including which ones need a towel and which hold on their own. Honest picks, no fake testing claims.',
+  },
+  // "best yoga mat for beginners" — 390/mo, high intent
+  'best-yoga-mats-bold/03-comparison': {
+    title: 'Best Yoga Mat for Beginners: 7 Mats Compared',
+    desc: 'Buying your first yoga mat? Here are seven mats compared on grip, cushion, thickness and price tier, so you can start without overpaying. Includes the beginner value pick, what thickness actually suits home practice, and when a cheaper mat is genuinely fine.',
+  },
+  // "non slip yoga mat" — 4,400/mo (replaced the Manduka-vs-Lululemon angle at 30/mo)
+  'best-yoga-mats-bold/04-aesthetic': {
+    title: 'Non Slip Yoga Mat: 7 Mats Ranked by Grip',
+    desc: 'A non slip yoga mat is the difference between holding a pose and sliding out of it. Seven mats ranked on grip — dry and sweaty — plus the material that grips best, why texture beats price, and which mats only grip once broken in.',
+  },
+  // "yoga mat comparison" — 260/mo, LOW competition
+  'best-yoga-mats-bold/05-checklist': {
+    title: 'Yoga Mat Comparison: 7 Mats Scored Side by Side',
+    desc: 'A straight yoga mat comparison: seven mats scored on grip, cushion, durability, value and eco impact, with the trade-off spelled out for each. Research-led from specs and aggregated reviews — no invented lab tests, and honest about when not to buy.',
+  },
+}
 interface Guide {
   slug: string
   hashtags: string
@@ -663,7 +697,9 @@ const GUIDES: Guide[] = [
       ['For every practice', 'Best\nYoga Mats', '7 mats, honestly ranked', 112],
       ['For hot yoga', 'Best\nYoga Mat', 'Grip that survives the sweat', 112],
       ['For beginners', 'Best\nYoga Mat', 'Start without overpaying', 112],
-      ['Compared', 'Manduka\nJade\nLululemon', 'Seven mats, side by side', 96],
+      // Was Manduka/Jade/Lululemon — "manduka vs lululemon" is only 30/mo,
+      // while "non slip yoga mat" is 4,400/mo for the same page.
+      ['Ranked by grip', 'Non Slip\nYoga Mats', 'Which mats actually stay put', 112],
       ['Worth the money', 'Yoga Mats', 'No fake lab tests. Sources cited.', 116],
     ],
   },
@@ -771,8 +807,8 @@ async function main() {
         `## ${id}`,
         '',
         `- **Image:** \`${rel}\``,
-        `- **Pin title:** ${guide.hooks[a][1]}`,
-        `- **Pin description:** ${guide.desc} ${guide.hashtags}`,
+        `- **Pin title:** ${PIN_SEO[`${guide.slug}/${id}`]?.title ?? guide.hooks[a][1].replace(/\n/g, ' ')}`,
+        `- **Pin description:** ${PIN_SEO[`${guide.slug}/${id}`]?.desc ?? guide.desc} ${guide.hashtags}`,
         `- **Link:** ${url}`,
         '',
       )
