@@ -172,6 +172,58 @@ const PIN_SEO: Record<string, { title: string; desc: string }> = {
     title: 'Sustainable Yoga Mat: The Greenest One Is the One You Keep',
     desc: 'The most sustainable yoga mat is rarely the one with the greenest marketing — it is the one that lasts a decade instead of two years. How durability beats the eco label, which materials actually go the distance, and five honest picks.',
   },
+
+  // ---- cork vs rubber ----
+  // The page's own term ("cork vs rubber yoga mat") is only 20/mo, so these
+  // pins target the material terms it genuinely answers instead.
+  'cork-vs-rubber-yoga-mat-bold/01-listicle': {
+    title: 'Cork vs Rubber Yoga Mat: Which One Fits Your Practice',
+    desc: 'Cork or rubber? Cork grips better the more you sweat and needs almost no cleaning; rubber wins on dry grip and cushions your joints better. The honest comparison on grip, cushion, weight, care, eco impact and latex risk — with a clear pick for each type of practice.',
+  },
+  // "best cork yoga mat" — 320/mo
+  'cork-vs-rubber-yoga-mat-bold/02-problem': {
+    title: 'Best Cork Yoga Mat? Read This About Grip First',
+    desc: 'Cork grips better as you sweat, which is the opposite of most mats — but it is firm underfoot and heavier to carry. What cork does well, where rubber beats it, and which practice each one suits. No fake testing claims.',
+  },
+  // latex is the decision-maker the page leads on
+  'cork-vs-rubber-yoga-mat-bold/03-comparison': {
+    title: 'Natural Rubber Yoga Mat and Latex: Read Before You Buy',
+    desc: 'Natural rubber gives the best dry grip and cushion of any eco material — but it is real latex, which rules it out if you are sensitive. Why this one factor decides the mat for some people, and what to choose instead.',
+  },
+  // "non slip yoga mat" adjacency — cork's wet-grip behaviour
+  'cork-vs-rubber-yoga-mat-bold/04-aesthetic': {
+    title: 'Which Yoga Mat Grips When You Sweat: Cork or Rubber?',
+    desc: 'Cork wins wet, rubber wins dry. That one line decides most cork-versus-rubber choices. How each material behaves once your hands are damp, why rubber needs a break-in period, and which to pick for hot yoga versus a dry home practice.',
+  },
+  'cork-vs-rubber-yoga-mat-bold/05-checklist': {
+    title: 'Cork vs Rubber Yoga Mat: The Trade-Offs at a Glance',
+    desc: 'Grip, cushion, weight, care, eco impact and latex risk — cork and rubber compared side by side, with the trade-off spelled out for each. Includes who should skip each material and why the heavier mat is sometimes the right buy.',
+  },
+
+  // ---- budget / value angle ----
+  // "under $50" phrasing is only 40/mo AND Amazon forbids static prices in
+  // creative. "cheap yoga mat" and "budget yoga mat" are 2,900/mo each and
+  // carry the same buying intent without a price claim that expires.
+  'best-yoga-mat-for-beginners-bold/01-listicle': {
+    title: 'Best Budget Yoga Mat: 5 Picks for Every Budget',
+    desc: 'You do not need an expensive mat to start. Five beginner yoga mats compared from cheap-and-cheerful to buy-it-for-life, with the honest trade-off at each level — and the thickness that actually suits a beginner practice.',
+  },
+  'best-yoga-mat-for-beginners-bold/02-problem': {
+    title: 'Cheap Yoga Mat: Which Ones Are Actually Worth It',
+    desc: 'A cheap yoga mat is fine to start on — as long as you know what you are giving up. Which budget mats hold their grip, which ones flake or slide within months, and the one upgrade worth paying for when you are ready.',
+  },
+  'best-yoga-mat-for-beginners-bold/03-comparison': {
+    title: 'Best Yoga Mat for Beginners: What to Buy First',
+    desc: 'Buying your first yoga mat? Start here. Five picks compared on grip, cushion and value, plus the thickness that suits a beginner, why the cheapest mat is sometimes the right call, and when spending more genuinely pays off.',
+  },
+  'best-yoga-mat-for-beginners-bold/04-aesthetic': {
+    title: 'Affordable Yoga Mat: Where It Is Safe to Save',
+    desc: 'Where a cheaper yoga mat is genuinely fine, and where saving costs you within months. Grip, cushion and durability compared across five beginner picks — with honest notes on when not to buy a new mat at all.',
+  },
+  'best-yoga-mat-for-beginners-bold/05-checklist': {
+    title: 'Yoga Mat for Beginners: The 3 Things That Matter',
+    desc: 'Forget the marketing. A beginner mat needs three things: grip you can trust, enough cushion for your knees, and a thickness you can still balance on. How the five picks compare on each — and the mistake that makes beginners buy twice.',
+  },
 }
 interface Guide {
   slug: string
