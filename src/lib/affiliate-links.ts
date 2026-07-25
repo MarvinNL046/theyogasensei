@@ -27,6 +27,15 @@ export const affiliateLinks: Record<string, string> = {
   'jade-voyager': 'https://www.amazon.com/dp/B0FJBRL4GL',
   'manduka-eko-superlite': 'https://www.amazon.com/dp/B07WWC5B95',
   'gaiam-foldable-mat': 'https://www.amazon.com/dp/B073WRCQQK',
+  // Knee pad roundup — every ASIN verified live 2026-07-25, title and
+  // structured fields cross-checked. Note SukhaMat's own site prints
+  // "3/8in (15mm)" for B01LRP3JA4, which is self-contradictory (3/8in is
+  // 9.5mm); Amazon's structured field says 5/8in, which does equal 15mm.
+  'prosourcefit-knee-pad': 'https://www.amazon.com/dp/B079K6K7TX',
+  'sukhamat-knee-pad': 'https://www.amazon.com/dp/B01LRP3JA4',
+  'kinesis-knee-pad': 'https://www.amazon.com/dp/B06WD3HGJX',
+  'gaiam-knee-pads': 'https://www.amazon.com/dp/B07G1R42MS',
+  'sukhamat-firm-knee-pad': 'https://www.amazon.com/dp/B0BH9F1485',
   'jade-harmony': 'https://www.amazon.com/dp/B000ECBQXE',
   'manduka-eko-lite': 'https://www.amazon.com/dp/B08LNP5XG5',
   'manduka-yogitoes': 'https://www.amazon.com/dp/B0D5ZR3R1M',

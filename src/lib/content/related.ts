@@ -149,6 +149,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Best Foldable Yoga Mat: Two Kinds, and Most Guides Mix Them Up',
     category: 'Gear',
   },
+  'best-yoga-knee-pads': {
+    href: '/guides/best-yoga-knee-pads',
+    title: 'Best Yoga Knee Pads: Or Would a Folded Blanket Do?',
+    category: 'Props',
+  },
 
   // Yoga-for-beginners cluster (pillar + spokes)
   'yoga-for-beginners': {
