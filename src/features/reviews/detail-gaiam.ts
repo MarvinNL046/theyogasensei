@@ -15,7 +15,7 @@ export const DETAIL: DetailReview = {
   "overall": 3.9,
   "pros": [
     "Genuinely comfortable 6mm cushion that's forgiving on knees and wrists",
-    "Low price — roughly $25–30 depending on design",
+    "Low price — one of the cheapest mats worth owning, and the design you pick barely changes it",
     "Attractive prints that make you want to practise",
     "Light and easy to carry at around 4.5 lb",
     "6P-free, latex-free PVC — a step up from basic foam",
@@ -49,7 +49,7 @@ export const DETAIL: DetailReview = {
     {
       "id": "overview",
       "title": "Overview",
-      "body": "When most people say \"the Gaiam yoga mat,\" they mean the Premium 6mm — the cushioned, printed PVC mat sold in big-box stores and all over Amazon for around $25–30 depending on the design. It earns its reputation as one of the better budget mats for a simple reason: enough mat to learn on, little enough money that trying yoga on it is almost risk-free.\n\nThe pitch is the sweet spot of the budget tier. It sits above an ultra-cheap foam mat, which gives more raw cushion but a wobblier, less refined feel, and well below the premium brands that cost three to five times as much and earn it on grip, longevity and feel rather than looks.\n\nThis is a research-and-specs review, not a paid lab test. It draws on Gaiam's published specs, hands-on testing from OutdoorGearLab and T3, and the themes that repeat across owner reviews — not an invented scorecard. Treat it as an honest editorial briefing on who the mat is right for, and who should look elsewhere."
+      "body": "When most people say \"the Gaiam yoga mat,\" they mean the Premium 6mm — the cushioned, printed PVC mat sold in big-box stores and all over Amazon at entry-level prices. It earns its reputation as one of the better budget mats for a simple reason: enough mat to learn on, little enough money that trying yoga on it is almost risk-free.\n\nThe pitch is the sweet spot of the budget tier. It sits above an ultra-cheap foam mat, which gives more raw cushion but a wobblier, less refined feel, and well below the premium brands that cost three to five times as much and earn it on grip, longevity and feel rather than looks.\n\nThis is a research-and-specs review, not a paid lab test. It draws on Gaiam's published specs, hands-on testing from OutdoorGearLab and T3, and the themes that repeat across owner reviews — not an invented scorecard. Treat it as an honest editorial briefing on who the mat is right for, and who should look elsewhere."
     },
     {
       "id": "grip",

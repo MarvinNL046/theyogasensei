@@ -24,7 +24,7 @@ export const DETAIL: DetailReview = {
     "Heavy — around 5.2 lb on paper, just under 6 lb on the scale, so it's not a daily commuter",
     "The absorbent top stains permanently from oil, sunscreen and toe-drag, worst on light colours",
     "Contains latex from its natural-rubber base — a hard no for latex-sensitive practitioners",
-    "Premium-priced (roughly $78–$98) for a mat that lasts years, not a lifetime"
+    "Premium-priced for a mat that lasts years rather than a lifetime"
   ],
   "features": [
     {
@@ -48,7 +48,7 @@ export const DETAIL: DetailReview = {
     {
       "id": "overview",
       "title": "Overview",
-      "body": "The mat most people mean by \"the Lululemon yoga mat\" is officially The Reversible Mat 5mm — most just shorten it to \"The Mat.\" It is a natural rubber base bonded to a polyurethane top, with two usable faces, built as one do-everything mat for a regular home or studio practice.\n\nThis is a research-and-experience take, not a lab test. I practise on a 5mm Lululemon mat and draw on hands-on testing from reviewers like OutdoorGearLab and Live Science, with Wirecutter also citing it as a top overall pick. There is no invented scorecard and no price frozen in time — it lists for roughly $78 to $98 depending on colourway and version.\n\nBuy it if you want one mat for hot flow, inversions and long restorative holds and you care more about grip and joint comfort than about carrying it around. Skip it if you commute with your mat, have a latex allergy, or want something that stays looking new."
+      "body": "The mat most people mean by \"the Lululemon yoga mat\" is officially The Reversible Mat 5mm — most just shorten it to \"The Mat.\" It is a natural rubber base bonded to a polyurethane top, with two usable faces, built as one do-everything mat for a regular home or studio practice.\n\nThis is a research-and-experience take, not a lab test. I practise on a 5mm Lululemon mat and draw on hands-on testing from reviewers like OutdoorGearLab and Live Science, with Wirecutter also citing it as a top overall pick. There is no invented scorecard and no price frozen in time — it sits in the premium tier, and the exact figure moves with colourway and version, so check the current one.\n\nBuy it if you want one mat for hot flow, inversions and long restorative holds and you care more about grip and joint comfort than about carrying it around. Skip it if you commute with your mat, have a latex allergy, or want something that stays looking new."
     },
     {
       "id": "grip",
