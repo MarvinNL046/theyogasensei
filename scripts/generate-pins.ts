@@ -118,6 +118,60 @@ const PIN_SEO: Record<string, { title: string; desc: string }> = {
     title: 'Yoga Mat Comparison: 7 Mats Scored Side by Side',
     desc: 'A straight yoga mat comparison: seven mats scored on grip, cushion, durability, value and eco impact, with the trade-off spelled out for each. Research-led from specs and aggregated reviews — no invented lab tests, and honest about when not to buy.',
   },
+
+  // ---- hot yoga (page ships 4 picks + towel + care sections) ----
+  // "hot yoga mat" — 12,100/mo, the biggest term in this niche
+  'best-yoga-mat-for-hot-yoga-bold/01-listicle': {
+    title: 'Hot Yoga Mats: 4 That Hold When You Sweat',
+    desc: 'A hot yoga mat has one job: grip when everything is wet. Four mats compared on wet grip, sweat handling, material and thickness — plus the towel pairing that fixes most slipping, and which mats need one. No invented lab tests.',
+  },
+  // "best yoga mat for hot yoga" — 4,400/mo
+  'best-yoga-mat-for-hot-yoga-bold/02-problem': {
+    title: 'Best Yoga Mat for Hot Yoga: Grip That Survives Sweat',
+    desc: 'Looking for the best yoga mat for hot yoga? Four honest picks compared on wet grip, sweat absorption, material and how fast they wear in a heated room — with clear notes on who should skip each one and why heat kills a normal mat.',
+  },
+  // "best hot yoga towel" — 590/mo (the page has a dedicated towel section)
+  'best-yoga-mat-for-hot-yoga-bold/03-comparison': {
+    title: 'Hot Yoga Towel: Do You Actually Need One?',
+    desc: 'A hot yoga towel is often the cheaper fix for slipping — before you replace the mat. When a towel beats a pricier mat, when it does not, and how to pair one with the mat you already own. Honest advice, including when to buy nothing.',
+  },
+  // "yoga mat for sweaty hands" — 70/mo, low volume but exact-problem intent
+  'best-yoga-mat-for-hot-yoga-bold/04-aesthetic': {
+    title: 'Sliding in Hot Yoga? Here Is the Grip Fix',
+    desc: 'Hands slipping forward in down dog? That is your mat giving up once it gets wet. Why sweat kills grip on most mats, which materials hold on, and the cheap fix to try before buying anything new.',
+  },
+  // care angle — supports the page's "keep it clean or it dies fast" section
+  'best-yoga-mat-for-hot-yoga-bold/05-checklist': {
+    title: 'Hot Yoga Mat Care: Make It Last Longer',
+    desc: 'Hot yoga destroys mats faster than any other practice. How to clean a mat that gets soaked every session, what wrecks the grip, and the care routine that adds years — plus the four mats that survive heat best.',
+  },
+
+  // ---- eco-friendly (page ships 5 picks incl. a cork and rubber option) ----
+  // "eco friendly yoga mat" — 2,900/mo
+  'eco-friendly-yoga-mat-bold/01-listicle': {
+    title: 'Eco Friendly Yoga Mats: 5 Honest Picks',
+    desc: 'Choosing an eco friendly yoga mat means picking which trade-off you can live with. Five honest picks compared on material, grip, latex risk and care — plus what "eco" actually means on a mat label, and when the greener choice is keeping the mat you own.',
+  },
+  // "cork yoga mat" — 4,400/mo, the biggest eco term (page has a cork pick)
+  'eco-friendly-yoga-mat-bold/02-problem': {
+    title: 'Cork Yoga Mat: Grip, Care and the Real Trade-Off',
+    desc: 'A cork yoga mat grips better as you sweat and needs almost no cleaning — but it is firm underfoot and heavier than you expect. The honest case for and against cork, how it compares to rubber and jute, and who should skip it.',
+  },
+  // "natural rubber yoga mat" — 1,900/mo
+  'eco-friendly-yoga-mat-bold/03-comparison': {
+    title: 'Natural Rubber Yoga Mats: Best Grip, One Warning',
+    desc: 'Natural rubber gives the best dry grip of any eco material and cushions better than cork — but it has a smell at first, and it is a genuine problem if you have a latex allergy. Honest picks, the trade-offs, and the safer alternatives.',
+  },
+  // "non toxic yoga mat" — 1,900/mo
+  'eco-friendly-yoga-mat-bold/04-aesthetic': {
+    title: 'Non Toxic Yoga Mat: How to Read Past the Label',
+    desc: 'Most "non toxic" yoga mat claims are marketing. What the certifications actually mean, which materials are genuinely inert, why PVC keeps showing up in eco ranges, and five mats that hold up to the claim.',
+  },
+  // "sustainable yoga mat" — 480/mo
+  'eco-friendly-yoga-mat-bold/05-checklist': {
+    title: 'Sustainable Yoga Mat: The Greenest One Is the One You Keep',
+    desc: 'The most sustainable yoga mat is rarely the one with the greenest marketing — it is the one that lasts a decade instead of two years. How durability beats the eco label, which materials actually go the distance, and five honest picks.',
+  },
 }
 interface Guide {
   slug: string
@@ -701,6 +755,40 @@ const GUIDES: Guide[] = [
       // while "non slip yoga mat" is 4,400/mo for the same page.
       ['Ranked by grip', 'Non Slip\nYoga Mats', 'Which mats actually stay put', 112],
       ['Worth the money', 'Yoga Mats', 'No fake lab tests. Sources cited.', 116],
+    ],
+  },
+  {
+    // Bold A/B arm for the hot-yoga money page. Hooks match what the page
+    // ships: 4 picks, a towel section, and a care section.
+    slug: 'best-yoga-mat-for-hot-yoga-bold',
+    url: 'https://www.theyogasensei.com/guides/best-yoga-mat-for-hot-yoga',
+    style: 'bold',
+    hashtags: '#hotyoga #yogamat #yogagear #yogapractice',
+    desc: 'Choose the best yoga mat for hot yoga by wet grip, sweat handling, material, thickness and towel pairing, without fake testing claims or fixed prices.',
+    bg: Array(5).fill('public/images/brand/hotyoga-flatlay-wet.webp'),
+    hooks: [
+      ['Ranked by wet grip', 'Hot Yoga\nMats', '4 mats that hold when you sweat', 112],
+      ['For hot yoga', 'Best\nYoga Mat', 'Grip that survives the sweat', 112],
+      ['Do you need one?', 'Hot Yoga\nTowel', 'Sometimes it beats a pricier mat', 112],
+      ['Fix the grip', 'Sliding In\nHot Yoga?', 'Why your mat gives up when wet', 104],
+      ['Make it last', 'Hot Yoga\nMat Care', 'Clean it right or it dies fast', 112],
+    ],
+  },
+  {
+    // Bold A/B arm for the eco money page. Page ships 5 picks including a
+    // cork option and two natural-rubber options, so those angles are honest.
+    slug: 'eco-friendly-yoga-mat-bold',
+    url: 'https://www.theyogasensei.com/guides/eco-friendly-yoga-mat',
+    style: 'bold',
+    hashtags: '#ecoyoga #sustainableyoga #yogamat #ecofriendly',
+    desc: 'Choose an eco-friendly yoga mat by material, grip, latex risk and care needs, with five honest picks and no fake testing claims.',
+    bg: Array(5).fill('public/images/brand/eco-flatlay-materials.webp'),
+    hooks: [
+      ['5 honest picks', 'Eco Friendly\nYoga Mats', 'The material trade-offs, explained', 100],
+      ['Worth it?', 'Cork\nYoga Mats', 'Grip, care and the real trade-off', 116],
+      ['Best grip', 'Natural Rubber\nYoga Mats', 'And the latex warning to read first', 92],
+      ['Read the label', 'Non Toxic\nYoga Mats', 'What the claims actually mean', 108],
+      ['The greenest mat', 'Is The One\nYou Keep', 'Why durability beats the eco label', 108],
     ],
   },
   // Affiliate spoke + remaining beginner pose pages (hooks QA'd via workflow).
