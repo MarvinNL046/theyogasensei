@@ -111,6 +111,7 @@ Append one row per published page in this format:
 | foldable yoga mat                 | best-foldable-yoga-mat            | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
 | knee pad for yoga                 | best-yoga-knee-pads               | cluster    | yoga-accessories       | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
 | pilates grip socks                | best-pilates-grip-socks           | cluster    | pilates                | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
+| yoga block size                   | yoga-block-size                   | cluster    | gear/props             | yoga-props               | 2026-07-26 | 2026-07-26    |
 
 ---
 
