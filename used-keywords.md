@@ -56,6 +56,7 @@ Append one row per published page in this format:
 | yoga bolster cover                | yoga-bolster-cover                | subpillar  | gear/props             | yoga-for-beginners       | 2026-07-26 | 2026-07-26    |
 | yoga props                        | yoga-props                        | subpillar  | gear/props             | yoga-for-beginners       | 2026-07-26 | 2026-07-26    |
 | meditation room accessories       | meditation-room-accessories       | subpillar  | gear/meditation        | yoga-for-beginners       | 2026-07-26 | 2026-07-26    |
+| meditation table                  | meditation-table                  | cluster    | gear/meditation        | yoga-for-beginners       | 2026-07-27 | 2026-07-27    |
 | sun salutation                    | sun-salutation                    | cluster    | poses                  | yoga-for-beginners       | 2026-05-13 | 2026-06-22    |
 | how to clean a yoga mat           | how-to-clean-a-yoga-mat           | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-25 | 2026-05-28    |
 | how to choose a yoga mat          | how-to-choose-a-yoga-mat          | pillar     | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-28 | 2026-05-28    |
@@ -114,14 +115,14 @@ Append one row per published page in this format:
 | yoga block size                   | yoga-block-size                   | cluster    | gear/props             | yoga-props               | 2026-07-26 | 2026-07-26    |
 | wooden yoga block                 | wooden-yoga-block                 | cluster    | gear/props             | yoga-props               | 2026-07-26 | 2026-07-26    |
 | meditation cushion set            | meditation-cushion-set            | cluster    | gear/meditation        | yoga-for-beginners       | 2026-07-26 | 2026-07-26    |
-| yoga strap and block               | yoga-block-and-strap-set          | cluster    | gear/props             | yoga-props               | 2026-07-26 | 2026-07-26    |
-| yoga mat and towel set             | yoga-mat-and-towel-set            | cluster    | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-27 | 2026-07-27    |
-| yoga starter kit                   | yoga-starter-kit                 | cluster    | gear/props             | yoga-props               | 2026-07-27 | 2026-07-27    |
-| meditation timer                   | meditation-timer                  | cluster    | gear/meditation        | yoga-for-beginners       | 2026-07-27 | 2026-07-27    |
-| yoga socks                         | yoga-socks                        | cluster    | gear/props             | yoga-props               | 2026-07-27 | 2026-07-27    |
-| yoga equipment storage             | yoga-equipment-storage            | cluster    | gear/props             | yoga-props               | 2026-07-27 | 2026-07-27    |
-| meditation chair                   | meditation-chair                  | cluster    | gear/meditation        | yoga-for-beginners       | 2026-07-27 | 2026-07-27    |
-| meditation mat                     | meditation-mat                    | cluster    | gear/meditation        | yoga-for-beginners       | 2026-07-27 | 2026-07-27    |
+| yoga strap and block              | yoga-block-and-strap-set          | cluster    | gear/props             | yoga-props               | 2026-07-26 | 2026-07-26    |
+| yoga mat and towel set            | yoga-mat-and-towel-set            | cluster    | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-27 | 2026-07-27    |
+| yoga starter kit                  | yoga-starter-kit                  | cluster    | gear/props             | yoga-props               | 2026-07-27 | 2026-07-27    |
+| meditation timer                  | meditation-timer                  | cluster    | gear/meditation        | yoga-for-beginners       | 2026-07-27 | 2026-07-27    |
+| yoga socks                        | yoga-socks                        | cluster    | gear/props             | yoga-props               | 2026-07-27 | 2026-07-27    |
+| yoga equipment storage            | yoga-equipment-storage            | cluster    | gear/props             | yoga-props               | 2026-07-27 | 2026-07-27    |
+| meditation chair                  | meditation-chair                  | cluster    | gear/meditation        | yoga-for-beginners       | 2026-07-27 | 2026-07-27    |
+| meditation mat                    | meditation-mat                    | cluster    | gear/meditation        | yoga-for-beginners       | 2026-07-27 | 2026-07-27    |
 
 ---
 
