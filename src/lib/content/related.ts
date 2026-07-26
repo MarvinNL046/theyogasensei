@@ -45,6 +45,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Best Non-Slip Yoga Mat: 5 Grippy Picks That Hold',
     category: 'Buying guide',
   },
+  'how-to-clean-lululemon-yoga-mat': {
+    href: '/guides/how-to-clean-lululemon-yoga-mat',
+    title: 'How to Clean a Lululemon Yoga Mat Without Ruining It',
+    category: 'Mat care',
+  },
   'cork-vs-rubber-yoga-mat': {
     href: '/guides/cork-vs-rubber-yoga-mat',
     title: 'Cork vs Rubber Yoga Mat: Which One Fits Your Practice',

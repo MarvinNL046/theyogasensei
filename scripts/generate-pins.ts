@@ -545,6 +545,20 @@ const GUIDES: Guide[] = [
     ],
   },
   {
+    slug: 'how-to-clean-lululemon-yoga-mat',
+    style: 'structured',
+    hashtags: '#lululemon #yogamat #matcare #yogagear',
+    desc: 'How to clean a Lululemon yoga mat: the damp-cloth routine, a safe deep clean, and what should never touch the rubber — from someone who cleans this exact mat.',
+    // structured style: subtitle field = concrete CTA, not a description
+    hooks: [
+      ['Care Guide', 'How to Clean a Lululemon Yoga Mat', 'See the routine', 58],
+      ['Common Problem', 'Slippery Lululemon Mat?', 'Read the fix', 68],
+      ['At a Glance', 'What Never Touches This Mat', 'See the list', 64],
+      ['The Yoga Sensei', 'Care for the Mat You Splurged On', 'Read the guide', 62],
+      ['Before You Clean', 'Skip the Vinegar on This Mat', 'Read why first', 64],
+    ],
+  },
+  {
     slug: 'cork-vs-rubber-yoga-mat',
     hashtags: '#corkyogamat #ecoyoga #yogamat #yogagear',
     desc: 'Cork vs rubber yoga mat, compared honestly on grip, cushion, weight, care, eco and latex risk, with a clear pick for sweaty, dry and latex-sensitive practice.',
