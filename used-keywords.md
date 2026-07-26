@@ -24,6 +24,7 @@ Append one row per published page in this format:
 | pvc yoga mat                     | pvc-yoga-mat                     | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | jute yoga mat                    | jute-yoga-mat                    | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | suede yoga mat                   | suede-yoga-mat                   | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| nbr foam yoga mat                | nbr-yoga-mat                     | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | sun salutation                   | sun-salutation                   | cluster    | poses                  | yoga-for-beginners       | 2026-05-13 | 2026-06-22    |
 | how to clean a yoga mat          | how-to-clean-a-yoga-mat          | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-25 | 2026-05-28    |
 | how to choose a yoga mat         | how-to-choose-a-yoga-mat         | pillar     | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-28 | 2026-05-28    |
