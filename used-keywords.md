@@ -121,6 +121,7 @@ Append one row per published page in this format:
 | yoga socks                         | yoga-socks                        | cluster    | gear/props             | yoga-props               | 2026-07-27 | 2026-07-27    |
 | yoga equipment storage             | yoga-equipment-storage            | cluster    | gear/props             | yoga-props               | 2026-07-27 | 2026-07-27    |
 | meditation chair                   | meditation-chair                  | cluster    | gear/meditation        | yoga-for-beginners       | 2026-07-27 | 2026-07-27    |
+| meditation mat                     | meditation-mat                    | cluster    | gear/meditation        | yoga-for-beginners       | 2026-07-27 | 2026-07-27    |
 
 ---
 
