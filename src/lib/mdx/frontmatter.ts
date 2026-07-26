@@ -75,6 +75,8 @@ const base = z.object({
   related: z.array(z.string()),
   author: z.string().min(1),
   reviewedBy: z.string().min(1),
+  indexable: z.boolean().default(true),
+  requiresQualifiedReview: z.boolean().default(false),
   publishedAt: isoDate,
   lastReviewedAt: isoDate,
   estimatedReadingTime: z.number().int().min(1).max(60),
@@ -110,6 +112,14 @@ const clusterSchema = base.extend({
 export const frontmatterSchema = z
   .discriminatedUnion('type', [pillarSchema, subpillarSchema, clusterSchema])
   .superRefine((data, ctx) => {
+    if (data.requiresQualifiedReview && data.indexable) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message:
+          'content requiring qualified review must remain non-indexable until that review is available',
+        path: ['indexable'],
+      })
+    }
     if (data.type === 'pillar') {
       if (data.pillar !== data.slug) {
         ctx.addIssue({

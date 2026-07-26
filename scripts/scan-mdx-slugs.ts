@@ -9,6 +9,7 @@ export interface MdxEntry {
   slug: string // the leaf slug, e.g. 'sun-salutation'
   type: 'pillar' | 'subpillar' | 'cluster' | 'author'
   lastReviewedAt?: string
+  indexable: boolean
 }
 
 const CONTENT_DIR = join(process.cwd(), 'content')
@@ -82,6 +83,7 @@ export function scanMdxEntries(): Array<MdxEntry> {
       type,
       lastReviewedAt:
         typeof fm.lastReviewedAt === 'string' ? fm.lastReviewedAt : undefined,
+      indexable: fm.indexable !== false,
     })
   }
 

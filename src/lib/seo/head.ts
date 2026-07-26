@@ -101,6 +101,9 @@ export function buildHead(fm: Frontmatter, ctx: BuildHeadContext): HeadConfig {
     { name: 'description', content: fm.metaDescription },
     { name: 'author', content: ctx.author.name },
     { name: 'keywords', content: fm.tags.join(', ') },
+    ...(fm.indexable
+      ? []
+      : [{ name: 'robots', content: 'noindex, follow' }]),
 
     // OpenGraph — Pinterest also reads these
     { property: 'og:type', content: 'article' },

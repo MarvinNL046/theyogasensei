@@ -14,7 +14,7 @@
     "format": "prettier --write . && eslint --fix",
     "check": "prettier --check .",
     "typecheck": "tsc --noEmit",
-    "verify": "tsx scripts/verify-frontmatter.ts && tsx scripts/verify-used-keywords.ts && tsx scripts/verify-affiliate-ui.ts && tsx scripts/verify-associates-compliance.ts",
+    "verify": "tsx scripts/verify-frontmatter.ts && tsx scripts/verify-used-keywords.ts && tsx scripts/verify-review-gate.ts && tsx scripts/verify-affiliate-ui.ts && tsx scripts/verify-associates-compliance.ts",
     "verify:frontmatter": "tsx scripts/verify-frontmatter.ts",
     "verify:keywords": "tsx scripts/verify-used-keywords.ts",
     "verify:associates": "tsx scripts/verify-associates-compliance.ts",

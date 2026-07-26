@@ -31,7 +31,7 @@ const STATIC_PAGES: Array<Omit<SitemapEntry, 'url'> & { path: string }> = [
 
 function buildEntries(siteUrl: string): Array<SitemapEntry> {
   const base = siteUrl.replace(/\/$/, '')
-  const mdxEntries = scanMdxEntries()
+  const mdxEntries = scanMdxEntries().filter((entry) => entry.indexable)
   const today = new Date().toISOString().slice(0, 10)
 
   const staticEntries: Array<SitemapEntry> = STATIC_PAGES.map((p) => ({
@@ -93,5 +93,5 @@ export function renderSitemap(siteUrl: string): string {
 }
 
 export function sitemapEntryCount(): number {
-  return scanMdxEntries().length + STATIC_PAGES.length
+  return scanMdxEntries().filter((entry) => entry.indexable).length + STATIC_PAGES.length
 }
