@@ -20,6 +20,7 @@ Append one row per published page in this format:
 
 | Primary keyword                  | Slug                             | Page type  | Cluster                | Pillar                   | Published  | Last reviewed |
 | -------------------------------- | -------------------------------- | ---------- | ---------------------- | ------------------------ | ---------- | ------------- |
+| eva yoga mat                     | eva-yoga-mat                     | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | pvc yoga mat                     | pvc-yoga-mat                     | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | jute yoga mat                    | jute-yoga-mat                    | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | sun salutation                   | sun-salutation                   | cluster    | poses                  | yoga-for-beginners       | 2026-05-13 | 2026-06-22    |
