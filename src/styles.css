@@ -1,6 +1,6 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "@tailwindcss/typography";
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 /*
  * Keep generated CSS lean: design-references/ are unshipped template/reference
@@ -10,14 +10,14 @@
 @source not "./design-references";
 
 /* Fonts — self-hosted via @fontsource */
-@import "@fontsource/cormorant-garamond/400.css";
-@import "@fontsource/cormorant-garamond/500.css";
-@import "@fontsource/cormorant-garamond/600.css";
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/500.css";
-@import "@fontsource/inter/600.css";
-@import "@fontsource/noto-serif-jp/400.css";
-@import "@fontsource/noto-serif-jp/500.css";
+@import '@fontsource/cormorant-garamond/latin-400.css';
+@import '@fontsource/cormorant-garamond/latin-500.css';
+@import '@fontsource/cormorant-garamond/latin-600.css';
+@import '@fontsource/inter/latin-400.css';
+@import '@fontsource/inter/latin-500.css';
+@import '@fontsource/inter/latin-600.css';
+@import '@fontsource/noto-serif-jp/400.css';
+@import '@fontsource/noto-serif-jp/500.css';
 
 /*
  * Brand theme — Japanese-inspired premium wellness publisher.
@@ -28,18 +28,18 @@
  */
 @theme {
   /* Warm neutral surface system — rice-paper ivory + taupe (design tokens) */
-  --color-bg: #f6f1e8;        /* page background — warm ivory / rice paper */
-  --color-surface: #f8f4ec;   /* card / panel — slightly lighter paper */
-  --color-surface-muted: #e9e1d4;  /* recessed sections — warm beige */
-  --color-border: #d8cdbd;    /* hairlines — soft taupe */
+  --color-bg: #f6f1e8; /* page background — warm ivory / rice paper */
+  --color-surface: #f8f4ec; /* card / panel — slightly lighter paper */
+  --color-surface-muted: #e9e1d4; /* recessed sections — warm beige */
+  --color-border: #d8cdbd; /* hairlines — soft taupe */
 
   /* Ink (text) */
-  --color-ink: #191a14;       /* primary text — soft black ink */
-  --color-ink-soft: #3a3a36;  /* secondary text — charcoal */
+  --color-ink: #191a14; /* primary text — soft black ink */
+  --color-ink-soft: #3a3a36; /* secondary text — charcoal */
   --color-ink-muted: #3a3a36; /* tertiary / metadata — charcoal, for legibility */
 
   /* Olive — primary dark surface, buttons & headings */
-  --color-olive: #343a2b;     /* deep olive green */
+  --color-olive: #343a2b; /* deep olive green */
   --color-olive-soft: #6f7d62;
   --color-olive-deep: #22231d; /* near-charcoal olive */
 
@@ -49,11 +49,11 @@
   --color-accent-deep: #6f5944;
 
   /* Brand palette aliases */
-  --color-sage: #8d9276;      /* sage olive — subtle accents */
-  --color-sand: #d6ccb8;      /* sand / clay beige */
-  --color-clay: #a58463;      /* warm clay (= accent) */
-  --color-seal: #8a3d2b;      /* muted seal red — Japanese stamp */
-  --color-charcoal: #22231d;  /* charcoal */
+  --color-sage: #8d9276; /* sage olive — subtle accents */
+  --color-sand: #d6ccb8; /* sand / clay beige */
+  --color-clay: #a58463; /* warm clay (= accent) */
+  --color-seal: #8a3d2b; /* muted seal red — Japanese stamp */
+  --color-charcoal: #22231d; /* charcoal */
 
   /* yoga-* brand class aliases — single source, reference the tokens above so
      `bg-yoga-paper`, `text-yoga-ink`, `border-yoga-taupe`, `bg-yoga-olive`,
@@ -70,8 +70,12 @@
   --color-yoga-charcoal: var(--color-charcoal);
 
   /* Typography */
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-serif: "Cormorant Garamond", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --font-serif:
+    'Cormorant Garamond', ui-serif, Georgia, Cambria, 'Times New Roman', Times,
+    serif;
 
   /* Spacing rhythm — generous per design templates */
   --spacing-section: 7rem;
@@ -170,11 +174,14 @@
 
   body {
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
+    font-feature-settings: 'ss01', 'cv11';
   }
 
   /* Headings default to serif — opt out with .font-sans where needed */
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-serif);
     font-weight: 500;
     letter-spacing: -0.01em;
@@ -207,55 +214,55 @@ h4 {
     overflow-wrap: break-word;
   }
 
-  .prose :where(img, video, canvas, svg):not(:where([class~="not-prose"] *)) {
+  .prose :where(img, video, canvas, svg):not(:where([class~='not-prose'] *)) {
     max-width: 100%;
     height: auto;
   }
 
-  .prose :where(a):not(:where([class~="not-prose"] *)) {
+  .prose :where(a):not(:where([class~='not-prose'] *)) {
     color: var(--color-accent-deep);
     text-decoration-color: var(--color-accent-soft);
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
     overflow-wrap: anywhere;
   }
-  .prose :where(a:hover):not(:where([class~="not-prose"] *)) {
+  .prose :where(a:hover):not(:where([class~='not-prose'] *)) {
     color: var(--color-accent);
     text-decoration-color: var(--color-accent);
   }
-  .prose :where(blockquote):not(:where([class~="not-prose"] *)) {
+  .prose :where(blockquote):not(:where([class~='not-prose'] *)) {
     border-left-color: var(--color-accent);
     font-style: normal;
     color: var(--color-ink-soft);
     max-width: 100%;
   }
-  .prose :where(h1, h2, h3, h4):not(:where([class~="not-prose"] *)) {
+  .prose :where(h1, h2, h3, h4):not(:where([class~='not-prose'] *)) {
     font-family: var(--font-serif);
     font-weight: 500;
   }
-  .prose :where(h2):not(:where([class~="not-prose"] *)) {
+  .prose :where(h2):not(:where([class~='not-prose'] *)) {
     margin-top: 2.5em;
     line-height: 1.2;
   }
-  .prose :where(h3):not(:where([class~="not-prose"] *)) {
+  .prose :where(h3):not(:where([class~='not-prose'] *)) {
     margin-top: 1.75em;
     line-height: 1.3;
   }
-  .prose :where(pre):not(:where([class~="not-prose"] *)) {
+  .prose :where(pre):not(:where([class~='not-prose'] *)) {
     max-width: 100%;
     overflow-x: auto;
   }
-  .prose :where(code):not(:where([class~="not-prose"] *)) {
+  .prose :where(code):not(:where([class~='not-prose'] *)) {
     overflow-wrap: anywhere;
   }
-  .prose :where(table):not(:where([class~="not-prose"] *)) {
+  .prose :where(table):not(:where([class~='not-prose'] *)) {
     display: block;
     width: 100%;
     max-width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .prose :where(th, td):not(:where([class~="not-prose"] *)) {
+  .prose :where(th, td):not(:where([class~='not-prose'] *)) {
     min-width: 8rem;
     white-space: normal;
     overflow-wrap: break-word;

@@ -20,6 +20,7 @@
     "verify:associates": "tsx scripts/verify-associates-compliance.ts",
     "content:status": "tsx scripts/content-status.ts",
     "content:cannibalization": "tsx scripts/check-cannibalization.ts",
+    "content:assets": "tsx scripts/audit-inline-assets.ts",
     "generate-sitemap": "tsx scripts/generate-sitemap.ts",
     "ping-indexnow": "tsx scripts/ping-indexnow.ts"
   },

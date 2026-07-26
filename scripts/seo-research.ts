@@ -14,6 +14,10 @@
  *     → lists keywords the domain ranks for in positions 11-20 (page 2 = quick wins),
  *       sorted by search volume. Useful in the GSC measure phase.
  *
+ *   npx tsx scripts/seo-research.ts ideas <seed keyword>
+ *     → returns English/US keyword suggestions with real volume, KD and intent,
+ *       sorted by a simple volume/KD opportunity score. Read-only.
+ *
  * Cost: each run is a small number of paid DataForSEO requests. Labs is cheap.
  */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
@@ -71,12 +75,17 @@ function authHeader(): string {
 async function post(endpoint: string, body: unknown): Promise<any> {
   const res = await fetch(`${API}${endpoint}`, {
     method: 'POST',
-    headers: { Authorization: authHeader(), 'Content-Type': 'application/json' },
+    headers: {
+      Authorization: authHeader(),
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify(body),
   })
   const json = await res.json()
   if (json.status_code !== 20000) {
-    throw new Error(`DataForSEO ${endpoint}: ${json.status_code} ${json.status_message}`)
+    throw new Error(
+      `DataForSEO ${endpoint}: ${json.status_code} ${json.status_message}`,
+    )
   }
   return json
 }
@@ -89,32 +98,56 @@ function parseCsvLine(line: string): Array<string> {
   for (let i = 0; i < line.length; i++) {
     const c = line[i]
     if (c === '"') {
-      if (inQ && line[i + 1] === '"') { cur += '"'; i++ } else inQ = !inQ
-    } else if (c === ',' && !inQ) { out.push(cur); cur = '' } else cur += c
+      if (inQ && line[i + 1] === '"') {
+        cur += '"'
+        i++
+      } else inQ = !inQ
+    } else if (c === ',' && !inQ) {
+      out.push(cur)
+      cur = ''
+    } else cur += c
   }
   out.push(cur)
   return out
 }
 
-interface Row { primary: string; csvVol: string; csvKd: string; status: string }
+interface Row {
+  primary: string
+  csvVol: string
+  csvKd: string
+  status: string
+}
 
 function readKeywords(): Array<Row> {
   const raw = readFileSync(resolve(ROOT, 'keywords.csv'), 'utf8')
   const lines = raw.split(/\r?\n/).filter((l) => l.trim().length > 0)
   const header = parseCsvLine(lines[0])
   const idx = (name: string) => header.indexOf(name)
-  const iP = idx('primary_keyword'), iV = idx('volume'), iK = idx('kd'), iS = idx('status')
-  return lines.slice(1).map((l) => {
-    const c = parseCsvLine(l)
-    return { primary: c[iP] ?? '', csvVol: c[iV] ?? '', csvKd: c[iK] ?? '', status: c[iS] ?? '' }
-  }).filter((r) => r.primary)
+  const iP = idx('primary_keyword'),
+    iV = idx('volume'),
+    iK = idx('kd'),
+    iS = idx('status')
+  return lines
+    .slice(1)
+    .map((l) => {
+      const c = parseCsvLine(l)
+      return {
+        primary: c[iP] ?? '',
+        csvVol: c[iV] ?? '',
+        csvKd: c[iK] ?? '',
+        status: c[iS] ?? '',
+      }
+    })
+    .filter((r) => r.primary)
 }
 
 // --- modes ----------------------------------------------------------------
 async function enrich(): Promise<void> {
   const rows = readKeywords()
   const keywords = rows.map((r) => r.primary)
-  console.log(`Fetching real volume + KD for ${keywords.length} keywords (US/en)...\n`)
+  console.log(
+    `Fetching real volume + KD for ${keywords.length} keywords (US/en)...\n`,
+  )
 
   const json = await post('/dataforseo_labs/google/keyword_overview/live', [
     { keywords, location_code: LOCATION_CODE, language_code: LANGUAGE_CODE },
@@ -123,7 +156,11 @@ async function enrich(): Promise<void> {
   const byKw = new Map<string, any>()
   for (const it of items) byKw.set((it.keyword || '').toLowerCase(), it)
 
-  type Out = Row & { realVol: number | null; realKd: number | null; intent: string }
+  type Out = Row & {
+    realVol: number | null
+    realKd: number | null
+    intent: string
+  }
   const out: Array<Out> = rows.map((r) => {
     const it = byKw.get(r.primary.toLowerCase())
     return {
@@ -139,19 +176,38 @@ async function enrich(): Promise<void> {
   out.sort((a, b) => score(b) - score(a))
 
   const pad = (s: string, n: number) => (s + ' '.repeat(n)).slice(0, n)
-  console.log(pad('keyword', 38) + pad('status', 9) + pad('vol(csv→real)', 18) + pad('kd(csv→real)', 16) + 'intent')
+  console.log(
+    pad('keyword', 38) +
+      pad('status', 9) +
+      pad('vol(csv→real)', 18) +
+      pad('kd(csv→real)', 16) +
+      'intent',
+  )
   console.log('-'.repeat(95))
   for (const o of out) {
     const vol = `${o.csvVol || '?'} → ${o.realVol ?? '—'}`
     const kd = `${o.csvKd || '?'} → ${o.realKd ?? '—'}`
-    console.log(pad(o.primary, 38) + pad(o.status, 9) + pad(vol, 18) + pad(kd, 16) + o.intent)
+    console.log(
+      pad(o.primary, 38) +
+        pad(o.status, 9) +
+        pad(vol, 18) +
+        pad(kd, 16) +
+        o.intent,
+    )
   }
-  console.log(`\nSorted by opportunity (real volume ÷ KD). Top rows with status=todo are the best next picks.`)
+  console.log(
+    `\nSorted by opportunity (real volume ÷ KD). Top rows with status=todo are the best next picks.`,
+  )
 }
 
 async function quickwins(domain: string): Promise<void> {
-  if (!domain) { console.error('Usage: quickwins <domain>'); process.exit(1) }
-  console.log(`Ranked keywords for ${domain} in positions 11-20 (page-2 quick wins)...\n`)
+  if (!domain) {
+    console.error('Usage: quickwins <domain>')
+    process.exit(1)
+  }
+  console.log(
+    `Ranked keywords for ${domain} in positions 11-20 (page-2 quick wins)...\n`,
+  )
   const json = await post('/dataforseo_labs/google/ranked_keywords/live', [
     {
       target: domain,
@@ -174,11 +230,66 @@ async function quickwins(domain: string): Promise<void> {
     const kw = it.keyword_data?.keyword ?? ''
     const pos = it.ranked_serp_element?.serp_item?.rank_absolute ?? ''
     const vol = it.keyword_data?.keyword_info?.search_volume ?? ''
-    const url = it.ranked_serp_element?.serp_item?.relative_url ?? it.ranked_serp_element?.serp_item?.url ?? ''
+    const url =
+      it.ranked_serp_element?.serp_item?.relative_url ??
+      it.ranked_serp_element?.serp_item?.url ??
+      ''
     console.log(pad(kw, 44) + pad(String(pos), 6) + pad(String(vol), 9) + url)
   }
-  if (items.length === 0) console.log('(no page-2 keywords yet — normal for a young site)')
-  else console.log(`\n${items.length} page-2 keywords. These are the closest to page 1 — best targets to strengthen.`)
+  if (items.length === 0)
+    console.log('(no page-2 keywords yet — normal for a young site)')
+  else
+    console.log(
+      `\n${items.length} page-2 keywords. These are the closest to page 1 — best targets to strengthen.`,
+    )
+}
+
+async function ideas(seed: string): Promise<void> {
+  if (!seed) {
+    console.error('Usage: ideas <seed keyword>')
+    process.exit(1)
+  }
+  console.log(`Keyword suggestions for "${seed}" (US/en)...\n`)
+  const json = await post('/dataforseo_labs/google/keyword_suggestions/live', [
+    {
+      keyword: seed,
+      location_code: LOCATION_CODE,
+      language_code: LANGUAGE_CODE,
+      include_seed_keyword: true,
+      limit: 200,
+      filters: [['keyword_info.search_volume', '>=', 20]],
+      order_by: ['keyword_info.search_volume,desc'],
+    },
+  ])
+  const items: Array<any> = json.tasks?.[0]?.result?.[0]?.items ?? []
+  const rows = items
+    .map((it) => ({
+      keyword: it.keyword ?? '',
+      volume: it.keyword_info?.search_volume ?? 0,
+      kd: it.keyword_properties?.keyword_difficulty ?? null,
+      intent: it.search_intent_info?.main_intent ?? '',
+    }))
+    .sort((a, b) => {
+      const aScore = a.volume / Math.max(a.kd ?? 100, 1)
+      const bScore = b.volume / Math.max(b.kd ?? 100, 1)
+      return bScore - aScore || b.volume - a.volume
+    })
+
+  const pad = (value: string, width: number) =>
+    (value + ' '.repeat(width)).slice(0, width)
+  console.log(pad('keyword', 52) + pad('volume', 10) + pad('kd', 7) + 'intent')
+  console.log('-'.repeat(84))
+  for (const row of rows) {
+    console.log(
+      pad(row.keyword, 52) +
+        pad(String(row.volume), 10) +
+        pad(row.kd == null ? '—' : String(row.kd), 7) +
+        row.intent,
+    )
+  }
+  console.log(
+    `\n${rows.length} suggestions. Cluster by SERP overlap before assigning URLs.`,
+  )
 }
 
 function serializeCsvCell(s: string): string {
@@ -186,8 +297,15 @@ function serializeCsvCell(s: string): string {
 }
 
 /** Fetch real volume + KD per keyword, with a google_ads volume fallback for gaps. */
-async function fetchMetrics(keywords: Array<string>): Promise<Map<string, { vol: number | null; kd: number | null; intent: string }>> {
-  const out = new Map<string, { vol: number | null; kd: number | null; intent: string }>()
+async function fetchMetrics(
+  keywords: Array<string>,
+): Promise<
+  Map<string, { vol: number | null; kd: number | null; intent: string }>
+> {
+  const out = new Map<
+    string,
+    { vol: number | null; kd: number | null; intent: string }
+  >()
   const ov = await post('/dataforseo_labs/google/keyword_overview/live', [
     { keywords, location_code: LOCATION_CODE, language_code: LANGUAGE_CODE },
   ])
@@ -199,16 +317,23 @@ async function fetchMetrics(keywords: Array<string>): Promise<Map<string, { vol:
     })
   }
   // Fallback: keywords with no volume → google_ads search_volume (different source).
-  const missing = keywords.filter((k) => (out.get(k.toLowerCase())?.vol ?? null) === null)
+  const missing = keywords.filter(
+    (k) => (out.get(k.toLowerCase())?.vol ?? null) === null,
+  )
   if (missing.length) {
     try {
       const sv = await post('/keywords_data/google_ads/search_volume/live', [
-        { keywords: missing, location_code: LOCATION_CODE, language_code: LANGUAGE_CODE },
+        {
+          keywords: missing,
+          location_code: LOCATION_CODE,
+          language_code: LANGUAGE_CODE,
+        },
       ])
       for (const it of sv.tasks?.[0]?.result ?? []) {
         const key = (it.keyword || '').toLowerCase()
         const prev = out.get(key) ?? { vol: null, kd: null, intent: '' }
-        if (it.search_volume != null) out.set(key, { ...prev, vol: it.search_volume })
+        if (it.search_volume != null)
+          out.set(key, { ...prev, vol: it.search_volume })
       }
     } catch (e: any) {
       console.warn(`  (google_ads fallback skipped: ${e.message})`)
@@ -223,10 +348,17 @@ async function update(): Promise<void> {
   const lines = raw.split(/\r?\n/)
   const nonEmpty = lines.filter((l) => l.trim().length > 0)
   const header = parseCsvLine(nonEmpty[0])
-  const iP = header.indexOf('primary_keyword'), iV = header.indexOf('volume'), iK = header.indexOf('kd')
+  const iP = header.indexOf('primary_keyword'),
+    iV = header.indexOf('volume'),
+    iK = header.indexOf('kd')
 
-  const keywords = nonEmpty.slice(1).map((l) => parseCsvLine(l)[iP]).filter(Boolean)
-  console.log(`Fetching real volume + KD for ${keywords.length} keywords (with google_ads fallback)...`)
+  const keywords = nonEmpty
+    .slice(1)
+    .map((l) => parseCsvLine(l)[iP])
+    .filter(Boolean)
+  console.log(
+    `Fetching real volume + KD for ${keywords.length} keywords (with google_ads fallback)...`,
+  )
   const m = await fetchMetrics(keywords)
 
   let updated = 0
@@ -236,17 +368,24 @@ async function update(): Promise<void> {
     const cells = parseCsvLine(line)
     const kw = (cells[iP] || '').toLowerCase()
     const data = m.get(kw)
-    if (!data) { if (cells[iP]) stillMissing.push(cells[iP]); return line }
+    if (!data) {
+      if (cells[iP]) stillMissing.push(cells[iP])
+      return line
+    }
     if (data.vol != null) cells[iV] = String(data.vol)
     if (data.kd != null) cells[iK] = String(data.kd)
-    if (data.vol == null && data.kd == null && cells[iP]) stillMissing.push(cells[iP])
+    if (data.vol == null && data.kd == null && cells[iP])
+      stillMissing.push(cells[iP])
     if (data.vol != null || data.kd != null) updated++
     return cells.map(serializeCsvCell).join(',')
   })
 
   writeFileSync(path, outLines.join('\n'))
   console.log(`✓ Updated volume/kd for ${updated} rows in keywords.csv.`)
-  if (stillMissing.length) console.log(`  No data for: ${stillMissing.join(', ')} (kept existing values).`)
+  if (stillMissing.length)
+    console.log(
+      `  No data for: ${stillMissing.join(', ')} (kept existing values).`,
+    )
 }
 
 async function whoami(): Promise<void> {
@@ -260,27 +399,43 @@ async function whoami(): Promise<void> {
       : process.env.DATAFORSEO_PASSWORD?.trim()
         ? 'LOGIN + PASSWORD'
         : 'NONE'
-  console.log(`env: DATAFORSEO_BASE64=${has('DATAFORSEO_BASE64')}, DATAFORSEO_LOGIN=${has('DATAFORSEO_LOGIN')}, DATAFORSEO_PASSWORD=${has('DATAFORSEO_PASSWORD')}`)
+  console.log(
+    `env: DATAFORSEO_BASE64=${has('DATAFORSEO_BASE64')}, DATAFORSEO_LOGIN=${has('DATAFORSEO_LOGIN')}, DATAFORSEO_PASSWORD=${has('DATAFORSEO_PASSWORD')}`,
+  )
   console.log(`auth source chosen: ${src}`)
   const token = authHeader().slice(6)
-  let colon = false, at = false, parts = 0
+  let colon = false,
+    at = false,
+    parts = 0
   try {
     const d = Buffer.from(token, 'base64').toString('utf8')
-    colon = d.includes(':'); at = d.includes('@'); parts = d.split(':').length
-  } catch { /* not base64 */ }
-  console.log(`token length: ${token.length} | decodes to "login:password"? colon=${colon} @=${at} segments=${parts}`)
+    colon = d.includes(':')
+    at = d.includes('@')
+    parts = d.split(':').length
+  } catch {
+    /* not base64 */
+  }
+  console.log(
+    `token length: ${token.length} | decodes to "login:password"? colon=${colon} @=${at} segments=${parts}`,
+  )
   console.log('Calling /appendix/user_data to validate the account...\n')
-  const res = await fetch(`${API}/appendix/user_data`, { headers: { Authorization: authHeader() } })
+  const res = await fetch(`${API}/appendix/user_data`, {
+    headers: { Authorization: authHeader() },
+  })
   const json = await res.json()
   if (json.status_code === 20000) {
     const r = json.tasks?.[0]?.result?.[0]
     console.log('✓ AUTH OK')
     console.log(`  login: ${r?.login}`)
     console.log(`  balance: ${r?.money?.balance} ${r?.money?.currency ?? ''}`)
-    console.log(`  Labs API access: ${r?.rates ? 'account active' : 'check subscription'}`)
+    console.log(
+      `  Labs API access: ${r?.rates ? 'account active' : 'check subscription'}`,
+    )
   } else {
     console.log(`✗ AUTH FAILED: ${json.status_code} ${json.status_message}`)
-    console.log('  → The login/password value is wrong or the API is not enabled. Re-copy from the API Access tab.')
+    console.log(
+      '  → The login/password value is wrong or the API is not enabled. Re-copy from the API Access tab.',
+    )
   }
 }
 
@@ -294,18 +449,36 @@ async function probe(): Promise<void> {
   ]
   const body = (ep: string) =>
     ep.includes('ranked_keywords')
-      ? [{ target: 'theyogasensei.com', location_code: LOCATION_CODE, language_code: LANGUAGE_CODE, limit: 1 }]
-      : [{ keywords: ['yoga mat'], location_code: LOCATION_CODE, language_code: LANGUAGE_CODE }]
+      ? [
+          {
+            target: 'theyogasensei.com',
+            location_code: LOCATION_CODE,
+            language_code: LANGUAGE_CODE,
+            limit: 1,
+          },
+        ]
+      : [
+          {
+            keywords: ['yoga mat'],
+            location_code: LOCATION_CODE,
+            language_code: LANGUAGE_CODE,
+          },
+        ]
   for (const ep of endpoints) {
     try {
       const res = await fetch(`${API}${ep}`, {
         method: 'POST',
-        headers: { Authorization: authHeader(), 'Content-Type': 'application/json' },
+        headers: {
+          Authorization: authHeader(),
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify(body(ep)),
       })
       const json = await res.json()
       const cost = json.tasks?.[0]?.cost ?? json.cost ?? '?'
-      console.log(`${json.status_code === 20000 ? '✓' : '✗'} ${json.status_code}  cost:${cost}  ${ep}`)
+      console.log(
+        `${json.status_code === 20000 ? '✓' : '✗'} ${json.status_code}  cost:${cost}  ${ep}`,
+      )
     } catch (e: any) {
       console.log(`✗ ERR  ${ep}  ${e.message}`)
     }
@@ -314,9 +487,18 @@ async function probe(): Promise<void> {
 
 const [mode, arg] = process.argv.slice(2)
 const run =
-  mode === 'quickwins' ? quickwins(arg)
-  : mode === 'whoami' ? whoami()
-  : mode === 'probe' ? probe()
-  : mode === 'update' ? update()
-  : enrich()
-run.catch((e) => { console.error(e.message || e); process.exit(1) })
+  mode === 'quickwins'
+    ? quickwins(arg)
+    : mode === 'ideas'
+      ? ideas(arg)
+      : mode === 'whoami'
+        ? whoami()
+        : mode === 'probe'
+          ? probe()
+          : mode === 'update'
+            ? update()
+            : enrich()
+run.catch((e) => {
+  console.error(e.message || e)
+  process.exit(1)
+})
