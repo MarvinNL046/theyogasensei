@@ -18,72 +18,73 @@ Append one row per published page in this format:
 
 ## Log
 
-| Primary keyword                  | Slug                             | Page type  | Cluster                | Pillar                   | Published  | Last reviewed |
-| -------------------------------- | -------------------------------- | ---------- | ---------------------- | ------------------------ | ---------- | ------------- |
-| eva yoga mat                     | eva-yoga-mat                     | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| pvc yoga mat                     | pvc-yoga-mat                     | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| jute yoga mat                    | jute-yoga-mat                    | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| suede yoga mat                   | suede-yoga-mat                   | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| nbr foam yoga mat                | nbr-yoga-mat                     | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| pu yoga mat                      | pu-yoga-mat                      | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| nbr vs tpe yoga mat              | tpe-vs-nbr-yoga-mat              | comparison | mat-comparisons        | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| yoga mat size                    | yoga-mat-size                    | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| weight of yoga mat               | yoga-mat-weight                  | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| sun salutation                   | sun-salutation                   | cluster    | poses                  | yoga-for-beginners       | 2026-05-13 | 2026-06-22    |
-| how to clean a yoga mat          | how-to-clean-a-yoga-mat          | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-25 | 2026-05-28    |
-| how to choose a yoga mat         | how-to-choose-a-yoga-mat         | pillar     | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-28 | 2026-05-28    |
-| how thick should a yoga mat be   | how-thick-should-a-yoga-mat-be   | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29    |
-| best yoga mat for hot yoga       | best-yoga-mat-for-hot-yoga       | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-30 | 2026-05-30    |
-| best yoga mats                   | best-yoga-mats-2026              | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-26 | 2026-05-26    |
-| eco friendly yoga mat            | eco-friendly-yoga-mat            | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-26 | 2026-05-26    |
-| best yoga mat for bad knees      | best-yoga-mat-for-bad-knees      | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29    |
-| cork vs rubber yoga mat          | cork-vs-rubber-yoga-mat          | subpillar  | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29    |
-| best thick yoga mat              | best-thick-yoga-mat              | subpillar  | yoga-mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| how long does a yoga mat last    | how-long-does-a-yoga-mat-last    | cluster    | mat-care               | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| hatha vs vinyasa                 | hatha-vs-vinyasa                 | cluster    | styles                 | yoga-for-beginners       | 2026-07-26 | 2026-07-26    |
-| best yoga books                  | best-yoga-books                  | cluster    | books                  | yoga-for-beginners       | 2026-07-26 | 2026-07-26    |
-| best yoga app                    | best-yoga-app                    | subpillar  | apps                   | yoga-for-beginners       | 2026-07-26 | 2026-07-26    |
-| yoga pants for men               | yoga-pants-for-men               | cluster    | men-yoga-gear          | yoga-for-men             | 2026-07-26 | 2026-07-26    |
-| yoga clothes for men             | yoga-clothes-for-men             | cluster    | men-yoga-gear          | yoga-for-men             | 2026-07-26 | 2026-07-26    |
-| manduka pro vs liforme           | manduka-pro-vs-liforme           | comparison | mat-comparisons        | yoga-mat-reviews         | 2026-07-26 | 2026-07-26    |
-| cork yoga mat                    | cork-yoga-mat                    | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| natural rubber yoga mat          | natural-rubber-yoga-mat          | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| tpe yoga mat                     | tpe-yoga-mat                     | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| how to store a yoga mat          | how-to-store-a-yoga-mat          | cluster    | mat-care               | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29    |
-| lululemon yoga mat               | lululemon-yoga-mat               | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29    |
-| yoga blocks                      | best-yoga-blocks                 | cluster    | yoga-accessories       | how-to-choose-a-yoga-mat | 2026-05-30 | 2026-05-30    |
-| yoga bolster                     | best-yoga-bolster                | cluster    | yoga-accessories       | how-to-choose-a-yoga-mat | 2026-05-30 | 2026-05-30    |
-| yoga mat bag                     | best-yoga-mat-bag                | cluster    | yoga-accessories       | how-to-choose-a-yoga-mat | 2026-05-30 | 2026-05-30    |
-| retrospec solana yoga mat        | retrospec-solana-yoga-mat        | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14    |
-| manduka yoga mat                 | manduka-yoga-mat                 | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14    |
-| gaiam yoga mat                   | gaiam-yoga-mat                   | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14    |
-| manduka vs lululemon yoga mat    | manduka-vs-lululemon-yoga-mat    | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14    |
-| jade yoga mat                    | jade-yoga-mat                    | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14    |
-| downward facing dog              | downward-facing-dog              | cluster    | poses                  | yoga-for-beginners       | 2026-06-14 | 2026-06-14    |
-| child's pose                     | childs-pose                      | cluster    | poses                  | yoga-for-beginners       | 2026-06-14 | 2026-06-14    |
-| warrior ii                       | warrior-ii                       | cluster    | poses                  | yoga-for-beginners       | 2026-06-14 | 2026-06-14    |
-| cobra pose                       | cobra-pose                       | cluster    | poses                  | yoga-for-beginners       | 2026-06-14 | 2026-06-14    |
-| pigeon pose                      | pigeon-pose                      | cluster    | poses                  | yoga-for-beginners       | 2026-06-14 | 2026-06-14    |
-| chair yoga for seniors           | chair-yoga-for-seniors           | pillar     | chair-yoga-for-seniors | chair-yoga-for-seniors   | 2026-06-18 | 2026-06-18    |
-| free chair yoga for seniors      | free-chair-yoga-for-seniors      | cluster    | chair-yoga-for-seniors | chair-yoga-for-seniors   | 2026-06-18 | 2026-06-18    |
-| printable chair yoga for seniors | printable-chair-yoga-for-seniors | cluster    | chair-yoga-for-seniors | chair-yoga-for-seniors   | 2026-06-18 | 2026-06-18    |
-| chair yoga for beginners         | chair-yoga-for-beginners         | cluster    | chair-yoga-for-seniors | chair-yoga-for-seniors   | 2026-06-18 | 2026-06-18    |
-| yoga for beginners               | yoga-for-beginners               | pillar     | yoga-for-beginners     | yoga-for-beginners       | 2026-06-21 | 2026-06-21    |
-| best yoga mat for beginners      | best-yoga-mat-for-beginners      | cluster    | yoga-mats              | yoga-for-beginners       | 2026-06-21 | 2026-06-21    |
-| morning yoga routine             | morning-yoga-routine             | cluster    | getting-started        | yoga-for-beginners       | 2026-06-23 | 2026-06-23    |
-| sun salutation b                 | sun-salutation-b                 | cluster    | poses                  | yoga-for-beginners       | 2026-06-23 | 2026-06-23    |
-| sun salutation c                 | sun-salutation-c                 | cluster    | poses                  | yoga-for-beginners       | 2026-06-23 | 2026-06-23    |
-| pilates mat                      | best-pilates-mat                 | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
-| liforme yoga mat                 | liforme-yoga-mat                 | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
-| best non-slip yoga mat           | best-non-slip-yoga-mat           | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
-| how to clean lululemon yoga mat  | how-to-clean-lululemon-yoga-mat  | cluster    | mat-care               | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| alo yoga mat                     | alo-yoga-mat                     | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| alo vs lululemon yoga mat        | alo-vs-lululemon-yoga-mat        | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| yoga mat towel                   | best-yoga-mat-towel              | cluster    | yoga-accessories       | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
-| manduka grp yoga mat             | manduka-grp-yoga-mat             | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
-| foldable yoga mat                | best-foldable-yoga-mat           | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
-| knee pad for yoga                | best-yoga-knee-pads              | cluster    | yoga-accessories       | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
-| pilates grip socks               | best-pilates-grip-socks          | cluster    | pilates                | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
+| Primary keyword                   | Slug                              | Page type  | Cluster                | Pillar                   | Published  | Last reviewed |
+| --------------------------------- | --------------------------------- | ---------- | ---------------------- | ------------------------ | ---------- | ------------- |
+| eva yoga mat                      | eva-yoga-mat                      | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| pvc yoga mat                      | pvc-yoga-mat                      | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| jute yoga mat                     | jute-yoga-mat                     | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| suede yoga mat                    | suede-yoga-mat                    | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| nbr foam yoga mat                 | nbr-yoga-mat                      | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| pu yoga mat                       | pu-yoga-mat                       | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| nbr vs tpe yoga mat               | tpe-vs-nbr-yoga-mat               | comparison | mat-comparisons        | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| yoga mat size                     | yoga-mat-size                     | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| weight of yoga mat                | yoga-mat-weight                   | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| open cell vs closed cell yoga mat | open-cell-vs-closed-cell-yoga-mat | comparison | mat-comparisons        | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| sun salutation                    | sun-salutation                    | cluster    | poses                  | yoga-for-beginners       | 2026-05-13 | 2026-06-22    |
+| how to clean a yoga mat           | how-to-clean-a-yoga-mat           | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-25 | 2026-05-28    |
+| how to choose a yoga mat          | how-to-choose-a-yoga-mat          | pillar     | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-28 | 2026-05-28    |
+| how thick should a yoga mat be    | how-thick-should-a-yoga-mat-be    | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29    |
+| best yoga mat for hot yoga        | best-yoga-mat-for-hot-yoga        | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-30 | 2026-05-30    |
+| best yoga mats                    | best-yoga-mats-2026               | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-26 | 2026-05-26    |
+| eco friendly yoga mat             | eco-friendly-yoga-mat             | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-26 | 2026-05-26    |
+| best yoga mat for bad knees       | best-yoga-mat-for-bad-knees       | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29    |
+| cork vs rubber yoga mat           | cork-vs-rubber-yoga-mat           | subpillar  | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29    |
+| best thick yoga mat               | best-thick-yoga-mat               | subpillar  | yoga-mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| how long does a yoga mat last     | how-long-does-a-yoga-mat-last     | cluster    | mat-care               | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| hatha vs vinyasa                  | hatha-vs-vinyasa                  | cluster    | styles                 | yoga-for-beginners       | 2026-07-26 | 2026-07-26    |
+| best yoga books                   | best-yoga-books                   | cluster    | books                  | yoga-for-beginners       | 2026-07-26 | 2026-07-26    |
+| best yoga app                     | best-yoga-app                     | subpillar  | apps                   | yoga-for-beginners       | 2026-07-26 | 2026-07-26    |
+| yoga pants for men                | yoga-pants-for-men                | cluster    | men-yoga-gear          | yoga-for-men             | 2026-07-26 | 2026-07-26    |
+| yoga clothes for men              | yoga-clothes-for-men              | cluster    | men-yoga-gear          | yoga-for-men             | 2026-07-26 | 2026-07-26    |
+| manduka pro vs liforme            | manduka-pro-vs-liforme            | comparison | mat-comparisons        | yoga-mat-reviews         | 2026-07-26 | 2026-07-26    |
+| cork yoga mat                     | cork-yoga-mat                     | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| natural rubber yoga mat           | natural-rubber-yoga-mat           | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| tpe yoga mat                      | tpe-yoga-mat                      | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| how to store a yoga mat           | how-to-store-a-yoga-mat           | cluster    | mat-care               | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29    |
+| lululemon yoga mat                | lululemon-yoga-mat                | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29    |
+| yoga blocks                       | best-yoga-blocks                  | cluster    | yoga-accessories       | how-to-choose-a-yoga-mat | 2026-05-30 | 2026-05-30    |
+| yoga bolster                      | best-yoga-bolster                 | cluster    | yoga-accessories       | how-to-choose-a-yoga-mat | 2026-05-30 | 2026-05-30    |
+| yoga mat bag                      | best-yoga-mat-bag                 | cluster    | yoga-accessories       | how-to-choose-a-yoga-mat | 2026-05-30 | 2026-05-30    |
+| retrospec solana yoga mat         | retrospec-solana-yoga-mat         | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14    |
+| manduka yoga mat                  | manduka-yoga-mat                  | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14    |
+| gaiam yoga mat                    | gaiam-yoga-mat                    | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14    |
+| manduka vs lululemon yoga mat     | manduka-vs-lululemon-yoga-mat     | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14    |
+| jade yoga mat                     | jade-yoga-mat                     | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-06-14 | 2026-06-14    |
+| downward facing dog               | downward-facing-dog               | cluster    | poses                  | yoga-for-beginners       | 2026-06-14 | 2026-06-14    |
+| child's pose                      | childs-pose                       | cluster    | poses                  | yoga-for-beginners       | 2026-06-14 | 2026-06-14    |
+| warrior ii                        | warrior-ii                        | cluster    | poses                  | yoga-for-beginners       | 2026-06-14 | 2026-06-14    |
+| cobra pose                        | cobra-pose                        | cluster    | poses                  | yoga-for-beginners       | 2026-06-14 | 2026-06-14    |
+| pigeon pose                       | pigeon-pose                       | cluster    | poses                  | yoga-for-beginners       | 2026-06-14 | 2026-06-14    |
+| chair yoga for seniors            | chair-yoga-for-seniors            | pillar     | chair-yoga-for-seniors | chair-yoga-for-seniors   | 2026-06-18 | 2026-06-18    |
+| free chair yoga for seniors       | free-chair-yoga-for-seniors       | cluster    | chair-yoga-for-seniors | chair-yoga-for-seniors   | 2026-06-18 | 2026-06-18    |
+| printable chair yoga for seniors  | printable-chair-yoga-for-seniors  | cluster    | chair-yoga-for-seniors | chair-yoga-for-seniors   | 2026-06-18 | 2026-06-18    |
+| chair yoga for beginners          | chair-yoga-for-beginners          | cluster    | chair-yoga-for-seniors | chair-yoga-for-seniors   | 2026-06-18 | 2026-06-18    |
+| yoga for beginners                | yoga-for-beginners                | pillar     | yoga-for-beginners     | yoga-for-beginners       | 2026-06-21 | 2026-06-21    |
+| best yoga mat for beginners       | best-yoga-mat-for-beginners       | cluster    | yoga-mats              | yoga-for-beginners       | 2026-06-21 | 2026-06-21    |
+| morning yoga routine              | morning-yoga-routine              | cluster    | getting-started        | yoga-for-beginners       | 2026-06-23 | 2026-06-23    |
+| sun salutation b                  | sun-salutation-b                  | cluster    | poses                  | yoga-for-beginners       | 2026-06-23 | 2026-06-23    |
+| sun salutation c                  | sun-salutation-c                  | cluster    | poses                  | yoga-for-beginners       | 2026-06-23 | 2026-06-23    |
+| pilates mat                       | best-pilates-mat                  | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
+| liforme yoga mat                  | liforme-yoga-mat                  | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
+| best non-slip yoga mat            | best-non-slip-yoga-mat            | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
+| how to clean lululemon yoga mat   | how-to-clean-lululemon-yoga-mat   | cluster    | mat-care               | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| alo yoga mat                      | alo-yoga-mat                      | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| alo vs lululemon yoga mat         | alo-vs-lululemon-yoga-mat         | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| yoga mat towel                    | best-yoga-mat-towel               | cluster    | yoga-accessories       | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
+| manduka grp yoga mat              | manduka-grp-yoga-mat              | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
+| foldable yoga mat                 | best-foldable-yoga-mat            | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
+| knee pad for yoga                 | best-yoga-knee-pads               | cluster    | yoga-accessories       | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
+| pilates grip socks                | best-pilates-grip-socks           | cluster    | pilates                | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
 
 ---
 
