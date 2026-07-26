@@ -113,6 +113,7 @@ Append one row per published page in this format:
 | pilates grip socks                | best-pilates-grip-socks           | cluster    | pilates                | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
 | yoga block size                   | yoga-block-size                   | cluster    | gear/props             | yoga-props               | 2026-07-26 | 2026-07-26    |
 | wooden yoga block                 | wooden-yoga-block                 | cluster    | gear/props             | yoga-props               | 2026-07-26 | 2026-07-26    |
+| meditation cushion set            | meditation-cushion-set            | cluster    | gear/meditation        | yoga-for-beginners       | 2026-07-26 | 2026-07-26    |
 
 ---
 
