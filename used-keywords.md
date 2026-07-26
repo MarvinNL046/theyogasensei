@@ -114,6 +114,7 @@ Append one row per published page in this format:
 | yoga block size                   | yoga-block-size                   | cluster    | gear/props             | yoga-props               | 2026-07-26 | 2026-07-26    |
 | wooden yoga block                 | wooden-yoga-block                 | cluster    | gear/props             | yoga-props               | 2026-07-26 | 2026-07-26    |
 | meditation cushion set            | meditation-cushion-set            | cluster    | gear/meditation        | yoga-for-beginners       | 2026-07-26 | 2026-07-26    |
+| yoga strap and block               | yoga-block-and-strap-set          | cluster    | gear/props             | yoga-props               | 2026-07-26 | 2026-07-26    |
 
 ---
 
