@@ -28,6 +28,7 @@ Append one row per published page in this format:
 | pu yoga mat                      | pu-yoga-mat                      | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | nbr vs tpe yoga mat              | tpe-vs-nbr-yoga-mat              | comparison | mat-comparisons        | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | yoga mat size                    | yoga-mat-size                    | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| weight of yoga mat               | yoga-mat-weight                  | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | sun salutation                   | sun-salutation                   | cluster    | poses                  | yoga-for-beginners       | 2026-05-13 | 2026-06-22    |
 | how to clean a yoga mat          | how-to-clean-a-yoga-mat          | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-25 | 2026-05-28    |
 | how to choose a yoga mat         | how-to-choose-a-yoga-mat         | pillar     | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-28 | 2026-05-28    |
