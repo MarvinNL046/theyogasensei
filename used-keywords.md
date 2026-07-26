@@ -117,6 +117,7 @@ Append one row per published page in this format:
 | yoga strap and block               | yoga-block-and-strap-set          | cluster    | gear/props             | yoga-props               | 2026-07-26 | 2026-07-26    |
 | yoga mat and towel set             | yoga-mat-and-towel-set            | cluster    | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-27 | 2026-07-27    |
 | yoga starter kit                   | yoga-starter-kit                 | cluster    | gear/props             | yoga-props               | 2026-07-27 | 2026-07-27    |
+| meditation timer                   | meditation-timer                  | cluster    | gear/meditation        | yoga-for-beginners       | 2026-07-27 | 2026-07-27    |
 
 ---
 
