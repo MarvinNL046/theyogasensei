@@ -119,6 +119,7 @@ Append one row per published page in this format:
 | yoga starter kit                   | yoga-starter-kit                 | cluster    | gear/props             | yoga-props               | 2026-07-27 | 2026-07-27    |
 | meditation timer                   | meditation-timer                  | cluster    | gear/meditation        | yoga-for-beginners       | 2026-07-27 | 2026-07-27    |
 | yoga socks                         | yoga-socks                        | cluster    | gear/props             | yoga-props               | 2026-07-27 | 2026-07-27    |
+| yoga equipment storage             | yoga-equipment-storage            | cluster    | gear/props             | yoga-props               | 2026-07-27 | 2026-07-27    |
 
 ---
 
