@@ -8,33 +8,33 @@
 
 - **Image:** `public/images/pins/alo-yoga-mat/01-listicle.png`
 - **Pin title:** Alo Warrior Mat, Reviewed
-- **Pin description:** An honest, research-led Alo Warrior Mat review: the grip and plush oversized surface are real, and so are the six pounds and the care routine the marketing skips. #aloyoga #yogamat #yogagear #matreview
+- **Pin description:** An honest, research-led Alo Warrior Mat review: the grip and plush oversized surface are real, and so are the eight pounds and the care routine the marketing skips. #aloyoga #yogamat #yogagear #matreview
 - **Link:** https://www.theyogasensei.com/reviews/alo
 
 ## 02-problem
 
 - **Image:** `public/images/pins/alo-yoga-mat/02-problem.png`
 - **Pin title:** What the Alo Mat Photos Skip
-- **Pin description:** An honest, research-led Alo Warrior Mat review: the grip and plush oversized surface are real, and so are the six pounds and the care routine the marketing skips. #aloyoga #yogamat #yogagear #matreview
+- **Pin description:** An honest, research-led Alo Warrior Mat review: the grip and plush oversized surface are real, and so are the eight pounds and the care routine the marketing skips. #aloyoga #yogamat #yogagear #matreview
 - **Link:** https://www.theyogasensei.com/reviews/alo
 
 ## 03-comparison
 
 - **Image:** `public/images/pins/alo-yoga-mat/03-comparison.png`
 - **Pin title:** Alo Warrior Mat: Pros and Cons
-- **Pin description:** An honest, research-led Alo Warrior Mat review: the grip and plush oversized surface are real, and so are the six pounds and the care routine the marketing skips. #aloyoga #yogamat #yogagear #matreview
+- **Pin description:** An honest, research-led Alo Warrior Mat review: the grip and plush oversized surface are real, and so are the eight pounds and the care routine the marketing skips. #aloyoga #yogamat #yogagear #matreview
 - **Link:** https://www.theyogasensei.com/reviews/alo
 
 ## 04-aesthetic
 
 - **Image:** `public/images/pins/alo-yoga-mat/04-aesthetic.png`
 - **Pin title:** The Luxury Mat, Fact-Checked
-- **Pin description:** An honest, research-led Alo Warrior Mat review: the grip and plush oversized surface are real, and so are the six pounds and the care routine the marketing skips. #aloyoga #yogamat #yogagear #matreview
+- **Pin description:** An honest, research-led Alo Warrior Mat review: the grip and plush oversized surface are real, and so are the eight pounds and the care routine the marketing skips. #aloyoga #yogamat #yogagear #matreview
 - **Link:** https://www.theyogasensei.com/reviews/alo
 
 ## 05-checklist
 
 - **Image:** `public/images/pins/alo-yoga-mat/05-checklist.png`
 - **Pin title:** Is the Alo Warrior Mat for You?
-- **Pin description:** An honest, research-led Alo Warrior Mat review: the grip and plush oversized surface are real, and so are the six pounds and the care routine the marketing skips. #aloyoga #yogamat #yogagear #matreview
+- **Pin description:** An honest, research-led Alo Warrior Mat review: the grip and plush oversized surface are real, and so are the eight pounds and the care routine the marketing skips. #aloyoga #yogamat #yogagear #matreview
 - **Link:** https://www.theyogasensei.com/reviews/alo

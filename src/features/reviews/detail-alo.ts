@@ -4,7 +4,14 @@ import type { DetailReview } from '#/components/reviews/ReviewDetail'
  * Research-only review — the author has not practised on this mat. Every
  * performance claim is attributed to a named source (Alo's own product copy,
  * the EverydayYoga retailer spec sheet, T3, Popsugar, YouTube reviewer
- * Alexia K Yoga, or named Reddit owner threads). No prices as figures:
+ * Alexia K Yoga, or named Reddit owner threads).
+ *
+ * Weight corrected 2026-07-26: shipped as ~6 lb from the EverydayYoga listing,
+ * which is an outlier. Alo's own product pages state "approximately 8 lbs" and
+ * every other reviewer repeats that; 6 lb also implies the same density as the
+ * lululemon, which contradicts the universal "surprisingly heavy" reports.
+ *
+ * No prices as figures:
  * Amazon Associates forbids them outside the PA-API. Alo sells direct, so
  * affiliateSlug is null — same situation as the Lululemon review.
  */
@@ -29,7 +36,7 @@ export const DETAIL: DetailReview = {
     'Formaldehyde-free, PVC-free build with an ethically sourced natural rubber base, per the published spec sheet',
   ],
   cons: [
-    'Heavy at roughly six pounds — multiple owners say it is a home mat, not one you carry to class',
+    'Heavy — Alo states approximately eight pounds, and multiple owners say it is a home mat, not one you carry to class',
     'The polyurethane-leather top shows sweat outlines, oils and scuffs, and Alo’s own care guidance asks for a wipe-down after every use',
     'Creases easily — a long-term Reddit owner lists it among their main complaints, and Alo says to roll it top-out to protect the surface',
     'Sold direct with recurring owner complaints about colour accuracy and final-sale purchases on the Alo subreddit',
@@ -46,7 +53,7 @@ export const DETAIL: DetailReview = {
     },
     {
       title: '5mm build on a natural rubber base',
-      body: 'The mat is 5mm thick in total — a thin polyurethane-leather top over a base of ethically sourced natural rubber, and it is that rubber bulk that makes it feel plush rather than dense. It is also most of the roughly six-pound weight — the cushioning and the portability problem are the same design decision.',
+      body: 'The mat is 5mm thick in total — a thin polyurethane-leather top over a base of ethically sourced natural rubber, and it is that rubber bulk that makes it feel plush rather than dense. It is also most of the roughly eight pounds Alo publishes — the cushioning and the portability problem are the same design decision.',
     },
     {
       title: 'A care regime, not just a mat',
@@ -86,7 +93,7 @@ export const DETAIL: DetailReview = {
     {
       id: 'weight-care',
       title: 'Weight and care — the part the photos skip',
-      body: 'Here is where the Warrior asks for commitment. It weighs roughly six pounds, and the size that makes it luxurious at home makes it a burden anywhere else. The most-cited Reddit owner review says it plainly: very high quality, feels worth the money, and "really heavy and would not be suitable for travel". If your mat rides to a studio on your shoulder, this is the wrong mat — not marginally, structurally.\n\nThen there is the upkeep. Alo’s own care guidance asks for a wipe-down after every session with a 1-to-20 oil-free soap solution, no machine washing, rolling top-out so the surface does not crease, and keeping lotions and jewellery away from the top. That is not optional polish: the matte polyurethane shows sweat outlines, oils and scuffs, and owners who let them sit report marks that set in. The same Reddit review lists creasing among its main complaints. A handful of owners have posted about trapped-moisture problems from rolling the mat before it dried — isolated reports, but consistent with how any wipe-only surface fails when stored damp.\n\nA grip towel over the top during sweaty sessions is the cheapest way to keep the surface presentable — it catches the sweat before the mat does.',
+      body: 'Here is where the Warrior asks for commitment. Alo publishes the weight as approximately eight pounds, and the size that makes it luxurious at home makes it a burden anywhere else. The most-cited Reddit owner review says it plainly: very high quality, feels worth the money, and "really heavy and would not be suitable for travel". If your mat rides to a studio on your shoulder, this is the wrong mat — not marginally, structurally.\n\nThen there is the upkeep. Alo’s own care guidance asks for a wipe-down after every session with a 1-to-20 oil-free soap solution, no machine washing, rolling top-out so the surface does not crease, and keeping lotions and jewellery away from the top. That is not optional polish: the matte polyurethane shows sweat outlines, oils and scuffs, and owners who let them sit report marks that set in. The same Reddit review lists creasing among its main complaints. A handful of owners have posted about trapped-moisture problems from rolling the mat before it dried — isolated reports, but consistent with how any wipe-only surface fails when stored damp.\n\nA grip towel over the top during sweaty sessions is the cheapest way to keep the surface presentable — it catches the sweat before the mat does.',
       image: '/images/reviews/alo/care.webp',
       imageAlt: 'A large rolled charcoal mat standing by a door with a folded microfiber cloth on top, sweat marks visible on an unrolled section nearby',
       cta: {
@@ -114,7 +121,7 @@ export const DETAIL: DetailReview = {
   specs: [
     { label: 'Thickness', value: '5 mm' },
     { label: 'Dimensions', value: '74.4" × 26.4" (189 × 67 cm) — oversized' },
-    { label: 'Weight', value: '~6 lb (~2.7 kg)' },
+    { label: 'Weight', value: '~8 lb (~3.6 kg), per Alo' },
     { label: 'Construction', value: 'Polyurethane-leather top, natural rubber base' },
     { label: 'Materials', value: 'Formaldehyde-free, PVC-free, ethically sourced rubber (per spec sheet)' },
     { label: 'Latex', value: 'Natural rubber base — check with Alo if you have a latex allergy' },
@@ -135,11 +142,11 @@ export const DETAIL: DetailReview = {
     { label: 'Grip', value: '4.4' },
     { label: 'Cushioning', value: '4.6' },
     { label: 'Portability', value: '2.5' },
-    { label: 'Weight', value: '~6 lb' },
+    { label: 'Weight', value: '~8 lb' },
     { label: 'Price', value: '$$$' },
   ],
   verdict:
-    'The Warrior Mat is the premium tier’s comfort-and-looks play: an oversized, plush surface whose styling draws more consistent praise than any spec, and grip that independent reviewers rate near the top of its class. Buy it as what it is — a home-studio mat with a care routine attached — and owner threads say it earns its price. Buy it as a carry-everywhere workhorse and its two structural drawbacks, six pounds and a fussy surface, will find you within a month.',
+    'The Warrior Mat is the premium tier’s comfort-and-looks play: an oversized, plush surface whose styling draws more consistent praise than any spec, and grip that independent reviewers rate near the top of its class. Buy it as what it is — a home-studio mat with a care routine attached — and owner threads say it earns its price. Buy it as a carry-everywhere workhorse and its two structural drawbacks, eight pounds and a fussy surface, will find you within a month.',
   alternatives: [
     {
       name: 'Lululemon The Mat',

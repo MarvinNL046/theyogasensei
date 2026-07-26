@@ -90,6 +90,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Manduka vs Lululemon Yoga Mat: Which Should You Buy?',
     category: 'Comparison',
   },
+  'alo-vs-lululemon-yoga-mat': {
+    href: '/guides/alo-vs-lululemon-yoga-mat',
+    title: 'Alo vs Lululemon Yoga Mat: Which One Should You Buy?',
+    category: 'Comparison',
+  },
 
   // Chair yoga for seniors cluster (pillar + spokes)
   'chair-yoga-for-seniors': {

@@ -34,6 +34,7 @@ const CATEGORY_BY_SLUG: Record<string, GuideCategory> = {
   'best-yoga-mat-for-beginners': 'Roundups',
   'cork-vs-rubber-yoga-mat': 'Comparisons',
   'manduka-vs-lululemon-yoga-mat': 'Comparisons',
+  'alo-vs-lululemon-yoga-mat': 'Comparisons',
   'best-yoga-blocks': 'Accessories',
   'best-yoga-bolster': 'Accessories',
   'best-yoga-mat-bag': 'Accessories',

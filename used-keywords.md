@@ -58,6 +58,7 @@ Append one row per published page in this format:
 | best non-slip yoga mat | best-non-slip-yoga-mat | cluster | yoga-mats | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25 |
 | how to clean lululemon yoga mat | how-to-clean-lululemon-yoga-mat | cluster | mat-care | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26 |
 | alo yoga mat | alo-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26 |
+| alo vs lululemon yoga mat | alo-vs-lululemon-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26 |
 | yoga mat towel | best-yoga-mat-towel | cluster | yoga-accessories | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25 |
 | manduka grp yoga mat | manduka-grp-yoga-mat | cluster | mat-reviews | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25 |
 | foldable yoga mat | best-foldable-yoga-mat | cluster | yoga-mats | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25 |

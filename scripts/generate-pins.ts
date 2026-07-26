@@ -563,7 +563,7 @@ const GUIDES: Guide[] = [
     style: 'structured',
     url: 'https://www.theyogasensei.com/reviews/alo',
     hashtags: '#aloyoga #yogamat #yogagear #matreview',
-    desc: 'An honest, research-led Alo Warrior Mat review: the grip and plush oversized surface are real, and so are the six pounds and the care routine the marketing skips.',
+    desc: 'An honest, research-led Alo Warrior Mat review: the grip and plush oversized surface are real, and so are the eight pounds and the care routine the marketing skips.',
     bg: [
       'public/images/reviews/alo/hero.webp',
       'public/images/reviews/alo/care.webp',
