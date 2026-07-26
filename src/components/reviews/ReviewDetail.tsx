@@ -71,7 +71,11 @@ const REVIEW_ORG = { '@type': 'Organization', name: 'The Yoga Sensei', url: SITE
 /** "June 15, 2026" -> "2026-06-15"; falls back to the raw string if unparseable. */
 function reviewDateIso(human: string): string {
   const d = new Date(human)
-  return Number.isNaN(d.getTime()) ? human : d.toISOString().slice(0, 10)
+  if (Number.isNaN(d.getTime())) return human
+  // Format from local date parts: toISOString() converts to UTC and rolls the
+  // date back a day on UTC+ build machines, so schema and byline disagree.
+  const pad = (n: number) => String(n).padStart(2, '0')
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
 }
 
 /** Build the route head (title, description, OG, self-canonical, JSON-LD) for a detail page. */

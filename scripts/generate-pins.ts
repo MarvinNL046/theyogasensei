@@ -559,6 +559,28 @@ const GUIDES: Guide[] = [
     ],
   },
   {
+    slug: 'alo-yoga-mat',
+    style: 'structured',
+    url: 'https://www.theyogasensei.com/reviews/alo',
+    hashtags: '#aloyoga #yogamat #yogagear #matreview',
+    desc: 'An honest, research-led Alo Warrior Mat review: the grip and plush oversized surface are real, and so are the six pounds and the care routine the marketing skips.',
+    bg: [
+      'public/images/reviews/alo/hero.webp',
+      'public/images/reviews/alo/care.webp',
+      'public/images/reviews/alo/grip.webp',
+      'public/images/reviews/alo/whofor.webp',
+      'public/images/reviews/alo/comfort.webp',
+    ],
+    // structured style: subtitle field = concrete CTA, not a description
+    hooks: [
+      ['Honest Review', 'Alo Warrior Mat, Reviewed', 'Read the review', 64],
+      ['Before You Buy', 'What the Alo Mat Photos Skip', 'Read the trade-offs', 62],
+      ['At a Glance', 'Alo Warrior Mat: Pros and Cons', 'See the verdict', 60],
+      ['The Yoga Sensei', 'The Luxury Mat, Fact-Checked', 'Read the review', 62],
+      ['Mat Match', 'Is the Alo Warrior Mat for You?', 'Find out', 62],
+    ],
+  },
+  {
     slug: 'cork-vs-rubber-yoga-mat',
     hashtags: '#corkyogamat #ecoyoga #yogamat #yogagear',
     desc: 'Cork vs rubber yoga mat, compared honestly on grip, cushion, weight, care, eco and latex risk, with a clear pick for sweaty, dry and latex-sensitive practice.',

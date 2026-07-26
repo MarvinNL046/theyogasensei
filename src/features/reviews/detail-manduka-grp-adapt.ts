@@ -168,11 +168,11 @@ export const DETAIL: DetailReview = {
       href: '/reviews/lululemon',
     },
     {
-      name: 'Jade Harmony',
-      badge: 'Best Natural Rubber',
-      overall: 4.2,
-      image: '/images/guides/jade-yoga-mat/hero.webp',
-      href: '/reviews/jade',
+      name: 'Alo Warrior Mat',
+      badge: 'Plush oversized alternative',
+      overall: 4.1,
+      image: '/images/reviews/alo/hero.webp',
+      href: '/reviews/alo',
     },
   ],
 }

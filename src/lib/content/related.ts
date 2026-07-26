@@ -50,6 +50,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'How to Clean a Lululemon Yoga Mat Without Ruining It',
     category: 'Mat care',
   },
+  'alo-yoga-mat': {
+    href: '/reviews/alo',
+    title: 'Alo Warrior Mat Review',
+    category: 'Reviews',
+  },
   'cork-vs-rubber-yoga-mat': {
     href: '/guides/cork-vs-rubber-yoga-mat',
     title: 'Cork vs Rubber Yoga Mat: Which One Fits Your Practice',

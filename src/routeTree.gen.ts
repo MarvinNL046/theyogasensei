@@ -29,6 +29,7 @@ import { Route as ReviewsLiformeRouteImport } from './routes/reviews/liforme'
 import { Route as ReviewsJadeRouteImport } from './routes/reviews/jade'
 import { Route as ReviewsGaiamRouteImport } from './routes/reviews/gaiam'
 import { Route as ReviewsBestYogaMatsRouteImport } from './routes/reviews/best-yoga-mats'
+import { Route as ReviewsAloRouteImport } from './routes/reviews/alo'
 import { Route as PosesSlugRouteImport } from './routes/poses/$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
 import { Route as GoSlugRouteImport } from './routes/go/$slug'
@@ -134,6 +135,11 @@ const ReviewsBestYogaMatsRoute = ReviewsBestYogaMatsRouteImport.update({
   path: '/reviews/best-yoga-mats',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReviewsAloRoute = ReviewsAloRouteImport.update({
+  id: '/reviews/alo',
+  path: '/reviews/alo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PosesSlugRoute = PosesSlugRouteImport.update({
   id: '/poses/$slug',
   path: '/poses/$slug',
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/poses/$slug': typeof PosesSlugRoute
+  '/reviews/alo': typeof ReviewsAloRoute
   '/reviews/best-yoga-mats': typeof ReviewsBestYogaMatsRoute
   '/reviews/gaiam': typeof ReviewsGaiamRoute
   '/reviews/jade': typeof ReviewsJadeRoute
@@ -195,6 +202,7 @@ export interface FileRoutesByTo {
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/poses/$slug': typeof PosesSlugRoute
+  '/reviews/alo': typeof ReviewsAloRoute
   '/reviews/best-yoga-mats': typeof ReviewsBestYogaMatsRoute
   '/reviews/gaiam': typeof ReviewsGaiamRoute
   '/reviews/jade': typeof ReviewsJadeRoute
@@ -222,6 +230,7 @@ export interface FileRoutesById {
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/poses/$slug': typeof PosesSlugRoute
+  '/reviews/alo': typeof ReviewsAloRoute
   '/reviews/best-yoga-mats': typeof ReviewsBestYogaMatsRoute
   '/reviews/gaiam': typeof ReviewsGaiamRoute
   '/reviews/jade': typeof ReviewsJadeRoute
@@ -250,6 +259,7 @@ export interface FileRouteTypes {
     | '/go/$slug'
     | '/guides/$slug'
     | '/poses/$slug'
+    | '/reviews/alo'
     | '/reviews/best-yoga-mats'
     | '/reviews/gaiam'
     | '/reviews/jade'
@@ -276,6 +286,7 @@ export interface FileRouteTypes {
     | '/go/$slug'
     | '/guides/$slug'
     | '/poses/$slug'
+    | '/reviews/alo'
     | '/reviews/best-yoga-mats'
     | '/reviews/gaiam'
     | '/reviews/jade'
@@ -302,6 +313,7 @@ export interface FileRouteTypes {
     | '/go/$slug'
     | '/guides/$slug'
     | '/poses/$slug'
+    | '/reviews/alo'
     | '/reviews/best-yoga-mats'
     | '/reviews/gaiam'
     | '/reviews/jade'
@@ -329,6 +341,7 @@ export interface RootRouteChildren {
   GoSlugRoute: typeof GoSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   PosesSlugRoute: typeof PosesSlugRoute
+  ReviewsAloRoute: typeof ReviewsAloRoute
   ReviewsBestYogaMatsRoute: typeof ReviewsBestYogaMatsRoute
   ReviewsGaiamRoute: typeof ReviewsGaiamRoute
   ReviewsJadeRoute: typeof ReviewsJadeRoute
@@ -484,6 +497,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReviewsBestYogaMatsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reviews/alo': {
+      id: '/reviews/alo'
+      path: '/reviews/alo'
+      fullPath: '/reviews/alo'
+      preLoaderRoute: typeof ReviewsAloRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/poses/$slug': {
       id: '/poses/$slug'
       path: '/poses/$slug'
@@ -529,6 +549,7 @@ const rootRouteChildren: RootRouteChildren = {
   GoSlugRoute: GoSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   PosesSlugRoute: PosesSlugRoute,
+  ReviewsAloRoute: ReviewsAloRoute,
   ReviewsBestYogaMatsRoute: ReviewsBestYogaMatsRoute,
   ReviewsGaiamRoute: ReviewsGaiamRoute,
   ReviewsJadeRoute: ReviewsJadeRoute,

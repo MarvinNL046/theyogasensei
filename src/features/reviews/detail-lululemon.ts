@@ -198,11 +198,11 @@ export const DETAIL: DetailReview = {
       "href": "/reviews/jade"
     },
     {
-      "name": "Gaiam Premium 6mm",
-      "badge": "Best Value / Beginners",
-      "overall": 3.9,
-      "image": "/images/guides/gaiam-yoga-mat/hero.webp",
-      "href": "/reviews/gaiam"
+      "name": "Alo Warrior Mat",
+      "badge": "Plush oversized cross-shop",
+      "overall": 4.1,
+      "image": "/images/reviews/alo/hero.webp",
+      "href": "/reviews/alo"
     },
     {
       "name": "Liforme Classic",

@@ -102,6 +102,9 @@ const FULL_REVIEWS = [
   { to: '/reviews/gaiam', label: 'Gaiam Premium', note: 'Best budget beginner mat' },
   { to: '/reviews/lululemon', label: 'Lululemon The Mat', note: 'The grip that tops the lists' },
   { to: '/reviews/retrospec', label: 'Retrospec Solana', note: 'Thick foam for sore knees' },
+  { to: '/reviews/liforme', label: 'Liforme Classic', note: 'Grip plus an alignment guide' },
+  { to: '/reviews/manduka-grp-adapt', label: 'Manduka GRP Adapt', note: 'The measured grip king' },
+  { to: '/reviews/alo', label: 'Alo Warrior Mat', note: 'The plush oversized home mat' },
 ] as const
 
 type ReviewLink =
@@ -120,6 +123,7 @@ const REVIEW_PATHS = [
   '/reviews/retrospec',
   '/reviews/liforme',
   '/reviews/manduka-grp-adapt',
+  '/reviews/alo',
 ] as const
 
 const reviewHref = (pick: { detailPath?: string }): ReviewLink =>

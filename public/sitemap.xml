@@ -271,6 +271,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.theyogasensei.com/reviews/alo</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.theyogasensei.com/poses</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
