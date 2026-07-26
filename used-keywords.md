@@ -39,6 +39,7 @@ Append one row per published page in this format:
 | manduka pro vs liforme           | manduka-pro-vs-liforme           | comparison | mat-comparisons        | yoga-mat-reviews         | 2026-07-26 | 2026-07-26    |
 | cork yoga mat                    | cork-yoga-mat                    | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | natural rubber yoga mat          | natural-rubber-yoga-mat          | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| tpe yoga mat                     | tpe-yoga-mat                     | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | how to store a yoga mat          | how-to-store-a-yoga-mat          | cluster    | mat-care               | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29    |
 | lululemon yoga mat               | lululemon-yoga-mat               | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-05-29 | 2026-05-29    |
 | yoga blocks                      | best-yoga-blocks                 | cluster    | yoga-accessories       | how-to-choose-a-yoga-mat | 2026-05-30 | 2026-05-30    |
