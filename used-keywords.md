@@ -51,6 +51,7 @@ Append one row per published page in this format:
 | yoga gloves                       | yoga-gloves                       | subpillar  | gear/props             | yoga-for-beginners       | 2026-07-26 | 2026-07-26    |
 | yoga headstand bench              | yoga-headstand-bench              | subpillar  | gear/props             | yoga-for-beginners       | 2026-07-26 | 2026-07-26    |
 | yoga mat rack                     | yoga-mat-rack                     | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| yoga mat cleaner spray            | yoga-mat-cleaner-spray            | subpillar  | mat-care               | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | sun salutation                    | sun-salutation                    | cluster    | poses                  | yoga-for-beginners       | 2026-05-13 | 2026-06-22    |
 | how to clean a yoga mat           | how-to-clean-a-yoga-mat           | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-25 | 2026-05-28    |
 | how to choose a yoga mat          | how-to-choose-a-yoga-mat          | pillar     | yoga-mats              | how-to-choose-a-yoga-mat | 2026-05-28 | 2026-05-28    |
