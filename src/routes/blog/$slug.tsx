@@ -12,6 +12,8 @@ import { buildImageUrl } from '#/lib/images/variants'
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { GuideToc } from '#/components/seo/GuideToc'
+import { SidebarToc } from '#/components/seo/SidebarToc'
+import { SidebarProduct } from '#/components/affiliate/SidebarProduct'
 import { AffiliateDisclosure } from '#/components/site/AffiliateDisclosure'
 import { contentMdxComponents } from '#/lib/mdx/components'
 import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band'
@@ -69,10 +71,10 @@ function BlogPostPage() {
   return (
     <>
       {/* ============================================================
-          HEADER — breadcrumb, title, dek, byline. Single centred column.
+          HEADER — breadcrumb, title, dek, byline, hero.
           ============================================================ */}
       <section className="bg-[color:var(--color-bg)] pt-10 md:pt-14">
-        <Container size="narrow">
+        <Container size="wide">
           <nav
             aria-label="Breadcrumb"
             className="text-[11px] uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)]"
@@ -140,16 +142,35 @@ function BlogPostPage() {
       </section>
 
       {/* ============================================================
-          BODY — one column, disclosure above the first affiliate link
+          BODY + STICKY SIDEBAR — disclosure above the first affiliate link
           ============================================================ */}
       <section className="bg-[color:var(--color-bg)] pb-16 pt-10 md:pb-24">
-        <Container size="narrow">
-          <article className="prose prose-stone prose-lg min-w-0 max-w-full prose-headings:scroll-mt-28 prose-headings:font-serif prose-headings:tracking-tight prose-headings:text-[color:var(--color-ink)] prose-p:text-[color:var(--color-ink-soft)] prose-a:text-[color:var(--color-olive)] prose-a:underline-offset-2 hover:prose-a:text-[color:var(--color-olive-deep)] prose-strong:text-[color:var(--color-ink)] prose-blockquote:border-l-[color:var(--color-olive)] prose-blockquote:text-[color:var(--color-ink-soft)] prose-th:text-[color:var(--color-ink)] prose-td:text-[color:var(--color-ink-soft)]">
-            {frontmatter.clusters?.includes('affiliate') ? <AffiliateDisclosure /> : null}
-            <GuideToc headings={headings} />
-            <Component components={contentMdxComponents} />
-            {faqItems.length > 0 ? <Faq items={faqItems} /> : null}
-          </article>
+        <Container size="wide">
+          <div className="grid min-w-0 gap-12 md:grid-cols-12 lg:gap-16">
+            <article className="prose prose-stone prose-lg min-w-0 max-w-full md:col-span-8 prose-headings:scroll-mt-28 prose-headings:font-serif prose-headings:tracking-tight prose-headings:text-[color:var(--color-ink)] prose-p:text-[color:var(--color-ink-soft)] prose-a:text-[color:var(--color-olive)] prose-a:underline-offset-2 hover:prose-a:text-[color:var(--color-olive-deep)] prose-strong:text-[color:var(--color-ink)] prose-blockquote:border-l-[color:var(--color-olive)] prose-blockquote:text-[color:var(--color-ink-soft)] prose-th:text-[color:var(--color-ink)] prose-td:text-[color:var(--color-ink-soft)]">
+              {frontmatter.clusters?.includes('affiliate') ? <AffiliateDisclosure /> : null}
+              {/* Wide inline TOC on mobile only — the sidebar carries it from md up. */}
+              <div className="md:hidden">
+                <GuideToc headings={headings} />
+              </div>
+              <Component components={contentMdxComponents} />
+              {faqItems.length > 0 ? <Faq items={faqItems} /> : null}
+            </article>
+
+            {/* Sticky sidebar: contents to navigate with, one product to buy.
+                Stacks under the article on mobile, which puts the promo after
+                the argument rather than in front of it. */}
+            <aside className="min-w-0 md:col-span-4">
+              <div className="md:sticky md:top-24 md:space-y-8">
+                <div className="hidden md:block">
+                  <SidebarToc headings={headings} />
+                </div>
+                {frontmatter.sidebarProduct ? (
+                  <SidebarProduct {...frontmatter.sidebarProduct} />
+                ) : null}
+              </div>
+            </aside>
+          </div>
 
           {/* About the author */}
           <div className="mt-14 border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-8">

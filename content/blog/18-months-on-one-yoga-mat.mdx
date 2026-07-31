@@ -28,6 +28,15 @@ heroImage: blog/18-months-on-one-yoga-mat/hero
 pin:
   primaryImage: blog/18-months-on-one-yoga-mat/pin
   description: "A year and a half of near-daily practice on one mat, reported honestly: the grip held, the looks did not, and the cheap accessory that would have prevented most of it. #yogamat #matcare #yogagear #honestreview"
+sidebarProduct:
+  slug: manduka-yogitoes
+  productName: "Manduka Yogitoes mat towel"
+  image: /images/blog/18-months-on-one-yoga-mat/towel.webp
+  blurb: "The accessory I bought late and would buy in week one if I started again."
+  points:
+    - "Silicone nubs grip the mat rather than sliding on it"
+    - "Takes the sweat that otherwise stains the mat"
+    - "Machine washable, unlike the mat itself"
 faq:
   - q: "How long should a yoga mat last with daily use?"
     a: "It depends far more on how you practise than on the calendar. Mine is at eighteen months of near-daily use and still performs, and independent testers put this style of mat at a realistic four to six years. Heavy sweat shortens that; gentle dry practice extends it. Our guide on when to replace a mat has four practical tests that beat any age rule."
@@ -42,6 +51,7 @@ citations: []
 
 import { Figure } from '#/components/ui/figure'
 import { ProductCard } from '#/components/affiliate/ProductCard'
+import { ProductList } from '#/components/affiliate/ProductList'
 import { ProsCons } from '#/components/ui/pros-cons'
 import { CtaBand } from '#/components/affiliate/CtaBand'
 
@@ -90,6 +100,59 @@ I bought one late. If I were starting again I would buy it in the same week as t
 />
 
 One honest caveat: a towel needs some moisture before it grips well. Manduka tells you to mist the nubbed side before practice, and a bone-dry towel on a bone-dry mat can feel worse than no towel at all. If your hands stay dry, skip it.
+
+## Three towels worth considering
+
+They are not interchangeable. The nubbed ones stay put and cost more; the smooth ones are lighter and move around more. Which you want depends on how much you sweat, not on which is "best".
+
+<ProductList
+  items={[
+    {
+      slug: 'manduka-yogitoes',
+      productName: 'Manduka Yogitoes',
+      image: '/images/blog/18-months-on-one-yoga-mat/towel.webp',
+      imageAlt: 'A folded grey microfibre yoga mat towel',
+      badge: 'Best overall',
+      verdict:
+        'The default recommendation: silicone nubs on the underside stop the towel wandering mid-flow.',
+      points: [
+        'Nubbed underside grips the mat instead of sliding',
+        'Mat-sized, so it covers the whole practice surface',
+        'Machine washable after every sweaty session',
+      ],
+      sourceNote:
+        'Manduka advises misting the nubbed side before practice — it needs some moisture to work properly.',
+    },
+    {
+      slug: 'eunzel-grip-dot-towel',
+      productName: 'Eunzel grip-dot towel',
+      image: '/images/blog/18-months-on-one-yoga-mat/towel-dots.webp',
+      imageAlt: 'A folded teal microfibre towel with silicone grip dots on the underside',
+      badge: 'Cheaper nubbed option',
+      verdict:
+        'The same grip-dot idea at a lower tier, for anyone who wants the anti-slide behaviour without the premium name.',
+      points: [
+        'Silicone dots do the same job as the nubs above',
+        'Sensible if you are still working out whether you want a towel at all',
+      ],
+    },
+    {
+      slug: 'manduka-equa-towel',
+      productName: 'Manduka eQua mat towel',
+      image: '/images/blog/18-months-on-one-yoga-mat/towel-smooth.webp',
+      imageAlt: 'A folded smooth sand-coloured microfibre yoga towel',
+      badge: 'Lightest option',
+      verdict:
+        'Smooth microfibre with no nubs: lighter and softer, but it moves more until it is properly damp.',
+      points: [
+        'Packs smaller and dries faster than a nubbed towel',
+        'Better as a sweat wipe than as a full anti-slip layer',
+      ],
+      sourceNote:
+        'Manduka tells you to dampen both sides of this one — dry, it slides.',
+    },
+  ]}
+/>
 
 ## Was it worth it?
 

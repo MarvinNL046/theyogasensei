@@ -17,6 +17,23 @@ const pinSchema = z.object({
     .max(500),
 })
 
+/**
+ * Optional sidebar promo for blog posts. Deliberately carries no price and no
+ * rating: content/ is scanned by scripts/verify-associates-compliance.ts, and
+ * Associates forbids both outside the Product Advertising API. `slug` must
+ * already exist in src/lib/affiliate-links.ts — an unknown slug 404s.
+ */
+const sidebarProductSchema = z.object({
+  slug: z.string().min(1),
+  productName: z.string().min(1),
+  image: z.string().min(1),
+  points: z
+    .array(z.string().min(1))
+    .min(1)
+    .max(4, 'more than four points turns the sidebar block into a wall'),
+  blurb: z.string().max(220).optional(),
+})
+
 const faqEntry = z.object({
   q: z.string().min(5),
   a: z.string().min(20),
@@ -83,6 +100,7 @@ const base = z.object({
   heroImage: z.string().min(1),
   pin: pinSchema,
   itemList: z.array(editorialItemEntry).optional(),
+  sidebarProduct: sidebarProductSchema.optional(),
   citations: z.array(citationSchema).default([]),
 })
 
