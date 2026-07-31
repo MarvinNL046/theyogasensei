@@ -8,6 +8,7 @@ export interface TocHeading {
 }
 
 const GUIDES_DIR = join(process.cwd(), 'content', 'guides')
+const BLOG_DIR = join(process.cwd(), 'content', 'blog')
 
 /** Strip inline markdown so the TOC label matches the rendered heading text. */
 function stripInlineMarkdown(text: string): string {
@@ -51,23 +52,34 @@ export function extractHeadingsFromSource(raw: string): Array<TocHeading> {
  * module exposes no headings export, and the MDX plugin intercepts `?raw`
  * imports — so a build-time scan is the reliable path).
  */
-export function buildGuideHeadingsMap(): Record<string, Array<TocHeading>> {
-  const map: Record<string, Array<TocHeading>> = {}
+function collectInto(
+  map: Record<string, Array<TocHeading>>,
+  dir: string,
+  keyPrefix: string,
+): void {
   let files: Array<string>
   try {
-    files = readdirSync(GUIDES_DIR)
+    files = readdirSync(dir)
   } catch {
-    return map
+    return // folder may not exist yet (content/blog before the first post)
   }
   for (const file of files) {
     if (!file.endsWith('.mdx')) continue
     const slug = file.replace(/\.mdx$/, '')
     try {
-      const raw = readFileSync(join(GUIDES_DIR, file), 'utf8')
-      map[slug] = extractHeadingsFromSource(raw)
+      const raw = readFileSync(join(dir, file), 'utf8')
+      map[`${keyPrefix}${slug}`] = extractHeadingsFromSource(raw)
     } catch {
-      // skip unreadable file — guide just renders without a TOC
+      // skip unreadable file — the page just renders without a TOC
     }
   }
+}
+
+export function buildGuideHeadingsMap(): Record<string, Array<TocHeading>> {
+  const map: Record<string, Array<TocHeading>> = {}
+  // Guides keep bare-slug keys so existing callers are untouched; blog posts are
+  // namespaced to keep the two slug spaces from colliding.
+  collectInto(map, GUIDES_DIR, '')
+  collectInto(map, BLOG_DIR, 'blog/')
   return map
 }

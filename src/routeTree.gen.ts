@@ -21,6 +21,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as PosesIndexRouteImport } from './routes/poses/index'
 import { Route as GuidesIndexRouteImport } from './routes/guides/index'
 import { Route as GoIndexRouteImport } from './routes/go/index'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as ReviewsRetrospecRouteImport } from './routes/reviews/retrospec'
 import { Route as ReviewsMandukaProRouteImport } from './routes/reviews/manduka-pro'
 import { Route as ReviewsMandukaGrpAdaptRouteImport } from './routes/reviews/manduka-grp-adapt'
@@ -33,6 +34,7 @@ import { Route as ReviewsAloRouteImport } from './routes/reviews/alo'
 import { Route as PosesSlugRouteImport } from './routes/poses/$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
 import { Route as GoSlugRouteImport } from './routes/go/$slug'
+import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as AuthorsSlugRouteImport } from './routes/authors/$slug'
 
 const UnsubscribeRoute = UnsubscribeRouteImport.update({
@@ -95,6 +97,11 @@ const GoIndexRoute = GoIndexRouteImport.update({
   path: '/go/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsRetrospecRoute = ReviewsRetrospecRouteImport.update({
   id: '/reviews/retrospec',
   path: '/reviews/retrospec',
@@ -155,6 +162,11 @@ const GoSlugRoute = GoSlugRouteImport.update({
   path: '/go/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthorsSlugRoute = AuthorsSlugRouteImport.update({
   id: '/authors/$slug',
   path: '/authors/$slug',
@@ -172,6 +184,7 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/authors/$slug': typeof AuthorsSlugRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/poses/$slug': typeof PosesSlugRoute
@@ -184,6 +197,7 @@ export interface FileRoutesByFullPath {
   '/reviews/manduka-grp-adapt': typeof ReviewsMandukaGrpAdaptRoute
   '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
   '/reviews/retrospec': typeof ReviewsRetrospecRoute
+  '/blog/': typeof BlogIndexRoute
   '/go/': typeof GoIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/poses/': typeof PosesIndexRoute
@@ -199,6 +213,7 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/authors/$slug': typeof AuthorsSlugRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/poses/$slug': typeof PosesSlugRoute
@@ -211,6 +226,7 @@ export interface FileRoutesByTo {
   '/reviews/manduka-grp-adapt': typeof ReviewsMandukaGrpAdaptRoute
   '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
   '/reviews/retrospec': typeof ReviewsRetrospecRoute
+  '/blog': typeof BlogIndexRoute
   '/go': typeof GoIndexRoute
   '/guides': typeof GuidesIndexRoute
   '/poses': typeof PosesIndexRoute
@@ -227,6 +243,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/authors/$slug': typeof AuthorsSlugRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/poses/$slug': typeof PosesSlugRoute
@@ -239,6 +256,7 @@ export interface FileRoutesById {
   '/reviews/manduka-grp-adapt': typeof ReviewsMandukaGrpAdaptRoute
   '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
   '/reviews/retrospec': typeof ReviewsRetrospecRoute
+  '/blog/': typeof BlogIndexRoute
   '/go/': typeof GoIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/poses/': typeof PosesIndexRoute
@@ -256,6 +274,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/unsubscribe'
     | '/authors/$slug'
+    | '/blog/$slug'
     | '/go/$slug'
     | '/guides/$slug'
     | '/poses/$slug'
@@ -268,6 +287,7 @@ export interface FileRouteTypes {
     | '/reviews/manduka-grp-adapt'
     | '/reviews/manduka-pro'
     | '/reviews/retrospec'
+    | '/blog/'
     | '/go/'
     | '/guides/'
     | '/poses/'
@@ -283,6 +303,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/unsubscribe'
     | '/authors/$slug'
+    | '/blog/$slug'
     | '/go/$slug'
     | '/guides/$slug'
     | '/poses/$slug'
@@ -295,6 +316,7 @@ export interface FileRouteTypes {
     | '/reviews/manduka-grp-adapt'
     | '/reviews/manduka-pro'
     | '/reviews/retrospec'
+    | '/blog'
     | '/go'
     | '/guides'
     | '/poses'
@@ -310,6 +332,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/unsubscribe'
     | '/authors/$slug'
+    | '/blog/$slug'
     | '/go/$slug'
     | '/guides/$slug'
     | '/poses/$slug'
@@ -322,6 +345,7 @@ export interface FileRouteTypes {
     | '/reviews/manduka-grp-adapt'
     | '/reviews/manduka-pro'
     | '/reviews/retrospec'
+    | '/blog/'
     | '/go/'
     | '/guides/'
     | '/poses/'
@@ -338,6 +362,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
   AuthorsSlugRoute: typeof AuthorsSlugRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   GoSlugRoute: typeof GoSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   PosesSlugRoute: typeof PosesSlugRoute
@@ -350,6 +375,7 @@ export interface RootRouteChildren {
   ReviewsMandukaGrpAdaptRoute: typeof ReviewsMandukaGrpAdaptRoute
   ReviewsMandukaProRoute: typeof ReviewsMandukaProRoute
   ReviewsRetrospecRoute: typeof ReviewsRetrospecRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   GoIndexRoute: typeof GoIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   PosesIndexRoute: typeof PosesIndexRoute
@@ -441,6 +467,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GoIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews/retrospec': {
       id: '/reviews/retrospec'
       path: '/reviews/retrospec'
@@ -525,6 +558,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GoSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/authors/$slug': {
       id: '/authors/$slug'
       path: '/authors/$slug'
@@ -546,6 +586,7 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   UnsubscribeRoute: UnsubscribeRoute,
   AuthorsSlugRoute: AuthorsSlugRoute,
+  BlogSlugRoute: BlogSlugRoute,
   GoSlugRoute: GoSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   PosesSlugRoute: PosesSlugRoute,
@@ -558,6 +599,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReviewsMandukaGrpAdaptRoute: ReviewsMandukaGrpAdaptRoute,
   ReviewsMandukaProRoute: ReviewsMandukaProRoute,
   ReviewsRetrospecRoute: ReviewsRetrospecRoute,
+  BlogIndexRoute: BlogIndexRoute,
   GoIndexRoute: GoIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   PosesIndexRoute: PosesIndexRoute,

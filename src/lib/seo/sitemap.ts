@@ -12,6 +12,9 @@ const STATIC_PAGES: Array<Omit<SitemapEntry, 'url'> & { path: string }> = [
   // /guides is the editorial hub (route, not MDX) — list it with the identity
   // pages, above the individual content entries.
   { path: '/guides', changefreq: 'weekly', priority: 0.8 },
+  // /blog is the second editorial hub (route, not MDX). Individual posts are
+  // picked up automatically by the MDX scanner via TYPE_TO_URL_PREFIX.
+  { path: '/blog', changefreq: 'weekly', priority: 0.8 },
   { path: '/reviews/best-yoga-mats', changefreq: 'monthly', priority: 0.9 },
   { path: '/reviews/manduka-pro', changefreq: 'monthly', priority: 0.7 },
   { path: '/reviews/jade', changefreq: 'monthly', priority: 0.7 },

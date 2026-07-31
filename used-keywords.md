@@ -110,6 +110,7 @@ Append one row per published page in this format:
 | alo yoga mat                      | alo-yoga-mat                      | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | alo vs lululemon yoga mat         | alo-vs-lululemon-yoga-mat         | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | free 28 day chair yoga for seniors | free-28-day-chair-yoga-for-seniors | cluster    | chair-yoga-for-seniors | chair-yoga-for-seniors   | 2026-07-26 | 2026-07-26    |
+| 18 months on one yoga mat         | 18-months-on-one-yoga-mat         | cluster    | mat-care               | how-to-choose-a-yoga-mat | 2026-07-31 | 2026-07-31    |
 | yoga mat towel                    | best-yoga-mat-towel               | cluster    | yoga-accessories       | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
 | manduka grp yoga mat              | manduka-grp-yoga-mat              | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
 | foldable yoga mat                 | best-foldable-yoga-mat            | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |

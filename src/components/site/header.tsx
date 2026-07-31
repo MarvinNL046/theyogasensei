@@ -9,6 +9,7 @@ import { cn } from '#/lib/utils'
 const LEADING = [
   { to: '/', label: 'Home' },
   { to: '/reviews/best-yoga-mats', label: 'Best mats' },
+  { to: '/blog', label: 'Blog' },
 ] as const
 
 // Items inside the "Guides" dropdown. The parent "Guides" link goes to the full
