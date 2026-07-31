@@ -112,6 +112,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Printable Chair Yoga for Seniors: A Routine Chart',
     category: 'Chair yoga',
   },
+  'free-28-day-chair-yoga-for-seniors': {
+    href: '/guides/free-28-day-chair-yoga-for-seniors',
+    title: 'Free 28-Day Chair Yoga for Seniors: The Full Plan',
+    category: 'Chair yoga',
+  },
   'chair-yoga-for-beginners': {
     href: '/guides/chair-yoga-for-beginners',
     title: 'Chair Yoga for Beginners: How to Start',
