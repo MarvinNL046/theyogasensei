@@ -43,6 +43,8 @@ const STATIC_PAGES: Array<Omit<SitemapEntry, 'url'> & { path: string }> = [
   { path: '/best', changefreq: 'weekly', priority: 0.8 },
   { path: '/reviews', changefreq: 'weekly', priority: 0.8 },
   { path: '/comparisons', changefreq: 'weekly', priority: 0.8 },
+  { path: '/materials', changefreq: 'weekly', priority: 0.8 },
+  { path: '/brands', changefreq: 'weekly', priority: 0.8 },
   { path: '/reviews/best-yoga-mats', changefreq: 'monthly', priority: 0.9 },
   { path: '/reviews/manduka-pro', changefreq: 'monthly', priority: 0.7 },
   { path: '/reviews/jade', changefreq: 'monthly', priority: 0.7 },

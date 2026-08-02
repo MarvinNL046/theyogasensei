@@ -52,7 +52,17 @@ export function ReviewsHub({
 
       <section className="border-b border-[color:var(--color-border)] bg-white">
         <Container size="wide" className="py-7">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+            <label className="text-xs font-semibold text-[color:var(--color-ink-soft)]">
+              <span className="mb-2 block uppercase tracking-[0.15em]">Product type</span>
+              <select
+                aria-label="Product type"
+                disabled
+                className="h-11 w-full cursor-not-allowed rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-bg)] px-3 text-sm text-[color:var(--color-ink)] opacity-75"
+              >
+                <option>Yoga mats</option>
+              </select>
+            </label>
             {controls.map((control) => (
               <label key={control.id} className="text-xs font-semibold text-[color:var(--color-ink-soft)]">
                 <span className="mb-2 block uppercase tracking-[0.15em]">{control.label}</span>

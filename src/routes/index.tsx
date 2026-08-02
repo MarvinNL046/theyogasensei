@@ -8,9 +8,12 @@ import {
 } from 'lucide-react'
 import { Container } from '#/components/ui/container'
 import { HomeLeadCapture } from '#/features/home/HomeLeadCapture'
+import { HomeLatestGuides } from '#/features/home/HomeLatestGuides'
+import { HomeReviewsComparisons } from '#/features/home/HomeReviewsComparisons'
+import { HomeTopicGrid } from '#/features/home/HomeTopicGrid'
 import { HomeInteractionTracking } from '#/components/analytics/HomeInteractionTracking'
 import { buildImageUrl } from '#/lib/images/variants'
-import { listContentSlugs, loadFrontmatter } from '#/lib/mdx/loader'
+import { loadFrontmatter } from '#/lib/mdx/loader'
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -39,16 +42,37 @@ export const Route = createFileRoute('/')({
       { name: 'twitter:card', content: 'summary_large_image' },
     ],
     links: [{ rel: 'canonical', href: 'https://www.theyogasensei.com/' }],
+    scripts: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          '@id': 'https://www.theyogasensei.com/#website',
+          name: 'The Yoga Sensei',
+          url: 'https://www.theyogasensei.com/',
+          publisher: {
+            '@id': 'https://www.theyogasensei.com/#organization',
+          },
+          potentialAction: {
+            '@type': 'SearchAction',
+            target:
+              'https://www.theyogasensei.com/search?q={search_term_string}',
+            'query-input': 'required name=search_term_string',
+          },
+        }),
+      },
+    ],
   }),
   loader: () => ({
-    poses: listContentSlugs('poses')
-      .slice(0, 6)
+    poses: HOME_POSE_SLUGS
       .map((slug) => {
         const { frontmatter: fm } = loadFrontmatter('poses', slug)
         return {
           slug,
           title: fm.title.split(/[:—]/)[0]?.trim() ?? fm.title,
           heroImage: fm.heroImage,
+          ...POSE_HOME_DETAILS[slug],
         }
       }),
   }),
@@ -77,6 +101,57 @@ const topStories = [
     href: '/guides/how-to-clean-a-yoga-mat',
   },
 ] as const
+
+const HOME_POSE_SLUGS = [
+  'childs-pose',
+  'downward-facing-dog',
+  'cobra-pose',
+  'warrior-ii',
+  'pigeon-pose',
+  'sun-salutation',
+] as const
+
+const POSE_HOME_DETAILS: Record<
+  string,
+  { sanskrit: string; level: string; purpose: string; safety: string }
+> = {
+  'childs-pose': {
+    sanskrit: 'Balasana',
+    level: 'Beginner',
+    purpose: 'Rest and gentle positioning',
+    safety: 'Knee and hip variations',
+  },
+  'cobra-pose': {
+    sanskrit: 'Bhujangasana',
+    level: 'Beginner',
+    purpose: 'Gentle backbend practice',
+    safety: 'Keep the range comfortable',
+  },
+  'downward-facing-dog': {
+    sanskrit: 'Adho Mukha Svanasana',
+    level: 'Beginner',
+    purpose: 'Whole-body transition',
+    safety: 'Wrist and shoulder options',
+  },
+  'pigeon-pose': {
+    sanskrit: 'Eka Pada Rajakapotasana',
+    level: 'Intermediate',
+    purpose: 'Hip mobility',
+    safety: 'Support the front hip',
+  },
+  'sun-salutation': {
+    sanskrit: 'Surya Namaskar A',
+    level: 'Beginner',
+    purpose: 'Foundational sequence',
+    safety: 'Modify each transition',
+  },
+  'warrior-ii': {
+    sanskrit: 'Virabhadrasana II',
+    level: 'Beginner',
+    purpose: 'Standing strength and focus',
+    safety: 'Keep the front knee comfortable',
+  },
+}
 
 const needs = [
   { title: 'Start yoga', note: 'A calm first week', href: '/starter-guide' },
@@ -156,6 +231,21 @@ const practice = [
     title: 'Chair yoga',
     image: '/images/guides/chair-yoga-for-seniors/hero.webp',
     href: '/guides/chair-yoga-for-seniors',
+  },
+  {
+    title: 'Yoga for balance',
+    image: '/images/poses/warrior-ii/hero.webp',
+    href: '/practice',
+  },
+  {
+    title: 'Yoga for flexibility',
+    image: '/images/poses/pigeon-pose/hero.webp',
+    href: '/poses',
+  },
+  {
+    title: 'Sleep and wind-down practice',
+    image: '/images/poses/childs-pose/hero.webp',
+    href: '/practice',
   },
 ] as const
 
@@ -241,6 +331,9 @@ function HomePage() {
                   A practical first routine, foundational poses and the setup
                   choices that matter—without turning day one into a shopping
                   list.
+                </p>
+                <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70">
+                  Reviewed August 2026 · The Yoga Sensei editorial team
                 </p>
                 <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold">
                   Start the beginner guide <ArrowRight className="h-4 w-4" />
@@ -427,6 +520,8 @@ function HomePage() {
         </Container>
       </section>
 
+      <HomeLatestGuides />
+
       <section
         data-analytics-section="practice"
         className="bg-[color:var(--color-bg)] py-16 md:py-24"
@@ -502,12 +597,23 @@ function HomePage() {
                   <h3 className="mt-3 font-serif text-lg leading-snug group-hover:text-[color:var(--color-olive)]">
                     {pose.title}
                   </h3>
+                  <p className="mt-1 text-xs italic text-[color:var(--color-ink-muted)]">
+                    {pose.sanskrit}
+                  </p>
+                  <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[color:var(--color-accent-deep)]">
+                    {pose.level} · {pose.purpose}
+                  </p>
+                  <p className="mt-2 text-xs leading-relaxed text-[color:var(--color-ink-muted)]">
+                    Safety: {pose.safety}
+                  </p>
                 </Link>
               ))}
             </div>
           </Container>
         </section>
       ) : null}
+
+      <HomeReviewsComparisons />
 
       <section
         data-analytics-section="trust"
@@ -566,6 +672,7 @@ function HomePage() {
           </div>
         </Container>
       </section>
+      <HomeTopicGrid />
       <HomeLeadCapture />
     </>
   )

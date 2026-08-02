@@ -32,14 +32,14 @@ const CATEGORIES_BY_SLUG: Record<
   string,
   Array<Exclude<PoseCategory, 'All'>>
 > = {
-  'childs-pose': ['Beginner', 'Relaxation'],
+  'childs-pose': ['Beginner', 'Relaxation', 'Props'],
   'cobra-pose': ['Beginner', 'Mobility'],
-  'downward-facing-dog': ['Beginner', 'Mobility'],
-  'pigeon-pose': ['Mobility'],
+  'downward-facing-dog': ['Beginner', 'Standing', 'Mobility', 'Chair variations'],
+  'pigeon-pose': ['Seated', 'Supine', 'Mobility', 'Props'],
   'sun-salutation': ['Beginner', 'Flows'],
   'sun-salutation-b': ['Flows'],
   'sun-salutation-c': ['Beginner', 'Flows'],
-  'warrior-ii': ['Beginner', 'Standing'],
+  'warrior-ii': ['Beginner', 'Standing', 'Balance', 'Chair variations'],
 }
 
 export const Route = createFileRoute('/poses/')({

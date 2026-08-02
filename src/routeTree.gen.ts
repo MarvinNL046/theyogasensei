@@ -17,12 +17,14 @@ import { Route as ReviewMethodologyRouteImport } from './routes/review-methodolo
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PracticeRouteImport } from './routes/practice'
 import { Route as MedicalReviewPolicyRouteImport } from './routes/medical-review-policy'
+import { Route as MaterialsRouteImport } from './routes/materials'
 import { Route as HowWeResearchRouteImport } from './routes/how-we-research'
 import { Route as EditorialPolicyRouteImport } from './routes/editorial-policy'
 import { Route as CorrectionsPolicyRouteImport } from './routes/corrections-policy'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConfirmRouteImport } from './routes/confirm'
 import { Route as ComparisonsRouteImport } from './routes/comparisons'
+import { Route as BrandsRouteImport } from './routes/brands'
 import { Route as BestRouteImport } from './routes/best'
 import { Route as AiImageryPolicyRouteImport } from './routes/ai-imagery-policy'
 import { Route as AffiliateDisclosureRouteImport } from './routes/affiliate-disclosure'
@@ -93,6 +95,11 @@ const MedicalReviewPolicyRoute = MedicalReviewPolicyRouteImport.update({
   path: '/medical-review-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MaterialsRoute = MaterialsRouteImport.update({
+  id: '/materials',
+  path: '/materials',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HowWeResearchRoute = HowWeResearchRouteImport.update({
   id: '/how-we-research',
   path: '/how-we-research',
@@ -121,6 +128,11 @@ const ConfirmRoute = ConfirmRouteImport.update({
 const ComparisonsRoute = ComparisonsRouteImport.update({
   id: '/comparisons',
   path: '/comparisons',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrandsRoute = BrandsRouteImport.update({
+  id: '/brands',
+  path: '/brands',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BestRoute = BestRouteImport.update({
@@ -275,12 +287,14 @@ export interface FileRoutesByFullPath {
   '/affiliate-disclosure': typeof AffiliateDisclosureRoute
   '/ai-imagery-policy': typeof AiImageryPolicyRoute
   '/best': typeof BestRoute
+  '/brands': typeof BrandsRoute
   '/comparisons': typeof ComparisonsRoute
   '/confirm': typeof ConfirmRoute
   '/contact': typeof ContactRoute
   '/corrections-policy': typeof CorrectionsPolicyRoute
   '/editorial-policy': typeof EditorialPolicyRoute
   '/how-we-research': typeof HowWeResearchRoute
+  '/materials': typeof MaterialsRoute
   '/medical-review-policy': typeof MedicalReviewPolicyRoute
   '/practice': typeof PracticeRoute
   '/privacy': typeof PrivacyRoute
@@ -320,12 +334,14 @@ export interface FileRoutesByTo {
   '/affiliate-disclosure': typeof AffiliateDisclosureRoute
   '/ai-imagery-policy': typeof AiImageryPolicyRoute
   '/best': typeof BestRoute
+  '/brands': typeof BrandsRoute
   '/comparisons': typeof ComparisonsRoute
   '/confirm': typeof ConfirmRoute
   '/contact': typeof ContactRoute
   '/corrections-policy': typeof CorrectionsPolicyRoute
   '/editorial-policy': typeof EditorialPolicyRoute
   '/how-we-research': typeof HowWeResearchRoute
+  '/materials': typeof MaterialsRoute
   '/medical-review-policy': typeof MedicalReviewPolicyRoute
   '/practice': typeof PracticeRoute
   '/privacy': typeof PrivacyRoute
@@ -366,12 +382,14 @@ export interface FileRoutesById {
   '/affiliate-disclosure': typeof AffiliateDisclosureRoute
   '/ai-imagery-policy': typeof AiImageryPolicyRoute
   '/best': typeof BestRoute
+  '/brands': typeof BrandsRoute
   '/comparisons': typeof ComparisonsRoute
   '/confirm': typeof ConfirmRoute
   '/contact': typeof ContactRoute
   '/corrections-policy': typeof CorrectionsPolicyRoute
   '/editorial-policy': typeof EditorialPolicyRoute
   '/how-we-research': typeof HowWeResearchRoute
+  '/materials': typeof MaterialsRoute
   '/medical-review-policy': typeof MedicalReviewPolicyRoute
   '/practice': typeof PracticeRoute
   '/privacy': typeof PrivacyRoute
@@ -413,12 +431,14 @@ export interface FileRouteTypes {
     | '/affiliate-disclosure'
     | '/ai-imagery-policy'
     | '/best'
+    | '/brands'
     | '/comparisons'
     | '/confirm'
     | '/contact'
     | '/corrections-policy'
     | '/editorial-policy'
     | '/how-we-research'
+    | '/materials'
     | '/medical-review-policy'
     | '/practice'
     | '/privacy'
@@ -458,12 +478,14 @@ export interface FileRouteTypes {
     | '/affiliate-disclosure'
     | '/ai-imagery-policy'
     | '/best'
+    | '/brands'
     | '/comparisons'
     | '/confirm'
     | '/contact'
     | '/corrections-policy'
     | '/editorial-policy'
     | '/how-we-research'
+    | '/materials'
     | '/medical-review-policy'
     | '/practice'
     | '/privacy'
@@ -503,12 +525,14 @@ export interface FileRouteTypes {
     | '/affiliate-disclosure'
     | '/ai-imagery-policy'
     | '/best'
+    | '/brands'
     | '/comparisons'
     | '/confirm'
     | '/contact'
     | '/corrections-policy'
     | '/editorial-policy'
     | '/how-we-research'
+    | '/materials'
     | '/medical-review-policy'
     | '/practice'
     | '/privacy'
@@ -549,12 +573,14 @@ export interface RootRouteChildren {
   AffiliateDisclosureRoute: typeof AffiliateDisclosureRoute
   AiImageryPolicyRoute: typeof AiImageryPolicyRoute
   BestRoute: typeof BestRoute
+  BrandsRoute: typeof BrandsRoute
   ComparisonsRoute: typeof ComparisonsRoute
   ConfirmRoute: typeof ConfirmRoute
   ContactRoute: typeof ContactRoute
   CorrectionsPolicyRoute: typeof CorrectionsPolicyRoute
   EditorialPolicyRoute: typeof EditorialPolicyRoute
   HowWeResearchRoute: typeof HowWeResearchRoute
+  MaterialsRoute: typeof MaterialsRoute
   MedicalReviewPolicyRoute: typeof MedicalReviewPolicyRoute
   PracticeRoute: typeof PracticeRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -647,6 +673,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MedicalReviewPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/materials': {
+      id: '/materials'
+      path: '/materials'
+      fullPath: '/materials'
+      preLoaderRoute: typeof MaterialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/how-we-research': {
       id: '/how-we-research'
       path: '/how-we-research'
@@ -687,6 +720,13 @@ declare module '@tanstack/react-router' {
       path: '/comparisons'
       fullPath: '/comparisons'
       preLoaderRoute: typeof ComparisonsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/brands': {
+      id: '/brands'
+      path: '/brands'
+      fullPath: '/brands'
+      preLoaderRoute: typeof BrandsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/best': {
@@ -901,12 +941,14 @@ const rootRouteChildren: RootRouteChildren = {
   AffiliateDisclosureRoute: AffiliateDisclosureRoute,
   AiImageryPolicyRoute: AiImageryPolicyRoute,
   BestRoute: BestRoute,
+  BrandsRoute: BrandsRoute,
   ComparisonsRoute: ComparisonsRoute,
   ConfirmRoute: ConfirmRoute,
   ContactRoute: ContactRoute,
   CorrectionsPolicyRoute: CorrectionsPolicyRoute,
   EditorialPolicyRoute: EditorialPolicyRoute,
   HowWeResearchRoute: HowWeResearchRoute,
+  MaterialsRoute: MaterialsRoute,
   MedicalReviewPolicyRoute: MedicalReviewPolicyRoute,
   PracticeRoute: PracticeRoute,
   PrivacyRoute: PrivacyRoute,
