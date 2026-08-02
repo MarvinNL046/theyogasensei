@@ -1,12 +1,13 @@
 import { AlertTriangle, Clock3, PackageOpen, Signal, Split } from 'lucide-react'
 
-interface ComparisonProfile {
+export interface ComparisonProfile {
   left: { name: string; chooseWhen: string }
   right: { name: string; chooseWhen: string }
   difference: string
+  factors: Array<{ label: string; left: string; right: string }>
 }
 
-const COMPARISONS: Partial<Record<string, ComparisonProfile>> = {
+export const COMPARISONS: Partial<Record<string, ComparisonProfile>> = {
   'cork-vs-rubber-yoga-mat': {
     left: {
       name: 'Choose cork',
@@ -20,6 +21,35 @@ const COMPARISONS: Partial<Record<string, ComparisonProfile>> = {
     },
     difference:
       'Cork changes more with moisture; rubber usually feels grippier from the first dry pose but is heavier and relevant to latex sensitivity.',
+    factors: [
+      {
+        label: 'Dry grip',
+        left: 'Firm, less tacky',
+        right: 'Tacky and planted',
+      },
+      {
+        label: 'Damp grip',
+        left: 'Usually improves',
+        right: 'Product-dependent',
+      },
+      { label: 'Cushion', left: 'Often firmer', right: 'Usually denser' },
+      { label: 'Weight', left: 'Often lighter', right: 'Usually heavier' },
+      {
+        label: 'Care',
+        left: 'Wipe, then dry fully',
+        right: 'Wipe; avoid heat and sun',
+      },
+      {
+        label: 'Latex relevance',
+        left: 'Depends on the backing',
+        right: 'Yes for natural rubber',
+      },
+      {
+        label: 'Best for',
+        left: 'Sweaty practice and lighter carry',
+        right: 'Reliable dry grip and grounded feel',
+      },
+    ],
   },
   'tpe-vs-nbr-yoga-mat': {
     left: {
@@ -34,6 +64,39 @@ const COMPARISONS: Partial<Record<string, ComparisonProfile>> = {
     },
     difference:
       'TPE is commonly thinner and more supportive; NBR is usually thicker, softer and bulkier.',
+    factors: [
+      {
+        label: 'Typical feel',
+        left: 'Firmer and springier',
+        right: 'Softer and plusher',
+      },
+      {
+        label: 'Standing stability',
+        left: 'Usually the stronger fit',
+        right: 'Can feel less stable when thick',
+      },
+      {
+        label: 'Floor cushioning',
+        left: 'Moderate',
+        right: 'High in common 10mm formats',
+      },
+      { label: 'Carry', left: 'Thinner, often lighter', right: 'Bulkier roll' },
+      {
+        label: 'Sweat grip',
+        left: 'Product-specific',
+        right: 'Product-specific',
+      },
+      {
+        label: 'Composition',
+        left: 'Often a proprietary blend',
+        right: 'Synthetic rubber foam',
+      },
+      {
+        label: 'Best for',
+        left: 'General yoga and transitions',
+        right: 'Floor work and extra padding',
+      },
+    ],
   },
   'open-cell-vs-closed-cell-yoga-mat': {
     left: {
@@ -47,6 +110,34 @@ const COMPARISONS: Partial<Record<string, ComparisonProfile>> = {
     },
     difference:
       'Open-cell surfaces absorb moisture; closed-cell surfaces resist it, which changes both wet grip and care.',
+    factors: [
+      { label: 'Moisture', left: 'Absorbs it', right: 'Resists it' },
+      {
+        label: 'Damp-hand grip',
+        left: 'Often the stronger fit',
+        right: 'More surface-dependent',
+      },
+      {
+        label: 'Cleaning',
+        left: 'Careful surface cleaning',
+        right: 'Usually easier to wipe',
+      },
+      {
+        label: 'Drying',
+        left: 'Needs thorough air-drying',
+        right: 'Usually faster',
+      },
+      {
+        label: 'Odor risk',
+        left: 'Higher if stored damp',
+        right: 'Lower absorption',
+      },
+      {
+        label: 'Best for',
+        left: 'Sweaty sessions',
+        right: 'Low-maintenance practice',
+      },
+    ],
   },
   'hatha-vs-vinyasa': {
     left: {
@@ -61,6 +152,38 @@ const COMPARISONS: Partial<Record<string, ComparisonProfile>> = {
     },
     difference:
       'The practical difference is pace and transition density, not a promise that one style is universally easier.',
+    factors: [
+      {
+        label: 'Pace',
+        left: 'Slow to moderate',
+        right: 'Continuous; often moderate to fast',
+      },
+      {
+        label: 'Transitions',
+        left: 'More pauses',
+        right: 'Breath-linked sequences',
+      },
+      {
+        label: 'Predictability',
+        left: 'Often more segmented',
+        right: 'Often more varied',
+      },
+      {
+        label: 'Beginner challenge',
+        left: 'Longer holds',
+        right: 'Faster cueing',
+      },
+      {
+        label: 'Intensity',
+        left: 'Teacher and class dependent',
+        right: 'Teacher and class dependent',
+      },
+      {
+        label: 'Best for',
+        left: 'Time to learn each shape',
+        right: 'Rhythmic movement',
+      },
+    ],
   },
   'yoga-mat-vs-exercise-mat': {
     left: {
@@ -75,6 +198,85 @@ const COMPARISONS: Partial<Record<string, ComparisonProfile>> = {
     },
     difference:
       'The label is less useful than thickness, firmness, width, surface grip and the equipment you plan to use.',
+    factors: [
+      {
+        label: 'Primary job',
+        left: 'Pose grip and stability',
+        right: 'General floor exercise',
+      },
+      {
+        label: 'Typical build',
+        left: 'Narrower and firmer',
+        right: 'Often wider and thicker',
+      },
+      {
+        label: 'Standing work',
+        left: 'Usually more stable',
+        right: 'May compress more',
+      },
+      {
+        label: 'Floor work',
+        left: 'Moderate cushioning',
+        right: 'Often more cushioning',
+      },
+      {
+        label: 'Shoe use',
+        left: 'Check the surface guidance',
+        right: 'More commonly intended for training',
+      },
+      {
+        label: 'Best for',
+        left: 'Yoga sequences',
+        right: 'Stretching and workouts',
+      },
+    ],
+  },
+  'yoga-rug-vs-mat': {
+    left: {
+      name: 'Choose a yoga rug',
+      chooseWhen:
+        'you deliberately want a foldable, absorbent textile surface and can follow its floor and washing guidance.',
+    },
+    right: {
+      name: 'Choose a yoga mat',
+      chooseWhen:
+        'you want integrated grip, cushioning and a more predictable floor-facing base.',
+    },
+    difference:
+      'A rug manages contact through its weave and may need another layer; a mat integrates the contact surface, cushion and base into one unit.',
+    factors: [
+      {
+        label: 'Construction',
+        left: 'Woven textile',
+        right: 'Continuous or bonded sheet',
+      },
+      {
+        label: 'Cushion',
+        left: 'Minimal and weave-dependent',
+        right: 'Built into a measured thickness',
+      },
+      {
+        label: 'Moisture',
+        left: 'Cotton-rich weaves absorb it',
+        right: 'Depends on open- or closed-cell build',
+      },
+      {
+        label: 'Floor stability',
+        left: 'May need a mat underneath',
+        right: 'Base is normally integrated',
+      },
+      { label: 'Packing', left: 'Folds or rolls', right: 'Usually rolls' },
+      {
+        label: 'Cleaning',
+        left: 'Product-specific washing',
+        right: 'Usually surface cleaning',
+      },
+      {
+        label: 'Best for',
+        left: 'Textile feel and absorbency',
+        right: 'Integrated grip and support',
+      },
+    ],
   },
   'manduka-pro-vs-liforme': {
     left: {
@@ -89,6 +291,39 @@ const COMPARISONS: Partial<Record<string, ComparisonProfile>> = {
     },
     difference:
       'Manduka prioritizes dense longevity; Liforme prioritizes immediate traction and alignment feedback.',
+    factors: [
+      {
+        label: 'Surface',
+        left: 'Closed-cell textured PVC',
+        right: 'Polyurethane over rubber',
+      },
+      {
+        label: 'Grip',
+        left: 'Needs realistic break-in expectations',
+        right: 'Immediate wet-and-dry traction',
+      },
+      {
+        label: 'Cushion',
+        left: 'Dense 6mm support',
+        right: 'Firmer 4.2mm profile',
+      },
+      { label: 'Weight', left: 'About 3.4kg', right: 'About 2.5kg' },
+      {
+        label: 'Care',
+        left: 'Low absorption; wipe clean',
+        right: 'Absorbent top; careful cleaning',
+      },
+      {
+        label: 'Latex relevance',
+        left: 'Specified latex-free',
+        right: 'Natural-rubber base',
+      },
+      {
+        label: 'Best for',
+        left: 'Long-horizon ownership',
+        right: 'Grip and alignment feedback',
+      },
+    ],
   },
   'manduka-vs-lululemon-yoga-mat': {
     left: {
@@ -103,6 +338,43 @@ const COMPARISONS: Partial<Record<string, ComparisonProfile>> = {
     },
     difference:
       'Manduka is the dense, low-absorption long-horizon choice; Lululemon prioritizes day-one grip and sweat management.',
+    factors: [
+      {
+        label: 'Surface',
+        left: 'Closed-cell textured PVC',
+        right: 'Polyurethane over rubber',
+      },
+      {
+        label: 'Day-one grip',
+        left: 'Break-in may matter',
+        right: 'Strong from the start',
+      },
+      {
+        label: 'Sweat',
+        left: 'Surface does not absorb it',
+        right: 'Absorbent practice side',
+      },
+      {
+        label: 'Cushion',
+        left: 'Dense 6mm support',
+        right: '5mm reversible build',
+      },
+      {
+        label: 'Care',
+        left: 'Lower-absorption care',
+        right: 'Stain-aware surface care',
+      },
+      {
+        label: 'Latex relevance',
+        left: 'Specified latex-free',
+        right: 'Contains natural rubber',
+      },
+      {
+        label: 'Best for',
+        left: 'Durability-led ownership',
+        right: 'Versatile immediate grip',
+      },
+    ],
   },
   'alo-vs-lululemon-yoga-mat': {
     left: {
@@ -117,6 +389,38 @@ const COMPARISONS: Partial<Record<string, ComparisonProfile>> = {
     },
     difference:
       'Alo emphasizes space and cushioning; Lululemon is the more compact and versatile sweat-aware option.',
+    factors: [
+      {
+        label: 'Footprint',
+        left: 'Longer and wider',
+        right: 'More conventional size',
+      },
+      {
+        label: 'Feel',
+        left: 'Plush and substantial',
+        right: 'Balanced and versatile',
+      },
+      {
+        label: 'Grip',
+        left: 'Strong PU-surface grip',
+        right: 'Strong reversible grip',
+      },
+      {
+        label: 'Carry',
+        left: 'Heavy and home-oriented',
+        right: 'Heavy, but easier to manage',
+      },
+      {
+        label: 'Care',
+        left: 'Wipe-only surface care',
+        right: 'Absorbent side needs care',
+      },
+      {
+        label: 'Best for',
+        left: 'Spacious home practice',
+        right: 'Mixed and sweaty practice',
+      },
+    ],
   },
 }
 
@@ -194,6 +498,37 @@ export function GuideTemplatePanel({ slug }: { slug: string }) {
           </strong>{' '}
           {comparison.difference}
         </p>
+        <div
+          className="mt-6 overflow-x-auto rounded-xl border border-[color:var(--color-border)]"
+          tabIndex={0}
+          aria-label="Side-by-side comparison; scroll horizontally on smaller screens"
+        >
+          <div className="min-w-[620px]">
+            <div className="grid grid-cols-[minmax(7rem,.8fr)_minmax(0,1fr)_minmax(0,1fr)] bg-[color:var(--color-olive)] px-4 py-3 text-[10px] font-bold uppercase tracking-[0.14em] text-white">
+              <span>Factor</span>
+              <span>{comparison.left.name.replace('Choose ', '')}</span>
+              <span>{comparison.right.name.replace('Choose ', '')}</span>
+            </div>
+            <dl className="divide-y divide-[color:var(--color-border)] bg-white">
+              {comparison.factors.map((factor) => (
+                <div
+                  key={factor.label}
+                  className="grid grid-cols-[minmax(7rem,.8fr)_minmax(0,1fr)_minmax(0,1fr)] px-4 py-3 text-sm leading-snug"
+                >
+                  <dt className="pr-3 font-semibold text-[color:var(--color-ink)]">
+                    {factor.label}
+                  </dt>
+                  <dd className="pr-3 text-[color:var(--color-ink-soft)]">
+                    {factor.left}
+                  </dd>
+                  <dd className="text-[color:var(--color-ink-soft)]">
+                    {factor.right}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
       </section>
     )
   }
