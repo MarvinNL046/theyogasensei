@@ -258,6 +258,7 @@ function HomePage() {
                   width={1280}
                   height={854}
                   loading="lazy"
+                  fetchPriority="low"
                   decoding="async"
                   className="aspect-[16/9] w-full object-cover"
                 />
@@ -280,6 +281,7 @@ function HomePage() {
                   width={1536}
                   height={1024}
                   loading="lazy"
+                  fetchPriority="low"
                   decoding="async"
                   className="aspect-[16/9] w-full object-cover"
                 />
@@ -448,6 +450,7 @@ function HomePage() {
                   width={1200}
                   height={800}
                   loading="lazy"
+                  fetchPriority="low"
                   decoding="async"
                   className="aspect-[3/2] w-full object-cover"
                 />
@@ -491,6 +494,7 @@ function HomePage() {
                       width={800}
                       height={600}
                       loading="lazy"
+                      fetchPriority="low"
                       decoding="async"
                       className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
                     />
