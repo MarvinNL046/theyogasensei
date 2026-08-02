@@ -1,20 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { EditorialHub } from '#/components/site/EditorialHub'
+import { buildHubHead } from '#/lib/seo/hub'
 
 export const Route = createFileRoute('/reviews/')({
-  head: () => ({
-    meta: [
-      { title: 'Yoga Gear Reviews | The Yoga Sensei' },
-      {
-        name: 'description',
-        content:
-          'Transparent yoga mat reviews with clear best-for and skip-if advice, verified specifications, trade-offs and practical alternatives.',
-      },
-    ],
-    links: [
-      { rel: 'canonical', href: 'https://www.theyogasensei.com/reviews' },
-    ],
-  }),
+  head: () =>
+    buildHubHead({
+      title: 'Yoga Gear Reviews | The Yoga Sensei',
+      description:
+        'Transparent yoga mat reviews with clear best-for and skip-if advice, verified specifications, trade-offs and practical alternatives.',
+      path: '/reviews',
+      name: 'Yoga gear reviews',
+    }),
   component: () => (
     <EditorialHub
       eyebrow="Product reviews"

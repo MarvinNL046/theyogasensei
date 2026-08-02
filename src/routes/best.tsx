@@ -1,18 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { EditorialHub } from '#/components/site/EditorialHub'
+import { buildHubHead } from '#/lib/seo/hub'
 
 export const Route = createFileRoute('/best')({
-  head: () => ({
-    meta: [
-      { title: 'Best Yoga Gear | The Yoga Sensei' },
-      {
-        name: 'description',
-        content:
-          'Independent yoga gear shortlists organized by real use case, with materials, trade-offs and source-backed specifications clearly explained.',
-      },
-    ],
-    links: [{ rel: 'canonical', href: 'https://www.theyogasensei.com/best' }],
-  }),
+  head: () =>
+    buildHubHead({
+      title: 'Best Yoga Gear | The Yoga Sensei',
+      description:
+        'Independent yoga gear shortlists organized by real use case, with materials, trade-offs and source-backed specifications clearly explained.',
+      path: '/best',
+      name: 'Best yoga gear',
+    }),
   component: () => (
     <EditorialHub
       eyebrow="Independent shortlists"

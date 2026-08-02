@@ -1,20 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { EditorialHub } from '#/components/site/EditorialHub'
+import { buildHubHead } from '#/lib/seo/hub'
 
 export const Route = createFileRoute('/practice')({
-  head: () => ({
-    meta: [
-      { title: 'Yoga Practice Guides | The Yoga Sensei' },
-      {
-        name: 'description',
-        content:
-          'Build a safe, sustainable yoga practice with beginner routines, chair yoga, morning yoga, balance and flexibility guidance.',
-      },
-    ],
-    links: [
-      { rel: 'canonical', href: 'https://www.theyogasensei.com/practice' },
-    ],
-  }),
+  head: () =>
+    buildHubHead({
+      title: 'Yoga Practice Guides | The Yoga Sensei',
+      description:
+        'Build a safe, sustainable yoga practice with beginner routines, chair yoga, morning yoga, balance and flexibility guidance.',
+      path: '/practice',
+      name: 'Yoga practice guides',
+    }),
   component: () => (
     <EditorialHub
       eyebrow="Practice library"

@@ -1,20 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { EditorialHub } from '#/components/site/EditorialHub'
+import { buildHubHead } from '#/lib/seo/hub'
 
 export const Route = createFileRoute('/comparisons')({
-  head: () => ({
-    meta: [
-      { title: 'Yoga Comparisons | The Yoga Sensei' },
-      {
-        name: 'description',
-        content:
-          'Practical yoga product, material and practice comparisons with direct answers, scenarios and clearly sourced trade-offs.',
-      },
-    ],
-    links: [
-      { rel: 'canonical', href: 'https://www.theyogasensei.com/comparisons' },
-    ],
-  }),
+  head: () =>
+    buildHubHead({
+      title: 'Yoga Comparisons | The Yoga Sensei',
+      description:
+        'Practical yoga product, material and practice comparisons with direct answers, scenarios and clearly sourced trade-offs.',
+      path: '/comparisons',
+      name: 'Yoga comparisons',
+    }),
   component: () => (
     <EditorialHub
       eyebrow="Side-by-side decisions"
