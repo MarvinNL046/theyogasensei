@@ -137,11 +137,7 @@ function entryToXml(e: SitemapEntry): string {
   return `  <url>\n${parts.join('\n')}\n  </url>`
 }
 
-/**
- * Render the full sitemap.xml as a string. Emit as a single sitemap until
- * we cross 100 URLs — then split into a sitemap index per type (TODO once
- * the cluster grows past that).
- */
+/** Render the legacy single-file sitemap for callers that still need it. */
 export function renderSitemap(siteUrl: string): string {
   const entries = buildEntries(siteUrl)
   const urls = entries.map(entryToXml).join('\n')
