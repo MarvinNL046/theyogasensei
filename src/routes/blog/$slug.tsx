@@ -73,7 +73,7 @@ function BlogPostPage() {
       {/* ============================================================
           HEADER — breadcrumb, title, dek, byline, hero.
           ============================================================ */}
-      <section className="bg-[color:var(--color-bg)] pt-10 md:pt-14">
+      <section className="bg-[color:var(--color-surface-muted)] pb-10 pt-10 md:pb-14 md:pt-14">
         <Container size="wide">
           <nav
             aria-label="Breadcrumb"
@@ -126,7 +126,7 @@ function BlogPostPage() {
             </p>
           </div>
 
-          <div className="mt-8 overflow-hidden border border-[color:var(--color-border)]">
+          <div className="mt-8 overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-white shadow-[0_24px_55px_-42px_rgba(24,49,41,.65)]">
             <img
               src={heroImageUrl}
               alt={frontmatter.title}
@@ -173,7 +173,7 @@ function BlogPostPage() {
           </div>
 
           {/* About the author */}
-          <div className="mt-14 border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-8">
+          <div className="mt-14 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-[0_18px_45px_-38px_rgba(24,49,41,.65)] sm:p-8">
             <div className="flex items-start gap-4">
               <img
                 src="/images/team/marvin.webp"

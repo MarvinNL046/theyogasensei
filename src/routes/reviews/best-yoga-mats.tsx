@@ -164,7 +164,7 @@ function ReviewsOverviewPage() {
   return (
     <>
       {/* ===================== HERO ===================== */}
-      <section className="bg-[color:var(--color-bg)]">
+      <section className="bg-[color:var(--color-surface-muted)]">
         <Container size="wide">
           <div className="grid items-stretch gap-10 py-10 md:grid-cols-12 md:py-14">
             <div className="md:col-span-6 lg:col-span-5">
@@ -190,14 +190,14 @@ function ReviewsOverviewPage() {
               </p>
               <a
                 href="#top-picks"
-                className="mt-8 inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-olive)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-charcoal)]"
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-olive)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[color:var(--color-olive-deep)]"
               >
                 See our top pick
                 <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
               </a>
             </div>
             <div className="md:col-span-6 lg:col-span-7">
-              <div className="h-full overflow-hidden rounded-sm ring-1 ring-[color:var(--color-border)]">
+              <div className="h-full overflow-hidden rounded-2xl bg-white ring-1 ring-[color:var(--color-border)] shadow-[0_24px_55px_-42px_rgba(24,49,41,.65)]">
                 <img
                   src="/images/guides/best-yoga-mats-2026/hero.webp"
                   alt="A rolled sage-green yoga mat in a calm, light Japanese-inspired studio"

@@ -68,13 +68,12 @@ function BlogIndexPage() {
   const { posts } = Route.useLoaderData()
 
   return (
-    <section className="bg-[color:var(--color-bg)] pb-20 pt-12 md:pb-28 md:pt-16">
+    <section className="bg-[color:var(--color-bg)] pb-20 pt-8 md:pb-28 md:pt-12">
       <Container size="wide">
-        <Eyebrow>Blog</Eyebrow>
-        <h1 className="mt-4 max-w-3xl font-serif text-4xl leading-[1.12] tracking-tight md:text-5xl">
-          Notes from the mat
-        </h1>
-        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[color:var(--color-ink-soft)]">
+        <div className="rounded-[2rem] bg-[color:var(--color-surface-muted)] px-7 py-14 sm:px-12 md:py-20 lg:px-16">
+        <Eyebrow>Journal</Eyebrow>
+        <h1 className="mt-4 max-w-3xl font-serif text-4xl leading-[1.08] tracking-[-0.04em] md:text-[54px]">Useful notes from the mat.</h1>
+        <p className="mt-5 max-w-2xl text-base leading-relaxed text-[color:var(--color-ink-soft)] md:text-lg">
           Shorter, hands-on pieces about the gear we use and the things worth knowing
           before you buy. For the long-form buying guides, head to{' '}
           <Link
@@ -84,7 +83,7 @@ function BlogIndexPage() {
             the guides
           </Link>
           .
-        </p>
+        </p></div>
 
         {posts.length === 0 ? (
           <p className="mt-14 text-sm text-[color:var(--color-ink-muted)]">
@@ -97,7 +96,7 @@ function BlogIndexPage() {
                 key={post.slug}
                 to="/blog/$slug"
                 params={{ slug: post.slug }}
-                className="group flex flex-col border border-[color:var(--color-border)] bg-[color:var(--color-surface)] transition hover:border-[color:var(--color-accent-soft)]"
+                className="group flex flex-col overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[0_18px_45px_-38px_rgba(24,49,41,.65)] transition hover:-translate-y-1 hover:border-[color:var(--color-accent-soft)]"
               >
                 <div className="overflow-hidden">
                   <img

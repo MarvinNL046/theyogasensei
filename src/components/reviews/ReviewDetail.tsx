@@ -164,7 +164,7 @@ function Paragraphs({ body }: { body: string }) {
 
 function RatingsBox({ ratings }: { ratings: SubRating[] }) {
   return (
-    <div className="border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5">
+    <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5">
       <dl className="space-y-3">
         {ratings.map((r) => (
           <div key={r.label} className="flex items-center justify-between gap-4">
@@ -194,7 +194,7 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
   return (
     <>
       {/* ===================== HERO ===================== */}
-      <section className="bg-[color:var(--color-bg)]">
+      <section className="bg-[color:var(--color-surface-muted)]">
         <Container size="wide">
           <div className="grid items-center gap-10 py-10 md:grid-cols-12 md:py-14">
             <div className="md:col-span-6">
@@ -242,7 +242,7 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
               </div>
             </div>
             <div className="md:col-span-6">
-              <div className="overflow-hidden rounded-sm ring-1 ring-[color:var(--color-border)]">
+              <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-[color:var(--color-border)] shadow-[0_24px_55px_-42px_rgba(24,49,41,.65)]">
                 <img
                   src={d.heroImage}
                   alt={`${d.productName} yoga mat`}
@@ -294,7 +294,7 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
                 <div className="mt-5">
                   <Paragraphs body={d.sections[0].body} />
                 </div>
-                <div className="mt-8 grid gap-px overflow-hidden border border-[color:var(--color-border)] bg-[color:var(--color-border)] sm:grid-cols-2">
+                <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-border)] sm:grid-cols-2">
                   {d.features.map((f) => (
                     <div
                       key={f.title}

@@ -93,7 +93,7 @@ function PosePage() {
   return (
     <>
       {/* ARTICLE HERO — fade-left illustration right, title + byline left */}
-      <section className="bg-[color:var(--color-bg)]">
+      <section className="bg-[color:var(--color-surface-muted)]">
         <Container size="wide">
           <div className="grid items-center gap-10 py-12 md:grid-cols-12 md:gap-12 md:py-16 lg:gap-16">
             {/* Left — breadcrumb, title, byline */}
@@ -155,7 +155,7 @@ function PosePage() {
             </div>
             {/* Right — clean full pose image panel */}
             <div className="md:col-span-6 lg:col-span-7">
-              <div className="overflow-hidden rounded-sm ring-1 ring-[color:var(--color-border)] shadow-sm">
+              <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-[color:var(--color-border)] shadow-[0_24px_55px_-42px_rgba(24,49,41,.65)]">
                 <img
                   src={heroImageUrl}
                   alt={`${frontmatter.title}, demonstrated in a calm studio`}
@@ -179,7 +179,7 @@ function PosePage() {
 
             <aside className="min-w-0 max-w-full md:col-span-4 md:pl-2 lg:pl-4">
               {/* About the Author */}
-              <div className="mb-12 rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
+              <div className="mb-12 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8 shadow-[0_18px_45px_-38px_rgba(24,49,41,.65)]">
                 <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
                   About the Author
                 </p>
@@ -215,7 +215,7 @@ function PosePage() {
               </div>
 
               {/* Related guides */}
-              <div className="mb-12 rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
+              <div className="mb-12 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8 shadow-[0_18px_45px_-38px_rgba(24,49,41,.65)]">
                 <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
                   Practise it better
                 </p>

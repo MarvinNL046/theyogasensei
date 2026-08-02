@@ -54,14 +54,11 @@ function PosesIndex() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden bg-[color:var(--color-bg)]">
-        <Container size="wide" className="relative">
-          <div className="max-w-2xl py-20 md:py-28">
+        <Container size="wide" className="relative py-8 md:py-12">
+          <div className="rounded-[2rem] bg-[color:var(--color-surface-muted)] px-7 py-14 sm:px-12 md:py-20 lg:px-16">
             <Eyebrow tone="default">Pose library</Eyebrow>
             <h1 className="mt-5 font-serif text-4xl leading-[1.05] tracking-tight md:text-[56px]">
-              Find. Learn.{' '}
-              <span className="italic text-[color:var(--color-ink-soft)]">
-                Practice.
-              </span>
+              Learn each pose with clarity.
             </h1>
             <p className="mt-6 max-w-xl text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">
               A growing library of yoga poses, explained calmly — step-by-step
@@ -91,7 +88,7 @@ function PosesIndex() {
                   <Link
                     to="/poses/$slug"
                     params={{ slug: pose.slug }}
-                    className="group block overflow-hidden rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] transition hover:border-[color:var(--color-accent-soft)] hover:shadow-sm"
+                  className="group block overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[0_18px_45px_-38px_rgba(24,49,41,.65)] transition hover:-translate-y-1 hover:border-[color:var(--color-accent-soft)]"
                   >
                     <div
                       className="aspect-[16/10] bg-cover bg-center"

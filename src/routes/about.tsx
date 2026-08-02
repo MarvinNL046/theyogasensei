@@ -130,7 +130,7 @@ function AboutPage() {
 
 function AboutHero() {
   return (
-    <section className="relative overflow-hidden bg-[color:var(--color-bg)]">
+    <section className="relative overflow-hidden bg-[color:var(--color-surface-muted)]">
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-right-center bg-no-repeat"
@@ -141,7 +141,7 @@ function AboutHero() {
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(90deg, var(--color-bg) 0%, rgba(246,241,234,.98) 36%, rgba(246,241,234,.48) 60%, rgba(246,241,234,0) 100%)',
+            'linear-gradient(90deg, var(--color-surface-muted) 0%, rgba(233,240,233,.98) 36%, rgba(233,240,233,.58) 62%, rgba(233,240,233,0) 100%)',
         }}
       />
       <Container size="wide" className="relative">
@@ -180,7 +180,7 @@ function AboutHero() {
 
 function PillarBand() {
   return (
-    <section className="mt-8 rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/72 px-6 py-9 shadow-sm md:px-10">
+    <section className="mt-8 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-9 shadow-[0_18px_45px_-38px_rgba(24,49,41,.65)] md:px-10">
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {PILLARS.map((pillar, index) => (
           <IconPanel key={pillar.title} item={pillar} centered withDivider={index > 0} />
@@ -200,7 +200,7 @@ function MeetMarvin() {
       {/* Portrait — real photo at /images/team/marvin.webp (256×256 source).
           For a crisper retina render here, swap in a ≥480×480 version. */}
       <figure className="relative mx-auto w-full max-w-sm">
-        <div className="overflow-hidden rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-sm">
+        <div className="overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[0_18px_45px_-38px_rgba(24,49,41,.65)]">
           <img
             src="/images/team/marvin.webp"
             alt="Portrait of Marvin Smit, founder and editor of The Yoga Sensei"

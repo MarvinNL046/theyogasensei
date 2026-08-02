@@ -121,7 +121,7 @@ function GuidePage() {
       {/* ============================================================
           ARTICLE HERO — fade-left photo right, title + byline left
           ============================================================ */}
-      <section className="relative overflow-hidden bg-[color:var(--color-bg)]">
+      <section className="relative overflow-hidden bg-[color:var(--color-surface-muted)]">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-cover bg-right-top bg-no-repeat opacity-90"
