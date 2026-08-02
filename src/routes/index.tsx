@@ -65,16 +65,15 @@ export const Route = createFileRoute('/')({
     ],
   }),
   loader: () => ({
-    poses: HOME_POSE_SLUGS
-      .map((slug) => {
-        const { frontmatter: fm } = loadFrontmatter('poses', slug)
-        return {
-          slug,
-          title: fm.title.split(/[:—]/)[0]?.trim() ?? fm.title,
-          heroImage: fm.heroImage,
-          ...POSE_HOME_DETAILS[slug],
-        }
-      }),
+    poses: HOME_POSE_SLUGS.map((slug) => {
+      const { frontmatter: fm } = loadFrontmatter('poses', slug)
+      return {
+        slug,
+        title: fm.title.split(/[:—]/)[0]?.trim() ?? fm.title,
+        heroImage: fm.heroImage,
+        ...POSE_HOME_DETAILS[slug],
+      }
+    }),
   }),
   component: HomePage,
 })
@@ -274,7 +273,9 @@ function SectionHead({
         >
           {kicker}
         </p>
-        <h2 className="mt-3 max-w-3xl font-serif text-3xl leading-tight tracking-[-0.035em] md:text-[42px]">
+        <h2
+          className={`mt-3 max-w-3xl font-serif text-3xl leading-tight tracking-[-0.035em] md:text-[42px] ${dark ? 'text-white' : 'text-[color:var(--color-heading)]'}`}
+        >
           {title}
         </h2>
       </div>
@@ -319,12 +320,12 @@ function HomePage() {
                 fetchPriority="high"
                 className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.02]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#122b24]/95 via-[#122b24]/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0b211b]/98 via-[#122b24]/45 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-7 text-white md:p-10">
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/75">
                   The starting point
                 </p>
-                <h1 className="mt-3 max-w-2xl font-serif text-4xl leading-[1.05] tracking-[-0.04em] md:text-5xl">
+                <h1 className="mt-3 max-w-2xl font-serif text-4xl leading-[1.05] tracking-[-0.04em] text-white md:text-5xl">
                   Start yoga with a plan you can actually keep.
                 </h1>
                 <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/80 md:text-base">
@@ -335,7 +336,7 @@ function HomePage() {
                 <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70">
                   Reviewed August 2026 · The Yoga Sensei editorial team
                 </p>
-                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold">
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white">
                   Start the beginner guide <ArrowRight className="h-4 w-4" />
                 </span>
               </div>
@@ -501,17 +502,19 @@ function HomePage() {
               <a
                 key={pick.href}
                 href={pick.href}
-                className="rounded-2xl bg-white/8 p-6 ring-1 ring-white/15 transition hover:-translate-y-1 hover:bg-white/12"
+                className="rounded-2xl bg-white/10 p-6 text-white ring-1 ring-white/20 transition hover:-translate-y-1 hover:bg-white/15"
               >
                 <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-accent-soft)]">
                   {pick.best}
                 </span>
-                <h3 className="mt-3 font-serif text-2xl">{pick.title}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-white/75">
+                <h3 className="mt-3 font-serif text-2xl text-white">
+                  {pick.title}
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-white/90">
                   {pick.reason}
                 </p>
-                <p className="mt-4 border-t border-white/15 pt-4 text-xs leading-relaxed text-white/70">
-                  <strong className="text-white/75">Trade-off:</strong>{' '}
+                <p className="mt-4 border-t border-white/20 pt-4 text-xs leading-relaxed text-white/80">
+                  <strong className="text-white">Trade-off:</strong>{' '}
                   {pick.tradeoff}
                 </p>
               </a>
