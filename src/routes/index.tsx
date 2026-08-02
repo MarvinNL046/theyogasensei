@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import { Container } from '#/components/ui/container'
 import { HomeLeadCapture } from '#/features/home/HomeLeadCapture'
+import { HomeInteractionTracking } from '#/components/analytics/HomeInteractionTracking'
 import { buildImageUrl } from '#/lib/images/variants'
 import { listContentSlugs, loadFrontmatter } from '#/lib/mdx/loader'
 
@@ -196,7 +197,8 @@ function HomePage() {
   const { poses } = Route.useLoaderData()
   return (
     <>
-      <section className="bg-[color:var(--color-bg)]">
+      <HomeInteractionTracking />
+      <section data-analytics-section="editorial-lead" className="bg-[color:var(--color-bg)]">
         <Container size="wide" className="py-7 md:py-10">
           <div className="grid gap-5 lg:grid-cols-[1.55fr_.8fr_.72fr]">
             <a
@@ -329,7 +331,7 @@ function HomePage() {
         </Container>
       </section>
 
-      <section className="bg-[color:var(--color-bg)] py-16 md:py-24">
+      <section data-analytics-section="needs" className="bg-[color:var(--color-bg)] py-16 md:py-24">
         <Container size="wide">
           <SectionHead
             kicker="Find your next step"
@@ -359,7 +361,7 @@ function HomePage() {
         </Container>
       </section>
 
-      <section className="bg-[color:var(--color-olive-deep)] py-16 text-white md:py-24">
+      <section data-analytics-section="quick-picks" className="bg-[color:var(--color-olive-deep)] py-16 text-white md:py-24">
         <Container size="wide">
           <SectionHead
             kicker="Quick picks"
@@ -391,7 +393,7 @@ function HomePage() {
         </Container>
       </section>
 
-      <section className="bg-[color:var(--color-bg)] py-16 md:py-24">
+      <section data-analytics-section="practice" className="bg-[color:var(--color-bg)] py-16 md:py-24">
         <Container size="wide">
           <SectionHead
             kicker="Practice"
@@ -425,7 +427,7 @@ function HomePage() {
       </section>
 
       {poses.length ? (
-        <section className="bg-[color:var(--color-surface-muted)] py-16 md:py-24">
+        <section data-analytics-section="poses" className="bg-[color:var(--color-surface-muted)] py-16 md:py-24">
           <Container size="wide">
             <SectionHead
               kicker="Pose library"
@@ -457,7 +459,7 @@ function HomePage() {
         </section>
       ) : null}
 
-      <section className="bg-[color:var(--color-bg)] py-16 md:py-24">
+      <section data-analytics-section="trust" className="bg-[color:var(--color-bg)] py-16 md:py-24">
         <Container size="wide">
           <div className="grid overflow-hidden rounded-[2rem] border border-[color:var(--color-border)] bg-white lg:grid-cols-[.8fr_1.2fr]">
             <div className="bg-[color:var(--color-surface-muted)] p-8 md:p-12">

@@ -2,6 +2,7 @@ import { useDeferredValue, useEffect, useState } from 'react'
 import type { FormEvent } from 'react'
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { ArrowRight, Search } from 'lucide-react'
+import { track } from '@vercel/analytics'
 import { Container } from '#/components/ui/container'
 import { cn } from '#/lib/utils'
 import { SITE_URL } from '#/lib/seo/head'
@@ -96,6 +97,11 @@ function SearchPage() {
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    track('Site search', {
+      contentType: activeType,
+      hasQuery: query.trim().length > 0,
+      resultCount: results.length,
+    })
     updateUrl(query, activeType)
   }
 
