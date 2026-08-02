@@ -57,8 +57,8 @@ function RootDocument() {
             ]}
           />
         )}
-        {/* Vercel Analytics is cookieless. GA4 (gtag) defaults to denied via
-            Consent Mode v2; the banner lets visitors opt in. */}
+        {/* Vercel Analytics is cookieless. The consent banner loads GA4 only
+            after a visitor explicitly opts in. */}
         <Analytics />
         <SpeedInsights />
         <ConsentBanner />

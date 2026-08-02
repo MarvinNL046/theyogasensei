@@ -164,16 +164,24 @@ function SectionHead({
   title,
   href,
   link = 'Explore all',
+  dark = false,
 }: {
   kicker: string
   title: string
   href?: string
   link?: string
+  dark?: boolean
 }) {
   return (
     <div className="flex flex-wrap items-end justify-between gap-5">
       <div>
-        <p className="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--color-accent-deep)]">
+        <p
+          className={
+            dark
+              ? 'text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--color-accent-soft)]'
+              : 'text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--color-accent-deep)]'
+          }
+        >
           {kicker}
         </p>
         <h2 className="mt-3 max-w-3xl font-serif text-3xl leading-tight tracking-[-0.035em] md:text-[42px]">
@@ -183,7 +191,11 @@ function SectionHead({
       {href ? (
         <Link
           to={href}
-          className="inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--color-olive-deep)]"
+          className={
+            dark
+              ? 'inline-flex items-center gap-2 text-sm font-semibold text-white underline decoration-white/50 underline-offset-4'
+              : 'inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--color-olive-deep)]'
+          }
         >
           {link}
           <ArrowRight className="h-4 w-4" />
@@ -198,18 +210,23 @@ function HomePage() {
   return (
     <>
       <HomeInteractionTracking />
-      <section data-analytics-section="editorial-lead" className="bg-[color:var(--color-bg)]">
+      <section
+        data-analytics-section="editorial-lead"
+        className="bg-[color:var(--color-bg)]"
+      >
         <Container size="wide" className="py-7 md:py-10">
           <div className="grid gap-5 lg:grid-cols-[1.55fr_.8fr_.72fr]">
             <a
               href="/guides/yoga-for-beginners"
-              className="group relative min-h-[520px] overflow-hidden rounded-[1.8rem] bg-[color:var(--color-olive-deep)]"
+              className="group relative min-h-[520px] overflow-hidden rounded-[1.8rem] bg-[color:var(--color-olive-deep)] [--color-heading:white]"
             >
               <img
                 src="/images/guides/yoga-for-beginners/hero.webp"
                 alt="A calm home yoga practice in natural light"
                 width={1200}
                 height={900}
+                loading="eager"
+                fetchPriority="high"
                 className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.02]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#122b24]/95 via-[#122b24]/20 to-transparent" />
@@ -238,6 +255,10 @@ function HomePage() {
                 <img
                   src="/images/guides/how-to-choose-a-yoga-mat/materials.webp"
                   alt="Yoga mat material samples"
+                  width={1280}
+                  height={854}
+                  loading="lazy"
+                  decoding="async"
                   className="aspect-[16/9] w-full object-cover"
                 />
                 <div className="p-6">
@@ -256,6 +277,10 @@ function HomePage() {
                 <img
                   src="/images/brand/article-hero-morning-yoga.webp"
                   alt="Morning yoga practice"
+                  width={1536}
+                  height={1024}
+                  loading="lazy"
+                  decoding="async"
                   className="aspect-[16/9] w-full object-cover"
                 />
                 <div className="p-6">
@@ -286,7 +311,7 @@ function HomePage() {
                         {index + 1}
                       </span>
                       <span>
-                        <span className="block text-[9px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-ink-muted)]">
+                        <span className="block text-[9px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-ink-soft)]">
                           {story.label}
                         </span>
                         <span className="mt-1 block font-serif text-lg leading-snug group-hover:text-[color:var(--color-olive)]">
@@ -331,7 +356,10 @@ function HomePage() {
         </Container>
       </section>
 
-      <section data-analytics-section="needs" className="bg-[color:var(--color-bg)] py-16 md:py-24">
+      <section
+        data-analytics-section="needs"
+        className="bg-[color:var(--color-bg)] py-16 md:py-24"
+      >
         <Container size="wide">
           <SectionHead
             kicker="Find your next step"
@@ -361,13 +389,17 @@ function HomePage() {
         </Container>
       </section>
 
-      <section data-analytics-section="quick-picks" className="bg-[color:var(--color-olive-deep)] py-16 text-white md:py-24">
+      <section
+        data-analytics-section="quick-picks"
+        className="bg-[color:var(--color-olive-deep)] py-16 text-white [--color-heading:white] md:py-24"
+      >
         <Container size="wide">
           <SectionHead
             kicker="Quick picks"
             title="Find the right gear for your practice."
             href="/best"
             link="Explore best gear"
+            dark
           />
           <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {quickPicks.map((pick) => (
@@ -383,7 +415,7 @@ function HomePage() {
                 <p className="mt-4 text-sm leading-relaxed text-white/75">
                   {pick.reason}
                 </p>
-                <p className="mt-4 border-t border-white/15 pt-4 text-xs leading-relaxed text-white/55">
+                <p className="mt-4 border-t border-white/15 pt-4 text-xs leading-relaxed text-white/70">
                   <strong className="text-white/75">Trade-off:</strong>{' '}
                   {pick.tradeoff}
                 </p>
@@ -393,7 +425,10 @@ function HomePage() {
         </Container>
       </section>
 
-      <section data-analytics-section="practice" className="bg-[color:var(--color-bg)] py-16 md:py-24">
+      <section
+        data-analytics-section="practice"
+        className="bg-[color:var(--color-bg)] py-16 md:py-24"
+      >
         <Container size="wide">
           <SectionHead
             kicker="Practice"
@@ -410,6 +445,10 @@ function HomePage() {
                 <img
                   src={item.image}
                   alt=""
+                  width={1200}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
                   className="aspect-[3/2] w-full object-cover"
                 />
                 <div className="p-6">
@@ -427,7 +466,10 @@ function HomePage() {
       </section>
 
       {poses.length ? (
-        <section data-analytics-section="poses" className="bg-[color:var(--color-surface-muted)] py-16 md:py-24">
+        <section
+          data-analytics-section="poses"
+          className="bg-[color:var(--color-surface-muted)] py-16 md:py-24"
+        >
           <Container size="wide">
             <SectionHead
               kicker="Pose library"
@@ -445,7 +487,11 @@ function HomePage() {
                   <div className="overflow-hidden rounded-2xl bg-white">
                     <img
                       src={buildImageUrl(pose.heroImage, 'card')}
-                      alt={pose.title}
+                      alt=""
+                      width={800}
+                      height={600}
+                      loading="lazy"
+                      decoding="async"
                       className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
                     />
                   </div>
@@ -459,7 +505,10 @@ function HomePage() {
         </section>
       ) : null}
 
-      <section data-analytics-section="trust" className="bg-[color:var(--color-bg)] py-16 md:py-24">
+      <section
+        data-analytics-section="trust"
+        className="bg-[color:var(--color-bg)] py-16 md:py-24"
+      >
         <Container size="wide">
           <div className="grid overflow-hidden rounded-[2rem] border border-[color:var(--color-border)] bg-white lg:grid-cols-[.8fr_1.2fr]">
             <div className="bg-[color:var(--color-surface-muted)] p-8 md:p-12">

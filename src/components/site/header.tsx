@@ -31,7 +31,6 @@ export function Header() {
         <Link
           to="/"
           onClick={close}
-          aria-label="The Yoga Sensei — home"
           className="group flex shrink-0 items-center gap-2.5"
         >
           <img

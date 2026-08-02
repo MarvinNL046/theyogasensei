@@ -49,16 +49,14 @@ export function Footer() {
       <Container size="wide" className="py-16 md:py-20">
         <div className="grid gap-12 border-b border-white/15 pb-14 lg:grid-cols-[1.45fr_repeat(4,1fr)]">
           <div>
-            <Link
-              to="/"
-              className="inline-flex items-center gap-3"
-              aria-label="The Yoga Sensei — home"
-            >
+            <Link to="/" className="inline-flex items-center gap-3">
               <img
                 src="/logo/logo-enso.png"
                 alt=""
                 width={44}
                 height={44}
+                loading="lazy"
+                decoding="async"
                 className="h-11 w-11 object-contain"
               />
               <span className="font-serif text-2xl font-semibold tracking-[-0.04em]">
@@ -89,14 +87,17 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <div className="flex flex-col gap-2 pt-6 text-xs text-white/45 sm:flex-row sm:justify-between">
+        <div className="flex flex-col gap-2 pt-6 text-xs text-white/70 sm:flex-row sm:justify-between">
           <p>
             © {new Date().getFullYear()} The Yoga Sensei. Operated by Marvin
             Smit, The Netherlands.
           </p>
           <p>
             Found something outdated?{' '}
-            <Link to="/contact" className="text-white/70 hover:text-white">
+            <Link
+              to="/contact"
+              className="font-medium text-white underline decoration-white/60 underline-offset-4 hover:text-white"
+            >
               Tell us.
             </Link>
           </p>
