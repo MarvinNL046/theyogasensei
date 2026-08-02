@@ -22,6 +22,24 @@ const TITLE = 'Search The Yoga Sensei'
 const DESCRIPTION =
   'Search yoga practice guides, pose instructions, gear advice, reviews and comparisons from The Yoga Sensei.'
 
+const SEARCH_STOP_WORDS = new Set(['a', 'an', 'for', 'the', 'to', 'with'])
+const SEARCH_ALIASES: Record<string, Array<string>> = {
+  beginner: ['beginner', 'beginners', 'start', 'starting'],
+  beginners: ['beginner', 'beginners', 'start', 'starting'],
+  knee: ['knee', 'knees', 'joint'],
+  knees: ['knee', 'knees', 'joint'],
+  sensitive: ['sensitive', 'joint', 'bad'],
+  sweaty: ['sweaty', 'sweat', 'hot'],
+  travel: ['travel', 'foldable', 'portable', 'lightweight'],
+}
+
+function matchesQuery(haystack: string, query: string): boolean {
+  const terms = query.split(/\s+/).filter((term) => !SEARCH_STOP_WORDS.has(term))
+  return terms.every((term) =>
+    (SEARCH_ALIASES[term] ?? [term]).some((option) => haystack.includes(option)),
+  )
+}
+
 export const Route = createFileRoute('/search')({
   validateSearch: (search: Record<string, unknown>): SearchParams => ({
     ...(typeof search.q === 'string' && search.q.trim()
@@ -64,9 +82,7 @@ function SearchPage() {
     if (activeType !== 'All' && entry.type !== activeType) return false
     if (!deferredQuery) return true
     const haystack = `${entry.title} ${entry.description} ${entry.tags.join(' ')}`.toLowerCase()
-    return deferredQuery
-      .split(/\s+/)
-      .every((term) => haystack.includes(term))
+    return matchesQuery(haystack, deferredQuery)
   })
 
   const updateUrl = (nextQuery: string, nextType: SearchType) =>
