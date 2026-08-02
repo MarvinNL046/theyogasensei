@@ -84,16 +84,25 @@ export function Header() {
             Start here
           </Link>
         </div>
-        <button
-          type="button"
-          onClick={() => setOpen((value) => !value)}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          className="-mr-2 inline-flex h-10 w-10 items-center justify-center rounded-xl text-[color:var(--color-ink)] hover:bg-[color:var(--color-surface-muted)] xl:hidden"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="ml-auto flex shrink-0 items-center gap-1.5 xl:hidden">
+          <Link
+            to="/starter-guide"
+            onClick={close}
+            className="inline-flex min-h-11 items-center rounded-full bg-[color:var(--color-olive)] px-3.5 text-xs font-semibold text-white transition hover:bg-[color:var(--color-olive-deep)] lg:hidden"
+          >
+            Start here
+          </Link>
+          <button
+            type="button"
+            onClick={() => setOpen((value) => !value)}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            className="-mr-2 inline-flex h-11 w-11 items-center justify-center rounded-xl text-[color:var(--color-ink)] hover:bg-[color:var(--color-surface-muted)]"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </Container>
 
       <nav
