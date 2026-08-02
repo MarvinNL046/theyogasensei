@@ -202,6 +202,13 @@ function RatingsBox({ ratings }: { ratings: SubRating[] }) {
   )
 }
 
+function displayAssessment(value: string): string {
+  const score = Number(value)
+  return Number.isFinite(score) && score >= 0 && score <= 5
+    ? qualitativeScore(score)
+    : value
+}
+
 /**
  * Single-product review layout shared by every /reviews/<mat> page. Driven
  * entirely by the `detail` prop so each product is just a data file + a thin
@@ -547,7 +554,7 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
                           {row.label}
                         </dt>
                         <dd className="text-right text-[color:var(--color-ink-soft)]">
-                          {row.value}
+                          {displayAssessment(row.value)}
                         </dd>
                       </div>
                     ))}
