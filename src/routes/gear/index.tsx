@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { EditorialHub } from '#/components/site/EditorialHub'
 import { buildHubHead } from '#/lib/seo/hub'
 
-export const Route = createFileRoute('/gear')({
+export const Route = createFileRoute('/gear/')({
   head: () =>
     buildHubHead({
       title: 'Yoga Gear Guides | The Yoga Sensei',
@@ -22,7 +22,7 @@ export const Route = createFileRoute('/gear')({
           title: 'How to choose a yoga mat',
           description:
             'A decision framework for material, thickness, grip, size and durability.',
-          href: '/guides/how-to-choose-a-yoga-mat',
+          href: '/gear/yoga-mats',
           image: '/images/guides/how-to-choose-a-yoga-mat/materials.webp',
         },
         {
@@ -30,7 +30,7 @@ export const Route = createFileRoute('/gear')({
           title: 'Yoga props explained',
           description:
             'Blocks, straps, bolsters and blankets—plus when household alternatives work.',
-          href: '/guides/yoga-props',
+          href: '/gear/props',
           image: '/images/brand/pick-cork-blocks.webp',
         },
         {
@@ -38,30 +38,30 @@ export const Route = createFileRoute('/gear')({
           title: 'Set up a calm practice space',
           description:
             'Choose supportive seating and skip decorative clutter that does not help.',
-          href: '/guides/meditation-room-accessories',
+          href: '/gear/meditation',
           image: '/images/brand/topic-meditation.webp',
         },
       ]}
       sections={[
         {
-          title: 'Yoga mat materials',
-          description: 'Cork, rubber, PVC, TPE, NBR and PU explained.',
-          href: '/guides/cork-vs-rubber-yoga-mat',
+          title: 'Yoga mats',
+          description: 'Buying, material, sizing and care guidance.',
+          href: '/gear/yoga-mats',
         },
         {
-          title: 'Thickness and cushioning',
-          description: 'Match floor feel to stability and joint comfort.',
-          href: '/guides/how-thick-should-a-yoga-mat-be',
+          title: 'Props',
+          description: 'Blocks, straps, bolsters, blankets and specialist support.',
+          href: '/gear/props',
         },
         {
-          title: 'Cleaning and care',
-          description: 'Use the right method for the mat surface.',
-          href: '/guides/how-to-clean-a-yoga-mat',
+          title: 'Meditation',
+          description: 'Cushions, benches, chairs, mats and timers.',
+          href: '/gear/meditation',
         },
         {
-          title: 'Storage',
-          description: 'Keep a mat dry, unwarped and easy to reach.',
-          href: '/guides/how-to-store-a-yoga-mat',
+          title: 'Travel',
+          description: 'Foldable mats, carrying systems and packing trade-offs.',
+          href: '/gear/travel',
         },
         {
           title: 'Travel and carrying',

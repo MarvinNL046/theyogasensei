@@ -18,7 +18,6 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PracticeRouteImport } from './routes/practice'
 import { Route as MedicalReviewPolicyRouteImport } from './routes/medical-review-policy'
 import { Route as HowWeResearchRouteImport } from './routes/how-we-research'
-import { Route as GearRouteImport } from './routes/gear'
 import { Route as EditorialPolicyRouteImport } from './routes/editorial-policy'
 import { Route as CorrectionsPolicyRouteImport } from './routes/corrections-policy'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -33,6 +32,7 @@ import { Route as ReviewsIndexRouteImport } from './routes/reviews/index'
 import { Route as PosesIndexRouteImport } from './routes/poses/index'
 import { Route as GuidesIndexRouteImport } from './routes/guides/index'
 import { Route as GoIndexRouteImport } from './routes/go/index'
+import { Route as GearIndexRouteImport } from './routes/gear/index'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as ReviewsRetrospecRouteImport } from './routes/reviews/retrospec'
 import { Route as ReviewsMandukaProRouteImport } from './routes/reviews/manduka-pro'
@@ -46,6 +46,10 @@ import { Route as ReviewsAloRouteImport } from './routes/reviews/alo'
 import { Route as PosesSlugRouteImport } from './routes/poses/$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
 import { Route as GoSlugRouteImport } from './routes/go/$slug'
+import { Route as GearYogaMatsRouteImport } from './routes/gear/yoga-mats'
+import { Route as GearTravelRouteImport } from './routes/gear/travel'
+import { Route as GearPropsRouteImport } from './routes/gear/props'
+import { Route as GearMeditationRouteImport } from './routes/gear/meditation'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as AuthorsSlugRouteImport } from './routes/authors/$slug'
 
@@ -92,11 +96,6 @@ const MedicalReviewPolicyRoute = MedicalReviewPolicyRouteImport.update({
 const HowWeResearchRoute = HowWeResearchRouteImport.update({
   id: '/how-we-research',
   path: '/how-we-research',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GearRoute = GearRouteImport.update({
-  id: '/gear',
-  path: '/gear',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EditorialPolicyRoute = EditorialPolicyRouteImport.update({
@@ -169,6 +168,11 @@ const GoIndexRoute = GoIndexRouteImport.update({
   path: '/go/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GearIndexRoute = GearIndexRouteImport.update({
+  id: '/gear/',
+  path: '/gear/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
   path: '/blog/',
@@ -234,6 +238,26 @@ const GoSlugRoute = GoSlugRouteImport.update({
   path: '/go/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GearYogaMatsRoute = GearYogaMatsRouteImport.update({
+  id: '/gear/yoga-mats',
+  path: '/gear/yoga-mats',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GearTravelRoute = GearTravelRouteImport.update({
+  id: '/gear/travel',
+  path: '/gear/travel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GearPropsRoute = GearPropsRouteImport.update({
+  id: '/gear/props',
+  path: '/gear/props',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GearMeditationRoute = GearMeditationRouteImport.update({
+  id: '/gear/meditation',
+  path: '/gear/meditation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/blog/$slug',
   path: '/blog/$slug',
@@ -256,7 +280,6 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/corrections-policy': typeof CorrectionsPolicyRoute
   '/editorial-policy': typeof EditorialPolicyRoute
-  '/gear': typeof GearRoute
   '/how-we-research': typeof HowWeResearchRoute
   '/medical-review-policy': typeof MedicalReviewPolicyRoute
   '/practice': typeof PracticeRoute
@@ -268,6 +291,10 @@ export interface FileRoutesByFullPath {
   '/unsubscribe': typeof UnsubscribeRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/gear/meditation': typeof GearMeditationRoute
+  '/gear/props': typeof GearPropsRoute
+  '/gear/travel': typeof GearTravelRoute
+  '/gear/yoga-mats': typeof GearYogaMatsRoute
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/poses/$slug': typeof PosesSlugRoute
@@ -281,6 +308,7 @@ export interface FileRoutesByFullPath {
   '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
   '/reviews/retrospec': typeof ReviewsRetrospecRoute
   '/blog/': typeof BlogIndexRoute
+  '/gear/': typeof GearIndexRoute
   '/go/': typeof GoIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/poses/': typeof PosesIndexRoute
@@ -297,7 +325,6 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/corrections-policy': typeof CorrectionsPolicyRoute
   '/editorial-policy': typeof EditorialPolicyRoute
-  '/gear': typeof GearRoute
   '/how-we-research': typeof HowWeResearchRoute
   '/medical-review-policy': typeof MedicalReviewPolicyRoute
   '/practice': typeof PracticeRoute
@@ -309,6 +336,10 @@ export interface FileRoutesByTo {
   '/unsubscribe': typeof UnsubscribeRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/gear/meditation': typeof GearMeditationRoute
+  '/gear/props': typeof GearPropsRoute
+  '/gear/travel': typeof GearTravelRoute
+  '/gear/yoga-mats': typeof GearYogaMatsRoute
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/poses/$slug': typeof PosesSlugRoute
@@ -322,6 +353,7 @@ export interface FileRoutesByTo {
   '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
   '/reviews/retrospec': typeof ReviewsRetrospecRoute
   '/blog': typeof BlogIndexRoute
+  '/gear': typeof GearIndexRoute
   '/go': typeof GoIndexRoute
   '/guides': typeof GuidesIndexRoute
   '/poses': typeof PosesIndexRoute
@@ -339,7 +371,6 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/corrections-policy': typeof CorrectionsPolicyRoute
   '/editorial-policy': typeof EditorialPolicyRoute
-  '/gear': typeof GearRoute
   '/how-we-research': typeof HowWeResearchRoute
   '/medical-review-policy': typeof MedicalReviewPolicyRoute
   '/practice': typeof PracticeRoute
@@ -351,6 +382,10 @@ export interface FileRoutesById {
   '/unsubscribe': typeof UnsubscribeRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/gear/meditation': typeof GearMeditationRoute
+  '/gear/props': typeof GearPropsRoute
+  '/gear/travel': typeof GearTravelRoute
+  '/gear/yoga-mats': typeof GearYogaMatsRoute
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/poses/$slug': typeof PosesSlugRoute
@@ -364,6 +399,7 @@ export interface FileRoutesById {
   '/reviews/manduka-pro': typeof ReviewsMandukaProRoute
   '/reviews/retrospec': typeof ReviewsRetrospecRoute
   '/blog/': typeof BlogIndexRoute
+  '/gear/': typeof GearIndexRoute
   '/go/': typeof GoIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/poses/': typeof PosesIndexRoute
@@ -382,7 +418,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/corrections-policy'
     | '/editorial-policy'
-    | '/gear'
     | '/how-we-research'
     | '/medical-review-policy'
     | '/practice'
@@ -394,6 +429,10 @@ export interface FileRouteTypes {
     | '/unsubscribe'
     | '/authors/$slug'
     | '/blog/$slug'
+    | '/gear/meditation'
+    | '/gear/props'
+    | '/gear/travel'
+    | '/gear/yoga-mats'
     | '/go/$slug'
     | '/guides/$slug'
     | '/poses/$slug'
@@ -407,6 +446,7 @@ export interface FileRouteTypes {
     | '/reviews/manduka-pro'
     | '/reviews/retrospec'
     | '/blog/'
+    | '/gear/'
     | '/go/'
     | '/guides/'
     | '/poses/'
@@ -423,7 +463,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/corrections-policy'
     | '/editorial-policy'
-    | '/gear'
     | '/how-we-research'
     | '/medical-review-policy'
     | '/practice'
@@ -435,6 +474,10 @@ export interface FileRouteTypes {
     | '/unsubscribe'
     | '/authors/$slug'
     | '/blog/$slug'
+    | '/gear/meditation'
+    | '/gear/props'
+    | '/gear/travel'
+    | '/gear/yoga-mats'
     | '/go/$slug'
     | '/guides/$slug'
     | '/poses/$slug'
@@ -448,6 +491,7 @@ export interface FileRouteTypes {
     | '/reviews/manduka-pro'
     | '/reviews/retrospec'
     | '/blog'
+    | '/gear'
     | '/go'
     | '/guides'
     | '/poses'
@@ -464,7 +508,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/corrections-policy'
     | '/editorial-policy'
-    | '/gear'
     | '/how-we-research'
     | '/medical-review-policy'
     | '/practice'
@@ -476,6 +519,10 @@ export interface FileRouteTypes {
     | '/unsubscribe'
     | '/authors/$slug'
     | '/blog/$slug'
+    | '/gear/meditation'
+    | '/gear/props'
+    | '/gear/travel'
+    | '/gear/yoga-mats'
     | '/go/$slug'
     | '/guides/$slug'
     | '/poses/$slug'
@@ -489,6 +536,7 @@ export interface FileRouteTypes {
     | '/reviews/manduka-pro'
     | '/reviews/retrospec'
     | '/blog/'
+    | '/gear/'
     | '/go/'
     | '/guides/'
     | '/poses/'
@@ -506,7 +554,6 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CorrectionsPolicyRoute: typeof CorrectionsPolicyRoute
   EditorialPolicyRoute: typeof EditorialPolicyRoute
-  GearRoute: typeof GearRoute
   HowWeResearchRoute: typeof HowWeResearchRoute
   MedicalReviewPolicyRoute: typeof MedicalReviewPolicyRoute
   PracticeRoute: typeof PracticeRoute
@@ -518,6 +565,10 @@ export interface RootRouteChildren {
   UnsubscribeRoute: typeof UnsubscribeRoute
   AuthorsSlugRoute: typeof AuthorsSlugRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  GearMeditationRoute: typeof GearMeditationRoute
+  GearPropsRoute: typeof GearPropsRoute
+  GearTravelRoute: typeof GearTravelRoute
+  GearYogaMatsRoute: typeof GearYogaMatsRoute
   GoSlugRoute: typeof GoSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   PosesSlugRoute: typeof PosesSlugRoute
@@ -531,6 +582,7 @@ export interface RootRouteChildren {
   ReviewsMandukaProRoute: typeof ReviewsMandukaProRoute
   ReviewsRetrospecRoute: typeof ReviewsRetrospecRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  GearIndexRoute: typeof GearIndexRoute
   GoIndexRoute: typeof GoIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   PosesIndexRoute: typeof PosesIndexRoute
@@ -600,13 +652,6 @@ declare module '@tanstack/react-router' {
       path: '/how-we-research'
       fullPath: '/how-we-research'
       preLoaderRoute: typeof HowWeResearchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/gear': {
-      id: '/gear'
-      path: '/gear'
-      fullPath: '/gear'
-      preLoaderRoute: typeof GearRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/editorial-policy': {
@@ -707,6 +752,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GoIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gear/': {
+      id: '/gear/'
+      path: '/gear'
+      fullPath: '/gear/'
+      preLoaderRoute: typeof GearIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/': {
       id: '/blog/'
       path: '/blog'
@@ -798,6 +850,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GoSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gear/yoga-mats': {
+      id: '/gear/yoga-mats'
+      path: '/gear/yoga-mats'
+      fullPath: '/gear/yoga-mats'
+      preLoaderRoute: typeof GearYogaMatsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gear/travel': {
+      id: '/gear/travel'
+      path: '/gear/travel'
+      fullPath: '/gear/travel'
+      preLoaderRoute: typeof GearTravelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gear/props': {
+      id: '/gear/props'
+      path: '/gear/props'
+      fullPath: '/gear/props'
+      preLoaderRoute: typeof GearPropsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gear/meditation': {
+      id: '/gear/meditation'
+      path: '/gear/meditation'
+      fullPath: '/gear/meditation'
+      preLoaderRoute: typeof GearMeditationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/$slug': {
       id: '/blog/$slug'
       path: '/blog/$slug'
@@ -826,7 +906,6 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CorrectionsPolicyRoute: CorrectionsPolicyRoute,
   EditorialPolicyRoute: EditorialPolicyRoute,
-  GearRoute: GearRoute,
   HowWeResearchRoute: HowWeResearchRoute,
   MedicalReviewPolicyRoute: MedicalReviewPolicyRoute,
   PracticeRoute: PracticeRoute,
@@ -838,6 +917,10 @@ const rootRouteChildren: RootRouteChildren = {
   UnsubscribeRoute: UnsubscribeRoute,
   AuthorsSlugRoute: AuthorsSlugRoute,
   BlogSlugRoute: BlogSlugRoute,
+  GearMeditationRoute: GearMeditationRoute,
+  GearPropsRoute: GearPropsRoute,
+  GearTravelRoute: GearTravelRoute,
+  GearYogaMatsRoute: GearYogaMatsRoute,
   GoSlugRoute: GoSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   PosesSlugRoute: PosesSlugRoute,
@@ -851,6 +934,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReviewsMandukaProRoute: ReviewsMandukaProRoute,
   ReviewsRetrospecRoute: ReviewsRetrospecRoute,
   BlogIndexRoute: BlogIndexRoute,
+  GearIndexRoute: GearIndexRoute,
   GoIndexRoute: GoIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   PosesIndexRoute: PosesIndexRoute,
