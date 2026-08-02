@@ -1,80 +1,97 @@
+import { useEffect, useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
-import { EditorialHub } from '#/components/site/EditorialHub'
+import { PracticeHub } from '#/features/practice-hub/PracticeHub'
+import {
+  DEFAULT_PRACTICE_FILTERS,
+  PRACTICE_EXPERIENCE,
+  PRACTICE_GOALS,
+  PRACTICE_TIMES,
+  filterSlug,
+  practiceValueFromSlug,
+} from '#/features/practice-hub/data'
+import type { PracticeFilters } from '#/features/practice-hub/data'
 import { buildHubHead } from '#/lib/seo/hub'
 
+interface PracticeSearch {
+  goal?: string
+  time?: string
+  experience?: string
+}
+
 export const Route = createFileRoute('/practice')({
+  validateSearch: (search: Record<string, unknown>): PracticeSearch => {
+    const goal = typeof search.goal === 'string' ? search.goal : undefined
+    const time = typeof search.time === 'string' ? search.time : undefined
+    const experience =
+      typeof search.experience === 'string' ? search.experience : undefined
+    return {
+      ...(practiceValueFromSlug(PRACTICE_GOALS, goal, 'All goals') ===
+      'All goals'
+        ? {}
+        : { goal }),
+      ...(practiceValueFromSlug(PRACTICE_TIMES, time, 'Any duration') ===
+      'Any duration'
+        ? {}
+        : { time }),
+      ...(practiceValueFromSlug(
+        PRACTICE_EXPERIENCE,
+        experience,
+        'All experience levels',
+      ) === 'All experience levels'
+        ? {}
+        : { experience }),
+    }
+  },
   head: () =>
     buildHubHead({
       title: 'Yoga Practice Guides | The Yoga Sensei',
       description:
-        'Build a safe, sustainable yoga practice with beginner routines, chair yoga, morning yoga, balance and flexibility guidance.',
+        'Filter safe, practical yoga routines, poses and beginner guides by goal, time available and experience level.',
       path: '/practice',
       name: 'Yoga practice guides',
     }),
-  component: () => (
-    <EditorialHub
-      eyebrow="Practice library"
-      title="Build a practice that fits real life."
-      intro="Choose by goal, time and experience—not by pressure to perform. These guides pair concrete routines with modifications and clear safety context."
-      cards={[
-        {
-          label: 'Begin here',
-          title: 'Yoga for beginners',
-          description:
-            'Set up your first calm home practice, learn foundational poses and avoid common early mistakes.',
-          href: '/guides/yoga-for-beginners',
-          image: '/images/guides/yoga-for-beginners/hero.webp',
-        },
-        {
-          label: '10-minute routine',
-          title: 'Morning yoga',
-          description:
-            'A short sequence for days when consistency matters more than intensity.',
-          href: '/guides/morning-yoga-routine',
-          image: '/images/brand/article-hero-morning-yoga.webp',
-        },
-        {
-          label: 'Gentle practice',
-          title: 'Chair yoga',
-          description:
-            'A safety-aware seated starting point with practical variations.',
-          href: '/guides/chair-yoga-for-beginners',
-          image: '/images/guides/chair-yoga-for-beginners/hero.webp',
-        },
-      ]}
-      sections={[
-        {
-          title: 'Start as a beginner',
-          description: 'Foundations, setup and a manageable first routine.',
-          href: '/starter-guide',
-        },
-        {
-          title: 'Choose by time available',
-          description: 'Short routines for mornings and busy days.',
-          href: '/guides/morning-yoga-routine',
-        },
-        {
-          title: 'Practise with a chair',
-          description: 'Seated variations and clear safety notes.',
-          href: '/guides/chair-yoga-for-seniors',
-        },
-        {
-          title: 'Compare yoga styles',
-          description:
-            'Understand how Hatha and Vinyasa differ in pace and structure.',
-          href: '/guides/hatha-vs-vinyasa',
-        },
-        {
-          title: 'Learn individual poses',
-          description: 'Step-by-step cues, modifications and common mistakes.',
-          href: '/poses',
-        },
-        {
-          title: 'Choose helpful props',
-          description: 'Use support when it solves a real practice problem.',
-          href: '/guides/yoga-props',
-        },
-      ]}
-    />
-  ),
+  component: PracticeIndex,
 })
+
+function PracticeIndex() {
+  const search = Route.useSearch()
+  const navigate = Route.useNavigate()
+  const [hydrated, setHydrated] = useState(false)
+  useEffect(() => setHydrated(true), [])
+  const filters: PracticeFilters = hydrated
+    ? {
+        goal: practiceValueFromSlug(PRACTICE_GOALS, search.goal, 'All goals'),
+        time: practiceValueFromSlug(
+          PRACTICE_TIMES,
+          search.time,
+          'Any duration',
+        ),
+        experience: practiceValueFromSlug(
+          PRACTICE_EXPERIENCE,
+          search.experience,
+          'All experience levels',
+        ),
+      }
+    : DEFAULT_PRACTICE_FILTERS
+  return (
+    <PracticeHub
+      filters={filters}
+      onChange={(next) =>
+        navigate({
+          search: {
+            ...(next.goal === 'All goals'
+              ? {}
+              : { goal: filterSlug(next.goal) }),
+            ...(next.time === 'Any duration'
+              ? {}
+              : { time: filterSlug(next.time) }),
+            ...(next.experience === 'All experience levels'
+              ? {}
+              : { experience: filterSlug(next.experience) }),
+          },
+          replace: true,
+        })
+      }
+    />
+  )
+}
