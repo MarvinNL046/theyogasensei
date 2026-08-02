@@ -12,6 +12,11 @@ import { contentMdxComponents } from '#/lib/mdx/components'
 import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band'
 import { ReadNext } from '#/components/site/read-next'
 import { Faq } from '#/components/seo/Faq'
+import { PoseInfoCard } from '#/components/editorial/PoseInfoCard'
+import {
+  ResearchStatus,
+  UpdateHistory,
+} from '#/components/editorial/TrustBlocks'
 
 // Related reading shown in the pose sidebar. Curated EXISTING slugs only.
 // Poses cross-link to the gear guides that matter most for practising them
@@ -86,9 +91,10 @@ function PosePage() {
   const { frontmatter, author } = Route.useLoaderData()
   const { slug } = Route.useParams()
   const { Component } = loadContent('poses', slug)
-  const eyebrow = frontmatter.tags?.[0] ?? 'Pose'
+  const eyebrow = frontmatter.tags[0]
   const heroImageUrl = buildImageUrl(frontmatter.heroImage, 'og')
-  const faqItems = 'faq' in frontmatter && frontmatter.faq ? frontmatter.faq : []
+  const faqItems =
+    'faq' in frontmatter && frontmatter.faq ? frontmatter.faq : []
 
   return (
     <>
@@ -102,7 +108,10 @@ function PosePage() {
                 aria-label="Breadcrumb"
                 className="mb-8 flex flex-wrap items-center gap-3 text-xs text-[color:var(--color-ink-muted)]"
               >
-                <Link to="/" className="transition hover:text-[color:var(--color-ink)]">
+                <Link
+                  to="/"
+                  className="transition hover:text-[color:var(--color-ink)]"
+                >
                   Home
                 </Link>
                 <span aria-hidden="true">›</span>
@@ -118,6 +127,9 @@ function PosePage() {
                 </span>
               </nav>
               <Eyebrow tone="default">{eyebrow}</Eyebrow>
+              <div className="mt-4">
+                <ResearchStatus status="Educational pose guide · safety review required" />
+              </div>
               <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight md:text-[44px]">
                 {frontmatter.title}
               </h1>
@@ -173,6 +185,25 @@ function PosePage() {
         <Container size="wide">
           <div className="grid min-w-0 gap-12 md:grid-cols-12 md:gap-12 lg:gap-16">
             <article className="prose prose-stone prose-lg min-w-0 max-w-full md:col-span-8 prose-headings:scroll-mt-28 prose-headings:font-serif prose-headings:tracking-tight prose-headings:text-[color:var(--color-ink)] prose-p:text-[color:var(--color-ink-soft)] prose-a:text-[color:var(--color-olive)] prose-a:underline-offset-2 hover:prose-a:text-[color:var(--color-olive-deep)] prose-strong:text-[color:var(--color-ink)] prose-blockquote:border-l-[color:var(--color-olive)] prose-blockquote:text-[color:var(--color-ink-soft)] prose-th:text-[color:var(--color-ink)] prose-td:text-[color:var(--color-ink-soft)]">
+              <PoseInfoCard slug={slug} />
+              <div className="not-prose mb-6">
+                <UpdateHistory
+                  entries={[
+                    {
+                      date: formatDate(frontmatter.lastReviewedAt),
+                      note: 'Instructions, modifications and safety context reviewed.',
+                    },
+                    ...(frontmatter.publishedAt !== frontmatter.lastReviewedAt
+                      ? [
+                          {
+                            date: formatDate(frontmatter.publishedAt),
+                            note: 'First published.',
+                          },
+                        ]
+                      : []),
+                  ]}
+                />
+              </div>
               <Component components={contentMdxComponents} />
               {faqItems.length > 0 ? <Faq items={faqItems} /> : null}
             </article>
@@ -281,7 +312,9 @@ function PosePage() {
       </section>
 
       {/* READ NEXT — this pose's curated related[] links, hop-free via the registry */}
-      <ReadNext items={resolveRelated(frontmatter.related, { exclude: slug, limit: 3 })} />
+      <ReadNext
+        items={resolveRelated(frontmatter.related, { exclude: slug, limit: 3 })}
+      />
 
       {/* CLOSING NEWSLETTER CAPTURE */}
       <ArticleNewsletterBand source={`pose:${slug}`} />

@@ -29,6 +29,7 @@ import {
   ResearchStatus,
   UpdateHistory,
 } from '#/components/editorial/TrustBlocks'
+import { GuideTemplatePanel } from '#/components/editorial/GuideTemplatePanel'
 
 // Sidebar "Popular articles" — hand-curated, EXISTING slugs only.
 // When new evergreen guides ship, add them here (or replace with a
@@ -225,6 +226,7 @@ function GuidePage() {
               {frontmatter.clusters.includes('affiliate') ? (
                 <AffiliateDisclosure />
               ) : null}
+              <GuideTemplatePanel slug={slug} />
               <div className="not-prose mb-6">
                 <UpdateHistory
                   entries={[
