@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { EditorialHub } from '#/components/site/EditorialHub'
+
 export const Route = createFileRoute('/practice')({
   head: () => ({
     meta: [
