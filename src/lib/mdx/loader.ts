@@ -1,6 +1,5 @@
 import { lazy } from 'react'
 import type { ComponentType } from 'react'
-import { validateFrontmatter } from '#/lib/mdx/frontmatter'
 import type { Frontmatter } from '#/lib/mdx/frontmatter'
 
 // Compiled MDX bodies accept an optional `components` prop to override how
@@ -9,38 +8,19 @@ import type { Frontmatter } from '#/lib/mdx/frontmatter'
 export type MdxContentComponent = ComponentType<{ components?: unknown }>
 
 type ContentFolder = 'poses' | 'guides' | 'styles' | 'gear' | 'blog' | 'reviews'
-type ContentImporter = () => Promise<{ default: MdxContentComponent }>
-
-// Keep the small frontmatter exports synchronous for route loaders and head
-// generation, but split every MDX body into its own lazy chunk. Previously the
-// eager module map shipped all article bodies in one multi-megabyte client
-// loader even when a visitor opened only one page.
-const frontmatterByFolder: Record<ContentFolder, Record<string, unknown>> = {
-  poses: import.meta.glob('/content/poses/**/*.mdx', {
-    eager: true,
-    import: 'frontmatter',
-  }),
-  guides: import.meta.glob('/content/guides/**/*.mdx', {
-    eager: true,
-    import: 'frontmatter',
-  }),
-  styles: import.meta.glob('/content/styles/**/*.mdx', {
-    eager: true,
-    import: 'frontmatter',
-  }),
-  gear: import.meta.glob('/content/gear/**/*.mdx', {
-    eager: true,
-    import: 'frontmatter',
-  }),
-  blog: import.meta.glob('/content/blog/**/*.mdx', {
-    eager: true,
-    import: 'frontmatter',
-  }),
-  reviews: import.meta.glob('/content/reviews/**/*.mdx', {
-    eager: true,
-    import: 'frontmatter',
-  }),
+interface ContentModule {
+  default: MdxContentComponent
+  frontmatter: unknown
 }
+
+type ContentImporter = () => Promise<ContentModule>
+
+// Generated from YAML by vite.config.ts. Keeping metadata separate from the
+// compiled MDX modules prevents every article body from becoming a static
+// dependency of every route that needs titles, tags or schema data.
+declare const __CONTENT_FRONTMATTER__: Record<string, unknown>
+
+const frontmatterByPath = __CONTENT_FRONTMATTER__
 
 const contentImporterByFolder: Record<
   ContentFolder,
@@ -89,11 +69,31 @@ export interface TocHeading {
 declare const __GUIDE_HEADINGS__: Record<string, Array<TocHeading>>
 
 export interface LoadedFrontmatter {
-  frontmatter: Frontmatter
+  frontmatter: FrontmatterSummary
 }
 
+export type FrontmatterSummary = Pick<
+  Frontmatter,
+  | 'type'
+  | 'title'
+  | 'slug'
+  | 'metaDescription'
+  | 'pillar'
+  | 'clusters'
+  | 'tags'
+  | 'related'
+  | 'author'
+  | 'reviewedBy'
+  | 'indexable'
+  | 'requiresQualifiedReview'
+  | 'publishedAt'
+  | 'lastReviewedAt'
+  | 'estimatedReadingTime'
+  | 'heroImage'
+  | 'schemaType'
+>
+
 export interface LoadedContent {
-  frontmatter: Frontmatter
   Component: MdxContentComponent
 }
 
@@ -106,11 +106,27 @@ export function loadFrontmatter(
   slugPath: string,
 ): LoadedFrontmatter {
   const fullPath = `/content/${folder}/${slugPath}.mdx`
-  const rawFrontmatter = frontmatterByFolder[folder][fullPath]
+  const rawFrontmatter = frontmatterByPath[fullPath]
   if (rawFrontmatter === undefined)
     throw new Error(`MDX not found: ${fullPath}`)
-  const frontmatter = validateFrontmatter(rawFrontmatter, fullPath)
+  const frontmatter = rawFrontmatter as FrontmatterSummary
   return { frontmatter }
+}
+
+/**
+ * Load complete metadata only for the requested article route. The mandatory
+ * build verifier validates every MDX file before Vite emits any route, so the
+ * browser does not need to ship the complete Zod runtime a second time.
+ */
+export async function loadFullFrontmatter(
+  folder: ContentFolder,
+  slugPath: string,
+): Promise<{ frontmatter: Frontmatter }> {
+  const fullPath = `/content/${folder}/${slugPath}.mdx`
+  const importer = contentImporterByFolder[folder][fullPath]
+  if (!importer) throw new Error(`MDX not found: ${fullPath}`)
+  const module = await importer()
+  return { frontmatter: module.frontmatter as Frontmatter }
 }
 
 /**
@@ -122,17 +138,15 @@ export function loadContent(
   slugPath: string,
 ): LoadedContent {
   const fullPath = `/content/${folder}/${slugPath}.mdx`
-  const rawFrontmatter = frontmatterByFolder[folder][fullPath]
   const importer = contentImporterByFolder[folder][fullPath]
-  if (rawFrontmatter === undefined || importer === undefined)
+  if (importer === undefined)
     throw new Error(`MDX not found: ${fullPath}`)
-  const frontmatter = validateFrontmatter(rawFrontmatter, fullPath)
   let Component = lazyContentByPath.get(fullPath)
   if (!Component) {
     Component = lazy(importer)
     lazyContentByPath.set(fullPath, Component)
   }
-  return { frontmatter, Component }
+  return { Component }
 }
 
 /**
@@ -152,7 +166,8 @@ export function extractGuideHeadings(slugPath: string): Array<TocHeading> {
 export function listContentSlugs(folder: ContentFolder): Array<string> {
   const prefix = `/content/${folder}/`
   return (
-    Object.keys(frontmatterByFolder[folder])
+    Object.keys(frontmatterByPath)
+      .filter((path) => path.startsWith(prefix) && path.endsWith('.mdx'))
       .map((p) => p.slice(prefix.length).replace(/\.mdx$/, ''))
       // Skip drafts — mirror scanMdxEntries: any `_drafts/` segment is
       // intentionally out of the live route + index + sitemap surface.

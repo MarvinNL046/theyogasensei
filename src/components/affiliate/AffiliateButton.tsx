@@ -11,7 +11,7 @@ type AffiliateButtonProps = {
 
 const variantClasses: Record<NonNullable<AffiliateButtonProps['variant']>, string> = {
   primary:
-    'bg-[color:var(--color-accent)] text-[color:var(--color-surface)] shadow-sm hover:bg-[color:var(--color-accent-deep)]',
+    'bg-[color:var(--color-accent-deep)] text-white shadow-sm hover:bg-[color:var(--color-olive-deep)]',
   secondary:
     'border border-[color:var(--color-accent-soft)] bg-[color:var(--color-surface)] text-[color:var(--color-accent-deep)] hover:bg-[color:var(--color-surface-muted)]',
 }

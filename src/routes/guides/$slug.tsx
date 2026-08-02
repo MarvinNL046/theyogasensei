@@ -12,7 +12,7 @@ import type { ComponentType, SVGProps } from 'react'
 import {
   extractGuideHeadings,
   loadContent,
-  loadFrontmatter,
+  loadFullFrontmatter,
 } from '#/lib/mdx/loader'
 import { resolveAuthor } from '#/lib/content/authors'
 import { resolveRelated } from '#/lib/content/related'
@@ -64,11 +64,11 @@ const SIDEBAR_CATEGORIES: Array<SidebarCategory> = [
 ]
 
 export const Route = createFileRoute('/guides/$slug')({
-  loader: ({ params }) => {
+  loader: async ({ params }) => {
     // Drafts live under content/guides/_drafts/ — never routable, even directly.
     if (params.slug.split('/').includes('_drafts')) throw notFound()
     try {
-      const { frontmatter } = loadFrontmatter('guides', params.slug)
+      const { frontmatter } = await loadFullFrontmatter('guides', params.slug)
       const author = resolveAuthor(frontmatter.author)
       const headings = extractGuideHeadings(params.slug)
       return { frontmatter, author, headings }

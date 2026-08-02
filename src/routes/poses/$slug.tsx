@@ -1,7 +1,7 @@
 import { Link, createFileRoute, notFound } from '@tanstack/react-router'
 import { ArrowRight, Activity, Package, Sparkles } from 'lucide-react'
 import type { ComponentType, SVGProps } from 'react'
-import { loadContent, loadFrontmatter } from '#/lib/mdx/loader'
+import { loadContent, loadFullFrontmatter } from '#/lib/mdx/loader'
 import { resolveAuthor } from '#/lib/content/authors'
 import { resolveRelated } from '#/lib/content/related'
 import { buildHead, SITE_URL } from '#/lib/seo/head'
@@ -50,11 +50,11 @@ const SIDEBAR_CATEGORIES: Array<SidebarCategory> = [
 ]
 
 export const Route = createFileRoute('/poses/$slug')({
-  loader: ({ params }) => {
+  loader: async ({ params }) => {
     // Drafts live under content/poses/_drafts/ — never routable, even directly.
     if (params.slug.split('/').includes('_drafts')) throw notFound()
     try {
-      const { frontmatter } = loadFrontmatter('poses', params.slug)
+      const { frontmatter } = await loadFullFrontmatter('poses', params.slug)
       const author = resolveAuthor(frontmatter.author)
       return { frontmatter, author }
     } catch {

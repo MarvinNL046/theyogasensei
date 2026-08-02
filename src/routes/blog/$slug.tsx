@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import {
   extractGuideHeadings,
   loadContent,
-  loadFrontmatter,
+  loadFullFrontmatter,
 } from '#/lib/mdx/loader'
 import { resolveAuthor } from '#/lib/content/authors'
 import { resolveRelated } from '#/lib/content/related'
@@ -20,10 +20,10 @@ import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band
 import { Faq } from '#/components/seo/Faq'
 
 export const Route = createFileRoute('/blog/$slug')({
-  loader: ({ params }) => {
+  loader: async ({ params }) => {
     if (params.slug.split('/').includes('_drafts')) throw notFound()
     try {
-      const { frontmatter } = loadFrontmatter('blog', params.slug)
+      const { frontmatter } = await loadFullFrontmatter('blog', params.slug)
       const author = resolveAuthor(frontmatter.author)
       // Blog headings are namespaced in the build-time map (see
       // scripts/extract-guide-headings.ts) so they cannot collide with guides.
@@ -63,7 +63,7 @@ function BlogPostPage() {
   const { frontmatter, author, headings } = Route.useLoaderData()
   const { slug } = Route.useParams()
   const { Component } = loadContent('blog', slug)
-  const eyebrow = frontmatter.tags?.[0] ?? 'Blog'
+  const eyebrow = frontmatter.tags[0]
   const heroImageUrl = buildImageUrl(frontmatter.heroImage, 'og')
   const faqItems = 'faq' in frontmatter && frontmatter.faq ? frontmatter.faq : []
   const readNext = resolveRelated(frontmatter.related, { exclude: slug, limit: 3 })
@@ -148,7 +148,9 @@ function BlogPostPage() {
         <Container size="wide">
           <div className="grid min-w-0 gap-12 md:grid-cols-12 lg:gap-16">
             <article className="prose prose-stone prose-lg min-w-0 max-w-full md:col-span-8 prose-headings:scroll-mt-28 prose-headings:font-serif prose-headings:tracking-tight prose-headings:text-[color:var(--color-ink)] prose-p:text-[color:var(--color-ink-soft)] prose-a:text-[color:var(--color-olive)] prose-a:underline-offset-2 hover:prose-a:text-[color:var(--color-olive-deep)] prose-strong:text-[color:var(--color-ink)] prose-blockquote:border-l-[color:var(--color-olive)] prose-blockquote:text-[color:var(--color-ink-soft)] prose-th:text-[color:var(--color-ink)] prose-td:text-[color:var(--color-ink-soft)]">
-              {frontmatter.clusters?.includes('affiliate') ? <AffiliateDisclosure /> : null}
+              {frontmatter.clusters.includes('affiliate') ? (
+                <AffiliateDisclosure />
+              ) : null}
               {/* Wide inline TOC on mobile only — the sidebar carries it from md up. */}
               <div className="md:hidden">
                 <GuideToc headings={headings} />

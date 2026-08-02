@@ -11,7 +11,10 @@ import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
-import { scanMdxSlugs } from './scripts/scan-mdx-slugs'
+import {
+  scanContentFrontmatter,
+  scanMdxSlugs,
+} from './scripts/scan-mdx-slugs'
 import { buildGuideHeadingsMap } from './scripts/extract-guide-headings'
 import { affiliateRedirectHeaders } from './src/lib/affiliate-redirect-headers'
 
@@ -19,6 +22,7 @@ import { affiliateRedirectHeaders } from './src/lib/affiliate-redirect-headers'
 // Empty during Phase 1 init — populates as sample pages land in Step 9.
 const contentPages = scanMdxSlugs()
 const contentPagePaths = new Set(contentPages.map((page) => page.path))
+const contentFrontmatter = scanContentFrontmatter()
 
 // Per-guide H2 outline, scanned from raw MDX at config load. Inlined into the
 // bundle via `define` below so the guide route can build its in-page TOC at
@@ -41,6 +45,7 @@ const config = defineConfig({
   resolve: { tsconfigPaths: true },
   define: {
     __GUIDE_HEADINGS__: JSON.stringify(guideHeadings),
+    __CONTENT_FRONTMATTER__: JSON.stringify(contentFrontmatter),
   },
   plugins: [
     // MDX must run before viteReact so .mdx files become JSX before React's transform.
