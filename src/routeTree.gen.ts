@@ -13,11 +13,20 @@ import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as StarterGuideRouteImport } from './routes/starter-guide'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PracticeRouteImport } from './routes/practice'
+import { Route as HowWeResearchRouteImport } from './routes/how-we-research'
+import { Route as GearRouteImport } from './routes/gear'
+import { Route as EditorialPolicyRouteImport } from './routes/editorial-policy'
+import { Route as CorrectionsPolicyRouteImport } from './routes/corrections-policy'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConfirmRouteImport } from './routes/confirm'
+import { Route as ComparisonsRouteImport } from './routes/comparisons'
+import { Route as BestRouteImport } from './routes/best'
+import { Route as AiImageryPolicyRouteImport } from './routes/ai-imagery-policy'
 import { Route as AffiliateDisclosureRouteImport } from './routes/affiliate-disclosure'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ReviewsIndexRouteImport } from './routes/reviews/index'
 import { Route as PosesIndexRouteImport } from './routes/poses/index'
 import { Route as GuidesIndexRouteImport } from './routes/guides/index'
 import { Route as GoIndexRouteImport } from './routes/go/index'
@@ -57,6 +66,31 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PracticeRoute = PracticeRouteImport.update({
+  id: '/practice',
+  path: '/practice',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowWeResearchRoute = HowWeResearchRouteImport.update({
+  id: '/how-we-research',
+  path: '/how-we-research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GearRoute = GearRouteImport.update({
+  id: '/gear',
+  path: '/gear',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EditorialPolicyRoute = EditorialPolicyRouteImport.update({
+  id: '/editorial-policy',
+  path: '/editorial-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorrectionsPolicyRoute = CorrectionsPolicyRouteImport.update({
+  id: '/corrections-policy',
+  path: '/corrections-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -65,6 +99,21 @@ const ContactRoute = ContactRouteImport.update({
 const ConfirmRoute = ConfirmRouteImport.update({
   id: '/confirm',
   path: '/confirm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComparisonsRoute = ComparisonsRouteImport.update({
+  id: '/comparisons',
+  path: '/comparisons',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BestRoute = BestRouteImport.update({
+  id: '/best',
+  path: '/best',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiImageryPolicyRoute = AiImageryPolicyRouteImport.update({
+  id: '/ai-imagery-policy',
+  path: '/ai-imagery-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AffiliateDisclosureRoute = AffiliateDisclosureRouteImport.update({
@@ -80,6 +129,11 @@ const AboutRoute = AboutRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsIndexRoute = ReviewsIndexRouteImport.update({
+  id: '/reviews/',
+  path: '/reviews/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PosesIndexRoute = PosesIndexRouteImport.update({
@@ -177,8 +231,16 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/affiliate-disclosure': typeof AffiliateDisclosureRoute
+  '/ai-imagery-policy': typeof AiImageryPolicyRoute
+  '/best': typeof BestRoute
+  '/comparisons': typeof ComparisonsRoute
   '/confirm': typeof ConfirmRoute
   '/contact': typeof ContactRoute
+  '/corrections-policy': typeof CorrectionsPolicyRoute
+  '/editorial-policy': typeof EditorialPolicyRoute
+  '/gear': typeof GearRoute
+  '/how-we-research': typeof HowWeResearchRoute
+  '/practice': typeof PracticeRoute
   '/privacy': typeof PrivacyRoute
   '/starter-guide': typeof StarterGuideRoute
   '/terms': typeof TermsRoute
@@ -201,13 +263,22 @@ export interface FileRoutesByFullPath {
   '/go/': typeof GoIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/poses/': typeof PosesIndexRoute
+  '/reviews/': typeof ReviewsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/affiliate-disclosure': typeof AffiliateDisclosureRoute
+  '/ai-imagery-policy': typeof AiImageryPolicyRoute
+  '/best': typeof BestRoute
+  '/comparisons': typeof ComparisonsRoute
   '/confirm': typeof ConfirmRoute
   '/contact': typeof ContactRoute
+  '/corrections-policy': typeof CorrectionsPolicyRoute
+  '/editorial-policy': typeof EditorialPolicyRoute
+  '/gear': typeof GearRoute
+  '/how-we-research': typeof HowWeResearchRoute
+  '/practice': typeof PracticeRoute
   '/privacy': typeof PrivacyRoute
   '/starter-guide': typeof StarterGuideRoute
   '/terms': typeof TermsRoute
@@ -230,14 +301,23 @@ export interface FileRoutesByTo {
   '/go': typeof GoIndexRoute
   '/guides': typeof GuidesIndexRoute
   '/poses': typeof PosesIndexRoute
+  '/reviews': typeof ReviewsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/affiliate-disclosure': typeof AffiliateDisclosureRoute
+  '/ai-imagery-policy': typeof AiImageryPolicyRoute
+  '/best': typeof BestRoute
+  '/comparisons': typeof ComparisonsRoute
   '/confirm': typeof ConfirmRoute
   '/contact': typeof ContactRoute
+  '/corrections-policy': typeof CorrectionsPolicyRoute
+  '/editorial-policy': typeof EditorialPolicyRoute
+  '/gear': typeof GearRoute
+  '/how-we-research': typeof HowWeResearchRoute
+  '/practice': typeof PracticeRoute
   '/privacy': typeof PrivacyRoute
   '/starter-guide': typeof StarterGuideRoute
   '/terms': typeof TermsRoute
@@ -260,6 +340,7 @@ export interface FileRoutesById {
   '/go/': typeof GoIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/poses/': typeof PosesIndexRoute
+  '/reviews/': typeof ReviewsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -267,8 +348,16 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/affiliate-disclosure'
+    | '/ai-imagery-policy'
+    | '/best'
+    | '/comparisons'
     | '/confirm'
     | '/contact'
+    | '/corrections-policy'
+    | '/editorial-policy'
+    | '/gear'
+    | '/how-we-research'
+    | '/practice'
     | '/privacy'
     | '/starter-guide'
     | '/terms'
@@ -291,13 +380,22 @@ export interface FileRouteTypes {
     | '/go/'
     | '/guides/'
     | '/poses/'
+    | '/reviews/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/affiliate-disclosure'
+    | '/ai-imagery-policy'
+    | '/best'
+    | '/comparisons'
     | '/confirm'
     | '/contact'
+    | '/corrections-policy'
+    | '/editorial-policy'
+    | '/gear'
+    | '/how-we-research'
+    | '/practice'
     | '/privacy'
     | '/starter-guide'
     | '/terms'
@@ -320,13 +418,22 @@ export interface FileRouteTypes {
     | '/go'
     | '/guides'
     | '/poses'
+    | '/reviews'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/affiliate-disclosure'
+    | '/ai-imagery-policy'
+    | '/best'
+    | '/comparisons'
     | '/confirm'
     | '/contact'
+    | '/corrections-policy'
+    | '/editorial-policy'
+    | '/gear'
+    | '/how-we-research'
+    | '/practice'
     | '/privacy'
     | '/starter-guide'
     | '/terms'
@@ -349,14 +456,23 @@ export interface FileRouteTypes {
     | '/go/'
     | '/guides/'
     | '/poses/'
+    | '/reviews/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AffiliateDisclosureRoute: typeof AffiliateDisclosureRoute
+  AiImageryPolicyRoute: typeof AiImageryPolicyRoute
+  BestRoute: typeof BestRoute
+  ComparisonsRoute: typeof ComparisonsRoute
   ConfirmRoute: typeof ConfirmRoute
   ContactRoute: typeof ContactRoute
+  CorrectionsPolicyRoute: typeof CorrectionsPolicyRoute
+  EditorialPolicyRoute: typeof EditorialPolicyRoute
+  GearRoute: typeof GearRoute
+  HowWeResearchRoute: typeof HowWeResearchRoute
+  PracticeRoute: typeof PracticeRoute
   PrivacyRoute: typeof PrivacyRoute
   StarterGuideRoute: typeof StarterGuideRoute
   TermsRoute: typeof TermsRoute
@@ -379,6 +495,7 @@ export interface RootRouteChildren {
   GoIndexRoute: typeof GoIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   PosesIndexRoute: typeof PosesIndexRoute
+  ReviewsIndexRoute: typeof ReviewsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -411,6 +528,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/practice': {
+      id: '/practice'
+      path: '/practice'
+      fullPath: '/practice'
+      preLoaderRoute: typeof PracticeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-we-research': {
+      id: '/how-we-research'
+      path: '/how-we-research'
+      fullPath: '/how-we-research'
+      preLoaderRoute: typeof HowWeResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gear': {
+      id: '/gear'
+      path: '/gear'
+      fullPath: '/gear'
+      preLoaderRoute: typeof GearRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/editorial-policy': {
+      id: '/editorial-policy'
+      path: '/editorial-policy'
+      fullPath: '/editorial-policy'
+      preLoaderRoute: typeof EditorialPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corrections-policy': {
+      id: '/corrections-policy'
+      path: '/corrections-policy'
+      fullPath: '/corrections-policy'
+      preLoaderRoute: typeof CorrectionsPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -423,6 +575,27 @@ declare module '@tanstack/react-router' {
       path: '/confirm'
       fullPath: '/confirm'
       preLoaderRoute: typeof ConfirmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comparisons': {
+      id: '/comparisons'
+      path: '/comparisons'
+      fullPath: '/comparisons'
+      preLoaderRoute: typeof ComparisonsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/best': {
+      id: '/best'
+      path: '/best'
+      fullPath: '/best'
+      preLoaderRoute: typeof BestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-imagery-policy': {
+      id: '/ai-imagery-policy'
+      path: '/ai-imagery-policy'
+      fullPath: '/ai-imagery-policy'
+      preLoaderRoute: typeof AiImageryPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/affiliate-disclosure': {
@@ -444,6 +617,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews/': {
+      id: '/reviews/'
+      path: '/reviews'
+      fullPath: '/reviews/'
+      preLoaderRoute: typeof ReviewsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/poses/': {
@@ -579,8 +759,16 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AffiliateDisclosureRoute: AffiliateDisclosureRoute,
+  AiImageryPolicyRoute: AiImageryPolicyRoute,
+  BestRoute: BestRoute,
+  ComparisonsRoute: ComparisonsRoute,
   ConfirmRoute: ConfirmRoute,
   ContactRoute: ContactRoute,
+  CorrectionsPolicyRoute: CorrectionsPolicyRoute,
+  EditorialPolicyRoute: EditorialPolicyRoute,
+  GearRoute: GearRoute,
+  HowWeResearchRoute: HowWeResearchRoute,
+  PracticeRoute: PracticeRoute,
   PrivacyRoute: PrivacyRoute,
   StarterGuideRoute: StarterGuideRoute,
   TermsRoute: TermsRoute,
@@ -603,6 +791,7 @@ const rootRouteChildren: RootRouteChildren = {
   GoIndexRoute: GoIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   PosesIndexRoute: PosesIndexRoute,
+  ReviewsIndexRoute: ReviewsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

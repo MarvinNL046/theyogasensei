@@ -15,6 +15,11 @@ const STATIC_PAGES: Array<Omit<SitemapEntry, 'url'> & { path: string }> = [
   // /blog is the second editorial hub (route, not MDX). Individual posts are
   // picked up automatically by the MDX scanner via TYPE_TO_URL_PREFIX.
   { path: '/blog', changefreq: 'weekly', priority: 0.8 },
+  { path: '/practice', changefreq: 'weekly', priority: 0.8 },
+  { path: '/gear', changefreq: 'weekly', priority: 0.8 },
+  { path: '/best', changefreq: 'weekly', priority: 0.8 },
+  { path: '/reviews', changefreq: 'weekly', priority: 0.8 },
+  { path: '/comparisons', changefreq: 'weekly', priority: 0.8 },
   { path: '/reviews/best-yoga-mats', changefreq: 'monthly', priority: 0.9 },
   { path: '/reviews/manduka-pro', changefreq: 'monthly', priority: 0.7 },
   { path: '/reviews/jade', changefreq: 'monthly', priority: 0.7 },
@@ -26,6 +31,10 @@ const STATIC_PAGES: Array<Omit<SitemapEntry, 'url'> & { path: string }> = [
   { path: '/reviews/alo', changefreq: 'monthly', priority: 0.7 },
   { path: '/poses', changefreq: 'weekly', priority: 0.8 },
   { path: '/about', changefreq: 'monthly', priority: 0.7 },
+  { path: '/how-we-research', changefreq: 'monthly', priority: 0.7 },
+  { path: '/editorial-policy', changefreq: 'yearly', priority: 0.4 },
+  { path: '/corrections-policy', changefreq: 'yearly', priority: 0.4 },
+  { path: '/ai-imagery-policy', changefreq: 'yearly', priority: 0.4 },
   { path: '/affiliate-disclosure', changefreq: 'yearly', priority: 0.3 },
   { path: '/privacy', changefreq: 'yearly', priority: 0.3 },
   { path: '/terms', changefreq: 'yearly', priority: 0.3 },
@@ -74,7 +83,8 @@ function entryToXml(e: SitemapEntry): string {
   const parts = [`    <loc>${escapeXml(e.url)}</loc>`]
   if (e.lastmod) parts.push(`    <lastmod>${e.lastmod}</lastmod>`)
   if (e.changefreq) parts.push(`    <changefreq>${e.changefreq}</changefreq>`)
-  if (e.priority !== undefined) parts.push(`    <priority>${e.priority.toFixed(1)}</priority>`)
+  if (e.priority !== undefined)
+    parts.push(`    <priority>${e.priority.toFixed(1)}</priority>`)
   return `  <url>\n${parts.join('\n')}\n  </url>`
 }
 
@@ -96,5 +106,8 @@ export function renderSitemap(siteUrl: string): string {
 }
 
 export function sitemapEntryCount(): number {
-  return scanMdxEntries().filter((entry) => entry.indexable).length + STATIC_PAGES.length
+  return (
+    scanMdxEntries().filter((entry) => entry.indexable).length +
+    STATIC_PAGES.length
+  )
 }

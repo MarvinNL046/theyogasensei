@@ -1,462 +1,516 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
-import { ArrowRight } from 'lucide-react'
+import {
+  ArrowRight,
+  BookOpenCheck,
+  Scale,
+  ShieldCheck,
+  Sparkles,
+} from 'lucide-react'
 import { Container } from '#/components/ui/container'
-import { Eyebrow } from '#/components/ui/eyebrow'
-import { JapaneseAccent } from '#/components/ui/japanese-accent'
+import { HomeLeadCapture } from '#/features/home/HomeLeadCapture'
 import { buildImageUrl } from '#/lib/images/variants'
 import { listContentSlugs, loadFrontmatter } from '#/lib/mdx/loader'
-import { HomeTrustBar } from '#/features/home/HomeTrustBar'
-import { HomeTopicGrid } from '#/features/home/HomeTopicGrid'
-import { HomeFeaturedGuide } from '#/features/home/HomeFeaturedGuide'
-import { HomeTopPicks } from '#/features/home/HomeTopPicks'
-import { HomeLeadCapture } from '#/features/home/HomeLeadCapture'
 
 export const Route = createFileRoute('/')({
   head: () => ({
     meta: [
-      { title: 'The Yoga Sensei — calm guidance for a real practice' },
+      { title: 'The Yoga Sensei — independent yoga guidance' },
       {
         name: 'description',
         content:
-          'Honest yoga gear guides and practice notes from Marvin Smit, a long-time practitioner — grounded in research and aggregated reviews, never invented testing.',
+          'Research-led yoga practice, pose and gear guidance with clear sources, honest trade-offs and no paid rankings or invented testing.',
       },
-      { property: 'og:title', content: 'The Yoga Sensei' },
+      {
+        property: 'og:title',
+        content: 'The Yoga Sensei — practice with clarity',
+      },
       {
         property: 'og:description',
-        content:
-          'Honest yoga gear guides and practice notes from Marvin Smit, a long-time practitioner — grounded in research and aggregated reviews, never invented testing.',
+        content: 'Independent guidance for yoga practice, poses and gear.',
       },
       { property: 'og:url', content: 'https://www.theyogasensei.com/' },
       { property: 'og:type', content: 'website' },
       {
         property: 'og:image',
-        content: 'https://www.theyogasensei.com/images/brand/home-og-advisor.webp',
+        content:
+          'https://www.theyogasensei.com/images/brand/home-og-advisor.webp',
       },
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'The Yoga Sensei' },
-      {
-        name: 'twitter:description',
-        content:
-          'Honest yoga gear guides and practice notes from Marvin Smit, a long-time practitioner — grounded in research and aggregated reviews, never invented testing.',
-      },
-      {
-        name: 'twitter:image',
-        content: 'https://www.theyogasensei.com/images/brand/home-og-advisor.webp',
-      },
     ],
     links: [{ rel: 'canonical', href: 'https://www.theyogasensei.com/' }],
   }),
-  // Poses are surfaced on the homepage from real MDX so new pose pages appear
-  // here automatically (SSG: read at build time). Short title = text before the
-  // first colon/em-dash in the frontmatter title.
-  loader: () => {
-    const poses = listContentSlugs('poses').map((slug) => {
-      const { frontmatter: fm } = loadFrontmatter('poses', slug)
-      return {
-        slug,
-        title: fm.title.split(/[:—]/)[0]?.trim() ?? fm.title,
-        heroImage: fm.heroImage,
-      }
-    })
-    return { poses }
-  },
+  loader: () => ({
+    poses: listContentSlugs('poses')
+      .slice(0, 6)
+      .map((slug) => {
+        const { frontmatter: fm } = loadFrontmatter('poses', slug)
+        return {
+          slug,
+          title: fm.title.split(/[:—]/)[0]?.trim() ?? fm.title,
+          heroImage: fm.heroImage,
+        }
+      }),
+  }),
   component: HomePage,
 })
 
-// Hand-curated list of pieces that ACTUALLY exist as MDX in this repo.
-// Replace with a listFrontmatter helper once we have enough content to
-// justify dynamic iteration.
-const LATEST_WRITING = [
+const topStories = [
   {
-    to: '/guides/$slug' as const,
-    params: { slug: 'yoga-for-beginners' },
-    eyebrow: 'Pillar · Getting started',
-    title: 'Yoga for Beginners: How to Start a Calm Home Practice',
-    description:
-      'A calm, honest beginner guide: how to start at home, the best first poses, a simple 15-minute routine, and the mistakes to skip. No experience needed.',
-    image: 'guides/yoga-for-beginners/hero',
+    label: 'Best gear',
+    title: 'The best yoga mats, organized by how you practise',
+    href: '/reviews/best-yoga-mats',
   },
   {
-    to: '/guides/$slug' as const,
-    params: { slug: 'chair-yoga-for-seniors' },
-    eyebrow: 'Pillar · Chair yoga',
-    title: 'Chair Yoga for Seniors: Safe Poses and a Gentle Plan',
-    description:
-      'A safety-first setup, twelve gentle seated poses, and a calm 10-minute routine for older adults. Educational, not medical advice.',
-    image: 'guides/chair-yoga-for-seniors/hero',
+    label: 'Comparison',
+    title: 'Cork vs rubber: the grip and care differences',
+    href: '/guides/cork-vs-rubber-yoga-mat',
   },
   {
-    to: '/guides/$slug' as const,
-    params: { slug: 'chair-yoga-for-beginners' },
-    eyebrow: 'Guide · Chair yoga',
-    title: 'Chair Yoga for Beginners: How to Start (6 Easy Poses)',
-    description:
-      'What chair yoga is, six easy starter poses, and a 5-minute routine — the easiest way to begin. Educational, not medical advice.',
-    image: 'guides/chair-yoga-for-beginners/hero',
+    label: 'Beginner guide',
+    title: 'How to start yoga at home without overcomplicating it',
+    href: '/guides/yoga-for-beginners',
   },
   {
-    to: '/guides/$slug' as const,
-    params: { slug: 'free-chair-yoga-for-seniors' },
-    eyebrow: 'Guide · Chair yoga',
-    title: 'Free Chair Yoga for Seniors: Routines and Where to Find Classes',
-    description:
-      'A short routine you can do at home today, plus where to find free classes and safe video routines.',
-    image: 'guides/free-chair-yoga-for-seniors/hero',
+    label: 'Care',
+    title: 'Clean a yoga mat without damaging its surface',
+    href: '/guides/how-to-clean-a-yoga-mat',
+  },
+] as const
+
+const needs = [
+  { title: 'Start yoga', note: 'A calm first week', href: '/starter-guide' },
+  {
+    title: 'Build a routine',
+    note: 'Practice that fits real life',
+    href: '/practice',
+  },
+  { title: 'Learn poses', note: 'Cues and variations', href: '/poses' },
+  {
+    title: 'Choose a mat',
+    note: 'Material before marketing',
+    href: '/guides/how-to-choose-a-yoga-mat',
   },
   {
-    to: '/guides/$slug' as const,
-    params: { slug: 'printable-chair-yoga-for-seniors' },
-    eyebrow: 'Guide · Chair yoga',
-    title: 'Printable Chair Yoga for Seniors: A Simple Routine Chart',
-    description:
-      'A simple, large-step chart you can print and keep by the chair. Free to use, educational only.',
-    image: 'guides/printable-chair-yoga-for-seniors/hero',
+    title: 'Support sensitive joints',
+    note: 'Cushion without losing stability',
+    href: '/guides/best-yoga-mat-for-bad-knees',
   },
   {
-    to: '/guides/$slug' as const,
-    params: { slug: 'eco-friendly-yoga-mat' },
-    eyebrow: 'Affiliate guide · Eco mats',
-    title: 'Best Eco-Friendly Yoga Mats: 5 Honest Picks',
-    description:
-      'A calm material-first guide to natural rubber, cork, PU, latex risk and the greenwashing traps around eco yoga mats.',
-    image: 'guides/eco-friendly-yoga-mat/hero',
+    title: 'Create a calm space',
+    note: 'Useful meditation setup',
+    href: '/guides/meditation-room-accessories',
+  },
+] as const
+
+const quickPicks = [
+  {
+    best: 'Best overall guide',
+    title: 'Best yoga mats',
+    reason: 'Compare grip, cushion and materials',
+    tradeoff: 'No single mat suits every practice',
+    href: '/reviews/best-yoga-mats',
   },
   {
-    to: '/guides/$slug' as const,
-    params: { slug: 'best-yoga-mat-for-hot-yoga' },
-    eyebrow: 'Affiliate guide · Hot yoga',
-    title: 'Best Yoga Mat for Hot Yoga: Grip That Survives Sweat',
-    description:
-      'A practical hot-yoga buying guide covering wet grip, natural rubber, towel pairings and honest mat trade-offs.',
-    image: 'guides/best-yoga-mat-for-hot-yoga/hero',
+    best: 'Best for beginners',
+    title: 'Beginner yoga mats',
+    reason: 'Stable, versatile starting options',
+    tradeoff: 'Skip premium features you do not need',
+    href: '/guides/best-yoga-mat-for-beginners',
   },
   {
-    to: '/guides/$slug' as const,
-    params: { slug: 'best-yoga-mat-for-bad-knees' },
-    eyebrow: 'Affiliate guide · Bad knees',
-    title: 'Best Yoga Mats for Bad Knees: Cushion vs Stability',
-    description:
-      'How to balance cushion and stability for sore knees — three honest picks, the real thickness trade-off, and cheaper fixes to try first.',
-    image: 'guides/best-yoga-mat-for-bad-knees/hero',
+    best: 'Best for sweat',
+    title: 'Hot-yoga mats',
+    reason: 'Wet grip and cleaning come first',
+    tradeoff: 'Absorbent surfaces need more care',
+    href: '/guides/best-yoga-mat-for-hot-yoga',
   },
   {
-    to: '/guides/$slug' as const,
-    params: { slug: 'how-to-choose-a-yoga-mat' },
-    eyebrow: 'Pillar guide · Yoga mats',
-    title: 'How to Choose a Yoga Mat: A Practical Buying Guide',
-    description:
-      'A clear, honest framework for choosing the right material, thickness, grip, size and durability without fake testing claims.',
-    image: 'guides/how-to-choose-a-yoga-mat/hero',
+    best: 'Best for knee comfort',
+    title: 'Supportive mats',
+    reason: 'Balance cushioning and stability',
+    tradeoff: 'Thicker is not always steadier',
+    href: '/guides/best-yoga-mat-for-bad-knees',
   },
   {
-    to: '/guides/$slug' as const,
-    params: { slug: 'cork-vs-rubber-yoga-mat' },
-    eyebrow: 'Comparison · Cork vs rubber',
-    title: 'Cork vs Rubber Yoga Mat: Which One Fits Your Practice',
-    description:
-      'A material-first comparison — grip wet vs dry, cushion, weight, durability, latex risk, and which surface suits how you actually practise.',
-    image: 'guides/cork-vs-rubber-yoga-mat/hero',
+    best: 'Best for packing',
+    title: 'Foldable mats',
+    reason: 'Thin enough for real travel',
+    tradeoff: 'Less floor cushioning',
+    href: '/guides/best-foldable-yoga-mat',
+  },
+] as const
+
+const practice = [
+  {
+    title: 'Morning yoga',
+    image: '/images/brand/article-hero-morning-yoga.webp',
+    href: '/guides/morning-yoga-routine',
   },
   {
-    to: '/guides/$slug' as const,
-    params: { slug: 'how-thick-should-a-yoga-mat-be' },
-    eyebrow: 'Guide · Mat thickness',
-    title: 'How Thick Should a Yoga Mat Be? A Practical Thickness Guide',
-    description:
-      'A clear breakdown of 3mm, 4–5mm and thicker mats for beginners, hot yoga, pilates, travel and joint comfort.',
-    image: 'guides/how-thick-should-a-yoga-mat-be/hero',
+    title: 'Yoga for beginners',
+    image: '/images/guides/yoga-for-beginners/hero.webp',
+    href: '/guides/yoga-for-beginners',
   },
   {
-    to: '/guides/$slug' as const,
-    params: { slug: 'how-to-clean-a-yoga-mat' },
-    eyebrow: 'Guide · Mat care',
-    title: 'How to Clean a Yoga Mat (Without Damaging It)',
-    description:
-      'Daily wipe-downs, deep cleans, DIY sprays, and material-specific care for rubber, PVC, cork, polyurethane and TPE mats.',
-    image: 'guides/how-to-clean-a-yoga-mat/hero',
+    title: 'Chair yoga',
+    image: '/images/guides/chair-yoga-for-seniors/hero.webp',
+    href: '/guides/chair-yoga-for-seniors',
   },
-  {
-    to: '/guides/$slug' as const,
-    params: { slug: 'how-to-store-a-yoga-mat' },
-    eyebrow: 'Guide · Mat care',
-    title: 'How to Store a Yoga Mat So It Lasts (and Stays Fresh)',
-    description:
-      'Clean and dry it first, roll it practice-side in, keep it out of sun and damp, and skip the storage gear you do not actually need.',
-    image: 'guides/how-to-store-a-yoga-mat/hero',
-  },
-  {
-    to: '/guides/$slug' as const,
-    params: { slug: 'best-yoga-blocks' },
-    eyebrow: 'Accessory · Yoga blocks',
-    title: 'Best Yoga Blocks: Foam vs Cork, Honestly Compared',
-    description:
-      'Foam vs cork compared, with three honest picks for support, balance and budget — plus an honest note on when you do not need one yet.',
-    image: 'guides/best-yoga-blocks/hero',
-  },
-  {
-    to: '/guides/$slug' as const,
-    params: { slug: 'best-yoga-bolster' },
-    eyebrow: 'Accessory · Yoga bolsters',
-    title: 'Best Yoga Bolsters: Shapes, Fills and Two Honest Picks',
-    description:
-      'Rectangular vs round, fill and firmness explained, with two honest picks for restorative practice — and when a stack of blankets does the job instead.',
-    image: 'guides/best-yoga-bolster/hero',
-  },
-  {
-    to: '/guides/$slug' as const,
-    params: { slug: 'best-yoga-mat-bag' },
-    eyebrow: 'Accessory · Bags & carriers',
-    title: 'Best Yoga Mat Bags and Carriers: A Practical Guide',
-    description:
-      'Bag vs sling vs carrier, how to check your mat actually fits, and two honest picks for the commute — including the rolled-diameter trap thick mats hit.',
-    image: 'guides/best-yoga-mat-bag/hero',
-  },
-]
+] as const
+
+function SectionHead({
+  kicker,
+  title,
+  href,
+  link = 'Explore all',
+}: {
+  kicker: string
+  title: string
+  href?: string
+  link?: string
+}) {
+  return (
+    <div className="flex flex-wrap items-end justify-between gap-5">
+      <div>
+        <p className="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--color-accent-deep)]">
+          {kicker}
+        </p>
+        <h2 className="mt-3 max-w-3xl font-serif text-3xl leading-tight tracking-[-0.035em] md:text-[42px]">
+          {title}
+        </h2>
+      </div>
+      {href ? (
+        <Link
+          to={href}
+          className="inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--color-olive-deep)]"
+        >
+          {link}
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      ) : null}
+    </div>
+  )
+}
 
 function HomePage() {
   const { poses } = Route.useLoaderData()
   return (
     <>
-      <section className="overflow-hidden bg-[color:var(--color-bg)]">
-        <Container size="wide" className="py-8 md:py-12">
-          <div className="grid items-stretch overflow-hidden rounded-[2rem] border border-[color:var(--color-border)] bg-white shadow-[0_28px_70px_-52px_rgba(24,49,41,.55)] lg:grid-cols-[1.04fr_.96fr]">
-            <div className="flex flex-col justify-center px-7 py-14 sm:px-12 md:py-20 lg:px-16">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-accent-deep)]">Clear advice for every body</p>
-              <h1 className="mt-5 max-w-xl font-serif text-4xl leading-[1.04] tracking-[-0.045em] text-[color:var(--color-ink)] md:text-[58px]">A clearer path into yoga.</h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-[color:var(--color-ink-soft)] md:text-lg">Research-led guides to poses, routines and gear — written for real people, without miracle claims, paid rankings or invented testing.</p>
-              <div className="mt-9 flex flex-wrap gap-3">
-                <Link to="/guides/$slug" params={{ slug: 'yoga-for-beginners' }} className="inline-flex items-center gap-2 rounded-full bg-[color:var(--color-olive)] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[color:var(--color-olive-deep)]">Start with yoga <ArrowRight className="h-4 w-4" /></Link>
-                <Link to="/guides/$slug" params={{ slug: 'how-to-choose-a-yoga-mat' }} className="inline-flex items-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-6 py-3 text-sm font-semibold text-[color:var(--color-olive-deep)] transition hover:border-[color:var(--color-olive-soft)]">Choose a yoga mat</Link>
-              </div>
-              <div className="mt-10 flex flex-wrap gap-x-6 gap-y-2 border-t border-[color:var(--color-border)] pt-5 text-xs font-medium text-[color:var(--color-ink-muted)]"><span>100+ useful pages</span><span>Evidence-aware</span><span>Updated regularly</span></div>
-            </div>
-            <div className="relative min-h-[360px] overflow-hidden bg-[color:var(--color-surface-muted)] lg:m-3 lg:min-h-[596px] lg:rounded-[1.4rem]">
-              <img src={buildImageUrl('guides/yoga-for-beginners/hero', 'og')} alt="A calm yoga practice in natural light" width={1200} height={1200} className="absolute inset-0 h-full w-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--color-olive-deep)]/15 to-transparent" aria-hidden="true" />
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* ============================================================
-          HERO — calm wordmark + single primary CTA
-          ============================================================ */}
-      <section className="hidden">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-right bg-no-repeat"
-          style={{
-            backgroundImage:
-              "url('/images/brand/home-og.webp')",
-            backgroundSize: 'auto 100%',
-          }}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(90deg, var(--color-bg) 0%, rgba(246,241,234,.97) 32%, rgba(246,241,234,.55) 48%, rgba(246,241,234,0) 62%)',
-          }}
-        />
-        <Container size="wide" className="relative">
-          <div className="max-w-xl py-24 md:py-32">
-            <JapaneseAccent phrase="presence" size="md" className="block" />
-            <h1 className="mt-6 font-serif text-4xl leading-[1.05] tracking-tight md:text-[56px]">
-              Calm guidance for a real yoga practice.
-            </h1>
-            <p className="mt-6 max-w-lg text-base leading-relaxed text-[color:var(--color-ink-muted)] md:text-[17px]">
-              Honest gear notes and pose guides from a long-time practitioner.
-              No invented testing, no fake rankings — just research, real use
-              cases, and clear writing.
-            </p>
-            <Link
-              to="/guides/$slug"
-              params={{ slug: 'how-to-choose-a-yoga-mat' }}
-              className="mt-9 inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-olive)] px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
+      <section className="bg-[color:var(--color-bg)]">
+        <Container size="wide" className="py-7 md:py-10">
+          <div className="grid gap-5 lg:grid-cols-[1.55fr_.8fr_.72fr]">
+            <a
+              href="/guides/yoga-for-beginners"
+              className="group relative min-h-[520px] overflow-hidden rounded-[1.8rem] bg-[color:var(--color-olive-deep)]"
             >
-              Read the yoga mat guide
-              <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-            </Link>
+              <img
+                src="/images/guides/yoga-for-beginners/hero.webp"
+                alt="A calm home yoga practice in natural light"
+                width={1200}
+                height={900}
+                className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.02]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#122b24]/95 via-[#122b24]/20 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-7 text-white md:p-10">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/75">
+                  The starting point
+                </p>
+                <h1 className="mt-3 max-w-2xl font-serif text-4xl leading-[1.05] tracking-[-0.04em] md:text-5xl">
+                  Start yoga with a plan you can actually keep.
+                </h1>
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/80 md:text-base">
+                  A practical first routine, foundational poses and the setup
+                  choices that matter—without turning day one into a shopping
+                  list.
+                </p>
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold">
+                  Start the beginner guide <ArrowRight className="h-4 w-4" />
+                </span>
+              </div>
+            </a>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
+              <a
+                href="/guides/how-to-choose-a-yoga-mat"
+                className="group overflow-hidden rounded-[1.5rem] border border-[color:var(--color-border)] bg-white"
+              >
+                <img
+                  src="/images/guides/how-to-choose-a-yoga-mat/materials.webp"
+                  alt="Yoga mat material samples"
+                  className="aspect-[16/9] w-full object-cover"
+                />
+                <div className="p-6">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[color:var(--color-accent-deep)]">
+                    Gear decision
+                  </p>
+                  <h2 className="mt-2 font-serif text-2xl leading-tight">
+                    Choose a mat by material, not hype.
+                  </h2>
+                </div>
+              </a>
+              <a
+                href="/guides/morning-yoga-routine"
+                className="group overflow-hidden rounded-[1.5rem] border border-[color:var(--color-border)] bg-white"
+              >
+                <img
+                  src="/images/brand/article-hero-morning-yoga.webp"
+                  alt="Morning yoga practice"
+                  className="aspect-[16/9] w-full object-cover"
+                />
+                <div className="p-6">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[color:var(--color-accent-deep)]">
+                    10-minute practice
+                  </p>
+                  <h2 className="mt-2 font-serif text-2xl leading-tight">
+                    A quieter way to start the morning.
+                  </h2>
+                </div>
+              </a>
+            </div>
+            <aside className="rounded-[1.5rem] border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-6">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--color-accent-deep)]">
+                Top stories
+              </p>
+              <ol className="mt-4">
+                {topStories.map((story, index) => (
+                  <li
+                    key={story.href}
+                    className="border-t border-[color:var(--color-border)] first:border-0"
+                  >
+                    <a
+                      href={story.href}
+                      className="group grid grid-cols-[2rem_1fr] gap-3 py-5"
+                    >
+                      <span className="font-serif text-xl text-[color:var(--color-accent)]">
+                        {index + 1}
+                      </span>
+                      <span>
+                        <span className="block text-[9px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-ink-muted)]">
+                          {story.label}
+                        </span>
+                        <span className="mt-1 block font-serif text-lg leading-snug group-hover:text-[color:var(--color-olive)]">
+                          {story.title}
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </aside>
           </div>
         </Container>
       </section>
 
-      {/* ============================================================
-          TRUST BAR — quiet credibility strip under the hero
-          ============================================================ */}
-      <HomeTrustBar />
+      <section className="border-y border-[color:var(--color-border)] bg-white">
+        <Container size="wide">
+          <div className="grid grid-cols-2 divide-x divide-y divide-[color:var(--color-border)] md:grid-cols-4 md:divide-y-0">
+            {[
+              [ShieldCheck, 'Independent', 'No paid rankings'],
+              [BookOpenCheck, 'Source-aware', 'Primary sources first'],
+              [Scale, 'Trade-offs shown', 'Best for and skip if'],
+              [Sparkles, 'Human edited', 'No invented testing'],
+            ].map(([Icon, title, note]) => {
+              const I = Icon as typeof ShieldCheck
+              return (
+                <div
+                  key={title as string}
+                  className="flex gap-3 px-4 py-6 md:px-6"
+                >
+                  <I className="h-5 w-5 shrink-0 text-[color:var(--color-olive)]" />
+                  <span>
+                    <strong className="block text-xs">{title as string}</strong>
+                    <span className="mt-1 block text-[11px] text-[color:var(--color-ink-muted)]">
+                      {note as string}
+                    </span>
+                  </span>
+                </div>
+              )
+            })}
+          </div>
+        </Container>
+      </section>
 
-      {/* ============================================================
-          TOPIC GRID — browse-by-category, deep-links to /guides?category=
-          ============================================================ */}
-      <HomeTopicGrid />
-
-      {/* ============================================================
-          FEATURED GUIDE — dark split band highlighting the flagship roundup
-          ============================================================ */}
-      <HomeFeaturedGuide />
-
-      {/* ============================================================
-          TOP PICKS — editorial-scored mat recommendations -> reviews
-          ============================================================ */}
-      <HomeTopPicks />
-
-      {/* ============================================================
-          LATEST WRITING — hand-curated list of pieces that exist
-          ============================================================ */}
       <section className="bg-[color:var(--color-bg)] py-16 md:py-24">
         <Container size="wide">
-          <Eyebrow tone="default">Latest writing</Eyebrow>
-          <h2 className="mt-4 max-w-2xl font-serif text-3xl leading-tight tracking-tight md:text-[40px]">
-            Start with the yoga mat buying guide.
-          </h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-[color:var(--color-ink-muted)]">
-            We publish slowly. Everything on this site is written and edited by
-            Marvin — no ghostwriters, no faceless content team.
-          </p>
-
-          <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {LATEST_WRITING.map((post) => (
-              <article
-                key={post.params.slug}
-                className="group overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[0_16px_45px_-35px_rgba(24,49,41,.55)] transition hover:-translate-y-1 hover:border-[color:var(--color-accent)]/40"
+          <SectionHead
+            kicker="Find your next step"
+            title="What do you need help with?"
+          />
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {needs.map((item, index) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="group flex items-center gap-5 rounded-2xl border border-[color:var(--color-border)] bg-white p-6 transition hover:-translate-y-0.5 hover:border-[color:var(--color-olive-soft)]"
               >
-                <Link to={post.to} params={post.params} className="block">
-                  <img
-                    src={buildImageUrl(post.image, 'card')}
-                    alt={post.title}
-                    loading="lazy"
-                    width={800}
-                    height={1067}
-                    className="aspect-[16/9] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-                  />
-                </Link>
-                <div className="p-8">
-                  <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-muted)]">
-                    {post.eyebrow}
-                  </p>
-                  <h3 className="mt-4 font-serif text-2xl leading-snug">
-                    <Link
-                      to={post.to}
-                      params={post.params}
-                      className="transition group-hover:text-[color:var(--color-accent-deep)]"
-                    >
-                      {post.title}
-                    </Link>
-                  </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-[color:var(--color-ink-soft)]">
-                    {post.description}
-                  </p>
-                  <Link
-                    to={post.to}
-                    params={post.params}
-                    className="mt-6 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent-deep)] transition hover:text-[color:var(--color-accent)]"
-                  >
-                    Read
-                    <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-                  </Link>
-                </div>
-              </article>
+                <span className="font-serif text-2xl text-[color:var(--color-accent)]">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span>
+                  <span className="block font-serif text-xl group-hover:text-[color:var(--color-olive)]">
+                    {item.title}
+                  </span>
+                  <span className="mt-1 block text-sm text-[color:var(--color-ink-muted)]">
+                    {item.note}
+                  </span>
+                </span>
+              </a>
             ))}
-          </div>
-
-          <div className="mt-12">
-            <Link
-              to="/guides"
-              className="inline-flex items-center gap-2 rounded-sm border border-[color:var(--color-olive)] px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-olive)] transition hover:bg-[color:var(--color-olive)] hover:text-[color:var(--color-bg)]"
-            >
-              View all guides
-              <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-            </Link>
           </div>
         </Container>
       </section>
 
-      {/* ============================================================
-          POSE GUIDES — surface the pose library on the homepage
-          ============================================================ */}
-      {poses.length > 0 ? (
+      <section className="bg-[color:var(--color-olive-deep)] py-16 text-white md:py-24">
+        <Container size="wide">
+          <SectionHead
+            kicker="Quick picks"
+            title="Find the right gear for your practice."
+            href="/best"
+            link="Explore best gear"
+          />
+          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+            {quickPicks.map((pick) => (
+              <a
+                key={pick.href}
+                href={pick.href}
+                className="rounded-2xl bg-white/8 p-6 ring-1 ring-white/15 transition hover:-translate-y-1 hover:bg-white/12"
+              >
+                <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-accent-soft)]">
+                  {pick.best}
+                </span>
+                <h3 className="mt-3 font-serif text-2xl">{pick.title}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-white/75">
+                  {pick.reason}
+                </p>
+                <p className="mt-4 border-t border-white/15 pt-4 text-xs leading-relaxed text-white/55">
+                  <strong className="text-white/75">Trade-off:</strong>{' '}
+                  {pick.tradeoff}
+                </p>
+              </a>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-[color:var(--color-bg)] py-16 md:py-24">
+        <Container size="wide">
+          <SectionHead
+            kicker="Practice"
+            title="Build a practice that fits real life."
+            href="/practice"
+          />
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {practice.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="group overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-white"
+              >
+                <img
+                  src={item.image}
+                  alt=""
+                  className="aspect-[3/2] w-full object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="font-serif text-2xl group-hover:text-[color:var(--color-olive)]">
+                    {item.title}
+                  </h3>
+                  <span className="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-[color:var(--color-ink-muted)]">
+                    Open guide <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {poses.length ? (
         <section className="bg-[color:var(--color-surface-muted)] py-16 md:py-24">
           <Container size="wide">
-            <Eyebrow tone="default">Pose guides</Eyebrow>
-            <h2 className="mt-4 max-w-2xl font-serif text-3xl leading-tight tracking-tight md:text-[40px]">
-              Learn the foundational poses.
-            </h2>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-[color:var(--color-ink-muted)]">
-              Calm, step-by-step pose guides — beginner cues, common mistakes,
-              and honest notes on who should take it easy.
-            </p>
-
-            <ul className="mt-12 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
+            <SectionHead
+              kicker="Pose library"
+              title="Learn the foundations, one pose at a time."
+              href="/poses"
+            />
+            <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
               {poses.map((pose) => (
-                <li key={pose.slug}>
-                  <Link
-                    to="/poses/$slug"
-                    params={{ slug: pose.slug }}
-                    className="group block"
-                  >
-                    <div className="overflow-hidden rounded-sm bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
-                      <img
-                        src={buildImageUrl(pose.heroImage, 'card')}
-                        alt={pose.title}
-                        width={800}
-                        height={600}
-                        loading="lazy"
-                        className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-                      />
-                    </div>
-                    <p className="mt-4 font-serif text-lg leading-snug text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)]">
-                      {pose.title}
-                    </p>
-                  </Link>
-                </li>
+                <Link
+                  key={pose.slug}
+                  to="/poses/$slug"
+                  params={{ slug: pose.slug }}
+                  className="group"
+                >
+                  <div className="overflow-hidden rounded-2xl bg-white">
+                    <img
+                      src={buildImageUrl(pose.heroImage, 'card')}
+                      alt={pose.title}
+                      className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <h3 className="mt-3 font-serif text-lg leading-snug group-hover:text-[color:var(--color-olive)]">
+                    {pose.title}
+                  </h3>
+                </Link>
               ))}
-            </ul>
-
-            <div className="mt-12">
-              <Link
-                to="/poses"
-                className="inline-flex items-center gap-2 rounded-sm border border-[color:var(--color-olive)] px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-olive)] transition hover:bg-[color:var(--color-olive)] hover:text-[color:var(--color-bg)]"
-              >
-                View all poses
-                <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-              </Link>
             </div>
           </Container>
         </section>
       ) : null}
 
-      {/* ============================================================
-          ABOUT TEASER — single line of trust, link to about page
-          ============================================================ */}
-      <section className="bg-[color:var(--color-surface)]">
+      <section className="bg-[color:var(--color-bg)] py-16 md:py-24">
         <Container size="wide">
-          <div className="flex flex-col items-start gap-6 py-16 md:flex-row md:items-center md:justify-between md:py-20">
-            <div className="max-w-xl">
-              <Eyebrow tone="default">Who writes this</Eyebrow>
-              <h2 className="mt-4 font-serif text-2xl leading-tight tracking-tight md:text-[32px]">
-                Written by Marvin Smit. Long-time practitioner, not a certified instructor.
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-base">
-                Read the about page for the methodology, the AI-imagery
-                disclosure, and how you can reach me.
+          <div className="grid overflow-hidden rounded-[2rem] border border-[color:var(--color-border)] bg-white lg:grid-cols-[.8fr_1.2fr]">
+            <div className="bg-[color:var(--color-surface-muted)] p-8 md:p-12">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--color-accent-deep)]">
+                Why trust us
               </p>
+              <h2 className="mt-4 font-serif text-4xl leading-tight">
+                Useful advice should show its work.
+              </h2>
+              <p className="mt-5 leading-relaxed text-[color:var(--color-ink-soft)]">
+                See exactly how we separate official specifications, independent
+                evidence, practitioner observation and editorial inference.
+              </p>
+              <Link
+                to="/how-we-research"
+                className="mt-7 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-olive)] px-5 py-3 text-sm font-semibold text-white"
+              >
+                How we research <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
-            <Link
-              to="/about"
-              className="inline-flex flex-shrink-0 items-center gap-2 rounded-sm border border-[color:var(--color-olive)] px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-olive)] transition hover:bg-[color:var(--color-olive)] hover:text-[color:var(--color-bg)]"
-            >
-              About the author
-              <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-            </Link>
+            <div className="grid sm:grid-cols-2">
+              {[
+                [
+                  'Sources checked',
+                  'We begin with primary and authoritative documentation.',
+                ],
+                [
+                  'No invented testing',
+                  'Research-only reviews are labelled as such.',
+                ],
+                [
+                  'Relationships disclosed',
+                  'Commercial links never purchase a ranking.',
+                ],
+                [
+                  'Changes documented',
+                  'Meaningful corrections and updates stay visible.',
+                ],
+              ].map(([title, note]) => (
+                <div
+                  key={title}
+                  className="border-b border-r border-[color:var(--color-border)] p-8 md:p-10"
+                >
+                  <h3 className="font-serif text-2xl">{title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
+                    {note}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </Container>
       </section>
-
-      {/* ============================================================
-          LEAD CAPTURE — dark ensō band, closing the homepage
-          ============================================================ */}
       <HomeLeadCapture />
     </>
   )
