@@ -206,7 +206,7 @@ function GuidePage() {
                   </Link>
                 </p>
                 <p className="text-xs text-[color:var(--color-ink-muted)]">
-                  {formatDate(frontmatter.publishedAt)}
+                  Updated {formatDate(frontmatter.lastReviewedAt)}
                   <span className="mx-1.5 opacity-40">·</span>
                   {frontmatter.estimatedReadingTime} min read
                 </p>

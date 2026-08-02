@@ -1,4 +1,11 @@
-import { AlertTriangle, Clock3, PackageOpen, Signal, Split } from 'lucide-react'
+import {
+  AlertTriangle,
+  Clock3,
+  PackageOpen,
+  Signal,
+  Split,
+  Users,
+} from 'lucide-react'
 
 export interface ComparisonProfile {
   left: { name: string; chooseWhen: string }
@@ -424,15 +431,17 @@ export const COMPARISONS: Partial<Record<string, ComparisonProfile>> = {
   },
 }
 
-interface PracticeProfile {
+export interface PracticeProfile {
+  audience: string
   duration: string
   level: string
   equipment: string
   safety: string
 }
 
-const PRACTICES: Partial<Record<string, PracticeProfile>> = {
+export const PRACTICES: Partial<Record<string, PracticeProfile>> = {
   'morning-yoga-routine': {
+    audience: 'People who want a short, repeatable start to the day',
     duration: '10 minutes',
     level: 'Beginner',
     equipment: 'Clear floor space; a mat is optional',
@@ -440,6 +449,7 @@ const PRACTICES: Partial<Record<string, PracticeProfile>> = {
       'Move gently when the body is cold and stop for sharp or worsening symptoms.',
   },
   'yoga-for-beginners': {
+    audience: 'People preparing for a first home or studio practice',
     duration: 'Start with 10–15 minutes',
     level: 'First practice',
     equipment: 'Comfortable clothing and clear floor space',
@@ -447,6 +457,7 @@ const PRACTICES: Partial<Record<string, PracticeProfile>> = {
       'Use a smaller range, do not push into pain and seek individual guidance for injuries or health concerns.',
   },
   'chair-yoga-for-beginners': {
+    audience: 'Beginners who prefer or need stable seated support',
     duration: '5 minutes to start',
     level: 'Beginner · seated',
     equipment: 'A stable chair without wheels',
@@ -454,11 +465,36 @@ const PRACTICES: Partial<Record<string, PracticeProfile>> = {
       'Keep the chair on a non-slip surface and stop for pain, dizziness or unusual breathlessness.',
   },
   'chair-yoga-for-seniors': {
+    audience: 'Older adults seeking adaptable seated movement',
     duration: '5–15 minutes',
     level: 'Gentle · adaptable',
     equipment: 'Stable chair; optional mat, blanket or strap',
     safety:
       'Professional guidance is appropriate for fall risk, recent surgery or conditions affecting movement.',
+  },
+  'free-chair-yoga-for-seniors': {
+    audience: 'Older beginners comparing free guided-practice formats',
+    duration: 'Choose a short session first',
+    level: 'Beginner · adaptable',
+    equipment: 'Stable chair; clear space around it',
+    safety:
+      'Check the teacher, chair setup and stop signals before following any video or class.',
+  },
+  'free-28-day-chair-yoga-for-seniors': {
+    audience: 'People who want a gradual chair-yoga calendar',
+    duration: 'Short sessions across 28 days',
+    level: 'Beginner · progressive',
+    equipment: 'Stable chair and a way to track completed sessions',
+    safety:
+      'Repeat or skip days as needed; a calendar is not a reason to practise through symptoms.',
+  },
+  'printable-chair-yoga-for-seniors': {
+    audience: 'People who prefer a printable visual routine',
+    duration: 'Self-paced',
+    level: 'Beginner · seated',
+    equipment: 'Stable chair and the printed routine',
+    safety:
+      'Keep instructions visible, move within a comfortable range and stop for concerning symptoms.',
   },
 }
 
@@ -536,6 +572,7 @@ export function GuideTemplatePanel({ slug }: { slug: string }) {
   const practice = PRACTICES[slug]
   if (!practice) return null
   const rows = [
+    { icon: Users, label: 'Who it is for', value: practice.audience },
     { icon: Clock3, label: 'Duration', value: practice.duration },
     { icon: Signal, label: 'Experience', value: practice.level },
     { icon: PackageOpen, label: 'You need', value: practice.equipment },

@@ -128,7 +128,7 @@ function PosePage() {
               </nav>
               <Eyebrow tone="default">{eyebrow}</Eyebrow>
               <div className="mt-4">
-                <ResearchStatus status="Educational pose guide · safety review required" />
+                <ResearchStatus status="Educational pose guide · non-medical safety context shown" />
               </div>
               <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight md:text-[44px]">
                 {frontmatter.title}
@@ -158,7 +158,7 @@ function PosePage() {
                     </Link>
                   </p>
                   <p className="text-xs text-[color:var(--color-ink-muted)]">
-                    {formatDate(frontmatter.publishedAt)}
+                    Updated {formatDate(frontmatter.lastReviewedAt)}
                     <span className="mx-1.5 opacity-40">·</span>
                     {frontmatter.estimatedReadingTime} min read
                   </p>
