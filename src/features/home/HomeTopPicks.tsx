@@ -51,7 +51,7 @@ export function HomeTopPicks() {
           {PICKS.map((pick) => (
             <li key={pick.name}>
               <Link {...pickHref(pick)} className="group block">
-                <div className="overflow-hidden rounded-sm bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
+                <div className="overflow-hidden rounded-2xl bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)] shadow-[0_18px_45px_-38px_rgba(24,49,41,.65)] transition group-hover:-translate-y-1">
                   <img
                     src={pick.image}
                     alt={`${pick.name} yoga mat`}

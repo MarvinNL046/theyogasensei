@@ -12,7 +12,7 @@ export function GuidesSidebar() {
   return (
     <aside className="md:col-span-4 md:pl-2 lg:pl-4">
       {/* New here? → the pillar buying guide */}
-      <div className="mb-12 rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
+      <div className="mb-12 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8 shadow-[0_18px_45px_-38px_rgba(24,49,41,.65)]">
         <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
           New here?
         </p>

@@ -19,7 +19,7 @@ export function GuideListItem({ guide }: GuideListItemProps) {
         className="group grid items-start gap-6 py-10 md:grid-cols-12 md:gap-8"
       >
         <div className="md:col-span-4">
-          <div className="aspect-[4/3] overflow-hidden rounded-sm bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
+          <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)] shadow-[0_18px_45px_-38px_rgba(24,49,41,.65)]">
             <img
               src={buildImageUrl(guide.heroImage, 'card')}
               alt={guide.title}

@@ -10,9 +10,9 @@
 @source not "./design-references";
 
 /* Fonts — self-hosted via @fontsource */
-@import '@fontsource/cormorant-garamond/latin-400.css';
-@import '@fontsource/cormorant-garamond/latin-500.css';
-@import '@fontsource/cormorant-garamond/latin-600.css';
+@import '@fontsource/fraunces/latin-500.css';
+@import '@fontsource/fraunces/latin-600.css';
+@import '@fontsource/fraunces/latin-700.css';
 @import '@fontsource/inter/latin-400.css';
 @import '@fontsource/inter/latin-500.css';
 @import '@fontsource/inter/latin-600.css';
@@ -156,6 +156,58 @@
   --radius-xl: 0.25rem;
   --radius-2xl: 0.3rem;
   --radius-3xl: 0.35rem;
+}
+
+/* Advisor-family refresh: warm editorial paper, yoga greens and terracotta. */
+@theme {
+  --color-bg: #fbfaf6;
+  --color-surface: #ffffff;
+  --color-surface-muted: #e9f0e9;
+  --color-border: #d8e1da;
+  --color-ink: #183129;
+  --color-ink-soft: #3d544b;
+  --color-ink-muted: #607169;
+  --color-olive: #315849;
+  --color-olive-soft: #779486;
+  --color-olive-deep: #15382d;
+  --color-accent: #c87358;
+  --color-accent-soft: #e7b4a1;
+  --color-accent-deep: #944d39;
+  --color-sage: #779486;
+  --color-sand: #e8ded0;
+  --color-clay: #c87358;
+  --font-serif: 'Fraunces', ui-serif, Georgia, Cambria, 'Times New Roman', serif;
+}
+
+:root {
+  --color-heading: #183129;
+  --background: #fbfaf6;
+  --foreground: #183129;
+  --card: #ffffff;
+  --card-foreground: #183129;
+  --popover: #ffffff;
+  --popover-foreground: #183129;
+  --primary: #315849;
+  --primary-foreground: #ffffff;
+  --secondary: #e8ded0;
+  --secondary-foreground: #183129;
+  --muted: #e9f0e9;
+  --muted-foreground: #607169;
+  --accent: #c87358;
+  --accent-foreground: #ffffff;
+  --border: #d8e1da;
+  --input: #d8e1da;
+  --ring: #315849;
+  --radius: 0.9rem;
+}
+
+@theme inline {
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
 }
 
 @layer base {

@@ -30,7 +30,7 @@ export const Route = createFileRoute('/')({
       { property: 'og:type', content: 'website' },
       {
         property: 'og:image',
-        content: 'https://www.theyogasensei.com/images/brand/home-og.webp',
+        content: 'https://www.theyogasensei.com/images/brand/home-og-advisor.webp',
       },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: 'The Yoga Sensei' },
@@ -41,7 +41,7 @@ export const Route = createFileRoute('/')({
       },
       {
         name: 'twitter:image',
-        content: 'https://www.theyogasensei.com/images/brand/home-og.webp',
+        content: 'https://www.theyogasensei.com/images/brand/home-og-advisor.webp',
       },
     ],
     links: [{ rel: 'canonical', href: 'https://www.theyogasensei.com/' }],
@@ -217,10 +217,31 @@ function HomePage() {
   const { poses } = Route.useLoaderData()
   return (
     <>
+      <section className="overflow-hidden bg-[color:var(--color-surface-muted)]">
+        <Container size="wide" className="py-6 md:py-10">
+          <div className="grid overflow-hidden rounded-[2rem] bg-[color:var(--color-olive-deep)] shadow-[0_30px_70px_-40px_rgba(21,56,45,.75)] lg:grid-cols-[1.02fr_.98fr]">
+            <div className="flex flex-col justify-center px-7 py-14 text-white sm:px-12 md:py-20 lg:px-16">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-accent-soft)]">Clear advice for every body</p>
+              <h1 className="mt-5 max-w-xl font-serif text-4xl leading-[1.04] tracking-[-0.045em] text-white md:text-[58px]">A more grounded way to practise yoga.</h1>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75 md:text-lg">Research-led guides to poses, routines and gear — written for real people, without miracle claims, paid rankings or invented testing.</p>
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Link to="/guides/$slug" params={{ slug: 'yoga-for-beginners' }} className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[color:var(--color-olive-deep)] transition hover:-translate-y-0.5">Start with yoga <ArrowRight className="h-4 w-4" /></Link>
+                <Link to="/guides/$slug" params={{ slug: 'how-to-choose-a-yoga-mat' }} className="inline-flex items-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">Choose a yoga mat</Link>
+              </div>
+              <div className="mt-10 flex flex-wrap gap-x-6 gap-y-2 border-t border-white/15 pt-5 text-xs text-white/65"><span>100+ useful pages</span><span>Evidence-aware</span><span>Updated regularly</span></div>
+            </div>
+            <div className="relative min-h-[360px] lg:min-h-[620px]">
+              <img src={buildImageUrl('guides/yoga-for-beginners/hero', 'og')} alt="A calm yoga practice in natural light" width={1200} height={1200} className="absolute inset-0 h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--color-olive-deep)]/30 to-transparent lg:bg-gradient-to-r" aria-hidden="true" />
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* ============================================================
           HERO — calm wordmark + single primary CTA
           ============================================================ */}
-      <section className="relative overflow-hidden bg-[color:var(--color-bg)]">
+      <section className="hidden">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-right bg-no-repeat"
@@ -299,7 +320,7 @@ function HomePage() {
             {LATEST_WRITING.map((post) => (
               <article
                 key={post.params.slug}
-                className="group overflow-hidden rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] transition hover:border-[color:var(--color-accent)]/40"
+                className="group overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[0_16px_45px_-35px_rgba(24,49,41,.55)] transition hover:-translate-y-1 hover:border-[color:var(--color-accent)]/40"
               >
                 <Link to={post.to} params={post.params} className="block">
                   <img

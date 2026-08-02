@@ -134,7 +134,7 @@ function GuidePage() {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(90deg, var(--color-bg) 0%, rgba(246,241,234,.98) 36%, rgba(246,241,234,.42) 64%, rgba(246,241,234,0) 100%)',
+              'linear-gradient(90deg, var(--color-bg) 0%, rgba(251,250,246,.98) 36%, rgba(251,250,246,.5) 64%, rgba(251,250,246,0) 100%)',
           }}
         />
         <Container size="wide" className="relative">
@@ -211,7 +211,7 @@ function GuidePage() {
             {/* Sidebar */}
             <aside className="min-w-0 max-w-full md:col-span-4 md:pl-2 lg:pl-4">
               {/* About the Author */}
-              <div className="mb-12 rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
+              <div className="mb-12 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8 shadow-[0_18px_45px_-38px_rgba(24,49,41,.65)]">
                 <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
                   About the Author
                 </p>
@@ -247,7 +247,7 @@ function GuidePage() {
               </div>
 
               {/* Popular articles — curated EXISTING slugs only */}
-              <div className="mb-12 rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
+              <div className="mb-12 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8 shadow-[0_18px_45px_-38px_rgba(24,49,41,.65)]">
                 <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
                   Read next
                 </p>
@@ -277,7 +277,7 @@ function GuidePage() {
               </div>
 
               {/* Categories (display-only until we have real category routing) */}
-              <div className="rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8">
+              <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8 shadow-[0_18px_45px_-38px_rgba(24,49,41,.65)]">
                 <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
                   Categories
                 </p>

@@ -25,6 +25,7 @@
     "ping-indexnow": "tsx scripts/ping-indexnow.ts"
   },
   "dependencies": {
+    "@fontsource/fraunces": "^5.2.8",
     "@fontsource/cormorant-garamond": "^5.2.11",
     "@fontsource/inter": "^5.2.8",
     "@fontsource/noto-serif-jp": "^5.2.8",
@@ -48,7 +49,7 @@
     "h3": "2.0.1-rc.22",
     "lucide-react": "^0.545.0",
     "next-themes": "^0.4.6",
-    "nitro": "npm:nitro-nightly@latest",
+    "nitro": "npm:nitro-nightly@3.0.1-20260512-093145-0498ce70",
     "radix-ui": "^1.4.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

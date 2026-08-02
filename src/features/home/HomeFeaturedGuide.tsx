@@ -38,7 +38,7 @@ export function HomeFeaturedGuide() {
             </Link>
           </div>
 
-          <div className="overflow-hidden rounded-sm ring-1 ring-black/30">
+          <div className="overflow-hidden rounded-2xl ring-1 ring-white/15 shadow-2xl">
             <img
               src="/images/brand/review-hero-best-mats.webp"
               alt="A rolled olive yoga mat on a warm wooden studio floor beside an olive branch in a ceramic vase"
