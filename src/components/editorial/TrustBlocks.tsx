@@ -68,6 +68,7 @@ export function DecisionSummary({
 }
 
 export function EvidenceLabels({
+  title = 'Evidence used',
   items = [
     'Manufacturer specification',
     'Official care guidance',
@@ -75,13 +76,14 @@ export function EvidenceLabels({
     'Editorial inference',
   ],
 }: {
+  title?: string
   items?: Array<EvidenceKind>
 }) {
   return (
     <aside className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-6">
       <div className="flex items-center gap-2">
         <BookOpenCheck className="h-5 w-5 text-[color:var(--color-olive)]" />
-        <h2 className="font-serif text-xl">Evidence used</h2>
+        <h2 className="font-serif text-xl">{title}</h2>
       </div>
       <ul className="mt-4 flex flex-wrap gap-2">
         {items.map((item) => (

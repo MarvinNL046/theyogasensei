@@ -13,6 +13,7 @@ import {
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { AffiliateDisclosure } from '#/components/site/AffiliateDisclosure'
+import { AffiliateButton } from '#/components/affiliate/AffiliateButton'
 import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band'
 import {
   EvidenceLabels,
@@ -331,6 +332,20 @@ function ReviewsOverviewPage() {
                 durability, materials and use case. Every pick includes a real
                 limitation; no lab testing or hands-on experience is invented.
               </p>
+              <p className="mt-5 text-sm text-[color:var(--color-ink-muted)]">
+                By{' '}
+                <Link
+                  to="/authors/$slug"
+                  params={{ slug: 'marvin' }}
+                  className="font-semibold text-[color:var(--color-ink)] underline decoration-[color:var(--color-border)] underline-offset-4"
+                >
+                  Marvin Smit
+                </Link>{' '}
+                · Updated August 2, 2026
+              </p>
+              <div className="mt-5 max-w-lg [&>p]:mb-0">
+                <AffiliateDisclosure />
+              </div>
               <a
                 href="#top-picks"
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-olive)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[color:var(--color-olive-deep)]"
@@ -372,6 +387,21 @@ function ReviewsOverviewPage() {
               </div>
             ))}
           </div>
+          <div className="grid gap-4 py-8 md:grid-cols-2">
+            <EvidenceLabels title="Why you can trust this guide" />
+            <UpdateHistory
+              entries={[
+                {
+                  date: 'August 2026',
+                  note: 'Reframed ratings as qualitative assessments and rechecked the decision criteria, product specifications and disclosures.',
+                },
+                {
+                  date: 'June 2026',
+                  note: 'First published with seven use-case-based recommendations.',
+                },
+              ]}
+            />
+          </div>
         </Container>
       </section>
 
@@ -406,26 +436,6 @@ function ReviewsOverviewPage() {
             Seven mats, honestly ranked.
           </h2>
 
-          {/* FTC/Amazon: disclosure sits above the first affiliate link on the page. */}
-          <div className="mt-6 max-w-2xl">
-            <AffiliateDisclosure />
-          </div>
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            <EvidenceLabels />
-            <UpdateHistory
-              entries={[
-                {
-                  date: 'August 2026',
-                  note: 'Reframed ratings as qualitative assessments and rechecked the decision criteria and disclosures.',
-                },
-                {
-                  date: 'June 2026',
-                  note: 'First published with seven use-case-based recommendations.',
-                },
-              ]}
-            />
-          </div>
-
           <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {MAT_PICKS.map((pick) => (
               <li
@@ -458,13 +468,38 @@ function ReviewsOverviewPage() {
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-[color:var(--color-ink-soft)]">
                     {pick.blurb}
                   </p>
-                  <PickCta
-                    pick={pick}
-                    className="mt-5 inline-flex items-center gap-2 self-start rounded-sm bg-[color:var(--color-olive)] px-4 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-charcoal)]"
-                  >
-                    {pick.detailPath ? 'Read review' : 'See on the list'}
-                    <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-                  </PickCta>
+                  <dl className="mt-4 space-y-2 border-t border-[color:var(--color-border)] pt-4 text-xs">
+                    <div>
+                      <dt className="font-semibold text-[color:var(--color-ink)]">
+                        Core specs
+                      </dt>
+                      <dd className="mt-0.5 text-[color:var(--color-ink-muted)]">
+                        {pick.material} · {pick.thickness} · {pick.weight}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="font-semibold text-[color:var(--color-accent-deep)]">
+                        Main limitation
+                      </dt>
+                      <dd className="mt-0.5 text-[color:var(--color-ink-muted)]">
+                        {pick.mainDrawback}
+                      </dd>
+                    </div>
+                  </dl>
+                  <div className="mt-5 flex flex-wrap items-center gap-3">
+                    <AffiliateButton
+                      slug={pick.affiliateSlug}
+                      productName={pick.name}
+                      size="sm"
+                    />
+                    <PickCta
+                      pick={pick}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[color:var(--color-olive-deep)] underline decoration-[color:var(--color-border)] underline-offset-4"
+                    >
+                      {pick.detailPath ? 'Full review' : 'Full pick'}
+                      <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+                    </PickCta>
+                  </div>
                 </div>
               </li>
             ))}
@@ -483,17 +518,26 @@ function ReviewsOverviewPage() {
             The shortlist, side by side.
           </h2>
 
-          <div className="mt-10 overflow-x-auto">
-            <table className="w-full min-w-[760px] border-collapse text-left text-sm">
+          <p className="mt-4 text-sm text-[color:var(--color-ink-muted)] md:hidden">
+            Scroll sideways to compare every factor.
+          </p>
+          <div
+            className="mt-8 overflow-x-auto"
+            tabIndex={0}
+            aria-label="Yoga mat comparison; scroll horizontally on smaller screens"
+          >
+            <table className="w-full min-w-[1280px] border-collapse text-left text-sm">
               <thead>
                 <tr className="border-b border-[color:var(--color-border)] text-[10px] uppercase tracking-[0.14em] text-[color:var(--color-ink-muted)]">
                   <th className="py-3 pr-4 font-semibold">Mat</th>
-                  <th className="px-3 py-3 font-semibold">Grip</th>
-                  <th className="px-3 py-3 font-semibold">Cushion</th>
-                  <th className="px-3 py-3 font-semibold">Durability</th>
-                  <th className="px-3 py-3 font-semibold">Weight</th>
                   <th className="px-3 py-3 font-semibold">Material</th>
+                  <th className="px-3 py-3 font-semibold">Thickness</th>
+                  <th className="px-3 py-3 font-semibold">Weight</th>
+                  <th className="px-3 py-3 font-semibold">Length</th>
+                  <th className="px-3 py-3 font-semibold">Surface</th>
+                  <th className="px-3 py-3 font-semibold">Latex relevance</th>
                   <th className="px-3 py-3 font-semibold">Best for</th>
+                  <th className="px-3 py-3 font-semibold">Main drawback</th>
                   <th className="px-3 py-3 font-semibold">Price</th>
                   <th className="py-3 pl-3" />
                 </tr>
@@ -508,22 +552,28 @@ function ReviewsOverviewPage() {
                       {pick.name}
                     </td>
                     <td className="px-3 py-4 text-[color:var(--color-ink-soft)]">
-                      {qualitativeScore(pick.scores.grip)}
+                      {pick.material}
                     </td>
                     <td className="px-3 py-4 text-[color:var(--color-ink-soft)]">
-                      {qualitativeScore(pick.scores.cushion)}
-                    </td>
-                    <td className="px-3 py-4 text-[color:var(--color-ink-soft)]">
-                      {qualitativeScore(pick.scores.durability)}
+                      {pick.thickness}
                     </td>
                     <td className="px-3 py-4 text-[color:var(--color-ink-soft)]">
                       {pick.weight}
                     </td>
                     <td className="px-3 py-4 text-[color:var(--color-ink-soft)]">
-                      {pick.material}
+                      {pick.length}
+                    </td>
+                    <td className="px-3 py-4 text-[color:var(--color-ink-soft)]">
+                      {pick.surface}
+                    </td>
+                    <td className="px-3 py-4 text-[color:var(--color-ink-soft)]">
+                      {pick.latexRelevance}
                     </td>
                     <td className="px-3 py-4 text-[color:var(--color-ink-soft)]">
                       {pick.bestFor}
+                    </td>
+                    <td className="px-3 py-4 text-[color:var(--color-ink-soft)]">
+                      {pick.mainDrawback}
                     </td>
                     <td className="px-3 py-4 font-medium text-[color:var(--color-ink)]">
                       {priceTier(pick.price)}
@@ -621,18 +671,24 @@ function ReviewsOverviewPage() {
                         </ul>
                       </div>
                     </div>
-                    {pick.detailPath ? (
-                      <Link
-                        {...reviewHref(pick)}
-                        className="mt-7 inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-olive)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.2em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-charcoal)]"
-                      >
-                        Read the full review
-                        <ArrowRight
-                          className="h-3.5 w-3.5"
-                          strokeWidth={1.75}
-                        />
-                      </Link>
-                    ) : null}
+                    <div className="mt-7 flex flex-wrap items-center gap-3">
+                      <AffiliateButton
+                        slug={pick.affiliateSlug}
+                        productName={pick.name}
+                      />
+                      {pick.detailPath ? (
+                        <Link
+                          {...reviewHref(pick)}
+                          className="inline-flex items-center gap-2 text-xs font-semibold text-[color:var(--color-olive-deep)] underline decoration-[color:var(--color-border)] underline-offset-4"
+                        >
+                          Read the full review
+                          <ArrowRight
+                            className="h-3.5 w-3.5"
+                            strokeWidth={1.75}
+                          />
+                        </Link>
+                      ) : null}
+                    </div>
                   </div>
 
                   {/* summary card */}
@@ -660,10 +716,16 @@ function ReviewsOverviewPage() {
                         <dl className="mt-4 border-t border-[color:var(--color-border)] text-sm">
                           {[
                             ['Best for', detail.atAGlance.bestFor],
+                            ['Skip if', detail.cons[0]],
                             ['Grip', detail.atAGlance.grip],
                             ['Cushion', detail.atAGlance.cushion],
                             ['Durability', detail.atAGlance.durability],
                             ['Price', priceTier(pick.price)],
+                            ['Maintenance', pick.maintenance],
+                            [
+                              'Source status',
+                              'Manufacturer specifications + independent evidence',
+                            ],
                           ].map(([k, v]) => (
                             <div
                               key={k}
