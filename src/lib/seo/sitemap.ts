@@ -7,6 +7,25 @@ interface SitemapEntry {
   priority?: number
 }
 
+export type SitemapGroup =
+  | 'pages'
+  | 'guides'
+  | 'poses'
+  | 'styles'
+  | 'gear'
+  | 'blog'
+  | 'authors'
+
+export const SITEMAP_GROUPS: ReadonlyArray<SitemapGroup> = [
+  'pages',
+  'guides',
+  'poses',
+  'styles',
+  'gear',
+  'blog',
+  'authors',
+]
+
 const STATIC_PAGES: Array<Omit<SitemapEntry, 'url'> & { path: string }> = [
   { path: '/', changefreq: 'weekly', priority: 1.0 },
   // /guides is the editorial hub (route, not MDX) — list it with the identity
@@ -76,6 +95,30 @@ function buildEntries(siteUrl: string): Array<SitemapEntry> {
   ]
 }
 
+function contentGroup(routePath: string): SitemapGroup {
+  const segment = routePath.split('/')[1]
+  return SITEMAP_GROUPS.includes(segment as SitemapGroup)
+    ? (segment as SitemapGroup)
+    : 'pages'
+}
+
+export function buildSitemapGroups(
+  siteUrl: string,
+): Record<SitemapGroup, Array<SitemapEntry>> {
+  const groups = SITEMAP_GROUPS.reduce(
+    (result, group) => ({ ...result, [group]: [] }),
+    {} as Record<SitemapGroup, Array<SitemapEntry>>,
+  )
+
+  for (const entry of buildEntries(siteUrl)) {
+    const path = new URL(entry.url).pathname
+    const group = contentGroup(path)
+    groups[group].push(entry)
+  }
+
+  return groups
+}
+
 function escapeXml(s: string): string {
   return s
     .replace(/&/g, '&amp;')
@@ -107,6 +150,40 @@ export function renderSitemap(siteUrl: string): string {
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     urls,
     '</urlset>',
+    '',
+  ].join('\n')
+}
+
+export function renderSitemapGroup(
+  siteUrl: string,
+  group: SitemapGroup,
+): string {
+  const urls = buildSitemapGroups(siteUrl)[group].map(entryToXml).join('\n')
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    urls,
+    '</urlset>',
+    '',
+  ].join('\n')
+}
+
+export function renderSitemapIndex(siteUrl: string): string {
+  const base = siteUrl.replace(/\/$/, '')
+  const lastmod = new Date().toISOString().slice(0, 10)
+  const groups = buildSitemapGroups(siteUrl)
+  const sitemaps = SITEMAP_GROUPS.filter(
+    (group) => groups[group].length > 0,
+  ).map(
+    (group) =>
+      `  <sitemap>\n    <loc>${escapeXml(`${base}/sitemap-${group}.xml`)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </sitemap>`,
+  ).join('\n')
+
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    sitemaps,
+    '</sitemapindex>',
     '',
   ].join('\n')
 }
