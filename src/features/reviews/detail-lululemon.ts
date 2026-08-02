@@ -2,6 +2,7 @@ import type { DetailReview } from '#/components/reviews/ReviewDetail'
 
 /** Auto-generated from our MDX review via workflow (extract -> verify); scores/sub-ratings editorial. */
 export const DETAIL: DetailReview = {
+  "researchStatus": "Personally used",
   "productName": "Lululemon The Mat",
   "title": "Lululemon The Mat Review",
   "intro": "The Lululemon The Mat (5mm) earns its reputation on one thing above all: grip. After about a year and a half practising on one, I understand why testers keep putting it near the top — but the grippiest mat and the right mat for you are not always the same sentence.",

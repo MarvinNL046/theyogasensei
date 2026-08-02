@@ -33,10 +33,17 @@ export const REVIEW_PRICE_BANDS = [
   'Premium',
 ] as const
 
+export const REVIEW_RESEARCH_STATUSES = [
+  'All research statuses',
+  'Personally used',
+  'Documentation-led',
+] as const
+
 export type ReviewBrand = (typeof REVIEW_BRANDS)[number]
 export type ReviewMaterial = (typeof REVIEW_MATERIALS)[number]
 export type ReviewUseCase = (typeof REVIEW_USE_CASES)[number]
 export type ReviewPriceBand = (typeof REVIEW_PRICE_BANDS)[number]
+export type ReviewResearchStatus = (typeof REVIEW_RESEARCH_STATUSES)[number]
 
 export interface ReviewHubEntry {
   slug: string
@@ -49,7 +56,7 @@ export interface ReviewHubEntry {
   priceBand: Exclude<ReviewPriceBand, 'All price bands'>
   bestFor: string
   compromise: string
-  researchStatus: 'Documentation-led'
+  researchStatus: Exclude<ReviewResearchStatus, 'All research statuses'>
 }
 
 export interface ReviewFiltersState {
@@ -57,6 +64,7 @@ export interface ReviewFiltersState {
   material: ReviewMaterial
   useCase: ReviewUseCase
   priceBand: ReviewPriceBand
+  researchStatus: ReviewResearchStatus
 }
 
 export const DEFAULT_REVIEW_FILTERS: ReviewFiltersState = {
@@ -64,6 +72,7 @@ export const DEFAULT_REVIEW_FILTERS: ReviewFiltersState = {
   material: 'All materials',
   useCase: 'All use cases',
   priceBand: 'All price bands',
+  researchStatus: 'All research statuses',
 }
 
 export const REVIEW_ENTRIES: Array<ReviewHubEntry> = [
@@ -117,7 +126,7 @@ export const REVIEW_ENTRIES: Array<ReviewHubEntry> = [
     priceBand: 'Premium',
     bestFor: 'Mixed practices and damp-hand grip',
     compromise: 'Weight, staining and surface care',
-    researchStatus: 'Documentation-led',
+    researchStatus: 'Personally used',
   },
   {
     slug: 'manduka-grp-adapt',

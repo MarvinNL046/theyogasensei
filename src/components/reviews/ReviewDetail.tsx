@@ -66,6 +66,7 @@ export interface DetailReview {
   atAGlance: { label: string; value: string }[]
   verdict: string
   alternatives: AltMat[]
+  researchStatus?: 'Personally used' | 'Documentation-led'
 }
 
 const SITE = 'https://www.theyogasensei.com'
@@ -93,7 +94,7 @@ function reviewDateIso(human: string): string {
 export function buildReviewHead(detail: DetailReview, slug: string) {
   const url = `${SITE}/reviews/${slug}`
   const image = `${SITE}${detail.heroImage}`
-  const desc = `An honest, research-led ${detail.productName} review — grip, cushion, durability, specs and who it’s really for. Editorial scores, no invented lab tests.`
+  const desc = `An honest, research-led ${detail.productName} review — grip, cushion, durability, specs and who it’s really for. Qualitative assessments, no invented lab tests.`
 
   const reviewSchema = {
     '@context': 'https://schema.org',
@@ -229,7 +230,7 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
                 </Link>{' '}
                 ·{' '}
                 <Link
-                  to="/reviews/best-yoga-mats"
+                  to="/reviews"
                   className="hover:text-[color:var(--color-ink)]"
                 >
                   Reviews
@@ -243,7 +244,13 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
                 <Eyebrow tone="default">Yoga mat review</Eyebrow>
               </div>
               <div className="mt-4">
-                <ResearchStatus />
+                <ResearchStatus
+                  status={
+                    d.researchStatus === 'Personally used'
+                      ? 'Personally used and independently researched'
+                      : 'Based on current documentation and independent evidence'
+                  }
+                />
               </div>
               <h1 className="mt-4 font-serif text-4xl leading-[1.05] tracking-tight md:text-[52px]">
                 {d.title}

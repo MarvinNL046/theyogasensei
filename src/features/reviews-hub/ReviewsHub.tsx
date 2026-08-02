@@ -2,10 +2,12 @@ import { Link } from '@tanstack/react-router'
 import { ArrowRight, RotateCcw } from 'lucide-react'
 import { Container } from '#/components/ui/container'
 import {
+  DEFAULT_REVIEW_FILTERS,
   REVIEW_BRANDS,
   REVIEW_ENTRIES,
   REVIEW_MATERIALS,
   REVIEW_PRICE_BANDS,
+  REVIEW_RESEARCH_STATUSES,
   REVIEW_USE_CASES,
 } from '#/features/reviews-hub/data'
 import type {
@@ -20,13 +22,7 @@ export function ReviewsHub({
   filters: ReviewFiltersState
   onChange: (filters: ReviewFiltersState) => void
 }) {
-  const reviews = REVIEW_ENTRIES.filter((review) => {
-    if (filters.brand !== 'All brands' && review.brand !== filters.brand) return false
-    if (filters.material !== 'All materials' && review.material !== filters.material) return false
-    if (filters.useCase !== 'All use cases' && !review.useCases.includes(filters.useCase)) return false
-    if (filters.priceBand !== 'All price bands' && review.priceBand !== filters.priceBand) return false
-    return true
-  })
+  const reviews = filterReviews(filters)
 
   const controls: Array<{
     id: keyof ReviewFiltersState
@@ -37,6 +33,11 @@ export function ReviewsHub({
     { id: 'material', label: 'Material', values: REVIEW_MATERIALS },
     { id: 'useCase', label: 'Use case', values: REVIEW_USE_CASES },
     { id: 'priceBand', label: 'Price band', values: REVIEW_PRICE_BANDS },
+    {
+      id: 'researchStatus',
+      label: 'Research status',
+      values: REVIEW_RESEARCH_STATUSES,
+    },
   ]
 
   return (
@@ -45,13 +46,13 @@ export function ReviewsHub({
         <Container size="wide" className="py-16 md:py-24">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-accent-deep)]">Product reviews</p>
           <h1 className="mt-5 max-w-4xl font-serif text-4xl leading-[1.05] tracking-[-0.045em] md:text-6xl">Clear verdicts, with the limits shown.</h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[color:var(--color-ink-soft)]">Every current review is documentation-led. We show who a mat suits, who should skip it and which compromise matters most—without presenting research as personal testing.</p>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[color:var(--color-ink-soft)]">Every review states whether I used the mat myself or researched it from current documentation and independent evidence. Either way, you see who it suits, who should skip it and which compromise matters most.</p>
         </Container>
       </section>
 
       <section className="border-b border-[color:var(--color-border)] bg-white">
         <Container size="wide" className="py-7">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {controls.map((control) => (
               <label key={control.id} className="text-xs font-semibold text-[color:var(--color-ink-soft)]">
                 <span className="mb-2 block uppercase tracking-[0.15em]">{control.label}</span>
@@ -67,7 +68,7 @@ export function ReviewsHub({
           </div>
           <div className="mt-5 flex items-center justify-between gap-4">
             <p className="text-sm text-[color:var(--color-ink-muted)]" aria-live="polite">{reviews.length} {reviews.length === 1 ? 'review' : 'reviews'}</p>
-            <button type="button" onClick={() => onChange({ brand: 'All brands', material: 'All materials', useCase: 'All use cases', priceBand: 'All price bands' })} className="inline-flex items-center gap-2 text-xs font-semibold text-[color:var(--color-olive-deep)]">
+            <button type="button" onClick={() => onChange({ ...DEFAULT_REVIEW_FILTERS })} className="inline-flex items-center gap-2 text-xs font-semibold text-[color:var(--color-olive-deep)]">
               <RotateCcw aria-hidden="true" className="h-3.5 w-3.5" /> Reset filters
             </button>
           </div>
@@ -115,4 +116,32 @@ export function ReviewsHub({
       </section>
     </>
   )
+}
+
+export function filterReviews(filters: ReviewFiltersState) {
+  return REVIEW_ENTRIES.filter((review) => {
+    if (filters.brand !== 'All brands' && review.brand !== filters.brand)
+      return false
+    if (
+      filters.material !== 'All materials' &&
+      review.material !== filters.material
+    )
+      return false
+    if (
+      filters.useCase !== 'All use cases' &&
+      !review.useCases.includes(filters.useCase)
+    )
+      return false
+    if (
+      filters.priceBand !== 'All price bands' &&
+      review.priceBand !== filters.priceBand
+    )
+      return false
+    if (
+      filters.researchStatus !== 'All research statuses' &&
+      review.researchStatus !== filters.researchStatus
+    )
+      return false
+    return true
+  })
 }
