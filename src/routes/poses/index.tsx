@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { ArrowRight } from 'lucide-react'
 import { listContentSlugs, loadFrontmatter } from '#/lib/mdx/loader'
@@ -5,6 +6,13 @@ import { buildImageUrl } from '#/lib/images/variants'
 import { SITE_URL } from '#/lib/seo/head'
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
+import {
+  POSE_CATEGORIES,
+  PoseFilters,
+  poseCategoryFromSlug,
+  poseCategorySlug,
+} from '#/features/poses-index/PoseFilters'
+import type { PoseCategory } from '#/features/poses-index/PoseFilters'
 
 interface PoseCard {
   slug: string
@@ -13,9 +21,33 @@ interface PoseCard {
   description: string
   heroImage: string
   readingTime: number
+  categories: Array<Exclude<PoseCategory, 'All'>>
+}
+
+interface PosesSearch {
+  category?: string
+}
+
+const CATEGORIES_BY_SLUG: Record<
+  string,
+  Array<Exclude<PoseCategory, 'All'>>
+> = {
+  'childs-pose': ['Beginner', 'Relaxation'],
+  'cobra-pose': ['Beginner', 'Mobility'],
+  'downward-facing-dog': ['Beginner', 'Mobility'],
+  'pigeon-pose': ['Mobility'],
+  'sun-salutation': ['Beginner', 'Flows'],
+  'sun-salutation-b': ['Flows'],
+  'sun-salutation-c': ['Beginner', 'Flows'],
+  'warrior-ii': ['Beginner', 'Standing'],
 }
 
 export const Route = createFileRoute('/poses/')({
+  validateSearch: (search: Record<string, unknown>): PosesSearch => {
+    const category =
+      typeof search.category === 'string' ? search.category : undefined
+    return poseCategoryFromSlug(category) === 'All' ? {} : { category }
+  },
   loader: () => {
     const cards: Array<PoseCard> = listContentSlugs('poses').map((slug) => {
       const { frontmatter: fm } = loadFrontmatter('poses', slug)
@@ -23,10 +55,11 @@ export const Route = createFileRoute('/poses/')({
       return {
         slug,
         title: fm.title.split(/[:—]/)[0]?.trim() ?? fm.title,
-        sanskrit: fm.tags?.[1]?.replace(/-/g, ' ') ?? '',
+        sanskrit: fm.tags[1]?.replace(/-/g, ' ') ?? '',
         description: fm.metaDescription,
         heroImage: fm.heroImage,
         readingTime: fm.estimatedReadingTime,
+        categories: CATEGORIES_BY_SLUG[slug] ?? ['Beginner'],
       }
     })
     return { cards }
@@ -49,6 +82,23 @@ export const Route = createFileRoute('/poses/')({
 
 function PosesIndex() {
   const { cards } = Route.useLoaderData()
+  const search = Route.useSearch()
+  const navigate = Route.useNavigate()
+  const [hydrated, setHydrated] = useState(false)
+  useEffect(() => setHydrated(true), [])
+  const active = hydrated ? poseCategoryFromSlug(search.category) : 'All'
+  const visibleCards =
+    active === 'All'
+      ? cards
+      : cards.filter((pose) => pose.categories.includes(active))
+  const counts = Object.fromEntries(
+    POSE_CATEGORIES.map((category) => [
+      category,
+      category === 'All'
+        ? cards.length
+        : cards.filter((pose) => pose.categories.includes(category)).length,
+    ]),
+  ) as Record<PoseCategory, number>
 
   return (
     <>
@@ -77,13 +127,27 @@ function PosesIndex() {
             Foundational poses, one clear page at a time
           </h2>
 
-          {cards.length === 0 ? (
+          <PoseFilters
+            active={active}
+            counts={counts}
+            onSelect={(category) =>
+              navigate({
+                search:
+                  category === 'All'
+                    ? {}
+                    : { category: poseCategorySlug(category) },
+                replace: true,
+              })
+            }
+          />
+
+          {visibleCards.length === 0 ? (
             <p className="text-[color:var(--color-ink-muted)]">
               The first poses are landing shortly.
             </p>
           ) : (
-            <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {cards.map((pose) => (
+            <ul className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {visibleCards.map((pose) => (
                 <li key={pose.slug}>
                   <Link
                     to="/poses/$slug"
