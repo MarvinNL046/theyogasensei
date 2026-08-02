@@ -30,6 +30,7 @@ import {
   UpdateHistory,
 } from '#/components/editorial/TrustBlocks'
 import { GuideTemplatePanel } from '#/components/editorial/GuideTemplatePanel'
+import { RelatedPathways } from '#/components/site/RelatedPathways'
 
 // Sidebar "Popular articles" — hand-curated, EXISTING slugs only.
 // When new evergreen guides ship, add them here (or replace with a
@@ -356,6 +357,17 @@ function GuidePage() {
       {/* ============================================================
           CLOSING NEWSLETTER CAPTURE
           ============================================================ */}
+      <RelatedPathways
+        items={related}
+        pageKind={
+          frontmatter.clusters.includes('practice') ||
+          frontmatter.tags.some((tag) =>
+            /practice|pose|routine|chair yoga/i.test(tag),
+          )
+            ? 'practice'
+            : 'gear'
+        }
+      />
       <ArticleNewsletterBand source={`guide:${slug}`} />
     </>
   )

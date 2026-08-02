@@ -10,7 +10,7 @@ import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { contentMdxComponents } from '#/lib/mdx/components'
 import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band'
-import { ReadNext } from '#/components/site/read-next'
+import { RelatedPathways } from '#/components/site/RelatedPathways'
 import { Faq } from '#/components/seo/Faq'
 import { PoseInfoCard } from '#/components/editorial/PoseInfoCard'
 import {
@@ -312,8 +312,9 @@ function PosePage() {
       </section>
 
       {/* READ NEXT — this pose's curated related[] links, hop-free via the registry */}
-      <ReadNext
-        items={resolveRelated(frontmatter.related, { exclude: slug, limit: 3 })}
+      <RelatedPathways
+        pageKind="pose"
+        items={resolveRelated(frontmatter.related, { exclude: slug, limit: 6 })}
       />
 
       {/* CLOSING NEWSLETTER CAPTURE */}

@@ -5,7 +5,7 @@ import { Eyebrow } from '#/components/ui/eyebrow'
 import { AffiliateButton } from '#/components/affiliate/AffiliateButton'
 import { AffiliateDisclosure } from '#/components/site/AffiliateDisclosure'
 import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band'
-import { ReadNext } from '#/components/site/read-next'
+import { RelatedPathways } from '#/components/site/RelatedPathways'
 import { resolveRelated } from '#/lib/content/related'
 import {
   DecisionSummary,
@@ -681,7 +681,8 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
       {/* ===================== READ NEXT ===================== */}
       {/* Same trio on every individual mat review (roundup + choosing + care):
           always relevant, never self-referencing. */}
-      <ReadNext
+      <RelatedPathways
+        pageKind="review"
         items={resolveRelated([
           'best-yoga-mats-2026',
           'how-to-choose-a-yoga-mat',
