@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from '@tanstack/react-router'
-import { Menu, X } from 'lucide-react'
+import { Menu, Search, X } from 'lucide-react'
 import { Container } from '#/components/ui/container'
 import { cn } from '#/lib/utils'
 
@@ -69,12 +69,21 @@ export function Header() {
           ))}
         </nav>
 
-        <Link
-          to="/starter-guide"
-          className="hidden shrink-0 rounded-full bg-[color:var(--color-olive)] px-4 py-2.5 text-xs font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[color:var(--color-olive-deep)] lg:inline-flex"
-        >
-          Start here
-        </Link>
+        <div className="hidden shrink-0 items-center gap-2 lg:flex">
+          <Link
+            to="/search"
+            aria-label="Search The Yoga Sensei"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--color-border)] text-[color:var(--color-ink-soft)] transition hover:border-[color:var(--color-accent-soft)] hover:text-[color:var(--color-olive-deep)]"
+          >
+            <Search aria-hidden="true" className="h-4 w-4" />
+          </Link>
+          <Link
+            to="/starter-guide"
+            className="rounded-full bg-[color:var(--color-olive)] px-4 py-2.5 text-xs font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[color:var(--color-olive-deep)]"
+          >
+            Start here
+          </Link>
+        </div>
         <button
           type="button"
           onClick={() => setOpen((value) => !value)}
@@ -119,6 +128,13 @@ export function Header() {
             className="rounded-xl px-3 py-3 text-sm font-medium text-[color:var(--color-ink-soft)] hover:bg-[color:var(--color-surface-muted)]"
           >
             About
+          </Link>
+          <Link
+            to="/search"
+            onClick={close}
+            className="rounded-xl px-3 py-3 text-sm font-medium text-[color:var(--color-ink-soft)] hover:bg-[color:var(--color-surface-muted)]"
+          >
+            Search
           </Link>
         </Container>
       </nav>

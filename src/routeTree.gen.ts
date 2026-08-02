@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as StarterGuideRouteImport } from './routes/starter-guide'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as ReviewMethodologyRouteImport } from './routes/review-methodology'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PracticeRouteImport } from './routes/practice'
@@ -61,6 +62,11 @@ const TermsRoute = TermsRouteImport.update({
 const StarterGuideRoute = StarterGuideRouteImport.update({
   id: '/starter-guide',
   path: '/starter-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReviewMethodologyRoute = ReviewMethodologyRouteImport.update({
@@ -256,6 +262,7 @@ export interface FileRoutesByFullPath {
   '/practice': typeof PracticeRoute
   '/privacy': typeof PrivacyRoute
   '/review-methodology': typeof ReviewMethodologyRoute
+  '/search': typeof SearchRoute
   '/starter-guide': typeof StarterGuideRoute
   '/terms': typeof TermsRoute
   '/unsubscribe': typeof UnsubscribeRoute
@@ -296,6 +303,7 @@ export interface FileRoutesByTo {
   '/practice': typeof PracticeRoute
   '/privacy': typeof PrivacyRoute
   '/review-methodology': typeof ReviewMethodologyRoute
+  '/search': typeof SearchRoute
   '/starter-guide': typeof StarterGuideRoute
   '/terms': typeof TermsRoute
   '/unsubscribe': typeof UnsubscribeRoute
@@ -337,6 +345,7 @@ export interface FileRoutesById {
   '/practice': typeof PracticeRoute
   '/privacy': typeof PrivacyRoute
   '/review-methodology': typeof ReviewMethodologyRoute
+  '/search': typeof SearchRoute
   '/starter-guide': typeof StarterGuideRoute
   '/terms': typeof TermsRoute
   '/unsubscribe': typeof UnsubscribeRoute
@@ -379,6 +388,7 @@ export interface FileRouteTypes {
     | '/practice'
     | '/privacy'
     | '/review-methodology'
+    | '/search'
     | '/starter-guide'
     | '/terms'
     | '/unsubscribe'
@@ -419,6 +429,7 @@ export interface FileRouteTypes {
     | '/practice'
     | '/privacy'
     | '/review-methodology'
+    | '/search'
     | '/starter-guide'
     | '/terms'
     | '/unsubscribe'
@@ -459,6 +470,7 @@ export interface FileRouteTypes {
     | '/practice'
     | '/privacy'
     | '/review-methodology'
+    | '/search'
     | '/starter-guide'
     | '/terms'
     | '/unsubscribe'
@@ -500,6 +512,7 @@ export interface RootRouteChildren {
   PracticeRoute: typeof PracticeRoute
   PrivacyRoute: typeof PrivacyRoute
   ReviewMethodologyRoute: typeof ReviewMethodologyRoute
+  SearchRoute: typeof SearchRoute
   StarterGuideRoute: typeof StarterGuideRoute
   TermsRoute: typeof TermsRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
@@ -545,6 +558,13 @@ declare module '@tanstack/react-router' {
       path: '/starter-guide'
       fullPath: '/starter-guide'
       preLoaderRoute: typeof StarterGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/review-methodology': {
@@ -812,6 +832,7 @@ const rootRouteChildren: RootRouteChildren = {
   PracticeRoute: PracticeRoute,
   PrivacyRoute: PrivacyRoute,
   ReviewMethodologyRoute: ReviewMethodologyRoute,
+  SearchRoute: SearchRoute,
   StarterGuideRoute: StarterGuideRoute,
   TermsRoute: TermsRoute,
   UnsubscribeRoute: UnsubscribeRoute,
