@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import type { MatPick } from '#/features/reviews/data'
 import { Link, createFileRoute } from '@tanstack/react-router'
 import {
   ArrowRight,
@@ -12,15 +13,14 @@ import {
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { AffiliateDisclosure } from '#/components/site/AffiliateDisclosure'
-import { RatingStars } from '#/components/reviews/RatingStars'
-import { RadarChart } from '#/components/reviews/RadarChart'
 import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band'
 import {
-  MAT_PICKS,
-  type MatPick,
-  SCORING_RUBRIC,
-  priceTier,
-} from '#/features/reviews/data'
+  EvidenceLabels,
+  ResearchStatus,
+  UpdateHistory,
+  qualitativeScore,
+} from '#/components/editorial/TrustBlocks'
+import { MAT_PICKS, SCORING_RUBRIC, priceTier } from '#/features/reviews/data'
 import {
   BUYING_GUIDE,
   PICK_DETAILS,
@@ -34,13 +34,16 @@ export const Route = createFileRoute('/reviews/best-yoga-mats')({
       {
         name: 'description',
         content:
-          'Our seven best yoga mats for 2026, scored on grip, cushion, durability, value and eco — research-led, honestly compared, no invented testing.',
+          'Seven yoga mats compared by grip, cushion, durability and materials—with clear use cases, limitations and no invented product testing.',
       },
-      { property: 'og:title', content: 'Best Yoga Mats for Every Practice (2026)' },
+      {
+        property: 'og:title',
+        content: 'Best Yoga Mats for Every Practice (2026)',
+      },
       {
         property: 'og:description',
         content:
-          'Seven best yoga mats, scored on grip, cushion, durability, value and eco — research-led and honestly compared.',
+          'Seven yoga mats compared by use case, material and meaningful trade-offs—research-led and honestly presented.',
       },
       {
         property: 'og:url',
@@ -59,13 +62,84 @@ export const Route = createFileRoute('/reviews/best-yoga-mats')({
         href: 'https://www.theyogasensei.com/reviews/best-yoga-mats',
       },
     ],
+    scripts: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: 'The 7 Best Yoga Mats for Every Practice',
+          description:
+            'A research-led shortlist organized by use case, material and practical trade-offs.',
+          mainEntityOfPage:
+            'https://www.theyogasensei.com/reviews/best-yoga-mats',
+          author: {
+            '@type': 'Person',
+            name: 'Marvin Smit',
+            url: 'https://www.theyogasensei.com/authors/marvin',
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'The Yoga Sensei',
+            url: 'https://www.theyogasensei.com',
+          },
+        }),
+      },
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: 'Best yoga mats by use case',
+          numberOfItems: MAT_PICKS.length,
+          itemListElement: MAT_PICKS.map((pick) => ({
+            '@type': 'ListItem',
+            position: pick.rank,
+            name: pick.name,
+            url: pick.detailPath
+              ? `https://www.theyogasensei.com${pick.detailPath}`
+              : `https://www.theyogasensei.com/reviews/best-yoga-mats#pick-${pick.rank}`,
+          })),
+        }),
+      },
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Home',
+              item: 'https://www.theyogasensei.com/',
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'Best gear',
+              item: 'https://www.theyogasensei.com/best',
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: 'Best yoga mats',
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: ReviewsOverviewPage,
 })
 
 const STATS = [
   { icon: Sparkles, label: '7 mats compared', sub: 'Research-led shortlist' },
-  { icon: BadgeCheck, label: 'Honest & independent', sub: 'No sponsorship bias' },
+  {
+    icon: BadgeCheck,
+    label: 'Honest & independent',
+    sub: 'No sponsorship bias',
+  },
   { icon: Leaf, label: 'Real-world lens', sub: 'How they practise' },
   { icon: RefreshCw, label: 'Updated 2026', sub: 'Latest picks' },
 ]
@@ -74,37 +148,101 @@ const IN_THIS_GUIDE = [
   { href: '#top-picks', label: 'Our Top Picks' },
   { href: '#compare', label: 'Comparison Table' },
   { href: '#reviews', label: 'The Reviews' },
-  { href: '#how-we-score', label: 'How We Score' },
+  { href: '#how-we-score', label: 'Methodology' },
   { href: '#buying-guide', label: 'Buying Guide' },
   { href: '#faqs', label: 'FAQs' },
 ]
 
 const RELATED_GUIDES = [
-  { slug: 'how-to-choose-a-yoga-mat', label: 'How to choose a yoga mat', note: 'The full decision framework' },
-  { slug: 'best-yoga-mat-for-hot-yoga', label: 'Best mats for hot yoga', note: 'Solve wet grip first' },
-  { slug: 'eco-friendly-yoga-mat', label: 'Eco-friendly yoga mats', note: 'Natural materials, honestly' },
-  { slug: 'how-thick-should-a-yoga-mat-be', label: 'How thick should a mat be?', note: '4 vs 5 vs 6 mm' },
-  { slug: 'best-yoga-mat-for-bad-knees', label: 'Best mats for bad knees', note: 'Cushion vs stability' },
-  { slug: 'how-to-clean-a-yoga-mat', label: 'How to clean a yoga mat', note: 'Material-by-material care' },
+  {
+    slug: 'how-to-choose-a-yoga-mat',
+    label: 'How to choose a yoga mat',
+    note: 'The full decision framework',
+  },
+  {
+    slug: 'best-yoga-mat-for-hot-yoga',
+    label: 'Best mats for hot yoga',
+    note: 'Solve wet grip first',
+  },
+  {
+    slug: 'eco-friendly-yoga-mat',
+    label: 'Eco-friendly yoga mats',
+    note: 'Natural materials, honestly',
+  },
+  {
+    slug: 'how-thick-should-a-yoga-mat-be',
+    label: 'How thick should a mat be?',
+    note: '4 vs 5 vs 6 mm',
+  },
+  {
+    slug: 'best-yoga-mat-for-bad-knees',
+    label: 'Best mats for bad knees',
+    note: 'Cushion vs stability',
+  },
+  {
+    slug: 'how-to-clean-a-yoga-mat',
+    label: 'How to clean a yoga mat',
+    note: 'Material-by-material care',
+  },
 ]
 
 const ACCESSORIES = [
-  { slug: 'best-yoga-blocks', label: 'Yoga blocks', note: 'Height & support for folds and balance' },
-  { slug: 'best-yoga-bolster', label: 'Yoga bolsters', note: 'Firm support for restorative practice' },
-  { slug: 'best-yoga-mat-bag', label: 'Mat bags & carriers', note: 'Carry it to class without the under-arm shuffle' },
+  {
+    slug: 'best-yoga-blocks',
+    label: 'Yoga blocks',
+    note: 'Height & support for folds and balance',
+  },
+  {
+    slug: 'best-yoga-bolster',
+    label: 'Yoga bolsters',
+    note: 'Firm support for restorative practice',
+  },
+  {
+    slug: 'best-yoga-mat-bag',
+    label: 'Mat bags & carriers',
+    note: 'Carry it to class without the under-arm shuffle',
+  },
 ]
 
 // Single-product deep-dives. Surfaced here so every full review is reachable
 // from the roundup hub — not just the three picks that link out inline.
 const FULL_REVIEWS = [
-  { to: '/reviews/manduka-pro', label: 'Manduka PRO', note: 'The buy-it-for-life benchmark' },
+  {
+    to: '/reviews/manduka-pro',
+    label: 'Manduka PRO',
+    note: 'The buy-it-for-life benchmark',
+  },
   { to: '/reviews/jade', label: 'Jade Harmony', note: 'Grippy natural rubber' },
-  { to: '/reviews/gaiam', label: 'Gaiam Premium', note: 'Best budget beginner mat' },
-  { to: '/reviews/lululemon', label: 'Lululemon The Mat', note: 'The grip that tops the lists' },
-  { to: '/reviews/retrospec', label: 'Retrospec Solana', note: 'Thick foam for sore knees' },
-  { to: '/reviews/liforme', label: 'Liforme Classic', note: 'Grip plus an alignment guide' },
-  { to: '/reviews/manduka-grp-adapt', label: 'Manduka GRP Adapt', note: 'The measured grip king' },
-  { to: '/reviews/alo', label: 'Alo Warrior Mat', note: 'The plush oversized home mat' },
+  {
+    to: '/reviews/gaiam',
+    label: 'Gaiam Premium',
+    note: 'Best budget beginner mat',
+  },
+  {
+    to: '/reviews/lululemon',
+    label: 'Lululemon The Mat',
+    note: 'The grip that tops the lists',
+  },
+  {
+    to: '/reviews/retrospec',
+    label: 'Retrospec Solana',
+    note: 'Thick foam for sore knees',
+  },
+  {
+    to: '/reviews/liforme',
+    label: 'Liforme Classic',
+    note: 'Grip plus an alignment guide',
+  },
+  {
+    to: '/reviews/manduka-grp-adapt',
+    label: 'Manduka GRP Adapt',
+    note: 'The measured grip king',
+  },
+  {
+    to: '/reviews/alo',
+    label: 'Alo Warrior Mat',
+    note: 'The plush oversized home mat',
+  },
 ] as const
 
 type ReviewLink =
@@ -172,10 +310,16 @@ function ReviewsOverviewPage() {
                 <Link to="/" className="hover:text-[color:var(--color-ink)]">
                   Home
                 </Link>{' '}
-                · <span className="text-[color:var(--color-ink)]">Best Yoga Mats</span>
+                ·{' '}
+                <span className="text-[color:var(--color-ink)]">
+                  Best Yoga Mats
+                </span>
               </nav>
               <div className="mt-6">
                 <Eyebrow tone="default">Yoga gear reviews</Eyebrow>
+              </div>
+              <div className="mt-4">
+                <ResearchStatus status="Shortlist researched from current sources" />
               </div>
               <h1 className="mt-4 font-serif text-4xl leading-[1.05] tracking-tight md:text-[52px]">
                 The 7 best yoga mats
@@ -183,10 +327,9 @@ function ReviewsOverviewPage() {
                 for every practice.
               </h1>
               <p className="mt-6 max-w-md text-base leading-relaxed text-[color:var(--color-ink-soft)]">
-                We compared the mats that actually matter — scored on grip,
-                cushion, durability, value and eco — to find the right one for
-                every type of practice. Researched and honestly ranked, never
-                lab-faked.
+                We compared the mats that actually matter by grip, cushion,
+                durability, materials and use case. Every pick includes a real
+                limitation; no lab testing or hands-on experience is invented.
               </p>
               <a
                 href="#top-picks"
@@ -267,6 +410,21 @@ function ReviewsOverviewPage() {
           <div className="mt-6 max-w-2xl">
             <AffiliateDisclosure />
           </div>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            <EvidenceLabels />
+            <UpdateHistory
+              entries={[
+                {
+                  date: 'August 2026',
+                  note: 'Reframed ratings as qualitative assessments and rechecked the decision criteria and disclosures.',
+                },
+                {
+                  date: 'June 2026',
+                  note: 'First published with seven use-case-based recommendations.',
+                },
+              ]}
+            />
+          </div>
 
           <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {MAT_PICKS.map((pick) => (
@@ -294,12 +452,9 @@ function ReviewsOverviewPage() {
                   <h3 className="mt-2 font-serif text-xl leading-snug">
                     {pick.name}
                   </h3>
-                  <div className="mt-2 flex items-center gap-2">
-                    <RatingStars score={pick.overall} size={15} />
-                    <span className="text-sm font-medium text-[color:var(--color-ink)]">
-                      {pick.overall.toFixed(1)}
-                    </span>
-                  </div>
+                  <p className="mt-2 text-xs font-semibold text-[color:var(--color-olive-deep)]">
+                    {qualitativeScore(pick.overall)} fit
+                  </p>
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-[color:var(--color-ink-soft)]">
                     {pick.blurb}
                   </p>
@@ -352,14 +507,14 @@ function ReviewsOverviewPage() {
                     <td className="py-4 pr-4 font-serif text-base">
                       {pick.name}
                     </td>
-                    <td className="px-3 py-4">
-                      <RatingStars score={pick.scores.grip} size={12} />
+                    <td className="px-3 py-4 text-[color:var(--color-ink-soft)]">
+                      {qualitativeScore(pick.scores.grip)}
                     </td>
-                    <td className="px-3 py-4">
-                      <RatingStars score={pick.scores.cushion} size={12} />
+                    <td className="px-3 py-4 text-[color:var(--color-ink-soft)]">
+                      {qualitativeScore(pick.scores.cushion)}
                     </td>
-                    <td className="px-3 py-4">
-                      <RatingStars score={pick.scores.durability} size={12} />
+                    <td className="px-3 py-4 text-[color:var(--color-ink-soft)]">
+                      {qualitativeScore(pick.scores.durability)}
                     </td>
                     <td className="px-3 py-4 text-[color:var(--color-ink-soft)]">
                       {pick.weight}
@@ -404,7 +559,6 @@ function ReviewsOverviewPage() {
           <div className="mt-12 space-y-16">
             {MAT_PICKS.map((pick) => {
               const detail = PICK_DETAILS[pick.name]
-              if (!detail) return null
               return (
                 <article
                   key={pick.name}
@@ -473,7 +627,10 @@ function ReviewsOverviewPage() {
                         className="mt-7 inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-olive)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.2em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-charcoal)]"
                       >
                         Read the full review
-                        <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+                        <ArrowRight
+                          className="h-3.5 w-3.5"
+                          strokeWidth={1.75}
+                        />
                       </Link>
                     ) : null}
                   </div>
@@ -493,19 +650,12 @@ function ReviewsOverviewPage() {
                         <div className="flex items-end justify-between">
                           <div>
                             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)]">
-                              Editorial score
+                              Editorial assessment
                             </p>
-                            <p className="font-serif text-4xl leading-none">
-                              {pick.overall.toFixed(1)}
-                              <span className="text-xl text-[color:var(--color-ink-muted)]">
-                                /5
-                              </span>
+                            <p className="mt-1 font-serif text-3xl leading-none">
+                              {qualitativeScore(pick.overall)}
                             </p>
                           </div>
-                          <RatingStars score={pick.overall} size={16} />
-                        </div>
-                        <div className="mt-4 flex justify-center">
-                          <RadarChart scores={pick.scores} size={210} />
                         </div>
                         <dl className="mt-4 border-t border-[color:var(--color-border)] text-sm">
                           {[
@@ -549,21 +699,20 @@ function ReviewsOverviewPage() {
         <Container size="wide">
           <div className="grid gap-10 md:grid-cols-12">
             <div className="md:col-span-5">
-              <Eyebrow tone="default">How we score</Eyebrow>
+              <Eyebrow tone="default">Our methodology</Eyebrow>
               <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight md:text-[40px]">
-                Honest scores, no fake lab.
+                Qualitative decisions, no fake lab.
               </h2>
               <p className="mt-6 text-base leading-relaxed text-[color:var(--color-ink-soft)]">
-                Every mat is rated 0–5 on five things that decide whether you
-                actually enjoy practising on it. The scores are editorial — built
-                from material research, published specs and aggregated owner
-                feedback, weighed by a long-time practitioner. We don&rsquo;t run a
-                pretend lab, and we don&rsquo;t borrow star counts we can&rsquo;t
-                verify. Where we&rsquo;re unsure, we say so in the full review.
+                We assess every mat across five factors that change how it feels
+                in a real practice. The labels are editorial judgments built
+                from material research, published specifications and clearly
+                attributed independent evidence. They are not measurements from
+                a controlled lab, so we do not present them as decimal scores.
               </p>
               <p className="mt-4 text-base leading-relaxed text-[color:var(--color-ink-soft)]">
-                This page is a cross-referenced shortlist, not a lab-test report.
-                The picks come from three layers — stable product specs,
+                This page is a cross-referenced shortlist, not a lab-test
+                report. The picks come from three layers — stable product specs,
                 manufacturer documentation, and broad consensus across serious
                 review publications and practitioner communities. It tells you
                 what can be known from the outside: material, thickness,
@@ -571,11 +720,11 @@ function ReviewsOverviewPage() {
               </p>
               <p className="mt-4 text-base leading-relaxed text-[color:var(--color-ink-soft)]">
                 We also separate <em>best</em> from <em>most premium</em>. A mat
-                can be the best beginner buy because it removes friction, even if
-                it isn&rsquo;t the one a teacher keeps for ten years. So every pick
-                is framed by use case first, then material, then the trade-off —
-                and live prices and review counts, which change constantly, are
-                kept out of evergreen copy on purpose.
+                can be the best beginner buy because it removes friction, even
+                if it isn&rsquo;t the one a teacher keeps for ten years. So
+                every pick is framed by use case first, then material, then the
+                trade-off — and live prices and review counts, which change
+                constantly, are kept out of evergreen copy on purpose.
               </p>
             </div>
             <div className="md:col-span-7">
@@ -592,10 +741,10 @@ function ReviewsOverviewPage() {
                   </div>
                 ))}
                 <div className="bg-[color:var(--color-surface)] p-6">
-                  <dt className="font-serif text-lg">Overall</dt>
+                  <dt className="font-serif text-lg">Overall fit</dt>
                   <dd className="mt-1 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
-                    A weighted read of the five, tilted toward the things that
-                    matter most for how that mat is meant to be used.
+                    A qualitative read of the five factors, weighted toward the
+                    use case the mat is recommended for.
                   </dd>
                 </div>
               </dl>
@@ -789,12 +938,9 @@ function ReviewsOverviewPage() {
                 <p className="mt-4 font-serif text-2xl leading-snug transition group-hover:text-[color:var(--color-accent-deep)]">
                   {pick.name}
                 </p>
-                <div className="mt-3 flex items-center gap-2">
-                  <RatingStars score={pick.overall} size={14} />
-                  <span className="text-sm font-medium text-[color:var(--color-ink)]">
-                    {pick.overall.toFixed(1)}
-                  </span>
-                </div>
+                <p className="mt-3 text-sm font-semibold text-[color:var(--color-olive-deep)]">
+                  {qualitativeScore(pick.overall)} fit
+                </p>
               </PickCta>
             ))}
           </div>

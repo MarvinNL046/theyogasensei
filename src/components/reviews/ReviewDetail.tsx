@@ -2,12 +2,18 @@ import { Link } from '@tanstack/react-router'
 import { ArrowRight, Check, Minus } from 'lucide-react'
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
-import { RatingStars } from '#/components/reviews/RatingStars'
 import { AffiliateButton } from '#/components/affiliate/AffiliateButton'
 import { AffiliateDisclosure } from '#/components/site/AffiliateDisclosure'
 import { ArticleNewsletterBand } from '#/components/site/article-newsletter-band'
 import { ReadNext } from '#/components/site/read-next'
 import { resolveRelated } from '#/lib/content/related'
+import {
+  DecisionSummary,
+  EvidenceLabels,
+  ResearchStatus,
+  UpdateHistory,
+  qualitativeScore,
+} from '#/components/editorial/TrustBlocks'
 
 export interface SubRating {
   label: string
@@ -64,9 +70,14 @@ export interface DetailReview {
 
 const SITE = 'https://www.theyogasensei.com'
 
-// Reviews are editorial: the reviewer/publisher is the brand (not a Person),
-// and the scores are our own editorial ratings on a 1–5 scale.
-const REVIEW_ORG = { '@type': 'Organization', name: 'The Yoga Sensei', url: SITE } as const
+// Reviews are editorial: the publisher is the brand. These pages deliberately
+// use Article schema because documentation-led research is not a reproducible
+// product test and should not generate a review-snippet star rating.
+const REVIEW_ORG = {
+  '@type': 'Organization',
+  name: 'The Yoga Sensei',
+  url: SITE,
+} as const
 
 /** "June 15, 2026" -> "2026-06-15"; falls back to the raw string if unparseable. */
 function reviewDateIso(human: string): string {
@@ -84,22 +95,21 @@ export function buildReviewHead(detail: DetailReview, slug: string) {
   const image = `${SITE}${detail.heroImage}`
   const desc = `An honest, research-led ${detail.productName} review — grip, cushion, durability, specs and who it’s really for. Editorial scores, no invented lab tests.`
 
-  // Review snippet — itemReviewed Product + our editorial reviewRating (stars).
   const reviewSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Review',
-    name: detail.title,
-    itemReviewed: { '@type': 'Product', name: detail.productName, image },
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: detail.overall,
-      bestRating: 5,
-      worstRating: 1,
+    '@type': 'Article',
+    headline: detail.title,
+    description: desc,
+    image,
+    author: {
+      '@type': 'Person',
+      name: detail.byline.author,
+      url: `${SITE}/authors/marvin`,
     },
-    reviewBody: desc,
-    author: REVIEW_ORG,
     publisher: REVIEW_ORG,
     datePublished: reviewDateIso(detail.byline.date),
+    dateModified: reviewDateIso(detail.byline.date),
+    mainEntityOfPage: url,
     url,
   }
 
@@ -110,7 +120,12 @@ export function buildReviewHead(detail: DetailReview, slug: string) {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
-      { '@type': 'ListItem', position: 2, name: 'Reviews', item: `${SITE}/reviews/best-yoga-mats` },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Reviews',
+        item: `${SITE}/reviews/best-yoga-mats`,
+      },
       { '@type': 'ListItem', position: 3, name: detail.productName },
     ],
   }
@@ -128,7 +143,10 @@ export function buildReviewHead(detail: DetailReview, slug: string) {
     links: [{ rel: 'canonical', href: url }],
     scripts: [
       { type: 'application/ld+json', children: JSON.stringify(reviewSchema) },
-      { type: 'application/ld+json', children: JSON.stringify(breadcrumbSchema) },
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify(breadcrumbSchema),
+      },
     ],
   }
 }
@@ -167,15 +185,15 @@ function RatingsBox({ ratings }: { ratings: SubRating[] }) {
     <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5">
       <dl className="space-y-3">
         {ratings.map((r) => (
-          <div key={r.label} className="flex items-center justify-between gap-4">
+          <div
+            key={r.label}
+            className="flex items-center justify-between gap-4"
+          >
             <dt className="text-sm text-[color:var(--color-ink-soft)]">
               {r.label}
             </dt>
-            <dd className="flex items-center gap-2">
-              <RatingStars score={r.score} size={13} />
-              <span className="w-6 text-right text-xs font-medium text-[color:var(--color-ink)]">
-                {r.score.toFixed(1)}
-              </span>
+            <dd className="rounded-full bg-[color:var(--color-surface-muted)] px-3 py-1 text-xs font-semibold text-[color:var(--color-olive-deep)]">
+              {qualitativeScore(r.score)}
             </dd>
           </div>
         ))}
@@ -216,6 +234,9 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
               </nav>
               <div className="mt-6">
                 <Eyebrow tone="default">Yoga mat review</Eyebrow>
+              </div>
+              <div className="mt-4">
+                <ResearchStatus />
               </div>
               <h1 className="mt-4 font-serif text-4xl leading-[1.05] tracking-tight md:text-[52px]">
                 {d.title}
@@ -283,6 +304,25 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
           <div className="max-w-2xl">
             <AffiliateDisclosure />
           </div>
+          <div className="mt-8 max-w-4xl">
+            <DecisionSummary
+              bestFor={d.whoFor[0] ?? d.productName}
+              skipIf={d.notIdealFor}
+              strength={d.pros[0] ?? 'See the full evidence below.'}
+              compromise={d.cons[0] ?? 'No major limitation documented.'}
+            />
+          </div>
+          <div className="mt-6 grid max-w-4xl gap-4 md:grid-cols-2">
+            <EvidenceLabels />
+            <UpdateHistory
+              entries={[
+                {
+                  date: d.byline.date,
+                  note: 'Specifications, source links, alternatives and editorial conclusion reviewed.',
+                },
+              ]}
+            />
+          </div>
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
             {/* MAIN */}
             <div className="lg:col-span-8">
@@ -336,14 +376,13 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
                     {s.ratings ? (
                       <RatingsBox ratings={s.ratings} />
                     ) : s.rating ? (
-                      <div className="flex items-center gap-3 border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5">
-                        <span className="font-serif text-3xl">
-                          {s.rating.toFixed(1)}
-                          <span className="text-base text-[color:var(--color-ink-muted)]">
-                            /5
-                          </span>
-                        </span>
-                        <RatingStars score={s.rating} size={16} />
+                      <div className="border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-ink-muted)]">
+                          Editorial assessment
+                        </p>
+                        <p className="mt-2 font-serif text-2xl">
+                          {qualitativeScore(s.rating)}
+                        </p>
                       </div>
                     ) : null}
                   </div>
@@ -432,24 +471,16 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
             {/* SIDEBAR */}
             <aside className="lg:col-span-4">
               <div className="space-y-6 lg:sticky lg:top-20">
-                {/* Rating card */}
+                {/* Decision profile */}
                 <div className="border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6">
                   <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)]">
-                    Our rating
+                    Editorial assessment
                   </p>
-                  <div className="mt-1 flex items-end gap-3">
-                    <span className="font-serif text-5xl leading-none">
-                      {d.overall.toFixed(1)}
-                      <span className="text-2xl text-[color:var(--color-ink-muted)]">
-                        /5
-                      </span>
-                    </span>
-                  </div>
-                  <div className="mt-2">
-                    <RatingStars score={d.overall} size={18} />
-                  </div>
-                  <p className="mt-1 text-xs text-[color:var(--color-ink-muted)]">
-                    Our editorial score
+                  <p className="mt-2 font-serif text-4xl leading-none">
+                    {qualitativeScore(d.overall)}
+                  </p>
+                  <p className="mt-2 text-xs leading-relaxed text-[color:var(--color-ink-muted)]">
+                    A qualitative verdict—not a lab score.
                   </p>
                   <div className="mt-5 space-y-2 border-t border-[color:var(--color-border)] pt-5">
                     {d.pros.slice(0, 5).map((pro) => (
@@ -538,11 +569,8 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
                           <span className="text-sm text-[color:var(--color-ink-soft)] transition group-hover:text-[color:var(--color-accent-deep)]">
                             {alt.name}
                           </span>
-                          <span className="flex flex-shrink-0 items-center gap-1.5">
-                            <RatingStars score={alt.overall} size={11} />
-                            <span className="text-xs font-medium text-[color:var(--color-ink)]">
-                              {alt.overall.toFixed(1)}
-                            </span>
+                          <span className="flex-shrink-0 rounded-full bg-[color:var(--color-surface-muted)] px-2.5 py-1 text-[10px] font-semibold text-[color:var(--color-olive-deep)]">
+                            {qualitativeScore(alt.overall)}
                           </span>
                         </a>
                       </li>
@@ -577,11 +605,8 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
             </div>
             <div className="md:col-span-4 md:text-right">
               <div className="inline-flex flex-col items-start gap-3 md:items-end">
-                <span className="font-serif text-5xl text-[color:var(--color-bg)]">
-                  {d.overall.toFixed(1)}
-                  <span className="text-2xl text-[color:var(--color-bg)]/60">
-                    /5
-                  </span>
+                <span className="font-serif text-4xl text-[color:var(--color-bg)]">
+                  {qualitativeScore(d.overall)}
                 </span>
                 {d.affiliateSlug && (
                   <AffiliateButton
@@ -627,12 +652,9 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
                     <h3 className="mt-2 font-serif text-lg leading-snug transition group-hover:text-[color:var(--color-accent-deep)]">
                       {alt.name}
                     </h3>
-                    <div className="mt-2 flex items-center gap-2">
-                      <RatingStars score={alt.overall} size={13} />
-                      <span className="text-xs font-medium text-[color:var(--color-ink)]">
-                        {alt.overall.toFixed(1)}
-                      </span>
-                    </div>
+                    <p className="mt-2 text-xs font-semibold text-[color:var(--color-olive-deep)]">
+                      {qualitativeScore(alt.overall)}
+                    </p>
                     <span className="mt-4 inline-flex items-center gap-1.5 self-start text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--color-accent-deep)] transition group-hover:text-[color:var(--color-accent)]">
                       Read review
                       <ArrowRight className="h-3 w-3" strokeWidth={2} />

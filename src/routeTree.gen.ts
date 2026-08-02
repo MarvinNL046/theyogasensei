@@ -12,8 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as StarterGuideRouteImport } from './routes/starter-guide'
+import { Route as ReviewMethodologyRouteImport } from './routes/review-methodology'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PracticeRouteImport } from './routes/practice'
+import { Route as MedicalReviewPolicyRouteImport } from './routes/medical-review-policy'
 import { Route as HowWeResearchRouteImport } from './routes/how-we-research'
 import { Route as GearRouteImport } from './routes/gear'
 import { Route as EditorialPolicyRouteImport } from './routes/editorial-policy'
@@ -61,6 +63,11 @@ const StarterGuideRoute = StarterGuideRouteImport.update({
   path: '/starter-guide',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReviewMethodologyRoute = ReviewMethodologyRouteImport.update({
+  id: '/review-methodology',
+  path: '/review-methodology',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -69,6 +76,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const PracticeRoute = PracticeRouteImport.update({
   id: '/practice',
   path: '/practice',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MedicalReviewPolicyRoute = MedicalReviewPolicyRouteImport.update({
+  id: '/medical-review-policy',
+  path: '/medical-review-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HowWeResearchRoute = HowWeResearchRouteImport.update({
@@ -240,8 +252,10 @@ export interface FileRoutesByFullPath {
   '/editorial-policy': typeof EditorialPolicyRoute
   '/gear': typeof GearRoute
   '/how-we-research': typeof HowWeResearchRoute
+  '/medical-review-policy': typeof MedicalReviewPolicyRoute
   '/practice': typeof PracticeRoute
   '/privacy': typeof PrivacyRoute
+  '/review-methodology': typeof ReviewMethodologyRoute
   '/starter-guide': typeof StarterGuideRoute
   '/terms': typeof TermsRoute
   '/unsubscribe': typeof UnsubscribeRoute
@@ -278,8 +292,10 @@ export interface FileRoutesByTo {
   '/editorial-policy': typeof EditorialPolicyRoute
   '/gear': typeof GearRoute
   '/how-we-research': typeof HowWeResearchRoute
+  '/medical-review-policy': typeof MedicalReviewPolicyRoute
   '/practice': typeof PracticeRoute
   '/privacy': typeof PrivacyRoute
+  '/review-methodology': typeof ReviewMethodologyRoute
   '/starter-guide': typeof StarterGuideRoute
   '/terms': typeof TermsRoute
   '/unsubscribe': typeof UnsubscribeRoute
@@ -317,8 +333,10 @@ export interface FileRoutesById {
   '/editorial-policy': typeof EditorialPolicyRoute
   '/gear': typeof GearRoute
   '/how-we-research': typeof HowWeResearchRoute
+  '/medical-review-policy': typeof MedicalReviewPolicyRoute
   '/practice': typeof PracticeRoute
   '/privacy': typeof PrivacyRoute
+  '/review-methodology': typeof ReviewMethodologyRoute
   '/starter-guide': typeof StarterGuideRoute
   '/terms': typeof TermsRoute
   '/unsubscribe': typeof UnsubscribeRoute
@@ -357,8 +375,10 @@ export interface FileRouteTypes {
     | '/editorial-policy'
     | '/gear'
     | '/how-we-research'
+    | '/medical-review-policy'
     | '/practice'
     | '/privacy'
+    | '/review-methodology'
     | '/starter-guide'
     | '/terms'
     | '/unsubscribe'
@@ -395,8 +415,10 @@ export interface FileRouteTypes {
     | '/editorial-policy'
     | '/gear'
     | '/how-we-research'
+    | '/medical-review-policy'
     | '/practice'
     | '/privacy'
+    | '/review-methodology'
     | '/starter-guide'
     | '/terms'
     | '/unsubscribe'
@@ -433,8 +455,10 @@ export interface FileRouteTypes {
     | '/editorial-policy'
     | '/gear'
     | '/how-we-research'
+    | '/medical-review-policy'
     | '/practice'
     | '/privacy'
+    | '/review-methodology'
     | '/starter-guide'
     | '/terms'
     | '/unsubscribe'
@@ -472,8 +496,10 @@ export interface RootRouteChildren {
   EditorialPolicyRoute: typeof EditorialPolicyRoute
   GearRoute: typeof GearRoute
   HowWeResearchRoute: typeof HowWeResearchRoute
+  MedicalReviewPolicyRoute: typeof MedicalReviewPolicyRoute
   PracticeRoute: typeof PracticeRoute
   PrivacyRoute: typeof PrivacyRoute
+  ReviewMethodologyRoute: typeof ReviewMethodologyRoute
   StarterGuideRoute: typeof StarterGuideRoute
   TermsRoute: typeof TermsRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
@@ -521,6 +547,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StarterGuideRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/review-methodology': {
+      id: '/review-methodology'
+      path: '/review-methodology'
+      fullPath: '/review-methodology'
+      preLoaderRoute: typeof ReviewMethodologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -533,6 +566,13 @@ declare module '@tanstack/react-router' {
       path: '/practice'
       fullPath: '/practice'
       preLoaderRoute: typeof PracticeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medical-review-policy': {
+      id: '/medical-review-policy'
+      path: '/medical-review-policy'
+      fullPath: '/medical-review-policy'
+      preLoaderRoute: typeof MedicalReviewPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/how-we-research': {
@@ -768,8 +808,10 @@ const rootRouteChildren: RootRouteChildren = {
   EditorialPolicyRoute: EditorialPolicyRoute,
   GearRoute: GearRoute,
   HowWeResearchRoute: HowWeResearchRoute,
+  MedicalReviewPolicyRoute: MedicalReviewPolicyRoute,
   PracticeRoute: PracticeRoute,
   PrivacyRoute: PrivacyRoute,
+  ReviewMethodologyRoute: ReviewMethodologyRoute,
   StarterGuideRoute: StarterGuideRoute,
   TermsRoute: TermsRoute,
   UnsubscribeRoute: UnsubscribeRoute,

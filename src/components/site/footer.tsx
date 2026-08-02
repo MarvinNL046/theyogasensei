@@ -24,6 +24,7 @@ const columns = [
     title: 'About',
     links: [
       { label: 'How we research', to: '/how-we-research' },
+      { label: 'Review methodology', to: '/review-methodology' },
       { label: 'About Marvin', to: '/about' },
       { label: 'Contact', to: '/contact' },
       { label: 'Corrections', to: '/corrections-policy' },
@@ -34,6 +35,7 @@ const columns = [
     links: [
       { label: 'Editorial policy', to: '/editorial-policy' },
       { label: 'AI imagery', to: '/ai-imagery-policy' },
+      { label: 'Medical review', to: '/medical-review-policy' },
       { label: 'Affiliate disclosure', to: '/affiliate-disclosure' },
       { label: 'Privacy', to: '/privacy' },
       { label: 'Terms', to: '/terms' },

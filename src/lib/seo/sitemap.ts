@@ -32,6 +32,8 @@ const STATIC_PAGES: Array<Omit<SitemapEntry, 'url'> & { path: string }> = [
   { path: '/poses', changefreq: 'weekly', priority: 0.8 },
   { path: '/about', changefreq: 'monthly', priority: 0.7 },
   { path: '/how-we-research', changefreq: 'monthly', priority: 0.7 },
+  { path: '/review-methodology', changefreq: 'yearly', priority: 0.5 },
+  { path: '/medical-review-policy', changefreq: 'yearly', priority: 0.5 },
   { path: '/editorial-policy', changefreq: 'yearly', priority: 0.4 },
   { path: '/corrections-policy', changefreq: 'yearly', priority: 0.4 },
   { path: '/ai-imagery-policy', changefreq: 'yearly', priority: 0.4 },
