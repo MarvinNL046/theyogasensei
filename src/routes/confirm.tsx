@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { createFileRoute, Link, useSearch } from '@tanstack/react-router'
 import { ConvexProvider, useConvex } from 'convex/react'
 import type { FunctionReference } from 'convex/server'
-import { z } from 'zod'
 import { convex, isConvexConfigured } from '#/lib/convex/client'
 
 // Phase 1: typed reference to the Convex confirm mutation. Once
@@ -16,12 +15,16 @@ const confirmMutation = 'subscribers:confirm' as unknown as FunctionReference<
   | { ok: false; reason: 'invalid-token' }
 >
 
-const searchSchema = z.object({
-  token: z.string().optional(),
-})
+interface TokenSearch {
+  token?: string
+}
+
+function validateTokenSearch(search: Record<string, unknown>): TokenSearch {
+  return typeof search.token === 'string' ? { token: search.token } : {}
+}
 
 export const Route = createFileRoute('/confirm')({
-  validateSearch: searchSchema,
+  validateSearch: validateTokenSearch,
   head: () => ({
     meta: [
       { title: 'Confirm your subscription — The Yoga Sensei' },
@@ -60,7 +63,7 @@ type ConfirmState =
 
 function ConfirmPage() {
   const { token } = useSearch({ from: '/confirm' })
-  const convex = useConvex()
+  const convexClient = useConvex()
   const [state, setState] = useState<ConfirmState>({ status: 'idle' })
 
   useEffect(() => {
@@ -87,7 +90,9 @@ function ConfirmPage() {
       }
 
       try {
-        const result = await convex.mutation(confirmMutation, { token: token! })
+        const result = await convexClient.mutation(confirmMutation, {
+          token: token!,
+        })
         if (cancelled) return
         if (result.ok) {
           setState({ status: result.status })
@@ -108,7 +113,7 @@ function ConfirmPage() {
     return () => {
       cancelled = true
     }
-  }, [token, convex])
+  }, [token, convexClient])
 
   return (
     <section className="mx-auto max-w-2xl px-6 py-20 md:py-28">

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { createFileRoute, Link, useSearch } from '@tanstack/react-router'
 import { ConvexProvider, useConvex } from 'convex/react'
 import type { FunctionReference } from 'convex/server'
-import { z } from 'zod'
 import { convex, isConvexConfigured } from '#/lib/convex/client'
 
 // Typed reference to the Convex unsubscribe mutation.
@@ -14,12 +13,16 @@ const unsubscribeMutation = 'subscribers:unsubscribe' as unknown as FunctionRefe
   | { ok: false; status: 'invalid-token' }
 >
 
-const searchSchema = z.object({
-  token: z.string().optional(),
-})
+interface TokenSearch {
+  token?: string
+}
+
+function validateTokenSearch(search: Record<string, unknown>): TokenSearch {
+  return typeof search.token === 'string' ? { token: search.token } : {}
+}
 
 export const Route = createFileRoute('/unsubscribe')({
-  validateSearch: searchSchema,
+  validateSearch: validateTokenSearch,
   head: () => ({
     meta: [
       { title: 'Unsubscribe — The Yoga Sensei' },
@@ -55,7 +58,7 @@ type UnsubState =
 
 function UnsubscribePage() {
   const { token } = useSearch({ from: '/unsubscribe' })
-  const convex = useConvex()
+  const convexClient = useConvex()
   const [state, setState] = useState<UnsubState>('idle')
   // The page is prerendered without search params, so the token only exists on
   // the client. Gate the token-dependent render until after hydration so the
@@ -76,7 +79,7 @@ function UnsubscribePage() {
     }
     setState('submitting')
     try {
-      const result = await convex.mutation(unsubscribeMutation, { token })
+      const result = await convexClient.mutation(unsubscribeMutation, { token })
       setState(result.ok ? result.status : 'invalid-token')
     } catch {
       setState('error')
