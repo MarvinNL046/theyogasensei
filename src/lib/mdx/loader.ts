@@ -1,50 +1,78 @@
+import { lazy } from 'react'
 import type { ComponentType } from 'react'
-import {
-  validateFrontmatter,
-  type Frontmatter,
-} from '#/lib/mdx/frontmatter'
+import { validateFrontmatter } from '#/lib/mdx/frontmatter'
+import type { Frontmatter } from '#/lib/mdx/frontmatter'
 
 // Compiled MDX bodies accept an optional `components` prop to override how
 // intrinsic elements (e.g. `a`) render. `mdx/types` isn't installed, so the
 // prop is typed loosely here; the concrete map is `contentMdxComponents`.
 export type MdxContentComponent = ComponentType<{ components?: unknown }>
 
-interface MdxModule {
-  default: MdxContentComponent
-  frontmatter: unknown
+type ContentFolder = 'poses' | 'guides' | 'styles' | 'gear' | 'blog' | 'reviews'
+type ContentImporter = () => Promise<{ default: MdxContentComponent }>
+
+// Keep the small frontmatter exports synchronous for route loaders and head
+// generation, but split every MDX body into its own lazy chunk. Previously the
+// eager module map shipped all article bodies in one multi-megabyte client
+// loader even when a visitor opened only one page.
+const frontmatterByFolder: Record<ContentFolder, Record<string, unknown>> = {
+  poses: import.meta.glob('/content/poses/**/*.mdx', {
+    eager: true,
+    import: 'frontmatter',
+  }),
+  guides: import.meta.glob('/content/guides/**/*.mdx', {
+    eager: true,
+    import: 'frontmatter',
+  }),
+  styles: import.meta.glob('/content/styles/**/*.mdx', {
+    eager: true,
+    import: 'frontmatter',
+  }),
+  gear: import.meta.glob('/content/gear/**/*.mdx', {
+    eager: true,
+    import: 'frontmatter',
+  }),
+  blog: import.meta.glob('/content/blog/**/*.mdx', {
+    eager: true,
+    import: 'frontmatter',
+  }),
+  reviews: import.meta.glob('/content/reviews/**/*.mdx', {
+    eager: true,
+    import: 'frontmatter',
+  }),
 }
 
-// @mdx-js/rollup + remark-mdx-frontmatter compile each .mdx file to an ES
-// module with `default` (the JSX body) and `frontmatter` (parsed YAML)
-// named exports. Eager-bundled so loader + component access is synchronous
-// and the Component never crosses a Seroval-serialised loader boundary
-// (a React function component is not serialisable).
-const moduleByFolder: Record<string, Record<string, MdxModule>> = {
-  poses: import.meta.glob('/content/poses/**/*.mdx', { eager: true }) as Record<
+const contentImporterByFolder: Record<
+  ContentFolder,
+  Partial<Record<string, ContentImporter>>
+> = {
+  poses: import.meta.glob('/content/poses/**/*.mdx') as Record<
     string,
-    MdxModule
+    ContentImporter
   >,
-  guides: import.meta.glob('/content/guides/**/*.mdx', { eager: true }) as Record<
+  guides: import.meta.glob('/content/guides/**/*.mdx') as Record<
     string,
-    MdxModule
+    ContentImporter
   >,
-  styles: import.meta.glob('/content/styles/**/*.mdx', { eager: true }) as Record<
+  styles: import.meta.glob('/content/styles/**/*.mdx') as Record<
     string,
-    MdxModule
+    ContentImporter
   >,
-  gear: import.meta.glob('/content/gear/**/*.mdx', { eager: true }) as Record<
+  gear: import.meta.glob('/content/gear/**/*.mdx') as Record<
     string,
-    MdxModule
+    ContentImporter
   >,
-  blog: import.meta.glob('/content/blog/**/*.mdx', { eager: true }) as Record<
+  blog: import.meta.glob('/content/blog/**/*.mdx') as Record<
     string,
-    MdxModule
+    ContentImporter
   >,
-  reviews: import.meta.glob('/content/reviews/**/*.mdx', { eager: true }) as Record<
+  reviews: import.meta.glob('/content/reviews/**/*.mdx') as Record<
     string,
-    MdxModule
+    ContentImporter
   >,
 }
+
+const lazyContentByPath = new Map<string, MdxContentComponent>()
 
 export interface TocHeading {
   text: string
@@ -74,13 +102,14 @@ export interface LoadedContent {
  * route loaders — the result is fully JSON-serialisable for SSR hydration.
  */
 export function loadFrontmatter(
-  folder: keyof typeof moduleByFolder,
+  folder: ContentFolder,
   slugPath: string,
 ): LoadedFrontmatter {
   const fullPath = `/content/${folder}/${slugPath}.mdx`
-  const mod = moduleByFolder[folder]?.[fullPath]
-  if (!mod) throw new Error(`MDX not found: ${fullPath}`)
-  const frontmatter = validateFrontmatter(mod.frontmatter, fullPath)
+  const rawFrontmatter = frontmatterByFolder[folder][fullPath]
+  if (rawFrontmatter === undefined)
+    throw new Error(`MDX not found: ${fullPath}`)
+  const frontmatter = validateFrontmatter(rawFrontmatter, fullPath)
   return { frontmatter }
 }
 
@@ -89,14 +118,21 @@ export function loadFrontmatter(
  * route components (NOT in loaders — the Component cannot be serialised).
  */
 export function loadContent(
-  folder: keyof typeof moduleByFolder,
+  folder: ContentFolder,
   slugPath: string,
 ): LoadedContent {
   const fullPath = `/content/${folder}/${slugPath}.mdx`
-  const mod = moduleByFolder[folder]?.[fullPath]
-  if (!mod) throw new Error(`MDX not found: ${fullPath}`)
-  const frontmatter = validateFrontmatter(mod.frontmatter, fullPath)
-  return { frontmatter, Component: mod.default }
+  const rawFrontmatter = frontmatterByFolder[folder][fullPath]
+  const importer = contentImporterByFolder[folder][fullPath]
+  if (rawFrontmatter === undefined || importer === undefined)
+    throw new Error(`MDX not found: ${fullPath}`)
+  const frontmatter = validateFrontmatter(rawFrontmatter, fullPath)
+  let Component = lazyContentByPath.get(fullPath)
+  if (!Component) {
+    Component = lazy(importer)
+    lazyContentByPath.set(fullPath, Component)
+  }
+  return { frontmatter, Component }
 }
 
 /**
@@ -113,14 +149,14 @@ export function extractGuideHeadings(slugPath: string): Array<TocHeading> {
   }
 }
 
-export function listContentSlugs(
-  folder: keyof typeof moduleByFolder,
-): Array<string> {
+export function listContentSlugs(folder: ContentFolder): Array<string> {
   const prefix = `/content/${folder}/`
-  return Object.keys(moduleByFolder[folder] ?? {})
-    .map((p) => p.slice(prefix.length).replace(/\.mdx$/, ''))
-    // Skip drafts — mirror scanMdxEntries: any `_drafts/` segment is
-    // intentionally out of the live route + index + sitemap surface.
-    .filter((slugPath) => !slugPath.split('/').includes('_drafts'))
-    .sort()
+  return (
+    Object.keys(frontmatterByFolder[folder])
+      .map((p) => p.slice(prefix.length).replace(/\.mdx$/, ''))
+      // Skip drafts — mirror scanMdxEntries: any `_drafts/` segment is
+      // intentionally out of the live route + index + sitemap surface.
+      .filter((slugPath) => !slugPath.split('/').includes('_drafts'))
+      .sort()
+  )
 }
