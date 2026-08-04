@@ -244,7 +244,7 @@ const practice = [
   {
     title: 'Sleep and wind-down practice',
     image: '/images/poses/childs-pose/hero.webp',
-    href: '/practice',
+    href: '/guides/bedtime-yoga',
   },
 ] as const
 

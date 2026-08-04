@@ -128,6 +128,7 @@ Append one row per published page in this format:
 | yoga equipment storage            | yoga-equipment-storage            | cluster    | gear/props             | yoga-props               | 2026-07-27 | 2026-07-27    |
 | meditation chair                  | meditation-chair                  | cluster    | gear/meditation        | yoga-for-beginners       | 2026-07-27 | 2026-07-27    |
 | meditation mat                    | meditation-mat                    | cluster    | gear/meditation        | yoga-for-beginners       | 2026-07-27 | 2026-07-27    |
+| bedtime yoga                      | bedtime-yoga                      | cluster    | getting-started        | yoga-for-beginners       | 2026-08-04 | 2026-08-04    |
 
 ---
 

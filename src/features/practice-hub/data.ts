@@ -150,6 +150,18 @@ export const PRACTICE_ENTRIES: Array<PracticeEntry> = [
     safety: 'Includes props and reasons to modify',
   },
   {
+    title: '10-minute bedtime yoga',
+    description:
+      'A low-intensity evening sequence with supported options and realistic sleep guidance.',
+    href: '/guides/bedtime-yoga',
+    image: '/images/guides/bedtime-yoga/hero.webp',
+    goal: 'Wind down',
+    time: '10 minutes',
+    experience: 'Beginner',
+    format: 'Routine',
+    safety: 'Gentle ranges, stop signals and professional-help guidance',
+  },
+  {
     title: 'Warrior II',
     description:
       'Build a steady standing base while keeping stance length and knee position adaptable.',
