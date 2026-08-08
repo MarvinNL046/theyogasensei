@@ -491,6 +491,7 @@ function ReviewsOverviewPage() {
                       slug={pick.affiliateSlug}
                       productName={pick.name}
                       size="sm"
+                      placement="roundup-card"
                     />
                     <PickCta
                       pick={pick}
@@ -675,6 +676,7 @@ function ReviewsOverviewPage() {
                       <AffiliateButton
                         slug={pick.affiliateSlug}
                         productName={pick.name}
+                        placement="roundup-detail"
                       />
                       {pick.detailPath ? (
                         <Link

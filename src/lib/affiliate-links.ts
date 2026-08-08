@@ -1,3 +1,5 @@
+import type { AffiliatePageType } from '#/lib/affiliate-tracking'
+
 /**
  * Affiliate link registry. Keyed by short slug used in /go/<slug> URLs.
  * Values are merchant target URLs (Amazon Associates, Manduka, etc.).
@@ -91,12 +93,31 @@ export function affiliateRedirectsEnabled(): boolean {
 // Amazon Associates store/tracking ID — approved and live (2026-05-30).
 export const AMAZON_ASSOCIATES_TAG = 'theyogasensei-20'
 
+const trackingIdEnvByPageType: Record<AffiliatePageType, string> = {
+  review: 'AMAZON_ASSOCIATES_TAG_REVIEW',
+  roundup: 'AMAZON_ASSOCIATES_TAG_ROUNDUP',
+  comparison: 'AMAZON_ASSOCIATES_TAG_COMPARISON',
+  'buying-guide': 'AMAZON_ASSOCIATES_TAG_BUYING_GUIDE',
+  blog: 'AMAZON_ASSOCIATES_TAG_BLOG',
+  guide: 'AMAZON_ASSOCIATES_TAG_GUIDE',
+  other: 'AMAZON_ASSOCIATES_TAG_OTHER',
+}
+
+export interface ResolvedAffiliateLink {
+  destination: string
+  trackingId: string
+}
+
 export function withAffiliateTag(rawUrl: string): string {
+  return withTrackingId(rawUrl, AMAZON_ASSOCIATES_TAG)
+}
+
+export function withTrackingId(rawUrl: string, trackingId: string): string {
   const url = new URL(rawUrl)
   const host = url.hostname.toLowerCase()
 
   if (isAmazonHost(host) && !url.searchParams.has('tag')) {
-    url.searchParams.set('tag', AMAZON_ASSOCIATES_TAG)
+    url.searchParams.set('tag', trackingId)
   }
 
   return url.toString()
@@ -107,14 +128,31 @@ function isAmazonHost(host: string): boolean {
 }
 
 export function resolveAffiliateDestination(slug: string): string | null {
+  return resolveAffiliateLink(slug, 'other')?.destination ?? null
+}
+
+export function resolveAffiliateLink(
+  slug: string,
+  pageType: AffiliatePageType,
+): ResolvedAffiliateLink | null {
   const target = affiliateLinks[slug]
   if (!target || !affiliateRedirectsEnabled()) return null
-  return withAffiliateTag(target)
+  const trackingId = trackingIdForPageType(pageType)
+  return { destination: withTrackingId(target, trackingId), trackingId }
+}
+
+export function trackingIdForPageType(pageType: AffiliatePageType): string {
+  const configured = getServerEnv(trackingIdEnvByPageType[pageType])?.trim()
+  return configured || AMAZON_ASSOCIATES_TAG
 }
 
 function getAffiliateRedirectsEnabledEnv(): string | undefined {
+  return getServerEnv('AFFILIATE_REDIRECTS_ENABLED')
+}
+
+function getServerEnv(name: string): string | undefined {
   if (typeof process !== 'undefined') {
-    return process.env.AFFILIATE_REDIRECTS_ENABLED
+    return process.env[name]
   }
 
   return undefined

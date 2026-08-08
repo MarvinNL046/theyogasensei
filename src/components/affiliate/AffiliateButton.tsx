@@ -1,12 +1,18 @@
 import { ExternalLink } from 'lucide-react'
 import { track } from '@vercel/analytics'
 import { cn } from '#/lib/utils'
+import {
+  affiliateClickContext,
+  affiliateHref,
+  type AffiliatePlacement,
+} from '#/lib/affiliate-tracking'
 
 type AffiliateButtonProps = {
   slug: string
   productName: string
   variant?: 'primary' | 'secondary'
   size?: 'sm' | 'md'
+  placement?: AffiliatePlacement
 }
 
 const variantClasses: Record<NonNullable<AffiliateButtonProps['variant']>, string> = {
@@ -26,6 +32,7 @@ function AffiliateButton({
   productName,
   variant = 'primary',
   size = 'md',
+  placement = 'affiliate-button',
 }: AffiliateButtonProps) {
   return (
     <a
@@ -34,12 +41,17 @@ function AffiliateButton({
       rel="nofollow sponsored noopener"
       target="_blank"
       data-affiliate-slug={slug}
-      onClick={() =>
+      data-affiliate-placement={placement}
+      onClick={(event) => {
+        const context = affiliateClickContext(placement)
+        event.currentTarget.href = affiliateHref(slug, placement, context.sourcePage)
         track('Affiliate click', {
           product: slug,
-          placement: 'affiliate-button',
+          placement,
+          sourcePage: context.sourcePage,
+          pageType: context.pageType,
         })
-      }
+      }}
       className={cn(
         'not-prose inline-flex w-fit items-center justify-center gap-2 rounded-sm font-medium no-underline transition-colors duration-200 outline-none focus-visible:ring-3 focus-visible:ring-[color:var(--color-ring)]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--color-bg)]',
         variantClasses[variant],

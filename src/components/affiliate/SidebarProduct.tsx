@@ -73,7 +73,7 @@ export function SidebarProduct({
         </ul>
 
         <div className="mt-5">
-          <AffiliateButton slug={slug} productName={productName} />
+          <AffiliateButton slug={slug} productName={productName} placement="sidebar" />
           <p className="mt-2 text-[11px] text-[color:var(--color-ink-muted)]">
             Affiliate link — we may earn a commission.
           </p>

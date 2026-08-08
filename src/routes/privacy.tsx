@@ -3,7 +3,7 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 
-const LAST_UPDATED = '2026-05-26'
+const LAST_UPDATED = '2026-08-08'
 
 export const Route = createFileRoute('/privacy')({
   head: () => ({
@@ -89,8 +89,9 @@ function PrivacyPage() {
             <h3>Affiliate link clicks.</h3>
             <p>
               When you click an affiliate link on this site, we count the click against the link
-              so we know which products people are interested in. We do not record your IP address,
-              browser, or any identifying information — only a total count per link. See also our{' '}
+              so we know which products people are interested in. The aggregate includes the source
+              page, product, CTA position, page type, tracking ID, day and count. We do not record
+              your IP address, browser, query history or any identifying information. See also our{' '}
               <Link to="/affiliate-disclosure">affiliate disclosure</Link>.
             </p>
           </PolicySection>

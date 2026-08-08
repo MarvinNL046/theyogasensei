@@ -42,7 +42,20 @@ export default defineSchema({
   affiliateClicks: defineTable({
     slug: v.string(),
     day: v.string(), // UTC YYYY-MM-DD bucket; no IP/user/browser data stored.
+    sourcePage: v.optional(v.string()),
+    pageType: v.optional(v.string()),
+    placement: v.optional(v.string()),
+    trackingId: v.optional(v.string()),
     count: v.number(),
     updatedAt: v.number(), // unix ms
-  }).index('by_slug_and_day', ['slug', 'day']),
+  })
+    .index('by_slug_and_day', ['slug', 'day'])
+    .index('by_attribution_and_day', [
+      'slug',
+      'sourcePage',
+      'pageType',
+      'placement',
+      'trackingId',
+      'day',
+    ]),
 })

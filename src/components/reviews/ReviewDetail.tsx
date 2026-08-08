@@ -409,6 +409,7 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
                         slug={s.cta.slug}
                         productName={s.cta.productName}
                         variant="secondary"
+                        placement="review-section"
                       />
                     </div>
                   )}
@@ -528,6 +529,7 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
                         slug={d.affiliateSlug}
                         productName={d.productName}
                         variant="primary"
+                        placement="review-sidebar"
                       />
                     ) : (
                       <Link
@@ -627,6 +629,7 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
                     slug={d.affiliateSlug}
                     productName={d.productName}
                     variant="secondary"
+                    placement="review-verdict"
                   />
                 )}
               </div>

@@ -32,7 +32,7 @@ function CtaBand({ slug, productName, children, className }: CtaBandProps) {
           {children}
         </div>
         <div className="flex flex-shrink-0 flex-col items-start gap-2 sm:items-end">
-          <AffiliateButton slug={slug} productName={productName} />
+          <AffiliateButton slug={slug} productName={productName} placement="closing-band" />
           <p className="text-[11px] text-[color:var(--color-ink-muted)]">
             Affiliate link — we may earn a commission.
           </p>
