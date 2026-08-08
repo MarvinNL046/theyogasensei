@@ -162,6 +162,18 @@ export const PRACTICE_ENTRIES: Array<PracticeEntry> = [
     safety: 'Gentle ranges, stop signals and professional-help guidance',
   },
   {
+    title: 'Yoga for runners',
+    description:
+      'Use a practical post-run sequence and learn when dynamic movement fits better than longer holds.',
+    href: '/guides/yoga-for-runners',
+    image: '/images/guides/yoga-for-runners/hero.webp',
+    goal: 'Move gently',
+    time: '10 minutes',
+    experience: 'Beginner and beyond',
+    format: 'Routine',
+    safety: 'Training-load context, mild ranges and clear stop signals',
+  },
+  {
     title: 'Warrior II',
     description:
       'Build a steady standing base while keeping stance length and knee position adaptable.',
