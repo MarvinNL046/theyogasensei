@@ -95,6 +95,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Alo vs Lululemon Yoga Mat: Which One Should You Buy?',
     category: 'Comparison',
   },
+  'liforme-vs-lululemon-yoga-mat': {
+    href: '/blog/liforme-vs-lululemon-yoga-mat',
+    title: 'Liforme vs Lululemon: Which Premium Yoga Mat Suits You?',
+    category: 'Comparison',
+  },
 
   // Chair yoga for seniors cluster (pillar + spokes)
   'chair-yoga-for-seniors': {
