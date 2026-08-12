@@ -100,6 +100,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Liforme vs Lululemon: Which Premium Yoga Mat Suits You?',
     category: 'Comparison',
   },
+  'yoga-poses-for-2': {
+    href: '/guides/yoga-poses-for-2',
+    title: 'Yoga Poses for 2: A Safe 15-Minute Beginner Routine',
+    category: 'Partner yoga',
+  },
 
   // Chair yoga for seniors cluster (pillar + spokes)
   'chair-yoga-for-seniors': {
