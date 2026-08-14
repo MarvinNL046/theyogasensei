@@ -105,6 +105,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Yoga Poses for 2: A Safe 15-Minute Beginner Routine',
     category: 'Partner yoga',
   },
+  'yoga-for-balance': {
+    href: '/guides/yoga-for-balance',
+    title: 'Yoga for Balance: A Safe 15-Minute Beginner Practice',
+    category: 'Beginner yoga',
+  },
 
   // Chair yoga for seniors cluster (pillar + spokes)
   'chair-yoga-for-seniors': {

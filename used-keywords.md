@@ -131,6 +131,7 @@ Append one row per published page in this format:
 | meditation mat                    | meditation-mat                    | cluster    | gear/meditation        | yoga-for-beginners       | 2026-07-27 | 2026-07-27    |
 | bedtime yoga                      | bedtime-yoga                      | cluster    | getting-started        | yoga-for-beginners       | 2026-08-04 | 2026-08-04    |
 | yoga poses for 2                  | yoga-poses-for-2                  | cluster    | partner-yoga           | yoga-for-beginners       | 2026-08-12 | 2026-08-12    |
+| yoga for balance                  | yoga-for-balance                  | cluster    | balance                | yoga-for-beginners       | 2026-08-14 | 2026-08-14    |
 
 ---
 
