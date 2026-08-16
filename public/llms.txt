@@ -51,4 +51,4 @@ Key facts:
 
 ## Optional
 
-- [Sitemap](https://www.theyogasensei.com/sitemap.xml)
+- [Sitemap](https://www.theyogasensei.com/sitemap-index.xml)
