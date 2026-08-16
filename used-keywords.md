@@ -132,6 +132,7 @@ Append one row per published page in this format:
 | bedtime yoga                      | bedtime-yoga                      | cluster    | getting-started        | yoga-for-beginners       | 2026-08-04 | 2026-08-04    |
 | yoga poses for 2                  | yoga-poses-for-2                  | cluster    | partner-yoga           | yoga-for-beginners       | 2026-08-12 | 2026-08-12    |
 | yoga for balance                  | yoga-for-balance                  | cluster    | balance                | yoga-for-beginners       | 2026-08-14 | 2026-08-14    |
+| manduka vs jade yoga mat          | manduka-vs-jade-yoga-mat          | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-08-16 | 2026-08-16    |
 
 ---
 
