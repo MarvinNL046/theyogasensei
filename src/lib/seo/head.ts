@@ -101,7 +101,15 @@ export function buildHead(fm: Frontmatter, ctx: BuildHeadContext): HeadConfig {
     { name: 'description', content: fm.metaDescription },
     { name: 'author', content: ctx.author.name },
     { name: 'keywords', content: fm.tags.join(', ') },
-    ...(fm.indexable ? [] : [{ name: 'robots', content: 'noindex, follow' }]),
+    // Test for `false` explicitly, not truthiness. The Zod schema defaults
+    // `indexable` to true, but loadFrontmatter() casts raw YAML straight to
+    // FrontmatterSummary without parsing it (deliberately — parsing here would
+    // ship the Zod runtime to the browser), so no default is ever applied. The
+    // type claims boolean while runtime hands us undefined for any file that
+    // omits the line. A truthiness check therefore noindexed 84 pages that were
+    // meant to be indexed, including the whole gear catalogue and both blog
+    // posts. Only an explicit `indexable: false` may suppress indexing.
+    ...(fm.indexable === false ? [{ name: 'robots', content: 'noindex, follow' }] : []),
 
     // OpenGraph — Pinterest also reads these
     { property: 'og:type', content: 'article' },
