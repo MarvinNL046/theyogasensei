@@ -9,6 +9,15 @@ import type { AffiliatePageType } from '#/lib/affiliate-tracking'
  */
 export const affiliateLinks: Record<string, string> = {
   'manduka-pro-6mm': 'https://www.amazon.com/dp/B005NZ7PEQ',
+  // PROlite added 2026-08-18 for the PRO vs PROlite comparison. ASIN verified
+  // against the live listing: brand field "Manduka", title "Manduka PROlite
+  // Yoga Mat 4.7mm", Item Dimensions 71"L x 24"W x 0.18"Th, Item Weight 4.6 lb,
+  // material Polyvinyl Chloride, model PL71-DK. Every one of those matches
+  // Manduka's own PRO-series compare page, which is why this is the pinned
+  // variant. Like the eKO SuperLite, this is one colourway (Deep Sea) of a
+  // parent listing (B0H2JN3MZT) — pinned so the specs in the post match what
+  // the reader actually lands on.
+  'manduka-prolite': 'https://www.amazon.com/dp/B08LNRMGVW',
   'liforme-original': 'https://www.amazon.com/dp/B09X66N6GX',
   'gaiam-premium-6mm': 'https://www.amazon.com/dp/B0D4MDKW3V',
   'gaiam-cork-yoga-mat': 'https://www.amazon.com/dp/B079W4FX8B',
