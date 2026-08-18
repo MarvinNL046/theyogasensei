@@ -133,6 +133,7 @@ Append one row per published page in this format:
 | yoga poses for 2                  | yoga-poses-for-2                  | cluster    | partner-yoga           | yoga-for-beginners       | 2026-08-12 | 2026-08-12    |
 | yoga for balance                  | yoga-for-balance                  | cluster    | balance                | yoga-for-beginners       | 2026-08-14 | 2026-08-14    |
 | manduka vs jade yoga mat          | manduka-vs-jade-yoga-mat          | comparison | mat-comparisons        | how-to-choose-a-yoga-mat | 2026-08-16 | 2026-08-16    |
+| yoga poses for 3 people           | yoga-poses-for-3                  | cluster    | group-yoga             | yoga-for-beginners       | 2026-08-18 | 2026-08-18    |
 
 ---
 
