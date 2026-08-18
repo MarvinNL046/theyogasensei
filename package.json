@@ -20,6 +20,7 @@
     "verify:associates": "tsx scripts/verify-associates-compliance.ts",
     "verify:affiliate-destinations": "tsx scripts/verify-affiliate-destinations.ts",
     "verify:production": "tsx scripts/audit-production-output.ts",
+    "audit:affiliate-stock": "tsx scripts/audit-affiliate-stock.ts",
     "content:status": "tsx scripts/content-status.ts",
     "content:cannibalization": "tsx scripts/check-cannibalization.ts",
     "content:assets": "tsx scripts/audit-inline-assets.ts",
