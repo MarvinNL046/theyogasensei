@@ -21,7 +21,14 @@ export const affiliateLinks: Record<string, string> = {
   'liforme-original': 'https://www.amazon.com/dp/B09X66N6GX',
   'gaiam-premium-6mm': 'https://www.amazon.com/dp/B0D4MDKW3V',
   'gaiam-cork-yoga-mat': 'https://www.amazon.com/dp/B079W4FX8B',
-  'manduka-eko-5mm': 'https://www.amazon.com/dp/B078YB99H8',
+  // Repointed 2026-08-18. The previous target B078YB99H8 (eKO 5mm, Charcoal) is
+  // still a live page but returns NO buy-box price — no headline offer, so the
+  // click earns nothing and the reader lands on a page they cannot buy from.
+  // B07NQJJW4W is the same mat from the same parent (B0D7N35VCW): Manduka, 5mm,
+  // 71"L x 24"W x 0.2"Th, natural rubber — Acai Midnight instead of Charcoal,
+  // with a live buy box and Amazon's Choice. No page names an eKO colourway, so
+  // nothing in content/ needed changing. This slug is used by five live guides.
+  'manduka-eko-5mm': 'https://www.amazon.com/dp/B07NQJJW4W',
   // Repointed 2026-07-25. B0CK3NM2YP is a genuine 5mm GRP Adapt but in Jet
   // Black, a colourway Manduka no longer lists for either generation.
   // B0D5ZMVQKD (Terracotta) matches a live Manduka colourway. Note that
