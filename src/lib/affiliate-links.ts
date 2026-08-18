@@ -39,17 +39,32 @@ export const affiliateLinks: Record<string, string> = {
   // Foldable roundup picks — every ASIN verified against the live listing
   // 2026-07-25. The eKO SuperLite ships as three colour variants of parent
   // B0B5479GY2; one is pinned here so the on-page specs match what the reader
-  // lands on. The Jade Voyager ASIN circulating in competitor content
-  // (B08LZX13TH) is stale — B0FJBRL4GL is the live listing.
+  // lands on.
+  //
+  // jade-voyager REMOVED 2026-08-18 by the buy-box audit, deliberately without a
+  // replacement. B0FJBRL4GL lost its buy box, and it was already the second
+  // Voyager ASIN we had tried (B08LZX13TH went stale before it). A search of
+  // Amazon US on 18 Aug found no JadeYoga Voyager listing with a headline offer
+  // at all — the only live Jade travel mat is the Travel (B0029YN9GC), which is
+  // 1/8in and does NOT fold. Our own foldable guide warns readers that
+  // competitor roundups confuse those two mats, so substituting it would be the
+  // exact error we tell people to avoid. The guide now links Jade's own product
+  // page instead and says plainly that we have no checked shop link.
   'stakt-foldable-mat': 'https://www.amazon.com/dp/B0BHBYS1ML',
-  'jade-voyager': 'https://www.amazon.com/dp/B0FJBRL4GL',
   'manduka-eko-superlite': 'https://www.amazon.com/dp/B07WWC5B95',
   'gaiam-foldable-mat': 'https://www.amazon.com/dp/B073WRCQQK',
   // Knee pad roundup — every ASIN verified live 2026-07-25, title and
   // structured fields cross-checked. Note SukhaMat's own site prints
   // "3/8in (15mm)" for B01LRP3JA4, which is self-contradictory (3/8in is
   // 9.5mm); Amazon's structured field says 5/8in, which does equal 15mm.
-  'prosourcefit-knee-pad': 'https://www.amazon.com/dp/B079K6K7TX',
+  // Repointed 2026-08-18 by the buy-box audit. B079K6K7TX lost its buy box —
+  // live page, no headline offer. B079K6D3D3 is the same pad from the same
+  // parent (B07R43TSBS), verified field by field against what the guides claim:
+  // "ProsourceFit Extra Thick Yoga Knee Pad and Elbow Cushion 15mm (5/8")",
+  // 24"L x 10"W x 0.63"Th, Nitrile Butadiene Rubber, latex-free, no phthalates.
+  // It is the Pink colourway; no page names a colour, and the listing lets the
+  // reader switch among the six. Used by three live guides.
+  'prosourcefit-knee-pad': 'https://www.amazon.com/dp/B079K6D3D3',
   'sukhamat-knee-pad': 'https://www.amazon.com/dp/B01LRP3JA4',
   'kinesis-knee-pad': 'https://www.amazon.com/dp/B06WD3HGJX',
   'gaiam-knee-pads': 'https://www.amazon.com/dp/B07G1R42MS',
