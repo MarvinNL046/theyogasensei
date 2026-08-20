@@ -35,9 +35,11 @@ const handleResendWebhook = httpAction(async (ctx, request) => {
     return new Response(`Ignored event: ${eventType}`, { status: 200 })
   }
 
-  const recipient = Array.isArray(payload.data?.to)
-    ? payload.data?.to[0]
-    : payload.data?.to
+  // `to` is either a list or a single address depending on how the mail was
+  // sent. Read it once: inside the array branch the optional chain is dead,
+  // because Array.isArray already proves `data` is there.
+  const to = payload.data?.to
+  const recipient = Array.isArray(to) ? to[0] : to
   if (!recipient) {
     return new Response('No recipient in payload', { status: 400 })
   }

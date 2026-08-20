@@ -5,6 +5,20 @@ import { tanstackConfig } from '@tanstack/eslint-config'
 export default [
   ...tanstackConfig,
   {
+    // convex/ and emails/ sit outside the app's tsconfig on purpose: Convex
+    // typechecks its functions with its own config, and the email templates are
+    // rendered by Resend rather than bundled. Point the type-aware rules at the
+    // right project per folder instead of skipping the folders altogether.
+    files: ['convex/**/*.ts'],
+    languageOptions: { parserOptions: { project: ['./convex/tsconfig.json'] } },
+  },
+  {
+    files: ['emails/**/*.tsx'],
+    languageOptions: {
+      parserOptions: { project: ['./tsconfig.emails.json'] },
+    },
+  },
+  {
     rules: {
       'import/no-cycle': 'off',
       'import/order': 'off',
@@ -26,8 +40,9 @@ export default [
       '.output/**',
       'dist/**',
       'src/design-references/**',
-      'convex/**',
-      'emails/**',
+      // Convex generates these and excludes them from its own tsconfig, so
+      // there is no project that can parse them.
+      'convex/_generated/**',
     ],
   },
 ]

@@ -1,0 +1,9 @@
+{
+  /* React Email templates are rendered by Resend at runtime, not bundled with
+   * the site, so the main tsconfig excludes them. They still need a project of
+   * their own or eslint's type-aware rules cannot parse them — see the
+   * emails/** block in eslint.config.js. */
+  "extends": "./tsconfig.json",
+  "include": ["emails/**/*"],
+  "exclude": ["node_modules"]
+}
