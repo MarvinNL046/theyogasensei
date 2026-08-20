@@ -100,6 +100,26 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Liforme vs Lululemon: Which Premium Yoga Mat Suits You?',
     category: 'Comparison',
   },
+  'manduka-pro-vs-liforme': {
+    href: '/guides/manduka-pro-vs-liforme',
+    title: 'Manduka PRO vs Liforme: Grip, Durability and Value Compared',
+    category: 'Comparison',
+  },
+  'manduka-vs-jade-yoga-mat': {
+    href: '/guides/manduka-vs-jade-yoga-mat',
+    title: 'Manduka vs Jade Yoga Mat: Which One Should You Buy?',
+    category: 'Comparison',
+  },
+  'manduka-pro-vs-prolite': {
+    href: '/guides/manduka-pro-vs-prolite',
+    title: 'Manduka PRO vs PROlite: Thickness, Weight, Guarantee',
+    category: 'Comparison',
+  },
+  'gaiam-vs-manduka-yoga-mat': {
+    href: '/guides/gaiam-vs-manduka-yoga-mat',
+    title: 'Gaiam vs Manduka: Which Yoga Mat Is Worth It?',
+    category: 'Comparison',
+  },
   'yoga-poses-for-2': {
     href: '/guides/yoga-poses-for-2',
     title: 'Yoga Poses for 2: A Safe 15-Minute Beginner Routine',
