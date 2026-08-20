@@ -5,13 +5,13 @@
 
 ## What the data says
 
-| Term | Pinterest demand | Shape / seasonality | Audience |
-|---|---|---|---|
-| **yoga mat** | Strong | Peaks **Dec–Jan** (New Year); forecast **rising** into autumn/winter 2026 | 52% 18-24, 35% 25-34; **88% female** |
-| **yoga for beginners** | Strong | **Dec–Jan** peak + a current **surge to ~100** (early summer) | young; **88% female** |
-| **yoga poses** | Strong (big visual category) | Spikes in **spring** (Mar ~100, May ~75) | 48% 18-24, 31% 25-34; **82% female** |
-| **hot yoga** | ❌ Not available (too little volume) | — | — |
-| **chair yoga** | ❌ Not available (too little volume) | — | — |
+| Term                   | Pinterest demand                     | Shape / seasonality                                                       | Audience                             |
+| ---------------------- | ------------------------------------ | ------------------------------------------------------------------------- | ------------------------------------ |
+| **yoga mat**           | Strong                               | Peaks **Dec–Jan** (New Year); forecast **rising** into autumn/winter 2026 | 52% 18-24, 35% 25-34; **88% female** |
+| **yoga for beginners** | Strong                               | **Dec–Jan** peak + a current **surge to ~100** (early summer)             | young; **88% female**                |
+| **yoga poses**         | Strong (big visual category)         | Spikes in **spring** (Mar ~100, May ~75)                                  | 48% 18-24, 31% 25-34; **82% female** |
+| **hot yoga**           | ❌ Not available (too little volume) | —                                                                         | —                                    |
+| **chair yoga**         | ❌ Not available (too little volume) | —                                                                         | —                                    |
 
 **Related/rising terms worth targeting:** yoga mat aesthetic, yoga mat storage, beginner yoga, yoga poses for beginners, vinyasa yoga, restorative yoga poses, beautiful yoga poses, yoga poses aesthetic, yoga aesthetic inspiration.
 
@@ -28,14 +28,17 @@
 ## How we use it — action plan
 
 **A. Optimise pin copy to the searched phrases (Pinterest = search engine).**
+
 - Title/describe pins with the exact terms people search, not just our guide titles. E.g. the `how-to-store-a-yoga-mat` pin → lead title **"Yoga Mat Storage Ideas"** (matches "yoga mat storage"). The eco pins → "aesthetic eco yoga mat". Beginner pins → "yoga for beginners".
 - Make **multiple pin variants per guide**, each targeting a different related phrase (we already generate 5 angles/guide — re-title a couple to these phrases).
 
 **B. Time the pushes.**
+
 - **Now → November:** ramp mat + beginner pins (3–5/week per the launch schedule) so they're established before the Dec–Jan resolution surge.
 - **Jan → spring:** push pose pins as the poses cluster comes online.
 
 **C. Reprioritise the content roadmap (proposal).**
+
 - Bump the **poses cluster** up (downward-dog already briefed; sun-salutation live) — strong on both Google and Pinterest.
 - Treat **chair-yoga** as a Google/Facebook play if/when built — don't expect Pinterest reach.
 
@@ -44,4 +47,5 @@
 **E. Measure.** In ~1–2 weeks, check Pinterest Analytics (own pins) + GSC to see which guides get clicks, and feed the winners more pins.
 
 ## Open question for Marvin
+
 Do we **reprioritise the poses cluster** (Google + Pinterest double-win, young aesthetic audience) ahead of chair-yoga? The Trends data leans yes.

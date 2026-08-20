@@ -197,7 +197,11 @@ function main() {
       r.primary_keyword.toLowerCase(),
     )
     const isPublished = matchedBySlug || matchedByKeyword
-    const desired = isPublished ? 'done' : r.status === 'done' ? 'todo' : r.status
+    const desired = isPublished
+      ? 'done'
+      : r.status === 'done'
+        ? 'todo'
+        : r.status
     if (r.status !== desired) {
       r.status = desired
       syncedCount++
@@ -210,7 +214,11 @@ function main() {
   // Group by pillar
   const byPillar = new Map<
     string,
-    { pillar?: KeywordRow; subpillars: Array<KeywordRow>; clusters: Array<KeywordRow> }
+    {
+      pillar?: KeywordRow
+      subpillars: Array<KeywordRow>
+      clusters: Array<KeywordRow>
+    }
   >()
   for (const r of kwRows) {
     const key = r.pillar_slug
@@ -264,7 +272,11 @@ function main() {
             ? `${COLORS.yellow}◐${COLORS.reset}`
             : `${COLORS.dim}─${COLORS.reset}`
       const typeColor =
-        r.page_type === 'pillar' ? COLORS.cyan : r.page_type === 'subpillar' ? COLORS.yellow : ''
+        r.page_type === 'pillar'
+          ? COLORS.cyan
+          : r.page_type === 'subpillar'
+            ? COLORS.yellow
+            : ''
       const score = r.kd > 0 ? Math.round(r.volume / r.kd) : 0
       const tail =
         r.status === 'done'
@@ -282,14 +294,22 @@ function main() {
   console.log('')
   console.log(COLORS.dim + '━'.repeat(72) + COLORS.reset)
   console.log(`${COLORS.bold}📅 Stale pages${COLORS.reset}`)
-  const stale: Array<{ slug: string; type: string; daysOld: number; max: number }> = []
+  const stale: Array<{
+    slug: string
+    type: string
+    daysOld: number
+    max: number
+  }> = []
   for (const e of fsEntries) {
     const max = STALE_DAYS[e.type] ?? 365
     const days = e.lastReviewedAt ? daysSince(e.lastReviewedAt) : -1
-    if (days > max) stale.push({ slug: e.slug, type: e.type, daysOld: days, max })
+    if (days > max)
+      stale.push({ slug: e.slug, type: e.type, daysOld: days, max })
   }
   if (stale.length === 0) {
-    console.log(`  ${COLORS.green}none — all pages within freshness window${COLORS.reset}`)
+    console.log(
+      `  ${COLORS.green}none — all pages within freshness window${COLORS.reset}`,
+    )
   } else {
     for (const s of stale) {
       console.log(
@@ -302,30 +322,40 @@ function main() {
   console.log('')
   console.log(COLORS.dim + '━'.repeat(72) + COLORS.reset)
   console.log(`${COLORS.bold}🎯 Cluster discipline${COLORS.reset}`)
-  const pillarsOpened = [...byPillar.values()].filter((b) => b.pillar?.status === 'done').length
+  const pillarsOpened = [...byPillar.values()].filter(
+    (b) => b.pillar?.status === 'done',
+  ).length
   const pillarsPlanned = byPillar.size
   console.log(`  Pillars opened:  ${pillarsOpened}/${pillarsPlanned}`)
   for (const [pillarSlug, bucket] of byPillar) {
     if (!bucket.pillar || bucket.pillar.status !== 'done') continue
-    const clustersPublished = bucket.clusters.filter((r) => r.status === 'done').length
+    const clustersPublished = bucket.clusters.filter(
+      (r) => r.status === 'done',
+    ).length
     const targetRatio = 10
     const indicator =
       clustersPublished >= targetRatio
         ? `${COLORS.green}OK${COLORS.reset}`
         : `${COLORS.yellow}need ${targetRatio - clustersPublished} more before opening next pillar${COLORS.reset}`
-    console.log(`  ${pillarSlug}: ${clustersPublished} clusters published — ${indicator}`)
+    console.log(
+      `  ${pillarSlug}: ${clustersPublished} clusters published — ${indicator}`,
+    )
   }
 
   // ── Next to write ───────────────────────────────
   console.log('')
   console.log(COLORS.dim + '━'.repeat(72) + COLORS.reset)
-  console.log(`${COLORS.bold}🚀 Next 3 to write${COLORS.reset}  ${COLORS.dim}(highest score = volume/kd, easy wins)${COLORS.reset}`)
+  console.log(
+    `${COLORS.bold}🚀 Next 3 to write${COLORS.reset}  ${COLORS.dim}(highest score = volume/kd, easy wins)${COLORS.reset}`,
+  )
   const todoSorted = kwRows
     .filter((r) => r.status === 'todo')
     .map((r) => ({ ...r, score: r.kd > 0 ? r.volume / r.kd : 0 }))
     .sort((a, b) => b.score - a.score)
   if (todoSorted.length === 0) {
-    console.log(`  ${COLORS.green}all caught up — add more rows to keywords.csv${COLORS.reset}`)
+    console.log(
+      `  ${COLORS.green}all caught up — add more rows to keywords.csv${COLORS.reset}`,
+    )
   } else {
     for (let i = 0; i < Math.min(3, todoSorted.length); i++) {
       const r = todoSorted[i]!
@@ -343,7 +373,9 @@ function main() {
       `${COLORS.green}✓${COLORS.reset} synced ${syncedCount} keywords.csv row(s) from used-keywords.md`,
     )
   } else {
-    console.log(`${COLORS.dim}keywords.csv already in sync with used-keywords.md${COLORS.reset}`)
+    console.log(
+      `${COLORS.dim}keywords.csv already in sync with used-keywords.md${COLORS.reset}`,
+    )
   }
   console.log('')
 }

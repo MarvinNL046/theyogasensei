@@ -40,11 +40,19 @@ export const Route = createFileRoute('/about')({
       },
       { property: 'og:url', content: 'https://www.theyogasensei.com/about' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:image', content: 'https://www.theyogasensei.com/images/brand/review-hero-best-mats.webp' },
+      {
+        property: 'og:image',
+        content:
+          'https://www.theyogasensei.com/images/brand/review-hero-best-mats.webp',
+      },
       { property: 'og:site_name', content: 'The Yoga Sensei' },
       { property: 'og:locale', content: 'en_US' },
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:image', content: 'https://www.theyogasensei.com/images/brand/review-hero-best-mats.webp' },
+      {
+        name: 'twitter:image',
+        content:
+          'https://www.theyogasensei.com/images/brand/review-hero-best-mats.webp',
+      },
     ],
     links: [{ rel: 'canonical', href: 'https://www.theyogasensei.com/about' }],
   }),
@@ -134,7 +142,9 @@ function AboutHero() {
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-right-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/brand/review-hero-best-mats.webp')" }}
+        style={{
+          backgroundImage: "url('/images/brand/review-hero-best-mats.webp')",
+        }}
       />
       <div
         aria-hidden="true"
@@ -146,30 +156,47 @@ function AboutHero() {
       />
       <Container size="wide" className="relative">
         <div className="max-w-xl py-14 md:min-h-[470px] md:py-20">
-          <nav aria-label="Breadcrumb" className="mb-10 flex items-center gap-3 text-xs text-[color:var(--color-ink-muted)]">
-            <a href="/" className="transition hover:text-[color:var(--color-ink)]">
+          <nav
+            aria-label="Breadcrumb"
+            className="mb-10 flex items-center gap-3 text-xs text-[color:var(--color-ink-muted)]"
+          >
+            <a
+              href="/"
+              className="transition hover:text-[color:var(--color-ink)]"
+            >
               Home
             </a>
             <span aria-hidden="true">›</span>
-            <span className="font-medium text-[color:var(--color-ink)]">About</span>
+            <span className="font-medium text-[color:var(--color-ink)]">
+              About
+            </span>
           </nav>
 
           <Eyebrow tone="default">About The Yoga Sensei</Eyebrow>
           <h1 className="mt-5 font-serif text-5xl leading-[0.98] md:text-[64px]">
-            Practice over{' '}
-            <br />
+            Practice over <br />
             perfection.
           </h1>
           <p className="mt-7 max-w-md text-base leading-8 text-[color:var(--color-ink-soft)]">
-            The Yoga Sensei exists to cut through the noise and help you build a practice that is
-            real, sustainable and actually improves your life.
+            The Yoga Sensei exists to cut through the noise and help you build a
+            practice that is real, sustainable and actually improves your life.
           </p>
-          <p className="mt-6 font-serif text-2xl italic text-[color:var(--color-ink)]">The Yoga Sensei</p>
+          <p className="mt-6 font-serif text-2xl italic text-[color:var(--color-ink)]">
+            The Yoga Sensei
+          </p>
           <div className="mt-8 flex items-center gap-5">
-            <img src="/logo/logo-enso.png" alt="" width={58} height={58} className="h-14 w-14 object-contain" />
+            <img
+              src="/logo/logo-enso.png"
+              alt=""
+              width={58}
+              height={58}
+              className="h-14 w-14 object-contain"
+            />
             <div>
               <JapaneseAccent phrase="practice" tone="soft" size="md" />
-              <p className="mt-2 font-serif text-xl text-[color:var(--color-ink)]">Practice. Learn. Grow.</p>
+              <p className="mt-2 font-serif text-xl text-[color:var(--color-ink)]">
+                Practice. Learn. Grow.
+              </p>
             </div>
           </div>
         </div>
@@ -183,7 +210,12 @@ function PillarBand() {
     <section className="mt-8 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-9 shadow-[0_18px_45px_-38px_rgba(24,49,41,.65)] md:px-10">
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {PILLARS.map((pillar, index) => (
-          <IconPanel key={pillar.title} item={pillar} centered withDivider={index > 0} />
+          <IconPanel
+            key={pillar.title}
+            item={pillar}
+            centered
+            withDivider={index > 0}
+          />
         ))}
       </div>
     </section>
@@ -224,49 +256,63 @@ function MeetMarvin() {
         </h2>
         <div className="mt-6 space-y-4 text-sm leading-7 text-[color:var(--color-ink-soft)]">
           <p>
-            I&apos;m 37, based in the Netherlands, and yoga has become my daily practice
-            over the past two years. I came to it looking for stress relief and better
-            flexibility — the usual reasons — and stayed because it works. What started
-            as a few evening sessions turned into a real practice, and along the way I
-            spent more time than I care to admit researching mats, blocks, and gear,
-            trying to figure out what was actually worth buying.
+            I&apos;m 37, based in the Netherlands, and yoga has become my daily
+            practice over the past two years. I came to it looking for stress
+            relief and better flexibility — the usual reasons — and stayed
+            because it works. What started as a few evening sessions turned into
+            a real practice, and along the way I spent more time than I care to
+            admit researching mats, blocks, and gear, trying to figure out what
+            was actually worth buying.
           </p>
           <p>
-            I&apos;m a long-time beginner, not a certified instructor. That distinction
-            matters: everything on this site comes from research, public reviews, and
-            where applicable, my own practice — never from claims I can&apos;t back up.
-            When I haven&apos;t personally used a product, I say so. When I have,
-            I&apos;ll tell you what worked and what didn&apos;t, honestly.
+            I&apos;m a long-time beginner, not a certified instructor. That
+            distinction matters: everything on this site comes from research,
+            public reviews, and where applicable, my own practice — never from
+            claims I can&apos;t back up. When I haven&apos;t personally used a
+            product, I say so. When I have, I&apos;ll tell you what worked and
+            what didn&apos;t, honestly.
           </p>
           <p>
             Everything published on this site is written and edited by me. No
-            ghostwriters, no faceless content team. If you spot an error or have a
-            question, you can reach me at{' '}
+            ghostwriters, no faceless content team. If you spot an error or have
+            a question, you can reach me at{' '}
             <a
               href="mailto:hello@theyogasensei.com"
               className="text-[color:var(--color-ink)] underline-offset-2 hover:underline"
             >
               hello@theyogasensei.com
-            </a>
-            {' '}— corrections happen fast and they&apos;re noted in the article.
+            </a>{' '}
+            — corrections happen fast and they&apos;re noted in the article.
           </p>
         </div>
 
         <ul className="mt-7 grid gap-3 text-[12px] text-[color:var(--color-ink-soft)] sm:grid-cols-2">
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--color-olive)]" strokeWidth={1.75} />
+            <CheckCircle2
+              className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--color-olive)]"
+              strokeWidth={1.75}
+            />
             <span>Long-time practitioner, not an instructor</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--color-olive)]" strokeWidth={1.75} />
+            <CheckCircle2
+              className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--color-olive)]"
+              strokeWidth={1.75}
+            />
             <span>Sole author and editor of every article</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--color-olive)]" strokeWidth={1.75} />
+            <CheckCircle2
+              className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--color-olive)]"
+              strokeWidth={1.75}
+            />
             <span>NL-based, writing in English</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--color-olive)]" strokeWidth={1.75} />
+            <CheckCircle2
+              className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--color-olive)]"
+              strokeWidth={1.75}
+            />
             <span>Transparent sourcing on every claim</span>
           </li>
         </ul>
@@ -296,7 +342,10 @@ function HowThisSiteIsMade() {
       title: 'Affiliate transparency',
       icon: BadgePercent,
       text: 'This site uses affiliate links (Amazon Associates and others). Earned commissions never influence which products are recommended.',
-      cta: { label: 'Email Marvin', href: 'mailto:hello@theyogasensei.com' as const },
+      cta: {
+        label: 'Email Marvin',
+        href: 'mailto:hello@theyogasensei.com' as const,
+      },
     },
     {
       title: 'Updates and corrections',
@@ -321,9 +370,9 @@ function HowThisSiteIsMade() {
             How this site is made.
           </h2>
           <p className="mt-6 text-sm leading-7 text-[color:var(--color-ink-soft)]">
-            Every product recommendation on this site follows a consistent methodology.
-            We publish this openly so you know exactly how we work — and what we will
-            never do.
+            Every product recommendation on this site follows a consistent
+            methodology. We publish this openly so you know exactly how we work
+            — and what we will never do.
           </p>
         </div>
 
@@ -331,7 +380,10 @@ function HowThisSiteIsMade() {
           {principles.map((p, index) => {
             const Icon = p.icon
             return (
-              <li key={p.title} className="grid gap-4 sm:grid-cols-[auto_minmax(0,1fr)]">
+              <li
+                key={p.title}
+                className="grid gap-4 sm:grid-cols-[auto_minmax(0,1fr)]"
+              >
                 <div className="flex items-start gap-4">
                   <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-bg)]">
                     <Icon
@@ -345,9 +397,7 @@ function HowThisSiteIsMade() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-serif text-xl leading-snug">
-                    {p.title}
-                  </h3>
+                  <h3 className="font-serif text-xl leading-snug">{p.title}</h3>
                   <p className="mt-2 text-sm leading-7 text-[color:var(--color-ink-soft)]">
                     {p.text}
                   </p>
@@ -356,7 +406,8 @@ function HowThisSiteIsMade() {
                       href={p.cta.href}
                       className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-olive)] underline-offset-2 hover:underline"
                     >
-                      {p.cta.label} <MoveRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+                      {p.cta.label}{' '}
+                      <MoveRight className="h-3.5 w-3.5" strokeWidth={1.75} />
                     </a>
                   ) : null}
                 </div>
@@ -379,11 +430,12 @@ function OriginSection() {
         </h2>
         <div className="mt-6 space-y-4 text-sm leading-7 text-[color:var(--color-ink-soft)]">
           <p>
-            Most yoga gear content online is either paid promotion or copy-paste filler.
+            Most yoga gear content online is either paid promotion or copy-paste
+            filler.
           </p>
           <p>
-            This site is the opposite: research-first, honestly written, and updated when
-            I find something better.
+            This site is the opposite: research-first, honestly written, and
+            updated when I find something better.
           </p>
           <p>That is the whole pitch.</p>
         </div>
@@ -425,7 +477,13 @@ function BeliefsSection() {
       <SectionLabel>What we believe</SectionLabel>
       <div className="mt-7 grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
         {BELIEFS.map((belief, index) => (
-          <IconPanel key={belief.title} item={belief} centered withDivider={index > 0} compact />
+          <IconPanel
+            key={belief.title}
+            item={belief}
+            centered
+            withDivider={index > 0}
+            compact
+          />
         ))}
       </div>
     </section>
@@ -442,7 +500,11 @@ function ImageryDisclosure() {
       <div className="grid gap-0 md:grid-cols-[minmax(0,0.55fr)_minmax(0,0.45fr)]">
         <div className="p-7 md:p-10">
           <div className="flex items-center gap-3">
-            <Sparkles className="h-5 w-5 text-[color:var(--color-olive)]" strokeWidth={1.5} aria-hidden="true" />
+            <Sparkles
+              className="h-5 w-5 text-[color:var(--color-olive)]"
+              strokeWidth={1.5}
+              aria-hidden="true"
+            />
             <SectionLabel>About our imagery</SectionLabel>
           </div>
           <h2
@@ -454,21 +516,22 @@ function ImageryDisclosure() {
           <div className="mt-5 space-y-4 text-sm leading-7 text-[color:var(--color-ink-soft)]">
             <p>
               Many of the people-in-practice images on this site feature{' '}
-              <strong className="text-[color:var(--color-ink)]">Aiko</strong> — a recurring
-              fictional character generated with AI. She represents the calm, focused practice
-              The Yoga Sensei stands for, but she is not a real person, a certified teacher,
-              or a product reviewer.
+              <strong className="text-[color:var(--color-ink)]">Aiko</strong> —
+              a recurring fictional character generated with AI. She represents
+              the calm, focused practice The Yoga Sensei stands for, but she is
+              not a real person, a certified teacher, or a product reviewer.
             </p>
             <p>
-              Aiko is a visual brand anchor. She is never used to endorse a product, give
-              an opinion, or appear as the author of any article — every piece of writing on
-              this site is by Marvin (above). When an Aiko image illustrates a pose or
-              practice, it is checked for anatomical accuracy before it goes live; anything
-              that misrepresents alignment is rejected or redrawn.
+              Aiko is a visual brand anchor. She is never used to endorse a
+              product, give an opinion, or appear as the author of any article —
+              every piece of writing on this site is by Marvin (above). When an
+              Aiko image illustrates a pose or practice, it is checked for
+              anatomical accuracy before it goes live; anything that
+              misrepresents alignment is rejected or redrawn.
             </p>
             <p className="text-xs text-[color:var(--color-ink-muted)]">
-              If you ever see an image where this distinction feels unclear, or a pose that
-              looks off,{' '}
+              If you ever see an image where this distinction feels unclear, or
+              a pose that looks off,{' '}
               <a
                 href="mailto:hello@theyogasensei.com"
                 className="text-[color:var(--color-ink-soft)] underline-offset-2 hover:underline"
@@ -481,11 +544,20 @@ function ImageryDisclosure() {
 
           <div className="mt-7 flex flex-wrap items-center gap-4 text-[11px] uppercase tracking-[0.16em] text-[color:var(--color-ink-soft)]">
             <span className="inline-flex items-center gap-2">
-              <Info className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
+              <Info
+                className="h-3.5 w-3.5"
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
               AI-generated · disclosed sitewide
             </span>
-            <span aria-hidden="true" className="opacity-40">·</span>
-            <a href="mailto:hello@theyogasensei.com" className="underline-offset-2 hover:text-[color:var(--color-ink)] hover:underline">
+            <span aria-hidden="true" className="opacity-40">
+              ·
+            </span>
+            <a
+              href="mailto:hello@theyogasensei.com"
+              className="underline-offset-2 hover:text-[color:var(--color-ink)] hover:underline"
+            >
               See affiliate disclosure
             </a>
           </div>
@@ -527,11 +599,17 @@ function ValuesRow() {
             key={item.value}
             className={[
               'text-center',
-              index > 0 ? 'lg:border-l lg:border-[color:var(--color-border)]' : '',
+              index > 0
+                ? 'lg:border-l lg:border-[color:var(--color-border)]'
+                : '',
             ].join(' ')}
           >
-            <p className="font-serif text-4xl leading-none text-[color:var(--color-ink)]">{item.value}</p>
-            <p className="mt-3 text-sm text-[color:var(--color-ink-soft)]">{item.label}</p>
+            <p className="font-serif text-4xl leading-none text-[color:var(--color-ink)]">
+              {item.value}
+            </p>
+            <p className="mt-3 text-sm text-[color:var(--color-ink-soft)]">
+              {item.label}
+            </p>
           </div>
         ))}
       </div>
@@ -556,10 +634,18 @@ function IconPanel({
     <div
       className={[
         centered ? 'text-center' : '',
-        withDivider ? 'lg:border-l lg:border-[color:var(--color-border)] lg:pl-8' : '',
+        withDivider
+          ? 'lg:border-l lg:border-[color:var(--color-border)] lg:pl-8'
+          : '',
       ].join(' ')}
     >
-      <Icon className={['h-10 w-10 text-[color:var(--color-olive)]', centered ? 'mx-auto' : ''].join(' ')} strokeWidth={1.35} />
+      <Icon
+        className={[
+          'h-10 w-10 text-[color:var(--color-olive)]',
+          centered ? 'mx-auto' : '',
+        ].join(' ')}
+        strokeWidth={1.35}
+      />
       <h3 className="mt-5 text-[11px] font-semibold uppercase tracking-[0.16em]">
         {item.title}
       </h3>

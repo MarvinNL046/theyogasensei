@@ -3,7 +3,10 @@ import { cn } from '#/lib/utils'
 
 type CalloutType = 'tip' | 'note' | 'warning' | 'info'
 
-const STYLES: Record<CalloutType, { box: string; label: string; labelText: string }> = {
+const STYLES: Record<
+  CalloutType,
+  { box: string; label: string; labelText: string }
+> = {
   tip: {
     box: 'border-accent bg-accent/10',
     label: 'bg-accent text-white',

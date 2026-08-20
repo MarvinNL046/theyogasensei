@@ -16,9 +16,15 @@ const DEFAULT_THUMBS = [
   '/images/brand/topic-yoga-mats.webp',
 ]
 
-export function FeaturedReview({ mat, thumbnails = DEFAULT_THUMBS }: FeaturedReviewProps) {
+export function FeaturedReview({
+  mat,
+  thumbnails = DEFAULT_THUMBS,
+}: FeaturedReviewProps) {
   return (
-    <section id="best-overall" className="bg-[color:var(--color-bg)] py-10 md:py-16">
+    <section
+      id="best-overall"
+      className="bg-[color:var(--color-bg)] py-10 md:py-16"
+    >
       <Container size="wide">
         <div className="grid grid-cols-1 gap-7 lg:grid-cols-[1fr_320px]">
           {/* Main featured card */}
@@ -47,7 +53,10 @@ export function FeaturedReview({ mat, thumbnails = DEFAULT_THUMBS }: FeaturedRev
               {mat.highlights ? (
                 <ul className="mt-6 space-y-3">
                   {mat.highlights.map((item) => (
-                    <li key={item} className="flex gap-3 text-sm text-[color:var(--color-ink-soft)]">
+                    <li
+                      key={item}
+                      className="flex gap-3 text-sm text-[color:var(--color-ink-soft)]"
+                    >
                       <CheckCircle
                         className="mt-0.5 h-4 w-4 flex-shrink-0 fill-[color:var(--color-olive)] text-[color:var(--color-surface)]"
                         strokeWidth={2}

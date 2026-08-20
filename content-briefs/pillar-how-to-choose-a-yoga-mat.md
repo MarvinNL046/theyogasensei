@@ -43,19 +43,24 @@
 ## Required structure
 
 ### Hero / lede (200–300 words)
+
 - Lead with the actual question: "Choosing a yoga mat is overwhelming because every mat looks the same online but feels completely different in practice."
 - Anti-hype statement: not all mats need to be expensive, not all expensive mats are good
 - Set expectation: this guide walks through the 5 decisions that actually matter
 - **Byline + disclaimer:** "By Marvin Smit · Long-time practitioner, not a certified instructor."
 
 ### Quick answer box (≤100 words)
+
 Style copied from `/guides/how-to-clean-a-yoga-mat`:
+
 > Quick answer. For most home practitioners, a 4-5mm PVC or natural rubber mat in standard size (68×24") is the right starting point. Spend more on grip and durability than on extra thickness. Avoid TPE if you sweat heavily and avoid cork if you practice on hard floors.
 
 ### H2: The 5 decisions that actually matter
+
 Short intro framing the rest of the post.
 
 ### H2: 1. Material — what each one actually feels like
+
 - PVC (Manduka PRO and similar): pros, cons, who it's for
 - Natural rubber (Jade, Manduka eKO, Liforme): pros, cons, who it's for
 - Cork: pros, cons, who it's for
@@ -65,6 +70,7 @@ Short intro framing the rest of the post.
 - Cross-link to cleaning guide for material-specific care
 
 ### H2: 2. Thickness — the trade-off nobody explains
+
 - 1-2mm: travel mats, who they're for
 - 3-4mm: most home practice, sweet spot
 - 5-6mm: knee-sensitive practitioners, restorative
@@ -73,24 +79,28 @@ Short intro framing the rest of the post.
 - **Internal link:** "For a focused thickness breakdown, see our [thickness guide](/guides/how-thick-should-a-yoga-mat-be)"
 
 ### H2: 3. Grip — wet vs. dry, and why it matters
+
 - Dry grip vs. wet grip — different mats win in each
 - Top layer (closed-cell vs. open-cell vs. polyurethane)
 - The "break-in" period — natural rubber and PVC behave differently
 - **Internal link:** "For sweaty practice specifically, our [hot yoga mat guide](/guides/best-yoga-mat-for-hot-yoga) goes deeper"
 
 ### H2: 4. Size — when standard doesn't fit
+
 - Standard: 68" × 24"
 - Long mats: 71" or 74" — when you actually need one
 - Wide mats: 26" or 30" — for taller practitioners or wide stances
 - Travel-size: 1-2mm folding mats
 
 ### H2: 5. Durability and care
+
 - What "durability" actually means: top layer wear vs. structural integrity
 - Manduka PRO lifetime guarantee — what it actually covers (cite Manduka's published terms, don't invent)
 - Natural rubber lifespan reality
 - Polyurethane top layer wear pattern
 
 ### H2: How long does a yoga mat last? (absorbs dropped post)
+
 - ~200-300 words
 - Material-specific lifespan ranges (based on aggregated user reports — no fake testing data)
 - Wear signs: flaking, grip loss, indentations, persistent odour
@@ -98,6 +108,7 @@ Short intro framing the rest of the post.
 - **No specific keyword density push — natural mentions of "how long does a yoga mat last" are fine**
 
 ### H2: How to store your yoga mat (absorbs dropped post)
+
 - ~150-200 words
 - Roll vs. fold (material-dependent)
 - Direct sunlight = death for natural rubber
@@ -105,6 +116,7 @@ Short intro framing the rest of the post.
 - **Cross-link:** existing cleaning guide for related care
 
 ### H2: Common buying mistakes
+
 - Buying on thickness alone
 - Falling for "antimicrobial" marketing claims (be specific: the science is thin)
 - Buying the cheapest PVC mat — false economy
@@ -112,6 +124,7 @@ Short intro framing the rest of the post.
 - Buying based on Instagram aesthetics over actual grip
 
 ### H2: A starting framework — match the mat to your practice
+
 - Casual home practice (3-4x/week, gentle): mid-range PVC or TPE, 4-5mm
 - Regular practice (daily, varied styles): natural rubber, 4-5mm
 - Hot yoga / heavy sweating: polyurethane top or specific hot-yoga mats — and link to C2
@@ -119,13 +132,16 @@ Short intro framing the rest of the post.
 - Travel: 1-2mm folding mat, accept the trade-off in feel
 
 ### H2: FAQ
+
 3-5 honest questions, NO invented testing claims. Suggestions:
+
 - Is an expensive mat actually worth it?
 - Can I use a cheap mat to start?
 - What about studio mats — do I need my own?
 - How do I know my mat is the wrong fit?
 
 ### Closing CTA
+
 - Soft CTA to newsletter (if newsletter exists) OR to the cleaning guide
 - No hard sell, no urgency language
 

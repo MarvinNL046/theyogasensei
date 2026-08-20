@@ -1,7 +1,7 @@
 ---
 name: workflow-template-build
-description: "Section-by-section build workflow for design templates — ask for hi-res before guessing, one section at a time, screenshot + approve before next, use project tokens not hardcoded hex"
-metadata: 
+description: 'Section-by-section build workflow for design templates — ask for hi-res before guessing, one section at a time, screenshot + approve before next, use project tokens not hardcoded hex'
+metadata:
   node_type: memory
   type: feedback
   originSessionId: ab9ceb43-2414-4ab6-9c22-e478565ee2d5

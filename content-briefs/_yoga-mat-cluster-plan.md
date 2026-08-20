@@ -10,13 +10,13 @@
 
 ## Wat is veranderd t.o.v. je vorige proposal
 
-| Item | Vorige proposal | Update | Reden |
-|---|---|---|---|
-| Pillar URL | `/guides/yoga-mat-buying-guide` | `/guides/how-to-choose-a-yoga-mat` | "yoga mat buying guide" = vol 60, KD 17. "how to choose a yoga mat" = vol 350, KD 11. Beide keywords gedekt via title/H1. |
-| Thickness post | Supporting role | Behouden als supporting MAAR target sterker dan gedacht: vol 250 KD 0 met Traffic Potential 1,000/mo via parent topic "yoga mat thickness" (vol 600). Behandel als prioriteit-info-post, niet als bijzaak. |
-| Storage post | Eigen URL | **DROP als standalone.** Vol 10/mo, geen meetbare TP. Verwerk als sectie in bestaande cleaning-guide of in pillar. |
-| Lifespan post | Eigen URL | **DROP als standalone.** Vol 40, KD 1 — easy win maar te klein voor eigen URL met deadline-druk. Verwerk als sectie in pillar. Kan later wel als losse post als we naar 8+ in totaal willen. |
-| Cluster scope | 5 nieuwe posts + cleaning-guide | **3 nieuwe posts + bestaande cleaning-guide = 4 live totaal.** Quality > quantity. |
+| Item           | Vorige proposal                 | Update                                                                                                                                                                                                     | Reden                                                                                                                     |
+| -------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Pillar URL     | `/guides/yoga-mat-buying-guide` | `/guides/how-to-choose-a-yoga-mat`                                                                                                                                                                         | "yoga mat buying guide" = vol 60, KD 17. "how to choose a yoga mat" = vol 350, KD 11. Beide keywords gedekt via title/H1. |
+| Thickness post | Supporting role                 | Behouden als supporting MAAR target sterker dan gedacht: vol 250 KD 0 met Traffic Potential 1,000/mo via parent topic "yoga mat thickness" (vol 600). Behandel als prioriteit-info-post, niet als bijzaak. |
+| Storage post   | Eigen URL                       | **DROP als standalone.** Vol 10/mo, geen meetbare TP. Verwerk als sectie in bestaande cleaning-guide of in pillar.                                                                                         |
+| Lifespan post  | Eigen URL                       | **DROP als standalone.** Vol 40, KD 1 — easy win maar te klein voor eigen URL met deadline-druk. Verwerk als sectie in pillar. Kan later wel als losse post als we naar 8+ in totaal willen.               |
+| Cluster scope  | 5 nieuwe posts + cleaning-guide | **3 nieuwe posts + bestaande cleaning-guide = 4 live totaal.** Quality > quantity.                                                                                                                         |
 
 ## Definitieve cluster — Yoga Mat Selection & Care
 
@@ -37,6 +37,7 @@ Cluster draft status: expanded after C3 with an eco-friendly commercial spoke ta
 ## Per post — definitieve specs
 
 ### 1. PILLAR — `/guides/how-to-choose-a-yoga-mat`
+
 - **Primary keyword:** `how to choose a yoga mat` (vol 350, KD 11, TP 300)
 - **Secondary keyword:** `yoga mat buying guide` (vol 60, KD 17, TP 400)
 - **Title:** "How to Choose a Yoga Mat: A Practical Buying Guide"
@@ -49,6 +50,7 @@ Cluster draft status: expanded after C3 with an eco-friendly commercial spoke ta
 - **Schema:** Article (geen HowTo — dit is een buying guide, geen procedure)
 
 ### 2. SUPPORTING — `/guides/how-thick-should-a-yoga-mat-be`
+
 - **Primary keyword:** `how thick should a yoga mat be` (vol 250, KD 0, TP 1,000)
 - **Parent topic dekking:** `yoga mat thickness` (vol 600)
 - **Title:** "How Thick Should a Yoga Mat Be? A Practical Thickness Guide"
@@ -58,6 +60,7 @@ Cluster draft status: expanded after C3 with an eco-friendly commercial spoke ta
 - **Schema:** Article (overweeg FAQPage als sectie aan einde)
 
 ### 3. AFFILIATE — `/guides/best-yoga-mat-for-hot-yoga` — DRAFT
+
 - **Primary keyword:** `best yoga mat for hot yoga` (vol 2,200, KD 5, TP 3,000)
 - **Merge keywords:** `best hot yoga mat` (vol 1,200), `best mat for hot yoga` (vol 300)
 - **Title:** "Best Yoga Mat for Hot Yoga: Grippy Picks for Sweaty Practice"
@@ -69,12 +72,14 @@ Cluster draft status: expanded after C3 with an eco-friendly commercial spoke ta
 - **URL note:** onder `/guides/` om taxonomie consistent te houden. Verplaats later naar `/reviews/` als die taxonomie ooit komt.
 
 ### 4. AFFILIATE HUB — `/guides/best-yoga-mats-2026` — PUBLISHED
+
 - **Primary keyword:** `best yoga mats`
 - **Role:** general commercial hub for all mat types; links out to focused spokes.
 - **Schema:** Article + ItemList + FAQPage (geen Product/Review schema — no first-party testing dataset).
 - **Lineup:** 7 picks across premium, hot-yoga, alignment, natural rubber, beginner/value, cushion and travel.
 
 ### 5. AFFILIATE SPOKE — `/guides/eco-friendly-yoga-mat` — DRAFT
+
 - **Primary keyword:** `eco friendly yoga mat` (vol 1.2K, KD 24, intent I+C+T)
 - **Role:** eco/natural-material commercial spoke; complements C3 without fully duplicating the general hub.
 - **Word count:** 2,500–3,200 target.
@@ -94,6 +99,7 @@ cleaning (existing) → pillar, hot-yoga, thickness, eco-friendly
 ```
 
 **Concrete anchor locations:**
+
 - **pillar → thickness:** in de "Thickness" sectie van de buying guide, deeplink naar de specifieke thickness-guide voor lezers die meer detail willen
 - **pillar → hot-yoga:** in de "Match the mat to your practice style" sectie, hot yoga als specifiek voorbeeld
 - **pillar → cleaning:** in de "Care & longevity" sectie
@@ -104,26 +110,27 @@ cleaning (existing) → pillar, hot-yoga, thickness, eco-friendly
 - **hot-yoga → thickness:** in de "What thickness for hot yoga" sectie
 - **cleaning (existing) → pillar, hot-yoga, thickness:** voeg toe in de bestaande "Further reading" sectie, vervangt de huidige "complete yoga mat buying guide (publishing soon)" placeholder
 
-**Belangrijk:** in de bestaande `/guides/how-to-clean-a-yoga-mat` staat nu: *"For more on how long a properly maintained mat should actually last, see our complete yoga mat buying guide (publishing soon)."* — die placeholder moet vervangen worden door een echte link naar de pillar zodra die live is.
+**Belangrijk:** in de bestaande `/guides/how-to-clean-a-yoga-mat` staat nu: _"For more on how long a properly maintained mat should actually last, see our complete yoga mat buying guide (publishing soon)."_ — die placeholder moet vervangen worden door een echte link naar de pillar zodra die live is.
 
 ## Production schedule
 
-| Dag | Werk | Hermes/CC | Marvin review |
-|---|---|---|---|
-| Do 28 | Pillar research + draft + assets | 5-7h | 60-90m |
-| Vr 29 | Thickness post research + draft + assets | 1.5-2h | 30-45m |
-| Vr 29 | Internal link pass (pillar ↔ thickness ↔ cleaning) | 30m | 15m |
-| Za 30 | C2 (hot yoga) research + draft | 5-7h | 60-90m |
-| Za 30 | C2 affiliate disclosure banner, product table QA | 2h | 30m |
-| Zo 31 | Final cluster QA + claim-safety sweep + schema validation | 2h | 30m |
-| Zo 31 | Vercel preview deploy + final audit door Claude | — | — |
-| Zo 31 | Apex alias aanslaan + GSC submission | 30m | 15m |
+| Dag   | Werk                                                      | Hermes/CC | Marvin review |
+| ----- | --------------------------------------------------------- | --------- | ------------- |
+| Do 28 | Pillar research + draft + assets                          | 5-7h      | 60-90m        |
+| Vr 29 | Thickness post research + draft + assets                  | 1.5-2h    | 30-45m        |
+| Vr 29 | Internal link pass (pillar ↔ thickness ↔ cleaning)        | 30m       | 15m           |
+| Za 30 | C2 (hot yoga) research + draft                            | 5-7h      | 60-90m        |
+| Za 30 | C2 affiliate disclosure banner, product table QA          | 2h        | 30m           |
+| Zo 31 | Final cluster QA + claim-safety sweep + schema validation | 2h        | 30m           |
+| Zo 31 | Vercel preview deploy + final audit door Claude           | —         | —             |
+| Zo 31 | Apex alias aanslaan + GSC submission                      | 30m       | 15m           |
 
 **Total Marvin time required:** ~4-5 hours review across 4 days. Bouw rust in op vrijdagavond.
 
 ## Sitemap update na launch
 
 Sitemap groeit van 8 naar 10 URLs:
+
 ```text
 /, /about, /authors/marvin
 /guides/how-to-choose-a-yoga-mat        (NEW)

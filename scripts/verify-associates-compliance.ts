@@ -21,7 +21,11 @@ import path from 'node:path'
 const root = process.cwd()
 
 /** Files whose text reaches a published page. Drafts are excluded — they cannot ship. */
-const TARGET_DIRS = ['content', 'src/features/reviews', 'src/components/reviews']
+const TARGET_DIRS = [
+  'content',
+  'src/features/reviews',
+  'src/components/reviews',
+]
 const SKIP = ['_drafts', 'node_modules']
 
 interface Rule {
@@ -40,7 +44,8 @@ const RULES: Rule[] = [
   {
     id: 'amazon-star-ratings',
     why: 'Amazon star ratings and review counts are review data — same PA-API restriction, and they go stale the day you write them.',
-    pattern: /\b\d[.,]\d\s*(out of|\/)\s*5\b|\bratings on (the )?amazon\b|\bamazon (star )?rating\b/gi,
+    pattern:
+      /\b\d[.,]\d\s*(out of|\/)\s*5\b|\bratings on (the )?amazon\b|\bamazon (star )?rating\b/gi,
   },
   {
     id: 'replica-terms',
@@ -95,4 +100,6 @@ if (failures > 0) {
   process.exit(1)
 }
 
-console.log(`[verify-associates-compliance] ${files.length} file(s) checked, 0 violations`)
+console.log(
+  `[verify-associates-compliance] ${files.length} file(s) checked, 0 violations`,
+)

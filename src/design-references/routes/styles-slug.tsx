@@ -35,7 +35,10 @@ function StylePage() {
   const { Component } = loadContent('styles', slug)
   return (
     <main className="prose prose-lg mx-auto max-w-3xl px-4 py-12">
-      <nav aria-label="Breadcrumb" className="not-prose mb-6 text-sm text-stone-600">
+      <nav
+        aria-label="Breadcrumb"
+        className="not-prose mb-6 text-sm text-stone-600"
+      >
         <a href="/">Home</a>
         {' › '}
         <a href="/styles">Styles</a>

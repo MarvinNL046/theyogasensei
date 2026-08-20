@@ -21,19 +21,51 @@ export function GripMoistureCurve({ caption }: GripMoistureCurveProps) {
         aria-label="As the mat surface goes from dry to damp, cork grip rises while natural rubber grip falls; the two cross over in the middle."
       >
         {/* axes */}
-        <line x1="78" y1="40" x2="78" y2="290" stroke="var(--color-border)" strokeWidth="1.5" />
-        <line x1="78" y1="290" x2="610" y2="290" stroke="var(--color-border)" strokeWidth="1.5" />
+        <line
+          x1="78"
+          y1="40"
+          x2="78"
+          y2="290"
+          stroke="var(--color-border)"
+          strokeWidth="1.5"
+        />
+        <line
+          x1="78"
+          y1="290"
+          x2="610"
+          y2="290"
+          stroke="var(--color-border)"
+          strokeWidth="1.5"
+        />
 
         {/* y-axis label */}
-        <text x="70" y="34" textAnchor="end" className="fill-[color:var(--color-ink-muted)]" fontSize="16">
+        <text
+          x="70"
+          y="34"
+          textAnchor="end"
+          className="fill-[color:var(--color-ink-muted)]"
+          fontSize="16"
+        >
           More grip ↑
         </text>
 
         {/* x-axis labels */}
-        <text x="78" y="316" textAnchor="start" className="fill-[color:var(--color-ink-muted)]" fontSize="16">
+        <text
+          x="78"
+          y="316"
+          textAnchor="start"
+          className="fill-[color:var(--color-ink-muted)]"
+          fontSize="16"
+        >
           Dry hands
         </text>
-        <text x="610" y="316" textAnchor="end" className="fill-[color:var(--color-ink-muted)]" fontSize="16">
+        <text
+          x="610"
+          y="316"
+          textAnchor="end"
+          className="fill-[color:var(--color-ink-muted)]"
+          fontSize="16"
+        >
           Damp / sweaty
         </text>
 
@@ -59,10 +91,24 @@ export function GripMoistureCurve({ caption }: GripMoistureCurveProps) {
         <circle cx="600" cy="245" r="4.5" fill="var(--color-accent)" />
 
         {/* line labels */}
-        <text x="590" y="64" textAnchor="end" className="fill-[color:var(--color-olive)]" fontSize="18" fontWeight="600">
+        <text
+          x="590"
+          y="64"
+          textAnchor="end"
+          className="fill-[color:var(--color-olive)]"
+          fontSize="18"
+          fontWeight="600"
+        >
           Cork
         </text>
-        <text x="590" y="265" textAnchor="end" className="fill-[color:var(--color-accent-deep)]" fontSize="18" fontWeight="600">
+        <text
+          x="590"
+          y="265"
+          textAnchor="end"
+          className="fill-[color:var(--color-accent-deep)]"
+          fontSize="18"
+          fontWeight="600"
+        >
           Natural rubber
         </text>
       </svg>

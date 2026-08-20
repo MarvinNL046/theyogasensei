@@ -1,7 +1,7 @@
 ---
 name: social-pin-pipeline
 description: Code text-layer pipeline (satori+sharp) for Pinterest pins and Instagram posts in brand fonts — 65 pins + 9 IG posts generated
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: 845874c6-5116-415a-8f3c-6d6490b225cb
@@ -19,6 +19,7 @@ words and inserts a space before punctuation ("thickness , material"). With
 during the launch-day build (verified with a side-by-side).
 
 **Scripts (run with `npx tsx`, no package.json entry):**
+
 - `scripts/generate-pins.ts` → `public/images/pins/<slug>/*.png` (1000×1500) +
   `_pins.md` per guide. Holds a `GUIDES` array with hand-tuned 5-angle hooks
   (listicle / problem / comparison / aesthetic / checklist) for **all 13 guides
@@ -27,7 +28,7 @@ during the launch-day build (verified with a side-by-side).
   fillers if a folder is short. Descriptions in `_pins.md` = each guide's
   metaDescription + a per-topic hashtag set. To add a guide: append to `GUIDES`.
 - `scripts/generate-ig.ts` → `public/images/social/instagram/*.png` (1080×1080)
-  + `_ig.md`. 9-post starter grid; modes: photo / tip / quote-dark / card-cream.
+  - `_ig.md`. 9-post starter grid; modes: photo / tip / quote-dark / card-cream.
 
 **Fonts:** static TTFs in `scripts/assets/fonts/` (CormorantGaramond-400/600/700,
 Inter-500/600, NotoSerifJP-600), from the fontsource jsDelivr CDN. Brand serif is

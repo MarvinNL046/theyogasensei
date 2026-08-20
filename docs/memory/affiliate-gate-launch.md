@@ -1,13 +1,14 @@
 ---
 name: affiliate-gate-launch
 description: AFFILIATE_REDIRECTS_ENABLED stays false at launch — flip to true on Vercel ONLY after Amazon Associates approval (this is the recurring TODO not to forget)
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: 247b1b40-280e-45f0-8514-9c9d3c6ff24d
 ---
 
 **APPROVED 2026-05-30.** Status of the launch checklist:
+
 - ✅ Tag confirmed: `theyogasensei-20` IS Marvin's real Associates tag (the
   placeholder guess was correct — no swap needed; comment updated).
 - ✅ All 11 registry ASINs in `src/lib/affiliate-links.ts` verified against live

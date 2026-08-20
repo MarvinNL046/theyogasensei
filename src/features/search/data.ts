@@ -20,15 +20,51 @@ export interface SearchEntry {
 }
 
 const REVIEW_ROWS: Array<[title: string, description: string, href: string]> = [
-  ['Manduka PRO review', 'Dense cushioning, long-term durability evidence and the portability trade-off.', '/reviews/manduka-pro'],
-  ['Liforme Original review', 'Alignment marks, immediate grip and the premium price trade-off.', '/reviews/liforme'],
-  ['Jade Harmony review', 'Natural-rubber traction, care requirements and latex relevance.', '/reviews/jade'],
-  ['Lululemon The Mat review', 'Reversible grip, cushioning and practical care considerations.', '/reviews/lululemon'],
-  ['Manduka GRP Adapt review', 'A sweat-focused surface with specific cleaning and maintenance needs.', '/reviews/manduka-grp-adapt'],
-  ['Alo Warrior Mat review', 'A premium polyurethane-topped mat with clear strengths and limitations.', '/reviews/alo'],
-  ['Gaiam yoga mat review', 'Budget-friendly context, material choices and realistic limitations.', '/reviews/gaiam'],
-  ['Retrospec Solana review', 'Extra cushioning balanced against stability in standing poses.', '/reviews/retrospec'],
-  ['Best yoga mats', 'A research-led shortlist compared by grip, cushion, material and portability.', '/reviews/best-yoga-mats'],
+  [
+    'Manduka PRO review',
+    'Dense cushioning, long-term durability evidence and the portability trade-off.',
+    '/reviews/manduka-pro',
+  ],
+  [
+    'Liforme Original review',
+    'Alignment marks, immediate grip and the premium price trade-off.',
+    '/reviews/liforme',
+  ],
+  [
+    'Jade Harmony review',
+    'Natural-rubber traction, care requirements and latex relevance.',
+    '/reviews/jade',
+  ],
+  [
+    'Lululemon The Mat review',
+    'Reversible grip, cushioning and practical care considerations.',
+    '/reviews/lululemon',
+  ],
+  [
+    'Manduka GRP Adapt review',
+    'A sweat-focused surface with specific cleaning and maintenance needs.',
+    '/reviews/manduka-grp-adapt',
+  ],
+  [
+    'Alo Warrior Mat review',
+    'A premium polyurethane-topped mat with clear strengths and limitations.',
+    '/reviews/alo',
+  ],
+  [
+    'Gaiam yoga mat review',
+    'Budget-friendly context, material choices and realistic limitations.',
+    '/reviews/gaiam',
+  ],
+  [
+    'Retrospec Solana review',
+    'Extra cushioning balanced against stability in standing poses.',
+    '/reviews/retrospec',
+  ],
+  [
+    'Best yoga mats',
+    'A research-led shortlist compared by grip, cushion, material and portability.',
+    '/reviews/best-yoga-mats',
+  ],
 ]
 
 const REVIEW_ENTRIES: Array<SearchEntry> = REVIEW_ROWS.map(
@@ -82,10 +118,7 @@ export function listSearchEntries(): Array<SearchEntry> {
             : folder === 'guides'
               ? guideType(slug)
               : 'Gear guides'
-      const href =
-        folder === 'gear'
-          ? `/gear/${slug}`
-          : `/${folder}/${slug}`
+      const href = folder === 'gear' ? `/gear/${slug}` : `/${folder}/${slug}`
 
       return {
         title: frontmatter.title,

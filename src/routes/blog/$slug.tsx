@@ -65,8 +65,12 @@ function BlogPostPage() {
   const { Component } = loadContent('blog', slug)
   const eyebrow = frontmatter.tags[0]
   const heroImageUrl = buildImageUrl(frontmatter.heroImage, 'og')
-  const faqItems = 'faq' in frontmatter && frontmatter.faq ? frontmatter.faq : []
-  const readNext = resolveRelated(frontmatter.related, { exclude: slug, limit: 3 })
+  const faqItems =
+    'faq' in frontmatter && frontmatter.faq ? frontmatter.faq : []
+  const readNext = resolveRelated(frontmatter.related, {
+    exclude: slug,
+    limit: 3,
+  })
 
   return (
     <>
@@ -79,15 +83,23 @@ function BlogPostPage() {
             aria-label="Breadcrumb"
             className="text-[11px] uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)]"
           >
-            <Link to="/" className="transition hover:text-[color:var(--color-ink)]">
+            <Link
+              to="/"
+              className="transition hover:text-[color:var(--color-ink)]"
+            >
               Home
             </Link>
             <span className="mx-2 opacity-40">›</span>
-            <Link to="/blog" className="transition hover:text-[color:var(--color-ink)]">
+            <Link
+              to="/blog"
+              className="transition hover:text-[color:var(--color-ink)]"
+            >
               Blog
             </Link>
             <span className="mx-2 opacity-40">›</span>
-            <span className="text-[color:var(--color-ink-soft)]">{eyebrow}</span>
+            <span className="text-[color:var(--color-ink-soft)]">
+              {eyebrow}
+            </span>
           </nav>
 
           <h1 className="mt-6 max-w-3xl font-serif text-4xl leading-[1.12] tracking-tight md:text-5xl">
@@ -193,8 +205,9 @@ function BlogPostPage() {
                   {author.name}
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
-                  Founder of The Yoga Sensei. Long-time practitioner, not a certified
-                  instructor — every piece on this site is written and edited by Marvin.
+                  Founder of The Yoga Sensei. Long-time practitioner, not a
+                  certified instructor — every piece on this site is written and
+                  edited by Marvin.
                 </p>
                 <Link
                   to="/authors/$slug"

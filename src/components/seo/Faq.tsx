@@ -20,13 +20,20 @@ export function Faq({
 }) {
   if (!items.length) return null
   return (
-    <section aria-label={heading} id="faq" className="not-prose mt-14 scroll-mt-28">
+    <section
+      aria-label={heading}
+      id="faq"
+      className="not-prose mt-14 scroll-mt-28"
+    >
       <h2 className="font-serif text-2xl tracking-tight text-[color:var(--color-ink)] md:text-[28px]">
         {heading}
       </h2>
       <div className="mt-6 border-t border-[color:var(--color-border)]">
         {items.map((item, i) => (
-          <details key={i} className="group border-b border-[color:var(--color-border)]">
+          <details
+            key={i}
+            className="group border-b border-[color:var(--color-border)]"
+          >
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 [&::-webkit-details-marker]:hidden">
               <span className="font-serif text-lg leading-snug text-[color:var(--color-ink)] transition-colors group-hover:text-[color:var(--color-accent-deep)]">
                 {item.q}

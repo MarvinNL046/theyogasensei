@@ -35,7 +35,9 @@ export function ReviewBreadcrumb({ trail }: ReviewBreadcrumbProps) {
                     {crumb.label}
                   </Link>
                 ) : (
-                  <span className={isLast ? 'text-[color:var(--color-ink)]' : ''}>
+                  <span
+                    className={isLast ? 'text-[color:var(--color-ink)]' : ''}
+                  >
                     {crumb.label}
                   </span>
                 )}

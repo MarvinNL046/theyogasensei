@@ -1,13 +1,28 @@
 export const affiliatePageTypes = [
-  'review', 'roundup', 'comparison', 'buying-guide', 'blog', 'guide', 'other',
+  'review',
+  'roundup',
+  'comparison',
+  'buying-guide',
+  'blog',
+  'guide',
+  'other',
 ] as const
 
 export type AffiliatePageType = (typeof affiliatePageTypes)[number]
 
 export const affiliatePlacements = [
-  'affiliate-button', 'inline-link', 'product-title', 'product-card',
-  'product-list-button', 'closing-band', 'sidebar', 'review-section',
-  'review-sidebar', 'review-verdict', 'roundup-card', 'roundup-detail',
+  'affiliate-button',
+  'inline-link',
+  'product-title',
+  'product-card',
+  'product-list-button',
+  'closing-band',
+  'sidebar',
+  'review-section',
+  'review-sidebar',
+  'review-verdict',
+  'roundup-card',
+  'roundup-detail',
 ] as const
 
 export type AffiliatePlacement = (typeof affiliatePlacements)[number]
@@ -27,7 +42,8 @@ export function pageTypeFromPath(pathname: string): AffiliatePageType {
   const slug = pathname.slice('/guides/'.length)
   if (slug.includes('-vs-')) return 'comparison'
   if (slug.startsWith('best-') || slug.includes('-best-')) return 'roundup'
-  if (slug.startsWith('how-to-') || slug.startsWith('how-')) return 'buying-guide'
+  if (slug.startsWith('how-to-') || slug.startsWith('how-'))
+    return 'buying-guide'
   return 'guide'
 }
 

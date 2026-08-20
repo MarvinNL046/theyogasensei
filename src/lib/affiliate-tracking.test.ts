@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { affiliateClickContext, affiliateHref, pageTypeFromPath } from './affiliate-tracking'
+import {
+  affiliateClickContext,
+  affiliateHref,
+  pageTypeFromPath,
+} from './affiliate-tracking'
 
 describe('affiliate tracking context', () => {
   it.each([
@@ -15,7 +19,11 @@ describe('affiliate tracking context', () => {
   })
 
   it('adds all attribution dimensions to the internal redirect URL', () => {
-    const href = affiliateHref('manduka-pro-6mm', 'product-card', '/guides/best-yoga-mat-for-beginners')
+    const href = affiliateHref(
+      'manduka-pro-6mm',
+      'product-card',
+      '/guides/best-yoga-mat-for-beginners',
+    )
     const url = new URL(href, 'https://www.theyogasensei.com')
     expect(url.pathname).toBe('/go/manduka-pro-6mm')
     expect(Object.fromEntries(url.searchParams)).toEqual({
@@ -27,6 +35,8 @@ describe('affiliate tracking context', () => {
   })
 
   it('does not accept protocol-relative source paths', () => {
-    expect(affiliateClickContext('sidebar', '//example.com').sourcePage).toBe('/unknown')
+    expect(affiliateClickContext('sidebar', '//example.com').sourcePage).toBe(
+      '/unknown',
+    )
   })
 })

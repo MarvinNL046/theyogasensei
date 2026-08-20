@@ -1,7 +1,7 @@
 ---
 name: production-env-wiring
 description: Production Convex deployment + Vercel/Convex env wiring; newsletter verified live end-to-end 2026-05-30
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: ab4f04a5-6355-4c1c-b26f-d60bb1600495
@@ -10,12 +10,14 @@ metadata:
 Production newsletter went live and was verified end-to-end on 2026-05-30.
 
 **Deployments**
+
 - Convex PROD: `perceptive-bear-405.eu-west-1.convex.cloud` (created via `npx convex deploy`). Tables/indexes live: subscribers, emailEvents, affiliateClicks.
 - Convex DEV: `adventurous-marlin-334` (local `pnpm convex dev`).
 - Vercel project: `marvinnl046s-projects/theyogasensei`, aliased to `www.theyogasensei.com`.
 
 **Env wiring (the launch blocker that was fixed)**
-- Vercel **Production** env: `AFFILIATE_REDIRECTS_ENABLED` + `VITE_CONVEX_URL=https://perceptive-bear-405.eu-west-1.convex.cloud`. VITE_ vars are **build-time** — after adding, a fresh `npx vercel --prod` build is required (a redeploy of the old build won't inline it).
+
+- Vercel **Production** env: `AFFILIATE_REDIRECTS_ENABLED` + `VITE_CONVEX_URL=https://perceptive-bear-405.eu-west-1.convex.cloud`. VITE\_ vars are **build-time** — after adding, a fresh `npx vercel --prod` build is required (a redeploy of the old build won't inline it).
 - Convex **PROD** env (`npx convex env set ... --prod`): `RESEND_API_KEY` + `SITE_URL=https://www.theyogasensei.com`.
 - Before this, prod had ONLY AFFILIATE_REDIRECTS_ENABLED → newsletter SIMULATED (fake "sent", no capture). See [[affiliate-gate-launch]].
 
@@ -30,5 +32,6 @@ Production newsletter went live and was verified end-to-end on 2026-05-30.
 **Prod subscriber tables are EMPTY (cleaned 2026-05-30).** Used the new internal `subscribers:deleteByEmail` mutation (cascades emailEvents) to remove all test rows — `confirmedCount` is 0, ready for real signups. That mutation is a permanent admin utility (run via `npx convex run subscribers:deleteByEmail '{"email":"…"}' --prod`) and backs the privacy page's GDPR-erasure promise.
 
 **Still optional / not done**
+
 - Resend webhook → prod Convex `/resend-webhook` (open/click/bounce events). Core flow works without it; the `sent` event is recorded by our own email actions, not the webhook.
 - Apex→www redirect chain is a Vercel dashboard setting (Marvin's). See [[vercel-deploy-setup]].

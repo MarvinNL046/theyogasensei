@@ -1,7 +1,7 @@
 ---
 name: seo-eeat-roadmap
-description: "After all 17 design templates are locked, run a dedicated SEO + EEAT pass per page-type — build the missing SEO components, wire real MDX rendering, hook up frontmatter to UI, and validate against the 80-point checklist in the Obsidian vault"
-metadata: 
+description: 'After all 17 design templates are locked, run a dedicated SEO + EEAT pass per page-type — build the missing SEO components, wire real MDX rendering, hook up frontmatter to UI, and validate against the 80-point checklist in the Obsidian vault'
+metadata:
   node_type: memory
   type: project
   originSessionId: ab9ceb43-2414-4ab6-9c22-e478565ee2d5
@@ -45,6 +45,7 @@ After **all 17 design templates** are visually locked, do a dedicated **SEO + EE
    - 80-point on-page SEO checklist from [[obsidian-vault]] (the canonical version; `on-page-seo.md` in repo is a working copy)
 
 **Current known gaps** (snapshot 2026-05-19, /guides/$slug specifically — others likely similar):
+
 - `loadContent` import was removed in design refactor; MDX body not rendered
 - Hardcoded "May 12, 2024 · 6 min read" instead of frontmatter
 - No visible `lastReviewedAt`

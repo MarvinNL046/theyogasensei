@@ -9,6 +9,7 @@ The Yoga Sensei is dry, observational, and self-aware. Not jokey. Not zen-funny.
 ## The register
 
 **Yes:**
+
 - Dry industry observation — calling out marketing speak, generic listicles, "eco" greenwashing, expensive aesthetics-over-function gear
 - Self-deprecation about not being a teacher — "I'm not the person to ask whether your knee tracks correctly. I am the person to ask whether the mat your knee is on will slip."
 - Honest understatement — "The Manduka PRO is fine."
@@ -16,6 +17,7 @@ The Yoga Sensei is dry, observational, and self-aware. Not jokey. Not zen-funny.
 - Naming the obvious thing everyone pretends not to notice
 
 **No:**
+
 - Yoga puns ("namaste in bed", "downward dog days", "vinyasa-no")
 - Sanskrit wordplay
 - "Zen" or "om" or "chakra" jokes
@@ -65,15 +67,19 @@ The point isn't to be self-effacing for its own sake — it's to mark precisely 
 ## Concrete examples — voice vs over-humour
 
 ### Voice (right amount of wit)
+
 > The Manduka PRO is fine. The Manduka PROlite is also fine. After six weeks I cannot meaningfully tell them apart in everyday use, despite the $30 price gap. Spend the $30 on a strap or a block instead.
 
 ### Over-humour (too much)
+
 > The Manduka PRO is fine — I mean, FINE fine. Like, who even needs the PROlite when the PRO is right there?! Save your $30 for a strap or a block (or, you know, more matcha 😅).
 
 ### Voice (right amount of wit, gear-failure story)
+
 > The first time I rolled out the Gaiam Premium, both hands slipped out from under me in downward dog before I'd been on the mat for five minutes. The reviews had warned me. I had not believed the reviews. The reviews were correct.
 
 ### Over-humour (too much)
+
 > So picture this: there I am, attempting my first downward dog, and BOOM — face-plant. Should've listened to the reviews, right?! Lesson learned: read the reviews, friends!
 
 ---
@@ -96,16 +102,16 @@ The reader should finish an article remembering one or two sharp observations an
 
 ## What humour fails most often look like (delete on sight)
 
-| Pattern | Why it fails |
-|---|---|
-| Any sentence ending in "right?" or "you know?" | Asking for agreement is the opposite of confident voice |
-| "Spoiler alert:" | overused; the spoiler isn't a spoiler |
-| Parenthetical asides for jokes — "(I know, I know)" | Drains energy from the sentence |
-| "Plot twist:" | same problem |
-| Pop-culture references older than 5 years | Date the content immediately |
-| Pun in a heading | Heading is for SEO, not your amusement |
-| Emoji-as-punctuation | Already banned in voice.md |
-| Three exclamation marks in a row in a quote | If a reviewer wrote that, paraphrase |
+| Pattern                                             | Why it fails                                            |
+| --------------------------------------------------- | ------------------------------------------------------- |
+| Any sentence ending in "right?" or "you know?"      | Asking for agreement is the opposite of confident voice |
+| "Spoiler alert:"                                    | overused; the spoiler isn't a spoiler                   |
+| Parenthetical asides for jokes — "(I know, I know)" | Drains energy from the sentence                         |
+| "Plot twist:"                                       | same problem                                            |
+| Pop-culture references older than 5 years           | Date the content immediately                            |
+| Pun in a heading                                    | Heading is for SEO, not your amusement                  |
+| Emoji-as-punctuation                                | Already banned in voice.md                              |
+| Three exclamation marks in a row in a quote         | If a reviewer wrote that, paraphrase                    |
 
 ---
 

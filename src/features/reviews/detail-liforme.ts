@@ -88,7 +88,8 @@ export const DETAIL: DetailReview = {
       cta: {
         slug: 'manduka-pro-6mm',
         productName: 'Manduka PRO 6mm',
-        label: 'The mat that beat it in the same test, and does carry a guarantee:',
+        label:
+          'The mat that beat it in the same test, and does carry a guarantee:',
       },
       ratings: [
         { label: 'Structural durability', score: 4.0 },
@@ -122,15 +123,37 @@ export const DETAIL: DetailReview = {
     },
   ],
   specs: [
-    { label: 'Dimensions', value: '185 × 68cm (72.8" × 26.8") — larger than a standard mat' },
+    {
+      label: 'Dimensions',
+      value: '185 × 68cm (72.8" × 26.8") — larger than a standard mat',
+    },
     { label: 'Thickness', value: '~4.2mm' },
     { label: 'Weight', value: '~2.5kg (5.5 lb)' },
-    { label: 'Construction', value: 'Polyurethane top, nonabsorbent barrier layer, natural-rubber base' },
-    { label: 'Alignment guide', value: 'Laser-etched AlignForMe, five marker types (patented)' },
-    { label: 'Latex', value: 'Yes — in the rubber base. Top surface is latex-free' },
-    { label: 'Warranty', value: 'None. 30-day money-back only, and only direct from liforme.com' },
-    { label: 'Care', value: 'Hand wash. Standard mat sprays not permitted by the maker' },
-    { label: 'Other sizes', value: 'Travel 180 × 66cm at ~2mm / 1.6kg · XL 210 × 70cm at ~3.5kg' },
+    {
+      label: 'Construction',
+      value:
+        'Polyurethane top, nonabsorbent barrier layer, natural-rubber base',
+    },
+    {
+      label: 'Alignment guide',
+      value: 'Laser-etched AlignForMe, five marker types (patented)',
+    },
+    {
+      label: 'Latex',
+      value: 'Yes — in the rubber base. Top surface is latex-free',
+    },
+    {
+      label: 'Warranty',
+      value: 'None. 30-day money-back only, and only direct from liforme.com',
+    },
+    {
+      label: 'Care',
+      value: 'Hand wash. Standard mat sprays not permitted by the maker',
+    },
+    {
+      label: 'Other sizes',
+      value: 'Travel 180 × 66cm at ~2mm / 1.6kg · XL 210 × 70cm at ~3.5kg',
+    },
   ],
   whoFor: [
     'Practitioners working alone at home who want visual feedback on where their feet and hands belong',

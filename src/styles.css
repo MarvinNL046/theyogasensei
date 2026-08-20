@@ -176,7 +176,8 @@
   --color-sage: #779486;
   --color-sand: #e8ded0;
   --color-clay: #c87358;
-  --font-serif: 'Fraunces', ui-serif, Georgia, Cambria, 'Times New Roman', serif;
+  --font-serif:
+    'Fraunces', ui-serif, Georgia, Cambria, 'Times New Roman', serif;
 }
 
 :root {

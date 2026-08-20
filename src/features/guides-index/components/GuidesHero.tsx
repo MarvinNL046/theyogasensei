@@ -14,15 +14,29 @@ export function GuidesHero() {
               Better choices for your practice.
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[color:var(--color-ink-soft)] md:text-lg">
-              Practical buying guides, comparisons and care advice — researched carefully and written without hype or paid rankings.
+              Practical buying guides, comparisons and care advice — researched
+              carefully and written without hype or paid rankings.
             </p>
-            <Link to="/guides/$slug" params={{ slug: 'how-to-choose-a-yoga-mat' }} className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-[color:var(--color-olive)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[color:var(--color-olive-deep)]">
+            <Link
+              to="/guides/$slug"
+              params={{ slug: 'how-to-choose-a-yoga-mat' }}
+              className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-[color:var(--color-olive)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[color:var(--color-olive-deep)]"
+            >
               Start with the mat guide <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
           <div className="relative min-h-[330px] bg-[color:var(--color-surface-muted)] lg:m-3 lg:min-h-[500px] lg:rounded-[1.4rem]">
-            <img src="/images/brand/journal-hero-bg.webp" alt="Yoga gear arranged for a calm home practice" className="absolute inset-0 h-full w-full object-cover" width={1200} height={800} />
-            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[color:var(--color-olive-deep)]/10 to-transparent" />
+            <img
+              src="/images/brand/journal-hero-bg.webp"
+              alt="Yoga gear arranged for a calm home practice"
+              className="absolute inset-0 h-full w-full object-cover"
+              width={1200}
+              height={800}
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-t from-[color:var(--color-olive-deep)]/10 to-transparent"
+            />
           </div>
         </div>
       </Container>

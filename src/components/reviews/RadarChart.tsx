@@ -73,7 +73,9 @@ export function RadarChart({ scores, size = 230, className }: RadarChartProps) {
       />
       {AXES.map((ax, i) => {
         const [x, y] = point(i, (scores[ax.key] / 5) * maxR)
-        return <circle key={i} cx={x} cy={y} r={2.5} fill="var(--color-olive)" />
+        return (
+          <circle key={i} cx={x} cy={y} r={2.5} fill="var(--color-olive)" />
+        )
       })}
       {AXES.map((ax, i) => {
         const [x, y] = point(i, maxR + 13)

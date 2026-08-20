@@ -43,12 +43,36 @@ export const Route = createFileRoute('/brands')({
         },
       ]}
       sections={[
-        { title: 'Alo', description: 'The Warrior Mat and its oversized home-studio format.', href: '/reviews/alo' },
-        { title: 'JadeYoga', description: 'Natural-rubber traction, latex relevance and care.', href: '/reviews/jade' },
-        { title: 'Gaiam', description: 'Entry-level PVC options and realistic limitations.', href: '/reviews/gaiam' },
-        { title: 'Retrospec', description: 'Thick cushioning balanced against standing stability.', href: '/reviews/retrospec' },
-        { title: 'Manduka GRP', description: 'Wet-grip construction with strict care requirements.', href: '/reviews/manduka-grp-adapt' },
-        { title: 'All brand comparisons', description: 'See product-to-product decisions across the library.', href: '/comparisons' },
+        {
+          title: 'Alo',
+          description: 'The Warrior Mat and its oversized home-studio format.',
+          href: '/reviews/alo',
+        },
+        {
+          title: 'JadeYoga',
+          description: 'Natural-rubber traction, latex relevance and care.',
+          href: '/reviews/jade',
+        },
+        {
+          title: 'Gaiam',
+          description: 'Entry-level PVC options and realistic limitations.',
+          href: '/reviews/gaiam',
+        },
+        {
+          title: 'Retrospec',
+          description: 'Thick cushioning balanced against standing stability.',
+          href: '/reviews/retrospec',
+        },
+        {
+          title: 'Manduka GRP',
+          description: 'Wet-grip construction with strict care requirements.',
+          href: '/reviews/manduka-grp-adapt',
+        },
+        {
+          title: 'All brand comparisons',
+          description: 'See product-to-product decisions across the library.',
+          href: '/comparisons',
+        },
       ]}
     />
   ),

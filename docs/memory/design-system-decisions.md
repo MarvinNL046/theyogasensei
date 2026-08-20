@@ -1,7 +1,7 @@
 ---
 name: design-system-decisions
-description: "Source-of-truth resolution between CLAUDE.md and AGENTS.md on visual design — palette, fonts, layout primitives, and what counts as \"the accent\""
-metadata: 
+description: 'Source-of-truth resolution between CLAUDE.md and AGENTS.md on visual design — palette, fonts, layout primitives, and what counts as "the accent"'
+metadata:
   node_type: memory
   type: project
   originSessionId: ada7cc16-2010-43de-8098-d4d4179fb88b
@@ -14,6 +14,7 @@ The visual reference is `/public/images/design-templates/` — the user said exp
 **Why:** Without this reconciliation, future sessions could re-introduce a second accent (e.g. terracotta AND sage simultaneously), break the "one accent" rule, and lose the calm editorial feel.
 
 **How to apply:** When adding a new component or color usage:
+
 - Backgrounds: `--color-bg` (warm cream) or `--color-surface` (warm white) or `--color-surface-muted` (recessed)
 - Dark surfaces: `--color-olive` (footer, feature bands) — NOT an accent, treat as a neutral dark
 - Text: `--color-ink` / `--color-ink-soft` / `--color-ink-muted`

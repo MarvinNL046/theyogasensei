@@ -18,18 +18,18 @@ Legend: **[M]** = Marvin only (accounts/DNS, I can't). **[C]** = I (Claude) do i
 
 1. **[M] Google Search Console** — add property `https://www.theyogasensei.com`,
    verify (DNS TXT or the existing meta/HTML method).
-   → *Verify:* property shows "Ownership verified".
+   → _Verify:_ property shows "Ownership verified".
 2. **[M] Submit the sitemap** in GSC: `sitemap.xml`.
-   → *Verify:* GSC Sitemaps shows "Success", 21 URLs discovered.
+   → _Verify:_ GSC Sitemaps shows "Success", 21 URLs discovered.
 3. **[M] Request indexing** for the money pages via URL Inspection: the pillar
    (`/guides/how-to-choose-a-yoga-mat`), `/guides/best-yoga-mats-2026`, and the
    3 accessory pages.
-   → *Verify:* URL Inspection says "URL is on Google" or "Indexing requested".
+   → _Verify:_ URL Inspection says "URL is on Google" or "Indexing requested".
 4. **[M] Bing Webmaster Tools** (5 min, optional) — add site, import from GSC.
    IndexNow already pings on deploy, so Bing/Yandex get pinged automatically.
 5. **[C] Pre-flight check** — re-confirm robots.txt allows crawl, canonicals are
    www, sitemap is current, every guide returns 200.
-   → *Verify:* a crawl of the sitemap returns 200 + correct canonical on each.
+   → _Verify:_ a crawl of the sitemap returns 200 + correct canonical on each.
 
 > Why first: social drives spikes; Google is the compounding engine for an SEO
 > affiliate site. Nothing ranks until it's indexed.
@@ -43,14 +43,14 @@ Its trigger ("content fuller") is now met. Execute it:
 
 6. **[M] Pinterest Business account** (free) + **claim the domain**
    theyogasensei.com → activates Rich Pins, analytics, attribution.
-   → *Verify:* domain shows "claimed"; Rich Pin Validator passes on one guide URL.
+   → _Verify:_ domain shows "claimed"; Rich Pin Validator passes on one guide URL.
 7. **[C] Build the pin design-template** — code text-layer (HTML+Playwright or
    SVG→sharp) in brand fonts (Cormorant/cream/olive/clay/ensō), 1000×1500.
    Higgsfield supplies the imagery layer (studio/Aiko/product). Build once, reuse.
-   → *Verify:* one rendered pin looks premium + on-brand at 1000×1500.
+   → _Verify:_ one rendered pin looks premium + on-brand at 1000×1500.
 8. **[C] Proof set: 4–5 pins for `best-yoga-mats-2026`** (most reach) using the
    5-angle formula (listicle / problem / comparison / aesthetic / single-tip).
-   → *Verify:* Marvin approves the look → then scale to all 14 guides (~3–5
+   → _Verify:_ Marvin approves the look → then scale to all 14 guides (~3–5
    fresh pins/week, backfill over 6–8 weeks).
 
 ---
@@ -61,7 +61,7 @@ Its trigger ("content fuller") is now met. Execute it:
    (or a Linktree), brand avatar (`/images/brand/avatar-yoga-sensei`).
 10. **[C] Starter set: 6–9 grid posts** from existing brand/Aiko imagery + honest
     short captions (no fake testing, Aiko stays decorative). Repurpose pin visuals.
-    → *Verify:* a cohesive first-grid look; captions pass the voice anti-AI check.
+    → _Verify:_ a cohesive first-grid look; captions pass the voice anti-AI check.
 
 > Keep IG effort low until Pinterest is humming. Links are bio-only, so IG won't
 > move guide traffic early — it's brand-building.
@@ -82,6 +82,7 @@ Its trigger ("content fuller") is now met. Execute it:
   — there's no performance data to act on yet.
 
 ### Decision parked for Marvin
+
 The **biggest-volume topics are pose/instructional** (`best yoga poses for back
 pain` vol 32k, `yoga poses for two people` vol 4.5k) but are **gated on an
 RYT-certified reviewer** (CLAUDE.md rule). Onboarding an RYT-500 reviewer unlocks
@@ -91,6 +92,7 @@ Until then, gear/reviews carry the cadence.
 ---
 
 ## Tomorrow's realistic order
+
 GSC (Block 1) → Pinterest account + I build the pin template & proof set (Block 2)
 → IG account + starter posts (Block 3, if time) → review the proof pins together.
 Accounts are yours; template + pins + posts are mine.

@@ -23,7 +23,8 @@ export const Route = createFileRoute('/guides/')({
   // shareable + deep-linkable. The loader never reads this (SSG-safe); only
   // the component does. Unknown / 'all' values normalise to a clean /guides.
   validateSearch: (search: Record<string, unknown>): GuidesSearch => {
-    const raw = typeof search.category === 'string' ? search.category : undefined
+    const raw =
+      typeof search.category === 'string' ? search.category : undefined
     const known =
       raw !== undefined &&
       GUIDE_CATEGORIES.some((c) => c !== 'All' && categorySlug(c) === raw)

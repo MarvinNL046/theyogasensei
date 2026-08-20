@@ -2,7 +2,14 @@ import { useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { Container } from '#/components/ui/container'
 
-const FILTERS = ['All', 'Practice', 'Gear', 'Meditation', 'Care', 'Comparisons'] as const
+const FILTERS = [
+  'All',
+  'Practice',
+  'Gear',
+  'Meditation',
+  'Care',
+  'Comparisons',
+] as const
 type GuideFilter = (typeof FILTERS)[number]
 
 const GUIDES: Array<{
@@ -58,7 +65,10 @@ const GUIDES: Array<{
 
 export function HomeLatestGuides() {
   const [active, setActive] = useState<GuideFilter>('All')
-  const visible = active === 'All' ? GUIDES : GUIDES.filter((guide) => guide.category === active)
+  const visible =
+    active === 'All'
+      ? GUIDES
+      : GUIDES.filter((guide) => guide.category === active)
 
   return (
     <section
@@ -82,7 +92,10 @@ export function HomeLatestGuides() {
             Browse all guides <ArrowRight className="h-4 w-4" />
           </a>
         </div>
-        <div aria-label="Filter latest guides" className="mt-8 flex flex-wrap gap-2">
+        <div
+          aria-label="Filter latest guides"
+          className="mt-8 flex flex-wrap gap-2"
+        >
           {FILTERS.map((filter) => (
             <button
               key={filter}

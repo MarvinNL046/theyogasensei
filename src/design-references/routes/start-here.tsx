@@ -125,10 +125,38 @@ const ESSENTIALS = [
 ] as const
 
 const GEAR = [
-  { badge: 'Best Mat', name: 'Manduka PRO Yoga Mat', image: '/images/brand/pick-manduka-pro.webp', rating: 4.8, price: '$128', href: '/reviews/manduka-pro' },
-  { badge: 'Best Block', name: 'Cork Yoga Block', image: '/images/brand/pick-cork-blocks.webp', rating: 4.7, price: '$22', href: '#' },
-  { badge: 'Best Strap', name: 'Yoga Strap', image: '/images/brand/pick-cotton-strap.webp', rating: 4.6, price: '$14', href: '#' },
-  { badge: 'Best Bolster', name: 'Yoga Bolster', image: '/images/brand/pick-studio-bolster.webp', rating: 4.8, price: '$69', href: '#' },
+  {
+    badge: 'Best Mat',
+    name: 'Manduka PRO Yoga Mat',
+    image: '/images/brand/pick-manduka-pro.webp',
+    rating: 4.8,
+    price: '$128',
+    href: '/reviews/manduka-pro',
+  },
+  {
+    badge: 'Best Block',
+    name: 'Cork Yoga Block',
+    image: '/images/brand/pick-cork-blocks.webp',
+    rating: 4.7,
+    price: '$22',
+    href: '#',
+  },
+  {
+    badge: 'Best Strap',
+    name: 'Yoga Strap',
+    image: '/images/brand/pick-cotton-strap.webp',
+    rating: 4.6,
+    price: '$14',
+    href: '#',
+  },
+  {
+    badge: 'Best Bolster',
+    name: 'Yoga Bolster',
+    image: '/images/brand/pick-studio-bolster.webp',
+    rating: 4.8,
+    price: '$69',
+    href: '#',
+  },
 ] as const
 
 function StartHerePage() {
@@ -149,7 +177,9 @@ function StartHero() {
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-right bg-no-repeat"
-        style={{ backgroundImage: "url('/images/brand/review-hero-best-mats.webp')" }}
+        style={{
+          backgroundImage: "url('/images/brand/review-hero-best-mats.webp')",
+        }}
       />
       <div
         aria-hidden="true"
@@ -164,13 +194,20 @@ function StartHero() {
           <nav aria-label="Breadcrumb" className="mb-8">
             <ol className="flex flex-wrap items-center text-xs text-[color:var(--color-ink-muted)]">
               <li>
-                <Link to="/" className="transition hover:text-[color:var(--color-accent-deep)]">
+                <Link
+                  to="/"
+                  className="transition hover:text-[color:var(--color-accent-deep)]"
+                >
                   Home
                 </Link>
               </li>
-              <li aria-hidden="true" className="mx-2 opacity-50">›</li>
+              <li aria-hidden="true" className="mx-2 opacity-50">
+                ›
+              </li>
               <li>Start Here</li>
-              <li aria-hidden="true" className="mx-2 opacity-50">›</li>
+              <li aria-hidden="true" className="mx-2 opacity-50">
+                ›
+              </li>
               <li aria-current="page" className="text-[color:var(--color-ink)]">
                 Beginner Roadmap
               </li>
@@ -184,13 +221,26 @@ function StartHero() {
             Yoga Roadmap
           </h1>
           <p className="mt-7 max-w-md text-base leading-8 text-[color:var(--color-ink-soft)]">
-            A clear, simple path to help you build a consistent practice, step by step. No experience needed, just a willingness to begin.
+            A clear, simple path to help you build a consistent practice, step
+            by step. No experience needed, just a willingness to begin.
           </p>
 
           <div className="mt-9 grid max-w-lg grid-cols-3 gap-6">
-            <HeroPoint icon={Leaf} title="Beginner Friendly" text="No experience needed." />
-            <HeroPoint icon={Clock3} title="Progress at Your Pace" text="Small steps, lasting change." />
-            <HeroPoint icon={Heart} title="Practice with Purpose" text="For body, mind & life." />
+            <HeroPoint
+              icon={Leaf}
+              title="Beginner Friendly"
+              text="No experience needed."
+            />
+            <HeroPoint
+              icon={Clock3}
+              title="Progress at Your Pace"
+              text="Small steps, lasting change."
+            />
+            <HeroPoint
+              icon={Heart}
+              title="Practice with Purpose"
+              text="For body, mind & life."
+            />
           </div>
         </div>
       </Container>
@@ -208,7 +258,8 @@ function RoadmapSection() {
             Build Your Practice. Transform Your Life.
           </h2>
           <p className="mt-3 text-sm leading-7 text-[color:var(--color-ink-soft)]">
-            Follow the path below to build confidence, consistency and connection.
+            Follow the path below to build confidence, consistency and
+            connection.
           </p>
         </div>
 
@@ -245,9 +296,14 @@ function RoadmapStep({ step }: { step: (typeof ROADMAP)[number] }) {
       <h3 className="mt-5 font-sans text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--color-ink)]">
         {step.title}
       </h3>
-      <p className="mt-1 text-xs text-[color:var(--color-ink-muted)]">{step.period}</p>
+      <p className="mt-1 text-xs text-[color:var(--color-ink-muted)]">
+        {step.period}
+      </p>
       <div className="mx-auto mt-7 flex h-20 w-20 items-center justify-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/70">
-        <Icon className="h-9 w-9 text-[color:var(--color-olive)]" strokeWidth={1.35} />
+        <Icon
+          className="h-9 w-9 text-[color:var(--color-olive)]"
+          strokeWidth={1.35}
+        />
       </div>
       <p className="mx-auto mt-7 max-w-[13rem] text-sm leading-6 text-[color:var(--color-ink-soft)]">
         {step.intro}
@@ -275,18 +331,37 @@ function EssentialsSection() {
               Start with the Basics
             </h2>
           </div>
-          <a href="/guides" className="hidden items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-ink)] md:inline-flex">
+          <a
+            href="/guides"
+            className="hidden items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-ink)] md:inline-flex"
+          >
             View all guides <MoveRight className="h-4 w-4" />
           </a>
         </div>
         <div className="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {ESSENTIALS.map((item) => (
-            <a key={item.title} href="#" className="overflow-hidden rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/72 transition hover:-translate-y-0.5">
-              <img src={item.image} alt="" width={260} height={170} className="h-36 w-full object-cover" />
+            <a
+              key={item.title}
+              href="#"
+              className="overflow-hidden rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/72 transition hover:-translate-y-0.5"
+            >
+              <img
+                src={item.image}
+                alt=""
+                width={260}
+                height={170}
+                className="h-36 w-full object-cover"
+              />
               <div className="p-5">
-                <h3 className="font-serif text-xl leading-tight text-[color:var(--color-ink)]">{item.title}</h3>
-                <p className="mt-3 min-h-16 text-sm leading-6 text-[color:var(--color-ink-soft)]">{item.description}</p>
-                <p className="mt-5 text-xs text-[color:var(--color-ink-muted)]">{item.meta}</p>
+                <h3 className="font-serif text-xl leading-tight text-[color:var(--color-ink)]">
+                  {item.title}
+                </h3>
+                <p className="mt-3 min-h-16 text-sm leading-6 text-[color:var(--color-ink-soft)]">
+                  {item.description}
+                </p>
+                <p className="mt-5 text-xs text-[color:var(--color-ink-muted)]">
+                  {item.meta}
+                </p>
               </div>
             </a>
           ))}
@@ -315,9 +390,13 @@ function GearSection() {
               Gear That Supports Your Journey
             </h2>
             <p className="mt-5 max-w-[18rem] text-sm leading-7 text-[color:var(--color-ink-soft)]">
-              Quality tools can support comfort, consistency and confidence as you begin.
+              Quality tools can support comfort, consistency and confidence as
+              you begin.
             </p>
-            <a href="/gear" className="mt-7 inline-flex items-center gap-2 rounded-md bg-[color:var(--color-olive)] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-bg)]">
+            <a
+              href="/gear"
+              className="mt-7 inline-flex items-center gap-2 rounded-md bg-[color:var(--color-olive)] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-bg)]"
+            >
               See beginner gear <MoveRight className="h-4 w-4" />
             </a>
           </section>
@@ -325,13 +404,29 @@ function GearSection() {
           <div className="relative">
             <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
               {GEAR.map((item) => (
-                <a key={item.name} href={item.href} className="overflow-hidden rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/76 transition hover:-translate-y-0.5">
-                  <img src={item.image} alt="" width={220} height={150} className="h-32 w-full object-cover" />
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="overflow-hidden rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/76 transition hover:-translate-y-0.5"
+                >
+                  <img
+                    src={item.image}
+                    alt=""
+                    width={220}
+                    height={150}
+                    className="h-32 w-full object-cover"
+                  />
                   <div className="p-4">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-ink-muted)]">{item.badge}</p>
-                    <h3 className="mt-2 min-h-10 font-sans text-sm font-semibold leading-5 text-[color:var(--color-ink)]">{item.name}</h3>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-ink-muted)]">
+                      {item.badge}
+                    </p>
+                    <h3 className="mt-2 min-h-10 font-sans text-sm font-semibold leading-5 text-[color:var(--color-ink)]">
+                      {item.name}
+                    </h3>
                     <Stars rating={item.rating} className="mt-3" />
-                    <p className="mt-3 text-sm text-[color:var(--color-ink)]">{item.price}</p>
+                    <p className="mt-3 text-sm text-[color:var(--color-ink)]">
+                      {item.price}
+                    </p>
                     <p className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[color:var(--color-ink)]">
                       View review <MoveRight className="h-3 w-3" />
                     </p>
@@ -339,7 +434,10 @@ function GearSection() {
                 </a>
               ))}
             </div>
-            <button aria-label="Next beginner gear" className="absolute -right-12 top-1/2 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[color:var(--color-border)] text-[color:var(--color-ink)] xl:inline-flex">
+            <button
+              aria-label="Next beginner gear"
+              className="absolute -right-12 top-1/2 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[color:var(--color-border)] text-[color:var(--color-ink)] xl:inline-flex"
+            >
               <ChevronRight className="h-4 w-4" />
             </button>
           </div>
@@ -365,17 +463,31 @@ function CommunityCta() {
             <p className="text-sm text-[color:var(--color-bg)]/70">
               You do not have to figure it out alone.
             </p>
-            <h2 className="mt-2 font-serif text-4xl leading-tight">We are here to guide you.</h2>
+            <h2 className="mt-2 font-serif text-4xl leading-tight">
+              We are here to guide you.
+            </h2>
             <p className="mt-3 text-sm leading-6 text-[color:var(--color-bg)]/78">
               Join our community for weekly tips, routines and inspiration.
             </p>
             <form className="mt-6 flex max-w-xl flex-col gap-3 sm:flex-row">
-              <label htmlFor="start-email" className="sr-only">Email address</label>
-              <input id="start-email" type="email" placeholder="Your email address" className="h-12 flex-1 rounded-md border border-[color:var(--color-bg)]/10 bg-[color:var(--color-bg)] px-4 text-sm text-[color:var(--color-ink)] outline-none" />
-              <button type="submit" className="h-12 rounded-md border border-[color:var(--color-bg)]/50 px-8 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-bg)]">
+              <label htmlFor="start-email" className="sr-only">
+                Email address
+              </label>
+              <input
+                id="start-email"
+                type="email"
+                placeholder="Your email address"
+                className="h-12 flex-1 rounded-md border border-[color:var(--color-bg)]/10 bg-[color:var(--color-bg)] px-4 text-sm text-[color:var(--color-ink)] outline-none"
+              />
+              <button
+                type="submit"
+                className="h-12 rounded-md border border-[color:var(--color-bg)]/50 px-8 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-bg)]"
+              >
                 Join free
               </button>
-              <p className="self-center text-xs text-[color:var(--color-bg)]/60">No spam. Unsubscribe anytime.</p>
+              <p className="self-center text-xs text-[color:var(--color-bg)]/60">
+                No spam. Unsubscribe anytime.
+              </p>
             </form>
           </div>
         </div>
@@ -384,21 +496,38 @@ function CommunityCta() {
   )
 }
 
-function HeroPoint({ icon: Icon, title, text }: { icon: LucideIcon; title: string; text: string }) {
+function HeroPoint({
+  icon: Icon,
+  title,
+  text,
+}: {
+  icon: LucideIcon
+  title: string
+  text: string
+}) {
   return (
     <div className="border-l border-[color:var(--color-border)] pl-5 first:border-l-0 first:pl-0">
-      <Icon className="h-8 w-8 text-[color:var(--color-olive)]" strokeWidth={1.4} />
+      <Icon
+        className="h-8 w-8 text-[color:var(--color-olive)]"
+        strokeWidth={1.4}
+      />
       <h2 className="mt-4 font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-ink)]">
         {title}
       </h2>
-      <p className="mt-2 text-xs leading-5 text-[color:var(--color-ink-soft)]">{text}</p>
+      <p className="mt-2 text-xs leading-5 text-[color:var(--color-ink-soft)]">
+        {text}
+      </p>
     </div>
   )
 }
 
 function Stars({ rating, className }: { rating: number; className?: string }) {
   return (
-    <span className={['inline-flex items-center gap-0.5', className].filter(Boolean).join(' ')}>
+    <span
+      className={['inline-flex items-center gap-0.5', className]
+        .filter(Boolean)
+        .join(' ')}
+    >
       {Array.from({ length: 5 }).map((_, index) => (
         <Star
           key={index}
@@ -412,7 +541,9 @@ function Stars({ rating, className }: { rating: number; className?: string }) {
           aria-hidden="true"
         />
       ))}
-      <span className="ml-1 text-xs tabular-nums text-[color:var(--color-ink)]">{rating.toFixed(1)}</span>
+      <span className="ml-1 text-xs tabular-nums text-[color:var(--color-ink)]">
+        {rating.toFixed(1)}
+      </span>
     </span>
   )
 }

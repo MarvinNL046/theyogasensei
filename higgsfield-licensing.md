@@ -42,6 +42,6 @@ not in the pricing tiers.
    account. (Balance ~790 credits on 2026-06-01.)
 2. Exact Plus credit limits not re-verified here (live pricing page wouldn't
    fetch); only the balance was read via `higgsfield account status`. The
-   commercial *right* is confirmed from the Terms regardless.
+   commercial _right_ is confirmed from the Terms regardless.
 
 Source: <https://higgsfield.ai/terms-of-use-agreement> (§4.4, §5.1, §5.3)

@@ -1,7 +1,7 @@
 ---
 name: guide-layout-architecture
 description: How the guide route TOC + affiliate disclosure work; the ?raw MDX gotcha that caused a 404
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: 247b1b40-280e-45f0-8514-9c9d3c6ff24d

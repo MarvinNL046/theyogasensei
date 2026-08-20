@@ -37,7 +37,11 @@ export function MatThicknessScale({ caption }: MatThicknessScaleProps) {
   const colX = (i: number) => 70 + i * 120
 
   return (
-    <DiagramFrame eyebrow="Thickness at a glance" illustrative caption={caption}>
+    <DiagramFrame
+      eyebrow="Thickness at a glance"
+      illustrative
+      caption={caption}
+    >
       <svg
         viewBox="0 0 640 320"
         className="h-auto w-full"
@@ -45,7 +49,14 @@ export function MatThicknessScale({ caption }: MatThicknessScaleProps) {
         aria-label="Yoga mat thickness from 1.5mm up to 10mm, shown as side-profile blocks of increasing height, with the 4 to 5mm balanced tier marked as the usual starting point."
       >
         {/* floor baseline */}
-        <line x1="40" y1={baseline} x2="600" y2={baseline} stroke="var(--color-border)" strokeWidth="1.5" />
+        <line
+          x1="40"
+          y1={baseline}
+          x2="600"
+          y2={baseline}
+          stroke="var(--color-border)"
+          strokeWidth="1.5"
+        />
 
         {TIERS.map((t, i) => {
           const h = t.mm * scale
@@ -59,7 +70,9 @@ export function MatThicknessScale({ caption }: MatThicknessScaleProps) {
                 width={blockW}
                 height={h}
                 rx="3"
-                fill={t.recommended ? 'var(--color-accent)' : 'var(--color-olive)'}
+                fill={
+                  t.recommended ? 'var(--color-accent)' : 'var(--color-olive)'
+                }
                 opacity={t.recommended ? 0.9 : 0.82}
               />
               <text
@@ -98,10 +111,22 @@ export function MatThicknessScale({ caption }: MatThicknessScaleProps) {
         })}
 
         {/* trade-off annotation */}
-        <text x="40" y="302" textAnchor="start" className="fill-[color:var(--color-ink-muted)]" fontSize="13.5">
+        <text
+          x="40"
+          y="302"
+          textAnchor="start"
+          className="fill-[color:var(--color-ink-muted)]"
+          fontSize="13.5"
+        >
           ← firmer, more stable
         </text>
-        <text x="600" y="302" textAnchor="end" className="fill-[color:var(--color-ink-muted)]" fontSize="13.5">
+        <text
+          x="600"
+          y="302"
+          textAnchor="end"
+          className="fill-[color:var(--color-ink-muted)]"
+          fontSize="13.5"
+        >
           softer, more cushion →
         </text>
       </svg>

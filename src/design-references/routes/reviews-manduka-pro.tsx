@@ -19,7 +19,10 @@ import { Container } from '#/components/ui/container'
 import { JapaneseAccent } from '#/components/ui/japanese-accent'
 import { ProductReviewHero } from '#/features/reviews/components/ProductReviewHero'
 import { ReviewTocStrip } from '#/features/reviews/components/ReviewTocStrip'
-import type { FeatureIcon, ProductReview } from '#/features/reviews/data/manduka-pro'
+import type {
+  FeatureIcon,
+  ProductReview,
+} from '#/features/reviews/data/manduka-pro'
 import { mandukaPro } from '#/features/reviews/data/manduka-pro'
 
 export const Route = createFileRoute('/reviews/manduka-pro')({
@@ -33,7 +36,12 @@ export const Route = createFileRoute('/reviews/manduka-pro')({
       },
       { property: 'og:type', content: 'article' },
     ],
-    links: [{ rel: 'canonical', href: 'https://theyogasensei.com/reviews/manduka-pro' }],
+    links: [
+      {
+        rel: 'canonical',
+        href: 'https://theyogasensei.com/reviews/manduka-pro',
+      },
+    ],
   }),
   component: MandukaProPage,
 })
@@ -89,7 +97,10 @@ function ReviewBody({ data }: { data: ProductReview }) {
 
 function OverviewSection({ data }: { data: ProductReview }) {
   return (
-    <section id="overview" className="scroll-mt-36 border-b border-[color:var(--color-border)] pb-10">
+    <section
+      id="overview"
+      className="scroll-mt-36 border-b border-[color:var(--color-border)] pb-10"
+    >
       <SectionHeading number="1." title="Overview" />
       <p className="mt-4 max-w-3xl text-sm leading-7 text-[color:var(--color-ink-soft)]">
         {data.overview.paragraph}
@@ -121,7 +132,10 @@ function ScoredImageSection({
   scores: ProductReview['grip']['scores']
 }) {
   return (
-    <section id={id} className="scroll-mt-36 border-b border-[color:var(--color-border)] pb-10">
+    <section
+      id={id}
+      className="scroll-mt-36 border-b border-[color:var(--color-border)] pb-10"
+    >
       <SectionHeading number={number} title={title} />
       <p className="mt-4 max-w-3xl text-sm leading-7 text-[color:var(--color-ink-soft)]">
         {intro}
@@ -153,7 +167,10 @@ function DurabilitySpecs({ data }: { data: ProductReview }) {
           <Stars rating={data.durability.rating} />
         </div>
       </div>
-      <div id="specs" className="grid scroll-mt-36 gap-6 sm:grid-cols-[140px_minmax(0,1fr)]">
+      <div
+        id="specs"
+        className="grid scroll-mt-36 gap-6 sm:grid-cols-[140px_minmax(0,1fr)]"
+      >
         <img
           src={data.durability.image}
           alt="Rolled Manduka-style yoga mat"
@@ -166,7 +183,9 @@ function DurabilitySpecs({ data }: { data: ProductReview }) {
           <ul className="mt-4 space-y-1.5 text-sm leading-6 text-[color:var(--color-ink-soft)]">
             {data.specs.map((spec) => (
               <li key={spec.label}>
-                <span className="font-medium text-[color:var(--color-ink)]">{spec.label}:</span>{' '}
+                <span className="font-medium text-[color:var(--color-ink)]">
+                  {spec.label}:
+                </span>{' '}
                 {spec.value}
               </li>
             ))}
@@ -190,7 +209,9 @@ function WhoFor({ data }: { data: ProductReview }) {
         />
         <div>
           <SectionHeading number="6." title="Who It's For" />
-          <p className="mt-4 text-sm text-[color:var(--color-ink-soft)]">{data.whoFor.intro}</p>
+          <p className="mt-4 text-sm text-[color:var(--color-ink-soft)]">
+            {data.whoFor.intro}
+          </p>
           <ul className="mt-3 space-y-2 text-sm leading-6 text-[color:var(--color-ink-soft)]">
             {data.whoFor.forList.map((item) => (
               <li key={item} className="flex gap-2">
@@ -200,7 +221,9 @@ function WhoFor({ data }: { data: ProductReview }) {
             ))}
           </ul>
           <p className="mt-4 text-sm text-[color:var(--color-ink-soft)]">
-            <span className="font-medium text-[color:var(--color-ink)]">Not ideal for:</span>{' '}
+            <span className="font-medium text-[color:var(--color-ink)]">
+              Not ideal for:
+            </span>{' '}
             {data.whoFor.notIdeal}
           </p>
         </div>
@@ -258,11 +281,18 @@ function ReviewSidebar({ data }: { data: ProductReview }) {
       <SidePanel title="At a glance">
         <dl className="space-y-4">
           {data.atAGlance.map((row) => (
-            <div key={row.label} className="grid grid-cols-[90px_minmax(0,1fr)] gap-5 text-sm">
-              <dt className="text-[color:var(--color-ink-muted)]">{row.label}</dt>
+            <div
+              key={row.label}
+              className="grid grid-cols-[90px_minmax(0,1fr)] gap-5 text-sm"
+            >
+              <dt className="text-[color:var(--color-ink-muted)]">
+                {row.label}
+              </dt>
               <dd className="font-medium text-[color:var(--color-ink-soft)]">
                 {row.value}
-                {row.stars ? <Stars rating={row.stars} className="mt-2" /> : null}
+                {row.stars ? (
+                  <Stars rating={row.stars} className="mt-2" />
+                ) : null}
               </dd>
             </div>
           ))}
@@ -272,8 +302,17 @@ function ReviewSidebar({ data }: { data: ProductReview }) {
       <SidePanel title="Compare to other top mats">
         <div className="space-y-4">
           {data.compare.map((row) => (
-            <div key={row.name} className="grid grid-cols-[minmax(0,1fr)_92px_32px] items-center gap-2 text-sm">
-              <span className={row.current ? 'font-semibold text-[color:var(--color-ink)]' : 'text-[color:var(--color-ink-soft)]'}>
+            <div
+              key={row.name}
+              className="grid grid-cols-[minmax(0,1fr)_92px_32px] items-center gap-2 text-sm"
+            >
+              <span
+                className={
+                  row.current
+                    ? 'font-semibold text-[color:var(--color-ink)]'
+                    : 'text-[color:var(--color-ink-soft)]'
+                }
+              >
                 {row.name}
               </span>
               <Stars rating={row.score} small />
@@ -283,7 +322,10 @@ function ReviewSidebar({ data }: { data: ProductReview }) {
             </div>
           ))}
         </div>
-        <a href="/reviews/best-yoga-mats" className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-[color:var(--color-ink)]">
+        <a
+          href="/reviews/best-yoga-mats"
+          className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-[color:var(--color-ink)]"
+        >
           View full comparison
           <MoveRight className="h-4 w-4" />
         </a>
@@ -299,7 +341,10 @@ function NewsletterPanel() {
   return (
     <section
       className="overflow-hidden rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] bg-cover bg-right-bottom p-7"
-      style={{ backgroundImage: "linear-gradient(90deg, rgba(239,231,220,.92), rgba(239,231,220,.62)), url('/images/brand/newsletter-bonsai.webp')" }}
+      style={{
+        backgroundImage:
+          "linear-gradient(90deg, rgba(239,231,220,.92), rgba(239,231,220,.62)), url('/images/brand/newsletter-bonsai.webp')",
+      }}
     >
       <h2 className="font-serif text-2xl leading-tight text-[color:var(--color-ink)]">
         Mindful insights.
@@ -307,7 +352,8 @@ function NewsletterPanel() {
         Straight to your inbox.
       </h2>
       <p className="mt-4 max-w-[15rem] text-xs leading-5 text-[color:var(--color-ink-soft)]">
-        Practical tips, honest reviews and quiet recommendations to support your practice.
+        Practical tips, honest reviews and quiet recommendations to support your
+        practice.
       </p>
       <form className="mt-5 space-y-3">
         <label htmlFor="manduka-email" className="sr-only">
@@ -326,7 +372,9 @@ function NewsletterPanel() {
           Join free
         </button>
       </form>
-      <p className="mt-3 text-xs text-[color:var(--color-ink-muted)]">No spam. Unsubscribe anytime.</p>
+      <p className="mt-3 text-xs text-[color:var(--color-ink-muted)]">
+        No spam. Unsubscribe anytime.
+      </p>
     </section>
   )
 }
@@ -336,10 +384,15 @@ function VerdictPanel({ data }: { data: ProductReview }) {
     <section
       id="verdict"
       className="scroll-mt-36 overflow-hidden rounded-md bg-[color:var(--color-olive-deep)] bg-cover bg-center p-8 text-[color:var(--color-bg)]"
-      style={{ backgroundImage: "linear-gradient(90deg, rgba(37,45,34,.94), rgba(37,45,34,.70)), url('/images/brand/minimal-dark-enso-philosophy-bg.webp')" }}
+      style={{
+        backgroundImage:
+          "linear-gradient(90deg, rgba(37,45,34,.94), rgba(37,45,34,.70)), url('/images/brand/minimal-dark-enso-philosophy-bg.webp')",
+      }}
     >
       <h2 className="font-serif text-3xl leading-tight">8. The Verdict</h2>
-      <p className="mt-4 text-sm leading-7 text-[color:var(--color-bg)]/82">{data.verdict.paragraph}</p>
+      <p className="mt-4 text-sm leading-7 text-[color:var(--color-bg)]/82">
+        {data.verdict.paragraph}
+      </p>
       <a
         href={data.verdict.affiliateUrl}
         className="mt-6 inline-flex items-center gap-2 rounded-md bg-[color:var(--color-bg)]/12 px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-bg)] ring-1 ring-[color:var(--color-bg)]/20 transition hover:bg-[color:var(--color-bg)]/18"
@@ -347,14 +400,19 @@ function VerdictPanel({ data }: { data: ProductReview }) {
         Check price on Amazon
         <MoveRight className="h-4 w-4" />
       </a>
-      <p className="mt-4 text-xs text-[color:var(--color-bg)]/62">We may earn a commission.</p>
+      <p className="mt-4 text-xs text-[color:var(--color-bg)]/62">
+        We may earn a commission.
+      </p>
     </section>
   )
 }
 
 function FaqSection({ data }: { data: ProductReview }) {
   return (
-    <section id="faqs" className="scroll-mt-36 border-t border-[color:var(--color-border)] pt-10">
+    <section
+      id="faqs"
+      className="scroll-mt-36 border-t border-[color:var(--color-border)] pt-10"
+    >
       <SectionHeading number="9." title="FAQs" />
       <div className="mt-6 divide-y divide-[color:var(--color-border)] rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/55">
         {data.faqs.map((faq) => (
@@ -362,7 +420,9 @@ function FaqSection({ data }: { data: ProductReview }) {
             <summary className="cursor-pointer list-none font-serif text-xl text-[color:var(--color-ink)]">
               {faq.q}
             </summary>
-            <p className="mt-3 text-sm leading-7 text-[color:var(--color-ink-soft)]">{faq.a}</p>
+            <p className="mt-3 text-sm leading-7 text-[color:var(--color-ink-soft)]">
+              {faq.a}
+            </p>
           </details>
         ))}
       </div>
@@ -370,7 +430,11 @@ function FaqSection({ data }: { data: ProductReview }) {
   )
 }
 
-function FeatureCard({ feature }: { feature: ProductReview['overview']['features'][number] }) {
+function FeatureCard({
+  feature,
+}: {
+  feature: ProductReview['overview']['features'][number]
+}) {
   const icons: Record<FeatureIcon, typeof ShieldCheck> = {
     shield: ShieldCheck,
     award: Award,
@@ -381,11 +445,16 @@ function FeatureCard({ feature }: { feature: ProductReview['overview']['features
 
   return (
     <div className="border-l border-[color:var(--color-border)] pl-6">
-      <Icon className="h-8 w-8 text-[color:var(--color-olive)]" strokeWidth={1.5} />
+      <Icon
+        className="h-8 w-8 text-[color:var(--color-olive)]"
+        strokeWidth={1.5}
+      />
       <h2 className="mt-5 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--color-ink)]">
         {feature.label}
       </h2>
-      <p className="mt-3 text-sm leading-6 text-[color:var(--color-ink-soft)]">{feature.description}</p>
+      <p className="mt-3 text-sm leading-6 text-[color:var(--color-ink-soft)]">
+        {feature.description}
+      </p>
     </div>
   )
 }
@@ -398,7 +467,13 @@ function SectionHeading({ number, title }: { number: string; title: string }) {
   )
 }
 
-function SidePanel({ title, children }: { title: string; children: ReactNode }) {
+function SidePanel({
+  title,
+  children,
+}: {
+  title: string
+  children: ReactNode
+}) {
   return (
     <section className="rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/72 p-7 shadow-sm">
       <h2 className="mb-6 font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-ink-soft)]">
@@ -413,7 +488,10 @@ function ScoreList({ scores }: { scores: ProductReview['grip']['scores'] }) {
   return (
     <dl className="space-y-4">
       {scores.map((score) => (
-        <div key={score.label} className="grid grid-cols-[minmax(0,1fr)_110px] items-center gap-4 text-sm">
+        <div
+          key={score.label}
+          className="grid grid-cols-[minmax(0,1fr)_110px] items-center gap-4 text-sm"
+        >
           <dt className="text-[color:var(--color-ink-soft)]">{score.label}</dt>
           <dd>
             <Stars rating={score.score} />
@@ -435,7 +513,11 @@ function Stars({
 }) {
   const fullStars = Math.round(rating)
   return (
-    <span className={['inline-flex items-center gap-0.5', className].filter(Boolean).join(' ')}>
+    <span
+      className={['inline-flex items-center gap-0.5', className]
+        .filter(Boolean)
+        .join(' ')}
+    >
       {Array.from({ length: 5 }).map((_, index) => (
         <Star
           key={index}
@@ -456,7 +538,10 @@ function Stars({
 function QuoteMark() {
   return (
     <aside className="flex flex-col items-center gap-4 py-4 text-center">
-      <Sparkles className="h-7 w-7 text-[color:var(--color-olive)]" strokeWidth={1.5} />
+      <Sparkles
+        className="h-7 w-7 text-[color:var(--color-olive)]"
+        strokeWidth={1.5}
+      />
       <blockquote className="font-serif text-2xl italic leading-snug text-[color:var(--color-ink-soft)]">
         “The right tools support your practice. Consistency transforms it.”
       </blockquote>

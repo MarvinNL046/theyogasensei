@@ -35,9 +35,13 @@ const SEARCH_ALIASES: Record<string, Array<string>> = {
 }
 
 function matchesQuery(haystack: string, query: string): boolean {
-  const terms = query.split(/\s+/).filter((term) => !SEARCH_STOP_WORDS.has(term))
+  const terms = query
+    .split(/\s+/)
+    .filter((term) => !SEARCH_STOP_WORDS.has(term))
   return terms.every((term) =>
-    (SEARCH_ALIASES[term] ?? [term]).some((option) => haystack.includes(option)),
+    (SEARCH_ALIASES[term] ?? [term]).some((option) =>
+      haystack.includes(option),
+    ),
   )
 }
 
@@ -82,7 +86,8 @@ function SearchPage() {
   const results = entries.filter((entry) => {
     if (activeType !== 'All' && entry.type !== activeType) return false
     if (!deferredQuery) return true
-    const haystack = `${entry.title} ${entry.description} ${entry.tags.join(' ')}`.toLowerCase()
+    const haystack =
+      `${entry.title} ${entry.description} ${entry.tags.join(' ')}`.toLowerCase()
     return matchesQuery(haystack, deferredQuery)
   })
 
@@ -116,12 +121,22 @@ function SearchPage() {
             Find the guidance you need.
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-[color:var(--color-ink-soft)] md:text-lg">
-            Search practice guides, poses, gear advice, reviews and direct comparisons.
+            Search practice guides, poses, gear advice, reviews and direct
+            comparisons.
           </p>
-          <form onSubmit={submit} role="search" className="mt-8 flex max-w-2xl gap-3">
-            <label htmlFor="site-search" className="sr-only">Search The Yoga Sensei</label>
+          <form
+            onSubmit={submit}
+            role="search"
+            className="mt-8 flex max-w-2xl gap-3"
+          >
+            <label htmlFor="site-search" className="sr-only">
+              Search The Yoga Sensei
+            </label>
             <div className="relative min-w-0 flex-1">
-              <Search aria-hidden="true" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[color:var(--color-ink-muted)]" />
+              <Search
+                aria-hidden="true"
+                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[color:var(--color-ink-muted)]"
+              />
               <input
                 id="site-search"
                 type="search"
@@ -132,7 +147,10 @@ function SearchPage() {
                 className="h-13 w-full rounded-full border border-[color:var(--color-border)] bg-white pl-12 pr-5 text-base text-[color:var(--color-ink)] outline-none transition placeholder:text-[color:var(--color-ink-muted)] focus:border-[color:var(--color-olive)] focus:ring-3 focus:ring-[color:var(--color-ring)]/25"
               />
             </div>
-            <button type="submit" className="rounded-full bg-[color:var(--color-olive)] px-6 text-sm font-semibold text-white transition hover:bg-[color:var(--color-olive-deep)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent)]">
+            <button
+              type="submit"
+              className="rounded-full bg-[color:var(--color-olive)] px-6 text-sm font-semibold text-white transition hover:bg-[color:var(--color-olive-deep)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent)]"
+            >
               Search
             </button>
           </form>
@@ -141,7 +159,10 @@ function SearchPage() {
 
       <section className="bg-[color:var(--color-bg)] py-12 md:py-16">
         <Container size="wide">
-          <div className="flex flex-wrap gap-2" aria-label="Filter search results by content type">
+          <div
+            className="flex flex-wrap gap-2"
+            aria-label="Filter search results by content type"
+          >
             {SEARCH_TYPES.map((type) => (
               <button
                 key={type}
@@ -162,9 +183,14 @@ function SearchPage() {
 
           <div className="mt-10 flex items-end justify-between gap-4 border-b border-[color:var(--color-border)] pb-4">
             <h2 className="font-serif text-2xl text-[color:var(--color-ink)]">
-              {deferredQuery ? `Results for “${query.trim()}”` : 'Browse the library'}
+              {deferredQuery
+                ? `Results for “${query.trim()}”`
+                : 'Browse the library'}
             </h2>
-            <p className="shrink-0 text-sm text-[color:var(--color-ink-muted)]" aria-live="polite">
+            <p
+              className="shrink-0 text-sm text-[color:var(--color-ink-muted)]"
+              aria-live="polite"
+            >
               {results.length} {results.length === 1 ? 'result' : 'results'}
             </p>
           </div>
@@ -172,21 +198,45 @@ function SearchPage() {
           {results.length ? (
             <ul className="grid gap-x-10 md:grid-cols-2">
               {results.map((entry) => (
-                <li key={entry.href} className="border-b border-[color:var(--color-border)] py-7">
-                  <Link to={entry.href} className="group block rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--color-accent)]">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[color:var(--color-accent-deep)]">{entry.type}</p>
-                    <h3 className="mt-2 font-serif text-xl leading-tight text-[color:var(--color-ink)] group-hover:text-[color:var(--color-olive)]">{entry.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">{entry.description}</p>
-                    <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-[color:var(--color-olive-deep)]">Open guide <ArrowRight aria-hidden="true" className="h-4 w-4" /></span>
+                <li
+                  key={entry.href}
+                  className="border-b border-[color:var(--color-border)] py-7"
+                >
+                  <Link
+                    to={entry.href}
+                    className="group block rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--color-accent)]"
+                  >
+                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[color:var(--color-accent-deep)]">
+                      {entry.type}
+                    </p>
+                    <h3 className="mt-2 font-serif text-xl leading-tight text-[color:var(--color-ink)] group-hover:text-[color:var(--color-olive)]">
+                      {entry.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
+                      {entry.description}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-[color:var(--color-olive-deep)]">
+                      Open guide{' '}
+                      <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                    </span>
                   </Link>
                 </li>
               ))}
             </ul>
           ) : (
             <div className="py-16 text-center">
-              <h2 className="font-serif text-2xl text-[color:var(--color-ink)]">No close match yet.</h2>
-              <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-[color:var(--color-ink-muted)]">Try fewer words, remove the content filter or browse all guides.</p>
-              <Link to="/guides" className="mt-6 inline-flex rounded-full border border-[color:var(--color-border)] bg-white px-5 py-2.5 text-sm font-semibold text-[color:var(--color-ink)]">Browse all guides</Link>
+              <h2 className="font-serif text-2xl text-[color:var(--color-ink)]">
+                No close match yet.
+              </h2>
+              <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
+                Try fewer words, remove the content filter or browse all guides.
+              </p>
+              <Link
+                to="/guides"
+                className="mt-6 inline-flex rounded-full border border-[color:var(--color-border)] bg-white px-5 py-2.5 text-sm font-semibold text-[color:var(--color-ink)]"
+              >
+                Browse all guides
+              </Link>
             </div>
           )}
         </Container>

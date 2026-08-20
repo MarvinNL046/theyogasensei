@@ -13,12 +13,14 @@ below respect that.
 ## 0. Source bio — for Qwoted / Featured / Source of Sources profiles
 
 **Short (~50 words):**
+
 > Marvin Smit is the founder and editor of The Yoga Sensei (theyogasensei.com), an
 > independent yoga gear editorial. A long-time daily practitioner (not a certified
 > instructor — and he says so), he researches mats, props and home-practice setups
 > the honest way: public specs, aggregated reviews, cited sources, no fake lab tests.
 
 **Long (~110 words):**
+
 > Marvin Smit is the founder and editor of The Yoga Sensei (theyogasensei.com), an
 > independent editorial about yoga gear and calm home practice. He is a long-time
 > daily practitioner rather than a certified instructor — a distinction he states on
@@ -66,7 +68,7 @@ product reviewing / affiliate transparency · building a content site.
 ## 2. ACTS Retirement — chair yoga page (printable pitch)
 
 - **To:** via their contact form (no editorial email published) — actsretirement.org
-- **Type:** free-printable resource pitch — *long shot (corporate site), but one email*
+- **Type:** free-printable resource pitch — _long shot (corporate site), but one email_
 - **Their page:** actsretirement.org/resources-advice/well-being-mind-body-spirit/chair-yoga-for-seniors/
 
 **Subject:** An addition to your chair yoga for seniors guide
@@ -184,6 +186,7 @@ product reviewing / affiliate transparency · building a content site.
 > https://www.theyogasensei.com
 
 **Bio to include when accepted (74 words):**
+
 > Marvin Smit is the founder and editor of The Yoga Sensei
 > (https://www.theyogasensei.com), an independent editorial about yoga gear and calm
 > home practice. A long-time daily practitioner rather than a certified teacher — a

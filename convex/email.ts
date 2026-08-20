@@ -29,10 +29,15 @@ export const sendDoubleOptIn = internalAction({
   },
   handler: async (ctx, args) => {
     const confirmUrl = `${SITE}/confirm?token=${encodeURIComponent(args.optInToken)}`
-    const html = await render(DoubleOptIn({ confirmUrl, leadMagnet: args.leadMagnet }))
-    const text = await render(DoubleOptIn({ confirmUrl, leadMagnet: args.leadMagnet }), {
-      plainText: true,
-    })
+    const html = await render(
+      DoubleOptIn({ confirmUrl, leadMagnet: args.leadMagnet }),
+    )
+    const text = await render(
+      DoubleOptIn({ confirmUrl, leadMagnet: args.leadMagnet }),
+      {
+        plainText: true,
+      },
+    )
 
     const resend = getResend()
     await resend.emails.send({
@@ -102,10 +107,20 @@ export const sendLeadMagnet = internalAction({
     const unsubscribeUrl = `${SITE}/unsubscribe?token=${encodeURIComponent(args.optInToken)}`
 
     const html = await render(
-      LeadMagnetDelivery({ siteUrl: SITE, leadMagnet: args.leadMagnet, downloadUrl, unsubscribeUrl }),
+      LeadMagnetDelivery({
+        siteUrl: SITE,
+        leadMagnet: args.leadMagnet,
+        downloadUrl,
+        unsubscribeUrl,
+      }),
     )
     const text = await render(
-      LeadMagnetDelivery({ siteUrl: SITE, leadMagnet: args.leadMagnet, downloadUrl, unsubscribeUrl }),
+      LeadMagnetDelivery({
+        siteUrl: SITE,
+        leadMagnet: args.leadMagnet,
+        downloadUrl,
+        unsubscribeUrl,
+      }),
       { plainText: true },
     )
 

@@ -16,6 +16,7 @@ theyogasensei.com is a yoga affiliate website monetized through partner programs
 Monetization happens via affiliate clicks. Email list is the secondary asset (newsletter → repeat traffic + future product launches).
 
 **Founder context that shaped this revision**
+
 - Tech stack is decided — TanStack Start + TanStack Query + Convex + Tailwind + Shadcn/UI + Resend + MDX
 - Convex is used **only for email/lead capture** for now (not the product catalog)
 - English-only at launch; i18n hooks left in place
@@ -25,17 +26,17 @@ Monetization happens via affiliate clicks. Email list is the secondary asset (ne
 
 ## Stack Decision (locked)
 
-| Layer | Tool | Why |
-|---|---|---|
-| Framework | **TanStack Start** (SSG mode) | File-based routing, type-safe nested layouts, prerender all content routes |
-| Data fetching | **TanStack Query** | Hydrates from SSG payload; powers client-side refetch for dynamic bits (prices, subscriber count) |
-| Database | **Convex** (scoped to email/lead capture) | Real-time-ready, type-safe, founder familiar |
-| Email | **Resend + React Email** | Transactional + newsletter, founder's default |
-| Styling | **Tailwind + Shadcn/UI** | Velocity, design consistency |
-| Content | **MDX in-repo** | Git-versioned, AI-draftable, no CMS overhead |
-| Images | **Cloudflare Images** | Variants from one upload — Pinterest 1000×1500 + OG 1200×630 + responsive |
-| Hosting | **Vercel** | Edge SSR, native TanStack Start support |
-| Validation | **Zod** | Frontmatter, form schemas, API contracts |
+| Layer         | Tool                                      | Why                                                                                               |
+| ------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Framework     | **TanStack Start** (SSG mode)             | File-based routing, type-safe nested layouts, prerender all content routes                        |
+| Data fetching | **TanStack Query**                        | Hydrates from SSG payload; powers client-side refetch for dynamic bits (prices, subscriber count) |
+| Database      | **Convex** (scoped to email/lead capture) | Real-time-ready, type-safe, founder familiar                                                      |
+| Email         | **Resend + React Email**                  | Transactional + newsletter, founder's default                                                     |
+| Styling       | **Tailwind + Shadcn/UI**                  | Velocity, design consistency                                                                      |
+| Content       | **MDX in-repo**                           | Git-versioned, AI-draftable, no CMS overhead                                                      |
+| Images        | **Cloudflare Images**                     | Variants from one upload — Pinterest 1000×1500 + OG 1200×630 + responsive                         |
+| Hosting       | **Vercel**                                | Edge SSR, native TanStack Start support                                                           |
+| Validation    | **Zod**                                   | Frontmatter, form schemas, API contracts                                                          |
 
 **Explicitly not in scope (yet):** Neon, Drizzle, headless CMS, product database. Products are surfaced via MDX frontmatter + structured data; if/when the catalog outgrows MDX, migrate cleanly to Convex tables or Neon.
 
@@ -47,16 +48,17 @@ Monetization happens via affiliate clicks. Email list is the secondary asset (ne
 
 ### Why SSG beats SSR here
 
-| Dimension | SSG | SSR | Verdict |
-|---|---|---|---|
-| LCP / Core Web Vitals | HTML is on the CDN edge, sub-100ms TTFB globally | TTFB depends on server compute + region | SSG wins clearly |
-| SEO crawlability | Identical (both ship complete HTML) | Identical | Tie |
-| Hosting cost | Static CDN — effectively free at scale | Compute per request — bill scales with traffic | SSG wins |
-| Fresh data | Stale until next build | Always fresh | SSR wins — but irrelevant for evergreen content |
-| Build time | Grows with content (~30s per 100 pages) | Constant | SSR wins eventually — but you're nowhere near the ceiling |
-| Solo-dev ops | Zero runtime to monitor | Need to watch cold starts, error budgets | SSG wins |
+| Dimension             | SSG                                              | SSR                                            | Verdict                                                   |
+| --------------------- | ------------------------------------------------ | ---------------------------------------------- | --------------------------------------------------------- |
+| LCP / Core Web Vitals | HTML is on the CDN edge, sub-100ms TTFB globally | TTFB depends on server compute + region        | SSG wins clearly                                          |
+| SEO crawlability      | Identical (both ship complete HTML)              | Identical                                      | Tie                                                       |
+| Hosting cost          | Static CDN — effectively free at scale           | Compute per request — bill scales with traffic | SSG wins                                                  |
+| Fresh data            | Stale until next build                           | Always fresh                                   | SSR wins — but irrelevant for evergreen content           |
+| Build time            | Grows with content (~30s per 100 pages)          | Constant                                       | SSR wins eventually — but you're nowhere near the ceiling |
+| Solo-dev ops          | Zero runtime to monitor                          | Need to watch cold starts, error budgets       | SSG wins                                                  |
 
 **Why this works for your case specifically**
+
 - Yoga content is evergreen. A pose article doesn't change weekly.
 - Affiliate prices DO change — handled client-side (see below), not in the prerendered HTML.
 - Subscriber count, click counters, dynamic CTAs — all client-fetched after hydration; they don't need to be in the static HTML.
@@ -81,7 +83,7 @@ Client-fetched after hydration (TanStack Query):
   ✗ Recently viewed / personalized recommendations (when added)
 ```
 
-The HTML Google indexes contains the *content*. The HTML Pinterest crawls contains the *image and OG tags*. Neither cares about live prices. Users see prices on hydration — fine, because the link-out `/go/[slug]` is what actually monetizes, and that's stable.
+The HTML Google indexes contains the _content_. The HTML Pinterest crawls contains the _image and OG tags_. Neither cares about live prices. Users see prices on hydration — fine, because the link-out `/go/[slug]` is what actually monetizes, and that's stable.
 
 ### Rebuild cadence
 
@@ -119,14 +121,14 @@ Every cluster article links **up** to its pillar. The pillar links **down** to e
 
 Each cluster = one pillar (2000–4000 words) + 8–15 cluster articles (800–1500 words). Aim for full cluster coverage before opening a new pillar.
 
-| Pillar (1 per topic) | Example cluster articles |
-|---|---|
-| Yoga for Beginners | Sun Salutation step-by-step · 5 mistakes beginners make · Beginner mat buying guide · First 10 poses · Breath basics |
-| Yoga Styles Explained | Hatha vs Vinyasa · What is Ashtanga · Yin yoga benefits · Iyengar vs Anusara · Restorative for stress |
-| Yoga Gear & Reviews | Best yoga mats 2026 · Best blocks · Best straps · Best leggings · Travel mat comparison |
-| Yoga for Specific Goals | Yoga for flexibility · Yoga for back pain · Yoga for sleep · Yoga for runners · Yoga for desk workers |
-| Home Practice | Building a home studio · Best yoga apps · DIY yoga corner · Daily 15-min routines |
-| Yoga Philosophy & Lifestyle | The 8 limbs · Pranayama explained · Meditation for beginners · Yoga journals worth keeping |
+| Pillar (1 per topic)        | Example cluster articles                                                                                             |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Yoga for Beginners          | Sun Salutation step-by-step · 5 mistakes beginners make · Beginner mat buying guide · First 10 poses · Breath basics |
+| Yoga Styles Explained       | Hatha vs Vinyasa · What is Ashtanga · Yin yoga benefits · Iyengar vs Anusara · Restorative for stress                |
+| Yoga Gear & Reviews         | Best yoga mats 2026 · Best blocks · Best straps · Best leggings · Travel mat comparison                              |
+| Yoga for Specific Goals     | Yoga for flexibility · Yoga for back pain · Yoga for sleep · Yoga for runners · Yoga for desk workers                |
+| Home Practice               | Building a home studio · Best yoga apps · DIY yoga corner · Daily 15-min routines                                    |
+| Yoga Philosophy & Lifestyle | The 8 limbs · Pranayama explained · Meditation for beginners · Yoga journals worth keeping                           |
 
 This is where affiliate revenue lives — the gear/reviews cluster monetizes hard, the others build authority and feed the gear cluster through internal linking.
 
@@ -196,6 +198,7 @@ H1: Sun Salutation: The Complete Beginner's Guide       ← page title, once
 ```
 
 **Rules:**
+
 - H2s should each match a search-intent subtopic (steal from "People Also Ask" boxes on Google)
 - H3s only when H2 genuinely has nested structure
 - Skip H4+ — if you need them, you're writing two articles
@@ -220,15 +223,15 @@ Post-2022, this is the difference between "ranks" and "doesn't rank" for health/
 
 **Structured data per content type**
 
-| Page type | Schema.org type |
-|---|---|
-| Pose article | `HowTo` + steps |
-| Style explainer | `Article` |
-| Product review | `Review` with `itemReviewed: Product` |
-| Best-X listicle | `ItemList` + nested `Review`s |
-| Pillar guide | `Article` + `BreadcrumbList` |
-| Author page | `Person` with `knowsAbout` and `alumniOf` |
-| Recipe-style routines | `HowTo` with `totalTime` and `step` |
+| Page type             | Schema.org type                           |
+| --------------------- | ----------------------------------------- |
+| Pose article          | `HowTo` + steps                           |
+| Style explainer       | `Article`                                 |
+| Product review        | `Review` with `itemReviewed: Product`     |
+| Best-X listicle       | `ItemList` + nested `Review`s             |
+| Pillar guide          | `Article` + `BreadcrumbList`              |
+| Author page           | `Person` with `knowsAbout` and `alumniOf` |
+| Recipe-style routines | `HowTo` with `totalTime` and `step`       |
 
 Centralize schema generation in a `lib/seo/schema.ts` builder — never hand-write JSON-LD in pages.
 
@@ -275,8 +278,11 @@ Frontmatter extension:
 pin:
   primaryImage: poses/sun-salutation-pin-a.jpg
   variants:
-    - { image: …-pin-b.jpg, title: "5-min morning yoga that changed my life" }
-    - { image: …-pin-c.jpg, title: "Sun Salutation: Step-by-step for absolute beginners" }
+    - { image: …-pin-b.jpg, title: '5-min morning yoga that changed my life' }
+    - {
+        image: …-pin-c.jpg,
+        title: 'Sun Salutation: Step-by-step for absolute beginners',
+      }
   description: "The complete beginner's guide to Sun Salutation. Step-by-step photos, common mistakes, and how to add it to your morning routine. #yoga #yogaforbeginners #morningroutine"
 ---
 ```
@@ -327,21 +333,22 @@ Things to set up once and forget:
 defineSchema({
   subscribers: defineTable({
     email: v.string(),
-    source: v.string(),                       // "homepage", "pillar:beginners", "exit-intent"
+    source: v.string(), // "homepage", "pillar:beginners", "exit-intent"
     confirmedAt: v.optional(v.number()),
     optInToken: v.string(),
     leadMagnet: v.optional(v.string()),
-    tags: v.array(v.string()),                // for future segmentation
-  }).index("by_email", ["email"])
-    .index("by_token", ["optInToken"]),
+    tags: v.array(v.string()), // for future segmentation
+  })
+    .index('by_email', ['email'])
+    .index('by_token', ['optInToken']),
 
   emailEvents: defineTable({
-    subscriberId: v.id("subscribers"),
-    type: v.string(),                         // "sent", "opened", "clicked", "bounced"
+    subscriberId: v.id('subscribers'),
+    type: v.string(), // "sent", "opened", "clicked", "bounced"
     template: v.string(),
     timestamp: v.number(),
-  }).index("by_subscriber", ["subscriberId"]),
-});
+  }).index('by_subscriber', ['subscriberId']),
+})
 ```
 
 Resend webhooks land on a Convex HTTP action to record `opened/clicked/bounced` — gives you per-subscriber engagement scoring without leaving the stack.
@@ -359,17 +366,20 @@ Different cluster, different magnet, different tag in Convex — segment newslet
 ## Consequences
 
 **What becomes easier**
+
 - Adding a new article = one MDX file with structured frontmatter; SEO scaffolding (schema, breadcrumbs, related links, sitemap entry) generates automatically
 - Author E-E-A-T propagates via shared author MDX files
 - Pinterest pins ship in the same PR as the article — no fragmented workflow
 - Lead capture stays on your stack — no Mailchimp/ConvertKit dependency
 
 **What becomes harder**
+
 - Discipline required: every article needs full frontmatter (pillar, cluster, tags, related, pin assets, author). Lint this with Zod in CI.
 - Internal linking only works if you actually fill `related` — build a script that warns when an article has fewer than 3 related links
 - Author bios must be real — fake credentials get caught and demolish E-E-A-T
 
 **What we'll need to revisit**
+
 - When product catalog exceeds ~50 items → move from MDX frontmatter to Convex tables (real-time price updates make sense at scale)
 - When you onboard a second author → consider Sanity/Payload only if they refuse to write MDX
 - When you launch i18n → URL structure becomes `/[locale]/poses/...`; design the routing now to flex later
@@ -379,6 +389,7 @@ Different cluster, different magnet, different tag in Convex — segment newslet
 ## Action Items — Week 1 to Launch
 
 ### Day 1 — Foundation
+
 - [ ] `npx @tanstack/cli@latest create` scaffold (not the deprecated `create-start-app` or the gone `pnpm create @tanstack/start`)
 - [ ] **Configure SSG mode** — central `tanstackStart({ prerender: { enabled: true, crawlLinks: true, failOnError: true } })` in `vite.config.ts`; document the `prerender.filter` escape hatch
 - [ ] TanStack Query setup with hydration from SSG payload
@@ -388,6 +399,7 @@ Different cluster, different magnet, different tag in Convex — segment newslet
 - [ ] Vercel Cron set for nightly rebuild (03:00 UTC)
 
 ### Day 2 — Convex + Lead capture
+
 - [ ] `npx convex dev` init
 - [ ] `subscribers` + `emailEvents` schema
 - [ ] `insertSubscriber`, `confirmSubscriber` mutations
@@ -396,24 +408,28 @@ Different cluster, different magnet, different tag in Convex — segment newslet
 - [ ] Resend webhook → Convex HTTP action for engagement events
 
 ### Day 3 — MDX content pipeline
+
 - [ ] MDX route handler for `/guides/[slug]`, `/poses/[slug]`, `/gear/[category]/[slug]`, `/styles/[slug]`
 - [ ] Tailwind typography for prose
 - [ ] Frontmatter Zod schema (title, slug, pillar, clusters, tags, related, author, pin, schema_type, publishedAt, lastReviewedAt)
 - [ ] CI lint that fails build on missing required frontmatter
 
 ### Day 4 — Author + E-E-A-T
+
 - [ ] `/authors/[slug]` route + author MDX schema
 - [ ] `ArticleHeader`, `AuthorBylineCompact`, `AuthorCard`, `AffiliateDisclosure`, `CitationList` components
 - [ ] About page draft (you, photo, story, contact, mission)
 - [ ] Privacy policy + terms + affiliate disclosure pages
 
 ### Day 5 — Image pipeline
+
 - [ ] Cloudflare Images account + API token
 - [ ] Variants: `pin` (1000×1500), `og` (1200×630), `card` (800×1067), `thumb` (400×533)
 - [ ] `<Image variant="pin|og|card|thumb">` helper
 - [ ] Bulk-upload script with frontmatter image-id linking
 
 ### Day 6 — SEO infrastructure
+
 - [ ] `<Head>` builder + per-route JSON-LD via `lib/seo/schema.ts`
 - [ ] Dynamic `/sitemap.xml`
 - [ ] `/robots.txt`, `/rss.xml`
@@ -424,12 +440,14 @@ Different cluster, different magnet, different tag in Convex — segment newslet
 - [ ] `<Heading level={N}>` enforced component
 
 ### Day 7 — Affiliate plumbing
+
 - [ ] `/go/[slug]` redirect handler (noindex)
 - [ ] Click logging — Convex `clickEvents` table (added when needed)
 - [ ] First affiliate IDs configured (Amazon Associates, 2–3 direct brand partners)
 - [ ] Affiliate disclosure component shipped to every monetized page
 
 ### Pre-launch QA
+
 - [ ] PageSpeed Insights ≥ 90 mobile on 5 sample routes
 - [ ] Rich Results Test passes for `Article`, `Product`, `HowTo`, `Review`
 - [ ] Pinterest Rich Pin validator passes for 3 sample pages
@@ -437,6 +455,7 @@ Different cluster, different magnet, different tag in Convex — segment newslet
 - [ ] Indexing API ping integration
 
 ### Week 2 — Content launch
+
 - [ ] First **pillar page**: "Yoga for Beginners" (3000+ words)
 - [ ] First **5 cluster articles** linking to that pillar
 - [ ] First **10 pose pages** in `/poses/`
@@ -444,6 +463,7 @@ Different cluster, different magnet, different tag in Convex — segment newslet
 - [ ] Pinterest content calendar set up — 3 pins/day minimum
 
 ### Month 1 KPIs
+
 - 30 published articles minimum
 - 1 pillar fully built out
 - 100+ Pinterest pins live

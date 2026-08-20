@@ -27,8 +27,9 @@ export function InfoCardsSection() {
               </h3>
             </div>
             <p className="text-sm leading-6 text-[color:var(--color-ink-soft)]">
-              We put every mat through real-world testing over several weeks. Each mat is evaluated
-              based on grip, comfort, durability, weight, material quality and value.
+              We put every mat through real-world testing over several weeks.
+              Each mat is evaluated based on grip, comfort, durability, weight,
+              material quality and value.
             </p>
             <a
               href="/how-we-test"
@@ -53,8 +54,8 @@ export function InfoCardsSection() {
               </h3>
             </div>
             <p className="text-sm leading-6 text-[color:var(--color-ink-soft)]">
-              Not sure what mat is right for you? Our buying guide breaks down everything you need
-              to know before you choose.
+              Not sure what mat is right for you? Our buying guide breaks down
+              everything you need to know before you choose.
             </p>
             <a
               href="/buying-guide"

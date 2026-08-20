@@ -26,10 +26,15 @@ export const Route = createFileRoute('/mindful-journal')({
         content:
           'Join The Mindful Journal for calm yoga insights, practical routines, thoughtful recommendations and grounded reflections for your practice.',
       },
-      { property: 'og:title', content: 'The Mindful Journal - The Yoga Sensei' },
+      {
+        property: 'og:title',
+        content: 'The Mindful Journal - The Yoga Sensei',
+      },
       { property: 'og:type', content: 'website' },
     ],
-    links: [{ rel: 'canonical', href: 'https://theyogasensei.com/mindful-journal' }],
+    links: [
+      { rel: 'canonical', href: 'https://theyogasensei.com/mindful-journal' },
+    ],
   }),
   component: MindfulJournalPage,
 })
@@ -173,12 +178,20 @@ function JournalHero() {
       />
       <Container size="wide" className="relative">
         <div className="max-w-xl py-14 md:min-h-[430px] md:py-20">
-          <nav aria-label="Breadcrumb" className="mb-10 flex items-center gap-3 text-xs text-[color:var(--color-ink-muted)]">
-            <a href="/" className="transition hover:text-[color:var(--color-ink)]">
+          <nav
+            aria-label="Breadcrumb"
+            className="mb-10 flex items-center gap-3 text-xs text-[color:var(--color-ink-muted)]"
+          >
+            <a
+              href="/"
+              className="transition hover:text-[color:var(--color-ink)]"
+            >
               Home
             </a>
             <span aria-hidden="true">›</span>
-            <span className="font-medium text-[color:var(--color-ink)]">The Mindful Journal</span>
+            <span className="font-medium text-[color:var(--color-ink)]">
+              The Mindful Journal
+            </span>
           </nav>
 
           <Eyebrow tone="accent">The Mindful Journal</Eyebrow>
@@ -188,10 +201,15 @@ function JournalHero() {
             Meaningful practice.
           </h1>
           <p className="mt-7 max-w-md text-base leading-8 text-[color:var(--color-ink-soft)]">
-            Join The Mindful Journal, our weekly letter with mindful insights, yoga wisdom,
-            practical routines and curated recommendations to help you live and practice well.
+            Join The Mindful Journal, our weekly letter with mindful insights,
+            yoga wisdom, practical routines and curated recommendations to help
+            you live and practice well.
           </p>
-          <SignupForm id="hero-journal-email" className="mt-8 max-w-lg" buttonLabel="Join the journey" />
+          <SignupForm
+            id="hero-journal-email"
+            className="mt-8 max-w-lg"
+            buttonLabel="Join the journey"
+          />
         </div>
       </Container>
     </section>
@@ -219,8 +237,8 @@ function ReceiveSection() {
           A weekly letter to support your growth
         </h2>
         <p className="mt-5 text-sm leading-7 text-[color:var(--color-ink-soft)]">
-          Each edition is designed to inform, inspire and guide you toward a more mindful,
-          balanced and purposeful life.
+          Each edition is designed to inform, inspire and guide you toward a
+          more mindful, balanced and purposeful life.
         </p>
       </div>
       <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
@@ -242,8 +260,8 @@ function CommunitySection() {
             A mindful community
           </h2>
           <p className="mt-5 text-sm leading-7 text-[color:var(--color-ink-soft)]">
-            The Mindful Journal is more than an email. It is a space for like-minded people to
-            grow, connect and support each other.
+            The Mindful Journal is more than an email. It is a space for
+            like-minded people to grow, connect and support each other.
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -262,7 +280,9 @@ function RecentEditions() {
       <div className="flex items-end justify-between gap-4">
         <div>
           <SectionLabel>Recent editions</SectionLabel>
-          <h2 className="mt-3 font-serif text-4xl text-[color:var(--color-ink)]">Explore the Journal</h2>
+          <h2 className="mt-3 font-serif text-4xl text-[color:var(--color-ink)]">
+            Explore the Journal
+          </h2>
         </div>
         <a
           href="/guides"
@@ -348,7 +368,9 @@ function SignupForm({
       <p
         className={[
           'mt-3 flex items-center gap-2 text-xs',
-          dark ? 'text-[color:var(--color-bg)]/72' : 'text-[color:var(--color-ink-soft)]',
+          dark
+            ? 'text-[color:var(--color-bg)]/72'
+            : 'text-[color:var(--color-ink-soft)]',
         ].join(' ')}
       >
         <CheckCircle2 className="h-4 w-4" strokeWidth={1.6} />
@@ -364,14 +386,24 @@ function ReceiveCard({ item }: { item: (typeof RECEIVE)[number] }) {
   return (
     <article className="overflow-hidden rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/72 shadow-sm">
       <div className="relative">
-        <img src={item.image} alt="" width={360} height={250} className="h-40 w-full object-cover" />
+        <img
+          src={item.image}
+          alt=""
+          width={360}
+          height={250}
+          className="h-40 w-full object-cover"
+        />
         <span className="absolute -bottom-5 left-5 flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-bg)] text-[color:var(--color-olive)]">
           <Icon className="h-5 w-5" strokeWidth={1.45} />
         </span>
       </div>
       <div className="p-5 pt-8">
-        <h3 className="font-serif text-xl leading-snug text-[color:var(--color-ink)]">{item.title}</h3>
-        <p className="mt-3 text-sm leading-6 text-[color:var(--color-ink-soft)]">{item.text}</p>
+        <h3 className="font-serif text-xl leading-snug text-[color:var(--color-ink)]">
+          {item.title}
+        </h3>
+        <p className="mt-3 text-sm leading-6 text-[color:var(--color-ink-soft)]">
+          {item.text}
+        </p>
       </div>
     </article>
   )
@@ -381,7 +413,13 @@ function EditionCard({ item }: { item: (typeof EDITIONS)[number] }) {
   return (
     <article className="overflow-hidden rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/72 shadow-sm">
       <div className="relative">
-        <img src={item.image} alt="" width={340} height={220} className="h-36 w-full object-cover" />
+        <img
+          src={item.image}
+          alt=""
+          width={340}
+          height={220}
+          className="h-36 w-full object-cover"
+        />
         {'badge' in item ? (
           <span className="absolute left-3 top-3 rounded-sm bg-[color:var(--color-olive)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-bg)]">
             {item.badge}
@@ -389,9 +427,15 @@ function EditionCard({ item }: { item: (typeof EDITIONS)[number] }) {
         ) : null}
       </div>
       <div className="p-5">
-        <h3 className="font-serif text-xl leading-snug text-[color:var(--color-ink)]">{item.title}</h3>
-        <p className="mt-3 text-sm leading-6 text-[color:var(--color-ink-soft)]">{item.text}</p>
-        <p className="mt-5 text-xs text-[color:var(--color-ink-muted)]">{item.meta}</p>
+        <h3 className="font-serif text-xl leading-snug text-[color:var(--color-ink)]">
+          {item.title}
+        </h3>
+        <p className="mt-3 text-sm leading-6 text-[color:var(--color-ink-soft)]">
+          {item.text}
+        </p>
+        <p className="mt-5 text-xs text-[color:var(--color-ink-muted)]">
+          {item.meta}
+        </p>
       </div>
     </article>
   )
@@ -413,14 +457,16 @@ function AuthorNote() {
         The Yoga Sensei
       </h3>
       <p className="mt-4 text-sm leading-7 text-[color:var(--color-ink-soft)]">
-        I created The Mindful Journal to share what I have learned through years of practice,
-        teaching and life.
+        I created The Mindful Journal to share what I have learned through years
+        of practice, teaching and life.
       </p>
       <p className="mt-4 text-sm leading-7 text-[color:var(--color-ink-soft)]">
-        My hope is that these letters bring clarity, encouragement and practical value to your
-        journey.
+        My hope is that these letters bring clarity, encouragement and practical
+        value to your journey.
       </p>
-      <p className="mt-5 font-serif text-2xl italic text-[color:var(--color-ink)]">The Yoga Sensei</p>
+      <p className="mt-5 font-serif text-2xl italic text-[color:var(--color-ink)]">
+        The Yoga Sensei
+      </p>
     </aside>
   )
 }
@@ -446,7 +492,9 @@ function IconBlock({
       <h3 className="mt-5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-ink)]">
         {item.title}
       </h3>
-      <p className="mt-3 text-sm leading-6 text-[color:var(--color-ink-soft)]">{item.text}</p>
+      <p className="mt-3 text-sm leading-6 text-[color:var(--color-ink-soft)]">
+        {item.text}
+      </p>
     </div>
   )
 }

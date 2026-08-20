@@ -12,12 +12,19 @@ import type {
   AffiliatePlacement,
 } from '#/lib/affiliate-tracking'
 
-const incrementAffiliateClick = 'affiliateClicks:increment' as unknown as FunctionReference<
-  'mutation',
-  'public',
-  { slug: string; sourcePage: string; pageType: string; placement: string; trackingId: string },
-  { ok: boolean; status?: string; reason?: string }
->
+const incrementAffiliateClick =
+  'affiliateClicks:increment' as unknown as FunctionReference<
+    'mutation',
+    'public',
+    {
+      slug: string
+      sourcePage: string
+      pageType: string
+      placement: string
+      trackingId: string
+    },
+    { ok: boolean; status?: string; reason?: string }
+  >
 
 const convexUrl = import.meta.env.VITE_CONVEX_URL ?? ''
 
@@ -82,7 +89,11 @@ async function incrementClickBestEffort(args: {
 }
 
 function cleanSource(value: unknown): string {
-  if (typeof value !== 'string' || !value.startsWith('/') || value.startsWith('//')) {
+  if (
+    typeof value !== 'string' ||
+    !value.startsWith('/') ||
+    value.startsWith('//')
+  ) {
     return '/unknown'
   }
   return value.slice(0, 160)

@@ -5,7 +5,11 @@ const TOPICS = [
   ['Yoga mats', 'Grip, cushion and size', '/gear/yoga-mats'],
   ['Mat materials', 'Cork, rubber, TPE and more', '/materials'],
   ['Beginners', 'Start with a manageable plan', '/starter-guide'],
-  ['Chair yoga', 'Supported routines and guides', '/guides/chair-yoga-for-beginners'],
+  [
+    'Chair yoga',
+    'Supported routines and guides',
+    '/guides/chair-yoga-for-beginners',
+  ],
   ['Meditation', 'Cushions, benches and setup', '/gear/meditation'],
   ['Props', 'Blocks, straps and bolsters', '/gear/props'],
   ['Clothing', 'Fit and fabric decisions', '/guides/yoga-clothes-for-men'],

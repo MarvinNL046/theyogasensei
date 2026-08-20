@@ -39,7 +39,11 @@ function RadarChart({ scores }: { scores: Array<AxisScore> }) {
   })
 
   return (
-    <svg viewBox={`0 0 ${size} ${size}`} className="h-full w-full" aria-hidden="true">
+    <svg
+      viewBox={`0 0 ${size} ${size}`}
+      className="h-full w-full"
+      aria-hidden="true"
+    >
       {gridPolygons.map((points, i) => (
         <polygon
           key={i}
@@ -77,7 +81,10 @@ function RadarChart({ scores }: { scores: Array<AxisScore> }) {
   )
 }
 
-export function ScoreSummaryCard({ mat, totalReviews = 1254 }: ScoreSummaryCardProps) {
+export function ScoreSummaryCard({
+  mat,
+  totalReviews = 1254,
+}: ScoreSummaryCardProps) {
   const ecoValue =
     mat.material.toLowerCase().includes('rubber') ||
     mat.material.toLowerCase().includes('cork')

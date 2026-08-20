@@ -48,10 +48,18 @@ export const Route = createFileRoute('/compare/manduka-vs-liforme')({
         content:
           'A calm, practical comparison of Manduka PRO and Liforme Classic yoga mats: grip, cushioning, durability, weight, materials, alignment and best use.',
       },
-      { property: 'og:title', content: 'Manduka vs Liforme Yoga Mats - The Yoga Sensei' },
+      {
+        property: 'og:title',
+        content: 'Manduka vs Liforme Yoga Mats - The Yoga Sensei',
+      },
       { property: 'og:type', content: 'article' },
     ],
-    links: [{ rel: 'canonical', href: 'https://theyogasensei.com/compare/manduka-vs-liforme' }],
+    links: [
+      {
+        rel: 'canonical',
+        href: 'https://theyogasensei.com/compare/manduka-vs-liforme',
+      },
+    ],
   }),
   component: MandukaVsLiformePage,
 })
@@ -92,31 +100,38 @@ const COMPARISON_ROWS = [
   {
     feature: 'Grip',
     icon: Waves,
-    manduka: 'Reliable dry grip that can improve with use. Closed-cell surfaces may feel slick when sweaty.',
-    liforme: 'Strong wet and dry grip with a grippy top surface designed for sweaty practice.',
+    manduka:
+      'Reliable dry grip that can improve with use. Closed-cell surfaces may feel slick when sweaty.',
+    liforme:
+      'Strong wet and dry grip with a grippy top surface designed for sweaty practice.',
     winner: 'Liforme',
     winnerTone: 'win',
   },
   {
     feature: 'Cushioning',
     icon: Cloud,
-    manduka: '6mm thickness gives dense joint support and a more grounded studio feel.',
-    liforme: 'Approx. 4.2mm thickness balances stability with moderate cushioning.',
+    manduka:
+      '6mm thickness gives dense joint support and a more grounded studio feel.',
+    liforme:
+      'Approx. 4.2mm thickness balances stability with moderate cushioning.',
     winner: 'Manduka',
     winnerTone: 'win',
   },
   {
     feature: 'Durability',
     icon: ShieldCheck,
-    manduka: 'Built around a dense PRO construction and known for long service life.',
-    liforme: 'Durable for regular practice, but natural rubber and PU surfaces tend to need gentler care.',
+    manduka:
+      'Built around a dense PRO construction and known for long service life.',
+    liforme:
+      'Durable for regular practice, but natural rubber and PU surfaces tend to need gentler care.',
     winner: 'Manduka',
     winnerTone: 'win',
   },
   {
     feature: 'Weight',
     icon: Weight,
-    manduka: 'Standard mat is 7.5 lb, so it feels stable but less travel-friendly.',
+    manduka:
+      'Standard mat is 7.5 lb, so it feels stable but less travel-friendly.',
     liforme: 'Approx. 2.5 kg / 5.5 lb, easier to carry to class.',
     winner: 'Liforme',
     winnerTone: 'win',
@@ -125,7 +140,8 @@ const COMPARISON_ROWS = [
     feature: 'Materials',
     icon: Leaf,
     manduka: 'OEKO-TEX certified PVC with a closed-cell surface.',
-    liforme: 'PVC-free mat with natural rubber base and polyurethane top surface.',
+    liforme:
+      'PVC-free mat with natural rubber base and polyurethane top surface.',
     winner: 'Liforme',
     winnerTone: 'win',
   },
@@ -232,7 +248,9 @@ function ComparisonHero() {
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-right-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/brand/review-hero-best-mats.webp')" }}
+        style={{
+          backgroundImage: "url('/images/brand/review-hero-best-mats.webp')",
+        }}
       />
       <div
         aria-hidden="true"
@@ -245,16 +263,27 @@ function ComparisonHero() {
       <Container size="wide" className="relative">
         <div className="grid min-h-[430px] items-center md:grid-cols-[minmax(0,460px)_1fr]">
           <div className="py-14 md:py-20">
-            <nav aria-label="Breadcrumb" className="mb-9 flex items-center gap-3 text-xs text-[color:var(--color-ink-muted)]">
-              <a href="/" className="transition hover:text-[color:var(--color-ink)]">
+            <nav
+              aria-label="Breadcrumb"
+              className="mb-9 flex items-center gap-3 text-xs text-[color:var(--color-ink-muted)]"
+            >
+              <a
+                href="/"
+                className="transition hover:text-[color:var(--color-ink)]"
+              >
                 Home
               </a>
               <span aria-hidden="true">›</span>
-              <a href="/reviews/best-yoga-mats" className="transition hover:text-[color:var(--color-ink)]">
+              <a
+                href="/reviews/best-yoga-mats"
+                className="transition hover:text-[color:var(--color-ink)]"
+              >
                 Reviews
               </a>
               <span aria-hidden="true">›</span>
-              <span className="font-medium text-[color:var(--color-ink)]">Manduka vs Liforme</span>
+              <span className="font-medium text-[color:var(--color-ink)]">
+                Manduka vs Liforme
+              </span>
             </nav>
             <Eyebrow tone="accent">Comparison Guide</Eyebrow>
             <h1 className="mt-5 font-serif text-5xl leading-[0.98] text-[color:var(--color-ink)] md:text-[64px]">
@@ -263,8 +292,8 @@ function ComparisonHero() {
               Yoga Mats
             </h1>
             <p className="mt-7 max-w-md text-base leading-8 text-[color:var(--color-ink-soft)]">
-              Two of the most trusted yoga mat brands. Different philosophies, different feel:
-              which one is right for your practice?
+              Two of the most trusted yoga mat brands. Different philosophies,
+              different feel: which one is right for your practice?
             </p>
             <div className="mt-9 grid max-w-lg grid-cols-3 gap-5">
               {TRUST_POINTS.map((point) => (
@@ -291,14 +320,20 @@ function VerdictPanel() {
       <div className="grid gap-7 lg:grid-cols-[1.15fr_1px_0.9fr_1px_0.9fr]">
         <div className="flex gap-6">
           <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[color:var(--color-olive)]/35 text-[color:var(--color-bg)]">
-            <Star className="h-7 w-7 fill-[color:var(--color-bg)]" strokeWidth={1.3} />
+            <Star
+              className="h-7 w-7 fill-[color:var(--color-bg)]"
+              strokeWidth={1.3}
+            />
           </div>
           <div>
             <SectionLabel>Our verdict</SectionLabel>
-            <h2 className="mt-3 font-serif text-3xl text-[color:var(--color-ink)]">It depends on your practice.</h2>
+            <h2 className="mt-3 font-serif text-3xl text-[color:var(--color-ink)]">
+              It depends on your practice.
+            </h2>
             <p className="mt-3 text-sm leading-6 text-[color:var(--color-ink-soft)]">
-              Manduka is built for durability and cushioning. Liforme is built for alignment and
-              wet grip. Your choice depends on what you value most.
+              Manduka is built for durability and cushioning. Liforme is built
+              for alignment and wet grip. Your choice depends on what you value
+              most.
             </p>
           </div>
         </div>
@@ -327,11 +362,19 @@ function ComparisonTable() {
           </thead>
           <tbody>
             {COMPARISON_ROWS.map((row) => (
-              <tr key={row.feature} className="border-b border-[color:var(--color-border)] last:border-b-0">
+              <tr
+                key={row.feature}
+                className="border-b border-[color:var(--color-border)] last:border-b-0"
+              >
                 <td className="px-8 py-5">
                   <div className="flex items-center gap-5">
-                    <row.icon className="h-7 w-7 text-[color:var(--color-ink)]" strokeWidth={1.25} />
-                    <span className="font-serif text-[22px] text-[color:var(--color-ink)]">{row.feature}</span>
+                    <row.icon
+                      className="h-7 w-7 text-[color:var(--color-ink)]"
+                      strokeWidth={1.25}
+                    />
+                    <span className="font-serif text-[22px] text-[color:var(--color-ink)]">
+                      {row.feature}
+                    </span>
                   </div>
                 </td>
                 <td className="border-l border-[color:var(--color-border)] px-8 py-5 text-sm leading-6 text-[color:var(--color-ink-soft)]">
@@ -363,10 +406,12 @@ function DecisionFaqGrid() {
         }}
       >
         <SectionLabel>Which mat is right for you?</SectionLabel>
-        <h2 className="mt-4 font-serif text-3xl text-[color:var(--color-ink)]">Think about your priorities.</h2>
+        <h2 className="mt-4 font-serif text-3xl text-[color:var(--color-ink)]">
+          Think about your priorities.
+        </h2>
         <p className="mt-5 max-w-sm text-sm leading-7 text-[color:var(--color-ink-soft)]">
-          There is no best mat for everyone. The best mat is the one that supports your body, your
-          practice and your values.
+          There is no best mat for everyone. The best mat is the one that
+          supports your body, your practice and your values.
         </p>
         <a
           href="/search?q=yoga%20mat"
@@ -385,11 +430,16 @@ function DecisionFaqGrid() {
                 {faq.question}
                 <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
               </summary>
-              <p className="mt-3 text-sm leading-7 text-[color:var(--color-ink-soft)]">{faq.answer}</p>
+              <p className="mt-3 text-sm leading-7 text-[color:var(--color-ink-soft)]">
+                {faq.answer}
+              </p>
             </details>
           ))}
         </div>
-        <a href="/search?q=yoga%20mat" className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-[color:var(--color-ink)]">
+        <a
+          href="/search?q=yoga%20mat"
+          className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-[color:var(--color-ink)]"
+        >
           View all FAQs <MoveRight className="h-4 w-4" />
         </a>
       </div>
@@ -408,12 +458,20 @@ function RelatedGuides() {
             href={item.href}
             className="grid overflow-hidden rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/64 transition hover:-translate-y-0.5 sm:grid-cols-[112px_minmax(0,1fr)]"
           >
-            <img src={item.image} alt="" width={160} height={150} className="h-full min-h-32 w-full object-cover" />
+            <img
+              src={item.image}
+              alt=""
+              width={160}
+              height={150}
+              className="h-full min-h-32 w-full object-cover"
+            />
             <div className="p-5">
               <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-ink-muted)]">
                 {item.label}
               </p>
-              <h3 className="mt-3 font-serif text-xl leading-tight text-[color:var(--color-ink)]">{item.title}</h3>
+              <h3 className="mt-3 font-serif text-xl leading-tight text-[color:var(--color-ink)]">
+                {item.title}
+              </h3>
               <p className="mt-4 inline-flex items-center gap-2 text-sm text-[color:var(--color-ink)]">
                 {item.action} <MoveRight className="h-4 w-4" />
               </p>
@@ -435,9 +493,12 @@ function NewsletterBand() {
       }}
     >
       <div className="ml-auto max-w-3xl">
-        <h2 className="font-serif text-3xl leading-tight md:text-4xl">Stay inspired. Practice with intention.</h2>
+        <h2 className="font-serif text-3xl leading-tight md:text-4xl">
+          Stay inspired. Practice with intention.
+        </h2>
         <p className="mt-3 text-sm leading-6 text-[color:var(--color-bg)]/74">
-          Join The Mindful Journal for weekly insights, routines and honest recommendations.
+          Join The Mindful Journal for weekly insights, routines and honest
+          recommendations.
         </p>
         <form className="mt-5 flex max-w-2xl flex-col gap-3 sm:flex-row">
           <label htmlFor="compare-newsletter-email" className="sr-only">
@@ -456,7 +517,9 @@ function NewsletterBand() {
             Join the journey
           </button>
         </form>
-        <p className="mt-3 text-xs text-[color:var(--color-bg)]/64">No spam. Unsubscribe anytime.</p>
+        <p className="mt-3 text-xs text-[color:var(--color-bg)]/64">
+          No spam. Unsubscribe anytime.
+        </p>
       </div>
     </section>
   )
@@ -466,9 +529,16 @@ function HeroPoint({ point }: { point: (typeof TRUST_POINTS)[number] }) {
   const Icon = point.icon
   return (
     <div className="border-r border-[color:var(--color-border)] pr-4 text-center last:border-r-0">
-      <Icon className="mx-auto h-8 w-8 text-[color:var(--color-olive)]" strokeWidth={1.35} />
-      <h2 className="mt-3 text-xs font-semibold leading-5 text-[color:var(--color-ink)]">{point.title}</h2>
-      <p className="mt-1 text-xs leading-5 text-[color:var(--color-ink-soft)]">{point.text}</p>
+      <Icon
+        className="mx-auto h-8 w-8 text-[color:var(--color-olive)]"
+        strokeWidth={1.35}
+      />
+      <h2 className="mt-3 text-xs font-semibold leading-5 text-[color:var(--color-ink)]">
+        {point.title}
+      </h2>
+      <p className="mt-1 text-xs leading-5 text-[color:var(--color-ink-soft)]">
+        {point.text}
+      </p>
     </div>
   )
 }
@@ -476,20 +546,31 @@ function HeroPoint({ point }: { point: (typeof TRUST_POINTS)[number] }) {
 function ProductChip({ title, text }: { title: string; text: string }) {
   return (
     <div className="rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/88 px-8 py-5 text-center shadow-sm backdrop-blur-sm">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-ink)]">{title}</p>
+      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-ink)]">
+        {title}
+      </p>
       <p className="mt-2 text-sm text-[color:var(--color-ink-soft)]">{text}</p>
     </div>
   )
 }
 
-function ChooseList({ title, items }: { title: string; items: readonly string[] }) {
+function ChooseList({
+  title,
+  items,
+}: {
+  title: string
+  items: readonly string[]
+}) {
   return (
     <div>
       <SectionLabel>{title}</SectionLabel>
       <ul className="mt-4 space-y-3 text-sm text-[color:var(--color-ink-soft)]">
         {items.map((item) => (
           <li key={item} className="flex items-center gap-3">
-            <Check className="h-4 w-4 text-[color:var(--color-olive)]" strokeWidth={1.8} />
+            <Check
+              className="h-4 w-4 text-[color:var(--color-olive)]"
+              strokeWidth={1.8}
+            />
             <span>{item}</span>
           </li>
         ))}
@@ -512,14 +593,23 @@ function WinnerBadge({ label, tone }: { label: string; tone: string }) {
             : 'bg-[color:var(--color-ink-muted)]/35 text-[color:var(--color-bg)]',
         ].join(' ')}
       >
-        {tone === 'win' ? <Award className="h-4 w-4" /> : <Minus className="h-4 w-4" />}
+        {tone === 'win' ? (
+          <Award className="h-4 w-4" />
+        ) : (
+          <Minus className="h-4 w-4" />
+        )}
       </span>
     </div>
   )
 }
 
 function Divider() {
-  return <div className="hidden w-px bg-[color:var(--color-border)] lg:block" aria-hidden="true" />
+  return (
+    <div
+      className="hidden w-px bg-[color:var(--color-border)] lg:block"
+      aria-hidden="true"
+    />
+  )
 }
 
 function SectionLabel({ children }: { children: string }) {

@@ -71,7 +71,8 @@ export const DETAIL: DetailReview = {
       title: 'Grip — the polyurethane top earns its keep',
       body: 'The grip story is consistent across sources that have actually stood on it. T3’s tester describes a surface that "barely moves as you flow" and scores the mat four stars out of five. Alexia K Yoga, who filmed a hands-on comparison against other premium mats, found very good grip with dry hands and reported it holds up when you sweat. Alo itself claims slip-free performance "wet or dry" — for once, a marketing line the independent reviews broadly agree with.\n\nThe material family matters for expectations. The Warrior’s top is polyurethane leather — the same broad family as the Lululemon and Liforme tops, surfaces that hold damp palms where foam and PVC let them slide. Polyurethane tops typically grip from the first session without a break-in period, and they typically collect dust, lint and pet hair for the same reason they hold skin — our Liforme review documents exactly that trade-off. No published source has tested a brand-new Warrior’s first session specifically, so treat both points as the PU-top expectation rather than a verified fact about this mat. One construction nuance: Liforme and Lululemon document their tops as absorbent, open-cell surfaces, while the Warrior’s spec sheet describes a wipe-only, moisture-wicking leather — related family, not identical build.\n\nWhat the Warrior does not have is structured test data. OutdoorGearLab ran its hands-on wet-grip protocol on the Manduka GRP Adapt and the Liforme; for the Warrior the evidence is reviewer consensus rather than test scores. Strong consensus — but worth naming the difference.',
       image: '/images/reviews/alo/grip.webp',
-      imageAlt: 'Two hands pressed flat in downward dog on a smooth matte charcoal mat surface, fingers spread',
+      imageAlt:
+        'Two hands pressed flat in downward dog on a smooth matte charcoal mat surface, fingers spread',
       ratings: [
         { label: 'Dry grip', score: 4.4 },
         { label: 'Wet grip', score: 4.4 },
@@ -83,7 +84,8 @@ export const DETAIL: DetailReview = {
       title: 'Comfort and space — where it genuinely leads',
       body: 'If grip is where the Warrior matches its premium rivals, comfort and floor space are its strongest cards. The 5mm build over its natural rubber base reads as plush rather than dense: Popsugar’s reviewer calls it thick enough to cushion the joints in every position while staying stable, and T3 lands on "soft, spongy and stable" as the one-line verdict. Kneeling work, low lunges and floor sequences are the poses where owners say the difference from a 4mm mat is obvious.\n\nThe oversized footprint deserves equal billing. At 74.4 by 26.4 inches, taller practitioners stop running their heels off the end, and wide flows stay on the mat. Combined with the cushioning, it is easy to see why the Warrior keeps being described as a home-studio centrepiece rather than a piece of kit.\n\nThe honest counterweight: softness costs a little in standing balance. A plush surface lets hands and feet sink fractionally more than a firm 4mm mat does, which is the usual trade-off for cushioning this comfortable. Reviewers describe the Warrior as stable for its class, not as the firmest platform available.',
       image: '/images/reviews/alo/comfort.webp',
-      imageAlt: 'A knee pressing into a thick charcoal mat surface that compresses softly under it, in warm light',
+      imageAlt:
+        'A knee pressing into a thick charcoal mat surface that compresses softly under it, in warm light',
       ratings: [
         { label: 'Cushioning', score: 4.6 },
         { label: 'Joint support', score: 4.5 },
@@ -95,7 +97,8 @@ export const DETAIL: DetailReview = {
       title: 'Weight and care — the part the photos skip',
       body: 'Here is where the Warrior asks for commitment. Alo publishes the weight as approximately eight pounds, and the size that makes it luxurious at home makes it a burden anywhere else. The most-cited Reddit owner review says it plainly: very high quality, feels worth the money, and "really heavy and would not be suitable for travel". If your mat rides to a studio on your shoulder, this is the wrong mat — not marginally, structurally.\n\nThen there is the upkeep. Alo’s own care guidance asks for a wipe-down after every session with a 1-to-20 oil-free soap solution, no machine washing, rolling top-out so the surface does not crease, and keeping lotions and jewellery away from the top. That is not optional polish: the matte polyurethane shows sweat outlines, oils and scuffs, and owners who let them sit report marks that set in. The same Reddit review lists creasing among its main complaints. A handful of owners have posted about trapped-moisture problems from rolling the mat before it dried — isolated reports, but consistent with how any wipe-only surface fails when stored damp.\n\nA grip towel over the top during sweaty sessions is the cheapest way to keep the surface presentable — it catches the sweat before the mat does.',
       image: '/images/reviews/alo/care.webp',
-      imageAlt: 'A large rolled charcoal mat standing by a door with a folded microfiber cloth on top, sweat marks visible on an unrolled section nearby',
+      imageAlt:
+        'A large rolled charcoal mat standing by a door with a folded microfiber cloth on top, sweat marks visible on an unrolled section nearby',
       cta: {
         slug: 'manduka-yogitoes',
         productName: 'Manduka Yogitoes',
@@ -114,7 +117,8 @@ export const DETAIL: DetailReview = {
       cta: {
         slug: 'manduka-grp-adapt',
         productName: 'Manduka GRP Adapt',
-        label: 'The same-tier mat with measured grip data behind it, if sweat is your priority:',
+        label:
+          'The same-tier mat with measured grip data behind it, if sweat is your priority:',
       },
     },
   ],
@@ -122,10 +126,23 @@ export const DETAIL: DetailReview = {
     { label: 'Thickness', value: '5 mm' },
     { label: 'Dimensions', value: '74.4" × 26.4" (189 × 67 cm) — oversized' },
     { label: 'Weight', value: '~8 lb (~3.6 kg), per Alo' },
-    { label: 'Construction', value: 'Polyurethane-leather top, natural rubber base' },
-    { label: 'Materials', value: 'Formaldehyde-free, PVC-free, ethically sourced rubber (per spec sheet)' },
-    { label: 'Latex', value: 'Natural rubber base — check with Alo if you have a latex allergy' },
-    { label: 'Care', value: 'Wipe-only after each use; not machine washable; roll top-out' },
+    {
+      label: 'Construction',
+      value: 'Polyurethane-leather top, natural rubber base',
+    },
+    {
+      label: 'Materials',
+      value:
+        'Formaldehyde-free, PVC-free, ethically sourced rubber (per spec sheet)',
+    },
+    {
+      label: 'Latex',
+      value: 'Natural rubber base — check with Alo if you have a latex allergy',
+    },
+    {
+      label: 'Care',
+      value: 'Wipe-only after each use; not machine washable; roll top-out',
+    },
   ],
   whoFor: [
     'You practise at home and the mat stays unrolled — the weight never bites and the looks pay off daily',

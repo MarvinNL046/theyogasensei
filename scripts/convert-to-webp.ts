@@ -21,7 +21,9 @@ const ROOTS = [
 const QUALITY = 82
 const SOURCE_EXTS = new Set(['.png', '.jpg', '.jpeg'])
 
-async function convertFile(src: string): Promise<{ src: string; out: string; saved: number } | null> {
+async function convertFile(
+  src: string,
+): Promise<{ src: string; out: string; saved: number } | null> {
   const ext = extname(src).toLowerCase()
   if (!SOURCE_EXTS.has(ext)) return null
 
@@ -75,12 +77,19 @@ async function main() {
       converted++
       totalSaved += result.saved
       const savedKb = (result.saved / 1024).toFixed(0)
-      const savedPct = ((result.saved / (result.saved + (await stat(result.out)).size)) * 100).toFixed(0)
-      console.log(`✓ ${result.src}  →  ${result.out}  (-${savedKb} KB, -${savedPct}%)`)
+      const savedPct = (
+        (result.saved / (result.saved + (await stat(result.out)).size)) *
+        100
+      ).toFixed(0)
+      console.log(
+        `✓ ${result.src}  →  ${result.out}  (-${savedKb} KB, -${savedPct}%)`,
+      )
     }
   }
 
-  console.log(`\nDone. Converted ${converted}, skipped ${skipped} (already had .webp).`)
+  console.log(
+    `\nDone. Converted ${converted}, skipped ${skipped} (already had .webp).`,
+  )
   console.log(`Total saved: ${(totalSaved / 1024 / 1024).toFixed(2)} MB`)
 }
 

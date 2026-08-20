@@ -181,7 +181,9 @@ function GuidesIndex() {
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/brand/journal-hero-bg.webp')" }}
+          style={{
+            backgroundImage: "url('/images/brand/journal-hero-bg.webp')",
+          }}
         />
         <div
           aria-hidden="true"
@@ -204,9 +206,9 @@ function GuidesIndex() {
               </span>
             </h1>
             <p className="mt-7 max-w-lg text-sm leading-relaxed text-[color:var(--color-bg)]/80 md:text-base">
-              In-depth articles, honest reviews, and practical advice from the mat. Routines you
-              can actually use, gear that actually matters, and the calm decisions that move your
-              practice forward.
+              In-depth articles, honest reviews, and practical advice from the
+              mat. Routines you can actually use, gear that actually matters,
+              and the calm decisions that move your practice forward.
             </p>
           </div>
         </Container>
@@ -297,81 +299,81 @@ function GuidesIndex() {
                       params={post.params}
                       className="group grid items-start gap-6 py-10 md:grid-cols-12 md:gap-8"
                     >
-                  <div className="md:col-span-4">
-                    <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
-                      <img
-                        src={post.image}
-                        alt={post.alt}
-                        width={600}
-                        height={450}
-                        loading="lazy"
-                        className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-                      />
-                    </div>
-                  </div>
-                  <div className="md:col-span-8">
-                    <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
-                      {post.category}
-                    </p>
-                    <h2 className="mt-3 font-serif text-2xl leading-tight tracking-tight text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)] md:text-[28px]">
-                      {post.title}
-                    </h2>
-                    <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-[15px]">
-                      {post.blurb}
-                    </p>
-                    <p className="mt-5 text-xs text-[color:var(--color-ink-muted)]">
-                      By {post.author}
-                      <span className="mx-2 opacity-40">·</span>
-                      {post.date}
-                      <span className="mx-2 opacity-40">·</span>
-                      {post.readingTime}
-                    </p>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
+                      <div className="md:col-span-4">
+                        <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)]">
+                          <img
+                            src={post.image}
+                            alt={post.alt}
+                            width={600}
+                            height={450}
+                            loading="lazy"
+                            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                          />
+                        </div>
+                      </div>
+                      <div className="md:col-span-8">
+                        <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
+                          {post.category}
+                        </p>
+                        <h2 className="mt-3 font-serif text-2xl leading-tight tracking-tight text-[color:var(--color-ink)] transition group-hover:text-[color:var(--color-accent-deep)] md:text-[28px]">
+                          {post.title}
+                        </h2>
+                        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[color:var(--color-ink-muted)] md:text-[15px]">
+                          {post.blurb}
+                        </p>
+                        <p className="mt-5 text-xs text-[color:var(--color-ink-muted)]">
+                          By {post.author}
+                          <span className="mx-2 opacity-40">·</span>
+                          {post.date}
+                          <span className="mx-2 opacity-40">·</span>
+                          {post.readingTime}
+                        </p>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
 
-          {/* ============================================================
+              {/* ============================================================
               PAGINATION — placeholder (single page for now)
               ============================================================ */}
-          <nav
-            className="mt-12 flex items-center justify-center gap-3"
-            aria-label="Article pagination"
-          >
-            <button
-              type="button"
-              disabled
-              aria-label="Previous page"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--color-border)] text-[color:var(--color-ink-muted)] opacity-50"
-            >
-              <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
-            </button>
-            {[1, 2, 3].map((page) => (
-              <button
-                key={page}
-                type="button"
-                disabled
-                aria-current={page === 1 ? 'page' : undefined}
-                className={cn(
-                  'inline-flex h-10 min-w-10 items-center justify-center rounded-full px-3 text-sm transition',
-                  page === 1
-                    ? 'bg-[color:var(--color-olive)] text-[color:var(--color-bg)]'
-                    : 'border border-[color:var(--color-border)] text-[color:var(--color-ink-muted)]',
-                )}
+              <nav
+                className="mt-12 flex items-center justify-center gap-3"
+                aria-label="Article pagination"
               >
-                {page}
-              </button>
-            ))}
-            <button
-              type="button"
-              disabled
-              aria-label="Next page"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--color-border)] text-[color:var(--color-ink-muted)] opacity-50"
-            >
-              <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
-            </button>
-          </nav>
+                <button
+                  type="button"
+                  disabled
+                  aria-label="Previous page"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--color-border)] text-[color:var(--color-ink-muted)] opacity-50"
+                >
+                  <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
+                </button>
+                {[1, 2, 3].map((page) => (
+                  <button
+                    key={page}
+                    type="button"
+                    disabled
+                    aria-current={page === 1 ? 'page' : undefined}
+                    className={cn(
+                      'inline-flex h-10 min-w-10 items-center justify-center rounded-full px-3 text-sm transition',
+                      page === 1
+                        ? 'bg-[color:var(--color-olive)] text-[color:var(--color-bg)]'
+                        : 'border border-[color:var(--color-border)] text-[color:var(--color-ink-muted)]',
+                    )}
+                  >
+                    {page}
+                  </button>
+                ))}
+                <button
+                  type="button"
+                  disabled
+                  aria-label="Next page"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--color-border)] text-[color:var(--color-ink-muted)] opacity-50"
+                >
+                  <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+                </button>
+              </nav>
             </div>
 
             {/* ============================================================
@@ -444,7 +446,10 @@ function GuidesIndex() {
                 <div
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
-                  style={{ backgroundImage: "url('/images/brand/journal-newsletter-bg.webp')" }}
+                  style={{
+                    backgroundImage:
+                      "url('/images/brand/journal-newsletter-bg.webp')",
+                  }}
                 />
                 <div
                   aria-hidden="true"
@@ -457,9 +462,14 @@ function GuidesIndex() {
                     straight to your inbox.
                   </p>
                   <p className="mt-5 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">
-                    Practical tips, new guides and honest recommendations to support your practice.
+                    Practical tips, new guides and honest recommendations to
+                    support your practice.
                   </p>
-                  <form action="#" method="post" className="mt-6 flex flex-col gap-3">
+                  <form
+                    action="#"
+                    method="post"
+                    className="mt-6 flex flex-col gap-3"
+                  >
                     <label htmlFor="sidebar-newsletter" className="sr-only">
                       Email address
                     </label>
@@ -535,7 +545,9 @@ function GuidesIndex() {
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/brand/journal-cta-bg.webp')" }}
+          style={{
+            backgroundImage: "url('/images/brand/journal-cta-bg.webp')",
+          }}
         />
         <div
           aria-hidden="true"
@@ -553,11 +565,13 @@ function GuidesIndex() {
             <h2 className="mt-5 font-serif text-3xl leading-[1.1] tracking-tight md:text-[44px]">
               Better practice.
               <br />
-              <span className="italic text-[color:var(--color-accent-soft)]">Better you.</span>
+              <span className="italic text-[color:var(--color-accent-soft)]">
+                Better you.
+              </span>
             </h2>
             <p className="mx-auto mt-6 max-w-md text-sm leading-relaxed text-[color:var(--color-bg)]/70 md:text-base">
-              Real articles, honest gear notes, and a calm path through the practice. Start where
-              you are, not where you think you should be.
+              Real articles, honest gear notes, and a calm path through the
+              practice. Start where you are, not where you think you should be.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <Link

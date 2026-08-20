@@ -81,8 +81,8 @@ export function scanMdxEntries(): Array<MdxEntry> {
     const type =
       folder === 'authors'
         ? 'author'
-        : (fm.type as 'pillar' | 'subpillar' | 'cluster' | undefined) ??
-          'cluster'
+        : ((fm.type as 'pillar' | 'subpillar' | 'cluster' | undefined) ??
+          'cluster')
 
     entries.push({
       filePath,

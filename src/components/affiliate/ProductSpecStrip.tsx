@@ -25,13 +25,28 @@ type SpecItem = {
 function ProductSpecStrip({ productName, specs }: ProductSpecStripProps) {
   const items = [
     specs.thickness
-      ? ({ key: 'thickness', label: 'Thickness', value: specs.thickness, icon: Ruler } satisfies SpecItem)
+      ? ({
+          key: 'thickness',
+          label: 'Thickness',
+          value: specs.thickness,
+          icon: Ruler,
+        } satisfies SpecItem)
       : null,
     specs.weight
-      ? ({ key: 'weight', label: 'Weight', value: specs.weight, icon: Dumbbell } satisfies SpecItem)
+      ? ({
+          key: 'weight',
+          label: 'Weight',
+          value: specs.weight,
+          icon: Dumbbell,
+        } satisfies SpecItem)
       : null,
     specs.material
-      ? ({ key: 'material', label: 'Material', value: specs.material, icon: Layers3 } satisfies SpecItem)
+      ? ({
+          key: 'material',
+          label: 'Material',
+          value: specs.material,
+          icon: Layers3,
+        } satisfies SpecItem)
       : null,
   ].filter((item): item is SpecItem => item !== null)
 
@@ -48,8 +63,13 @@ function ProductSpecStrip({ productName, specs }: ProductSpecStripProps) {
             key={key}
             className="inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-surface-muted)] px-3 py-1.5 text-xs text-[color:var(--color-ink-soft)]"
           >
-            <Icon aria-hidden="true" className="h-3.5 w-3.5 text-[color:var(--color-accent-deep)]" />
-            <span className="font-medium text-[color:var(--color-ink)]">{label}:</span>
+            <Icon
+              aria-hidden="true"
+              className="h-3.5 w-3.5 text-[color:var(--color-accent-deep)]"
+            />
+            <span className="font-medium text-[color:var(--color-ink)]">
+              {label}:
+            </span>
             <span>{value}</span>
           </div>
         ))}

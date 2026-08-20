@@ -190,9 +190,7 @@ General layout:
 
 ```tsx
 <section className="py-20 md:py-28">
-  <div className="mx-auto max-w-7xl px-6">
-    ...
-  </div>
+  <div className="mx-auto max-w-7xl px-6">...</div>
 </section>
 ```
 
@@ -212,13 +210,15 @@ Avoid cramped sections. This brand needs whitespace.
 Recommended card style:
 
 ```tsx
-className="rounded-3xl border border-border/70 bg-card/80 shadow-sm backdrop-blur-sm"
+className =
+  'rounded-3xl border border-border/70 bg-card/80 shadow-sm backdrop-blur-sm'
 ```
 
 Recommended buttons:
 
 ```tsx
-className="rounded-full bg-primary px-6 py-3 text-sm font-medium text-white transition hover:bg-primary/90"
+className =
+  'rounded-full bg-primary px-6 py-3 text-sm font-medium text-white transition hover:bg-primary/90'
 ```
 
 ---
@@ -268,14 +268,14 @@ Allowed design motifs:
 
 Render via the `<JapaneseAccent>` component (`src/components/ui/japanese-accent.tsx`). Never invent new strings, never use random kanji, never `<span lang="ja">` with raw Japanese inline.
 
-| Phrase | Romaji | Meaning | Intended usage |
-|---|---|---|---|
-| `継続は力なり` | Keizoku wa chikara nari | "Consistency is strength" | **The recurring brand-mark phrase.** Hero edges, footer, decorative vertical accents site-wide. Default choice when in doubt. |
-| `練習・学び・成長する。` | Renshū, manabi, seichō suru | "Practice. Learn. Grow." | Practice / learning / how-to / pose-guide contexts. Hero kicker. |
-| `今ここ` | Ima koko | "Be here now" | Meditation / breathwork / mindfulness sections. Short — fits small spaces. |
-| `静けさ` | Shizukesa | "Stillness" | Quiet / reflective / long-form reading moments. Featured guide dark bands. |
-| `習慣が人生を作る` | Shūkan ga jinsei o tsukuru | "Habits create your life" | Routine / consistency / newsletter / daily-practice content. |
-| `先生` | Sensei | "Teacher" | Logo / wordmark contexts only. Not a freestanding accent. |
+| Phrase                   | Romaji                      | Meaning                   | Intended usage                                                                                                                |
+| ------------------------ | --------------------------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `継続は力なり`           | Keizoku wa chikara nari     | "Consistency is strength" | **The recurring brand-mark phrase.** Hero edges, footer, decorative vertical accents site-wide. Default choice when in doubt. |
+| `練習・学び・成長する。` | Renshū, manabi, seichō suru | "Practice. Learn. Grow."  | Practice / learning / how-to / pose-guide contexts. Hero kicker.                                                              |
+| `今ここ`                 | Ima koko                    | "Be here now"             | Meditation / breathwork / mindfulness sections. Short — fits small spaces.                                                    |
+| `静けさ`                 | Shizukesa                   | "Stillness"               | Quiet / reflective / long-form reading moments. Featured guide dark bands.                                                    |
+| `習慣が人生を作る`       | Shūkan ga jinsei o tsukuru  | "Habits create your life" | Routine / consistency / newsletter / daily-practice content.                                                                  |
+| `先生`                   | Sensei                      | "Teacher"                 | Logo / wordmark contexts only. Not a freestanding accent.                                                                     |
 
 ### Styling rules (enforced by `<JapaneseAccent>`)
 

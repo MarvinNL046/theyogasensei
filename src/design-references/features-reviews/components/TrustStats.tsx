@@ -1,4 +1,9 @@
-import { CalendarClock, ClipboardCheck, PersonStanding, ShieldCheck } from 'lucide-react'
+import {
+  CalendarClock,
+  ClipboardCheck,
+  PersonStanding,
+  ShieldCheck,
+} from 'lucide-react'
 import type { ComponentType, SVGProps } from 'react'
 import { TRUST_STATS } from '#/features/reviews/data/yoga-mats'
 

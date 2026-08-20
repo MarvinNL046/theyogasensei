@@ -1,7 +1,7 @@
 ---
 name: feedback-component-based
-description: "Always build new pages component-based with a data file + small focused components, never inline everything in the route file"
-metadata: 
+description: 'Always build new pages component-based with a data file + small focused components, never inline everything in the route file'
+metadata:
   node_type: memory
   type: feedback
   originSessionId: ab9ceb43-2414-4ab6-9c22-e478565ee2d5

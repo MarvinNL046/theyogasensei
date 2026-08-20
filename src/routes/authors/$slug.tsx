@@ -70,9 +70,16 @@ function AuthorPage() {
     <>
       <section className="border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)]">
         <Container size="wide" className="py-14 md:py-20">
-          <nav className="text-xs text-[color:var(--color-ink-muted)]" aria-label="Breadcrumb">
-            <Link to="/" className="hover:text-[color:var(--color-ink)]">Home</Link>
-            <span className="mx-2" aria-hidden="true">›</span>
+          <nav
+            className="text-xs text-[color:var(--color-ink-muted)]"
+            aria-label="Breadcrumb"
+          >
+            <Link to="/" className="hover:text-[color:var(--color-ink)]">
+              Home
+            </Link>
+            <span className="mx-2" aria-hidden="true">
+              ›
+            </span>
             <span>Authors</span>
           </nav>
           <div className="mt-9 grid items-center gap-10 md:grid-cols-[180px_1fr]">
@@ -126,7 +133,8 @@ function AuthorPage() {
           <div className="mt-12 rounded-2xl bg-[color:var(--color-olive-deep)] p-7 text-white [--color-heading:white] md:p-9">
             <h2 className="font-serif text-3xl">How the work is checked</h2>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/75">
-              Read the sourcing rules, review labels and correction process used across the site.
+              Read the sourcing rules, review labels and correction process used
+              across the site.
             </p>
             <Link
               to="/how-we-research"

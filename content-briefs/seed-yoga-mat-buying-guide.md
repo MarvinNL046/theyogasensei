@@ -112,7 +112,7 @@ Must contain:
 
 - Primary keyword in the first 100 words
 - Direct problem-statement: "Most yoga mats look similar but feel completely different under your hands and feet"
-- TL;DR callout box with quick answer: *"For most people, a 4-5mm natural rubber or PVC mat with a textured surface offers the best balance of grip, cushioning and durability. Travel? Go 1-3mm. Joint issues? Look for 6mm+."*
+- TL;DR callout box with quick answer: _"For most people, a 4-5mm natural rubber or PVC mat with a textured surface offers the best balance of grip, cushioning and durability. Travel? Go 1-3mm. Joint issues? Look for 6mm+."_
 - Author byline with E-E-A-T signal (link to author page, brief credential mention)
 - "Updated [Month Year]" badge
 

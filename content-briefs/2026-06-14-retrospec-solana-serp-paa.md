@@ -16,6 +16,7 @@ The page-1 results for "retrospec solana yoga mat review" are:
 **Key finding: no high-authority outlet ranks.** Wirecutter / OutdoorGearLab / Garage Gym Reviews don't cover it — they test $60+ rubber mats. The SERP is winnable thin-affiliate content, which (with KD 2) is exactly why this was the highest-score easy win in the mat cluster.
 
 **Our differentiation / gap to fill:**
+
 1. A genuine **cushion-vs-stability thesis** — competitors mostly just praise the thickness; few name the trade-off honestly.
 2. **Prop 65 disclosure** (see risk below) — almost no affiliate blog mentions it; it's a trust/E-E-A-T moat.
 3. **Real internal cluster** — links up to the mat-education pillar (how-to-choose, how-thick, bad-knees, eco, lululemon) that thin one-off blogs lack.
@@ -23,36 +24,36 @@ The page-1 results for "retrospec solana yoga mat review" are:
 
 ## Competitor angles we must (and do) cover
 
-| Angle | Covered? |
-|---|---|
-| ½" vs 1" thickness decision | ✓ dedicated section + FAQ |
-| Budget / best-for-beginners | ✓ verdict + who-should-buy |
-| Taller/heavier users, knee & joint relief | ✓ cushion section → links bad-knees |
-| NBR foam material | ✓ material section |
-| Carry strap / portability | ✓ spec table + 1" "stay-at-home" note |
-| Durability ("holds up after months") | ✓ trade-offs + FAQ |
-| Easy to wipe clean | minor — folded into care expectations |
-| vs BalanceFrom (direct cross-shop) | ✓ added to ½-vs-1 section |
-| Verified prices ($24.99 ½" / $39.99 1") | ✓ |
+| Angle                                     | Covered?                              |
+| ----------------------------------------- | ------------------------------------- |
+| ½" vs 1" thickness decision               | ✓ dedicated section + FAQ             |
+| Budget / best-for-beginners               | ✓ verdict + who-should-buy            |
+| Taller/heavier users, knee & joint relief | ✓ cushion section → links bad-knees   |
+| NBR foam material                         | ✓ material section                    |
+| Carry strap / portability                 | ✓ spec table + 1" "stay-at-home" note |
+| Durability ("holds up after months")      | ✓ trade-offs + FAQ                    |
+| Easy to wipe clean                        | minor — folded into care expectations |
+| vs BalanceFrom (direct cross-shop)        | ✓ added to ½-vs-1 section             |
+| Verified prices ($24.99 ½" / $39.99 1")   | ✓                                     |
 
 ## PAA → FAQ mapping (real questions, not invented)
 
 Mined from search + adjacent queries. Mapped to the 6 on-page FAQ entries:
 
-1. *Is the Retrospec Solana a good yoga mat?* → verdict-style answer (good for cushion/floor, weak for balance/hot)
-2. *What is it made of?* → NBR foam + latex-free + Prop 65 flag
+1. _Is the Retrospec Solana a good yoga mat?_ → verdict-style answer (good for cushion/floor, weak for balance/hot)
+2. _What is it made of?_ → NBR foam + latex-free + Prop 65 flag
 3. **Does it have a Prop 65 warning / is it toxic?** → new FAQ from the safety-interest cluster (NBR-safety queries are high-volume adjacent)
-4. *Is it good for hot yoga?* → no, foam goes slick
-5. *½ inch or 1 inch?* → ½" for yoga, 1" for floor work
-6. *How long does it last?* → couple of years, foam compresses
+4. _Is it good for hot yoga?_ → no, foam goes slick
+5. _½ inch or 1 inch?_ → ½" for yoga, 1" for floor work
+6. _How long does it last?_ → couple of years, foam compresses
 
 ## ⚠️ Risk caught by this analysis — California Proposition 65
 
-**The Solana (both ½" and 1") ships with a Prop 65 warning:** *"This product can expose you to chemicals including Acrylonitrile, which is known to the State of California to cause cancer."* Acrylonitrile is a monomer of NBR, so most NBR foam mats carry it. Verified across multiple independent sources (Mamavation, Scienceline, htsyoga Prop 65 guides) quoting identical text; consistent with NBR chemistry.
+**The Solana (both ½" and 1") ships with a Prop 65 warning:** _"This product can expose you to chemicals including Acrylonitrile, which is known to the State of California to cause cancer."_ Acrylonitrile is a monomer of NBR, so most NBR foam mats carry it. Verified across multiple independent sources (Mamavation, Scienceline, htsyoga Prop 65 guides) quoting identical text; consistent with NBR chemistry.
 
 The first draft framed NBR too benignly ("latex-free and phthalate-free = safe pick"). **Corrected before this note:** added a Prop 65 `Callout` + a dedicated FAQ, tempered the safety framing, linked the official [p65warnings.ca.gov](https://www.p65warnings.ca.gov/) for context, and pointed chemically-cautious readers to the eco (natural-rubber/cork/TPE) alternatives. YMYL-cautious framing: disclose, contextualise (broad labeling law, not proof of harm), let the reader decide — no medical claims either way.
 
-**Lesson for future budget-mat reviews:** any NBR / PVC / foam mat — check the Prop 65 label *before* drafting the material section. Logged in `_lessons-learned.md`.
+**Lesson for future budget-mat reviews:** any NBR / PVC / foam mat — check the Prop 65 label _before_ drafting the material section. Logged in `_lessons-learned.md`.
 
 ## Sources
 

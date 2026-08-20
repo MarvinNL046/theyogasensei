@@ -34,7 +34,12 @@ const CATEGORIES_BY_SLUG: Record<
 > = {
   'childs-pose': ['Beginner', 'Relaxation', 'Props'],
   'cobra-pose': ['Beginner', 'Mobility'],
-  'downward-facing-dog': ['Beginner', 'Standing', 'Mobility', 'Chair variations'],
+  'downward-facing-dog': [
+    'Beginner',
+    'Standing',
+    'Mobility',
+    'Chair variations',
+  ],
   'pigeon-pose': ['Seated', 'Supine', 'Mobility', 'Props'],
   'sun-salutation': ['Beginner', 'Flows'],
   'sun-salutation-b': ['Flows'],
@@ -152,7 +157,7 @@ function PosesIndex() {
                   <Link
                     to="/poses/$slug"
                     params={{ slug: pose.slug }}
-                  className="group block overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[0_18px_45px_-38px_rgba(24,49,41,.65)] transition hover:-translate-y-1 hover:border-[color:var(--color-accent-soft)]"
+                    className="group block overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[0_18px_45px_-38px_rgba(24,49,41,.65)] transition hover:-translate-y-1 hover:border-[color:var(--color-accent-soft)]"
                   >
                     <div
                       className="aspect-[16/10] bg-cover bg-center"
@@ -175,7 +180,10 @@ function PosesIndex() {
                       </p>
                       <p className="mt-4 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-accent-deep)]">
                         Read the guide
-                        <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+                        <ArrowRight
+                          className="h-3.5 w-3.5"
+                          strokeWidth={1.75}
+                        />
                       </p>
                     </div>
                   </Link>

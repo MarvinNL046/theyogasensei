@@ -12,7 +12,10 @@ type AffiliateButtonProps = {
   placement?: AffiliatePlacement
 }
 
-const variantClasses: Record<NonNullable<AffiliateButtonProps['variant']>, string> = {
+const variantClasses: Record<
+  NonNullable<AffiliateButtonProps['variant']>,
+  string
+> = {
   primary:
     'bg-[color:var(--color-accent-deep)] text-white shadow-sm hover:bg-[color:var(--color-olive-deep)]',
   secondary:
@@ -41,7 +44,11 @@ function AffiliateButton({
       data-affiliate-placement={placement}
       onClick={(event) => {
         const context = affiliateClickContext(placement)
-        event.currentTarget.href = affiliateHref(slug, placement, context.sourcePage)
+        event.currentTarget.href = affiliateHref(
+          slug,
+          placement,
+          context.sourcePage,
+        )
         track('Affiliate click', {
           product: slug,
           placement,
@@ -56,7 +63,11 @@ function AffiliateButton({
       )}
     >
       <span>Check price on Amazon</span>
-      <ExternalLink aria-hidden="true" className={size === 'sm' ? 'h-3.5 w-3.5' : 'h-4 w-4'} strokeWidth={1.8} />
+      <ExternalLink
+        aria-hidden="true"
+        className={size === 'sm' ? 'h-3.5 w-3.5' : 'h-4 w-4'}
+        strokeWidth={1.8}
+      />
     </a>
   )
 }

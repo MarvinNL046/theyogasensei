@@ -1,6 +1,6 @@
 # Link outreach plan — theyogasensei.com
 
-**Goal:** earn a handful of *real* editorial backlinks to move DR off 0. A few DR 20–50
+**Goal:** earn a handful of _real_ editorial backlinks to move DR off 0. A few DR 20–50
 links from genuine sites beat the 224 spam domains we already have. Quality only —
 never buy links or use the "SEO services" vendors (that is exactly how the spam profile
 happened).
@@ -23,7 +23,8 @@ to-read list — every row is something you send or do, then log. The loop:
 7. **Repeat weekly.** Refill the queue using the search operators in the CSV.
 
 **How you measure it (every 2–4 weeks):**
-- Ahrefs → Referring domains → *New* tab: real domains should start appearing.
+
+- Ahrefs → Referring domains → _New_ tab: real domains should start appearing.
 - Ahrefs overview: DR creeping off 0; "Organic keywords" rising.
 - GSC → Performance: average position trending down (toward 1); first clicks.
 - Vercel → Analytics → Referrers: the linking sites showing up as referral traffic.
@@ -38,8 +39,8 @@ rankings. Consistency beats intensity.
 
 **Tier 1 — Foundational profiles (one evening, free, ~100% success).** Legit brand/author
 profiles that give you a real citation and a clean starting backlink footprint. Do these
-first so the next links land on a non-empty profile. *Only quality profiles — no directory
-spam.*
+first so the next links land on a non-empty profile. _Only quality profiles — no directory
+spam._
 
 **Tier 2 — Digital PR / expert quotes (ongoing, the real DR movers).** You answer
 journalist questions as "a long-time practitioner, not an instructor" — which is exactly
@@ -47,7 +48,8 @@ your honest angle. When you get quoted, you get a link on a real publication. Ch
 platforms each morning for yoga / wellness / fitness / "home gym" / "gifts for…" queries.
 
 **Tier 3 — Niche editorial: resource pages, roundups, guest posts.** This is where your
-*linkable assets* do the work — pitch the asset, not the homepage:
+_linkable assets_ do the work — pitch the asset, not the homepage:
+
 - **Free printable chair yoga for seniors** → senior-living blogs, caregiver sites,
   occupational-therapy resource lists, local library "senior resources" pages. Strongest
   single asset you have for links.
@@ -64,12 +66,14 @@ trainings. Warm, not transactional.
 Keep them short. The bracketed `[…]` lines are where you personalize — never send without them.
 
 ### 1. Expert quote (Qwoted / Featured / Source of Sources)
+
 > **Re: [their exact query, e.g. "common beginner yoga mistakes"]**
 >
 > [One-sentence direct answer to their question.]
 >
 > [2–3 sentence quote they can paste, first-person, specific, no fluff. Give a real
-> opinion or number — e.g. "The mistake I see most in a first class is…"]
+>
+> > opinion or number — e.g. "The mistake I see most in a first class is…"]
 >
 > Background: I'm Marvin Smit, a long-time practitioner (not a certified instructor — happy
 > to be described that way) who writes honest yoga gear and practice guides at
@@ -78,6 +82,7 @@ Keep them short. The bracketed `[…]` lines are where you personalize — never
 > Happy to expand or answer a follow-up the same day.
 
 ### 2. Resource-page / free-printable link request
+
 > Subject: A free printable you might add to [their page title]
 >
 > Hi [name],
@@ -93,6 +98,7 @@ Keep them short. The bracketed `[…]` lines are where you personalize — never
 > Marvin — The Yoga Sensei
 
 ### 3. Guest post pitch
+
 > Subject: Guest piece for [blog]: [specific angle]
 >
 > Hi [name],
@@ -101,6 +107,7 @@ Keep them short. The bracketed `[…]` lines are where you personalize — never
 > at theyogasensei.com (no fake lab tests, I say when I haven't used something).
 >
 > Three angles I could write for your readers, ~1,200 words, original:
+>
 > 1. [angle] 2. [angle] 3. [angle]
 >
 > Want me to send a draft of one? No payment expected — just a byline link.
@@ -108,6 +115,7 @@ Keep them short. The bracketed `[…]` lines are where you personalize — never
 > Marvin
 
 ### 4. Unlinked mention / roundup inclusion
+
 > Subject: Thanks for the mention — quick request
 >
 > Hi [name],
@@ -120,6 +128,7 @@ Keep them short. The bracketed `[…]` lines are where you personalize — never
 ---
 
 ## Hard rules
+
 - **No bought links, ever.** No "guest post packages", no fiverr SEO, no .shop link vendors.
   That is what produced the 224 spam domains.
 - **Pitch the asset, not "please link to me".** A free printable/guide is a reason to link;
@@ -127,5 +136,5 @@ Keep them short. The bracketed `[…]` lines are where you personalize — never
 - **One follow-up max.** Then move on.
 - **Track everything** in the CSV — future-you needs to know who was already contacted.
 
-*Reusable methodology — consider promoting the generic parts of this to the Obsidian
-ContentOps vault (CRO/SEO source-of-truth) so other sites can use it.*
+_Reusable methodology — consider promoting the generic parts of this to the Obsidian
+ContentOps vault (CRO/SEO source-of-truth) so other sites can use it._

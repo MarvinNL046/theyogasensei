@@ -155,7 +155,11 @@ export function withTrackingId(rawUrl: string, trackingId: string): string {
 }
 
 function isAmazonHost(host: string): boolean {
-  return host === 'amazon.com' || host.startsWith('amazon.') || host.includes('.amazon.')
+  return (
+    host === 'amazon.com' ||
+    host.startsWith('amazon.') ||
+    host.includes('.amazon.')
+  )
 }
 
 export function resolveAffiliateDestination(slug: string): string | null {

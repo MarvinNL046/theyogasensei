@@ -12,7 +12,10 @@ export interface AffiliateDisclosureProps {
  * page (product reviews, gear roundups) per references/voice.md. Full prose
  * version on /affiliate-disclosure.
  */
-export function AffiliateDisclosure({ compact, className }: AffiliateDisclosureProps) {
+export function AffiliateDisclosure({
+  compact,
+  className,
+}: AffiliateDisclosureProps) {
   if (compact) {
     return (
       <p
@@ -21,9 +24,12 @@ export function AffiliateDisclosure({ compact, className }: AffiliateDisclosureP
           className,
         )}
       >
-        This page contains sponsored links. The Yoga Sensei earns a commission when you buy through
-        them — that does not change what we recommend.{' '}
-        <Link to="/affiliate-disclosure" className="underline hover:text-accent">
+        This page contains sponsored links. The Yoga Sensei earns a commission
+        when you buy through them — that does not change what we recommend.{' '}
+        <Link
+          to="/affiliate-disclosure"
+          className="underline hover:text-accent"
+        >
           Full disclosure
         </Link>
         .
@@ -41,10 +47,13 @@ export function AffiliateDisclosure({ compact, className }: AffiliateDisclosureP
     >
       <p className="mb-1 font-semibold text-accent">Affiliate disclosure</p>
       <p>
-        This page contains sponsored links. When you buy through one, The Yoga Sensei earns a
-        commission at no extra cost to you. That does not change what gets recommended — we only
-        link to gear we have actually tested.{' '}
-        <Link to="/affiliate-disclosure" className="underline hover:text-accent">
+        This page contains sponsored links. When you buy through one, The Yoga
+        Sensei earns a commission at no extra cost to you. That does not change
+        what gets recommended — we only link to gear we have actually tested.{' '}
+        <Link
+          to="/affiliate-disclosure"
+          className="underline hover:text-accent"
+        >
           Read the full policy
         </Link>
         .

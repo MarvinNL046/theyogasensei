@@ -26,7 +26,14 @@ export interface ProductCardProps {
   className?: string
 }
 
-function ProductCard({ slug, productName, image, imageAlt, points, className }: ProductCardProps) {
+function ProductCard({
+  slug,
+  productName,
+  image,
+  imageAlt,
+  points,
+  className,
+}: ProductCardProps) {
   return (
     <aside
       aria-label={`${productName} recommendation`}
@@ -49,7 +56,9 @@ function ProductCard({ slug, productName, image, imageAlt, points, className }: 
         </div>
 
         <div className="min-w-0 flex-1">
-          <p className="font-serif text-lg leading-snug text-[color:var(--color-ink)]">{productName}</p>
+          <p className="font-serif text-lg leading-snug text-[color:var(--color-ink)]">
+            {productName}
+          </p>
           <ul className="mt-3 space-y-2">
             {points.map((point) => (
               <li
@@ -68,7 +77,11 @@ function ProductCard({ slug, productName, image, imageAlt, points, className }: 
         </div>
 
         <div className="flex flex-shrink-0 flex-col items-start gap-2 sm:items-end">
-          <AffiliateButton slug={slug} productName={productName} placement="product-card" />
+          <AffiliateButton
+            slug={slug}
+            productName={productName}
+            placement="product-card"
+          />
           <p className="text-[11px] text-[color:var(--color-ink-muted)]">
             Affiliate link — we may earn a commission.
           </p>

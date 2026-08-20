@@ -117,7 +117,11 @@ export const mandukaPro: ProductReview = {
     'Non-toxic, PVC-free',
     'Built to last for years',
   ],
-  cons: ['Requires a break-in period', 'Heavier than most mats', 'Higher price point'],
+  cons: [
+    'Requires a break-in period',
+    'Heavier than most mats',
+    'Higher price point',
+  ],
   priceLabel: 'Check Price',
   affiliateUrl: '#',
   overview: {
@@ -137,7 +141,8 @@ export const mandukaPro: ProductReview = {
       {
         icon: 'leaf',
         label: 'PVC-free',
-        description: 'Made with non-toxic materials that are safe for you and the planet.',
+        description:
+          'Made with non-toxic materials that are safe for you and the planet.',
       },
       {
         icon: 'layers',

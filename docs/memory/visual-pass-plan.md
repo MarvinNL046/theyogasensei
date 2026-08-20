@@ -1,7 +1,7 @@
 ---
 name: visual-pass-plan
-description: "Next-session plan — retrofit existing /guides pages with visuals (Higgs images, diagrams, design-template review)"
-metadata: 
+description: 'Next-session plan — retrofit existing /guides pages with visuals (Higgs images, diagrams, design-template review)'
+metadata:
   node_type: memory
   type: project
   originSessionId: 247b1b40-280e-45f0-8514-9c9d3c6ff24d
@@ -10,6 +10,7 @@ metadata:
 Planned for the session of **2026-05-30**: the launch content is enough (9 mat-cluster pages live), so the focus shifts from writing new pages to **visually upgrading the existing `/guides/*` pages**, which are currently almost all text + a few tables and lack visuals.
 
 Three workstreams Marvin named:
+
 1. **Higgsfield images** — decorative/illustrative imagery beyond the hero (in-body section images, dividers). Reuse the established flow: `gpt_image_2`, no person / no logo for decorative; Aiko Soul (`--soul-id`, see [[aiko-soul-id]]) only where a consistent persona is wanted. Anatomy-clean, on-brand (warm cream/olive/clay, Japanese minimalism).
 2. **Diagrams** — informational diagrams (e.g., mat thickness comparison, material/layer cross-sections, grip-vs-sweat, "anatomy of a mat") that also appear in the existing design templates. These are component/SVG diagrams, not photos.
 3. **Design-template review + retrofit plan** — all content currently lives under `/guides`; review what the 17 design templates intended visually and decide how to retrofit. Source of truth for visuals: `public/images/design-templates` (see [[design-system-decisions]], [[templates-build-progress]]); reusable reference components/routes in `src/design-references/`.
@@ -25,10 +26,12 @@ Starter prompt is in `content-briefs/_tomorrow-visual-pass.md`.
 ## Progress — photo round done (session 2026-05-30)
 
 **Infrastructure built:**
+
 - `src/components/ui/figure.tsx` — `<Figure id alt caption variant priority>` = `Image` + `<figcaption>` in a `<figure>`, `not-prose my-8`, rounded-xl border, muted stone-500 caption. CLS-safe (w/h from Image). Import in MDX: `import { Figure } from '#/components/ui/figure'`.
 - New `inline` image variant (1280×854, 3:2) in `src/lib/images/variants.ts` — the in-body editorial figure size. Decorative Higgs photos are converted to webp at exactly this size via `sharp` and dropped at `public/images/guides/<slug>/<name>.webp` (the `guides/` local fallback path).
 
 **Decorative photos placed (9/10 guides, 11 figures):** all `gpt_image_2`, no person/no logo, warm cream/olive/clay Japanese-minimalist, each with a `prompts/<name>.md` doc.
+
 - pillar `how-to-choose`: materials (opener) + texture (Material §) + **aiko-practice** (Closing note — the one Aiko Soul shot; came back seated meditation not standing, used as persona/consistency beat, byline stays Marvin)
 - `how-to-store`: storage · `how-to-clean`: cleaning-kit
 - roundups (placed before the 2nd H2, NOT before the answer-first Quick-Picks): hot-yoga, eco-materials, cushion-knees, mat-lineup

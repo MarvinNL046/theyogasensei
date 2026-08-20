@@ -6,7 +6,7 @@
 - [Japanese typography system](japanese-typography.md) — canonical 6-phrase verified set + Noto Serif JP + always via `<JapaneseAccent>` (never raw inline); `persistence` (継続は力なり) is the default recurring brand-mark
 - [Homepage build progress](homepage-progress.md) — section-by-section status vs template 1; Hero + Trust bar done, Topic grid next; established workflow (template study → Playwright screenshots → iterate)
 - [SEO + EEAT roadmap](seo-eeat-roadmap.md) — after all 17 design templates are locked, run a dedicated SEO + EEAT pass per page (real MDX rendering, FAQ/TOC/Related components, frontmatter wiring, 80-point checklist validation)
-- [Feedback: always component-based](feedback-component-based.md) — build new pages as data file + small components in src/features/*/, thin route file that assembles; never inline everything in the route
+- [Feedback: always component-based](feedback-component-based.md) — build new pages as data file + small components in src/features/\*/, thin route file that assembles; never inline everything in the route
 - [Workflow: template build](workflow-template-build.md) — section-by-section, ask for hi-res, screenshot+approve before next section, project tokens not hardcoded hex, hero fade baked into image, breadcrumbs inside hero, Marvin's design vocabulary glossary
 - [Templates build progress](templates-build-progress.md) — status of all 17 design templates: 4 first-pass done (homepage, /guides, /guides/$slug, /reviews/best-yoga-mats), per-template finetuning queue, image assets generated, commit references
 - [Self-improvement loop](self-improvement-loop.md) — global SessionEnd hook forks a cheap Claude to auto-update memory/skills after each session (Hermes-style); files in ~/.claude/hooks/
@@ -16,7 +16,7 @@
 - [Affiliate gate launch](affiliate-gate-launch.md) — AFFILIATE_REDIRECTS_ENABLED=false at launch; TODO flip true on Vercel + swap placeholder tag after Associates approval (analytics is coupled to the gate)
 - [Aiko imagery faces](aiko-imagery-faces.md) — visible faces fine, avoid cropped heads; always check anatomy (extra-limb artifacts); decorative use only, byline stays Marvin
 - [Vercel deploy setup](vercel-deploy-setup.md) — CLI authed as marvinnl046; routeTree.gen.ts committed (typecheck needs it); canonical host = www; deploy hook + auto-deploy now work; build-validation gotcha (don't pipe `pnpm build` through `tail` — it masks the exit code)
-- [Production env wiring](production-env-wiring.md) — prod Convex = perceptive-bear-405; Vercel prod VITE_CONVEX_URL + Convex prod RESEND_API_KEY/SITE_URL set; newsletter verified live end-to-end 2026-05-30 (VITE_ = build-time, needs fresh deploy)
+- [Production env wiring](production-env-wiring.md) — prod Convex = perceptive-bear-405; Vercel prod VITE*CONVEX_URL + Convex prod RESEND_API_KEY/SITE_URL set; newsletter verified live end-to-end 2026-05-30 (VITE* = build-time, needs fresh deploy)
 - [Affiliate ratings policy](affiliate-ratings-policy.md) — ratings OK if from Amazon (real, attributed, via PA-API), never fabricated; placeholder stars until PA-API live
 - [Social media plan](social-media-plan.md) — READY TO ACTIVATE 2026-05-31; GSC first → Pinterest → IG; weekly cadence 1 gear page + 4-5 pins; pose pillar blocked on RYT reviewer
 - [Guide layout architecture](guide-layout-architecture.md) — guide-route TOC (build-time scan via vite define, NOT ?raw — that 404'd) + compact route disclosure gated on clusters:affiliate

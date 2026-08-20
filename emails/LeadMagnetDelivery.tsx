@@ -37,7 +37,12 @@ const c = {
 }
 
 const styles = {
-  body: { backgroundColor: c.bg, margin: 0, padding: '24px 12px', fontFamily: SANS },
+  body: {
+    backgroundColor: c.bg,
+    margin: 0,
+    padding: '24px 12px',
+    fontFamily: SANS,
+  },
   card: {
     margin: '0 auto',
     maxWidth: '600px',
@@ -47,7 +52,12 @@ const styles = {
     borderRadius: '16px',
     overflow: 'hidden',
   },
-  hero: { width: '100%', height: 'auto', display: 'block', objectFit: 'cover' as const },
+  hero: {
+    width: '100%',
+    height: 'auto',
+    display: 'block',
+    objectFit: 'cover' as const,
+  },
   pad: { padding: '36px 36px 8px' },
   eyebrow: {
     margin: '0 0 14px',
@@ -66,7 +76,13 @@ const styles = {
     color: c.ink,
     fontFamily: SERIF,
   },
-  p: { margin: '0 0 16px', fontSize: '16px', lineHeight: '1.65', color: c.inkSoft, fontFamily: SANS },
+  p: {
+    margin: '0 0 16px',
+    fontSize: '16px',
+    lineHeight: '1.65',
+    color: c.inkSoft,
+    fontFamily: SANS,
+  },
   label: {
     margin: '28px 0 4px',
     fontSize: '11px',
@@ -85,7 +101,13 @@ const styles = {
     fontFamily: SERIF,
     fontWeight: 600,
   },
-  insideDesc: { margin: '3px 0 0', fontSize: '13px', lineHeight: '1.5', color: c.inkMuted, fontFamily: SANS },
+  insideDesc: {
+    margin: '3px 0 0',
+    fontSize: '13px',
+    lineHeight: '1.5',
+    color: c.inkMuted,
+    fontFamily: SANS,
+  },
   button: {
     backgroundColor: c.clay,
     color: '#fffdf8',
@@ -98,11 +120,33 @@ const styles = {
     borderRadius: '999px',
     fontFamily: SANS,
   },
-  fine: { margin: '0 0 8px', fontSize: '13px', lineHeight: '1.6', color: c.inkMuted, fontFamily: SANS },
-  fineLink: { color: c.clay, textDecoration: 'underline', wordBreak: 'break-all' as const },
+  fine: {
+    margin: '0 0 8px',
+    fontSize: '13px',
+    lineHeight: '1.6',
+    color: c.inkMuted,
+    fontFamily: SANS,
+  },
+  fineLink: {
+    color: c.clay,
+    textDecoration: 'underline',
+    wordBreak: 'break-all' as const,
+  },
   footer: { backgroundColor: c.olive, padding: '28px 36px' },
-  footerText: { margin: '0 0 6px', fontSize: '13px', lineHeight: '1.6', color: c.oliveText, fontFamily: SANS },
-  footerFine: { margin: 0, fontSize: '12px', lineHeight: '1.6', color: c.oliveMuted, fontFamily: SANS },
+  footerText: {
+    margin: '0 0 6px',
+    fontSize: '13px',
+    lineHeight: '1.6',
+    color: c.oliveText,
+    fontFamily: SANS,
+  },
+  footerFine: {
+    margin: 0,
+    fontSize: '12px',
+    lineHeight: '1.6',
+    color: c.oliveMuted,
+    fontFamily: SANS,
+  },
   footerLink: { color: c.oliveText, textDecoration: 'underline' },
 }
 
@@ -167,8 +211,9 @@ export function LeadMagnetDelivery({
               {title}
             </Heading>
             <Text style={styles.p}>
-              Here it is — the calm, no-fluff start I wish I had when I taught my first beginner
-              class. Tap below to open it, then save it to your device so it is always one tap away.
+              Here it is — the calm, no-fluff start I wish I had when I taught
+              my first beginner class. Tap below to open it, then save it to
+              your device so it is always one tap away.
             </Text>
 
             <Section style={{ padding: '8px 0 4px' }}>
@@ -199,7 +244,8 @@ export function LeadMagnetDelivery({
                 </Link>
               </Text>
               <Text style={styles.fine}>
-                Or just hit reply if anything is off — that goes straight to my inbox.
+                Or just hit reply if anything is off — that goes straight to my
+                inbox.
               </Text>
             </Section>
           </Section>
@@ -212,7 +258,8 @@ export function LeadMagnetDelivery({
               <Link href={unsubscribeUrl} style={styles.footerLink}>
                 Unsubscribe
               </Link>{' '}
-              in one click, any time — no questions. We never share your address.
+              in one click, any time — no questions. We never share your
+              address.
               <br />
               hello@theyogasensei.com
             </Text>

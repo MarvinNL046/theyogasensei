@@ -1,7 +1,7 @@
 ---
 name: aiko-imagery-faces
 description: Aiko image preference — visible faces are fine; avoid cropped/cut-off heads. Always verify anatomy (no extra limbs).
-metadata: 
+metadata:
   node_type: memory
   type: feedback
   originSessionId: 247b1b40-280e-45f0-8514-9c9d3c6ff24d
@@ -13,7 +13,7 @@ For Aiko hero/pin imagery, Marvin's stated preference (2026-05-29):
 **Why:** Earlier this session the browser-CC and I leaned toward "face not central /
 decorative" out of E-E-A-T caution. Marvin clarified that's over-cautious for the
 imagery itself: a face being visible is fine. The real E-E-A-T rule still holds —
-don't *caption/tag* the image as a named persona who tested/reviewed (byline stays
+don't _caption/tag_ the image as a named persona who tested/reviewed (byline stays
 Marvin, decorative use only) — but the composition does NOT need to hide or crop the face.
 
 **How to apply:** When generating Aiko images, frame so the head/face is fully in

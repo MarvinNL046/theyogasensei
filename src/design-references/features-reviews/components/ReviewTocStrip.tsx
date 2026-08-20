@@ -13,7 +13,9 @@ const SECTIONS = [
   'FAQs',
 ] as const
 
-const WRAPPED_LABELS: Partial<Record<(typeof SECTIONS)[number], Array<string>>> = {
+const WRAPPED_LABELS: Partial<
+  Record<(typeof SECTIONS)[number], Array<string>>
+> = {
   'Grip & Performance': ['Grip &', 'Performance'],
   'Comfort & Support': ['Comfort &', 'Support'],
   "Who It's For": ["Who It's", 'For'],

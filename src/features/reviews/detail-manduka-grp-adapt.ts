@@ -12,7 +12,7 @@ export const DETAIL: DetailReview = {
   productName: 'Manduka GRP Adapt',
   title: 'Manduka GRP Adapt Review',
   intro:
-    'The GRP Adapt is the mat Manduka built for people who sweat, and by the one independent measurement available it is the grippiest mat in its field. It is also the mat Manduka will not put on its lifetime guarantee, will not let you wash with soap, and steers vigorous practitioners away from. All of that is in the company\'s own writing, and none of it is on the pages currently ranking for this mat.',
+    "The GRP Adapt is the mat Manduka built for people who sweat, and by the one independent measurement available it is the grippiest mat in its field. It is also the mat Manduka will not put on its lifetime guarantee, will not let you wash with soap, and steers vigorous practitioners away from. All of that is in the company's own writing, and none of it is on the pages currently ranking for this mat.",
   byline: {
     author: 'The Yoga Sensei',
     date: 'July 25, 2026',
@@ -26,10 +26,10 @@ export const DETAIL: DetailReview = {
     'Ranked 3rd of 19 mats at 82/100 and given the Top Pick for grip in hot yoga',
     'Grips from the first roll-out — no salt-scrub break-in period, unlike the PRO',
     'Genuinely removes the need for a towel in heated practice, which no closed-cell mat does',
-    'Lighter than the PRO, at a listed 5.8 lb against the PRO\'s reputation for heft',
+    "Lighter than the PRO, at a listed 5.8 lb against the PRO's reputation for heft",
   ],
   cons: [
-    'Not on Manduka\'s lifetime guarantee — the guarantee page names the PRO family exhaustively and no GRP appears',
+    "Not on Manduka's lifetime guarantee — the guarantee page names the PRO family exhaustively and no GRP appears",
     'Manduka concedes open-cell construction wears faster than closed-cell, and publishes no lifespan figure at all',
     'No soap, ever. No disinfectant, ever. No submerging. Manduka says all three in writing',
     'Must be dried fully before rolling, and OutdoorGearLab reports it takes a long time to dry',
@@ -47,11 +47,11 @@ export const DETAIL: DetailReview = {
     },
     {
       title: 'Measured grip, not claimed grip',
-      body: 'OutdoorGearLab\'s Kate Pitts tested 19 mats over two months, pouring a litre of water on each to score wet grip specifically. The GRP Adapt 2.0 took dry grip 9.5 and wet grip 8.5. That methodology matters here more than usual, because sweat is the mat\'s entire pitch.',
+      body: "OutdoorGearLab's Kate Pitts tested 19 mats over two months, pouring a litre of water on each to score wet grip specifically. The GRP Adapt 2.0 took dry grip 9.5 and wet grip 8.5. That methodology matters here more than usual, because sweat is the mat's entire pitch.",
     },
     {
       title: 'Four current variants, and they differ by more than thickness',
-      body: 'Adapt 2.0 at 5mm, Adapt 1.0 at 5mm, Adapt Lite 2.1 at 4mm, Adapt Travel at 1.5mm. The Lite is not simply a thinner Adapt: it is 24 inches wide against the 5mm mat\'s 26. Anyone cross-shopping on thickness is quietly changing width too.',
+      body: "Adapt 2.0 at 5mm, Adapt 1.0 at 5mm, Adapt Lite 2.1 at 4mm, Adapt Travel at 1.5mm. The Lite is not simply a thinner Adapt: it is 24 inches wide against the 5mm mat's 26. Anyone cross-shopping on thickness is quietly changing width too.",
     },
   ],
   sections: [
@@ -85,7 +85,7 @@ export const DETAIL: DetailReview = {
     {
       id: 'warranty',
       title: 'The lifetime guarantee everyone assumes it has',
-      body: 'Manduka\'s reputation for standing behind its mats is a big part of why people buy the brand. That reputation does not extend to this mat, and the way it is presented makes the confusion very easy.\n\nManduka\'s guarantee page names its covered products exhaustively: the PRO, PROlite, PRO Travel, PRO Squared, PRO Long & Wide and PROlite Long & Wide. No GRP mat appears anywhere on the list. Yet the footer of every GRP product page carries a "Lifetime Guarantee" link, which is how a buyer arriving from the PRO\'s reputation ends up assuming they are covered.\n\nMaura Blackstone, a physical therapist with a 500-hour teaching qualification, reached the same conclusion in an unsponsored review and put the warranty gap in her cons list. So this is not a technicality I have invented — an independent clinician reviewing the mat hands-on found it too.\n\nFor context on what is being given up: Manduka defines the PRO guarantee as covering approximately ten years of regular use, including wear to the top surface from regular use. The GRP has no published lifespan figure of any kind. Not on the four product pages, not in the care guide, nowhere.',
+      body: "Manduka's reputation for standing behind its mats is a big part of why people buy the brand. That reputation does not extend to this mat, and the way it is presented makes the confusion very easy.\n\nManduka's guarantee page names its covered products exhaustively: the PRO, PROlite, PRO Travel, PRO Squared, PRO Long & Wide and PROlite Long & Wide. No GRP mat appears anywhere on the list. Yet the footer of every GRP product page carries a \"Lifetime Guarantee\" link, which is how a buyer arriving from the PRO's reputation ends up assuming they are covered.\n\nMaura Blackstone, a physical therapist with a 500-hour teaching qualification, reached the same conclusion in an unsponsored review and put the warranty gap in her cons list. So this is not a technicality I have invented — an independent clinician reviewing the mat hands-on found it too.\n\nFor context on what is being given up: Manduka defines the PRO guarantee as covering approximately ten years of regular use, including wear to the top surface from regular use. The GRP has no published lifespan figure of any kind. Not on the four product pages, not in the care guide, nowhere.",
     },
     {
       id: 'variants',
@@ -101,7 +101,7 @@ export const DETAIL: DetailReview = {
     {
       id: 'care',
       title: 'Care — the real ownership cost',
-      body: 'This is where the mat asks something of you, and where the ranking pages are most out of date.\n\nManduka\'s current rules, from its own pages: wipe with Manduka\'s Mat Wash and a damp cloth after practice. Never use any type of soap — the company says it compromises performance and integrity. Never soak or submerge. Never use harsh chemicals. Allow the mat to dry fully before rolling, roll it with the top surface facing in, and store it out of direct sunlight.\n\nAnd one rule with a hygiene consequence people do not expect: "Mats designed to absorb moisture (like the GRP Series) should never be treated with disinfectant as the liquid will be absorbed into the mat and then cannot be thoroughly removed." If you studio-hop, share a mat, or rely on a studio\'s disinfectant spray, this is the wrong mat.\n\nThere is a live conflict here worth knowing about rather than papering over. OutdoorGearLab recommends a deep clean once or twice a month with a diluted mild dish soap mixture. Manduka says do not use any type of soap. Wirecutter, separately, still tells readers Manduka suggests scrubbing with salt and water to break the mat in — advice Manduka\'s current pages do not carry for this line. I would follow the manufacturer on a mat with no warranty behind it, but you should know the sources disagree.\n\nOutdoorGearLab scored Care and Cleaning 7.0, the mat\'s lowest score of any category, and reports it takes a long time to dry fully.',
+      body: "This is where the mat asks something of you, and where the ranking pages are most out of date.\n\nManduka's current rules, from its own pages: wipe with Manduka's Mat Wash and a damp cloth after practice. Never use any type of soap — the company says it compromises performance and integrity. Never soak or submerge. Never use harsh chemicals. Allow the mat to dry fully before rolling, roll it with the top surface facing in, and store it out of direct sunlight.\n\nAnd one rule with a hygiene consequence people do not expect: \"Mats designed to absorb moisture (like the GRP Series) should never be treated with disinfectant as the liquid will be absorbed into the mat and then cannot be thoroughly removed.\" If you studio-hop, share a mat, or rely on a studio's disinfectant spray, this is the wrong mat.\n\nThere is a live conflict here worth knowing about rather than papering over. OutdoorGearLab recommends a deep clean once or twice a month with a diluted mild dish soap mixture. Manduka says do not use any type of soap. Wirecutter, separately, still tells readers Manduka suggests scrubbing with salt and water to break the mat in — advice Manduka's current pages do not carry for this line. I would follow the manufacturer on a mat with no warranty behind it, but you should know the sources disagree.\n\nOutdoorGearLab scored Care and Cleaning 7.0, the mat's lowest score of any category, and reports it takes a long time to dry fully.",
       cta: {
         slug: 'manduka-mat-wash-lavender',
         productName: 'Manduka Mat Wash',
@@ -115,14 +115,38 @@ export const DETAIL: DetailReview = {
     },
   ],
   specs: [
-    { label: 'Thickness', value: '5mm (Adapt 2.0 and 1.0) · 4mm Lite 2.1 · 1.5mm Travel' },
-    { label: 'Dimensions', value: '71" × 26" standard, 79" × 26" long — but the Lite is 24" wide' },
-    { label: 'Weight', value: '5.8 lb per Manduka; Amazon says 5.5 lb and OutdoorGearLab measured 5.5 lb' },
-    { label: 'Construction', value: 'Satin Grip open-cell polyurethane top, foam inner, Versa-Grip base' },
+    {
+      label: 'Thickness',
+      value: '5mm (Adapt 2.0 and 1.0) · 4mm Lite 2.1 · 1.5mm Travel',
+    },
+    {
+      label: 'Dimensions',
+      value: '71" × 26" standard, 79" × 26" long — but the Lite is 24" wide',
+    },
+    {
+      label: 'Weight',
+      value:
+        '5.8 lb per Manduka; Amazon says 5.5 lb and OutdoorGearLab measured 5.5 lb',
+    },
+    {
+      label: 'Construction',
+      value:
+        'Satin Grip open-cell polyurethane top, foam inner, Versa-Grip base',
+    },
     { label: 'Material', value: 'Polyurethane / natural rubber / latex' },
-    { label: 'Latex', value: 'Yes — Manduka advises against it for latex sensitivities' },
-    { label: 'Warranty', value: 'None. The lifetime guarantee covers the PRO family only' },
-    { label: 'Care', value: 'Mat wash and damp cloth only. No soap, no disinfectant, no submerging' },
+    {
+      label: 'Latex',
+      value: 'Yes — Manduka advises against it for latex sensitivities',
+    },
+    {
+      label: 'Warranty',
+      value: 'None. The lifetime guarantee covers the PRO family only',
+    },
+    {
+      label: 'Care',
+      value:
+        'Mat wash and damp cloth only. No soap, no disinfectant, no submerging',
+    },
     { label: 'Made in', value: 'Spain' },
   ],
   whoFor: [
@@ -133,7 +157,7 @@ export const DETAIL: DetailReview = {
     'Anyone who accepts a mat with a service life rather than a decade-long guarantee',
   ],
   notIdealFor:
-    'Skip it if you have a latex sensitivity, want Manduka\'s lifetime guarantee, practise Ashtanga or anything pivot-heavy, rely on studio disinfectant or share a mat, cannot hang it to dry after every session, or do not sweat much — the grip is the only thing you are buying, and the maintenance rules apply either way.',
+    "Skip it if you have a latex sensitivity, want Manduka's lifetime guarantee, practise Ashtanga or anything pivot-heavy, rely on studio disinfectant or share a mat, cannot hang it to dry after every session, or do not sweat much — the grip is the only thing you are buying, and the maintenance rules apply either way.",
   whoForImage: '/images/reviews/grp.webp',
   atAGlance: [
     { label: 'Best for', value: 'Hot yoga & heavy sweat' },

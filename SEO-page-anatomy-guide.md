@@ -189,14 +189,14 @@ One H1. Eight to twelve H2s. H3s only where the H2 has genuine nested structure.
 ```mdx
 ---
 type: pillar
-title: "Yoga for Beginners: The Complete Guide to Starting Your Practice in 2026"
+title: 'Yoga for Beginners: The Complete Guide to Starting Your Practice in 2026'
 slug: yoga-for-beginners
 metaDescription: "The complete beginner's guide to yoga in 2026. Choose your style, gear up, learn 10 foundational poses, and build a daily practice — written by an RYT-500 teacher."
 schemaType: Article
-pillar: yoga-for-beginners            # self-reference; cluster articles point here
-clusters: []                          # pillars don't belong to a cluster
+pillar: yoga-for-beginners # self-reference; cluster articles point here
+clusters: [] # pillars don't belong to a cluster
 tags: [yoga, beginner, guide, foundation]
-related:                              # cluster slugs this pillar links to
+related: # cluster slugs this pillar links to
   - yoga-styles-explained
   - best-yoga-mats-for-beginners
   - sun-salutation
@@ -204,7 +204,7 @@ related:                              # cluster slugs this pillar links to
   - yoga-mistakes-beginners-make
   - yoga-breathing-101
   - home-yoga-practice
-author: marvin                        # resolves to /content/authors/marvin.mdx
+author: marvin # resolves to /content/authors/marvin.mdx
 reviewedBy: marvin
 publishedAt: 2026-01-08
 lastReviewedAt: 2026-05-12
@@ -213,29 +213,35 @@ heroImage: pillars/yoga-for-beginners-hero
 pin:
   primaryImage: pillars/yoga-for-beginners-pin-a
   variants:
-    - { image: pillars/yoga-for-beginners-pin-b, title: "Yoga for Beginners — the complete 2026 guide" }
-    - { image: pillars/yoga-for-beginners-pin-c, title: "Start yoga in 15 minutes a day (full guide)" }
+    - {
+        image: pillars/yoga-for-beginners-pin-b,
+        title: 'Yoga for Beginners — the complete 2026 guide',
+      }
+    - {
+        image: pillars/yoga-for-beginners-pin-c,
+        title: 'Start yoga in 15 minutes a day (full guide)',
+      }
   description: "The complete beginner's guide to yoga. Choose your style, get the right mat, learn 10 foundational poses, and build a daily habit. #yoga #yogaforbeginners"
 leadMagnet: 30-day-beginner-path
 faq:
-  - q: "How often should a beginner practice yoga?"
-    a: "Aim for 15–20 minutes daily rather than long weekly sessions. Consistency beats duration for habit formation and progress."
-  - q: "Do I need to be flexible to start yoga?"
-    a: "No — flexibility is a result of yoga, not a prerequisite. Beginners with limited range still benefit from day one."
+  - q: 'How often should a beginner practice yoga?'
+    a: 'Aim for 15–20 minutes daily rather than long weekly sessions. Consistency beats duration for habit formation and progress.'
+  - q: 'Do I need to be flexible to start yoga?'
+    a: 'No — flexibility is a result of yoga, not a prerequisite. Beginners with limited range still benefit from day one.'
   # ... 8–12 entries total
 citations:
-  - title: "Yoga, mindfulness-based stress reduction and stress-related physiological measures: A meta-analysis"
-    authors: "Pascoe MC, Thompson DR, Ski CF"
+  - title: 'Yoga, mindfulness-based stress reduction and stress-related physiological measures: A meta-analysis'
+    authors: 'Pascoe MC, Thompson DR, Ski CF'
     year: 2017
-    url: "https://pubmed.ncbi.nlm.nih.gov/29220801/"
+    url: 'https://pubmed.ncbi.nlm.nih.gov/29220801/'
 ---
 
 <TLDR>
-Yoga for beginners is best started with a gentle style like Hatha or Yin,
-a basic 4mm mat, and 15 minutes a day focused on five foundational poses:
-Mountain, Downward Dog, Child's Pose, Cobra, and Corpse Pose. This guide
-walks you through choosing a style, the gear that actually matters, the
-poses to learn first, and how to build a daily practice in 30 days.
+  Yoga for beginners is best started with a gentle style like Hatha or Yin, a
+  basic 4mm mat, and 15 minutes a day focused on five foundational poses:
+  Mountain, Downward Dog, Child's Pose, Cobra, and Corpse Pose. This guide walks
+  you through choosing a style, the gear that actually matters, the poses to
+  learn first, and how to build a daily practice in 30 days.
 </TLDR>
 
 <TableOfContents />
@@ -245,8 +251,12 @@ poses to learn first, and how to build a daily practice in 30 days.
 Yoga is a 5,000-year-old practice that…
 
 [Continues — full body of pillar with H2/H3 hierarchy, embedded
- <ProductCallout slug="manduka-prolite" /> components, <PoseCard slug="sun-salutation" />,
- <RelatedArticles tag="beginner" />, and <NewsletterCapture leadMagnet="30-day-beginner-path" />.]
+
+<ProductCallout slug="manduka-prolite" /> components,
+<PoseCard slug="sun-salutation" />,
+<RelatedArticles tag="beginner" />, and
+<NewsletterCapture leadMagnet="30-day-beginner-path" />
+.]
 ```
 
 ## Schema.org JSON-LD
@@ -272,12 +282,19 @@ A pillar page emits three schemas, side by side:
   "publisher": {
     "@type": "Organization",
     "name": "The Yoga Sensei",
-    "logo": { "@type": "ImageObject", "url": "https://theyogasensei.com/logo.png" }
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://theyogasensei.com/logo.png"
+    }
   },
   "mainEntityOfPage": "https://theyogasensei.com/guides/yoga-for-beginners",
   "wordCount": 4250,
   "citation": [
-    { "@type": "ScholarlyArticle", "name": "Pascoe et al. 2017", "url": "https://pubmed.ncbi.nlm.nih.gov/29220801/" }
+    {
+      "@type": "ScholarlyArticle",
+      "name": "Pascoe et al. 2017",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29220801/"
+    }
   ]
 }
 ```
@@ -287,8 +304,18 @@ A pillar page emits three schemas, side by side:
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://theyogasensei.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://theyogasensei.com/guides/" },
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://theyogasensei.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://theyogasensei.com/guides/"
+    },
     { "@type": "ListItem", "position": 3, "name": "Yoga for Beginners" }
   ]
 }
@@ -302,7 +329,10 @@ A pillar page emits three schemas, side by side:
     {
       "@type": "Question",
       "name": "How often should a beginner practice yoga?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Aim for 15–20 minutes daily..." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Aim for 15–20 minutes daily..."
+      }
     }
   ]
 }
@@ -440,10 +470,10 @@ The product-named H2s (`1. Manduka PROlite`) are the secret weapon — they targ
 ```mdx
 ---
 type: subpillar
-title: "The 7 Best Yoga Mats for Beginners in 2026 (Tested + Reviewed)"
+title: 'The 7 Best Yoga Mats for Beginners in 2026 (Tested + Reviewed)'
 slug: best-yoga-mats-for-beginners
-metaDescription: "We tested 22 beginner yoga mats. Here are the 7 best — Manduka PROlite leads, Liforme tops eco, Gaiam wins budget. Side-by-side comparison + buying guide."
-schemaType: Article + ItemList         # both — ItemList for the listicle, Article for the body
+metaDescription: 'We tested 22 beginner yoga mats. Here are the 7 best — Manduka PROlite leads, Liforme tops eco, Gaiam wins budget. Side-by-side comparison + buying guide.'
+schemaType: Article + ItemList # both — ItemList for the listicle, Article for the body
 pillar: yoga-for-beginners
 clusters: [gear, mats]
 tags: [yoga-mat, gear, beginner, buying-guide, review]
@@ -461,24 +491,24 @@ estimatedReadingTime: 14
 heroImage: subpillars/best-yoga-mats-flat-lay
 pin:
   primaryImage: subpillars/best-yoga-mats-pin-a
-  description: "Tested 22 beginner yoga mats — these 7 are worth the money. Full review + buying guide. #yoga #yogamat #yogaforbeginners"
-products:                              # drives the ItemList schema
+  description: 'Tested 22 beginner yoga mats — these 7 are worth the money. Full review + buying guide. #yoga #yogamat #yogaforbeginners'
+products: # drives the ItemList schema
   - slug: manduka-prolite
     rank: 1
     rating: 4.8
-    superlative: "Best Overall"
+    superlative: 'Best Overall'
     price: 99
     currency: USD
   - slug: liforme-travel-mat
     rank: 2
     rating: 4.7
-    superlative: "Best Eco"
+    superlative: 'Best Eco'
     price: 150
     currency: USD
   # ...
 faq:
-  - q: "What thickness yoga mat is best for beginners?"
-    a: "4–6mm hits the sweet spot — enough cushioning for joints, thin enough for balance poses."
+  - q: 'What thickness yoga mat is best for beginners?'
+    a: '4–6mm hits the sweet spot — enough cushioning for joints, thin enough for balance poses.'
   # ...
 ---
 
@@ -528,7 +558,11 @@ We bought all 22 mats with our own money — no PR samples — and tested each a
         "brand": { "@type": "Brand", "name": "Manduka" },
         "review": {
           "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "4.8", "bestRating": "5" },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "4.8",
+            "bestRating": "5"
+          },
           "author": { "@type": "Person", "name": "Marvin [Lastname]" }
         },
         "offers": {
@@ -685,11 +719,19 @@ The step-by-step H3s under "How to Do" are the structured-data goldmine — they
 type: cluster
 title: "Sun Salutation: How to Do It Step-by-Step (Beginner's Guide with Photos)"
 slug: sun-salutation
-metaDescription: "Step-by-step Sun Salutation guide for beginners. All 12 poses with photos, breath cues, common mistakes, and variations — written by an RYT-500 teacher."
-schemaType: HowTo                      # primary type for step-by-step content
+metaDescription: 'Step-by-step Sun Salutation guide for beginners. All 12 poses with photos, breath cues, common mistakes, and variations — written by an RYT-500 teacher.'
+schemaType: HowTo # primary type for step-by-step content
 pillar: yoga-for-beginners
 clusters: [poses, beginner]
-tags: [sun-salutation, surya-namaskar, vinyasa, morning-routine, beginner, foundational]
+tags:
+  [
+    sun-salutation,
+    surya-namaskar,
+    vinyasa,
+    morning-routine,
+    beginner,
+    foundational,
+  ]
 related:
   - downward-facing-dog
   - mountain-pose
@@ -705,30 +747,42 @@ heroImage: poses/sun-salutation-hero
 pin:
   primaryImage: poses/sun-salutation-pin-a
   variants:
-    - { image: poses/sun-salutation-pin-b, title: "Sun Salutation step-by-step (free printable)" }
-    - { image: poses/sun-salutation-pin-c, title: "The 12 poses of Sun Salutation — beginner's guide" }
-  description: "Step-by-step Sun Salutation with photos. Perfect for morning practice. Free printable cheat sheet inside. #yoga #sunsalutation #yogaforbeginners"
+    - {
+        image: poses/sun-salutation-pin-b,
+        title: 'Sun Salutation step-by-step (free printable)',
+      }
+    - {
+        image: poses/sun-salutation-pin-c,
+        title: "The 12 poses of Sun Salutation — beginner's guide",
+      }
+  description: 'Step-by-step Sun Salutation with photos. Perfect for morning practice. Free printable cheat sheet inside. #yoga #sunsalutation #yogaforbeginners'
 howTo:
-  totalTime: "PT5M"
-  estimatedCost: { currency: "USD", value: 0 }
-  supply: ["Yoga mat", "Comfortable clothing"]
+  totalTime: 'PT5M'
+  estimatedCost: { currency: 'USD', value: 0 }
+  supply: ['Yoga mat', 'Comfortable clothing']
   tool: []
   step:
-    - name: "Mountain Pose (Tadasana)"
-      text: "Stand at the front of your mat with feet hip-width apart. Press evenly through all four corners of each foot. Inhale to lengthen the spine."
+    - name: 'Mountain Pose (Tadasana)'
+      text: 'Stand at the front of your mat with feet hip-width apart. Press evenly through all four corners of each foot. Inhale to lengthen the spine.'
       image: poses/sun-salutation-step-1
-    - name: "Upward Salute (Urdhva Hastasana)"
-      text: "Inhale deeply as you sweep your arms out to the sides and overhead, palms touching. Gentle back-bend optional."
+    - name: 'Upward Salute (Urdhva Hastasana)'
+      text: 'Inhale deeply as you sweep your arms out to the sides and overhead, palms touching. Gentle back-bend optional.'
       image: poses/sun-salutation-step-2
     # ... all 12 steps
 quickFacts:
-  sanskrit: "Surya Namaskar"
-  difficulty: "Beginner"
-  duration: "3–5 minutes per round"
-  benefits: ["Full-body warm-up", "Improves flexibility", "Builds focus", "Cardiovascular activation"]
+  sanskrit: 'Surya Namaskar'
+  difficulty: 'Beginner'
+  duration: '3–5 minutes per round'
+  benefits:
+    [
+      'Full-body warm-up',
+      'Improves flexibility',
+      'Builds focus',
+      'Cardiovascular activation',
+    ]
 faq:
-  - q: "How many sun salutations should a beginner do?"
-    a: "Start with 3–5 rounds per session. Build to 10–12 over a few weeks. Listen to your body."
+  - q: 'How many sun salutations should a beginner do?'
+    a: 'Start with 3–5 rounds per session. Build to 10–12 over a few weeks. Listen to your body.'
 ---
 
 <PillarBackLink to="yoga-for-beginners">
@@ -737,7 +791,7 @@ faq:
 
 <QuickFactsCard {...quickFacts} />
 
-Sun Salutation — *Surya Namaskar* in Sanskrit — is a flowing sequence of
+Sun Salutation — _Surya Namaskar_ in Sanskrit — is a flowing sequence of
 12 poses traditionally practiced at sunrise to warm up the body and quiet
 the mind…
 
@@ -747,7 +801,7 @@ the mind…
 
 ## How to Do Sun Salutation (Step-by-Step)
 
-<HowToSteps steps={howTo.step} />     {/* renders H3 per step from frontmatter */}
+<HowToSteps steps={howTo.step} /> {/* renders H3 per step from frontmatter */}
 
 [...continues...]
 
@@ -779,7 +833,11 @@ the mind…
       "image": "https://theyogasensei.com/images/poses/sun-salutation-step-1.jpg"
     }
   ],
-  "author": { "@type": "Person", "name": "Marvin [Lastname]", "url": "https://theyogasensei.com/authors/marvin" }
+  "author": {
+    "@type": "Person",
+    "name": "Marvin [Lastname]",
+    "url": "https://theyogasensei.com/authors/marvin"
+  }
 }
 ```
 
@@ -832,19 +890,19 @@ the mind…
 
 ## Internal-linking density per page
 
-| Tier | Outbound internal links | Inbound from other pages |
-|---|---|---|
-| Pillar | 15–25 (down to all clusters in the topic + 2–3 to sibling pillars) | Highest — every cluster links here |
-| Subpillar | 8–15 (up to pillar, down to product reviews, sideways to siblings) | High — 6–10 clusters link in |
-| Cluster | 5–8 (up to pillar, 1–2 sideways to siblings, 1–2 to subpillar gear) | Lowest — pillar + 2–3 siblings only |
+| Tier      | Outbound internal links                                             | Inbound from other pages            |
+| --------- | ------------------------------------------------------------------- | ----------------------------------- |
+| Pillar    | 15–25 (down to all clusters in the topic + 2–3 to sibling pillars)  | Highest — every cluster links here  |
+| Subpillar | 8–15 (up to pillar, down to product reviews, sideways to siblings)  | High — 6–10 clusters link in        |
+| Cluster   | 5–8 (up to pillar, 1–2 sideways to siblings, 1–2 to subpillar gear) | Lowest — pillar + 2–3 siblings only |
 
 ## Heading-density target per page
 
-| Tier | H1 | H2 | H3 | H4+ |
-|---|---|---|---|---|
-| Pillar | 1 | 8–12 | 4–8 | 0 |
-| Subpillar | 1 | 8–10 (incl. one per product) | 15–25 (per-product sub-sections) | 0 |
-| Cluster | 1 | 6–8 | 8–15 (step-by-step) | 0 |
+| Tier      | H1  | H2                           | H3                               | H4+ |
+| --------- | --- | ---------------------------- | -------------------------------- | --- |
+| Pillar    | 1   | 8–12                         | 4–8                              | 0   |
+| Subpillar | 1   | 8–10 (incl. one per product) | 15–25 (per-product sub-sections) | 0   |
+| Cluster   | 1   | 6–8                          | 8–15 (step-by-step)              | 0   |
 
 H4+ is a smell. If you reach for H4, split into a new article and link to it.
 
@@ -860,24 +918,26 @@ Content wins rankings; technical SEO decides whether Google can read, trust, and
 <html lang="en">
   <head>{/* meta tags here */}</head>
   <body>
-    <a href="#main" className="sr-only focus:not-sr-only">Skip to content</a>
+    <a href="#main" className="sr-only focus:not-sr-only">
+      Skip to content
+    </a>
     <header role="banner">
       <nav aria-label="Primary">…</nav>
     </header>
     <main id="main" role="main">
-      <article>                            {/* the page content */}
+      <article>
+        {' '}
+        {/* the page content */}
         <header>
           <h1>…</h1>
           <p className="byline">By [Author] · …</p>
         </header>
         <nav aria-label="Table of contents">…</nav>
         <section aria-labelledby="what-is-yoga">
-          <h2 id="what-is-yoga">What Is Yoga?</h2>
-          …
+          <h2 id="what-is-yoga">What Is Yoga?</h2>…
         </section>
         <section aria-labelledby="benefits">
-          <h2 id="benefits">Benefits</h2>
-          …
+          <h2 id="benefits">Benefits</h2>…
         </section>
         <aside aria-label="Related articles">…</aside>
       </article>
@@ -888,6 +948,7 @@ Content wins rankings; technical SEO decides whether Google can read, trust, and
 ```
 
 **Rules**
+
 - One `<main>` per page. Layout shells use `<header>`/`<footer>`/`<nav>` — they do not wrap the article in a generic `<div>`.
 - `<article>` wraps the page's primary content (the pillar, subpillar, or cluster).
 - Each `<h2>` lives inside a `<section>` with `aria-labelledby` pointing to the heading's `id`.
@@ -900,64 +961,69 @@ Content wins rankings; technical SEO decides whether Google can read, trust, and
 <head>
   <meta charSet="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <title>{title} | The Yoga Sensei</title>
   <meta name="description" content={metaDescription} />
-
   <link rel="canonical" href={`https://theyogasensei.com${pathname}`} />
-
   {/* Robots — explicit is better than implicit */}
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  />
   {/* Open Graph */}
   <meta property="og:type" content="article" />
   <meta property="og:title" content={ogTitle ?? title} />
   <meta property="og:description" content={ogDescription ?? metaDescription} />
-  <meta property="og:image" content={pinImageUrl} />        {/* 1000×1500 for Pinterest */}
+  <meta property="og:image" content={pinImageUrl} />{' '}
+  {/* 1000×1500 for Pinterest */}
   <meta property="og:image:width" content="1000" />
   <meta property="og:image:height" content="1500" />
   <meta property="og:url" content={canonical} />
   <meta property="og:site_name" content="The Yoga Sensei" />
   <meta property="og:locale" content="en_US" />
-
   {/* Twitter */}
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={ogTitle ?? title} />
   <meta name="twitter:description" content={ogDescription ?? metaDescription} />
-  <meta name="twitter:image" content={ogImageUrl} />        {/* 1200×630 */}
-
+  <meta name="twitter:image" content={ogImageUrl} /> {/* 1200×630 */}
   {/* Pinterest domain verification — one-time */}
   <meta name="p:domain_verify" content="…" />
-
   {/* Article-specific */}
   <meta property="article:published_time" content={publishedAt} />
   <meta property="article:modified_time" content={lastReviewedAt} />
-  <meta property="article:author" content={`https://theyogasensei.com/authors/${author.slug}`} />
+  <meta
+    property="article:author"
+    content={`https://theyogasensei.com/authors/${author.slug}`}
+  />
   <meta property="article:section" content={cluster} />
-  {tags.map(t => <meta key={t} property="article:tag" content={t} />)}
-
+  {tags.map((t) => (
+    <meta key={t} property="article:tag" content={t} />
+  ))}
   {/* Hreflang — placeholder for i18n later */}
   <link rel="alternate" hrefLang="en" href={canonical} />
   <link rel="alternate" hrefLang="x-default" href={canonical} />
-
   {/* Performance hints */}
-  <link rel="preconnect" href="https://imagedelivery.net" />            {/* Cloudflare Images */}
+  <link rel="preconnect" href="https://imagedelivery.net" />{' '}
+  {/* Cloudflare Images */}
   <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="" />
   <link rel="preload" as="image" href={heroImageUrl} fetchPriority="high" />
-
   {/* RSS */}
-  <link rel="alternate" type="application/rss+xml" title="The Yoga Sensei RSS" href="/rss.xml" />
-
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="The Yoga Sensei RSS"
+    href="/rss.xml"
+  />
   {/* Favicons + manifest */}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-
   {/* Theme color */}
   <meta name="theme-color" content="#ffffff" />
-
   {/* JSON-LD schema (Article / HowTo / ItemList / BreadcrumbList / FAQPage / Person) */}
-  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+  />
 </head>
 ```
 
@@ -1003,13 +1069,14 @@ Sitemap entries include `<lastmod>` (drives `lastReviewedAt`), `<changefreq>`, a
 
 ## Performance — the Core Web Vitals trifecta
 
-| Vital | Target | How |
-|---|---|---|
-| LCP (Largest Contentful Paint) | < 2.5s | Hero image preloaded with `fetchPriority="high"` and Cloudflare Images responsive variant. No client-side hero swapping. |
+| Vital                           | Target  | How                                                                                                                                                        |
+| ------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| LCP (Largest Contentful Paint)  | < 2.5s  | Hero image preloaded with `fetchPriority="high"` and Cloudflare Images responsive variant. No client-side hero swapping.                                   |
 | INP (Interaction to Next Paint) | < 200ms | Ship minimal JS; lazy-load anything non-critical (newsletter form, share buttons, comments). TanStack Start's SSG output keeps JS budget tight by default. |
-| CLS (Cumulative Layout Shift) | < 0.1 | Every `<img>` has `width` and `height`. Fonts use `font-display: swap` with size-adjust to prevent shift. No late-loading content above the fold. |
+| CLS (Cumulative Layout Shift)   | < 0.1   | Every `<img>` has `width` and `height`. Fonts use `font-display: swap` with size-adjust to prevent shift. No late-loading content above the fold.          |
 
 **Additional performance rules**
+
 - `<img loading="lazy">` on everything below the fold; `loading="eager" fetchpriority="high"` on the hero.
 - Cloudflare Images serves WebP/AVIF automatically — never ship raw JPEG.
 - Self-hosted variable font (Inter or Outfit) via `next/font`-equivalent in TanStack Start — zero external font requests.
@@ -1090,39 +1157,51 @@ You have **5 seconds** to get them past step 4. After that, you have ~30 seconds
 ## The 12 scannability rules
 
 ### 1. TL;DR at the top
+
 2–4 sentence summary that answers the search query immediately. Doesn't replace the article — it pre-pays the reader's attention so they keep scrolling.
 
 ### 2. Short paragraphs
+
 **Maximum 3–4 lines on desktop, 4–5 on mobile.** A wall of text triggers bounce. If a paragraph is longer than 60 words, split it.
 
 ### 3. Subheadings every 200–300 words
+
 The reader's eye should never see more than ~250 words of unbroken prose before landing on an H2 or H3. Subheadings are the rest stops on a long road.
 
 ### 4. Bold the load-bearing phrases
+
 **Not every other word** — that's noise. Bold the single phrase per paragraph that captures the takeaway. A skimmer reading only the bolded text should still get the gist.
 
 ### 5. Bullet lists where parallelism exists
+
 Lists work when items share structure ("5 mistakes," "3 benefits," "the steps"). They fail when used to disguise weak prose. Lists with single-word items look thin to Google's helpful-content classifier — flesh items out to ≥ 8 words each.
 
 ### 6. Numbered steps where order matters
+
 Sun Salutation is a 12-step sequence — never bullets. Use `<ol>`, not `<ul>`, and never break the visual numbering. This also maps to `HowTo` schema.
 
 ### 7. Visual chunks: image every 400–600 words
+
 Yoga is a visual subject. A page without imagery feels academic. Insert a photo, diagram, or pose illustration every 2–3 H2 sections.
 
 ### 8. Callout boxes for high-value insights
+
 Pull-quote, "Pro tip," "Beginner warning," "Author's note" — each one breaks rhythm and gives the eye a place to land. Tailwind + Shadcn `<Callout>` component with an icon + 1–3 sentences.
 
 ### 9. Comparison tables for any "X vs Y"
+
 Tables earn featured snippets and they're inherently scannable. Use for: gear comparisons, style differences, technique variations, before/after metrics.
 
 ### 10. Anchored Table of Contents at top + sticky on scroll
+
 The TOC is the skimmer's table of contents — they read it like an index. Sticky on scroll keeps it accessible without forcing a scroll-up. Mark the active section as the user scrolls (TanStack Query + IntersectionObserver).
 
 ### 11. Estimated reading time + last-reviewed date
+
 "18 min read" sets expectations and signals depth. "Last reviewed May 2026" signals trust. Both belong next to the byline, not in the footer.
 
 ### 12. White space is structure
+
 Generous spacing between sections, between paragraphs, around callouts. Tailwind `space-y-6` on the article body, `mt-12` before each H2, `my-8` around images. Cramped pages signal low-quality content even when the writing is excellent.
 
 ## Typography spec — the one to standardize
@@ -1130,17 +1209,41 @@ Generous spacing between sections, between paragraphs, around callouts. Tailwind
 ```css
 /* In your tailwind.config or globals.css */
 .prose {
-  font-family: "Inter", system-ui, sans-serif;
-  font-size: 1.125rem;          /* 18px body */
-  line-height: 1.7;             /* Generous leading */
-  max-width: 68ch;              /* Optimal reading width — never wider */
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.125rem; /* 18px body */
+  line-height: 1.7; /* Generous leading */
+  max-width: 68ch; /* Optimal reading width — never wider */
 }
-.prose h1 { font-size: 2.5rem; line-height: 1.1; margin-bottom: 1.5rem; }
-.prose h2 { font-size: 1.75rem; line-height: 1.2; margin-top: 3rem; margin-bottom: 1rem; }
-.prose h3 { font-size: 1.25rem; line-height: 1.3; margin-top: 2rem; margin-bottom: 0.75rem; }
-.prose p  { margin-bottom: 1.25rem; }
-.prose ul, .prose ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
-.prose blockquote { border-left: 4px solid theme(colors.amber.500); padding-left: 1.5rem; font-style: italic; }
+.prose h1 {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+.prose h2 {
+  font-size: 1.75rem;
+  line-height: 1.2;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+.prose h3 {
+  font-size: 1.25rem;
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.prose p {
+  margin-bottom: 1.25rem;
+}
+.prose ul,
+.prose ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+.prose blockquote {
+  border-left: 4px solid theme(colors.amber.500);
+  padding-left: 1.5rem;
+  font-style: italic;
+}
 ```
 
 Use `@tailwindcss/typography` and customize via the `prose` config. Don't reinvent typography per page.

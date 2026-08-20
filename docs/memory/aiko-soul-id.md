@@ -1,7 +1,7 @@
 ---
 name: aiko-soul-id
 description: Higgsfield Soul Character ref for Aiko — reuse this soul-id for face-consistent Aiko image generation
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: 247b1b40-280e-45f0-8514-9c9d3c6ff24d
@@ -13,9 +13,11 @@ face-consistent generation (trained 2026-05-28, status: completed, validated).
 **Soul ref id:** `cd51dd12-40a3-40a1-ba68-065ee2d38e41` (name `aiko`, type `soul_2`)
 
 **How to use** — pass to higgsfield-generate for face-faithful Aiko stills/video:
+
 ```
 higgsfield generate create text2image_soul_v2 --soul-id cd51dd12-40a3-40a1-ba68-065ee2d38e41 --prompt "..." --quality 2k --aspect_ratio 3:4 --wait
 ```
+
 text2image_soul_v2 allowed aspect_ratio: 1:1,16:9,9:16,4:3,3:4,3:2,2:3 (NOT 4:5).
 Use `soul_cinematic` for cinematic/video. Always still ground prompts in the
 brand world from [[Aiko-Persona]] (charcoal/olive set, Japanese studio, sage mat,

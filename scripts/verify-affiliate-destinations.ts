@@ -19,11 +19,15 @@ for (const [slug, rawUrl] of Object.entries(affiliateLinks)) {
 
   const match = url.pathname.match(AMAZON_ASIN_PATH)
   if (!match) {
-    failures.push(`${slug}: Amazon target must use the exact /dp/ASIN format, found ${url.pathname}`)
+    failures.push(
+      `${slug}: Amazon target must use the exact /dp/ASIN format, found ${url.pathname}`,
+    )
     continue
   }
   if (url.search || url.hash) {
-    failures.push(`${slug}: registry targets must not freeze tags, search parameters or fragments`)
+    failures.push(
+      `${slug}: registry targets must not freeze tags, search parameters or fragments`,
+    )
   }
 
   const asin = match[1] ?? ''
@@ -48,7 +52,9 @@ for (const root of filesToScan) {
 }
 
 if (failures.length) {
-  console.error(`Affiliate destination verification failed:\n- ${[...new Set(failures)].join('\n- ')}`)
+  console.error(
+    `Affiliate destination verification failed:\n- ${[...new Set(failures)].join('\n- ')}`,
+  )
   process.exit(1)
 }
 
@@ -58,7 +64,11 @@ console.log(
 
 function isAmazonHost(hostname: string): boolean {
   const host = hostname.toLowerCase()
-  return host === 'amazon.com' || host.startsWith('amazon.') || host.includes('.amazon.')
+  return (
+    host === 'amazon.com' ||
+    host.startsWith('amazon.') ||
+    host.includes('.amazon.')
+  )
 }
 
 function readFileTree(root: string): Array<{ path: string; source: string }> {

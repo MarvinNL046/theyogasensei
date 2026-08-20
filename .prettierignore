@@ -1,3 +1,19 @@
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
+
+# Build artefacts — regenerated every build, never hand-edited.
+.output/
+dist/
+convex/_generated/
+
+# Agent + tool configuration that ships from elsewhere. Formatting it here
+# only creates churn the next sync undoes.
+.claude/
+.agents/
+
+# Content MDX is prose plus JSX, hand-formatted on purpose. Two reasons to
+# leave it alone: scripts/verify-affiliate-ui.ts matches component usage as a
+# literal single-line substring (prettier wrapping the props fails the build),
+# and reflowing 100 live pages risks the rendered output for no readability win.
+content/

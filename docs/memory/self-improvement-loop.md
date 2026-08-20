@@ -1,7 +1,7 @@
 ---
 name: self-improvement-loop
 description: Global Hermes-style self-improvement loop — a SessionEnd hook that forks a cheap Claude to auto-update memory/skills after every session
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: 247b1b40-280e-45f0-8514-9c9d3c6ff24d
@@ -16,6 +16,7 @@ a forked aux agent reviews the conversation and writes memory/skills. We rebuilt
 that single capability natively in Claude Code.
 
 **How it works:**
+
 - `~/.claude/settings.json` registers a `SessionEnd` hook (fires once per session).
 - `~/.claude/hooks/self-improve.ps1` reads the hook payload (`transcript_path`,
   `cwd`, `session_id`), skips trivial sessions (<6 transcript lines), then launches

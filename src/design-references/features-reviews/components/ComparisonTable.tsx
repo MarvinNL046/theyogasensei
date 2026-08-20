@@ -20,7 +20,10 @@ export function ComparisonTable() {
   const rows = yogaMats.slice(0, 5)
 
   return (
-    <section id="comparison-table" className="bg-[color:var(--color-bg)] py-12 md:py-16">
+    <section
+      id="comparison-table"
+      className="bg-[color:var(--color-bg)] py-12 md:py-16"
+    >
       <Container size="wide">
         <p className="mb-8 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink)]">
           Compare top yoga mats

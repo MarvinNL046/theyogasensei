@@ -36,6 +36,7 @@ Opties die ik in gedachten heb:
 ## Snelle status (2026-06-15)
 
 **Af & live:**
+
 - 6 review-pagina's op nieuw editorial-design: `/reviews/best-yoga-mats` (roundup) +
   `/reviews/{manduka-pro,jade,gaiam,lululemon,retrospec}` (detail). Canonical, in sitemap,
   oude `/guides/*` reviews 301'd → `_drafts`, IndexNow gepingd.
@@ -46,6 +47,7 @@ Opties die ik in gedachten heb:
 how-thick) + 2026-06-15 manduka `02-problem` → /reviews/manduka-pro.
 
 **Logische volgende stappen:**
+
 - Pinterest-drip doorzetten (~1/dag): Jade/Gaiam/Lululemon/Retrospec pins staan klaar.
 - Nieuwe content of money-page updates (~1–2/week) voor autoriteit.
 - Optioneel: rich detail-pagina's bestaan nu als herbruikbare `ReviewDetail`-component —

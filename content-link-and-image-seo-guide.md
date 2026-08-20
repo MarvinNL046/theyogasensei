@@ -64,7 +64,7 @@ Avoid:
 
 - Best price guaranteed
 - Limited time deal, unless verified
-- Buy now!!! 
+- Buy now!!!
 - Any claim that cannot be verified
 
 Affiliate links should use:
@@ -202,15 +202,16 @@ Below-fold images:
   width="800"
   height="533"
   loading="lazy"
->
+/>
 ```
 
 ## Example: Internal Link
 
 ```html
 <p>
-  Once your mat is clean, the material determines how often you need to repeat this process.
-  Our <a href="/best-yoga-mats-beginners/">guide to choosing the right yoga mat</a>
+  Once your mat is clean, the material determines how often you need to repeat
+  this process. Our
+  <a href="/best-yoga-mats-beginners/">guide to choosing the right yoga mat</a>
   explains which materials need more maintenance.
 </p>
 ```
@@ -219,14 +220,15 @@ Below-fold images:
 
 ```html
 <p>
-  For tough sweat buildup, a dedicated mat cleaner may be more convenient than a DIY spray.
+  For tough sweat buildup, a dedicated mat cleaner may be more convenient than a
+  DIY spray.
   <a
     href="https://amazon.com/..."
     rel="sponsored nofollow noopener"
     target="_blank"
   >
-    View Manduka mat wash on Amazon
-  </a>.
+    View Manduka mat wash on Amazon </a
+  >.
 </p>
 ```
 

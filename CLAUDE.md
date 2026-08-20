@@ -17,13 +17,13 @@ See [`ADR-001-theyogasensei-architecture.md`](./ADR-001-theyogasensei-architectu
 
 When writing **any blog post, pillar, subpillar, product review, or customer-facing copy**, read the files in `./references/`:
 
-| File | What it is |
-|------|-----------|
-| `references/voice.md`    | Writing style, sentence rhythm, vocabulary, formatting, anti-patterns |
-| `references/humour.md`   | How the brand handles humour |
+| File                     | What it is                                                                                  |
+| ------------------------ | ------------------------------------------------------------------------------------------- |
+| `references/voice.md`    | Writing style, sentence rhythm, vocabulary, formatting, anti-patterns                       |
+| `references/humour.md`   | How the brand handles humour                                                                |
 | `references/stats.md`    | Canonical real numbers — students taught, years practiced, pose variations, reviews counted |
-| `references/stories.md`  | Recurring anecdotes the author/brand uses |
-| `references/opinions.md` | Hot takes and strong opinions backed by numbers |
+| `references/stories.md`  | Recurring anecdotes the author/brand uses                                                   |
+| `references/opinions.md` | Hot takes and strong opinions backed by numbers                                             |
 
 **Content rules:**
 
@@ -193,16 +193,16 @@ If an existing component is close, extend it carefully instead of creating a dup
 
 ## Content routing — where each page type lives
 
-| Page type | Path | URL |
-|---|---|---|
-| Pillar | `/content/guides/<slug>.mdx` | `/guides/<slug>` |
-| Subpillar (gear roundup) | `/content/guides/<slug>.mdx` | `/guides/<slug>` |
-| Subpillar (topic guide, no products) | `/content/guides/<slug>.mdx` | `/guides/<slug>` |
-| Cluster (individual product review) | `/content/gear/<category>/<product-slug>.mdx` | `/gear/<category>/<product-slug>` |
-| Cluster (pose how-to) | `/content/poses/<slug>.mdx` | `/poses/<slug>` |
-| Cluster (style explainer) | `/content/styles/<slug>.mdx` | `/styles/<slug>` |
-| Cluster (general blog) | `/content/blog/<slug>.mdx` | `/blog/<slug>` |
-| Author | `/content/authors/<slug>.mdx` | `/authors/<slug>` |
+| Page type                            | Path                                          | URL                               |
+| ------------------------------------ | --------------------------------------------- | --------------------------------- |
+| Pillar                               | `/content/guides/<slug>.mdx`                  | `/guides/<slug>`                  |
+| Subpillar (gear roundup)             | `/content/guides/<slug>.mdx`                  | `/guides/<slug>`                  |
+| Subpillar (topic guide, no products) | `/content/guides/<slug>.mdx`                  | `/guides/<slug>`                  |
+| Cluster (individual product review)  | `/content/gear/<category>/<product-slug>.mdx` | `/gear/<category>/<product-slug>` |
+| Cluster (pose how-to)                | `/content/poses/<slug>.mdx`                   | `/poses/<slug>`                   |
+| Cluster (style explainer)            | `/content/styles/<slug>.mdx`                  | `/styles/<slug>`                  |
+| Cluster (general blog)               | `/content/blog/<slug>.mdx`                    | `/blog/<slug>`                    |
+| Author                               | `/content/authors/<slug>.mdx`                 | `/authors/<slug>`                 |
 
 The rule: **pillars and subpillars (gear roundups + topic guides) live in `/content/guides/`**. **Individual product reviews live in `/content/gear/<category>/`**. The skill enforces this; the route loader scans the right folder per page type.
 
@@ -215,26 +215,26 @@ The frontmatter Zod schema is a **discriminated union on `type`** — required f
 ```yaml
 ---
 type: pillar | subpillar | cluster
-title: string                       # 50–60 chars including suffix
-slug: string                        # lowercase, hyphenated, <60 chars, primary keyword in
-metaDescription: string             # 150–160 chars
-schemaType: Article | HowTo | ItemList | Review   # the PRIMARY schema only
-pillar: string                      # slug of the pillar this belongs to (self-ref for pillars)
-clusters: string[]                  # which clusters this page belongs to
+title: string # 50–60 chars including suffix
+slug: string # lowercase, hyphenated, <60 chars, primary keyword in
+metaDescription: string # 150–160 chars
+schemaType: Article | HowTo | ItemList | Review # the PRIMARY schema only
+pillar: string # slug of the pillar this belongs to (self-ref for pillars)
+clusters: string[] # which clusters this page belongs to
 tags: string[]
-related: string[]                   # slugs for internal linking
-author: string                      # slug of /content/authors/[slug].mdx
-reviewedBy: string                  # can equal author for non-instructional content; must be RYT-certified for instructional
+related: string[] # slugs for internal linking
+author: string # slug of /content/authors/[slug].mdx
+reviewedBy: string # can equal author for non-instructional content; must be RYT-certified for instructional
 publishedAt: ISO date
 lastReviewedAt: ISO date
-estimatedReadingTime: number        # in minutes
-heroImage: string                   # Cloudflare Images ID
+estimatedReadingTime: number # in minutes
+heroImage: string # Cloudflare Images ID
 pin:
-  primaryImage: string              # Cloudflare Images ID
-  description: string               # Pinterest pin description with hashtags
-faq:                                # required for type=pillar and type=cluster; optional for subpillar
+  primaryImage: string # Cloudflare Images ID
+  description: string # Pinterest pin description with hashtags
+faq: # required for type=pillar and type=cluster; optional for subpillar
   - { q: string, a: string }
-citations:                          # required wherever health/wellness claims appear
+citations: # required wherever health/wellness claims appear
   - { title, authors, year, url }
 ---
 ```
@@ -261,7 +261,8 @@ import { buildHead } from '#/lib/seo/head'
 
 export const Route = createFileRoute('/guides/$slug')({
   loader: async ({ params }) => loadMdx(params.slug),
-  head: ({ loaderData, params }) => buildHead(loaderData.frontmatter, { slug: params.slug, route: '/guides' }),
+  head: ({ loaderData, params }) =>
+    buildHead(loaderData.frontmatter, { slug: params.slug, route: '/guides' }),
   component: PageComponent,
 })
 ```
@@ -359,21 +360,21 @@ A page only ships after all 5 stages complete. Mark stage status in the PR descr
 
 # Reference index — files Claude must read on demand
 
-| File | When to read |
-|------|--------------|
-| `CLAUDE.md` (this file) | Always, first. |
-| `AGENTS.md` | Before any design, copy, or page-template work. |
-| `Aiko-Persona.txt` | Before generating Aiko imagery or working on a page where Aiko appears. |
-| `on-page-seo.md` | Before generating or editing any page. |
-| `SEO-page-anatomy-guide.md` | Before generating a pillar, subpillar, or cluster article. |
-| `ADR-001-theyogasensei-architecture.md` | Before adding any new infrastructure, dependency, or data source. |
-| `keywords.csv` | When picking the next topic to write. |
-| `used-keywords.md` | Before writing any page (cannibalisation check). Update after publishing. |
-| `references/voice.md` | Before writing any customer-facing copy. |
-| `references/humour.md` | Before writing any copy that calls for tone. |
-| `references/stats.md` | Whenever a number is needed in copy. |
-| `references/stories.md` | Whenever an anecdote is needed. |
-| `references/opinions.md` | Whenever a strong opinion is needed. |
+| File                                    | When to read                                                              |
+| --------------------------------------- | ------------------------------------------------------------------------- |
+| `CLAUDE.md` (this file)                 | Always, first.                                                            |
+| `AGENTS.md`                             | Before any design, copy, or page-template work.                           |
+| `Aiko-Persona.txt`                      | Before generating Aiko imagery or working on a page where Aiko appears.   |
+| `on-page-seo.md`                        | Before generating or editing any page.                                    |
+| `SEO-page-anatomy-guide.md`             | Before generating a pillar, subpillar, or cluster article.                |
+| `ADR-001-theyogasensei-architecture.md` | Before adding any new infrastructure, dependency, or data source.         |
+| `keywords.csv`                          | When picking the next topic to write.                                     |
+| `used-keywords.md`                      | Before writing any page (cannibalisation check). Update after publishing. |
+| `references/voice.md`                   | Before writing any customer-facing copy.                                  |
+| `references/humour.md`                  | Before writing any copy that calls for tone.                              |
+| `references/stats.md`                   | Whenever a number is needed in copy.                                      |
+| `references/stories.md`                 | Whenever an anecdote is needed.                                           |
+| `references/opinions.md`                | Whenever a strong opinion is needed.                                      |
 
 <!-- convex-ai-start -->
 

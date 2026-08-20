@@ -4,10 +4,11 @@ Status: draft
 Created: 2026-05-30
 Last updated: 2026-05-26
 Sources:
+
 - Marvin SERP/Ahrefs handoff, 2026-05-26
 - Marvin Amazon observational product research, US Amazon, deliver to NY 10001, captured 2026-05-26
-URL: `/guides/best-yoga-mat-for-hot-yoga`
-MDX: `content/guides/best-yoga-mat-for-hot-yoga.mdx`
+  URL: `/guides/best-yoga-mat-for-hot-yoga`
+  MDX: `content/guides/best-yoga-mat-for-hot-yoga.mdx`
 
 ## SEO basics
 
@@ -55,15 +56,15 @@ MDX: `content/guides/best-yoga-mat-for-hot-yoga.mdx`
 
 Observed only; no login and no affiliate clicks. Do not present these prices, star ratings, review counts, sales velocity or badges as stable article claims unless refreshed and policy-safe at publish time.
 
-| Product | ASIN | Draft /go slug | Captured price/rating notes | Article-safe use |
-| --- | --- | --- | --- | --- |
-| Manduka eKO 5mm | B078YB99H8 | `/go/manduka-eko-5mm` | $75 charcoal / $114 purple; 4.2★ / 683; 50+ bought | Specs + positioning only; broad price tier in article |
-| Manduka GRP Adapt 2.0 | B0CK3NM2YP | `/go/manduka-grp-adapt` | $94; 4.5★ / 634; 400+ bought | Hot-yoga-specific Manduka positioning; avoid treating brand sweat claims as TYS testing |
-| Jade Harmony | B000ECBQXE | `/go/jade-harmony` | $126.50+; 4.4★ / 5,767; 50+ bought | Open-cell rubber grip/hygiene trade-off; highest review count only in internal notes |
-| Manduka eKO Lite 4mm | B08LNP5XG5 | `/go/manduka-eko-lite-4mm` | $75.95–$84; 4.4★ / 431; 50+ bought | Lighter/narrower carry option, not hot-yoga-specific |
-| Manduka Yogitoes | B09MXDWWDH | `/go/manduka-yogitoes` | $68–72; 4.5★ / 776; 100+ bought | Silicone nub towel for heaviest sweat / Bikram-style practice |
-| Manduka eQua towel | B0CK4985F7 | `/go/manduka-equa` | $37; 4.5★ / 778; 100+ bought | Microfiber towel; lighter/budget towel angle |
-| Manduka Mat Wash Lavender 8oz | B08Q775558 | `/go/manduka-mat-wash` | $18; 4.5★ / 1,118; 400+ bought | Cleaning guide synergy; optional mention near cleaning section |
+| Product                       | ASIN       | Draft /go slug             | Captured price/rating notes                        | Article-safe use                                                                        |
+| ----------------------------- | ---------- | -------------------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Manduka eKO 5mm               | B078YB99H8 | `/go/manduka-eko-5mm`      | $75 charcoal / $114 purple; 4.2★ / 683; 50+ bought | Specs + positioning only; broad price tier in article                                   |
+| Manduka GRP Adapt 2.0         | B0CK3NM2YP | `/go/manduka-grp-adapt`    | $94; 4.5★ / 634; 400+ bought                       | Hot-yoga-specific Manduka positioning; avoid treating brand sweat claims as TYS testing |
+| Jade Harmony                  | B000ECBQXE | `/go/jade-harmony`         | $126.50+; 4.4★ / 5,767; 50+ bought                 | Open-cell rubber grip/hygiene trade-off; highest review count only in internal notes    |
+| Manduka eKO Lite 4mm          | B08LNP5XG5 | `/go/manduka-eko-lite-4mm` | $75.95–$84; 4.4★ / 431; 50+ bought                 | Lighter/narrower carry option, not hot-yoga-specific                                    |
+| Manduka Yogitoes              | B09MXDWWDH | `/go/manduka-yogitoes`     | $68–72; 4.5★ / 776; 100+ bought                    | Silicone nub towel for heaviest sweat / Bikram-style practice                           |
+| Manduka eQua towel            | B0CK4985F7 | `/go/manduka-equa`         | $37; 4.5★ / 778; 100+ bought                       | Microfiber towel; lighter/budget towel angle                                            |
+| Manduka Mat Wash Lavender 8oz | B08Q775558 | `/go/manduka-mat-wash`     | $18; 4.5★ / 1,118; 400+ bought                     | Cleaning guide synergy; optional mention near cleaning section                          |
 
 ## /go slug map for affiliate setup
 

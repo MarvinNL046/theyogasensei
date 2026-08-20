@@ -1,7 +1,7 @@
 ---
 name: obsidian-vault
 description: Cross-project SEO + CRO methodology is in the ContentOps Obsidian vault — link from every new project instead of duplicating
-metadata: 
+metadata:
   node_type: memory
   type: reference
   originSessionId: 9e61ec77-410f-445c-a25e-56d680d64763
@@ -16,6 +16,7 @@ cross-machine sync. On a second PC the OneDrive root may differ — look under t
 machine's `OneDrive\ContentOps-Vault`.)
 
 It contains:
+
 - SEO methodology (on-page checklist, pillar/subpillar/cluster architecture, SERP+PAA workflow, schema, voice)
 - CRO methodology (landing page playbook)
 - Reusable templates (keywords.csv, used-keywords.md, new project setup checklist)

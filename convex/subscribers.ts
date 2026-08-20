@@ -1,5 +1,10 @@
 import { v } from 'convex/values'
-import { internalMutation, internalQuery, mutation, query } from './_generated/server'
+import {
+  internalMutation,
+  internalQuery,
+  mutation,
+  query,
+} from './_generated/server'
 import { internal } from './_generated/api'
 import type { Id } from './_generated/dataModel'
 
@@ -67,7 +72,12 @@ export const insert = mutation({
           confirmedAt: Date.now(),
           unsubscribedAt: undefined,
         })
-        await sendOnboarding(existing._id, existing.email, existing.optInToken, leadMagnet)
+        await sendOnboarding(
+          existing._id,
+          existing.email,
+          existing.optInToken,
+          leadMagnet,
+        )
         return { ok: true as const, status: 'resubscribed' as const }
       }
       if (existing.confirmedAt) {
@@ -75,7 +85,12 @@ export const insert = mutation({
       }
       // Legacy pending row (old double-opt-in era): treat this as the signup.
       await ctx.db.patch(existing._id, { confirmedAt: Date.now() })
-      await sendOnboarding(existing._id, existing.email, existing.optInToken, leadMagnet)
+      await sendOnboarding(
+        existing._id,
+        existing.email,
+        existing.optInToken,
+        leadMagnet,
+      )
       return { ok: true as const, status: 'subscribed' as const }
     }
 
@@ -202,7 +217,11 @@ export const deleteByEmail = internalMutation({
     }
     await ctx.db.delete(subscriber._id)
 
-    return { ok: true as const, status: 'deleted' as const, events: events.length }
+    return {
+      ok: true as const,
+      status: 'deleted' as const,
+      events: events.length,
+    }
   },
 })
 

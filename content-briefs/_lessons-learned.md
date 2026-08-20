@@ -4,6 +4,7 @@ A living document. Updated after every cluster or major iteration.
 Lessons captured here become guardrails for the next post — they are the cheap version of mistakes you do not want to make twice.
 
 When to update:
+
 - After a review round surfaces a class of issue (not a one-off typo)
 - After a publish flow exposes a missing step
 - After a near-miss on a compliance / claims violation
@@ -82,11 +83,12 @@ Format per lesson: short title, 1-2 sentence context, concrete action for next b
 **Context.** Marvin explicitly flagged that consistent bookkeeping matters to him. After C1's first draft commit, three tracking files needed sync: `used-keywords.md` (append row), `_yoga-mat-cluster-plan.md` (C1 status: brief-ready → draft), `seed-how-to-clean-a-yoga-mat.md` (checkbox tick). Initially only the keywords ledger was updated in the draft commit; the other two needed a follow-up.
 
 **Action.** After any content commit (draft / patch / publish), check the full tracking stack:
+
 - `used-keywords.md` — row exists and is current?
 - `_<cluster>-cluster-plan.md` — post status reflects reality (brief-todo / brief-ready / draft / published)?
 - `seed-<slug>.md` — Status checklist boxes ticked, with commit refs?
 - `public/sitemap.xml` — regenerated only on publish (not on draft); explicit note in commit if skipped
-Update what's stale in the same commit if possible, in an immediate `chore(tracking): sync` commit otherwise. Report all touched tracking files in the end-of-task report.
+  Update what's stale in the same commit if possible, in an immediate `chore(tracking): sync` commit otherwise. Report all touched tracking files in the end-of-task report.
 
 ---
 
@@ -113,6 +115,7 @@ Update what's stale in the same commit if possible, in an immediate `chore(track
 **Context.** Marvin's visual review of the C1 page (commit 712719d render) caught a footer claim ("Instructional content is reviewed by certified yoga teachers") that was not in C1's code — it lived in `footer.tsx`. The sibling-violation sweep then found 4 more hits in `authors.ts` (Person schema bio), `marvin.mdx` (author MDX), and `index.tsx` (homepage meta description, twice). All sitewide, none visible during the C1 code review.
 
 **Action.** After every render-check, scan the **sitewide layer** explicitly:
+
 - `src/components/site/footer.tsx` + `header.tsx`
 - `src/lib/content/authors.ts` (Person schema feeds every JSON-LD)
 - `src/routes/index.tsx` `<head>` meta + og:description
@@ -137,6 +140,7 @@ The clean-slate principle: every live URL serves real content or is a functional
 **Context.** `npx convex dev` (first run) appended Convex AI pointers to AGENTS.md and CLAUDE.md, created `convex/_generated/ai/guidelines.md`, installed Convex skills into `.claude/skills/`, and created `convex/tsconfig.json` WITHOUT `"types": ["node"]` — which broke `process.env` references in `convex/email.ts` (TS2591 "Cannot find name 'process'").
 
 **Action.** After running `npx convex dev` for the first time on a project that already uses `process.env` in Convex functions:
+
 - Verify AGENTS.md/CLAUDE.md appends are non-destructive (Convex CLI is well-behaved — only appends with `<!-- convex-ai-start -->` / `<!-- convex-ai-end -->` markers)
 - Open `convex/tsconfig.json` and confirm `"types": ["node"]` is in the `compilerOptions` (or add it). `@types/node` is usually already in `package.json`.
 - Run `pnpm typecheck` from project root AND `npx tsc --noEmit` from inside `convex/` to confirm both check passes.
@@ -148,6 +152,7 @@ The clean-slate principle: every live URL serves real content or is a functional
 **Context.** The first draft of the Retrospec Solana review framed NBR foam benignly ("latex-free + phthalate-free = a safe pick"). The SERP/PAA pass then surfaced that both the ½" and 1" Solana ship with a Prop 65 warning for **acrylonitrile** ("known to the State of California to cause cancer"), verified across multiple independent sources and consistent with NBR chemistry (NBR = acrylonitrile-butadiene rubber). Shipping the rosy framing would have been a real E-E-A-T/trust miss on a health-adjacent purchase. The official Retrospec page hid the warning in dynamic/below-fold content, so a static page-fetch alone missed it.
 
 **Action.** For ANY budget foam or PVC mat review (NBR, TPE-foam, PVC), before writing the material section:
+
 - Search "<product> Proposition 65 warning" and check the Amazon listing + advocacy sources (Mamavation, htsyoga Prop 65 guides), not just the brand's own static page.
 - If a warning exists, disclose it verbatim in a `Callout`, add a dedicated "is it toxic / Prop 65" FAQ, and link the official [p65warnings.ca.gov](https://www.p65warnings.ca.gov/) for context.
 - YMYL-cautious framing only: disclose + contextualise (broad CA labeling law, not proof of harm in normal use) + offer the natural-rubber/cork/TPE alternative. No medical claims in either direction — neither "this is dangerous" nor "this is totally safe."

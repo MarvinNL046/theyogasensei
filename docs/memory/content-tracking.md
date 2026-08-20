@@ -1,7 +1,7 @@
 ---
 name: content-tracking
 description: "How to check cluster health and what's next to write on theyogasensei.com — `pnpm content:status` is the single command for it"
-metadata: 
+metadata:
   node_type: memory
   type: reference
   originSessionId: 9e61ec77-410f-445c-a25e-56d680d64763
@@ -21,6 +21,7 @@ Run it at the start of every content work session. It's the only place that comb
 Implementation: `scripts/content-status.ts`. Wired into package.json as `content:status`.
 
 Related infrastructure (already present, do NOT rebuild):
+
 - `scripts/verify-used-keywords.ts` — CI guardrail; build fails if MDX file exists without matching row in used-keywords.md. Wired into `pnpm verify` and therefore `pnpm build`.
 - `scripts/scan-mdx-slugs.ts` — walks `/content/**/*.mdx` and parses frontmatter. Shared utility.
 

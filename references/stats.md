@@ -10,30 +10,30 @@ Update quarterly — every January, April, July, October. Append to the changelo
 
 ## Author / brand stats — update as they change
 
-| Stat | Current value | As of | Notes |
-|---|---|---|---|
-| Years practicing yoga | _[fill in honestly — e.g. 3]_ | 2026-05 | Not "teaching", "practicing" |
-| Yoga mats personally tested | _[e.g. 0]_ | 2026-05 | Increment with each mat reviewed |
-| Yoga blocks tested | _[e.g. 0]_ | 2026-05 | |
-| Yoga straps tested | _[e.g. 0]_ | 2026-05 | |
-| Yoga apps trialled (at least 30 days each) | _[e.g. 0]_ | 2026-05 | |
-| Yoga teacher YouTube channels reviewed in depth | _[e.g. 0]_ | 2026-05 | |
-| Hours of yoga instruction watched/studied for content research | _[e.g. 0]_ | 2026-05 | |
-| Peer-reviewed yoga studies read for citations | _[e.g. 0]_ | 2026-05 | |
-| Books on yoga read | _[e.g. 0]_ | 2026-05 | |
-| Newsletter subscribers (confirmed) | 0 | 2026-05 | Pulled from Convex `subscribers` table where `confirmedAt != null` |
-| Articles published | 0 | 2026-05 | Auto-counted from `/content/**.mdx` |
-| Pinterest pins live | 0 | 2026-05 | |
-| Highest-ranking keyword position (Google) | n/a | 2026-05 | Update when first ranking appears |
+| Stat                                                           | Current value                 | As of   | Notes                                                              |
+| -------------------------------------------------------------- | ----------------------------- | ------- | ------------------------------------------------------------------ |
+| Years practicing yoga                                          | _[fill in honestly — e.g. 3]_ | 2026-05 | Not "teaching", "practicing"                                       |
+| Yoga mats personally tested                                    | _[e.g. 0]_                    | 2026-05 | Increment with each mat reviewed                                   |
+| Yoga blocks tested                                             | _[e.g. 0]_                    | 2026-05 |                                                                    |
+| Yoga straps tested                                             | _[e.g. 0]_                    | 2026-05 |                                                                    |
+| Yoga apps trialled (at least 30 days each)                     | _[e.g. 0]_                    | 2026-05 |                                                                    |
+| Yoga teacher YouTube channels reviewed in depth                | _[e.g. 0]_                    | 2026-05 |                                                                    |
+| Hours of yoga instruction watched/studied for content research | _[e.g. 0]_                    | 2026-05 |                                                                    |
+| Peer-reviewed yoga studies read for citations                  | _[e.g. 0]_                    | 2026-05 |                                                                    |
+| Books on yoga read                                             | _[e.g. 0]_                    | 2026-05 |                                                                    |
+| Newsletter subscribers (confirmed)                             | 0                             | 2026-05 | Pulled from Convex `subscribers` table where `confirmedAt != null` |
+| Articles published                                             | 0                             | 2026-05 | Auto-counted from `/content/**.mdx`                                |
+| Pinterest pins live                                            | 0                             | 2026-05 |                                                                    |
+| Highest-ranking keyword position (Google)                      | n/a                           | 2026-05 | Update when first ranking appears                                  |
 
 ---
 
 ## Per-product testing stats — append a row per product tested
 
-| Product | Category | Weeks used | Total hours on it | Started | Notes |
-|---|---|---|---|---|---|
-| _e.g. Manduka PROlite_ | _mat_ | _6_ | _~50h_ | _2026-05-01_ | _first product tested_ |
-| Lululemon Reversible Mat 5mm | mat | ~78 (≈1.5 yr) | — | ~late 2024 | Personal daily-practice mat (dark green). First-hand ownership/use, NOT a formal lab test — the basis for the first-person notes in the Lululemon review. |
+| Product                      | Category | Weeks used    | Total hours on it | Started      | Notes                                                                                                                                                     |
+| ---------------------------- | -------- | ------------- | ----------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _e.g. Manduka PROlite_       | _mat_    | _6_           | _~50h_            | _2026-05-01_ | _first product tested_                                                                                                                                    |
+| Lululemon Reversible Mat 5mm | mat      | ~78 (≈1.5 yr) | —                 | ~late 2024   | Personal daily-practice mat (dark green). First-hand ownership/use, NOT a formal lab test — the basis for the first-person notes in the Lululemon review. |
 
 Use these numbers in product reviews. "I tested the Manduka PROlite for six weeks across ~50 hours of practice" — comes from this table verbatim, no rounding.
 
@@ -43,14 +43,14 @@ Use these numbers in product reviews. "I tested the Manduka PROlite for six week
 
 Pull from Yoga Alliance reports, IBISWorld, Statista. Each row has a source URL. Update annually.
 
-| Stat | Value | Year | Source URL |
-|---|---|---|---|
-| Global yoga market size (USD) | _e.g. $130B_ | 2025 | _[source URL]_ |
-| Number of yoga practitioners globally | | | |
-| % of yoga practitioners who are female | | | |
-| Average annual spend per practitioner on gear | | | |
-| Most-searched yoga style (Google Trends) | | | |
-| Pinterest yoga-content engagement rate vs other platforms | | | |
+| Stat                                                      | Value        | Year | Source URL     |
+| --------------------------------------------------------- | ------------ | ---- | -------------- |
+| Global yoga market size (USD)                             | _e.g. $130B_ | 2025 | _[source URL]_ |
+| Number of yoga practitioners globally                     |              |      |                |
+| % of yoga practitioners who are female                    |              |      |                |
+| Average annual spend per practitioner on gear             |              |      |                |
+| Most-searched yoga style (Google Trends)                  |              |      |                |
+| Pinterest yoga-content engagement rate vs other platforms |              |      |                |
 
 These are useful for pillar-page intros and "state of yoga" contextual paragraphs. Never quote without the source URL.
 
@@ -58,13 +58,13 @@ These are useful for pillar-page intros and "state of yoga" contextual paragraph
 
 ## Affiliate / commercial stats — when they exist
 
-| Stat | Value | As of |
-|---|---|---|
-| Affiliate partners active | _[count]_ | 2026-05 |
-| Highest-converting product (by EPC) | _[product]_ | 2026-05 |
-| Average commission rate across partners | _[%]_ | 2026-05 |
-| First-month revenue milestone | n/a | 2026-05 |
-| Profitability month | n/a | 2026-05 |
+| Stat                                    | Value       | As of   |
+| --------------------------------------- | ----------- | ------- |
+| Affiliate partners active               | _[count]_   | 2026-05 |
+| Highest-converting product (by EPC)     | _[product]_ | 2026-05 |
+| Average commission rate across partners | _[%]_       | 2026-05 |
+| First-month revenue milestone           | n/a         | 2026-05 |
+| Profitability month                     | n/a         | 2026-05 |
 
 Useful for the eventual "how we built this site" lifestyle/case-study post — high E-E-A-T if you're honest about real numbers.
 

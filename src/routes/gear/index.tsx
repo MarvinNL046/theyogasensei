@@ -50,7 +50,8 @@ export const Route = createFileRoute('/gear/')({
         },
         {
           title: 'Props',
-          description: 'Blocks, straps, bolsters, blankets and specialist support.',
+          description:
+            'Blocks, straps, bolsters, blankets and specialist support.',
           href: '/gear/props',
         },
         {
@@ -60,7 +61,8 @@ export const Route = createFileRoute('/gear/')({
         },
         {
           title: 'Travel',
-          description: 'Foldable mats, carrying systems and packing trade-offs.',
+          description:
+            'Foldable mats, carrying systems and packing trade-offs.',
           href: '/gear/travel',
         },
         {

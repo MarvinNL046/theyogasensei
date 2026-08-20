@@ -31,7 +31,9 @@ export const Route = createFileRoute('/contact')({
         content: 'https://www.theyogasensei.com/images/brand/home-og.webp',
       },
     ],
-    links: [{ rel: 'canonical', href: 'https://www.theyogasensei.com/contact' }],
+    links: [
+      { rel: 'canonical', href: 'https://www.theyogasensei.com/contact' },
+    ],
   }),
   component: ContactPage,
 })
@@ -45,44 +47,45 @@ function ContactPage() {
           Reach Marvin
         </h1>
         <p className="mt-6 text-base leading-8 text-[color:var(--color-ink-soft)]">
-          One inbox, no form. Email works for everything below — corrections get priority and
-          usually a same-day reply.
+          One inbox, no form. Email works for everything below — corrections get
+          priority and usually a same-day reply.
         </p>
         <p className="mt-6 text-lg font-medium text-[color:var(--color-ink)]">
-          <a href="mailto:hello@theyogasensei.com" className="underline underline-offset-4">
+          <a
+            href="mailto:hello@theyogasensei.com"
+            className="underline underline-offset-4"
+          >
             hello@theyogasensei.com
           </a>
         </p>
 
         <div className="mt-10 space-y-9 rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-sm md:p-9">
           <section>
-            <h2 className="font-serif text-2xl">
-              What to email about
-            </h2>
+            <h2 className="font-serif text-2xl">What to email about</h2>
             <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-7 text-[color:var(--color-ink-soft)]">
               <li>Corrections and factual errors in a guide.</li>
-              <li>Questions about a specific mat, block, or piece of gear we have covered.</li>
+              <li>
+                Questions about a specific mat, block, or piece of gear we have
+                covered.
+              </li>
               <li>Suggestions for future guides.</li>
               <li>Partnership or editorial inquiries.</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="font-serif text-2xl">
-              What not to email about
-            </h2>
+            <h2 className="font-serif text-2xl">What not to email about</h2>
             <p className="mt-3 text-sm leading-7 text-[color:var(--color-ink-soft)]">
-              Generic SEO outreach, link insertions, or “guest post” pitches. They go straight to
-              archive. Please do not.
+              Generic SEO outreach, link insertions, or “guest post” pitches.
+              They go straight to archive. Please do not.
             </p>
           </section>
 
           <section>
-            <h2 className="font-serif text-2xl">
-              About reply times
-            </h2>
+            <h2 className="font-serif text-2xl">About reply times</h2>
             <p className="mt-3 text-sm leading-7 text-[color:var(--color-ink-soft)]">
-              Replies usually come within one to three days. Corrections get answered first.
+              Replies usually come within one to three days. Corrections get
+              answered first.
             </p>
           </section>
 
@@ -93,7 +96,8 @@ function ContactPage() {
               <br />
               The Netherlands
               <br />
-              (For postal mail, email first — the address is shared on a per-request basis.)
+              (For postal mail, email first — the address is shared on a
+              per-request basis.)
             </p>
           </section>
         </div>

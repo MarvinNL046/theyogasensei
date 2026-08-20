@@ -27,16 +27,16 @@ Cluster plan: see `_yoga-mat-cluster-plan.md`. C1 is the first article published
 
 The brief structure integrates these as H2/H3 sub-sections so a single C1 post can rank across the full keyword group (cumulative SV ~20,500/mo US):
 
-| Keyword | KD | SV | Slot in C1 |
-|---|---|---|---|
-| how to clean a yoga mat at home | 3 | 200 | woven through body copy |
-| how to clean a lululemon yoga mat | 0 | 100 | H3 in "Different Materials" section |
-| how to clean a cork yoga mat | 0 | 70 | H3 in "Different Materials" section |
-| how to clean a manduka yoga mat | 2 | 50 | H3 in "Different Materials" section |
-| how to deep clean a yoga mat | 1 | 50 | dedicated H3 under "Step-by-Step" |
-| how to clean a yoga mat naturally | 3 | 30 | H2 "DIY Cleaner Recipes" |
-| how to clean a jade yoga mat | 2 | 30 | covered under natural rubber H3 |
-| how to clean a rubber yoga mat | 1 | 30 | H3 in "Different Materials" section |
+| Keyword                           | KD  | SV  | Slot in C1                          |
+| --------------------------------- | --- | --- | ----------------------------------- |
+| how to clean a yoga mat at home   | 3   | 200 | woven through body copy             |
+| how to clean a lululemon yoga mat | 0   | 100 | H3 in "Different Materials" section |
+| how to clean a cork yoga mat      | 0   | 70  | H3 in "Different Materials" section |
+| how to clean a manduka yoga mat   | 2   | 50  | H3 in "Different Materials" section |
+| how to deep clean a yoga mat      | 1   | 50  | dedicated H3 under "Step-by-Step"   |
+| how to clean a yoga mat naturally | 3   | 30  | H2 "DIY Cleaner Recipes"            |
+| how to clean a jade yoga mat      | 2   | 30  | covered under natural rubber H3     |
+| how to clean a rubber yoga mat    | 1   | 30  | H3 in "Different Materials" section |
 
 ## Live SERP Findings (verified, US, gl=us hl=en)
 
@@ -98,18 +98,21 @@ Meta description (140-155 chars):
 ### H1: How to Clean a Yoga Mat (Without Damaging It)
 
 ### Intro (130-180 words)
+
 - Primary keyword in first 100 words
 - Quick-answer callout: "Most mats need a 30-second wipe-down after every practice and a deeper clean once a month. The wrong cleaner — or letting your mat sit wet — will destroy the surface faster than the dirt would."
 - Author byline (Marvin) with link to /about
 - "Last reviewed [date]" badge
 
 ### H2: Why Cleaning Your Yoga Mat Matters
+
 - Sweat and body oils break down the top layer over time → reduced grip
 - Odor that won't lift if buildup goes too long
 - Mat lifespan: regular care doubles or triples it
 - Hygiene: stay grounded — surface bacteria/skin contact, NO exaggerated germ statistics, NO disinfection-as-medical-claim language
 
 ### H2: How Often Should You Clean Your Yoga Mat?
+
 Targets keyword "how often to clean yoga mat" + featured snippet opportunity.
 
 H3: After every practice — quick wipe-down (30 seconds)
@@ -120,6 +123,7 @@ H3: Extra cleaning after — hot yoga, outdoor practice, shared studio mats, rec
 Include: simple frequency table (practice type → cleaning rhythm).
 
 ### H2: What You'll Need
+
 Plain checklist. No affiliate links in C1 (see Affiliate Placements section below).
 
 - Microfiber cloth (or two: one damp, one dry)
@@ -129,9 +133,11 @@ Plain checklist. No affiliate links in C1 (see Affiliate Placements section belo
 - Optional: a few drops of tea tree or lavender essential oil (skin-safe, with cautions noted)
 
 ### H2: How to Clean Your Yoga Mat: Step-by-Step
+
 Targets keyword "how to deep clean a yoga mat". HowTo schema markup here.
 
 H3: The daily wipe-down (after every practice)
+
 1. Unroll the mat flat
 2. Shake or brush off loose debris
 3. Lightly spray or dampen a cloth with plain water (or a mild DIY spray from the recipes below)
@@ -139,41 +145,49 @@ H3: The daily wipe-down (after every practice)
 5. Hang or lay flat to air-dry fully before rolling
 
 H3: The weekly light clean
+
 1. Same setup as daily
 2. Use a diluted vinegar or witch hazel spray instead of plain water
 3. Pay extra attention to high-contact zones (hands, feet, foreheads)
 4. Air-dry completely
 
 H3: The monthly deep clean
+
 - Closed-cell mats (most PVC mats like Manduka PRO): can be gently wiped down with damp cloth + mild soap solution; do NOT submerge
 - Open-cell mats (most natural rubber and TPE mats): wipe with damp cloth + mild soap, but be sparing — they absorb water
 - Bathtub method: ONLY for mats the manufacturer explicitly says are bathtub-safe. Many natural rubber mats degrade if soaked.
 - After any deep clean: hang to dry for 24+ hours before rolling. Trapped moisture causes mildew.
 
 ### H2: Cleaning Different Yoga Mat Materials
+
 Targets keywords: rubber, cork, lululemon, manduka, jade (covered under natural rubber).
 
 H3: Natural rubber mats (Jade, Manduka eKO, Liforme)
+
 - Open-cell — water-absorbent — keep cloth damp, not wet
 - No vinegar in high concentration: degrades rubber over time
 - No direct sunlight to dry: UV breaks down natural rubber
 
 H3: PVC mats (Manduka PRO and PROlite, classic Gaiam)
+
 - Closed-cell — water sits on the surface — easiest material to clean
 - Manduka officially recommends a salt-water "break-in" wipe-down to improve grip on a new PRO; cite this as their guidance, not as our test
 - Resists most mild cleaners; still avoid bleach and harsh disinfectants
 
 H3: Cork mats
+
 - Naturally antimicrobial — needs LESS frequent deep cleaning
 - Cork hates over-soaking: a light damp wipe is enough
 - Avoid soaps with strong dyes or fragrances; cork absorbs odours
 
 H3: Lululemon mats (The Mat 5mm)
+
 - Polyurethane top + rubber base — top layer is sensitive to oils and harsh cleaners
 - Lululemon's published care instruction: light wipe with damp cloth + drop of mild soap; no soaking
 - If their guidance has changed, link out to their current care page rather than restating outdated specifics
 
 H3: TPE mats (most budget brands and travel mats)
+
 - Closed-cell or semi-closed — generally tolerant of mild cleaners
 - Avoid oil-based essential oils: they can leave residue that stays grippy in a bad way
 - Bathtub-safe for most TPE — check the brand's label
@@ -181,29 +195,35 @@ H3: TPE mats (most budget brands and travel mats)
 Important: where brand-specific care instructions are cited, link to the manufacturer's care page. Brand pages move; if a link is dead at publish time, link to the brand's homepage and note "manufacturer's current care guidance" rather than pretending a dead source still says X.
 
 ### H2: DIY Yoga Mat Cleaner Recipes
+
 Targets keywords "how to clean a yoga mat naturally" and "how to clean a yoga mat with vinegar".
 
 H3: Vinegar + water spray (most popular)
+
 - Ratio: 1 part white vinegar to 3-4 parts water in a spray bottle
 - Note: NYT Wirecutter observed "a variety of suggested water-to-vinegar ratios in our research and interviews" — there is no single right answer; start dilute and adjust
 - Optional: 3-5 drops of tea tree oil for a fresher smell
 
 H3: Witch hazel + essential oils spray
+
 - Ratio: 1 part witch hazel to 3 parts water
 - 5 drops lavender OR tea tree oil
 - Gentle on most materials; works well for daily use
 
 H3: Castile soap solution
+
 - ½ teaspoon liquid Castile soap (Dr. Bronner's is the common reference) in 2 cups warm water
 - Use for monthly deep cleans, not daily — soap residue can build up
 - Always wipe down with a clean damp cloth afterward to remove residue
 
 H3: What DIY cleaners can and cannot do
+
 - They clean surface oils, sweat and odour
 - They do NOT sterilise or "disinfect" in a medical sense — do not write or imply this
 - They are not a substitute for replacing a mat that has reached end-of-life
 
 ### H2: How to Dry Your Yoga Mat After Cleaning
+
 Targets keyword "how to dry yoga mat after cleaning".
 
 - Air-drying flat or hung over a shower rod is the only safe default
@@ -213,6 +233,7 @@ Targets keyword "how to dry yoga mat after cleaning".
 - A small fan speeds drying without heat
 
 ### H2: Common Mistakes to Avoid
+
 No top ranker has this as a dedicated H2 — strong featured snippet opportunity. Keep it scannable.
 
 - Bleach or hospital-grade disinfectants (destroy the top layer of nearly every material)
@@ -224,6 +245,7 @@ No top ranker has this as a dedicated H2 — strong featured snippet opportunity
 - Ignoring the brand's care label (every mistake above is usually printed on it)
 
 ### H2: When to Replace Your Yoga Mat (Beyond Cleaning)
+
 Short section — bridges to cluster spoke C5 (How Long Does a Yoga Mat Last) once that publishes. Until then, write it as standalone.
 
 - Flaking top layer
@@ -232,6 +254,7 @@ Short section — bridges to cluster spoke C5 (How Long Does a Yoga Mat Last) on
 - Smell that won't lift after a proper deep clean
 
 ### H2: Frequently Asked Questions
+
 FAQPage schema markup here. The first four MUST be the live PAA questions verbatim.
 
 H3: Is it OK to use a wet wipe to clean my yoga mat?
@@ -257,16 +280,19 @@ Existing project utilities cover all four — see `lib/seo/schema.ts` (`buildArt
 C1 publishes BEFORE every other cluster spoke. Internal links must distinguish "live now" from "forward links (add via post-publish update when target ships)".
 
 ### Live links (include in v1 of C1)
+
 - `/about` — author byline → Marvin's bio (E-E-A-T)
 - `/affiliate-disclosure` — once in body or footer where relevant
 
 ### Forward links (add via post-publish update once target spoke is live)
+
 - C4 `/how-to-store-a-yoga-mat/` — link from drying and rolling section
 - C5 `/how-long-does-a-yoga-mat-last/` — link from "When to Replace" section
 - C3 `/best-yoga-mat-for-beginners/` — link from "When to Replace" as next step
 - P1 `/yoga-mat-buying-guide/` — link from intro and "When to Replace" with anchor variation "our complete yoga mat buying guide"
 
 ### External authority links (E-E-A-T)
+
 - REI Expert Advice ("How to Clean Your Yoga Mat") — once in body, `rel="noopener"`
 - NYT Wirecutter — once for the vinegar ratio observation, `rel="noopener"`
 - Brand care pages (Manduka, Lululemon, Jade) — only when their pages resolve; link to homepage as fallback
@@ -287,6 +313,7 @@ This is a one-time editorial choice for C1, not a cluster-wide policy. C2-C10 us
 ## Anti-Hallucination Compliance (mandatory for C1)
 
 ### ❌ Never write in C1
+
 - "Tested over X weeks" or any first-person testing duration
 - "I've used this method for years"
 - Specific bacteria reduction statistics ("kills 99% of germs")
@@ -296,6 +323,7 @@ This is a one-time editorial choice for C1, not a cluster-wide policy. C2-C10 us
 - Star ratings or review counts
 
 ### ✅ Safe wording patterns
+
 - "Many practitioners recommend…"
 - "According to REI's expert advice on yoga mat cleaning…" (linked)
 - "The general consensus across community forums is…"
@@ -304,6 +332,7 @@ This is a one-time editorial choice for C1, not a cluster-wide policy. C2-C10 us
 - "There is no single agreed-upon ratio — start dilute and adjust" (when discussing the vinegar ratio range NYT documented)
 
 ### When in doubt
+
 If a claim cannot be sourced, soften the language or cut the claim. We would rather publish 1,800 verifiable words than 2,400 with one fabricated stat.
 
 ## Media Recommendations
@@ -321,32 +350,32 @@ Alt text per `content-link-and-image-seo-guide.md`: descriptive, ≤125 chars, n
 
 ```yaml
 type: subpillar
-title: "How to Clean a Yoga Mat (Without Damaging It)"
+title: 'How to Clean a Yoga Mat (Without Damaging It)'
 slug: how-to-clean-a-yoga-mat
-metaDescription: "Clean your yoga mat without damaging it. Daily wipe-downs, deep cleans, DIY sprays, and material-specific care for rubber, PVC, cork and TPE."
-schemaType: HowTo  # paired with FAQPage and Article via lib/seo/schema.ts
+metaDescription: 'Clean your yoga mat without damaging it. Daily wipe-downs, deep cleans, DIY sprays, and material-specific care for rubber, PVC, cork and TPE.'
+schemaType: HowTo # paired with FAQPage and Article via lib/seo/schema.ts
 pillar: yoga-mat-buying-guide
 clusters: [yoga-mats, mat-care, beginner]
 tags: [yoga-mat, mat-care, cleaning, diy, how-to]
 author: marvin
 reviewedBy: marvin
-publishedAt: "YYYY-MM-DD"
-lastReviewedAt: "YYYY-MM-DD"
+publishedAt: 'YYYY-MM-DD'
+lastReviewedAt: 'YYYY-MM-DD'
 estimatedReadingTime: 9
 heroImage: yoga-mats/how-to-clean-a-yoga-mat/hero
 faq:
-  - q: "Is it OK to use a wet wipe to clean my yoga mat?"
-    a: "..."
-  - q: "Can I wash my rubber yoga mat?"
-    a: "..."
-  - q: "Does vinegar disinfect yoga mats?"
-    a: "..."
-  - q: "Can I wash my yoga mat with dish soap?"
-    a: "..."
-  - q: "Can I put my yoga mat in the washing machine?"
-    a: "..."
-  - q: "How do I get smells out of my yoga mat?"
-    a: "..."
+  - q: 'Is it OK to use a wet wipe to clean my yoga mat?'
+    a: '...'
+  - q: 'Can I wash my rubber yoga mat?'
+    a: '...'
+  - q: 'Does vinegar disinfect yoga mats?'
+    a: '...'
+  - q: 'Can I wash my yoga mat with dish soap?'
+    a: '...'
+  - q: 'Can I put my yoga mat in the washing machine?'
+    a: '...'
+  - q: 'How do I get smells out of my yoga mat?'
+    a: '...'
 ```
 
 Do NOT add a `products:` array — there are no affiliate products in C1.

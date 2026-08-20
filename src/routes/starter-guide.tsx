@@ -8,7 +8,8 @@ const TITLE = 'Free Yoga for Beginners Starter Guide — The Yoga Sensei'
 const DESCRIPTION =
   'Get the free Yoga for Beginners Starter Guide: the gear worth buying, eight foundational poses, and a 10-minute morning routine. Calm, honest, no fluff.'
 const URL = 'https://www.theyogasensei.com/starter-guide'
-const OG_IMAGE = 'https://www.theyogasensei.com/images/brand/topic-beginner-yoga.webp'
+const OG_IMAGE =
+  'https://www.theyogasensei.com/images/brand/topic-beginner-yoga.webp'
 
 export const Route = createFileRoute('/starter-guide')({
   head: () => ({
@@ -72,7 +73,10 @@ function HeroOptIn() {
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.5]"
-        style={{ backgroundImage: "url('/images/brand/japanese-zen-editorial-background.webp')" }}
+        style={{
+          backgroundImage:
+            "url('/images/brand/japanese-zen-editorial-background.webp')",
+        }}
       />
       <div
         aria-hidden="true"
@@ -89,12 +93,15 @@ function HeroOptIn() {
             <Eyebrow tone="default">Free PDF guide</Eyebrow>
             <h1 className="mt-5 font-serif text-4xl leading-[1.02] md:text-[56px]">
               Start yoga,{' '}
-              <span className="italic text-[color:var(--color-accent)]">the calm way.</span>
+              <span className="italic text-[color:var(--color-accent)]">
+                the calm way.
+              </span>
             </h1>
             <p className="mt-6 max-w-md text-base leading-8 text-[color:var(--color-ink-soft)]">
-              The Yoga for Beginners Starter Guide is the no-fluff start I wish I had: the gear
-              worth buying, eight foundational poses, and a 10-minute morning routine. Enter your
-              email and it lands in your inbox in a minute or two.
+              The Yoga for Beginners Starter Guide is the no-fluff start I wish
+              I had: the gear worth buying, eight foundational poses, and a
+              10-minute morning routine. Enter your email and it lands in your
+              inbox in a minute or two.
             </p>
 
             <div className="mt-8 max-w-md">
@@ -147,7 +154,9 @@ function WhatsInside() {
                 <div
                   key={item.title}
                   className={
-                    index > 0 ? 'lg:border-l lg:border-[color:var(--color-border)] lg:pl-8' : ''
+                    index > 0
+                      ? 'lg:border-l lg:border-[color:var(--color-border)] lg:pl-8'
+                      : ''
                   }
                 >
                   <Icon
@@ -185,9 +194,10 @@ function TrustStrip() {
           />
           <div>
             <p className="text-sm leading-7 text-[color:var(--color-ink-soft)]">
-              Written and edited by Marvin Smit — a long-time practitioner, not a faceless content
-              team. Every recommendation is researched, every claim is sourced, and you can
-              unsubscribe in one click from any email.
+              Written and edited by Marvin Smit — a long-time practitioner, not
+              a faceless content team. Every recommendation is researched, every
+              claim is sourced, and you can unsubscribe in one click from any
+              email.
             </p>
           </div>
         </div>

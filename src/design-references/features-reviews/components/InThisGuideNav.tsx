@@ -27,7 +27,10 @@ export function InThisGuideNav() {
                   {item.label}
                 </a>
                 {index < ITEMS.length - 1 ? (
-                  <span aria-hidden="true" className="text-[color:var(--color-border)]">
+                  <span
+                    aria-hidden="true"
+                    className="text-[color:var(--color-border)]"
+                  >
                     |
                   </span>
                 ) : null}

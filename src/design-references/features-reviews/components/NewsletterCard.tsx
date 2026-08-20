@@ -10,7 +10,8 @@ export function NewsletterCard() {
         </p>
 
         <p className="mt-4 text-sm leading-6 text-[color:var(--color-ink-soft)]">
-          Practical tips, new guides and honest recommendations to support your practice.
+          Practical tips, new guides and honest recommendations to support your
+          practice.
         </p>
 
         <form action="#" method="post" className="mt-6 space-y-3">

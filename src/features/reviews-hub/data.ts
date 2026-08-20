@@ -79,7 +79,8 @@ export const REVIEW_ENTRIES: Array<ReviewHubEntry> = [
   {
     slug: 'manduka-pro',
     title: 'Manduka PRO',
-    description: 'Dense closed-cell construction intended for a long service life.',
+    description:
+      'Dense closed-cell construction intended for a long service life.',
     image: '/images/brand/pick-manduka-pro.webp',
     brand: 'Manduka',
     material: 'PVC',
@@ -105,7 +106,8 @@ export const REVIEW_ENTRIES: Array<ReviewHubEntry> = [
   {
     slug: 'jade',
     title: 'Jade Harmony',
-    description: 'An open-cell natural-rubber mat known for straightforward traction.',
+    description:
+      'An open-cell natural-rubber mat known for straightforward traction.',
     image: '/images/guides/jade-yoga-mat/hero.webp',
     brand: 'JadeYoga',
     material: 'Natural rubber',
@@ -118,7 +120,8 @@ export const REVIEW_ENTRIES: Array<ReviewHubEntry> = [
   {
     slug: 'lululemon',
     title: 'Lululemon The Mat',
-    description: 'A reversible polyurethane-and-rubber mat built around versatile grip.',
+    description:
+      'A reversible polyurethane-and-rubber mat built around versatile grip.',
     image: '/images/guides/lululemon-yoga-mat/hero.webp',
     brand: 'Lululemon',
     material: 'Polyurethane + rubber',
@@ -131,7 +134,8 @@ export const REVIEW_ENTRIES: Array<ReviewHubEntry> = [
   {
     slug: 'manduka-grp-adapt',
     title: 'Manduka GRP Adapt',
-    description: 'An absorbent polyurethane-and-rubber construction for sweat-heavy practice.',
+    description:
+      'An absorbent polyurethane-and-rubber construction for sweat-heavy practice.',
     image: '/images/reviews/manduka-grp-adapt/hero.webp',
     brand: 'Manduka',
     material: 'Polyurethane + rubber',
@@ -144,7 +148,8 @@ export const REVIEW_ENTRIES: Array<ReviewHubEntry> = [
   {
     slug: 'alo',
     title: 'Alo Warrior Mat',
-    description: 'An oversized polyurethane-topped mat with a substantial home-studio feel.',
+    description:
+      'An oversized polyurethane-topped mat with a substantial home-studio feel.',
     image: '/images/reviews/alo/hero.webp',
     brand: 'Alo',
     material: 'Polyurethane + rubber',
@@ -157,7 +162,8 @@ export const REVIEW_ENTRIES: Array<ReviewHubEntry> = [
   {
     slug: 'gaiam',
     title: 'Gaiam Premium 6mm',
-    description: 'An entry-level PVC mat with approachable cushioning and simple construction.',
+    description:
+      'An entry-level PVC mat with approachable cushioning and simple construction.',
     image: '/images/guides/gaiam-yoga-mat/hero.webp',
     brand: 'Gaiam',
     material: 'PVC',
@@ -170,7 +176,8 @@ export const REVIEW_ENTRIES: Array<ReviewHubEntry> = [
   {
     slug: 'retrospec',
     title: 'Retrospec Solana',
-    description: 'A thick closed-cell NBR mat focused on floor comfort rather than precision.',
+    description:
+      'A thick closed-cell NBR mat focused on floor comfort rather than precision.',
     image: '/images/guides/retrospec-solana-yoga-mat/hero.webp',
     brand: 'Retrospec',
     material: 'NBR foam',
@@ -183,7 +190,10 @@ export const REVIEW_ENTRIES: Array<ReviewHubEntry> = [
 ]
 
 export function filterValueSlug(value: string): string {
-  return value.toLowerCase().replace(/\s*\+\s*/g, '-').replace(/\s+/g, '-')
+  return value
+    .toLowerCase()
+    .replace(/\s*\+\s*/g, '-')
+    .replace(/\s+/g, '-')
 }
 
 export function valueFromSlug<T extends readonly string[]>(

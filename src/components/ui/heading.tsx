@@ -23,8 +23,10 @@ export function Heading({ level, id, children, className }: HeadingProps) {
     <Tag
       id={id}
       className={cn(
-        level === 2 && 'mt-12 mb-4 text-2xl font-bold tracking-tight text-stone-900 sm:text-3xl',
-        level === 3 && 'mt-8 mb-3 text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl',
+        level === 2 &&
+          'mt-12 mb-4 text-2xl font-bold tracking-tight text-stone-900 sm:text-3xl',
+        level === 3 &&
+          'mt-8 mb-3 text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl',
         className,
       )}
     >

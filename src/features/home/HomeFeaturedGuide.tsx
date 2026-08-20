@@ -26,8 +26,8 @@ export function HomeFeaturedGuide() {
             </h2>
             <p className="mt-6 max-w-md text-sm leading-relaxed text-[color:var(--color-bg)]/75 md:text-base">
               Seven mats ranked by material, grip, cushion and the trade-offs
-              most lists skip — researched, never lab-tested, with the right pick
-              for travel, sweat, sore knees and everyday home practice.
+              most lists skip — researched, never lab-tested, with the right
+              pick for travel, sweat, sore knees and everyday home practice.
             </p>
             <Link
               to="/reviews/best-yoga-mats"

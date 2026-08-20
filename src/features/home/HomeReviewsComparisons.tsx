@@ -7,9 +7,21 @@ const COLUMNS = [
     href: '/reviews',
     link: 'All reviews',
     items: [
-      ['Manduka PRO', 'Dense support and the portability trade-off', '/reviews/manduka-pro'],
-      ['Liforme Original', 'Alignment system, grip and premium price', '/reviews/liforme'],
-      ['Jade Harmony', 'Rubber traction, care and latex relevance', '/reviews/jade'],
+      [
+        'Manduka PRO',
+        'Dense support and the portability trade-off',
+        '/reviews/manduka-pro',
+      ],
+      [
+        'Liforme Original',
+        'Alignment system, grip and premium price',
+        '/reviews/liforme',
+      ],
+      [
+        'Jade Harmony',
+        'Rubber traction, care and latex relevance',
+        '/reviews/jade',
+      ],
     ],
   },
   {
@@ -17,9 +29,21 @@ const COLUMNS = [
     href: '/comparisons',
     link: 'All comparisons',
     items: [
-      ['Cork vs rubber', 'Grip, care and material differences', '/guides/cork-vs-rubber-yoga-mat'],
-      ['Manduka vs Lululemon', 'Durability, surface and portability', '/guides/manduka-vs-lululemon-yoga-mat'],
-      ['Yoga mat vs exercise mat', 'Choose by movement, shoes and support', '/guides/yoga-mat-vs-exercise-mat'],
+      [
+        'Cork vs rubber',
+        'Grip, care and material differences',
+        '/guides/cork-vs-rubber-yoga-mat',
+      ],
+      [
+        'Manduka vs Lululemon',
+        'Durability, surface and portability',
+        '/guides/manduka-vs-lululemon-yoga-mat',
+      ],
+      [
+        'Yoga mat vs exercise mat',
+        'Choose by movement, shoes and support',
+        '/guides/yoga-mat-vs-exercise-mat',
+      ],
     ],
   },
 ] as const

@@ -79,7 +79,11 @@ function ProductRow({ item, index }: { item: ProductListItem; index: number }) {
               data-affiliate-placement="product-title"
               onClick={(event) => {
                 const context = affiliateClickContext('product-title')
-                event.currentTarget.href = affiliateHref(item.slug, 'product-title', context.sourcePage)
+                event.currentTarget.href = affiliateHref(
+                  item.slug,
+                  'product-title',
+                  context.sourcePage,
+                )
                 track('Affiliate click', { product: item.slug, ...context })
               }}
               aria-label={`Check price for ${item.productName} on Amazon`}
@@ -143,8 +147,8 @@ function ProductList({ items, className }: ProductListProps) {
         ))}
       </ol>
       <p className="border-t border-[color:var(--color-border)] px-5 py-3 text-[11px] text-[color:var(--color-ink-muted)] sm:px-6">
-        Affiliate links — we may earn a commission. Prices and stock change too often to
-        print here.
+        Affiliate links — we may earn a commission. Prices and stock change too
+        often to print here.
       </p>
     </div>
   )

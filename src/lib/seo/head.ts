@@ -109,7 +109,9 @@ export function buildHead(fm: Frontmatter, ctx: BuildHeadContext): HeadConfig {
     // omits the line. A truthiness check therefore noindexed 84 pages that were
     // meant to be indexed, including the whole gear catalogue and both blog
     // posts. Only an explicit `indexable: false` may suppress indexing.
-    ...(fm.indexable === false ? [{ name: 'robots', content: 'noindex, follow' }] : []),
+    ...(fm.indexable === false
+      ? [{ name: 'robots', content: 'noindex, follow' }]
+      : []),
 
     // OpenGraph — Pinterest also reads these
     { property: 'og:type', content: 'article' },

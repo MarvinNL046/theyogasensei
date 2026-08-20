@@ -58,7 +58,10 @@ export function ProductReviewHero({ data }: ProductReviewHeroProps) {
                 <li aria-hidden="true" className="mx-2 opacity-50">
                   ›
                 </li>
-                <li aria-current="page" className="text-[color:var(--color-ink)]">
+                <li
+                  aria-current="page"
+                  className="text-[color:var(--color-ink)]"
+                >
                   {productName} Review
                 </li>
               </ol>
@@ -85,7 +88,9 @@ export function ProductReviewHero({ data }: ProductReviewHeroProps) {
                 className="h-11 w-11 rounded-full object-cover ring-1 ring-[color:var(--color-border)]"
               />
               <div className="text-sm">
-                <p className="font-medium text-[color:var(--color-ink)]">By {byline.author}</p>
+                <p className="font-medium text-[color:var(--color-ink)]">
+                  By {byline.author}
+                </p>
                 <p className="mt-0.5 text-xs text-[color:var(--color-ink-muted)]">
                   {byline.date} · {byline.readTime}
                 </p>
@@ -110,7 +115,9 @@ function HeroRatingCard({ data }: { data: ProductReview }) {
       </p>
       <div className="mt-3 flex items-end gap-2 font-serif text-[50px] leading-none text-[color:var(--color-ink)]">
         {data.rating.toFixed(1)}
-        <span className="mb-1 text-3xl text-[color:var(--color-ink-muted)]">/5</span>
+        <span className="mb-1 text-3xl text-[color:var(--color-ink-muted)]">
+          /5
+        </span>
       </div>
       <div className="mt-3 flex gap-1" aria-label={`${data.rating} out of 5`}>
         {Array.from({ length: 5 }).map((_, index) => (
@@ -162,7 +169,10 @@ function SummaryList({
       </h2>
       <ul className="mt-3 space-y-2.5">
         {items.map((item) => (
-          <li key={item} className="flex gap-2 text-xs leading-5 text-[color:var(--color-ink-soft)]">
+          <li
+            key={item}
+            className="flex gap-2 text-xs leading-5 text-[color:var(--color-ink-soft)]"
+          >
             <Icon
               className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--color-olive)]"
               strokeWidth={2}

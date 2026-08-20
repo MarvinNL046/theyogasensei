@@ -139,8 +139,7 @@ export function loadContent(
 ): LoadedContent {
   const fullPath = `/content/${folder}/${slugPath}.mdx`
   const importer = contentImporterByFolder[folder][fullPath]
-  if (importer === undefined)
-    throw new Error(`MDX not found: ${fullPath}`)
+  if (importer === undefined) throw new Error(`MDX not found: ${fullPath}`)
   let Component = lazyContentByPath.get(fullPath)
   if (!Component) {
     Component = lazy(importer)

@@ -182,9 +182,10 @@ Chair yoga for seniors is a gentle way to practice yoga while seated or using a 
 H3: Gentle Movement and Range of Motion  
 H3: Balance Confidence and Body Awareness  
 H3: Strength and Functional Fitness Support  
-H3: Relaxation and Mood Support  
+H3: Relaxation and Mood Support
 
 Rules:
+
 - Use `may support`, `some studies suggest`, and `can help some people`.
 - Cite CDC physical activity guidance, NCCIH yoga safety/evidence notes, and chair-yoga/chair-based exercise studies.
 - Do not claim fall prevention, treatment of arthritis, blood pressure improvement, sleep improvement, pain relief, or mental-health outcomes unless source-backed and phrased cautiously.
@@ -192,6 +193,7 @@ Rules:
 ### H2: 12 Gentle Chair Yoga Poses for Seniors
 
 For each pose:
+
 - What it may support
 - How to do it in 3-5 short steps
 - Breath cue
@@ -199,6 +201,7 @@ For each pose:
 - Easier modification
 
 Recommended pose list:
+
 1. Seated Mountain
 2. Seated Shoulder Rolls
 3. Seated Cat-Cow
@@ -213,6 +216,7 @@ Recommended pose list:
 12. Seated Rest and Breathing
 
 Avoid or handle carefully:
+
 - Deep neck rolls
 - Deep twisting
 - Strong backbends
@@ -309,10 +313,12 @@ These are not verified PAA. They come from top-ranking competitor headings/FAQ-s
 ## Internal Link Opportunities
 
 Existing links:
+
 - `/guides/yoga-for-beginners` with anchor such as `beginner yoga guide`
 - `/poses/sun-salutation` only if mentioning why floor-based or flowing sequences may not suit every senior
 
 Planned/future links:
+
 - `/guides/free-chair-yoga-for-seniors` or `/blog/free-chair-yoga-for-seniors`
 - `/guides/printable-chair-yoga-for-seniors` or `/blog/printable-chair-yoga-for-seniors`
 - `/blog/free-28-day-chair-yoga-for-seniors`
@@ -361,6 +367,7 @@ Recommended lead magnet: `Free Chair Yoga Starter Plan for Seniors`
 Fit: strong. The SERP is informational and trust-first, and the seed keyword has natural printable/free modifiers in the same cluster.
 
 Requirements before publishing:
+
 - Create the actual PDF or mark the section as `Coming soon` internally only.
 - Use large text, simple checkboxes, short 5-10 minute daily options, and repeated safety reminders.
 - Do not promise a 28-day PDF unless that asset exists.

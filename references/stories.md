@@ -37,17 +37,20 @@ _[Empty — write your first real story here after your first product test. See 
 You'll generate stories naturally as you test gear and build a practice. Watch for these moments and write them down within 24 hours while details are fresh:
 
 ### Gear-testing stories that work
+
 - **The first day of using a new product.** What surprised you? What did the marketing get wrong? What did it get right?
 - **The product that failed.** A mat that slipped, a block that cracked, an app that froze. Honest failure stories are the most trustworthy thing you can publish.
 - **The discovery story.** "I bought this expecting X. After a month I realised Y." The reveal must be genuine.
-- **The comparison moment.** Two products tested in the same week, one obviously better — and *why*. Specific, not vague.
+- **The comparison moment.** Two products tested in the same week, one obviously better — and _why_. Specific, not vague.
 
 ### Practice stories that work (even without certification)
+
 - **The "I tried this and got it wrong" story.** Got into a pose wrong, watched a YouTube tutorial, fixed it. Beginner anxiety being real is your best E-E-A-T asset.
 - **The unexpected resource.** "I bought a yoga book that turned out to be useless. The free YouTube channel I almost ignored became my daily teacher."
-- **The plateau story.** Three weeks of progress, then a wall. What broke through it — for *you*, not "in general".
+- **The plateau story.** Three weeks of progress, then a wall. What broke through it — for _you_, not "in general".
 
 ### Stories that don't work — never write these
+
 - Stories about teaching others (you don't teach).
 - Stories about retreats / training you haven't been on.
 - Stories that exaggerate a small thing into a transformation.

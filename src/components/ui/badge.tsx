@@ -11,7 +11,8 @@ const badgeVariants = cva(
         default: 'bg-[color:var(--color-olive)] text-[color:var(--color-bg)]',
         accent: 'bg-[color:var(--color-accent)] text-[color:var(--color-bg)]',
         soft: 'bg-[color:var(--color-surface)] text-[color:var(--color-ink)] ring-1 ring-[color:var(--color-border)]',
-        outline: 'border border-[color:var(--color-border)] text-[color:var(--color-ink-soft)]',
+        outline:
+          'border border-[color:var(--color-border)] text-[color:var(--color-ink-soft)]',
       },
     },
     defaultVariants: {
@@ -25,7 +26,13 @@ function Badge({
   variant,
   ...props
 }: React.ComponentProps<'span'> & VariantProps<typeof badgeVariants>) {
-  return <span data-slot="badge" className={cn(badgeVariants({ variant }), className)} {...props} />
+  return (
+    <span
+      data-slot="badge"
+      className={cn(badgeVariants({ variant }), className)}
+      {...props}
+    />
+  )
 }
 
 export { Badge, badgeVariants }

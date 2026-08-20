@@ -40,7 +40,10 @@ export const record = internalMutation({
   },
 })
 
-export const RESEND_EVENT_TO_TYPE: Record<string, (typeof EVENT_TYPES)[number] | undefined> = {
+export const RESEND_EVENT_TO_TYPE: Record<
+  string,
+  (typeof EVENT_TYPES)[number] | undefined
+> = {
   'email.sent': 'sent',
   'email.delivered': 'delivered',
   'email.opened': 'opened',

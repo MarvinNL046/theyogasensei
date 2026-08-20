@@ -13,7 +13,10 @@ const pinSchema = z.object({
   primaryImage: z.string().min(1),
   description: z
     .string()
-    .min(50, 'Pinterest pin description should be 200–500 chars for hashtag room')
+    .min(
+      50,
+      'Pinterest pin description should be 200–500 chars for hashtag room',
+    )
     .max(500),
 })
 
@@ -178,7 +181,11 @@ export const frontmatterSchema = z
       })
     }
 
-    if (data.type === 'cluster' && data.schemaType === 'Review' && data.reviewRating == null) {
+    if (
+      data.type === 'cluster' &&
+      data.schemaType === 'Review' &&
+      data.reviewRating == null
+    ) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message:

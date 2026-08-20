@@ -33,6 +33,8 @@ export function Section({
   children,
 }: SectionProps) {
   return (
-    <Tag className={cn(TONE[tone], PADDING[padding], className)}>{children}</Tag>
+    <Tag className={cn(TONE[tone], PADDING[padding], className)}>
+      {children}
+    </Tag>
   )
 }

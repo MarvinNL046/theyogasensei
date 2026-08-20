@@ -81,7 +81,10 @@ function authHeader(): string {
 async function fetchAsin(asin: string): Promise<any | null> {
   const res = await fetch(`${API}/merchant/amazon/asin/live/advanced`, {
     method: 'POST',
-    headers: { Authorization: authHeader(), 'Content-Type': 'application/json' },
+    headers: {
+      Authorization: authHeader(),
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify([
       { asin, language_code: 'en_US', location_name: 'United States' },
     ]),
@@ -96,7 +99,9 @@ async function fetchAsin(asin: string): Promise<any | null> {
   // which is a config problem, not evidence about the listing.
   const task = json.tasks?.[0]
   if (task?.status_code !== 20000) {
-    throw new Error(`DataForSEO task ${task?.status_code}: ${task?.status_message}`)
+    throw new Error(
+      `DataForSEO task ${task?.status_code}: ${task?.status_message}`,
+    )
   }
   return task.result?.[0]?.items?.[0] ?? null
 }
@@ -110,19 +115,31 @@ async function fetchAsin(asin: string): Promise<any | null> {
  * mode that went unnoticed for weeks.
  */
 function judge(item: any | null): { status: Status; reason: string } {
-  if (!item) return { status: 'FAIL', reason: 'no product returned — ASIN dead or wrong marketplace' }
+  if (!item)
+    return {
+      status: 'FAIL',
+      reason: 'no product returned — ASIN dead or wrong marketplace',
+    }
 
   const price = item.price_from ?? item.price
   if (price == null) {
-    return { status: 'FAIL', reason: 'no buy box — listing has no headline offer, so a click earns nothing' }
+    return {
+      status: 'FAIL',
+      reason:
+        'no buy box — listing has no headline offer, so a click earns nothing',
+    }
   }
   if (item.is_available === false) {
     return { status: 'FAIL', reason: 'marked unavailable' }
   }
   const title = String(item.title ?? '')
-  if (!title) return { status: 'WARN', reason: 'no title returned — check by hand' }
+  if (!title)
+    return { status: 'WARN', reason: 'no title returned — check by hand' }
 
-  return { status: 'OK', reason: `buy box present (${price} ${item.currency ?? ''})`.trim() }
+  return {
+    status: 'OK',
+    reason: `buy box present (${price} ${item.currency ?? ''})`.trim(),
+  }
 }
 
 async function mapLimit<T, TResult>(
@@ -132,14 +149,17 @@ async function mapLimit<T, TResult>(
 ): Promise<Array<TResult>> {
   const out: Array<TResult> = new Array(items.length)
   let next = 0
-  const workers = Array.from({ length: Math.min(limit, items.length) }, async () => {
-    while (next < items.length) {
-      const i = next++
-      const item = items[i]
-      if (item === undefined) continue
-      out[i] = await fn(item)
-    }
-  })
+  const workers = Array.from(
+    { length: Math.min(limit, items.length) },
+    async () => {
+      while (next < items.length) {
+        const i = next++
+        const item = items[i]
+        if (item === undefined) continue
+        out[i] = await fn(item)
+      }
+    },
+  )
   await Promise.all(workers)
   return out
 }
@@ -147,7 +167,9 @@ async function mapLimit<T, TResult>(
 async function main(): Promise<void> {
   const args = process.argv.slice(2)
   const asJson = args.includes('--json')
-  const slugFilter = args.includes('--slug') ? args[args.indexOf('--slug') + 1] : null
+  const slugFilter = args.includes('--slug')
+    ? args[args.indexOf('--slug') + 1]
+    : null
 
   const targets: Array<{ slug: string; asin: string }> = []
   const skipped: Array<string> = []
@@ -162,7 +184,10 @@ async function main(): Promise<void> {
       continue
     }
     const host = url.hostname.toLowerCase()
-    const isAmazon = host === 'amazon.com' || host.startsWith('amazon.') || host.includes('.amazon.')
+    const isAmazon =
+      host === 'amazon.com' ||
+      host.startsWith('amazon.') ||
+      host.includes('.amazon.')
     if (!isAmazon) {
       skipped.push(`${slug}: not an Amazon destination (${host})`)
       continue
@@ -176,38 +201,63 @@ async function main(): Promise<void> {
   }
 
   if (!targets.length) {
-    console.error(slugFilter ? `No Amazon destination found for slug "${slugFilter}".` : 'No Amazon destinations found.')
+    console.error(
+      slugFilter
+        ? `No Amazon destination found for slug "${slugFilter}".`
+        : 'No Amazon destinations found.',
+    )
     process.exit(1)
   }
 
-  if (!asJson) console.log(`Auditing ${targets.length} Amazon destination(s)...\n`)
+  if (!asJson)
+    console.log(`Auditing ${targets.length} Amazon destination(s)...\n`)
 
-  const results = await mapLimit(targets, CONCURRENCY, async ({ slug, asin }): Promise<Result> => {
-    try {
-      const item = await fetchAsin(asin)
-      const { status, reason } = judge(item)
-      return { slug, asin, status, title: String(item?.title ?? '').slice(0, 60), reason }
-    } catch (err) {
-      // A transport failure is not evidence the listing is dead. Say so plainly
-      // rather than reporting a false FAIL that sends someone chasing a ghost.
-      return {
-        slug,
-        asin,
-        status: 'WARN',
-        title: '',
-        reason: `lookup failed: ${err instanceof Error ? err.message : String(err)}`,
+  const results = await mapLimit(
+    targets,
+    CONCURRENCY,
+    async ({ slug, asin }): Promise<Result> => {
+      try {
+        const item = await fetchAsin(asin)
+        const { status, reason } = judge(item)
+        return {
+          slug,
+          asin,
+          status,
+          title: String(item?.title ?? '').slice(0, 60),
+          reason,
+        }
+      } catch (err) {
+        // A transport failure is not evidence the listing is dead. Say so plainly
+        // rather than reporting a false FAIL that sends someone chasing a ghost.
+        return {
+          slug,
+          asin,
+          status: 'WARN',
+          title: '',
+          reason: `lookup failed: ${err instanceof Error ? err.message : String(err)}`,
+        }
       }
-    }
-  })
+    },
+  )
 
   const fails = results.filter((r) => r.status === 'FAIL')
   const warns = results.filter((r) => r.status === 'WARN')
 
   if (asJson) {
-    console.log(JSON.stringify({ results, skipped, fails: fails.length, warns: warns.length }, null, 2))
+    console.log(
+      JSON.stringify(
+        { results, skipped, fails: fails.length, warns: warns.length },
+        null,
+        2,
+      ),
+    )
   } else {
-    for (const r of results.sort((a, b) => a.status.localeCompare(b.status) || a.slug.localeCompare(b.slug))) {
-      const mark = r.status === 'OK' ? 'ok  ' : r.status === 'WARN' ? 'WARN' : 'FAIL'
+    for (const r of results.sort(
+      (a, b) =>
+        a.status.localeCompare(b.status) || a.slug.localeCompare(b.slug),
+    )) {
+      const mark =
+        r.status === 'OK' ? 'ok  ' : r.status === 'WARN' ? 'WARN' : 'FAIL'
       console.log(`${mark}  ${r.slug.padEnd(28)} ${r.asin}  ${r.reason}`)
       if (r.status !== 'OK' && r.title) console.log(`      ${r.title}`)
     }

@@ -204,7 +204,7 @@ When the actual MDX file is created, frontmatter should include:
 ```yaml
 type: subpillar
 schemaType: ItemList
-pillar: yoga-mat-buying-guide   # match cluster plan
+pillar: yoga-mat-buying-guide # match cluster plan
 clusters: [yoga-mats, gear, beginner]
 author: marvin
 reviewedBy: marvin

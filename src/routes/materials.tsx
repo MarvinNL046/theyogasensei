@@ -43,12 +43,38 @@ export const Route = createFileRoute('/materials')({
         },
       ]}
       sections={[
-        { title: 'PVC', description: 'Dense support, closed cells and long service-life claims.', href: '/guides/pvc-yoga-mat' },
-        { title: 'NBR foam', description: 'Thick cushioning with less standing stability.', href: '/guides/nbr-yoga-mat' },
-        { title: 'Polyurethane', description: 'Immediate grip paired with precise care requirements.', href: '/guides/pu-yoga-mat' },
-        { title: 'Jute', description: 'Natural texture, blended constructions and cleaning limits.', href: '/guides/jute-yoga-mat' },
-        { title: 'Wool', description: 'Warmth and comfort for slower floor-based practices.', href: '/guides/wool-yoga-mat' },
-        { title: 'Open-cell vs closed-cell', description: 'Absorption, grip and cleaning compared directly.', href: '/guides/open-cell-vs-closed-cell-yoga-mat' },
+        {
+          title: 'PVC',
+          description:
+            'Dense support, closed cells and long service-life claims.',
+          href: '/guides/pvc-yoga-mat',
+        },
+        {
+          title: 'NBR foam',
+          description: 'Thick cushioning with less standing stability.',
+          href: '/guides/nbr-yoga-mat',
+        },
+        {
+          title: 'Polyurethane',
+          description: 'Immediate grip paired with precise care requirements.',
+          href: '/guides/pu-yoga-mat',
+        },
+        {
+          title: 'Jute',
+          description:
+            'Natural texture, blended constructions and cleaning limits.',
+          href: '/guides/jute-yoga-mat',
+        },
+        {
+          title: 'Wool',
+          description: 'Warmth and comfort for slower floor-based practices.',
+          href: '/guides/wool-yoga-mat',
+        },
+        {
+          title: 'Open-cell vs closed-cell',
+          description: 'Absorption, grip and cleaning compared directly.',
+          href: '/guides/open-cell-vs-closed-cell-yoga-mat',
+        },
       ]}
     />
   ),

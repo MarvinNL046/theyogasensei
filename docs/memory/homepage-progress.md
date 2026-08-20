@@ -1,7 +1,7 @@
 ---
 name: homepage-progress
 description: Where we left off building the homepage sections per /public/images/design-templates/1.Homepage Minimalistisch yoga website met Zen stijl.png
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: ada7cc16-2010-43de-8098-d4d4179fb88b
@@ -20,6 +20,7 @@ Live homepage (`src/routes/index.tsx`) sections now (all in `src/features/home/`
 **Hero → Trust bar → Featured-guide band → "Latest writing" (10 guide cards +
 "View all guides") → "Who writes this" (about teaser) → ensō lead-capture band.**
 Three sections rebuilt + pushed 2026-05-30 (commits …5934062):
+
 - **`HomeTrustBar`** — four-point credibility strip under the hero (Leaf/BookOpen/
   PersonStanding/Globe2), icon+title+subtitle, dividers on md+, no cards. Honest (no
   lab-test claim).
@@ -27,16 +28,17 @@ Three sections rebuilt + pushed 2026-05-30 (commits …5934062):
   right) featuring best-yoga-mats-2026. Photo-led, NOT another ensō (distinct from lead-capture).
 - **`HomeLeadCapture`** — dark `Section` + `zen-enso-dark-texture-bg.webp` (ensō right,
   scrim left) + the real `NewsletterCapture` in its new **`onDark` tone variant** (`tone`
-  + `showHeader` props added; light card usage unchanged).
+  - `showHeader` props added; light card usage unchanged).
 
 **Topic grid + URL-addressable filters — DONE (2026-05-30, commits 8b4aa24 + b513cec):**
+
 - `/guides` filter state now lives in the URL (`?category=care`) via `validateSearch`
-  + `navigate`. `categorySlug`/`categoryFromSlug` in `data.ts` map clean slugs ⇄ labels.
-  `GuidesIndexView` is now CONTROLLED (`active` + `onSelect` props, no internal useState).
+  - `navigate`. `categorySlug`/`categoryFromSlug` in `data.ts` map clean slugs ⇄ labels.
+    `GuidesIndexView` is now CONTROLLED (`active` + `onSelect` props, no internal useState).
 - **Hydration gotcha (fixed):** reading the `?category=` param on first render caused
   React #418 (prerendered HTML is the "All" view). Fix = a post-hydration gate in the
   route component (`useState(false)` + `useEffect(()=>setHydrated(true))`, `active =
-  hydrated ? categoryFromSlug(category) : 'All'`). Use this pattern for ANY URL-driven
+hydrated ? categoryFromSlug(category) : 'All'`). Use this pattern for ANY URL-driven
   state on a prerendered route. Loader still reads no search params (SSG-safe).
 - **`HomeTopicGrid`** — 5 tiles (real guide images) deep-linking to `/guides?category=<slug>`,
   between trust bar and featured band.
@@ -54,6 +56,7 @@ Container, Eyebrow, JapaneseAccent). Reference image still at
 `src/design-references/features-reviews/`.
 
 **On recovery, adapt these (don't blind-restore):**
+
 1. Sensei Picks subtitle "tested and approved" → honest (we don't test).
 2. Ratings → placeholder stars until PA-API live; then real Amazon ratings — see [[affiliate-ratings-policy]].
 3. Topic-grid + picks link to ARCHIVED routes (`/gear`, `/poses`, `/styles`, `/start-here`) that no longer exist → remap to the live `/guides` cluster.

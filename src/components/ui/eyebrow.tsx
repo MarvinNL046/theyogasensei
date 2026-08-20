@@ -15,7 +15,11 @@ export interface EyebrowProps {
   children: ReactNode
 }
 
-export function Eyebrow({ tone = 'default', className, children }: EyebrowProps) {
+export function Eyebrow({
+  tone = 'default',
+  className,
+  children,
+}: EyebrowProps) {
   return (
     <span
       className={cn(

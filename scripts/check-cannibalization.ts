@@ -25,9 +25,37 @@ const STRICT = process.argv.includes('--strict')
 // ---------- normalisation ----------
 
 const STOPWORDS = new Set([
-  'a', 'an', 'the', 'to', 'of', 'for', 'your', 'you', 'with', 'and', 'in', 'on',
-  'at', 'is', 'are', 'do', 'does', 'how', 'what', 'when', 'should', 'can', 'vs',
-  'versus', 'or', 'best', 'top', 'guide', 'complete', 'review', 'reviews',
+  'a',
+  'an',
+  'the',
+  'to',
+  'of',
+  'for',
+  'your',
+  'you',
+  'with',
+  'and',
+  'in',
+  'on',
+  'at',
+  'is',
+  'are',
+  'do',
+  'does',
+  'how',
+  'what',
+  'when',
+  'should',
+  'can',
+  'vs',
+  'versus',
+  'or',
+  'best',
+  'top',
+  'guide',
+  'complete',
+  'review',
+  'reviews',
 ])
 
 /** Naive singulariser — enough for keyword tokens (mats→mat, poses→pose). */
@@ -73,9 +101,13 @@ function parseCsvLine(line: string): string[] {
   for (let i = 0; i < line.length; i++) {
     const c = line[i]
     if (c === '"') {
-      if (inQuotes && line[i + 1] === '"') { cur += '"'; i++ } else inQuotes = !inQuotes
+      if (inQuotes && line[i + 1] === '"') {
+        cur += '"'
+        i++
+      } else inQuotes = !inQuotes
     } else if (c === ',' && !inQuotes) {
-      out.push(cur); cur = ''
+      out.push(cur)
+      cur = ''
     } else cur += c
   }
   out.push(cur)
@@ -116,7 +148,8 @@ function loadUsedKeywords(): Row[] {
     const cells = line.split('|').map((c) => c.trim())
     // | <pad> | Primary | Slug | ... |  -> cells[1] = primary
     const primary = cells[1]?.toLowerCase()
-    if (!primary || primary === 'primary keyword' || /^-+$/.test(primary)) continue
+    if (!primary || primary === 'primary keyword' || /^-+$/.test(primary))
+      continue
     rows.push({ primary, secondary: [], source: 'used-keywords.md' })
   }
   return rows
@@ -152,7 +185,10 @@ function dupsWithin(rows: Row[], label: string) {
   const counts = new Map<string, number>()
   for (const r of rows) counts.set(r.primary, (counts.get(r.primary) ?? 0) + 1)
   for (const [primary, c] of counts) {
-    if (c > 1) hard.push(`EXACT DUPLICATE primary "${primary}" — ${c}× within ${label} (two pages competing for one keyword)`)
+    if (c > 1)
+      hard.push(
+        `EXACT DUPLICATE primary "${primary}" — ${c}× within ${label} (two pages competing for one keyword)`,
+      )
   }
 }
 dupsWithin(csv, 'keywords.csv')
@@ -160,11 +196,15 @@ dupsWithin(used, 'used-keywords.md')
 
 // 2. primary already a secondary elsewhere
 const secondaryIndex = new Map<string, string>() // secondary -> owning primary
-for (const r of csv) for (const s of r.secondary) if (!secondaryIndex.has(s)) secondaryIndex.set(s, r.primary)
+for (const r of csv)
+  for (const s of r.secondary)
+    if (!secondaryIndex.has(s)) secondaryIndex.set(s, r.primary)
 for (const r of csv) {
   const owner = secondaryIndex.get(r.primary)
   if (owner && owner !== r.primary) {
-    hard.push(`PRIMARY-AS-SECONDARY "${r.primary}" is already a secondary keyword on "${owner}" — split the ranking signal`)
+    hard.push(
+      `PRIMARY-AS-SECONDARY "${r.primary}" is already a secondary keyword on "${owner}" — split the ranking signal`,
+    )
   }
 }
 
@@ -180,7 +220,9 @@ for (const r of csv) {
 }
 for (const [, prims] of compMap) {
   if (prims.length > 1) {
-    hard.push(`COMPARISON COLLISION (same pair, maybe reversed): ${prims.map((p) => `"${p}"`).join(' ⇄ ')}`)
+    hard.push(
+      `COMPARISON COLLISION (same pair, maybe reversed): ${prims.map((p) => `"${p}"`).join(' ⇄ ')}`,
+    )
   }
 }
 
@@ -196,8 +238,14 @@ for (const r of csv) {
 }
 for (const [, items] of coreMap) {
   const uniq = [...new Set(items.map((i) => i.primary))]
-  if (uniq.length > 1 && items.some((i) => i.hadBest) && items.some((i) => !i.hadBest)) {
-    hard.push(`"BEST X" vs "X" overlap (same core): ${uniq.map((p) => `"${p}"`).join(' ⇄ ')}`)
+  if (
+    uniq.length > 1 &&
+    items.some((i) => i.hadBest) &&
+    items.some((i) => !i.hadBest)
+  ) {
+    hard.push(
+      `"BEST X" vs "X" overlap (same core): ${uniq.map((p) => `"${p}"`).join(' ⇄ ')}`,
+    )
   }
 }
 
@@ -216,14 +264,18 @@ for (let i = 0; i < prims.length; i++) {
       const k = [prims[i], prims[j]].sort().join('|')
       if (seenPairs.has(k)) continue
       seenPairs.add(k)
-      warn.push(`NEAR-DUPLICATE (${(sim * 100).toFixed(0)}%): "${prims[i]}" ~ "${prims[j]}"`)
+      warn.push(
+        `NEAR-DUPLICATE (${(sim * 100).toFixed(0)}%): "${prims[i]}" ~ "${prims[j]}"`,
+      )
     }
   }
 }
 
 // ---------- report ----------
 
-console.log(`Cannibalisation check — ${csv.length} keywords.csv rows, ${used.length} used-keywords rows\n`)
+console.log(
+  `Cannibalisation check — ${csv.length} keywords.csv rows, ${used.length} used-keywords rows\n`,
+)
 
 if (hard.length) {
   console.log(`❌ HARD collisions (${hard.length}):`)

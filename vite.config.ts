@@ -11,10 +11,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
-import {
-  scanContentFrontmatter,
-  scanMdxSlugs,
-} from './scripts/scan-mdx-slugs'
+import { scanContentFrontmatter, scanMdxSlugs } from './scripts/scan-mdx-slugs'
 import { buildGuideHeadingsMap } from './scripts/extract-guide-headings'
 import { affiliateRedirectHeaders } from './src/lib/affiliate-redirect-headers'
 
@@ -59,7 +56,10 @@ const config = defineConfig({
         [remarkMdxFrontmatter, { name: 'frontmatter' }],
         remarkGfm,
       ],
-      rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'wrap' }]],
+      rehypePlugins: [
+        rehypeSlug,
+        [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+      ],
     }),
     devtools(),
     nitro({

@@ -1,4 +1,11 @@
-import type { AnchorHTMLAttributes, HTMLAttributes, OlHTMLAttributes, TableHTMLAttributes, ThHTMLAttributes, TdHTMLAttributes } from 'react'
+import type {
+  AnchorHTMLAttributes,
+  HTMLAttributes,
+  OlHTMLAttributes,
+  TableHTMLAttributes,
+  ThHTMLAttributes,
+  TdHTMLAttributes,
+} from 'react'
 import { ExternalLink } from 'lucide-react'
 import { track } from '@vercel/analytics'
 import { cn } from '#/lib/utils'
@@ -41,7 +48,11 @@ function MdxAnchor({
         data-affiliate-placement="inline-link"
         onClick={(event) => {
           const context = affiliateClickContext('inline-link')
-          event.currentTarget.href = affiliateHref(slug, 'inline-link', context.sourcePage)
+          event.currentTarget.href = affiliateHref(
+            slug,
+            'inline-link',
+            context.sourcePage,
+          )
           track('Affiliate click', { product: slug, ...context })
         }}
         className={cn(
@@ -53,7 +64,11 @@ function MdxAnchor({
         )}
       >
         <span>{children}</span>
-        <ExternalLink aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={1.8} />
+        <ExternalLink
+          aria-hidden="true"
+          className="h-3.5 w-3.5"
+          strokeWidth={1.8}
+        />
       </a>
     )
   }
@@ -68,7 +83,10 @@ function MdxAnchor({
 function MdxTable(props: TableHTMLAttributes<HTMLTableElement>) {
   return (
     <div className="not-prose my-7 overflow-x-auto rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
-      <table className="w-full border-collapse text-left text-[15px] leading-relaxed" {...props} />
+      <table
+        className="w-full border-collapse text-left text-[15px] leading-relaxed"
+        {...props}
+      />
     </div>
   )
 }
@@ -88,7 +106,12 @@ function MdxTh({ className, ...rest }: ThHTMLAttributes<HTMLTableCellElement>) {
 }
 
 function MdxTr({ className, ...rest }: HTMLAttributes<HTMLTableRowElement>) {
-  return <tr className={cn('even:bg-[color:var(--color-surface-muted)]/40', className)} {...rest} />
+  return (
+    <tr
+      className={cn('even:bg-[color:var(--color-surface-muted)]/40', className)}
+      {...rest}
+    />
+  )
 }
 
 function MdxTd({ className, ...rest }: TdHTMLAttributes<HTMLTableCellElement>) {

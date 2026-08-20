@@ -61,7 +61,11 @@ export const Route = createFileRoute('/blog/')({
 function formatDate(iso: string): string {
   const d = new Date(iso)
   if (Number.isNaN(d.getTime())) return iso
-  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+  return d.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
 }
 
 function BlogIndexPage() {
@@ -71,19 +75,22 @@ function BlogIndexPage() {
     <section className="bg-[color:var(--color-bg)] pb-20 pt-8 md:pb-28 md:pt-12">
       <Container size="wide">
         <div className="rounded-[2rem] bg-[color:var(--color-surface-muted)] px-7 py-14 sm:px-12 md:py-20 lg:px-16">
-        <Eyebrow>Journal</Eyebrow>
-        <h1 className="mt-4 max-w-3xl font-serif text-4xl leading-[1.08] tracking-[-0.04em] md:text-[54px]">Useful notes from the mat.</h1>
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-[color:var(--color-ink-soft)] md:text-lg">
-          Shorter, hands-on pieces about the gear we use and the things worth knowing
-          before you buy. For the long-form buying guides, head to{' '}
-          <Link
-            to="/guides"
-            className="text-[color:var(--color-olive)] underline underline-offset-2"
-          >
-            the guides
-          </Link>
-          .
-        </p></div>
+          <Eyebrow>Journal</Eyebrow>
+          <h1 className="mt-4 max-w-3xl font-serif text-4xl leading-[1.08] tracking-[-0.04em] md:text-[54px]">
+            Useful notes from the mat.
+          </h1>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-[color:var(--color-ink-soft)] md:text-lg">
+            Shorter, hands-on pieces about the gear we use and the things worth
+            knowing before you buy. For the long-form buying guides, head to{' '}
+            <Link
+              to="/guides"
+              className="text-[color:var(--color-olive)] underline underline-offset-2"
+            >
+              the guides
+            </Link>
+            .
+          </p>
+        </div>
 
         {posts.length === 0 ? (
           <p className="mt-14 text-sm text-[color:var(--color-ink-muted)]">

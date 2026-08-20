@@ -80,9 +80,7 @@ export function NewsletterCapture({
     <section
       className={cn(
         'not-prose',
-        onDark
-          ? ''
-          : 'rounded-sm border border-stone-200 bg-white p-6 sm:p-8',
+        onDark ? '' : 'rounded-sm border border-stone-200 bg-white p-6 sm:p-8',
         className,
       )}
     >
@@ -99,9 +97,7 @@ export function NewsletterCapture({
           <p
             className={cn(
               'mt-2 max-w-prose text-sm sm:text-base',
-              onDark
-                ? 'text-[color:var(--color-bg)]/75'
-                : 'text-stone-600',
+              onDark ? 'text-[color:var(--color-bg)]/75' : 'text-stone-600',
             )}
           >
             {blurb}
@@ -126,7 +122,10 @@ export function NewsletterCapture({
       ) : onDark ? (
         <form
           onSubmit={handleSubmit}
-          className={cn('flex flex-col gap-3 sm:flex-row', showHeader && 'mt-5')}
+          className={cn(
+            'flex flex-col gap-3 sm:flex-row',
+            showHeader && 'mt-5',
+          )}
           aria-describedby="newsletter-helper"
         >
           <label htmlFor="newsletter-email" className="sr-only">
@@ -154,7 +153,10 @@ export function NewsletterCapture({
       ) : (
         <form
           onSubmit={handleSubmit}
-          className={cn('flex flex-col gap-2 sm:flex-row', showHeader && 'mt-4')}
+          className={cn(
+            'flex flex-col gap-2 sm:flex-row',
+            showHeader && 'mt-4',
+          )}
           aria-describedby="newsletter-helper"
         >
           <label htmlFor="newsletter-email" className="sr-only">
@@ -188,7 +190,8 @@ export function NewsletterCapture({
             onDark ? 'text-red-300' : 'text-red-700',
           )}
         >
-          Something went wrong. Try again, or send your email to hello@theyogasensei.com.
+          Something went wrong. Try again, or send your email to
+          hello@theyogasensei.com.
         </p>
       )}
 

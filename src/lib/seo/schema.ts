@@ -33,9 +33,7 @@ const ORG_LOGO_PATH = '/logo192.png'
 // Tim"), so sameAs explicitly tells Google which profiles are ours. Append
 // new Tier-1 profiles (Crunchbase, Medium, LinkedIn, …) as they go live —
 // use the exact profile URL, and keep name/bio identical across profiles.
-export const ORG_SAME_AS = [
-  'https://www.pinterest.com/theyogasensei/',
-]
+export const ORG_SAME_AS = ['https://www.pinterest.com/theyogasensei/']
 
 function absUrl(siteUrl: string, path: string): string {
   if (path.startsWith('http')) return path
@@ -125,7 +123,9 @@ export function buildArticleSchema(fm: Frontmatter, ctx: SchemaContext) {
     image: cfImage(ctx.siteUrl, fm.heroImage),
     datePublished: fm.publishedAt,
     dateModified: fm.lastReviewedAt,
-    author: { '@id': absUrl(ctx.siteUrl, `/authors/${ctx.author.slug}#person`) },
+    author: {
+      '@id': absUrl(ctx.siteUrl, `/authors/${ctx.author.slug}#person`),
+    },
     publisher: { '@id': `${ctx.siteUrl.replace(/\/$/, '')}/#organization` },
     mainEntityOfPage: absUrl(ctx.siteUrl, ctx.routePath),
     keywords: fm.tags.join(', '),
@@ -151,7 +151,9 @@ export function buildHowToSchema(fm: Frontmatter, ctx: SchemaContext) {
     name: fm.title,
     description: fm.metaDescription,
     image: cfImage(ctx.siteUrl, fm.heroImage),
-    author: { '@id': absUrl(ctx.siteUrl, `/authors/${ctx.author.slug}#person`) },
+    author: {
+      '@id': absUrl(ctx.siteUrl, `/authors/${ctx.author.slug}#person`),
+    },
     publisher: { '@id': `${ctx.siteUrl.replace(/\/$/, '')}/#organization` },
     datePublished: fm.publishedAt,
     dateModified: fm.lastReviewedAt,
@@ -175,7 +177,9 @@ export function buildItemListSchema(fm: Frontmatter, ctx: SchemaContext) {
       : undefined)
 
   if (!items || items.length === 0) {
-    throw new Error('buildItemListSchema requires itemList[] or subpillar products[]')
+    throw new Error(
+      'buildItemListSchema requires itemList[] or subpillar products[]',
+    )
   }
 
   return {
@@ -197,7 +201,9 @@ export function buildItemListSchema(fm: Frontmatter, ctx: SchemaContext) {
 
 export function buildReviewSchema(fm: Frontmatter, ctx: SchemaContext) {
   if (fm.type !== 'cluster' || fm.schemaType !== 'Review') {
-    throw new Error('buildReviewSchema requires cluster frontmatter with schemaType=Review')
+    throw new Error(
+      'buildReviewSchema requires cluster frontmatter with schemaType=Review',
+    )
   }
   return {
     '@context': 'https://schema.org',

@@ -7,11 +7,18 @@ interface RatingStarsProps {
   showValue?: boolean
 }
 
-export function RatingStars({ rating, className, showValue = true }: RatingStarsProps) {
+export function RatingStars({
+  rating,
+  className,
+  showValue = true,
+}: RatingStarsProps) {
   const fullStars = Math.round(rating)
 
   return (
-    <div className={cn('flex items-center gap-2', className)} aria-label={`Rating ${rating} out of 5`}>
+    <div
+      className={cn('flex items-center gap-2', className)}
+      aria-label={`Rating ${rating} out of 5`}
+    >
       <div className="flex items-center gap-0.5" aria-hidden="true">
         {Array.from({ length: 5 }).map((_, index) => (
           <Star

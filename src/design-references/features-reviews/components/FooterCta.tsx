@@ -24,12 +24,14 @@ export function FooterCta() {
             <h2 className="mt-4 font-serif text-4xl leading-tight md:text-5xl">
               Better practice.
               <br />
-              <span className="italic text-[color:var(--color-accent-soft)]">Better you.</span>
+              <span className="italic text-[color:var(--color-accent-soft)]">
+                Better you.
+              </span>
             </h2>
 
             <p className="mt-4 max-w-md text-sm leading-7 text-[color:var(--color-bg)]/85">
-              Explore more guides, routines and honest reviews to support your journey on and off
-              the mat.
+              Explore more guides, routines and honest reviews to support your
+              journey on and off the mat.
             </p>
 
             <a

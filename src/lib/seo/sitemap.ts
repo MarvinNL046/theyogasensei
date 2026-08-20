@@ -170,12 +170,12 @@ export function renderSitemapIndex(siteUrl: string): string {
   const base = siteUrl.replace(/\/$/, '')
   const lastmod = new Date().toISOString().slice(0, 10)
   const groups = buildSitemapGroups(siteUrl)
-  const sitemaps = SITEMAP_GROUPS.filter(
-    (group) => groups[group].length > 0,
-  ).map(
-    (group) =>
-      `  <sitemap>\n    <loc>${escapeXml(`${base}/sitemap-${group}.xml`)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </sitemap>`,
-  ).join('\n')
+  const sitemaps = SITEMAP_GROUPS.filter((group) => groups[group].length > 0)
+    .map(
+      (group) =>
+        `  <sitemap>\n    <loc>${escapeXml(`${base}/sitemap-${group}.xml`)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </sitemap>`,
+    )
+    .join('\n')
 
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',

@@ -36,12 +36,42 @@ const BRAND_MARK = '継続は力なり'
 
 const font = (file: string) => readFileSync(resolve(FONT_DIR, file))
 const fonts = [
-  { name: 'Cormorant Garamond', data: font('CormorantGaramond-400.ttf'), weight: 400 as const, style: 'normal' as const },
-  { name: 'Cormorant Garamond', data: font('CormorantGaramond-600.ttf'), weight: 600 as const, style: 'normal' as const },
-  { name: 'Cormorant Garamond', data: font('CormorantGaramond-700.ttf'), weight: 700 as const, style: 'normal' as const },
-  { name: 'Inter', data: font('Inter-500.ttf'), weight: 500 as const, style: 'normal' as const },
-  { name: 'Inter', data: font('Inter-600.ttf'), weight: 600 as const, style: 'normal' as const },
-  { name: 'Noto Serif JP', data: font('NotoSerifJP-600.ttf'), weight: 600 as const, style: 'normal' as const },
+  {
+    name: 'Cormorant Garamond',
+    data: font('CormorantGaramond-400.ttf'),
+    weight: 400 as const,
+    style: 'normal' as const,
+  },
+  {
+    name: 'Cormorant Garamond',
+    data: font('CormorantGaramond-600.ttf'),
+    weight: 600 as const,
+    style: 'normal' as const,
+  },
+  {
+    name: 'Cormorant Garamond',
+    data: font('CormorantGaramond-700.ttf'),
+    weight: 700 as const,
+    style: 'normal' as const,
+  },
+  {
+    name: 'Inter',
+    data: font('Inter-500.ttf'),
+    weight: 500 as const,
+    style: 'normal' as const,
+  },
+  {
+    name: 'Inter',
+    data: font('Inter-600.ttf'),
+    weight: 600 as const,
+    style: 'normal' as const,
+  },
+  {
+    name: 'Noto Serif JP',
+    data: font('NotoSerifJP-600.ttf'),
+    weight: 600 as const,
+    style: 'normal' as const,
+  },
 ]
 
 type Mode = 'photo' | 'tip' | 'quote-dark' | 'card-cream'
@@ -59,7 +89,14 @@ const wordmark = (color: string) =>
   h(
     'div',
     {
-      style: { fontFamily: 'Inter', fontWeight: 600, fontSize: 20, letterSpacing: 5, color, textTransform: 'uppercase' },
+      style: {
+        fontFamily: 'Inter',
+        fontWeight: 600,
+        fontSize: 20,
+        letterSpacing: 5,
+        color,
+        textTransform: 'uppercase',
+      },
     },
     'The Yoga Sensei',
   )
@@ -77,28 +114,89 @@ function Layout(p: Post) {
   if (p.mode === 'card-cream') {
     return h(
       'div',
-      { style: { ...base, justifyContent: 'center', alignItems: 'flex-start', backgroundColor: CREAM, padding: '0 96px' } },
+      {
+        style: {
+          ...base,
+          justifyContent: 'center',
+          alignItems: 'flex-start',
+          backgroundColor: CREAM,
+          padding: '0 96px',
+        },
+      },
       h(
         'div',
-        { style: { fontFamily: 'Inter', fontWeight: 600, fontSize: 20, letterSpacing: 6, color: CLAY, textTransform: 'uppercase' } },
+        {
+          style: {
+            fontFamily: 'Inter',
+            fontWeight: 600,
+            fontSize: 20,
+            letterSpacing: 6,
+            color: CLAY,
+            textTransform: 'uppercase',
+          },
+        },
         p.eyebrow ?? 'New Guide',
       ),
-      h('div', { style: { width: 72, height: 4, backgroundColor: CLAY, margin: '28px 0 30px 0' } }),
+      h('div', {
+        style: {
+          width: 72,
+          height: 4,
+          backgroundColor: CLAY,
+          margin: '28px 0 30px 0',
+        },
+      }),
       h(
         'div',
-        { style: { fontFamily: 'Cormorant Garamond', fontWeight: 700, fontSize: p.textSize ?? 74, lineHeight: 1.05, color: INK } },
+        {
+          style: {
+            fontFamily: 'Cormorant Garamond',
+            fontWeight: 700,
+            fontSize: p.textSize ?? 74,
+            lineHeight: 1.05,
+            color: INK,
+          },
+        },
         p.text,
       ),
       h(
         'div',
-        { style: { fontFamily: 'Inter', fontWeight: 500, fontSize: 26, lineHeight: 1.4, color: MUTED, marginTop: 30, maxWidth: 760 } },
+        {
+          style: {
+            fontFamily: 'Inter',
+            fontWeight: 500,
+            fontSize: 26,
+            lineHeight: 1.4,
+            color: MUTED,
+            marginTop: 30,
+            maxWidth: 760,
+          },
+        },
         'Honest picks for grip, thickness, material and price. Link in bio.',
       ),
       h(
         'div',
-        { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: S - 192, marginTop: 56 } },
+        {
+          style: {
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            width: S - 192,
+            marginTop: 56,
+          },
+        },
         wordmark(INK),
-        h('div', { style: { fontFamily: 'Noto Serif JP', fontWeight: 600, fontSize: 26, color: CLAY } }, BRAND_MARK),
+        h(
+          'div',
+          {
+            style: {
+              fontFamily: 'Noto Serif JP',
+              fontWeight: 600,
+              fontSize: 26,
+              color: CLAY,
+            },
+          },
+          BRAND_MARK,
+        ),
       ),
     )
   }
@@ -111,7 +209,16 @@ function Layout(p: Post) {
         : 'linear-gradient(to bottom, rgba(35,38,28,0.10) 0%, rgba(35,38,28,0.00) 45%, rgba(35,38,28,0.55) 100%)'
 
   const children: any[] = [
-    h('div', { style: { position: 'absolute', top: 0, left: 0, width: S, height: S, background: scrim } }),
+    h('div', {
+      style: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: S,
+        height: S,
+        background: scrim,
+      },
+    }),
   ]
 
   if (p.mode === 'quote-dark') {
@@ -119,32 +226,151 @@ function Layout(p: Post) {
       h(
         'div',
         {
-          style: { position: 'absolute', top: 0, left: 0, width: S, height: S, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '0 100px' },
+          style: {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: S,
+            height: S,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '0 100px',
+          },
         },
-        h('div', { style: { fontFamily: 'Noto Serif JP', fontWeight: 600, fontSize: 96, color: CREAM, letterSpacing: 6 } }, BRAND_MARK),
-        h('div', { style: { fontFamily: 'Inter', fontWeight: 600, fontSize: 20, letterSpacing: 6, color: CLAY, textTransform: 'uppercase', marginTop: 30 } }, p.eyebrow ?? 'Persistence'),
-        h('div', { style: { fontFamily: 'Cormorant Garamond', fontWeight: 600, fontSize: p.textSize ?? 40, color: 'rgba(250,246,239,0.92)', textAlign: 'center', marginTop: 18, lineHeight: 1.3, maxWidth: 760 } }, p.text),
+        h(
+          'div',
+          {
+            style: {
+              fontFamily: 'Noto Serif JP',
+              fontWeight: 600,
+              fontSize: 96,
+              color: CREAM,
+              letterSpacing: 6,
+            },
+          },
+          BRAND_MARK,
+        ),
+        h(
+          'div',
+          {
+            style: {
+              fontFamily: 'Inter',
+              fontWeight: 600,
+              fontSize: 20,
+              letterSpacing: 6,
+              color: CLAY,
+              textTransform: 'uppercase',
+              marginTop: 30,
+            },
+          },
+          p.eyebrow ?? 'Persistence',
+        ),
+        h(
+          'div',
+          {
+            style: {
+              fontFamily: 'Cormorant Garamond',
+              fontWeight: 600,
+              fontSize: p.textSize ?? 40,
+              color: 'rgba(250,246,239,0.92)',
+              textAlign: 'center',
+              marginTop: 18,
+              lineHeight: 1.3,
+              maxWidth: 760,
+            },
+          },
+          p.text,
+        ),
       ),
     )
   } else if (p.mode === 'tip') {
     children.push(
       h(
         'div',
-        { style: { position: 'absolute', bottom: 88, left: 90, right: 90, display: 'flex', flexDirection: 'column' } },
-        h('div', { style: { fontFamily: 'Inter', fontWeight: 600, fontSize: 20, letterSpacing: 6, color: CREAM, textTransform: 'uppercase' } }, p.eyebrow ?? 'Honest Tip'),
-        h('div', { style: { width: 64, height: 4, backgroundColor: CLAY, margin: '24px 0 26px 0' } }),
-        h('div', { style: { fontFamily: 'Cormorant Garamond', fontWeight: 700, fontSize: p.textSize ?? 60, lineHeight: 1.08, color: CREAM } }, p.text),
+        {
+          style: {
+            position: 'absolute',
+            bottom: 88,
+            left: 90,
+            right: 90,
+            display: 'flex',
+            flexDirection: 'column',
+          },
+        },
+        h(
+          'div',
+          {
+            style: {
+              fontFamily: 'Inter',
+              fontWeight: 600,
+              fontSize: 20,
+              letterSpacing: 6,
+              color: CREAM,
+              textTransform: 'uppercase',
+            },
+          },
+          p.eyebrow ?? 'Honest Tip',
+        ),
+        h('div', {
+          style: {
+            width: 64,
+            height: 4,
+            backgroundColor: CLAY,
+            margin: '24px 0 26px 0',
+          },
+        }),
+        h(
+          'div',
+          {
+            style: {
+              fontFamily: 'Cormorant Garamond',
+              fontWeight: 700,
+              fontSize: p.textSize ?? 60,
+              lineHeight: 1.08,
+              color: CREAM,
+            },
+          },
+          p.text,
+        ),
       ),
     )
   }
 
   if (p.mode !== 'quote-dark') {
     children.push(
-      h('div', { style: { position: 'absolute', bottom: 40, left: 0, width: S, display: 'flex', justifyContent: 'center' } }, wordmark('rgba(250,246,239,0.92)')),
+      h(
+        'div',
+        {
+          style: {
+            position: 'absolute',
+            bottom: 40,
+            left: 0,
+            width: S,
+            display: 'flex',
+            justifyContent: 'center',
+          },
+        },
+        wordmark('rgba(250,246,239,0.92)'),
+      ),
     )
   } else {
     children.push(
-      h('div', { style: { position: 'absolute', bottom: 46, left: 0, width: S, display: 'flex', justifyContent: 'center' } }, wordmark('rgba(250,246,239,0.85)')),
+      h(
+        'div',
+        {
+          style: {
+            position: 'absolute',
+            bottom: 46,
+            left: 0,
+            width: S,
+            display: 'flex',
+            justifyContent: 'center',
+          },
+        },
+        wordmark('rgba(250,246,239,0.85)'),
+      ),
     )
   }
 
@@ -152,14 +378,24 @@ function Layout(p: Post) {
 }
 
 async function render(p: Post, outDir: string) {
-  const svg = await satori(Layout(p) as any, { width: S, height: S, fonts, embedFont: true })
+  const svg = await satori(Layout(p) as any, {
+    width: S,
+    height: S,
+    fonts,
+    embedFont: true,
+  })
   const overlay = await sharp(Buffer.from(svg)).png().toBuffer()
   const out = resolve(outDir, `${p.id}.png`)
   if (p.mode === 'card-cream' || !p.image) {
     await sharp(overlay).png().toFile(out)
   } else {
-    const bg = await sharp(resolve(ROOT, p.image)).resize(S, S, { fit: 'cover', position: 'centre' }).toBuffer()
-    await sharp(bg).composite([{ input: overlay }]).png().toFile(out)
+    const bg = await sharp(resolve(ROOT, p.image))
+      .resize(S, S, { fit: 'cover', position: 'centre' })
+      .toBuffer()
+    await sharp(bg)
+      .composite([{ input: overlay }])
+      .png()
+      .toFile(out)
   }
   return out
 }
@@ -168,7 +404,8 @@ const POSTS: Post[] = [
   {
     id: '1-welcome',
     mode: 'photo',
-    image: 'public/images/aiko-persona/aiko-meditation-back-view-sage-yoga-mat.webp',
+    image:
+      'public/images/aiko-persona/aiko-meditation-back-view-sage-yoga-mat.webp',
     caption:
       'Welcome to The Yoga Sensei. Honest, no-hype guides to yoga gear and practice, starting with the one thing you actually stand on. New guides each week. The first set is live, link in bio.',
   },
@@ -255,9 +492,18 @@ async function main() {
 
   for (const p of POSTS) {
     const file = await render(p, outDir)
-    const rel = file.replace(ROOT, '').replace(/^[\\/]/, '').replace(/\\/g, '/')
+    const rel = file
+      .replace(ROOT, '')
+      .replace(/^[\\/]/, '')
+      .replace(/\\/g, '/')
     console.log('OK', rel)
-    lines.push(`## ${p.id}  (${p.mode})`, '', `- **Image:** \`${rel}\``, `- **Caption:** ${p.caption}`, '')
+    lines.push(
+      `## ${p.id}  (${p.mode})`,
+      '',
+      `- **Image:** \`${rel}\``,
+      `- **Caption:** ${p.caption}`,
+      '',
+    )
   }
 
   writeFileSync(resolve(outDir, '_ig.md'), lines.join('\n'))

@@ -66,13 +66,13 @@ First 100 words must directly answer:
 
 Include quick-reference table:
 
-| mm | inches | feel |
-| --- | --- | --- |
-| 1.5–2mm | about 1/16 inch | travel-thin |
-| 3mm | about 1/8 inch | standard-thin / firm |
-| 4–5mm | about 3/16 inch | balanced standard |
-| 6mm | about 1/4 inch | cushioned |
-| 8–10mm | about 3/8 inch | restorative / joint-relief |
+| mm      | inches          | feel                       |
+| ------- | --------------- | -------------------------- |
+| 1.5–2mm | about 1/16 inch | travel-thin                |
+| 3mm     | about 1/8 inch  | standard-thin / firm       |
+| 4–5mm   | about 3/16 inch | balanced standard          |
+| 6mm     | about 1/4 inch  | cushioned                  |
+| 8–10mm  | about 3/8 inch  | restorative / joint-relief |
 
 ### H2: The 5 factors that decide your ideal thickness
 

@@ -1,4 +1,9 @@
-import { CalendarClock, ClipboardCheck, PersonStanding, ShieldCheck } from 'lucide-react'
+import {
+  CalendarClock,
+  ClipboardCheck,
+  PersonStanding,
+  ShieldCheck,
+} from 'lucide-react'
 import type { ComponentType, SVGProps } from 'react'
 import { Link } from '@tanstack/react-router'
 import { Container } from '#/components/ui/container'
@@ -21,7 +26,9 @@ export function HeroReviewSection() {
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-cover bg-right bg-no-repeat"
-        style={{ backgroundImage: "url('/images/brand/review-hero-best-mats.webp')" }}
+        style={{
+          backgroundImage: "url('/images/brand/review-hero-best-mats.webp')",
+        }}
       />
 
       <Container size="wide" className="relative">
@@ -75,7 +82,10 @@ export function HeroReviewSection() {
             {TRUST_STATS.map((stat) => {
               const Icon = ICONS[stat.icon]
               return (
-                <li key={stat.label} className="flex flex-col items-start gap-2">
+                <li
+                  key={stat.label}
+                  className="flex flex-col items-start gap-2"
+                >
                   <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
                     <Icon
                       className="h-4 w-4 text-[color:var(--color-olive-soft)]"

@@ -6,4 +6,5 @@
 - **Generated:** 2026-06-14 (replaced an earlier line-art version — off-brand)
 
 ## Prompt
+
 Aiko in Downward Facing Dog yoga pose (Adho Mukha Svanasana) — an even inverted V, both hands and both feet grounded on a sage-green yoga mat, hips lifted high, viewed from the side, wearing a charcoal sports set, in a serene minimalist Japanese-inspired studio with a shoji screen, warm morning light, wooden floor, a bonsai and a ceramic vase on a low bench, calm focused expression, premium editorial wellness photography, photorealistic

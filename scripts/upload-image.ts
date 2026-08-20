@@ -57,7 +57,9 @@ async function main() {
   }
 
   const buffer = readFileSync(filePath)
-  const blob = new Blob([new Uint8Array(buffer)], { type: `image/${ext === 'jpg' ? 'jpeg' : ext}` })
+  const blob = new Blob([new Uint8Array(buffer)], {
+    type: `image/${ext === 'jpg' ? 'jpeg' : ext}`,
+  })
   const id = customId ?? basename(filePath, extname(filePath))
 
   const form = new FormData()

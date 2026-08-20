@@ -18,7 +18,10 @@ function PrivacyPage() {
   return (
     <main className="prose mx-auto max-w-3xl px-4 py-12">
       <h1>Privacy Policy</h1>
-      <p>Placeholder. Full policy goes here before the first newsletter subscriber lands.</p>
+      <p>
+        Placeholder. Full policy goes here before the first newsletter
+        subscriber lands.
+      </p>
     </main>
   )
 }

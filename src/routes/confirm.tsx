@@ -154,7 +154,8 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
-              to="/guides/$slug" params={{ slug: 'how-to-clean-a-yoga-mat' }}
+              to="/guides/$slug"
+              params={{ slug: 'how-to-clean-a-yoga-mat' }}
               className="inline-flex items-center rounded-sm bg-[color:var(--color-olive)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
             >
               Read the guides
@@ -180,7 +181,8 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
           </p>
           <div className="mt-8">
             <Link
-              to="/guides/$slug" params={{ slug: 'how-to-clean-a-yoga-mat' }}
+              to="/guides/$slug"
+              params={{ slug: 'how-to-clean-a-yoga-mat' }}
               className="inline-flex items-center rounded-sm bg-[color:var(--color-olive)] px-6 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-bg)] transition hover:bg-[color:var(--color-olive-deep)]"
             >
               Read the guides
@@ -195,9 +197,9 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
             That link is no longer valid.
           </h1>
           <p className="mt-4 text-base leading-7 text-[color:var(--color-ink-soft)]">
-            The confirmation token does not match an active subscription. It
-            may have expired, already been used, or been malformed. Sign up
-            again and we will send a fresh confirmation email.
+            The confirmation token does not match an active subscription. It may
+            have expired, already been used, or been malformed. Sign up again
+            and we will send a fresh confirmation email.
           </p>
           <div className="mt-8">
             <Link
@@ -217,8 +219,8 @@ function ConfirmBody({ state }: { state: ConfirmState }) {
           </h1>
           <p className="mt-4 text-base leading-7 text-[color:var(--color-ink-soft)]">
             This page expects a <code>?token=…</code> parameter from the
-            confirmation email. If you arrived here by mistake, head back to
-            the homepage.
+            confirmation email. If you arrived here by mistake, head back to the
+            homepage.
           </p>
           <div className="mt-8">
             <Link

@@ -1,7 +1,7 @@
 ---
 name: guides-index-page
 description: "The live /guides overview/hub route — how it's built and what was deliberately trimmed from the template"
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: ab4f04a5-6355-4c1c-b26f-d60bb1600495
@@ -13,6 +13,7 @@ template image `public/images/design-templates/2.*.png`) to live, but adapted it
 from a big multi-category blog to the real scope (10 yoga-mat guides).
 
 **Architecture (component-based, per [[feedback-component-based]]):**
+
 - `src/features/guides-index/data.ts` — `listGuides()` reads real frontmatter via
   `listContentSlugs('guides')` + `loadFrontmatter` (SSG-serialisable). Category is an
   explicit slug→category map (`CATEGORY_BY_SLUG`) because frontmatter can't carry a
@@ -51,5 +52,5 @@ the guides `$slug` loader 404s any `_drafts` slug. When adding any new "list all
 content" helper, replicate the `_drafts` skip.
 
 Shipped (pushed to main, commits 530d71c…5a0417a): Figure+inline variant, 11
-guide figures, the /guides hub, sitemap entry, the _drafts fix, and the diagram
+guide figures, the /guides hub, sitemap entry, the \_drafts fix, and the diagram
 round (see [[visual-pass-plan]]).

@@ -1,7 +1,7 @@
 ---
 name: vercel-deploy-setup
-description: "How theyogasensei deploys to Vercel — gotchas that blocked the first launch (routeTree.gen, vercel.json, canonical host, auth)"
-metadata: 
+description: 'How theyogasensei deploys to Vercel — gotchas that blocked the first launch (routeTree.gen, vercel.json, canonical host, auth)'
+metadata:
   node_type: memory
   type: project
   originSessionId: 247b1b40-280e-45f0-8514-9c9d3c6ff24d
@@ -31,6 +31,7 @@ Production serves on **www.theyogasensei.com** (non-www 307-redirects to www).
    `SITE_URL` env if ever needed.
 
 **Deploy mechanics:**
+
 - Vercel CLI is installed + authed as `marvinnl046` (cached login on this machine).
   Manual deploy: `vercel deploy --prod --yes` from the repo (it's linked via
   `.vercel/`, which is gitignored).

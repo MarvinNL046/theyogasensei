@@ -36,7 +36,12 @@ const c = {
 }
 
 const styles = {
-  body: { backgroundColor: c.bg, margin: 0, padding: '24px 12px', fontFamily: SANS },
+  body: {
+    backgroundColor: c.bg,
+    margin: 0,
+    padding: '24px 12px',
+    fontFamily: SANS,
+  },
   card: {
     margin: '0 auto',
     maxWidth: '600px',
@@ -46,7 +51,12 @@ const styles = {
     borderRadius: '16px',
     overflow: 'hidden',
   },
-  hero: { width: '100%', height: 'auto', display: 'block', objectFit: 'cover' as const },
+  hero: {
+    width: '100%',
+    height: 'auto',
+    display: 'block',
+    objectFit: 'cover' as const,
+  },
   pad: { padding: '36px 36px 8px' },
   eyebrow: {
     margin: '0 0 14px',
@@ -65,7 +75,13 @@ const styles = {
     color: c.ink,
     fontFamily: SERIF,
   },
-  p: { margin: '0 0 16px', fontSize: '16px', lineHeight: '1.65', color: c.inkSoft, fontFamily: SANS },
+  p: {
+    margin: '0 0 16px',
+    fontSize: '16px',
+    lineHeight: '1.65',
+    color: c.inkSoft,
+    fontFamily: SANS,
+  },
   label: {
     margin: '28px 0 4px',
     fontSize: '11px',
@@ -84,7 +100,13 @@ const styles = {
     fontWeight: 600,
     textDecoration: 'none',
   },
-  linkDesc: { margin: '3px 0 0', fontSize: '13px', lineHeight: '1.5', color: c.inkMuted, fontFamily: SANS },
+  linkDesc: {
+    margin: '3px 0 0',
+    fontSize: '13px',
+    lineHeight: '1.5',
+    color: c.inkMuted,
+    fontFamily: SANS,
+  },
   button: {
     backgroundColor: c.clay,
     color: '#fffdf8',
@@ -98,8 +120,20 @@ const styles = {
     fontFamily: SANS,
   },
   footer: { backgroundColor: c.olive, padding: '28px 36px' },
-  footerText: { margin: '0 0 6px', fontSize: '13px', lineHeight: '1.6', color: c.oliveText, fontFamily: SANS },
-  footerFine: { margin: 0, fontSize: '12px', lineHeight: '1.6', color: c.oliveMuted, fontFamily: SANS },
+  footerText: {
+    margin: '0 0 6px',
+    fontSize: '13px',
+    lineHeight: '1.6',
+    color: c.oliveText,
+    fontFamily: SANS,
+  },
+  footerFine: {
+    margin: 0,
+    fontSize: '12px',
+    lineHeight: '1.6',
+    color: c.oliveMuted,
+    fontFamily: SANS,
+  },
   footerLink: { color: c.oliveText, textDecoration: 'underline' },
 }
 
@@ -135,7 +169,9 @@ export function Welcome({ siteUrl, unsubscribeUrl, leadMagnet }: WelcomeProps) {
           }
         `}</style>
       </Head>
-      <Preview>You are in. One calm email a week — here is where to start.</Preview>
+      <Preview>
+        You are in. One calm email a week — here is where to start.
+      </Preview>
       <Body style={styles.body}>
         <Container style={styles.card}>
           <Img
@@ -151,14 +187,15 @@ export function Welcome({ siteUrl, unsubscribeUrl, leadMagnet }: WelcomeProps) {
               You are in.
             </Heading>
             <Text style={styles.p}>
-              Welcome. One short email a week — a new guide, an honest gear note, and the one
-              thing I am testing right now. No daily blasts, no fluff, no selling you something
-              in every line.
+              Welcome. One short email a week — a new guide, an honest gear
+              note, and the one thing I am testing right now. No daily blasts,
+              no fluff, no selling you something in every line.
             </Text>
             {leadMagnet ? (
               <Text style={styles.p}>
-                Your free download lands in a separate email in the next minute or two — look for
-                the subject line &ldquo;Your download from The Yoga Sensei&rdquo;.
+                Your free download lands in a separate email in the next minute
+                or two — look for the subject line &ldquo;Your download from The
+                Yoga Sensei&rdquo;.
               </Text>
             ) : null}
 
@@ -187,7 +224,8 @@ export function Welcome({ siteUrl, unsubscribeUrl, leadMagnet }: WelcomeProps) {
               <Link href={unsubscribeUrl} style={styles.footerLink}>
                 Unsubscribe
               </Link>{' '}
-              in one click, any time — no questions. We never share your address.
+              in one click, any time — no questions. We never share your
+              address.
               <br />
               hello@theyogasensei.com
             </Text>

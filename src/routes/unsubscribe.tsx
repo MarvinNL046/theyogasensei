@@ -5,13 +5,14 @@ import type { FunctionReference } from 'convex/server'
 import { convex, isConvexConfigured } from '#/lib/convex/client'
 
 // Typed reference to the Convex unsubscribe mutation.
-const unsubscribeMutation = 'subscribers:unsubscribe' as unknown as FunctionReference<
-  'mutation',
-  'public',
-  { token: string },
-  | { ok: true; status: 'unsubscribed' | 'already-unsubscribed' }
-  | { ok: false; status: 'invalid-token' }
->
+const unsubscribeMutation =
+  'subscribers:unsubscribe' as unknown as FunctionReference<
+    'mutation',
+    'public',
+    { token: string },
+    | { ok: true; status: 'unsubscribed' | 'already-unsubscribed' }
+    | { ok: false; status: 'invalid-token' }
+  >
 
 interface TokenSearch {
   token?: string

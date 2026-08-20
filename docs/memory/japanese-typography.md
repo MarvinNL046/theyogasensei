@@ -1,7 +1,7 @@
 ---
 name: japanese-typography
-description: "Canonical 6-phrase verified Japanese accent set + Noto Serif JP font + usage philosophy (recurring brand-mark, not decoration)"
-metadata: 
+description: 'Canonical 6-phrase verified Japanese accent set + Noto Serif JP font + usage philosophy (recurring brand-mark, not decoration)'
+metadata:
   node_type: memory
   type: project
   originSessionId: ada7cc16-2010-43de-8098-d4d4179fb88b
@@ -12,6 +12,7 @@ Japanese typography is a **recurring premium branding detail**, not decoration. 
 **Why:** Repetition of the same handful of phrases (especially `継続は力なり`) does for the brand what a recurring mascot does for other publishers — it makes the site memorable instead of generic. Random or one-off kanji destroys this effect and reads as AI decoration.
 
 **How to apply:**
+
 - Render Japanese ONLY via `<JapaneseAccent phrase="..." />` from `src/components/ui/japanese-accent.tsx`. Never write `<span lang="ja">` with raw Japanese inline — the component enforces font (Noto Serif JP), spacing (0.2em tracking), opacity (~0.7–0.85), and the verified-phrase guarantee.
 - The 6 verified phrases are documented in AGENTS.md §9 (canonical table with romaji + meaning + intended-usage per phrase). When in doubt, use `persistence` (`継続は力なり` — "consistency is strength") — that's the recurring brand-mark.
 - Phrase-to-context mapping: practice pages → `practice`, meditation → `presence`, long-form reading → `stillness`, routines → `habits`, logo/wordmark → `sensei`, everything else → `persistence`.

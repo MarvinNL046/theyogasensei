@@ -1,7 +1,7 @@
 ---
 name: accessory-affiliate-expansion
 description: "Verified accessory ASINs + keyword data for the next monetization expansion beyond mats — data saved, NO content built yet (Marvin's explicit hold)"
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: ab4f04a5-6355-4c1c-b26f-d60bb1600495
@@ -138,6 +138,7 @@ need (does my mat fit) · bag vs sling vs carrier — which · can it fit a thic
 use for back pain" — natural cross-links between the two new pages (topical cluster).
 
 ## BUILD STATUS
+
 - ✅ **Page 1 DONE + shipped:** `/guides/best-yoga-blocks` (commit 078e76a). Manduka
   block corrected to CORK (best overall); Gaiam foam = best value; Gaiam cork = budget.
 - ✅ **Page 2 DONE + shipped:** `/guides/best-yoga-bolster` (commit 85e5508). Hybrid
