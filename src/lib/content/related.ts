@@ -238,7 +238,8 @@ const REGISTRY: Record<string, RelatedItem> = {
   },
   'sun-salutation': {
     href: '/poses/sun-salutation',
-    title: "Sun Salutation: A Step-by-Step Beginner's Guide to Surya Namaskar A",
+    title:
+      "Sun Salutation: A Step-by-Step Beginner's Guide to Surya Namaskar A",
     category: 'Poses',
   },
   'sun-salutation-b': {
@@ -277,6 +278,272 @@ const REGISTRY: Record<string, RelatedItem> = {
     href: '/poses/warrior-ii',
     title: 'Warrior II: A Steady Guide to Virabhadrasana II',
     category: 'Poses',
+  },
+  // Backfilled 2026-08-20: these pages were referenced by related[] on
+  // live articles but had no entry here, so resolveRelated() dropped them
+  // and those sidebars rendered short or empty.
+
+  // Mat materials — the subpillar set behind /materials
+  'natural-rubber-yoga-mat': {
+    href: '/guides/natural-rubber-yoga-mat',
+    title: 'Natural Rubber Yoga Mat Guide: 5 Picks by Grip and Thickness',
+    category: 'Materials',
+  },
+  'tpe-yoga-mat': {
+    href: '/guides/tpe-yoga-mat',
+    title: 'TPE Yoga Mat Guide: Material, Grip and 3 Source-Checked Picks',
+    category: 'Materials',
+  },
+  'cork-yoga-mat': {
+    href: '/guides/cork-yoga-mat',
+    title: 'Cork Yoga Mat Guide: 5 Source-Checked Picks for Grip and Travel',
+    category: 'Materials',
+  },
+  'jute-yoga-mat': {
+    href: '/guides/jute-yoga-mat',
+    title: 'Jute Yoga Mat Guide: Texture, Backings and 2 Verified Picks',
+    category: 'Materials',
+  },
+  'pvc-yoga-mat': {
+    href: '/guides/pvc-yoga-mat',
+    title: 'PVC Yoga Mat Guide: Material, Grip and 3 Verified Options',
+    category: 'Materials',
+  },
+  'suede-yoga-mat': {
+    href: '/guides/suede-yoga-mat',
+    title: 'Suede Yoga Mat Guide: Surface, Backings and 3 Verified Options',
+    category: 'Materials',
+  },
+  'hemp-yoga-mat': {
+    href: '/guides/hemp-yoga-mat',
+    title: 'Hemp Yoga Mat Guide: Construction, Grip and Green Claims',
+    category: 'Materials',
+  },
+  'eva-yoga-mat': {
+    href: '/guides/eva-yoga-mat',
+    title: 'EVA Yoga Mat Guide: Foam, Density and 2 Verified Options',
+    category: 'Materials',
+  },
+  'nbr-yoga-mat': {
+    href: '/guides/nbr-yoga-mat',
+    title: 'NBR Yoga Mat Guide: Foam, Thickness and 2 Verified Options',
+    category: 'Materials',
+  },
+  'cotton-yoga-mat': {
+    href: '/guides/cotton-yoga-mat',
+    title: 'Cotton Yoga Mat Guide: Weaves, Backings and Organic Claims',
+    category: 'Materials',
+  },
+  'high-density-yoga-mat': {
+    href: '/guides/high-density-yoga-mat',
+    title: 'High-Density Yoga Mats: What the Label Actually Means',
+    category: 'Materials',
+  },
+
+  // Mat specs and buying guides
+  'best-thick-yoga-mat': {
+    href: '/guides/best-thick-yoga-mat',
+    title: 'Best Thick Yoga Mat: 3 Honest Picks for Cushion and Stability',
+    category: 'Buying guide',
+  },
+  'best-pilates-mat': {
+    href: '/guides/best-pilates-mat',
+    title: 'Best Pilates Mat: Thickness, Picks and the Yoga Mat Myth',
+    category: 'Buying guide',
+  },
+  'yoga-mat-size': {
+    href: '/guides/yoga-mat-size',
+    title: 'Yoga Mat Size Guide: Dimensions and 6 Current Examples',
+    category: 'Buying guide',
+  },
+  'yoga-mat-weight': {
+    href: '/guides/yoga-mat-weight',
+    title: 'Yoga Mat Weight Guide: 7 Current Mats Compared',
+    category: 'Buying guide',
+  },
+  'yoga-mat-alternatives': {
+    href: '/guides/yoga-mat-alternatives',
+    title: 'Yoga Mat Alternatives: What Actually Replaces a Mat?',
+    category: 'Buying guide',
+  },
+
+  // Mat head-to-heads
+  'yoga-rug-vs-mat': {
+    href: '/guides/yoga-rug-vs-mat',
+    title: 'Yoga Rug vs Mat: Woven Surface or Engineered Grip?',
+    category: 'Comparison',
+  },
+  'open-cell-vs-closed-cell-yoga-mat': {
+    href: '/guides/open-cell-vs-closed-cell-yoga-mat',
+    title: 'Open-Cell vs Closed-Cell Yoga Mats: The Real Difference',
+    category: 'Comparison',
+  },
+  'yoga-mat-vs-exercise-mat': {
+    href: '/guides/yoga-mat-vs-exercise-mat',
+    title: 'Yoga Mat vs Exercise Mat: Choose by Function',
+    category: 'Comparison',
+  },
+
+  // Living with the mat — care, storage, carrying
+  'how-long-does-a-yoga-mat-last': {
+    href: '/guides/how-long-does-a-yoga-mat-last',
+    title: 'How Long Does a Yoga Mat Last? 4 Tests Before You Replace It',
+    category: 'Mat care',
+  },
+  'yoga-mat-on-carpet': {
+    href: '/guides/yoga-mat-on-carpet',
+    title: 'Yoga Mat on Carpet: A Stability-First Setup Guide',
+    category: 'Mat care',
+  },
+  'yoga-mat-rack': {
+    href: '/guides/yoga-mat-rack',
+    title: 'Yoga Mat Rack Guide: Wall Type, Capacity and Mat Compatibility',
+    category: 'Mat care',
+  },
+  'which-side-of-yoga-mat-to-use': {
+    href: '/guides/which-side-of-yoga-mat-to-use',
+    title: 'Which Side of a Yoga Mat Goes Up? 6 Reliable Clues',
+    category: 'Mat care',
+  },
+  'how-to-use-yoga-mat-strap': {
+    href: '/guides/how-to-use-yoga-mat-strap',
+    title: 'How to Use a Yoga Mat Strap: 3 Carry Methods',
+    category: 'Mat care',
+  },
+
+  // Props
+  'best-yoga-blanket': {
+    href: '/guides/best-yoga-blanket',
+    title: 'Best Yoga Blankets: 5 Source-Checked Weaves and Weights',
+    category: 'Props',
+  },
+  'yoga-props': {
+    href: '/guides/yoga-props',
+    title: 'Yoga Props Guide: What You Need and What Can Wait',
+    category: 'Props',
+  },
+  'yoga-strap': {
+    href: '/guides/yoga-strap',
+    title: 'Yoga Strap Buying Guide: Length, Buckle and Material',
+    category: 'Props',
+  },
+  'yoga-block-size': {
+    href: '/guides/yoga-block-size',
+    title: 'Yoga Block Size Guide: 3-Inch vs 4-Inch Dimensions',
+    category: 'Props',
+  },
+  'yoga-wedge': {
+    href: '/guides/yoga-wedge',
+    title: 'Yoga Wedge Guide: Size, Slope, Foam and Cork Compared',
+    category: 'Props',
+  },
+  'yoga-sandbag': {
+    href: '/guides/yoga-sandbag',
+    title: 'Yoga Sandbag Guide: Weights, Liners, Fill and Safe Buying',
+    category: 'Props',
+  },
+  'wooden-yoga-block': {
+    href: '/guides/wooden-yoga-block',
+    title: 'Wooden Yoga Blocks: Construction, Weight and Buying Guide',
+    category: 'Props',
+  },
+  'cork-yoga-block': {
+    href: '/guides/cork-yoga-block',
+    title: 'Cork Yoga Blocks: Density, Size, Weight and Care',
+    category: 'Props',
+  },
+  'yoga-block-and-strap-set': {
+    href: '/guides/yoga-block-and-strap-set',
+    title: 'Yoga Block and Strap Sets: What to Check Before Buying',
+    category: 'Props',
+  },
+  'best-yoga-wheel': {
+    href: '/guides/best-yoga-wheel',
+    title: 'Best Yoga Wheels: 4 Source-Checked Constructions',
+    category: 'Props',
+  },
+  'yoga-gloves': {
+    href: '/guides/yoga-gloves',
+    title: 'Yoga Gloves Guide: Grip, Fit, Padding and Care',
+    category: 'Props',
+  },
+
+  // Meditation gear
+  'best-meditation-cushion': {
+    href: '/guides/best-meditation-cushion',
+    title: 'Best Meditation Cushions: 4 Source-Checked Formats',
+    category: 'Meditation',
+  },
+  'meditation-bench': {
+    href: '/guides/meditation-bench',
+    title: 'Best Meditation Benches: Height, Hinges and Seat Design',
+    category: 'Meditation',
+  },
+  'meditation-room-accessories': {
+    href: '/guides/meditation-room-accessories',
+    title: 'Meditation Room Accessories: Build a Calm, Practical Space',
+    category: 'Meditation',
+  },
+  'meditation-cushion-set': {
+    href: '/guides/meditation-cushion-set',
+    title: 'Meditation Cushion Sets: Zafu and Zabuton Buying Guide',
+    category: 'Meditation',
+  },
+  'meditation-chair': {
+    href: '/guides/meditation-chair',
+    title: 'Meditation Chairs: Floor, Folding and Cross-Legged Formats',
+    category: 'Meditation',
+  },
+  'yoga-eye-pillow': {
+    href: '/guides/yoga-eye-pillow',
+    title: 'Best Yoga Eye Pillows: Fill, Fabric, Weight and Care',
+    category: 'Meditation',
+  },
+
+  // Carrying and storing the kit
+  'yoga-equipment-storage': {
+    href: '/guides/yoga-equipment-storage',
+    title: 'Yoga Equipment Storage: Plan Mats, Blocks, Blankets and Bolsters',
+    category: 'Accessories',
+  },
+  'gym-bag-with-yoga-mat-holder': {
+    href: '/guides/gym-bag-with-yoga-mat-holder',
+    title: 'Gym Bag with Yoga Mat Holder: Fit, Attachment and Packing Guide',
+    category: 'Accessories',
+  },
+
+  // Clothing
+  'yoga-pants-for-men': {
+    href: '/guides/yoga-pants-for-men',
+    title: 'Yoga Pants for Men: 6 Source-Checked Picks by Fit and Practice',
+    category: 'Gear',
+  },
+  'yoga-clothes-for-men': {
+    href: '/guides/yoga-clothes-for-men',
+    title: 'Yoga Clothes for Men: What to Wear to Every Type of Class',
+    category: 'Gear',
+  },
+
+  // Styles and practice resources
+  'hatha-vs-vinyasa': {
+    href: '/guides/hatha-vs-vinyasa',
+    title: 'Hatha vs Vinyasa Yoga: Which Style Fits You Better?',
+    category: 'Styles',
+  },
+  'bedtime-yoga': {
+    href: '/guides/bedtime-yoga',
+    title: 'Bedtime Yoga: A Gentle 10-Minute Routine to Wind Down',
+    category: 'Practice',
+  },
+  'best-yoga-books': {
+    href: '/guides/best-yoga-books',
+    title: 'Best Yoga Books: 6 Thoughtful Picks for Practice and Study',
+    category: 'Books',
+  },
+  'best-yoga-app': {
+    href: '/guides/best-yoga-app',
+    title: 'Best Yoga Apps: 5 Honest Picks for Different Practice Styles',
+    category: 'Apps',
   },
 }
 
