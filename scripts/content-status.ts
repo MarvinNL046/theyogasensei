@@ -47,8 +47,7 @@ function parseCsvLine(line: string): Array<string> {
   const out: Array<string> = []
   let cur = ''
   let inQuotes = false
-  for (let i = 0; i < line.length; i++) {
-    const ch = line[i]
+  for (const ch of line) {
     if (ch === '"') {
       inQuotes = !inQuotes
       continue
@@ -96,7 +95,9 @@ function readKeywordsCsv(path: string): {
       kd: Number(obj.kd ?? 0),
       intent: obj.intent ?? '',
       secondary_keywords: obj.secondary_keywords ?? '',
-      status: (obj.status as 'todo' | 'briefed' | 'done') ?? 'todo',
+      // Row.status is deliberately widened to string: the CSV also carries
+      // 'merged' for keywords folded into another page.
+      status: obj.status ?? 'todo',
       brief_maker: obj.brief_maker ?? '',
       notes: obj.notes ?? '',
       content_format: obj.content_format ?? '',

@@ -351,7 +351,7 @@ function HowThisSiteIsMade() {
                   <p className="mt-2 text-sm leading-7 text-[color:var(--color-ink-soft)]">
                     {p.text}
                   </p>
-                  {'cta' in p && p.cta ? (
+                  {'cta' in p ? (
                     <a
                       href={p.cta.href}
                       className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-olive)] underline-offset-2 hover:underline"

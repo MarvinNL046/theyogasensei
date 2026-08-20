@@ -28,7 +28,7 @@ function loadPosts(): Array<BlogCard> {
         title: frontmatter.title,
         dek: frontmatter.metaDescription,
         image: buildImageUrl(frontmatter.heroImage, 'card'),
-        category: frontmatter.tags?.[0] ?? 'Blog',
+        category: frontmatter.tags[0] ?? 'Blog',
         publishedAt: frontmatter.publishedAt,
         readingTime: frontmatter.estimatedReadingTime,
       })

@@ -125,12 +125,12 @@ function judge(item: any | null): { status: Status; reason: string } {
   return { status: 'OK', reason: `buy box present (${price} ${item.currency ?? ''})`.trim() }
 }
 
-async function mapLimit<T, R>(
+async function mapLimit<T, TResult>(
   items: Array<T>,
   limit: number,
-  fn: (item: T) => Promise<R>,
-): Promise<Array<R>> {
-  const out: Array<R> = new Array(items.length)
+  fn: (item: T) => Promise<TResult>,
+): Promise<Array<TResult>> {
+  const out: Array<TResult> = new Array(items.length)
   let next = 0
   const workers = Array.from({ length: Math.min(limit, items.length) }, async () => {
     while (next < items.length) {
