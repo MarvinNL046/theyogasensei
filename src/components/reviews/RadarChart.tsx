@@ -1,4 +1,5 @@
-import { SCORING_RUBRIC, type MatScores } from '#/features/reviews/data'
+import { SCORING_RUBRIC } from '#/features/reviews/data'
+import type { MatScores } from '#/features/reviews/data'
 
 interface RadarChartProps {
   scores: MatScores

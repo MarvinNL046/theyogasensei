@@ -34,9 +34,10 @@ function loadEnvLocal(): void {
   if (!existsSync(path)) return
   for (const line of readFileSync(path, 'utf8').split(/\r?\n/)) {
     const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/)
-    const key = m?.[1]
+    if (!m) continue
+    const [, key = '', rawValue = ''] = m
     if (key && !(key in process.env)) {
-      process.env[key] = (m?.[2] ?? '').replace(/^["']|["']$/g, '')
+      process.env[key] = rawValue.replace(/^["']|["']$/g, '')
     }
   }
 }

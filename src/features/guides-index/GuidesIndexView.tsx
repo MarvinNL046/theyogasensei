@@ -5,11 +5,8 @@ import { FeaturedGuide } from '#/features/guides-index/components/FeaturedGuide'
 import { GuideListItem } from '#/features/guides-index/components/GuideListItem'
 import { GuidesSidebar } from '#/features/guides-index/components/GuidesSidebar'
 import { GuidesCta } from '#/features/guides-index/components/GuidesCta'
-import {
-  countByCategory,
-  type GuideCategory,
-  type GuidesData,
-} from '#/features/guides-index/data'
+import { countByCategory } from '#/features/guides-index/data'
+import type { GuideCategory, GuidesData } from '#/features/guides-index/data'
 
 export interface GuidesIndexViewProps {
   data: GuidesData

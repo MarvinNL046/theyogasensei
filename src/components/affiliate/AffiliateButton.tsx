@@ -1,11 +1,8 @@
 import { ExternalLink } from 'lucide-react'
 import { track } from '@vercel/analytics'
 import { cn } from '#/lib/utils'
-import {
-  affiliateClickContext,
-  affiliateHref,
-  type AffiliatePlacement,
-} from '#/lib/affiliate-tracking'
+import { affiliateClickContext, affiliateHref } from '#/lib/affiliate-tracking'
+import type { AffiliatePlacement } from '#/lib/affiliate-tracking'
 
 type AffiliateButtonProps = {
   slug: string

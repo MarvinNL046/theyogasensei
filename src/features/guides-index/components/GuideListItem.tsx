@@ -1,9 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { buildImageUrl } from '#/lib/images/variants'
-import {
-  formatGuideDate,
-  type GuideCard,
-} from '#/features/guides-index/data'
+import { formatGuideDate } from '#/features/guides-index/data'
+import type { GuideCard } from '#/features/guides-index/data'
 
 export interface GuideListItemProps {
   guide: GuideCard

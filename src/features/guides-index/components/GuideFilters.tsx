@@ -1,9 +1,7 @@
 import { cn } from '#/lib/utils'
 import { Container } from '#/components/ui/container'
-import {
-  GUIDE_CATEGORIES,
-  type GuideCategory,
-} from '#/features/guides-index/data'
+import { GUIDE_CATEGORIES } from '#/features/guides-index/data'
+import type { GuideCategory } from '#/features/guides-index/data'
 
 export interface GuideFiltersProps {
   active: GuideCategory

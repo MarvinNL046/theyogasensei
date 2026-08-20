@@ -1,9 +1,6 @@
 import { cn } from '#/lib/utils'
-import {
-  buildImageUrl,
-  imageDimensions,
-  type ImageVariant,
-} from '#/lib/images/variants'
+import { buildImageUrl, imageDimensions } from '#/lib/images/variants'
+import type { ImageVariant } from '#/lib/images/variants'
 
 export interface ImageProps {
   /** Cloudflare Images ID (e.g. "guides/yoga-mat-cleaning-hero"). */

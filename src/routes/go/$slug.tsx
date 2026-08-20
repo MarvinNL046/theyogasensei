@@ -6,8 +6,10 @@ import { affiliateRedirectHeaders } from '#/lib/affiliate-redirect-headers'
 import {
   affiliatePageTypes,
   affiliatePlacements,
-  type AffiliatePageType,
-  type AffiliatePlacement,
+} from '#/lib/affiliate-tracking'
+import type {
+  AffiliatePageType,
+  AffiliatePlacement,
 } from '#/lib/affiliate-tracking'
 
 const incrementAffiliateClick = 'affiliateClicks:increment' as unknown as FunctionReference<
