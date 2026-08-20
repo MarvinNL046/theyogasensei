@@ -37,8 +37,8 @@ export function extractHeadingsFromSource(raw: string): Array<TocHeading> {
   const headings: Array<TocHeading> = []
   const headingPattern = /^(#{2,6})[ \t]+(.+?)[ \t]*#*[ \t]*$/gm
   for (const match of body.matchAll(headingPattern)) {
-    const level = match[1].length
-    const text = stripInlineMarkdown(match[2])
+    const level = (match[1] ?? '').length
+    const text = stripInlineMarkdown(match[2] ?? '')
     const id = slugger.slug(text) // advance slugger state for every heading
     if (level === 2 && text) headings.push({ text, id })
   }

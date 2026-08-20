@@ -26,11 +26,12 @@ for (const [slug, rawUrl] of Object.entries(affiliateLinks)) {
     failures.push(`${slug}: registry targets must not freeze tags, search parameters or fragments`)
   }
 
-  const duplicate = seenAsins.get(match[1])
+  const asin = match[1] ?? ''
+  const duplicate = seenAsins.get(asin)
   if (duplicate && duplicate !== slug) {
-    failures.push(`${slug}: ASIN ${match[1]} is already registered as ${duplicate}`)
+    failures.push(`${slug}: ASIN ${asin} is already registered as ${duplicate}`)
   }
-  seenAsins.set(match[1], slug)
+  seenAsins.set(asin, slug)
 }
 
 const filesToScan = [resolve('content')]
@@ -39,7 +40,9 @@ for (const root of filesToScan) {
   const output = readFileTree(root)
   for (const { path, source } of output) {
     for (const match of source.matchAll(/\/go\/([a-z0-9-]+)/g)) {
-      if (!affiliateLinks[match[1]]) failures.push(`${path}: unknown /go/ slug ${match[1]}`)
+      const referenced = match[1] ?? ''
+      if (!affiliateLinks[referenced])
+        failures.push(`${path}: unknown /go/ slug ${referenced}`)
     }
   }
 }

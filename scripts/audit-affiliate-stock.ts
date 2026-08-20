@@ -54,8 +54,9 @@ function loadEnvLocal(): void {
   if (!existsSync(path)) return
   for (const line of readFileSync(path, 'utf8').split(/\r?\n/)) {
     const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/)
-    if (m && !(m[1] in process.env)) {
-      process.env[m[1]] = m[2].replace(/^["']|["']$/g, '')
+    const key = m?.[1]
+    if (key && !(key in process.env)) {
+      process.env[key] = (m?.[2] ?? '').replace(/^["']|["']$/g, '')
     }
   }
 }
@@ -133,7 +134,9 @@ async function mapLimit<T, R>(
   const workers = Array.from({ length: Math.min(limit, items.length) }, async () => {
     while (next < items.length) {
       const i = next++
-      out[i] = await fn(items[i])
+      const item = items[i]
+      if (item === undefined) continue
+      out[i] = await fn(item)
     }
   })
   await Promise.all(workers)
@@ -168,7 +171,7 @@ async function main(): Promise<void> {
       skipped.push(`${slug}: not in /dp/ASIN form`)
       continue
     }
-    targets.push({ slug, asin: m[1] })
+    targets.push({ slug, asin: m[1] ?? '' })
   }
 
   if (!targets.length) {

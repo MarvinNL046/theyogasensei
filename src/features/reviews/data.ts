@@ -209,4 +209,17 @@ export const MAT_PICKS: MatPick[] = [
   },
 ]
 
+/**
+ * Fixed-position lookup into MAT_PICKS. The list is editorial and stable, but
+ * an index read is only `MatPick | undefined` to the compiler under
+ * noUncheckedIndexedAccess. Throwing here beats a non-null assertion at every
+ * call site: the pages that use it are prerendered, so a shrunken list fails
+ * the build instead of shipping a blank card.
+ */
+export function pickAt(index: number): MatPick {
+  const pick = MAT_PICKS[index]
+  if (!pick) throw new Error(`MAT_PICKS has no entry at index ${index}`)
+  return pick
+}
+
 export const priceTier = (p: 1 | 2 | 3) => '$'.repeat(p)

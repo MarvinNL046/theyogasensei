@@ -26,7 +26,9 @@ export function RadarChart({ scores, size = 230, className }: RadarChartProps) {
     AXES.map((_, i) => point(i, radius(i)).join(',')).join(' ')
 
   const rings = [1, 2, 3, 4, 5].map((lvl) => polygon(() => (lvl / 5) * maxR))
-  const dataPolygon = polygon((i) => (scores[AXES[i].key] / 5) * maxR)
+  const dataPolygon = AXES.map((axis, i) =>
+    point(i, (scores[axis.key] / 5) * maxR).join(','),
+  ).join(' ')
 
   return (
     <svg

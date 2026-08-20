@@ -346,7 +346,7 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
                   Overview
                 </h2>
                 <div className="mt-5">
-                  <Paragraphs body={d.sections[0].body} />
+                  <Paragraphs body={d.sections[0]?.body ?? ''} />
                 </div>
                 <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-border)] sm:grid-cols-2">
                   {d.features.map((f) => (

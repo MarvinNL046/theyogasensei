@@ -447,9 +447,12 @@ function imagesFor(slug: string, idx: number): string[] {
     const ctx = files.filter((f) => f !== 'hero.webp' && f !== 'pin.webp')
     locals = [...hero, ...ctx, ...pin].map((f) => `${dir}/${f}`)
   }
-  const aiko = AIKO_POOL[idx % AIKO_POOL.length]
+  // Both pools are non-empty module constants, so the fallbacks below are
+  // unreachable in practice — they exist so an index read type-checks under
+  // noUncheckedIndexedAccess without a non-null assertion.
+  const aiko = AIKO_POOL[idx % AIKO_POOL.length] ?? ''
   const fillers = [...locals, ...BRAND_POOL]
-  const pick = (i: number) => fillers[i % fillers.length]
+  const pick = (i: number): string => fillers[i % fillers.length] ?? ''
   // angles: 1 list, 2 problem, 3 comparison, 4 aesthetic(Aiko), 5 checklist
   return [pick(0), pick(1), pick(2), aiko, pick(3)]
 }
@@ -1053,6 +1056,7 @@ async function main() {
   let count = 0
   for (let g = 0; g < GUIDES.length; g++) {
     const guide = GUIDES[g]
+    if (!guide) continue
     if (only && guide.slug !== only) continue
     const outDir = resolve(ROOT, 'public/images/pins', guide.slug)
     mkdirSync(outDir, { recursive: true })
@@ -1068,8 +1072,14 @@ async function main() {
     ]
     for (let a = 0; a < 5; a++) {
       const id = ANGLE_IDS[a]
+      const image = imgs[a]
+      const hook = guide.hooks[a]
+      if (!id || !image || !hook) {
+        console.warn(`SKIP ${guide.slug} angle ${a + 1}: missing image or hook`)
+        continue
+      }
       const out = resolve(outDir, `${id}.png`)
-      await renderPin(imgs[a], guide.hooks[a], out, guide.style ?? 'default')
+      await renderPin(image, hook, out, guide.style ?? 'default')
       count++
       const rel = out.replace(ROOT, '').replace(/^[\\/]/, '').replace(/\\/g, '/')
       console.log('OK', rel)
@@ -1077,7 +1087,7 @@ async function main() {
         `## ${id}`,
         '',
         `- **Image:** \`${rel}\``,
-        `- **Pin title:** ${PIN_SEO[`${guide.slug}/${id}`]?.title ?? guide.hooks[a][1].replace(/\n/g, ' ')}`,
+        `- **Pin title:** ${PIN_SEO[`${guide.slug}/${id}`]?.title ?? hook[1].replace(/\n/g, ' ')}`,
         `- **Pin description:** ${PIN_SEO[`${guide.slug}/${id}`]?.desc ?? guide.desc} ${guide.hashtags}`,
         `- **Link:** ${url}`,
         '',

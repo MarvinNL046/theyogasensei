@@ -19,7 +19,7 @@ export interface SearchEntry {
   tags: Array<string>
 }
 
-const REVIEW_ENTRIES: Array<SearchEntry> = [
+const REVIEW_ROWS: Array<[title: string, description: string, href: string]> = [
   ['Manduka PRO review', 'Dense cushioning, long-term durability evidence and the portability trade-off.', '/reviews/manduka-pro'],
   ['Liforme Original review', 'Alignment marks, immediate grip and the premium price trade-off.', '/reviews/liforme'],
   ['Jade Harmony review', 'Natural-rubber traction, care requirements and latex relevance.', '/reviews/jade'],
@@ -29,13 +29,17 @@ const REVIEW_ENTRIES: Array<SearchEntry> = [
   ['Gaiam yoga mat review', 'Budget-friendly context, material choices and realistic limitations.', '/reviews/gaiam'],
   ['Retrospec Solana review', 'Extra cushioning balanced against stability in standing poses.', '/reviews/retrospec'],
   ['Best yoga mats', 'A research-led shortlist compared by grip, cushion, material and portability.', '/reviews/best-yoga-mats'],
-].map(([title, description, href]) => ({
-  title,
-  description,
-  href,
-  type: 'Reviews',
-  tags: ['yoga mat', 'product review'],
-}))
+]
+
+const REVIEW_ENTRIES: Array<SearchEntry> = REVIEW_ROWS.map(
+  ([title, description, href]) => ({
+    title,
+    description,
+    href,
+    type: 'Reviews',
+    tags: ['yoga mat', 'product review'],
+  }),
+)
 
 const COMPARISON_SLUGS = new Set([
   'alo-vs-lululemon-yoga-mat',

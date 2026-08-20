@@ -91,12 +91,12 @@ interface Row {
 function loadKeywordsCsv(): Row[] {
   const txt = readFileSync(resolve(ROOT, 'keywords.csv'), 'utf8')
   const lines = txt.split(/\r?\n/).filter((l) => l.trim())
-  const header = parseCsvLine(lines[0])
+  const header = parseCsvLine(lines[0] ?? '')
   const iPrimary = header.indexOf('primary_keyword')
   const iSecondary = header.indexOf('secondary_keywords')
   const rows: Row[] = []
   for (let i = 1; i < lines.length; i++) {
-    const f = parseCsvLine(lines[i])
+    const f = parseCsvLine(lines[i] ?? '')
     const primary = f[iPrimary]?.toLowerCase().trim()
     if (!primary) continue
     const secondary = (f[iSecondary] ?? '')
@@ -131,8 +131,8 @@ function comparisonPair(kw: string): [Set<string>, Set<string>] | null {
   if (!m) m = k.match(/^best\s+(.*?)\s+or\s+(.*)$/)
   if (!m) m = k.match(/^(.*?)\s+or\s+(.*)$/) // generic "A or B"
   if (!m) return null
-  const a = tokenSet(m[1])
-  const b = tokenSet(m[2])
+  const a = tokenSet(m[1] ?? '')
+  const b = tokenSet(m[2] ?? '')
   if (!a.size || !b.size) return null
   return [a, b]
 }
@@ -208,8 +208,11 @@ const NEAR = 0.8
 const seenPairs = new Set<string>()
 for (let i = 0; i < prims.length; i++) {
   for (let j = i + 1; j < prims.length; j++) {
-    const sim = jaccard(sets[i], sets[j])
-    if (sim >= NEAR && setKey(sets[i]) !== setKey(sets[j])) {
+    const left = sets[i]
+    const right = sets[j]
+    if (!left || !right) continue
+    const sim = jaccard(left, right)
+    if (sim >= NEAR && setKey(left) !== setKey(right)) {
       const k = [prims[i], prims[j]].sort().join('|')
       if (seenPairs.has(k)) continue
       seenPairs.add(k)

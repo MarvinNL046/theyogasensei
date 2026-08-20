@@ -70,7 +70,7 @@ export function scanMdxEntries(): Array<MdxEntry> {
     // intentionally out of the live route + sitemap surface.
     if (rel.split('/').includes('_drafts')) continue
 
-    const [folder, ...rest] = rel.split('/')
+    const [folder = '', ...rest] = rel.split('/')
     const fileNameNoExt = rest.join('/').replace(/\.mdx$/, '')
 
     const urlPrefix = TYPE_TO_URL_PREFIX[folder]

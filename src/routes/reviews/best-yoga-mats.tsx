@@ -21,7 +21,12 @@ import {
   UpdateHistory,
   qualitativeScore,
 } from '#/components/editorial/TrustBlocks'
-import { MAT_PICKS, SCORING_RUBRIC, priceTier } from '#/features/reviews/data'
+import {
+  MAT_PICKS,
+  SCORING_RUBRIC,
+  pickAt,
+  priceTier,
+} from '#/features/reviews/data'
 import {
   BUYING_GUIDE,
   PICK_DETAILS,
@@ -299,7 +304,7 @@ function PickCta({
 }
 
 function ReviewsOverviewPage() {
-  const topPick = MAT_PICKS[0]
+  const topPick = pickAt(0)
   return (
     <>
       {/* ===================== HERO ===================== */}
@@ -610,6 +615,9 @@ function ReviewsOverviewPage() {
           <div className="mt-12 space-y-16">
             {MAT_PICKS.map((pick) => {
               const detail = PICK_DETAILS[pick.name]
+              // Every pick has a detail block; skip rather than crash the
+              // prerender if an editorial entry is ever removed.
+              if (!detail) return null
               return (
                 <article
                   key={pick.name}
@@ -987,9 +995,9 @@ function ReviewsOverviewPage() {
           </p>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {[
-              { when: 'For one serious long-term mat', pick: MAT_PICKS[0] },
-              { when: 'If you practise hot yoga often', pick: MAT_PICKS[1] },
-              { when: 'If you’re starting from scratch', pick: MAT_PICKS[4] },
+              { when: 'For one serious long-term mat', pick: pickAt(0) },
+              { when: 'If you practise hot yoga often', pick: pickAt(1) },
+              { when: 'If you’re starting from scratch', pick: pickAt(4) },
             ].map(({ when, pick }) => (
               <PickCta
                 key={pick.name}

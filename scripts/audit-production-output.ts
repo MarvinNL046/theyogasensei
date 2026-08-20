@@ -53,14 +53,14 @@ for (const file of htmlFiles) {
   )) {
     schemaBlocks += 1
     try {
-      JSON.parse(match[1])
+      JSON.parse(match[1] ?? '')
     } catch {
       issues.push(`${route}: invalid JSON-LD`)
     }
   }
 
   for (const match of html.matchAll(/<a\b[^>]*href="([^"]+)"/g)) {
-    const href = decodeAttribute(match[1])
+    const href = decodeAttribute(match[1] ?? '')
     if (!href.startsWith('/') || href.startsWith('//')) continue
     if (href.startsWith('/go/') || href.startsWith('/assets/')) continue
     internalLinks += 1
@@ -71,7 +71,7 @@ for (const file of htmlFiles) {
   }
 
   for (const match of html.matchAll(/<img[^>]+src="([^"]+)"/g)) {
-    const src = decodeAttribute(match[1])
+    const src = decodeAttribute(match[1] ?? '')
     if (!src.startsWith('/') || src.startsWith('//')) continue
     localImages += 1
     const imagePath = src.split(/[?#]/)[0] ?? src

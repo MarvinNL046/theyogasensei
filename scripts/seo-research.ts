@@ -34,8 +34,9 @@ function loadEnvLocal(): void {
   if (!existsSync(path)) return
   for (const line of readFileSync(path, 'utf8').split(/\r?\n/)) {
     const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/)
-    if (m && !(m[1] in process.env)) {
-      process.env[m[1]] = m[2].replace(/^["']|["']$/g, '')
+    const key = m?.[1]
+    if (key && !(key in process.env)) {
+      process.env[key] = (m?.[2] ?? '').replace(/^["']|["']$/g, '')
     }
   }
 }
@@ -121,7 +122,7 @@ interface Row {
 function readKeywords(): Array<Row> {
   const raw = readFileSync(resolve(ROOT, 'keywords.csv'), 'utf8')
   const lines = raw.split(/\r?\n/).filter((l) => l.trim().length > 0)
-  const header = parseCsvLine(lines[0])
+  const header = parseCsvLine(lines[0] ?? '')
   const idx = (name: string) => header.indexOf(name)
   const iP = idx('primary_keyword'),
     iV = idx('volume'),
@@ -347,14 +348,14 @@ async function update(): Promise<void> {
   const raw = readFileSync(path, 'utf8')
   const lines = raw.split(/\r?\n/)
   const nonEmpty = lines.filter((l) => l.trim().length > 0)
-  const header = parseCsvLine(nonEmpty[0])
+  const header = parseCsvLine(nonEmpty[0] ?? '')
   const iP = header.indexOf('primary_keyword'),
     iV = header.indexOf('volume'),
     iK = header.indexOf('kd')
 
   const keywords = nonEmpty
     .slice(1)
-    .map((l) => parseCsvLine(l)[iP])
+    .map((l) => parseCsvLine(l)[iP] ?? '')
     .filter(Boolean)
   console.log(
     `Fetching real volume + KD for ${keywords.length} keywords (with google_ads fallback)...`,
@@ -485,7 +486,7 @@ async function probe(): Promise<void> {
   }
 }
 
-const [mode, arg] = process.argv.slice(2)
+const [mode = '', arg = ''] = process.argv.slice(2)
 const run =
   mode === 'quickwins'
     ? quickwins(arg)
