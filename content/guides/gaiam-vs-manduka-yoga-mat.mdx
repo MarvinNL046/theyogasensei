@@ -1,16 +1,19 @@
 ---
-# AUTOMATIC DRAFT — written by the theyogasensei-blog-draft task on 2026-08-20.
-# Not published: indexable is false. Marvin decides where this lives and whether
-# it ships. What I could NOT verify, kept here for the next editor:
+# AUTOMATIC DRAFT — written by the theyogasensei-blog-draft task on 2026-08-20,
+# moved from content/blog/ to content/guides/ the same day on Marvin's call, so
+# it sits with the five other brand comparisons. Still NOT published: indexable
+# is false, and flipping that is the only thing left. For the next editor:
 #   - We have practised on neither mat. Our Gaiam and Manduka PRO reviews are
 #     both research-and-specs reviews. Every number below traces to Gaiam's own
 #     pages, Manduka's own pages, or OutdoorGearLab's testing, and is labelled.
-#   - WEIGHT DISAGREEMENT, unresolved. Gaiam publishes no weight for the
-#     Premium 6mm. OutdoorGearLab measured 1.5 kg (3.3 lb). Our own Gaiam review
-#     says "~4.5 lb" in its spec table and "~3 lb" in its at-a-glance box — it
-#     contradicts itself, which is worth fixing in src/features/reviews/
-#     detail-gaiam.ts regardless of what happens to this post. The post uses
-#     OutdoorGearLab's measured figure and says who measured it.
+#   - WEIGHT, now resolved. Gaiam publishes no weight for the Premium 6mm.
+#     OutdoorGearLab measured 1.5 kg (3.3 lb). Our Gaiam review used to say
+#     "~4.5 lb" in its spec table and "~3 lb" in its at-a-glance box; both were
+#     corrected to the measured 3.3 lb in the same commit, in
+#     src/features/reviews/detail-gaiam.ts and in the source draft it is
+#     generated from. Two live guides still round it to "around 3 lb"
+#     (best-yoga-mat-for-beginners, best-yoga-mat-for-bad-knees) — not wrong,
+#     just imprecise, and deliberately left alone here.
 #   - DataForSEO returned volume but no keyword_difficulty for "gaiam vs
 #     manduka yoga mat"; the core term "gaiam vs manduka" came back 30/mo, kd 2.
 #     Treat kd 2 as the measured figure for the core bucket only.
@@ -47,14 +50,14 @@ indexable: false
 publishedAt: 2026-08-20
 lastReviewedAt: 2026-08-20
 estimatedReadingTime: 7
-heroImage: blog/gaiam-vs-manduka-yoga-mat/hero
+heroImage: guides/gaiam-vs-manduka-yoga-mat/hero
 pin:
-  primaryImage: blog/gaiam-vs-manduka-yoga-mat/pin
+  primaryImage: guides/gaiam-vs-manduka-yoga-mat/pin
   description: "Gaiam or Manduka? Same 6mm, same promise of a lifetime guarantee, and one weighs more than twice the other. Read what each guarantee actually covers before you spend anything — the fine print is where these two stop looking alike. #yogamat #gaiam #manduka #yogagear"
 sidebarProduct:
   slug: gaiam-premium-6mm
   productName: "Gaiam Premium 6mm"
-  image: /images/blog/gaiam-vs-manduka-yoga-mat/gaiam.webp
+  image: /images/guides/gaiam-vs-manduka-yoga-mat/gaiam.webp
   blurb: "The cheap first mat. Cushioned, light, and honest about what it is not."
   points:
     - "6mm of cushion at 68 x 24 inches, per Gaiam's own spec"
@@ -119,7 +122,7 @@ Buy the **Manduka PRO** if you practise most days and the mat stays in one room.
 If you are earlier than that decision, [how to choose a yoga mat](/guides/how-to-choose-a-yoga-mat) starts further back.
 
 <Figure
-  id="blog/gaiam-vs-manduka-yoga-mat/rolls"
+  id="guides/gaiam-vs-manduka-yoga-mat/rolls"
   alt="The rolled ends of two yoga mats on a wooden floor, one soft and compressed, one dense and tight"
   caption="Same stated thickness, different density. That is most of this comparison in one photo."
 />
@@ -138,7 +141,7 @@ If you are earlier than that decision, [how to choose a yoga mat](/guides/how-to
 
 Sources: the Gaiam figures come from [Gaiam's own product page](https://www.gaiam.com/products/premium-celestial-blue-yoga-mat-6mm), the Manduka figures from [Manduka's PRO series comparison](https://www.manduka.com/pages/compare-pro-yoga-mats), and the Gaiam weight from [OutdoorGearLab's testing](https://www.outdoorgearlab.com/topics/fitness/best-yoga-mat), because Gaiam does not publish one.
 
-One honest flag on that weight. Our own Gaiam review lists roughly 4.5 lb in one place and roughly 3 lb in another, which cannot both be right. OutdoorGearLab weighed the mat at 1.5 kg, so 3.3 lb is the number with testing behind it. Either way the point holds: the PRO is more than twice the mat to carry.
+One note on that weight. Gaiam does not publish one at all, so the 3.3 lb above is OutdoorGearLab's own measurement — it weighed the mat at 1.5 kg. Manduka publishes its 7.5 lb itself. Either way the point holds: the PRO is more than twice the mat to carry.
 
 ## Both say "lifetime guarantee". Only one covers wear.
 
@@ -249,7 +252,7 @@ If you already practise most days, take the PRO. You are paying for density, siz
 <ProductCard
   slug="gaiam-premium-6mm"
   productName="Gaiam Premium 6mm"
-  image="/images/blog/gaiam-vs-manduka-yoga-mat/gaiam.webp"
+  image="/images/guides/gaiam-vs-manduka-yoga-mat/gaiam.webp"
   imageAlt="A cushioned patterned yoga mat in muted teal, partly unrolled on a cream backdrop"
   points={[
     '6mm of cushion at 68 x 24 inches, per Gaiam',
@@ -261,7 +264,7 @@ If you already practise most days, take the PRO. You are paying for density, siz
 <ProductCard
   slug="manduka-pro-6mm"
   productName="Manduka PRO 6mm"
-  image="/images/blog/gaiam-vs-manduka-yoga-mat/manduka-pro.webp"
+  image="/images/guides/gaiam-vs-manduka-yoga-mat/manduka-pro.webp"
   imageAlt="A dense matte black yoga mat, partly unrolled on a cream backdrop"
   points={[
     '6mm at 71 x 26 inches, and 7.5 lb of it',

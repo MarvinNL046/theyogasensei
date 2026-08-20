@@ -17,7 +17,7 @@ export const DETAIL: DetailReview = {
     "Genuinely comfortable 6mm cushion that's forgiving on knees and wrists",
     "Low price — one of the cheapest mats worth owning, and the design you pick barely changes it",
     "Attractive prints that make you want to practise",
-    "Light and easy to carry at around 4.5 lb",
+    "Light and easy to carry — OutdoorGearLab measured it at 3.3 lb",
     "6P-free, latex-free PVC — a step up from basic foam",
     "Lifetime guarantee removes the risk of trying it"
   ],
@@ -78,7 +78,7 @@ export const DETAIL: DetailReview = {
     {
       "id": "comfort",
       "title": "Comfort & Support",
-      "body": "The 6mm cushion is the real draw, and it's the reason teacher-testers and reviewers like OutdoorGearLab regularly flag the Gaiam as one of the more comfortable budget options. It compresses just enough to take pressure off knees, wrists and elbows during longer holds — exactly what a newer practitioner, or anyone with sensitive joints, wants while the body adjusts.\n\nAt roughly 4.5 lb, it's also lighter than dense premium mats, which matters when the habit is still fragile. A mat that feels like a chore to move tends to stay in the corner; this one doesn't.\n\nThe catch is length. At 68 inches it runs a few inches under the 71–72-inch standard, so taller practitioners will find hands or feet drifting off the end in long poses. For someone of average height building a routine, the cushion-and-carry balance is hard to beat for the price.",
+      "body": "The 6mm cushion is the real draw, and it's the reason teacher-testers and reviewers like OutdoorGearLab regularly flag the Gaiam as one of the more comfortable budget options. It compresses just enough to take pressure off knees, wrists and elbows during longer holds — exactly what a newer practitioner, or anyone with sensitive joints, wants while the body adjusts.\n\nAt 3.3 lb on OutdoorGearLab's scale — Gaiam publishes no weight of its own — it is less than half what a dense premium mat like the Manduka PRO asks you to carry, which matters when the habit is still fragile. A mat that feels like a chore to move tends to stay in the corner; this one doesn't.\n\nThe catch is length. At 68 inches it runs a few inches under the 71–72-inch standard, so taller practitioners will find hands or feet drifting off the end in long poses. For someone of average height building a routine, the cushion-and-carry balance is hard to beat for the price.",
       "image": "/images/reviews/gaiam/comfort.webp",
       "ratings": [
         {
@@ -118,7 +118,7 @@ export const DETAIL: DetailReview = {
     },
     {
       "label": "Weight",
-      "value": "~4.5 lb"
+      "value": "3.3 lb (measured by OutdoorGearLab; Gaiam publishes none)"
     },
     {
       "label": "Material",
@@ -165,7 +165,7 @@ export const DETAIL: DetailReview = {
     },
     {
       "label": "Weight",
-      "value": "~3 lb"
+      "value": "3.3 lb (measured)"
     },
     {
       "label": "Price",
