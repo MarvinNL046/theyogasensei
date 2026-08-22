@@ -136,6 +136,7 @@ Append one row per published page in this format:
 | yoga poses for 3 people            | yoga-poses-for-3                   | cluster    | group-yoga             | yoga-for-beginners       | 2026-08-18 | 2026-08-18    |
 | manduka pro vs prolite             | manduka-pro-vs-prolite             | comparison | mat-comparisons        | how-to-choose-a-yoga-mat | 2026-08-18 | 2026-08-18    |
 | yoga for posture                   | yoga-for-posture                   | cluster    | posture                | yoga-for-beginners       | 2026-08-20 | 2026-08-20    |
+| yoga nidra for sleep               | yoga-nidra-for-sleep               | pillar     | yoga-nidra-for-sleep    | yoga-nidra-for-sleep     | 2026-08-22 | 2026-08-22    |
 | gaiam vs manduka                   | gaiam-vs-manduka-yoga-mat          | comparison | mat-comparisons        | how-to-choose-a-yoga-mat | 2026-08-20 | 2026-08-20    |
 
 ---
