@@ -107,6 +107,7 @@ Append one row per published page in this format:
 | pilates mat                        | best-pilates-mat                   | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
 | liforme yoga mat                   | liforme-yoga-mat                   | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
 | best non-slip yoga mat             | best-non-slip-yoga-mat             | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-07-25 | 2026-07-25    |
+| best yoga mat for men              | best-yoga-mat-for-men              | cluster    | yoga-mats              | how-to-choose-a-yoga-mat | 2026-08-25 | 2026-08-25    |
 | how to clean lululemon yoga mat    | how-to-clean-lululemon-yoga-mat    | cluster    | mat-care               | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | alo yoga mat                       | alo-yoga-mat                       | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | alo vs lululemon yoga mat          | alo-vs-lululemon-yoga-mat          | cluster    | mat-reviews            | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
@@ -136,8 +137,8 @@ Append one row per published page in this format:
 | yoga poses for 3 people            | yoga-poses-for-3                   | cluster    | group-yoga             | yoga-for-beginners       | 2026-08-18 | 2026-08-18    |
 | manduka pro vs prolite             | manduka-pro-vs-prolite             | comparison | mat-comparisons        | how-to-choose-a-yoga-mat | 2026-08-18 | 2026-08-18    |
 | yoga for posture                   | yoga-for-posture                   | cluster    | posture                | yoga-for-beginners       | 2026-08-20 | 2026-08-20    |
-| yoga nidra for sleep               | yoga-nidra-for-sleep               | pillar     | yoga-nidra-for-sleep    | yoga-nidra-for-sleep     | 2026-08-22 | 2026-08-22    |
-| yoga nidra script                  | yoga-nidra-script                  | cluster    | guided-practice         | yoga-nidra-for-sleep     | 2026-08-24 | 2026-08-24    |
+| yoga nidra for sleep               | yoga-nidra-for-sleep               | pillar     | yoga-nidra-for-sleep   | yoga-nidra-for-sleep     | 2026-08-22 | 2026-08-22    |
+| yoga nidra script                  | yoga-nidra-script                  | cluster    | guided-practice        | yoga-nidra-for-sleep     | 2026-08-24 | 2026-08-24    |
 | gaiam vs manduka                   | gaiam-vs-manduka-yoga-mat          | comparison | mat-comparisons        | how-to-choose-a-yoga-mat | 2026-08-20 | 2026-08-20    |
 
 ---

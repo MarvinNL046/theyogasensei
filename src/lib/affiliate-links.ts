@@ -19,6 +19,12 @@ export const affiliateLinks: Record<string, string> = {
   // the reader actually lands on.
   'manduka-prolite': 'https://www.amazon.com/dp/B08LNRMGVW',
   'liforme-original': 'https://www.amazon.com/dp/B09X66N6GX',
+  // Men's mat roundup — exact long/XL variants verified against live Amazon
+  // US listings with active main offers on 2026-08-25. These are intentionally
+  // pinned variants because parent listings mix standard, long and wide sizes.
+  'liforme-xl': 'https://www.amazon.com/dp/B09X4R2FSF',
+  'manduka-pro-long': 'https://www.amazon.com/dp/B01F502YCQ',
+  'manduka-prolite-long-wide': 'https://www.amazon.com/dp/B0B31RDGZW',
   'gaiam-premium-6mm': 'https://www.amazon.com/dp/B0D4MDKW3V',
   'gaiam-cork-yoga-mat': 'https://www.amazon.com/dp/B079W4FX8B',
   // Repointed 2026-08-18. The previous target B078YB99H8 (eKO 5mm, Charcoal) is
