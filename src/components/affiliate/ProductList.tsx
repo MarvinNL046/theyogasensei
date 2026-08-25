@@ -1,8 +1,7 @@
 import { Check } from 'lucide-react'
 import { AffiliateButton } from '#/components/affiliate/AffiliateButton'
 import { cn } from '#/lib/utils'
-import { track } from '@vercel/analytics'
-import { affiliateClickContext, affiliateHref } from '#/lib/affiliate-tracking'
+import { affiliateLinkHandlers } from '#/lib/affiliate-link-handlers'
 
 /**
  * Numbered multi-product block for blog posts: three to five picks, each with a
@@ -77,15 +76,7 @@ function ProductRow({ item, index }: { item: ProductListItem; index: number }) {
               target="_blank"
               data-affiliate-slug={item.slug}
               data-affiliate-placement="product-title"
-              onClick={(event) => {
-                const context = affiliateClickContext('product-title')
-                event.currentTarget.href = affiliateHref(
-                  item.slug,
-                  'product-title',
-                  context.sourcePage,
-                )
-                track('Affiliate click', { product: item.slug, ...context })
-              }}
+              {...affiliateLinkHandlers(item.slug, 'product-title')}
               aria-label={`Check price for ${item.productName} on Amazon`}
               className="text-[color:var(--color-ink)] no-underline transition hover:text-[color:var(--color-olive)]"
             >

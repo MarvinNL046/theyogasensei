@@ -7,9 +7,8 @@ import type {
   TdHTMLAttributes,
 } from 'react'
 import { ExternalLink } from 'lucide-react'
-import { track } from '@vercel/analytics'
 import { cn } from '#/lib/utils'
-import { affiliateClickContext, affiliateHref } from '#/lib/affiliate-tracking'
+import { affiliateLinkHandlers } from '#/lib/affiliate-link-handlers'
 
 /**
  * MDX component overrides applied to every rendered content page.
@@ -46,15 +45,7 @@ function MdxAnchor({
         target="_blank"
         data-affiliate-slug={slug}
         data-affiliate-placement="inline-link"
-        onClick={(event) => {
-          const context = affiliateClickContext('inline-link')
-          event.currentTarget.href = affiliateHref(
-            slug,
-            'inline-link',
-            context.sourcePage,
-          )
-          track('Affiliate click', { product: slug, ...context })
-        }}
+        {...affiliateLinkHandlers(slug, 'inline-link')}
         className={cn(
           // not-prose stops Tailwind Typography from re-styling the button
           'not-prose inline-flex items-center gap-1.5 whitespace-nowrap rounded-full',
