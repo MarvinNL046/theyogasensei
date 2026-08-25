@@ -71,18 +71,23 @@ const STATIC_PAGES: Array<Omit<SitemapEntry, 'url'> & { path: string }> = [
 function buildEntries(siteUrl: string): Array<SitemapEntry> {
   const base = siteUrl.replace(/\/$/, '')
   const mdxEntries = scanMdxEntries().filter((entry) => entry.indexable)
-  const today = new Date().toISOString().slice(0, 10)
 
+  // Hubs and legal pages carry no lastmod. There is no per-page date to read
+  // for them, and stamping the build date would be a claim we cannot support —
+  // it also drowns the real content dates, because one build-dated hub sits in
+  // every group and would pin that group's index lastmod to today forever.
+  // lastmod is optional in the sitemaps protocol; omitting beats inventing.
   const staticEntries: Array<SitemapEntry> = STATIC_PAGES.map((p) => ({
     url: `${base}${p.path}`,
-    lastmod: today,
     changefreq: p.changefreq,
     priority: p.priority,
   }))
 
   const contentEntries: Array<SitemapEntry> = mdxEntries.map((e) => ({
     url: `${base}${e.routePath}`,
-    lastmod: e.lastReviewedAt ?? today,
+    // Same rule as the static pages: report the file's own review date, or
+    // report nothing. A file missing lastReviewedAt gets no lastmod.
+    lastmod: e.lastReviewedAt,
     changefreq: e.type === 'pillar' ? 'monthly' : 'monthly',
     priority: e.type === 'pillar' ? 0.9 : 0.6,
   }))
@@ -166,15 +171,33 @@ export function renderSitemapGroup(
   ].join('\n')
 }
 
+/**
+ * Newest lastmod inside a group — what that group's sitemap actually claims.
+ * Undefined when no entry in the group carries a date, so the index omits the
+ * element rather than emitting an empty one.
+ */
+function groupLastmod(entries: Array<SitemapEntry>): string | undefined {
+  const dates = entries
+    .map((entry) => entry.lastmod)
+    .filter((date): date is string => Boolean(date))
+  return dates.length ? dates.reduce((a, b) => (a > b ? a : b)) : undefined
+}
+
 export function renderSitemapIndex(siteUrl: string): string {
   const base = siteUrl.replace(/\/$/, '')
-  const lastmod = new Date().toISOString().slice(0, 10)
   const groups = buildSitemapGroups(siteUrl)
+  // Each child sitemap reports its own newest entry rather than today's build
+  // date. Stamping all six with the build date told Google every group changed
+  // on every deploy, so it had no way to tell which one actually did.
   const sitemaps = SITEMAP_GROUPS.filter((group) => groups[group].length > 0)
-    .map(
-      (group) =>
-        `  <sitemap>\n    <loc>${escapeXml(`${base}/sitemap-${group}.xml`)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </sitemap>`,
-    )
+    .map((group) => {
+      const lastmod = groupLastmod(groups[group])
+      const parts = [
+        `    <loc>${escapeXml(`${base}/sitemap-${group}.xml`)}</loc>`,
+        ...(lastmod ? [`    <lastmod>${lastmod}</lastmod>`] : []),
+      ]
+      return `  <sitemap>\n${parts.join('\n')}\n  </sitemap>`
+    })
     .join('\n')
 
   return [

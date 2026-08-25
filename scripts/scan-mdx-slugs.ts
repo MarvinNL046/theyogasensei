@@ -14,6 +14,31 @@ export interface MdxEntry {
 
 const CONTENT_DIR = join(process.cwd(), 'content')
 
+const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/
+
+/**
+ * Normalise a frontmatter date to `YYYY-MM-DD`.
+ *
+ * YAML 1.1 types an unquoted `2026-07-26` as a timestamp, so gray-matter hands
+ * back a Date, not a string. A `typeof === 'string'` guard therefore dropped
+ * the review date of all 117 content files and let the sitemap fall back to the
+ * build date — which made every URL claim the same lastmod, the one pattern
+ * Google discounts. Accept both shapes; reject anything else rather than
+ * emitting a lastmod we cannot vouch for.
+ *
+ * Dates are read in UTC (js-yaml parses timestamps as UTC and toISOString
+ * keeps them there). Using local getters instead would shift the day by one
+ * for anyone building west of Greenwich.
+ */
+export function toIsoDate(value: unknown): string | undefined {
+  if (value instanceof Date)
+    return Number.isNaN(value.getTime())
+      ? undefined
+      : value.toISOString().slice(0, 10)
+  if (typeof value === 'string' && ISO_DAY.test(value)) return value
+  return undefined
+}
+
 const TYPE_TO_URL_PREFIX: Record<string, string> = {
   guides: '/guides',
   poses: '/poses',
@@ -90,8 +115,7 @@ export function scanMdxEntries(): Array<MdxEntry> {
       routePath,
       slug,
       type,
-      lastReviewedAt:
-        typeof fm.lastReviewedAt === 'string' ? fm.lastReviewedAt : undefined,
+      lastReviewedAt: toIsoDate(fm.lastReviewedAt),
       indexable: fm.indexable !== false,
     })
   }
