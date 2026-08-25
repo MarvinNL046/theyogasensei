@@ -35,6 +35,9 @@ export interface AffiliateClickContext {
 
 export function pageTypeFromPath(pathname: string): AffiliatePageType {
   if (pathname === '/reviews/best-yoga-mats') return 'roundup'
+  // This legacy URL now serves a carpet-specific commercial roundup. Keep the
+  // established slug while attributing its clicks to the roundup tracking ID.
+  if (pathname === '/guides/yoga-mat-on-carpet') return 'roundup'
   if (pathname.startsWith('/reviews/')) return 'review'
   if (pathname.startsWith('/blog/')) return 'blog'
   if (!pathname.startsWith('/guides/')) return 'other'

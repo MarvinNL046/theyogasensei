@@ -33,7 +33,7 @@ Append one row per published page in this format:
 | high density yoga mat              | high-density-yoga-mat              | subpillar  | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | which side of yoga mat to use      | which-side-of-yoga-mat-to-use      | cluster    | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | how to use yoga mat strap          | how-to-use-yoga-mat-strap          | cluster    | mat-care               | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
-| yoga mat on carpet                 | yoga-mat-on-carpet                 | cluster    | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
+| yoga mat on carpet                 | yoga-mat-on-carpet                 | cluster    | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-08-25    |
 | yoga mat vs exercise mat           | yoga-mat-vs-exercise-mat           | comparison | mat-comparisons        | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | yoga rug                           | yoga-rug-vs-mat                    | cluster    | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |
 | yoga mat alternatives              | yoga-mat-alternatives              | cluster    | gear/mats              | how-to-choose-a-yoga-mat | 2026-07-26 | 2026-07-26    |

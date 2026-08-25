@@ -11,6 +11,7 @@ describe('affiliate tracking context', () => {
     ['/reviews/best-yoga-mats', 'roundup'],
     ['/guides/manduka-vs-lululemon-yoga-mat', 'comparison'],
     ['/guides/best-yoga-mat-for-beginners', 'roundup'],
+    ['/guides/yoga-mat-on-carpet', 'roundup'],
     ['/guides/how-to-choose-a-yoga-mat', 'buying-guide'],
     ['/blog/18-months-on-one-yoga-mat', 'blog'],
     ['/guides/yoga-strap', 'guide'],

@@ -278,10 +278,13 @@ async function main(): Promise<void> {
     }
   }
 
-  process.exit(fails.length ? 1 : warns.length ? 2 : 0)
+  // Let Node close DataForSEO's HTTP handles cleanly. A synchronous
+  // process.exit() can abort libuv while undici is still releasing a Windows
+  // socket, producing UV_HANDLE_CLOSING after a successful audit.
+  process.exitCode = fails.length ? 1 : warns.length ? 2 : 0
 }
 
 main().catch((err) => {
   console.error(err)
-  process.exit(1)
+  process.exitCode = 1
 })
