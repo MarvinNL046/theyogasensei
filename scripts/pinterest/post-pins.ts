@@ -204,6 +204,7 @@ async function main() {
   for (let step = 0; step < QUEUE.length && postedThisRun < count; step++) {
     const idx = (startCursor + step) % QUEUE.length
     const folder = QUEUE[idx]
+    if (!folder) continue
     const next = parsePinsMd(folder).find((p) => !state.posted.includes(`${p.folder}/${p.file}`))
     if (!next) continue
 
