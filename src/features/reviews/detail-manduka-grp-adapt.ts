@@ -12,7 +12,7 @@ export const DETAIL: DetailReview = {
   productName: 'Manduka GRP Adapt',
   title: 'Manduka GRP Adapt Review',
   intro:
-    "The GRP Adapt is the mat Manduka built for people who sweat, and by the one independent measurement available it is the grippiest mat in its field. It is also the mat Manduka will not put on its lifetime guarantee, will not let you wash with soap, and steers vigorous practitioners away from. All of that is in the company's own writing, and none of it is on the pages currently ranking for this mat.",
+    "The GRP Adapt is the mat Manduka built for people who sweat, and by the one independent measurement available it grips wet better than anything else tested. It is also the mat Manduka will not put on its lifetime guarantee, will not let you wash with soap, and steers vigorous practitioners away from. All of that is in the company's own writing, and none of it is on the pages currently ranking for this mat.",
   byline: {
     author: 'The Yoga Sensei',
     date: 'July 25, 2026',
@@ -22,7 +22,7 @@ export const DETAIL: DetailReview = {
   heroImage: '/images/reviews/manduka-grp-adapt/hero.webp',
   overall: 4.1,
   pros: [
-    'Dry grip 9.5 and wet grip 8.5 at OutdoorGearLab, against test-field averages of 7.4 and 5.7 — the highest in that field',
+    'Wet grip 8.5 at OutdoorGearLab — the highest score in that nineteen-mat field, with dry grip 9.5 alongside it',
     'Ranked 3rd of 19 mats at 82/100 and given the Top Pick for grip in hot yoga',
     'Grips from the first roll-out — no salt-scrub break-in period, unlike the PRO',
     'Genuinely removes the need for a towel in heated practice, which no closed-cell mat does',
@@ -63,7 +63,7 @@ export const DETAIL: DetailReview = {
     {
       id: 'grip',
       title: 'Grip — the part that genuinely delivers',
-      body: 'This is not a marketing claim, it is a measurement. OutdoorGearLab tested 19 mats over two months, dumping a litre of water on each one to score wet grip specifically. The GRP Adapt 2.0 scored dry grip 9.5 and wet grip 8.5, against field averages of 7.4 and 5.7. It finished 3rd of 19 overall at 82 out of 100 and took their Top Pick for grip in hot yoga.\n\nUnlike the PRO, it works immediately. Manduka states the PRO takes around three months of daily practice to break in and will feel slippery whenever you are warm before then. The GRP has no break-in.\n\nThe honest counterweight is that the other current independent test did not pick it. Wirecutter placed it in "The competition" rather than among its picks, noting the mat has great grippiness and does not stretch, but reporting that their tester found it squeaked when pivoting and that switching positions was sometimes difficult. Two credible 2026 tests, one enthusiastic and one unconvinced. Treeline Review, meanwhile, tested three Manduka mats in its 2026 roundup and did not include a GRP at all.\n\nThat disagreement is more useful than either page-one review, because it tells you the grip is real and the friction is real, and which of those matters depends on whether your practice pivots.',
+      body: 'This is not a marketing claim, it is a measurement. OutdoorGearLab tested 19 mats over two months, dumping a litre of water on each one to score wet grip specifically. The GRP Adapt 2.0 scored dry grip 9.5 and wet grip 8.5. That wet-grip figure is the highest of any mat on the page — nothing else clears 8.0. Its dry grip is strong but not the best: the Manduka eKO and the Prana Verde both take a full 10.0, and the Jade Harmony 2.0 ties the GRP at 9.5. It finished 3rd of 19 overall at 82 out of 100 and took their Top Pick for grip in hot yoga.\n\nUnlike the PRO, it works immediately. Manduka states the PRO takes around three months of daily practice to break in and will feel slippery whenever you are warm before then. The GRP has no break-in.\n\nThe honest counterweight is that the other current independent test did not pick it. Wirecutter placed it in "The competition" rather than among its picks, noting the mat has great grippiness and does not stretch, but reporting that their tester found it squeaked when pivoting and that switching positions was sometimes difficult. Two credible 2026 tests, one enthusiastic and one unconvinced. Treeline Review, meanwhile, tested three Manduka mats in its 2026 roundup and did not include a GRP at all.\n\nThat disagreement is more useful than either page-one review, because it tells you the grip is real and the friction is real, and which of those matters depends on whether your practice pivots.',
       image: '/images/reviews/manduka-grp-adapt/grip.webp',
       ratings: [
         { label: 'Wet grip', score: 4.5 },
@@ -103,7 +103,7 @@ export const DETAIL: DetailReview = {
       title: 'Care — the real ownership cost',
       body: "This is where the mat asks something of you, and where the ranking pages are most out of date.\n\nManduka's current rules, from its own pages: wipe with Manduka's Mat Wash and a damp cloth after practice. Never use any type of soap — the company says it compromises performance and integrity. Never soak or submerge. Never use harsh chemicals. Allow the mat to dry fully before rolling, roll it with the top surface facing in, and store it out of direct sunlight.\n\nAnd one rule with a hygiene consequence people do not expect: \"Mats designed to absorb moisture (like the GRP Series) should never be treated with disinfectant as the liquid will be absorbed into the mat and then cannot be thoroughly removed.\" If you studio-hop, share a mat, or rely on a studio's disinfectant spray, this is the wrong mat.\n\nThere is a live conflict here worth knowing about rather than papering over. OutdoorGearLab recommends a deep clean once or twice a month with a diluted mild dish soap mixture. Manduka says do not use any type of soap. Wirecutter, separately, still tells readers Manduka suggests scrubbing with salt and water to break the mat in — advice Manduka's current pages do not carry for this line. I would follow the manufacturer on a mat with no warranty behind it, but you should know the sources disagree.\n\nOutdoorGearLab scored Care and Cleaning 7.0, the mat's lowest score of any category, and reports it takes a long time to dry fully.",
       cta: {
-        slug: 'manduka-mat-wash-lavender',
+        slug: 'manduka-mat-wash',
         productName: 'Manduka Mat Wash',
         label: 'The only cleaner Manduka permits on this surface:',
       },

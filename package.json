@@ -26,7 +26,11 @@
     "content:cannibalization": "tsx scripts/check-cannibalization.ts",
     "content:assets": "tsx scripts/audit-inline-assets.ts",
     "generate-sitemap": "tsx scripts/generate-sitemap.ts",
-    "ping-indexnow": "tsx scripts/ping-indexnow.ts"
+    "ping-indexnow": "tsx scripts/ping-indexnow.ts",
+    "pins:auth": "tsx scripts/pinterest/auth.ts",
+    "pins:post": "tsx scripts/pinterest/post-pins.ts",
+    "indexnow": "node scripts/indexnow-submit.mjs --force",
+    "postbuild": "node scripts/indexnow-submit.mjs --vercel-production"
   },
   "dependencies": {
     "@fontsource/fraunces": "^5.2.8",
