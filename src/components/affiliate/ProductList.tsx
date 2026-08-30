@@ -1,4 +1,5 @@
 import { Check } from 'lucide-react'
+import { ProductImage } from '#/components/affiliate/ProductImage'
 import { AffiliateButton } from '#/components/affiliate/AffiliateButton'
 import { cn } from '#/lib/utils'
 import { affiliateLinkHandlers } from '#/lib/affiliate-link-handlers'
@@ -45,14 +46,12 @@ function ProductRow({ item, index }: { item: ProductListItem; index: number }) {
     <li className="border-b border-[color:var(--color-border)] last:border-b-0">
       <div className="flex flex-col gap-5 p-5 sm:flex-row sm:gap-6 sm:p-6">
         <div className="relative w-full flex-shrink-0 overflow-hidden border border-[color:var(--color-border)] sm:w-44">
-          <img
+          <ProductImage
+            slug={item.slug}
             src={item.image}
             alt={item.imageAlt ?? item.productName}
             width={800}
             height={600}
-            loading="lazy"
-            decoding="async"
-            className="aspect-[4/3] w-full object-cover"
           />
           <span
             aria-hidden="true"
