@@ -1,4 +1,5 @@
 import { Check } from 'lucide-react'
+import { ProductImage } from '#/components/affiliate/ProductImage'
 import { AffiliateButton } from '#/components/affiliate/AffiliateButton'
 
 /**
@@ -31,14 +32,12 @@ export function SidebarProduct({
       className="border border-[color:var(--color-border)] bg-[color:var(--color-surface)]"
     >
       <div className="overflow-hidden border-b border-[color:var(--color-border)]">
-        <img
+        <ProductImage
+          slug={slug}
           src={image}
           alt={productName}
           width={800}
           height={600}
-          loading="lazy"
-          decoding="async"
-          className="aspect-[4/3] w-full object-cover"
         />
       </div>
 
