@@ -1,4 +1,5 @@
 import { Check } from 'lucide-react'
+import { ProductPrice } from '#/components/affiliate/ProductPrice'
 import { AffiliateButton } from '#/components/affiliate/AffiliateButton'
 
 /**
@@ -49,6 +50,8 @@ export function SidebarProduct({
         <p className="mt-3 font-serif text-lg leading-snug text-[color:var(--color-ink)]">
           {productName}
         </p>
+
+        <ProductPrice slug={slug} />
 
         {blurb ? (
           <p className="mt-2 text-sm leading-relaxed text-[color:var(--color-ink-muted)]">

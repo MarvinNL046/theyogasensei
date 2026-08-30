@@ -1,15 +1,22 @@
 import { Check } from 'lucide-react'
 import { AffiliateButton } from '#/components/affiliate/AffiliateButton'
+import { ProductPrice } from '#/components/affiliate/ProductPrice'
 import { cn } from '#/lib/utils'
 
 /**
  * In-body product recommendation card for blog posts: a thumbnail, the product
  * name, a few plain-language reasons, and the standard affiliate CTA.
  *
- * Deliberately has NO price and NO rating prop. `content/` is scanned by
+ * Deliberately has NO price and NO rating PROP. `content/` is scanned by
  * scripts/verify-associates-compliance.ts, so a price or an "x.y out of 5"
  * written into MDX props would fail the build — and Associates forbids both
  * outside the Product Advertising API. Keep it that way.
+ *
+ * Since 2026-08-30 a LIVE price may appear here, but only through
+ * <ProductPrice>, which fetches it from the Creators API cache client-side and
+ * renders it bound to the required timestamp and disclaimer. That is a
+ * different mechanism from a hardcoded prop and does not relax the rule above:
+ * nothing in MDX may carry a price.
  *
  * The CTA is always the shared AffiliateButton so the rel/target/aria
  * compliance attributes stay in exactly one place.
@@ -59,6 +66,7 @@ function ProductCard({
           <p className="font-serif text-lg leading-snug text-[color:var(--color-ink)]">
             {productName}
           </p>
+          <ProductPrice slug={slug} />
           <ul className="mt-3 space-y-2">
             {points.map((point) => (
               <li
