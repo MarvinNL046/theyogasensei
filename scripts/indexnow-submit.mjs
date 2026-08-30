@@ -32,34 +32,40 @@ async function sitemapUrls(url, seen = new Set()) {
   return (await Promise.all(nested.map((item) => sitemapUrls(item, seen)))).flat()
 }
 
-const keyFile = new URL(`../public/${KEY}.txt`, import.meta.url)
-const deployedKey = (await fs.readFile(keyFile, 'utf8')).trim()
-if (deployedKey !== KEY) throw new Error('IndexNow key file does not match the configured key')
+try {
+  const keyFile = new URL(`../public/${KEY}.txt`, import.meta.url)
+  const deployedKey = (await fs.readFile(keyFile, 'utf8')).trim()
+  if (deployedKey !== KEY) throw new Error('IndexNow key file does not match the configured key')
 
-const candidates = [`${SITE_URL}/sitemap-index.xml`, `${SITE_URL}/sitemap.xml`]
-let urls
-for (const sitemap of candidates) {
-  try {
-    urls = await sitemapUrls(sitemap)
-    if (urls.length) break
-  } catch (error) {
-    if (sitemap === candidates.at(-1)) throw error
+  const candidates = [`${SITE_URL}/sitemap-index.xml`, `${SITE_URL}/sitemap.xml`]
+  let urls
+  for (const sitemap of candidates) {
+    try {
+      urls = await sitemapUrls(sitemap)
+      if (urls.length) break
+    } catch (error) {
+      if (sitemap === candidates.at(-1)) throw error
+    }
   }
-}
 
-urls = [...new Set(urls)]
-if (!urls.length) throw new Error('No same-host URLs found in the live sitemap')
+  urls = [...new Set(urls)]
+  if (!urls.length) throw new Error('No same-host URLs found in the live sitemap')
 
-for (let index = 0; index < urls.length; index += 10_000) {
-  const urlList = urls.slice(index, index + 10_000)
-  const response = await fetch(ENDPOINT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json; charset=utf-8' },
-    body: JSON.stringify({ host: HOST, key: KEY, keyLocation: `${SITE_URL}/${KEY}.txt`, urlList }),
-  })
-  if (![200, 202].includes(response.status)) {
-    throw new Error(`IndexNow rejected batch ${index / 10_000 + 1}: HTTP ${response.status} ${await response.text()}`)
+  for (let index = 0; index < urls.length; index += 10_000) {
+    const urlList = urls.slice(index, index + 10_000)
+    const response = await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      body: JSON.stringify({ host: HOST, key: KEY, keyLocation: `${SITE_URL}/${KEY}.txt`, urlList }),
+    })
+    if (![200, 202].includes(response.status)) {
+      throw new Error(`IndexNow rejected batch ${index / 10_000 + 1}: HTTP ${response.status} ${await response.text()}`)
+    }
   }
-}
 
-console.log(`[indexnow] submitted ${urls.length} URL(s) for ${HOST}`)
+  console.log(`[indexnow] submitted ${urls.length} URL(s) for ${HOST}`)
+} catch (error) {
+  if (forced) throw error
+  console.warn(`[indexnow] warning: ${error instanceof Error ? error.message : error}`)
+  console.warn('[indexnow] deployment continues; retry manually with pnpm indexnow after fixing site verification')
+}
