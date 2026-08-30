@@ -54,6 +54,11 @@ export const AFFILIATE_ASINS: Readonly<Record<string, string>> = {
   'gaiam-yoga-block': 'B075W63K67',
   'gaiam-yoga-bolster': 'B01ICBTPTK',
   'gaiam-mat-bag': 'B011NQZBAI',
+  'aum-active-hammock-5-5yd': 'B09XTCMQ3B',
+  'aum-active-hammock-4-5yd': 'B07B1Z4XY5',
+  'vevor-aerial-hammock': 'B0CW3FJFH3',
+  'yes4all-aerial-hammock': 'B0BKFQSDKB',
+  'vevor-yoga-stand': 'B0G4J1QCMS',
   'retrospec-solana-half-inch': 'B091FWPJCL',
 }
 

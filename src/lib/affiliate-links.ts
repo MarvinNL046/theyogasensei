@@ -144,6 +144,21 @@ export const affiliateLinks: Record<string, string> = {
   // listing with NO price and no availability — unbuyable, so the click earned
   // nothing. B091FWPJCL is a live Retrospec Solana 1/2in at IN_STOCK. Three
   // sibling ASINs were equivalent; this one was pinned. No page names a colour.
+  //
+  // Aerial hammocks, added 2026-08-30 for the aerial-yoga-hammock guide. This
+  // is the first non-mat product category on the site. Every ASIN verified
+  // through the Creators API on the day: brand, title, IN_STOCK, holding the
+  // buy box. Specs quoted on the page come from each listing's own feature
+  // bullets, which is also why the guide says the weight ratings cannot be
+  // compared — they are self-declared and cite no standard.
+  'aum-active-hammock-5-5yd': 'https://www.amazon.com/dp/B09XTCMQ3B',
+  'aum-active-hammock-4-5yd': 'https://www.amazon.com/dp/B07B1Z4XY5',
+  'vevor-aerial-hammock': 'https://www.amazon.com/dp/B0CW3FJFH3',
+  'yes4all-aerial-hammock': 'https://www.amazon.com/dp/B0BKFQSDKB',
+  // The no-drilling answer, and the reason this guide can recommend anything
+  // at all without telling a reader to bolt into a ceiling they cannot assess.
+  'vevor-yoga-stand': 'https://www.amazon.com/dp/B0G4J1QCMS',
+  //
   'retrospec-solana-half-inch': 'https://www.amazon.com/dp/B091FWPJCL',
 }
 
