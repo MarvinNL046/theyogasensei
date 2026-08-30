@@ -159,6 +159,18 @@ export const affiliateLinks: Record<string, string> = {
   // at all without telling a reader to bolt into a ceiling they cannot assess.
   'vevor-yoga-stand': 'https://www.amazon.com/dp/B0G4J1QCMS',
   //
+  //
+  // Yoga trapeze, added 2026-08-30. A different product from the aerial
+  // hammock despite the overlapping vocabulary: handles, ankle straps, and a
+  // category sold almost entirely on back-pain relief. Verified via the
+  // Creators API the same day — brand, title, IN_STOCK, buy box.
+  'yoga-trapeze-official': 'https://www.amazon.com/dp/B00CTMF19M',
+  'co-z-trapeze-set': 'https://www.amazon.com/dp/B077D58G86',
+  // The brand's own ceiling hooks, sold separately because no trapeze
+  // includes them. Their "holds up to 600 lbs" is not comparable to a stated
+  // working load limit, which is the point the guide makes with them.
+  'yoga-trapeze-ceiling-hooks': 'https://www.amazon.com/dp/B07TBMSQ1G',
+  //
   'retrospec-solana-half-inch': 'https://www.amazon.com/dp/B091FWPJCL',
 }
 
