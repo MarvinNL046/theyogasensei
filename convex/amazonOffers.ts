@@ -91,6 +91,64 @@ export const getBySlugs = query({
   },
 })
 
+export interface PublicImage {
+  slug: string
+  asin: string
+  url: string
+  width?: number
+  height?: number
+}
+
+/**
+ * API-vended product images for a set of /go/ slugs.
+ *
+ * Separate from getBySlugs on purpose. Images carry a 1-day TTL rather than the
+ * offer hour, and they have no display obligations attached — so a card can
+ * show a real product photo on a day when the price is stale or the item has
+ * lost its buy box entirely.
+ *
+ * Amazon requires these URLs be served from their CDN. Never rehost the bytes.
+ */
+export const getImagesBySlugs = query({
+  args: { slugs: v.array(v.string()) },
+  returns: v.any(),
+  handler: async (ctx, args) => {
+    const now = Date.now()
+    const out: Record<string, PublicImage> = {}
+
+    const wanted = new Map<string, string[]>()
+    for (const slug of args.slugs) {
+      const asin = AFFILIATE_ASINS[slug]
+      if (!asin) continue
+      const slugs = wanted.get(asin)
+      if (slugs) slugs.push(slug)
+      else wanted.set(asin, [slug])
+    }
+
+    for (const [asin, slugs] of wanted) {
+      const row = await ctx.db
+        .query('amazonOffers')
+        .withIndex('by_asin', (q) => q.eq('asin', asin))
+        .unique()
+
+      if (!row?.imageUrl) continue
+      if (!isOfferFresh(row.itemFetchedAt, now, ITEM_TTL_MS)) continue
+
+      for (const slug of slugs) {
+        out[slug] = {
+          slug,
+          asin,
+          url: row.imageUrl,
+          width: row.imageWidth,
+          height: row.imageHeight,
+        }
+      }
+    }
+
+    return out
+  },
+})
+
 /** Operational view for the buy-box audit. No price data, so no display rules. */
 export const health = query({
   args: {},
@@ -134,6 +192,8 @@ export const upsert = internalMutation({
     violatesMap: v.optional(v.boolean()),
     title: v.optional(v.string()),
     imageUrl: v.optional(v.string()),
+    imageWidth: v.optional(v.number()),
+    imageHeight: v.optional(v.number()),
     detailPageUrl: v.optional(v.string()),
     hasOffer: v.boolean(),
   },

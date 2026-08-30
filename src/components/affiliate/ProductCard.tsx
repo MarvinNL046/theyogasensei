@@ -1,6 +1,6 @@
 import { Check } from 'lucide-react'
 import { AffiliateButton } from '#/components/affiliate/AffiliateButton'
-import { ProductPrice } from '#/components/affiliate/ProductPrice'
+import { ProductImage } from '#/components/affiliate/ProductImage'
 import { cn } from '#/lib/utils'
 
 /**
@@ -12,11 +12,10 @@ import { cn } from '#/lib/utils'
  * written into MDX props would fail the build — and Associates forbids both
  * outside the Product Advertising API. Keep it that way.
  *
- * Since 2026-08-30 a LIVE price may appear here, but only through
- * <ProductPrice>, which fetches it from the Creators API cache client-side and
- * renders it bound to the required timestamp and disclaimer. That is a
- * different mechanism from a hardcoded prop and does not relax the rule above:
- * nothing in MDX may carry a price.
+ * We have Creators API access since 2026-08-30 and deliberately still show NO
+ * price. Displaying one would drag a timestamp and a three-line disclaimer onto
+ * every card, and "Check price on Amazon" never goes stale. The API price is
+ * used internally instead, to audit which links have lost their buy box.
  *
  * The CTA is always the shared AffiliateButton so the rel/target/aria
  * compliance attributes stay in exactly one place.
@@ -51,14 +50,12 @@ function ProductCard({
     >
       <div className="flex flex-col gap-5 p-5 sm:flex-row sm:items-center sm:gap-6 sm:p-6">
         <div className="w-full flex-shrink-0 overflow-hidden border border-[color:var(--color-border)] sm:w-40">
-          <img
+          <ProductImage
+            slug={slug}
             src={image}
             alt={imageAlt ?? productName}
             width={800}
             height={600}
-            loading="lazy"
-            decoding="async"
-            className="aspect-[4/3] w-full object-cover"
           />
         </div>
 
@@ -66,7 +63,6 @@ function ProductCard({
           <p className="font-serif text-lg leading-snug text-[color:var(--color-ink)]">
             {productName}
           </p>
-          <ProductPrice slug={slug} />
           <ul className="mt-3 space-y-2">
             {points.map((point) => (
               <li

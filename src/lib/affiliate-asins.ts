@@ -8,9 +8,10 @@
  * it. `src/lib/affiliate-asins.test.ts` asserts it never drifts from the
  * registry — if you add a /go/ slug and forget this file, that test fails.
  *
- * Adding an ASIN here does NOT display a price on its own. Prices only ever
- * render through <ProductPrice>, which binds them to the timestamp and
- * disclaimer the Associates Operating Agreement requires.
+ * Adding an ASIN here does not put anything on a page. It enrols the product
+ * in the nightly offer refresh, which powers the buy-box audit and the
+ * API-sourced product images. Prices are fetched but deliberately never
+ * displayed — see ProductCard for why.
  */
 export const AFFILIATE_ASINS: Readonly<Record<string, string>> = {
   'manduka-pro-6mm': 'B005NZ7PEQ',

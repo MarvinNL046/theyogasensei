@@ -93,7 +93,9 @@ interface CreatorsListing {
 interface CreatorsItem {
   asin: string
   detailPageURL?: string
-  images?: { primary?: { small?: { url?: string } } }
+  images?: {
+    primary?: { large?: { url?: string; width?: number; height?: number } }
+  }
   itemInfo?: { title?: { displayValue?: string } }
   offersV2?: { listings?: CreatorsListing[] }
 }
@@ -128,7 +130,7 @@ async function fetchBatch(
       marketplace: MARKETPLACE,
       resources: [
         'itemInfo.title',
-        'images.primary.small',
+        'images.primary.large',
         'offersV2.listings.price',
         'offersV2.listings.availability',
         'offersV2.listings.isBuyBoxWinner',
@@ -227,7 +229,9 @@ export const refreshOffers = internalAction({
           isBuyBoxWinner: listing?.isBuyBoxWinner,
           violatesMap: listing?.violatesMAP,
           title: item.itemInfo?.title?.displayValue,
-          imageUrl: item.images?.primary?.small?.url,
+          imageUrl: item.images?.primary?.large?.url,
+          imageWidth: item.images?.primary?.large?.width,
+          imageHeight: item.images?.primary?.large?.height,
           detailPageUrl: item.detailPageURL,
           hasOffer,
         })

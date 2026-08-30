@@ -64,7 +64,12 @@ export default defineSchema({
     violatesMap: v.optional(v.boolean()),
     // Item fields — 1 day TTL.
     title: v.optional(v.string()),
+    // API-vended product image. Amazon requires these to be served from their
+    // CDN — we store the URL, never the bytes. Dimensions come with it, which
+    // is what lets the card reserve the box and avoid a layout shift.
     imageUrl: v.optional(v.string()),
+    imageWidth: v.optional(v.number()),
+    imageHeight: v.optional(v.number()),
     // The API-vended link. Amazon forbids modifying it, so it is stored whole
     // and never recomposed. Currently unused by /go/, which builds its own
     // tagged URL; kept so the switch is a data change, not a fetch change.
