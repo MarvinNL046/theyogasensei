@@ -390,6 +390,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'How Long Does a Yoga Mat Last? 4 Tests Before You Replace It',
     category: 'Mat care',
   },
+  'yoga-mat-recycling': {
+    href: '/guides/yoga-mat-recycling',
+    title: 'Yoga Mat Recycling: Which Routes Actually Work Now',
+    category: 'Mat care',
+  },
   'yoga-mat-on-carpet': {
     href: '/guides/yoga-mat-on-carpet',
     title: 'Yoga Mat on Carpet: A Stability-First Setup Guide',

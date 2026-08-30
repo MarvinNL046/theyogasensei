@@ -141,6 +141,7 @@ Append one row per published page in this format:
 | yoga nidra script                  | yoga-nidra-script                  | cluster    | guided-practice        | yoga-nidra-for-sleep     | 2026-08-24 | 2026-08-24    |
 | gaiam vs manduka                   | gaiam-vs-manduka-yoga-mat          | comparison | mat-comparisons        | how-to-choose-a-yoga-mat | 2026-08-20 | 2026-08-20    |
 | manduka grp adapt vs pro           | manduka-grp-adapt-vs-pro           | comparison | mat-comparisons        | how-to-choose-a-yoga-mat | 2026-08-30 | 2026-08-30    |
+| yoga mat recycling                 | yoga-mat-recycling                 | cluster    | mat-care               | how-to-choose-a-yoga-mat | 2026-08-27 | 2026-08-30    |
 
 ---
 
