@@ -103,7 +103,7 @@ export const DETAIL: DetailReview = {
       title: 'Care — the real ownership cost',
       body: "This is where the mat asks something of you, and where the ranking pages are most out of date.\n\nManduka's current rules, from its own pages: wipe with Manduka's Mat Wash and a damp cloth after practice. Never use any type of soap — the company says it compromises performance and integrity. Never soak or submerge. Never use harsh chemicals. Allow the mat to dry fully before rolling, roll it with the top surface facing in, and store it out of direct sunlight.\n\nAnd one rule with a hygiene consequence people do not expect: \"Mats designed to absorb moisture (like the GRP Series) should never be treated with disinfectant as the liquid will be absorbed into the mat and then cannot be thoroughly removed.\" If you studio-hop, share a mat, or rely on a studio's disinfectant spray, this is the wrong mat.\n\nThere is a live conflict here worth knowing about rather than papering over. OutdoorGearLab recommends a deep clean once or twice a month with a diluted mild dish soap mixture. Manduka says do not use any type of soap. Wirecutter, separately, still tells readers Manduka suggests scrubbing with salt and water to break the mat in — advice Manduka's current pages do not carry for this line. I would follow the manufacturer on a mat with no warranty behind it, but you should know the sources disagree.\n\nOutdoorGearLab scored Care and Cleaning 7.0, the mat's lowest score of any category, and reports it takes a long time to dry fully.",
       cta: {
-        slug: 'manduka-mat-wash-lavender',
+        slug: 'manduka-mat-wash',
         productName: 'Manduka Mat Wash',
         label: 'The only cleaner Manduka permits on this surface:',
       },
