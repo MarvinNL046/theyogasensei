@@ -447,6 +447,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Yoga Trapeze: What It Does, and What the Evidence Says',
     category: 'Props',
   },
+  'aerial-yoga-stand': {
+    href: '/guides/aerial-yoga-stand',
+    title: 'Aerial Yoga Stand: Why the Capacity Number Is Half a Fact',
+    category: 'Props',
+  },
   'yoga-block-size': {
     href: '/guides/yoga-block-size',
     title: 'Yoga Block Size Guide: 3-Inch vs 4-Inch Dimensions',

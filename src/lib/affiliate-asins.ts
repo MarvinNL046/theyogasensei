@@ -62,6 +62,9 @@ export const AFFILIATE_ASINS: Readonly<Record<string, string>> = {
   'yoga-trapeze-official': 'B00CTMF19M',
   'co-z-trapeze-set': 'B077D58G86',
   'yoga-trapeze-ceiling-hooks': 'B07TBMSQ1G',
+  'hecasa-yoga-stand': 'B0BX8ZT65P',
+  'prior-fitness-aerial-rig': 'B0FD3MB4VR',
+  'vevor-stand-hammock-bundle': 'B0DYDKV4QH',
   'retrospec-solana-half-inch': 'B091FWPJCL',
 }
 
