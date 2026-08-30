@@ -171,6 +171,17 @@ export const affiliateLinks: Record<string, string> = {
   // working load limit, which is the point the guide makes with them.
   'yoga-trapeze-ceiling-hooks': 'https://www.amazon.com/dp/B07TBMSQ1G',
   //
+  //
+  // Aerial stands, added 2026-08-30 for the aerial-yoga-stand guide. All three
+  // verified through the Creators API the same day: brand, title, IN_STOCK,
+  // holding the buy box. vevor-yoga-stand (above) is the fourth and was added
+  // with the hammock guide.
+  'hecasa-yoga-stand': 'https://www.amazon.com/dp/B0BX8ZT65P',
+  // The only rig in this category that names a testing standard and publishes
+  // load by height — which is the whole argument of the guide.
+  'prior-fitness-aerial-rig': 'https://www.amazon.com/dp/B0FD3MB4VR',
+  'vevor-stand-hammock-bundle': 'https://www.amazon.com/dp/B0DYDKV4QH',
+  //
   'retrospec-solana-half-inch': 'https://www.amazon.com/dp/B091FWPJCL',
 }
 

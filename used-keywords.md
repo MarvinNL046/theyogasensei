@@ -144,6 +144,7 @@ Append one row per published page in this format:
 | yoga mat recycling                 | yoga-mat-recycling                 | cluster    | mat-care               | how-to-choose-a-yoga-mat | 2026-08-27 | 2026-08-30    |
 | aerial yoga hammock                | aerial-yoga-hammock                | subpillar  | aerial                 | yoga-props               | 2026-08-30 | 2026-08-30    |
 | yoga trapeze                       | yoga-trapeze                       | subpillar  | aerial                 | yoga-props               | 2026-08-30 | 2026-08-30    |
+| aerial yoga stand                  | aerial-yoga-stand                  | subpillar  | aerial                 | yoga-props               | 2026-08-30 | 2026-08-30    |
 
 ---
 
