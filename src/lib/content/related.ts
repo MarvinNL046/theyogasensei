@@ -432,6 +432,16 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Yoga Strap Buying Guide: Length, Buckle and Material',
     category: 'Props',
   },
+  'yoga-headstand-bench': {
+    href: '/guides/yoga-headstand-bench',
+    title: 'Yoga Headstand Bench Guide: Frame, Size, Padding and Load Ratings',
+    category: 'Props',
+  },
+  'aerial-yoga-hammock': {
+    href: '/guides/aerial-yoga-hammock',
+    title: 'Aerial Yoga Hammock: What to Buy and What Holds It Up',
+    category: 'Props',
+  },
   'yoga-block-size': {
     href: '/guides/yoga-block-size',
     title: 'Yoga Block Size Guide: 3-Inch vs 4-Inch Dimensions',

@@ -194,21 +194,50 @@ export const refreshOffers = internalAction({
     let failed = 0
     let withoutOffer = 0
 
+    let batchIndex = 0
     for (const batch of batchAsins(asins)) {
+      // Creators API quota is TPS-based and the guide asks callers to spread
+      // load. Firing five batches back to back earned a 429 ThrottleException
+      // on 2026-08-30, so batches are paced. A refresh of ~45 ASINs still
+      // finishes in a few seconds, and it runs on a cron so latency is free.
+      if (batchIndex > 0) {
+        await new Promise((resolve) => setTimeout(resolve, 1200))
+      }
+      batchIndex += 1
+
       let items: CreatorsItem[]
       try {
         items = await fetchBatch(token, batch, partnerTag)
       } catch (error) {
         const message = String(error)
-        console.error('[amazon] batch failed:', message)
-        for (const asin of batch) {
-          await ctx.runMutation(internal.amazonOffers.recordError, {
-            asin,
-            error: message.slice(0, 300),
-          })
-          failed += 1
+        // One retry on a throttle, after a longer pause. Anything else is
+        // reported straight away rather than hammering a failing endpoint.
+        let recovered: CreatorsItem[] | null = null
+        if (message.includes('429') || message.includes('Throttle')) {
+          await new Promise((resolve) => setTimeout(resolve, 4000))
+          try {
+            recovered = await fetchBatch(token, batch, partnerTag)
+            console.log('[amazon] batch recovered after throttle')
+          } catch (retryError) {
+            console.error(
+              '[amazon] retry after throttle failed:',
+              String(retryError),
+            )
+          }
         }
-        continue
+
+        if (recovered === null) {
+          console.error('[amazon] batch failed:', message)
+          for (const asin of batch) {
+            await ctx.runMutation(internal.amazonOffers.recordError, {
+              asin,
+              error: message.slice(0, 300),
+            })
+            failed += 1
+          }
+          continue
+        }
+        items = recovered
       }
 
       const returned = new Set(items.map((i) => i.asin))
