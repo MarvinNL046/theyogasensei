@@ -169,6 +169,27 @@ Append one row per published page in this format:
 
 ---
 
+## Pose-pagina's: gemeten, betaalt niet (30 aug 2026)
+
+De GSC-analyse van 28 mei – 27 aug 2026 zette hier een cijfer op. Alle pose-content samen:
+**1.690 vertoningen, 1 klik, CTR 0,06%.** Ter vergelijking: de vier gear-pagina's die
+therockhoundinghub dragen doen 5.709 vertoningen en 201 kliks (3,52%).
+
+De oorzaak is niet de ranking. `/guides/yoga-poses-for-3` staat op gemiddelde positie **5,6**
+met 1.559 vertoningen en **nul** kliks — de afbeeldingencarrousel beantwoordt "3 person yoga
+poses" voordat iemand bij een tekstresultaat is.
+
+- De acht pagina's onder `/poses/` staan al op `indexable: false` (instructiegate). Daarom
+  hebben ze samen maar ~131 vertoningen.
+- **`yoga-poses-for-2` en `yoga-poses-for-3` staan NIET gegate** en zitten in `/guides/`.
+  Die twee dragen vrijwel alle vertoningen van deze categorie.
+
+**Besluit: geen nieuwe pose-pagina's, en de bestaande niet optimaliseren.** Bewust NIET
+gedeindexeerd — de analyse ondersteunt "stop met investeren", niet "haal weg", en deindexeren
+heeft een eigen risico. Als Marvin die twee alsnog wil gaten is dat één regel per bestand.
+
+---
+
 ## Related guardrails
 
 - **Cluster discipline** — don't open a second pillar in a cluster until the first has 10+ cluster articles linking to it.
