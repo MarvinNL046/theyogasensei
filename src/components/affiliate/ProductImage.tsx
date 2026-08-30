@@ -23,8 +23,12 @@ import { cn } from '#/lib/utils'
  *    rendering we had before.
  */
 export interface ProductImageProps {
-  /** Affiliate slug; must exist in src/lib/affiliate-asins.ts */
-  slug: string
+  /**
+   * Affiliate slug. Null is a normal state, not an error: some reviews cover
+   * products we deliberately do not link (Lululemon sells direct), and those
+   * simply keep their editorial image.
+   */
+  slug: string | null
   /** Local editorial image. Always rendered first, and kept if no API photo. */
   src: string
   alt: string
@@ -79,7 +83,7 @@ export function ProductImage({
   const [apiSrc, setApiSrc] = useState<string | null>(null)
 
   useEffect(() => {
-    if (!isConvexConfigured || !asinForSlug(slug)) return
+    if (!slug || !isConvexConfigured || !asinForSlug(slug)) return
 
     let cancelled = false
     loadImage(slug)
