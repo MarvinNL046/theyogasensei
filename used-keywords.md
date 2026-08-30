@@ -184,9 +184,20 @@ poses" voordat iemand bij een tekstresultaat is.
 - **`yoga-poses-for-2` en `yoga-poses-for-3` staan NIET gegate** en zitten in `/guides/`.
   Die twee dragen vrijwel alle vertoningen van deze categorie.
 
-**Besluit: geen nieuwe pose-pagina's, en de bestaande niet optimaliseren.** Bewust NIET
-gedeindexeerd — de analyse ondersteunt "stop met investeren", niet "haal weg", en deindexeren
-heeft een eigen risico. Als Marvin die twee alsnog wil gaten is dat één regel per bestand.
+**Besluit: geen nieuwe pose-pagina's, en de bestaande niet optimaliseren.**
+
+**BIJGEWERKT dezelfde dag op Marvins instructie: `yoga-poses-for-2` en `yoga-poses-for-3`
+zijn alsnog gegate** met `indexable: false` + `requiresQualifiedReview: true` — dezelfde twee
+vlaggen die elke pagina onder `/poses/` al droeg. Ze zijn óók instructief (mensen veilig in
+een houding met twee of drie krijgen), dus dit is niet alleen een verkeersbesluit maar de
+gate die er hoort te staan. De pagina's blijven bestaan voor wie er via een link komt; ze
+verlaten alleen de index.
+
+Daarbij bleek waaróm ze jarenlang ongegate stonden: `scripts/verify-review-gate.ts` keek
+alleen naar het prefix `poses/` plus een handmatige lijst, en telde `8 + lijst.grootte`.
+Instructieve pagina's die in `/guides/` staan waren onzichtbaar voor de check. Beide staan nu
+in die lijst, en de teller telt echt in plaats van hardgecodeerd (16 nu). Geverifieerd dat de
+check faalt zodra iemand `indexable` terugzet.
 
 ---
 
