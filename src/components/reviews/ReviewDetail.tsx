@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router'
+import { ProductImage } from '#/components/affiliate/ProductImage'
 import { ArrowRight, Check, Minus } from 'lucide-react'
 import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
@@ -278,13 +279,16 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
             </div>
             <div className="md:col-span-6">
               <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-[color:var(--color-border)] shadow-[0_24px_55px_-42px_rgba(24,49,41,.65)]">
-                <img
+                {/* Upgrades to the real Amazon listing photo when one is
+                    cached. The card already sits on a white ground, so a
+                    product-on-white shot lands without a seam. The section
+                    images further down stay editorial — those are ours. */}
+                <ProductImage
+                  slug={d.affiliateSlug}
                   src={d.heroImage}
                   alt={`${d.productName} yoga mat`}
                   width={1000}
                   height={750}
-                  loading="eager"
-                  className="aspect-[4/3] w-full object-cover"
                 />
               </div>
             </div>
