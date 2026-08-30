@@ -9,6 +9,9 @@
  */
 
 import type * as affiliateClicks from "../affiliateClicks.js";
+import type * as amazon from "../amazon.js";
+import type * as amazonOffers from "../amazonOffers.js";
+import type * as crons from "../crons.js";
 import type * as email from "../email.js";
 import type * as emailEvents from "../emailEvents.js";
 import type * as http from "../http.js";
@@ -22,6 +25,9 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   affiliateClicks: typeof affiliateClicks;
+  amazon: typeof amazon;
+  amazonOffers: typeof amazonOffers;
+  crons: typeof crons;
   email: typeof email;
   emailEvents: typeof emailEvents;
   http: typeof http;
