@@ -159,21 +159,29 @@ export const health = query({
     const tracked = new Set(Object.values(AFFILIATE_ASINS))
     const seen = new Set(rows.map((r) => r.asin))
 
+    // Only TRACKED asins count as problems. Rows for retired ASINs linger after
+    // a repoint, and letting them into noBuyBox made this report claim five
+    // broken links on the very day they were fixed. Retired rows are surfaced
+    // separately so they stay visible without raising an alarm.
+    const live = rows.filter((r) => tracked.has(r.asin))
+    const retired = rows.filter((r) => !tracked.has(r.asin)).map((r) => r.asin)
+
     return {
       trackedAsins: tracked.size,
-      cachedAsins: rows.length,
+      cachedAsins: live.length,
       neverFetched: [...tracked].filter((a) => !seen.has(a)),
-      freshOffers: rows.filter((r) => isOfferFresh(r.offersFetchedAt, now))
+      freshOffers: live.filter((r) => isOfferFresh(r.offersFetchedAt, now))
         .length,
       // The thing worth alerting on: a tracked ASIN with no headline offer is
       // a link that earns nothing, which is exactly what the manual buy-box
       // audits kept finding by hand.
-      noBuyBox: rows
+      noBuyBox: live
         .filter((r) => r.amount === undefined || r.isBuyBoxWinner === false)
         .map((r) => r.asin),
-      withErrors: rows
+      withErrors: live
         .filter((r) => r.lastError !== undefined)
         .map((r) => ({ asin: r.asin, error: r.lastError, at: r.lastErrorAt })),
+      retired,
     }
   },
 })
@@ -251,5 +259,27 @@ export const recordError = internalMutation({
       })
     }
     return null
+  },
+})
+
+/**
+ * Delete cache rows for ASINs the registry no longer tracks.
+ *
+ * Called at the end of each refresh so a repoint does not leave the table
+ * carrying prices for products no page links to any more.
+ */
+export const pruneUntracked = internalMutation({
+  args: {},
+  returns: v.number(),
+  handler: async (ctx) => {
+    const tracked = new Set(Object.values(AFFILIATE_ASINS))
+    const rows = await ctx.db.query('amazonOffers').collect()
+    let removed = 0
+    for (const row of rows) {
+      if (tracked.has(row.asin)) continue
+      await ctx.db.delete(row._id)
+      removed += 1
+    }
+    return removed
   },
 })

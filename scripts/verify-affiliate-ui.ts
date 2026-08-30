@@ -73,8 +73,10 @@ const expectedProducts = [
     },
   },
   {
-    slug: 'manduka-mat-wash-lavender',
-    productName: 'Manduka Mat Wash Lavender 8oz',
+    // Renamed 2026-08-30: every lavender variant went out of stock, and the
+    // slug lost its scent so a future rotation does not break this again.
+    slug: 'manduka-mat-wash',
+    productName: 'Manduka Mat Wash and Refresh 8oz',
     specs: {
       latexFlag: false,
     },

@@ -58,7 +58,16 @@ export const affiliateLinks: Record<string, string> = {
   // page instead and says plainly that we have no checked shop link.
   'stakt-foldable-mat': 'https://www.amazon.com/dp/B0BHBYS1ML',
   'manduka-eko-superlite': 'https://www.amazon.com/dp/B07WWC5B95',
-  'gaiam-foldable-mat': 'https://www.amazon.com/dp/B073WRCQQK',
+  //
+  // gaiam-foldable-mat REMOVED 2026-08-30, deliberately without a replacement —
+  // the same call the jade-voyager removal made. B073WRCQQK stopped resolving,
+  // and three Creators API searches found NO Gaiam mat that folds; the Gaiam
+  // results are all roll-up mats. Substituting one would be precisely the
+  // foldable-versus-travel confusion that guide exists to warn readers about.
+  // The mat is still sold by Gaiam directly (gaiam.com/products/05-62214,
+  // 68x24in, 2mm, folds to 10x12in), so the guide links the brand page and says
+  // plainly that we have no checked shop link.
+  //
   // Knee pad roundup — every ASIN verified live 2026-07-25, title and
   // structured fields cross-checked. Note SukhaMat's own site prints
   // "3/8in (15mm)" for B01LRP3JA4, which is self-contradictory (3/8in is
@@ -70,7 +79,12 @@ export const affiliateLinks: Record<string, string> = {
   // 24"L x 10"W x 0.63"Th, Nitrile Butadiene Rubber, latex-free, no phthalates.
   // It is the Pink colourway; no page names a colour, and the listing lets the
   // reader switch among the six. Used by three live guides.
-  'prosourcefit-knee-pad': 'https://www.amazon.com/dp/B079K6D3D3',
+  // Repointed 2026-08-30. B079K6D3D3 stopped resolving entirely — getItems
+  // does not return it. B079K1HX93 is the same pad (parent B07R43TSBS):
+  // "ProsourceFit Extra Thick Yoga Knee Pad and Elbow Cushion 15mm (5/8in)",
+  // 24 x 10in, IN_STOCK with the buy box. Those are exactly the dimensions
+  // best-yoga-knee-pads.mdx already prints, so no copy changed.
+  'prosourcefit-knee-pad': 'https://www.amazon.com/dp/B079K1HX93',
   'sukhamat-knee-pad': 'https://www.amazon.com/dp/B01LRP3JA4',
   'kinesis-knee-pad': 'https://www.amazon.com/dp/B06WD3HGJX',
   'gaiam-knee-pads': 'https://www.amazon.com/dp/B07G1R42MS',
@@ -87,7 +101,13 @@ export const affiliateLinks: Record<string, string> = {
   'ozaiic-grip-socks': 'https://www.amazon.com/dp/B07CQM36X3',
   'ozaiic-five-toe-socks': 'https://www.amazon.com/dp/B07FY79LKW',
   'tucketts-allegro-toeless': 'https://www.amazon.com/dp/B088JGTHYL',
-  'jade-harmony': 'https://www.amazon.com/dp/B000ECBQXE',
+  // Repointed 2026-08-30 by the automated buy-box audit. B000ECBQXE (Midnight
+  // Blue, 74in) went OUT_OF_STOCK with no headline offer. B000ECDTES is the
+  // same Harmony from the same parent (B000ECD6N2) in Olive Green, verified
+  // via the Creators API: 74in, 0.19in thick, 4.6lb, IN_STOCK with the buy box.
+  // This is the ORIGINAL Harmony, not the Spain-made 2.0 — see the note in
+  // manduka-vs-jade-yoga-mat.mdx. No page names a Harmony colourway.
+  'jade-harmony': 'https://www.amazon.com/dp/B000ECDTES',
   'manduka-eko-lite': 'https://www.amazon.com/dp/B08LNP5XG5',
   'manduka-yogitoes': 'https://www.amazon.com/dp/B0D5ZR3R1M',
   // Repointed 2026-07-25. The previous target B00DGMS8XU is titled "72-inch mat
@@ -100,7 +120,12 @@ export const affiliateLinks: Record<string, string> = {
   'manduka-yogitoes-hand-towel': 'https://www.amazon.com/dp/B09HWYRS45',
   'eunzel-grip-dot-towel': 'https://www.amazon.com/dp/B0B46S9MWP',
   'heathyoga-silicone-towel': 'https://www.amazon.com/dp/B07ZF9YXVZ',
-  'manduka-mat-wash-lavender': 'https://www.amazon.com/dp/B08Q775558',
+  // Renamed and repointed 2026-08-30. Every LAVENDER 8oz variant is out of
+  // stock (B08Q775558, B08Q7B4MQN, B08Q37K5MW, B08Q75RV32 all checked). The
+  // only live 8oz Mat Wash is B08Q7GZPLV, Lemongrass. The slug lost its scent
+  // because scents rotate in and out of stock and the recommendation was never
+  // about the scent — pages now say "Mat Wash and Refresh 8oz".
+  'manduka-mat-wash': 'https://www.amazon.com/dp/B08Q7GZPLV',
   // Accessories — verified 2026-05-30, brand-consistent picks (bolster has no
   // Manduka equivalent → Hugger Mugger, the category standard). Inert until a
   // guide/button references the slug.
@@ -115,7 +140,11 @@ export const affiliateLinks: Record<string, string> = {
   'gaiam-mat-bag': 'https://www.amazon.com/dp/B011NQZBAI',
   // Budget NBR-foam mat — anchor for the Retrospec Solana review (the ½" /
   // XL version with strap). Specs verified from retrospec.com 2026-06-14.
-  'retrospec-solana-half-inch': 'https://www.amazon.com/dp/B0CLCB23V1',
+  // Repointed 2026-08-30. B0CLCB23V1 still resolves but carries a buy-box
+  // listing with NO price and no availability — unbuyable, so the click earned
+  // nothing. B091FWPJCL is a live Retrospec Solana 1/2in at IN_STOCK. Three
+  // sibling ASINs were equivalent; this one was pinned. No page names a colour.
+  'retrospec-solana-half-inch': 'https://www.amazon.com/dp/B091FWPJCL',
 }
 
 // Keep all outbound affiliate redirects disabled until Associates approval.

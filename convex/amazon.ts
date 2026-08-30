@@ -162,7 +162,20 @@ async function fetchBatch(
 export const refreshOffers = internalAction({
   args: { asins: v.optional(v.array(v.string())) },
   returns: v.any(),
-  handler: async (ctx, args) => {
+  // Explicit return type: this handler references internal.amazonOffers, which
+  // pulls in the generated api types, which include this function. Without the
+  // annotation TypeScript reports a circular inference (TS7022/TS7023).
+  handler: async (
+    ctx,
+    args,
+  ): Promise<{
+    ok: boolean
+    reason?: string
+    updated: number
+    failed: number
+    withoutOffer?: number
+    pruned?: number
+  }> => {
     const asins = args.asins ?? allTrackedAsins()
     const partnerTag =
       process.env.AMAZON_ASSOCIATES_PARTNER_TAG ?? DEFAULT_PARTNER_TAG
@@ -239,9 +252,16 @@ export const refreshOffers = internalAction({
       }
     }
 
-    console.log(
-      `[amazon] refreshed ${updated} asin(s), ${withoutOffer} without a headline offer, ${failed} failed`,
+    // Drop rows for ASINs that have since been repointed away from, so the
+    // health report never blames a link that no longer exists.
+    const pruned: number = await ctx.runMutation(
+      internal.amazonOffers.pruneUntracked,
+      {},
     )
-    return { ok: true, updated, failed, withoutOffer }
+
+    console.log(
+      `[amazon] refreshed ${updated} asin(s), ${withoutOffer} without a headline offer, ${failed} failed, ${pruned} retired row(s) pruned`,
+    )
+    return { ok: true, updated, failed, withoutOffer, pruned }
   },
 })
