@@ -12,7 +12,7 @@ export const DETAIL: DetailReview = {
   productName: 'Manduka GRP Adapt',
   title: 'Manduka GRP Adapt Review',
   intro:
-    "The GRP Adapt is the mat Manduka built for people who sweat, and by the one independent measurement available it is the grippiest mat in its field. It is also the mat Manduka will not put on its lifetime guarantee, will not let you wash with soap, and steers vigorous practitioners away from. All of that is in the company's own writing, and none of it is on the pages currently ranking for this mat.",
+    "The GRP Adapt is the mat Manduka built for people who sweat, and by the one independent measurement available it grips wet better than anything else tested. It is also the mat Manduka will not put on its lifetime guarantee, will not let you wash with soap, and steers vigorous practitioners away from. All of that is in the company's own writing, and none of it is on the pages currently ranking for this mat.",
   byline: {
     author: 'The Yoga Sensei',
     date: 'July 25, 2026',
