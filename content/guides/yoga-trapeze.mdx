@@ -1,0 +1,238 @@
+---
+# Written 2026-08-30 and released by Marvin the same day. Sourcing and safety
+# notes kept for the next reviewer.
+#
+# WHY THIS PAGE EXISTS SEPARATELY FROM THE HAMMOCK GUIDE. "yoga swing" was
+# checked the same day and merged into /guides/aerial-yoga-hammock, because its
+# SERP returns the identical products. "yoga trapeze" does not: different
+# products, a different intent (back pain and traction), and a SERP owned by
+# one brand. The keywords.csv rows record both decisions.
+#
+# SAFETY POSTURE. Heavier than the hammock page, because this category is sold
+# on a therapeutic claim:
+#  1. The page does NOT repeat the back-pain claim. It reports what the sellers
+#     say and what the evidence says, and lets those sit next to each other.
+#  2. Contraindications are attributed to WebMD's inversion-table page and to
+#     the glaucoma systematic review already cited on the hammock guide.
+#  3. No technique, no installation instructions. Same line as the hammock page.
+#
+# WHAT I COULD NOT VERIFY:
+# - "Tested for 600 lbs" is the seller's own claim and names no standard, the
+#   same problem as every hammock rating. Reported as a claim, not a spec.
+# - I have not used any of these. No first-person product claims anywhere.
+# - WebMD is a named health publisher, not a peer-reviewed source. It is used
+#   for the sham-comparison finding because I could not locate a Cochrane or
+#   equivalent review of inversion therapy specifically. Worth upgrading if one
+#   turns up.
+type: subpillar
+title: "Yoga Trapeze: What It Does, and What the Evidence Says"
+slug: yoga-trapeze
+metaDescription: "A yoga trapeze is sold on back pain relief. The research on inversion therapy is far less certain than the marketing. What it is, and who should not use one."
+schemaType: Article
+indexable: true
+pillar: yoga-props
+clusters:
+  - aerial
+  - gear/props
+  - affiliate
+tags:
+  - yoga-trapeze
+  - inversion
+  - yoga-swing
+  - yoga-props
+related:
+  - aerial-yoga-hammock
+  - yoga-headstand-bench
+  - yoga-props
+  - yoga-strap
+author: marvin
+reviewedBy: marvin
+publishedAt: 2026-08-30
+lastReviewedAt: 2026-08-30
+estimatedReadingTime: 8
+heroImage: guides/yoga-trapeze/hero
+pin:
+  primaryImage: guides/yoga-trapeze/pin
+  description: "A yoga trapeze is sold almost entirely on back pain relief, and the research on inversion therapy is far less certain than the listings are. What it actually is, how it differs from an aerial hammock, and the conditions that should send you to a doctor first. #yogatrapeze #inversion #yogaswing #yogagear"
+sidebarProduct:
+  slug: yoga-trapeze-official
+  productName: "Yoga Trapeze"
+  image: /images/guides/yoga-trapeze/trapeze.webp
+  blurb: "The product that named the category, and the one the search results belong to."
+  points:
+    - "Handles and ankle straps, not a fabric loop"
+    - "Hangs from a beam or chin-up bar"
+    - "Ceiling hooks are not included"
+faq:
+  - q: "What are the benefits of trapeze yoga?"
+    a: "The sellers claim spinal traction and back-pain relief. The evidence is weaker than that: WebMD's review of inversion therapy reports that some people get short-term relief from low back or compressed-disc pain, that studies suggest it works no better than sham treatment, and that it is probably not effective as a long-term treatment. What a trapeze reliably does is let you hang, support backbends and shoulder opening, and hold positions your floor practice cannot."
+  - q: "How is a yoga trapeze different from an aerial hammock?"
+    a: "A hammock is one loop of fabric you sit and lie in. A trapeze has handles at several heights plus ankle straps, and is built around hanging inverted rather than around the fabric. They also hang differently: a trapeze is designed to go on a chin-up bar, beam or branch, while a hammock usually wants a dedicated ceiling point. If you want supported restorative shapes, read our aerial hammock guide instead."
+  - q: "Who should not use a yoga trapeze?"
+    a: "Inversion is not neutral. WebMD lists high blood pressure, glaucoma or other eye disease, heart disease, a history of stroke, hiatal hernia, inner-ear problems, pregnancy, and knee or hip arthritis as reasons to avoid inversion tables, and advises checking with a doctor first. On the eyes specifically, a systematic review of yoga and intraocular pressure found head-down postures raise eye pressure within a minute and advises glaucoma patients against them. Ask a doctor before you buy, not after."
+  - q: "What do you hang a yoga trapeze from?"
+    a: "A chin-up bar, a structural beam, or a solid branch, according to the brand's own listing — and it says plainly that ceiling hooks are not included. If you are mounting into a ceiling instead, that is a structural job: aerial hardware sellers state that installation must be done by a licensed contractor or professional rigger. A freestanding stand avoids the question."
+  - q: "Is a '600 lb' rating better than a '330 lb' one?"
+    a: "Not necessarily, because they are different kinds of number. A working load limit is the weight a fitting is rated to carry in use, with a safety factor already applied — Uplift Active publishes 330 lb at a 10:1 factor for its aerial hooks. 'Holds up to 600 lbs', which is how the trapeze hooks are described, does not say whether a safety factor is included or what standard was used. Compare like with like, and when a listing does not say, assume it is the less conservative figure."
+citations:
+  - title: "Inversion Therapy for Back Pain Relief: Effectiveness & Risks"
+    authors: "WebMD"
+    year: 2026
+    url: "https://www.webmd.com/back-pain/what-are-inversion-tables"
+  - title: "Effect of yoga on intra-ocular pressure in patients with glaucoma: A systematic review and meta-analysis"
+    authors: "Indian Journal of Ophthalmology (via PubMed Central)"
+    year: 2023
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10391478/"
+  - title: "Aerial Yoga Ceiling Hooks — working load limit and installation requirements"
+    authors: "Uplift Active"
+    year: 2026
+    url: "https://upliftactive.com/products/ceiling-x-mount-hook-set-of-2"
+---
+
+import { ProductList } from '#/components/affiliate/ProductList'
+import { ProductCard } from '#/components/affiliate/ProductCard'
+import { ProsCons } from '#/components/ui/pros-cons'
+import { Figure } from '#/components/ui/figure'
+import { CtaBand } from '#/components/affiliate/CtaBand'
+
+Nearly every yoga trapeze is sold on the same promise. The listing for the product that named the category puts it as "instant back pain relief via traction and spinal decompression".
+
+That is worth pausing on before you spend anything, because the research on inversion is considerably less certain than the marketing.
+
+## What the evidence actually says
+
+[WebMD's review of inversion therapy](https://www.webmd.com/back-pain/what-are-inversion-tables) reaches three conclusions, and only the first is good news for the seller. Some people do get short-term relief from low back or compressed-disc pain. Studies suggest it works no better than sham treatment. And it is probably not effective as a long-term treatment.
+
+Short-term relief that does not beat a placebo is not nothing — plenty of comfort is placebo, and hanging genuinely feels good. But it is a different proposition from "instant back pain relief", and it should change what you expect for your money.
+
+So here is the honest framing. Buy a trapeze because you want to hang, because supported backbends and shoulder opening appeal, and because inverting feels good to you. Do not buy it as a treatment.
+
+## What it actually is
+
+A trapeze is not an aerial hammock, despite the shared vocabulary and the overlapping search results.
+
+A **hammock** is one loop of fabric you sit in and lie back over. A **trapeze** is a shorter sling with handles at several heights and ankle straps, built around hanging upside down. The hammock is closer to a restorative prop; the trapeze is closer to an inversion tool.
+
+They also hang differently, and this is the practical difference at purchase. The trapeze is designed to go on a chin-up bar, a beam or a solid branch — the brand's own listing says so, and says in the same breath that ceiling hooks are not included.
+
+<Figure
+  id="guides/yoga-trapeze/handles"
+  alt="A fabric swing with webbing handles at three heights hanging from a beam in a bright room"
+  caption="The handles are the tell. A hammock has none — the fabric is the whole product. Here they set the heights you hang from."
+/>
+
+## The rigging numbers do not mean what you think
+
+The trapeze brand sells its own ceiling hooks, described as industrial strength and holding up to 600 lb. The aerial hooks we looked at on [the hammock guide](/guides/aerial-yoga-hammock) publish 330 lb — and that is the better number.
+
+The difference is what the figure describes. A **working load limit** is what a fitting is rated to carry in use, with the safety factor already applied. [Uplift Active](https://upliftactive.com/products/ceiling-x-mount-hook-set-of-2) states 330 lb at a 10:1 factor, which implies a far higher failure point. "Holds up to 600 lbs" does not say whether any factor is included, or against what standard it was measured.
+
+The same applies to the swing itself: "tested for 600 lbs" is the seller's own claim and names no standard.
+
+None of this means the equipment is unsafe. It means the numbers on the box are not comparable to each other, and that the anchor above the swing deserves more of your attention than the swing does. If you are putting anything into a ceiling, that is a structural job — the aerial hardware sellers say themselves that it needs a licensed contractor or a professional rigger.
+
+## The picks
+
+<ProductList
+  items={[
+    {
+      slug: 'yoga-trapeze-official',
+      productName: 'Yoga Trapeze',
+      image: '/images/guides/yoga-trapeze/trapeze.webp',
+      imageAlt: 'A purple fabric yoga trapeze with webbing handles hanging in a bright room',
+      badge: 'The category original',
+      verdict:
+        'The product the search results belong to, and the one whose tutorials and pose chart come in the box.',
+      points: [
+        'Handles at multiple heights plus ankle straps',
+        'Designed for a chin-up bar, beam or branch',
+        'Ceiling hooks sold separately, as the listing states',
+      ],
+    },
+    {
+      slug: 'co-z-trapeze-set',
+      productName: 'CO-Z trapeze set',
+      image: '/images/guides/yoga-trapeze/trapeze-budget.webp',
+      imageAlt: 'A teal fabric trapeze swing with straps folded on a wooden floor',
+      badge: 'Includes a door mount',
+      verdict:
+        'The one that ships with both ceiling and door mounts, which matters if you rent and cannot drill.',
+      points: [
+        'Ceiling and door mounting hardware in the box',
+        'Considerably cheaper than the brand original',
+        'Read the door-mount limits before relying on one',
+      ],
+    },
+    {
+      slug: 'yoga-trapeze-ceiling-hooks',
+      productName: 'Trapeze ceiling hooks',
+      image: '/images/guides/yoga-trapeze/hooks.webp',
+      imageAlt: 'Two steel ceiling hooks with anchor bolts laid on a pale wooden surface',
+      badge: 'The part not in the box',
+      verdict:
+        'If you are mounting to a ceiling you need hardware, and this is the brand-matched set — fitted by someone qualified.',
+      points: [
+        'Includes anchors and bolts',
+        'Described as holding up to 600 lb, with no standard named',
+        'Installation is a structural job, not a DIY afternoon',
+      ],
+    },
+  ]}
+/>
+
+## The version that needs no ceiling
+
+If you rent, or nobody has assessed your structure, the freestanding rig from our hammock guide solves this the same way it solves that one. It costs more than the swing and takes real floor space, and it removes the only genuinely dangerous part of the purchase.
+
+<ProductCard
+  slug="vevor-yoga-stand"
+  productName="Freestanding aerial rig"
+  image="/images/guides/yoga-trapeze/stand.webp"
+  imageAlt="A triangular steel frame stand on a pale wooden floor"
+  points={[
+    'No anchor, no structural assessment, no drilling',
+    'Folds down and moves outdoors',
+    'Check its height against the swing you buy',
+  ]}
+/>
+
+## Who should not buy one
+
+This matters more here than on most gear pages, because inversion changes your physiology rather than just your comfort.
+
+WebMD's page lists the conditions that should keep you off an inversion table: high blood pressure, glaucoma or other eye disease, heart disease, a history of stroke, hiatal hernia, inner-ear problems, pregnancy, and knee or hip arthritis. It notes that inverting slows the heartbeat, raises blood pressure and raises the pressure in your eyes, and it advises checking with a doctor first.
+
+The eye finding is the one with the strongest evidence behind it. A [systematic review of yoga and intraocular pressure](https://pmc.ncbi.nlm.nih.gov/articles/PMC10391478/) found head-down postures raise eye pressure within a minute of assuming them, and its authors advise glaucoma patients against practising them at all.
+
+We are not a medical source and will not tell you whether any of this applies to you. If one of them might, that is a conversation before a purchase.
+
+<ProsCons
+  prosTitle="Worth buying if"
+  consTitle="Skip it if"
+  pros={[
+    'You have a beam, chin-up bar or branch already, or room for a stand',
+    'You want hanging, backbends and shoulder opening rather than a cure',
+    'You will learn the entries with a teacher before practising alone',
+    'You understand it is comfort equipment, not treatment',
+  ]}
+  cons={[
+    'You are buying it to fix a back problem — the evidence does not support that',
+    'A doctor has flagged your eyes, blood pressure, heart or inner ear',
+    'You would be drilling into a ceiling you cannot have assessed',
+    'You want restorative fabric work, in which case buy a hammock instead',
+  ]}
+/>
+
+## What we would do
+
+If hanging appeals and you have somewhere sound to hang from, the original is the safe buy: it is the product the tutorials were written for. If you rent, the set with a door mount is the more realistic purchase.
+
+And if what you actually want is to lie back in fabric rather than hang by your ankles, you want the [aerial hammock](/guides/aerial-yoga-hammock), not this.
+
+<CtaBand
+  slug="yoga-trapeze-official"
+  productName="Yoga Trapeze"
+  blurb="The original, with the tutorials the rest of the category borrowed."
+/>
+
+For the floor-level version of the same idea, the [headstand bench](/guides/yoga-headstand-bench) gives you a supported inversion with nothing suspended at all, and our [props guide](/guides/yoga-props) covers what to buy before either.

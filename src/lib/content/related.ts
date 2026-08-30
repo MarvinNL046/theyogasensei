@@ -442,6 +442,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Aerial Yoga Hammock: What to Buy and What Holds It Up',
     category: 'Props',
   },
+  'yoga-trapeze': {
+    href: '/guides/yoga-trapeze',
+    title: 'Yoga Trapeze: What It Does, and What the Evidence Says',
+    category: 'Props',
+  },
   'yoga-block-size': {
     href: '/guides/yoga-block-size',
     title: 'Yoga Block Size Guide: 3-Inch vs 4-Inch Dimensions',

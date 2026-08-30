@@ -59,6 +59,9 @@ export const AFFILIATE_ASINS: Readonly<Record<string, string>> = {
   'vevor-aerial-hammock': 'B0CW3FJFH3',
   'yes4all-aerial-hammock': 'B0BKFQSDKB',
   'vevor-yoga-stand': 'B0G4J1QCMS',
+  'yoga-trapeze-official': 'B00CTMF19M',
+  'co-z-trapeze-set': 'B077D58G86',
+  'yoga-trapeze-ceiling-hooks': 'B07TBMSQ1G',
   'retrospec-solana-half-inch': 'B091FWPJCL',
 }
 
