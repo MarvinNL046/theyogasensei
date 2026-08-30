@@ -29,6 +29,34 @@ const MARKETPLACE = 'www.amazon.com'
 const DEFAULT_PARTNER_TAG = 'theyogasensei-20'
 
 /**
+ * Every Associates tracking ID the site redirects under, mirroring
+ * trackingIdEnvByPageType in src/lib/affiliate-links.ts. Vended links are
+ * fetched once per tag because a vended link must be used unmodified — a
+ * single link with its tag rewritten is not a vended link any more.
+ */
+const TRACKING_ID_ENV_VARS = [
+  'AMAZON_ASSOCIATES_TAG_REVIEW',
+  'AMAZON_ASSOCIATES_TAG_ROUNDUP',
+  'AMAZON_ASSOCIATES_TAG_COMPARISON',
+  'AMAZON_ASSOCIATES_TAG_BUYING_GUIDE',
+  'AMAZON_ASSOCIATES_TAG_BLOG',
+  'AMAZON_ASSOCIATES_TAG_GUIDE',
+  'AMAZON_ASSOCIATES_TAG_OTHER',
+]
+
+function configuredTrackingIds(): string[] {
+  const ids = new Set<string>()
+  for (const name of TRACKING_ID_ENV_VARS) {
+    const value = process.env[name]
+    if (value) ids.add(value)
+  }
+  // Always include the base tag so a deployment with no per-type vars still
+  // gets one usable vended link per ASIN.
+  ids.add(process.env.AMAZON_ASSOCIATES_PARTNER_TAG ?? DEFAULT_PARTNER_TAG)
+  return [...ids]
+}
+
+/**
  * Module-scope token cache. Convex may reuse a warm isolate between calls, so
  * this often saves the token round-trip; when it does not, we simply fetch
  * again. Tokens live 1 hour — we refresh at 55 minutes to avoid using one that
@@ -92,6 +120,7 @@ interface CreatorsListing {
 
 interface CreatorsItem {
   asin: string
+  parentASIN?: string
   detailPageURL?: string
   images?: {
     primary?: { large?: { url?: string; width?: number; height?: number } }
@@ -111,10 +140,27 @@ function pickListing(item: CreatorsItem): CreatorsListing | null {
   return listings.find((l) => l.isBuyBoxWinner) ?? listings[0] ?? null
 }
 
+/** Offer-level fields — 1 hour TTL, fetched by the half-hourly job. */
+const OFFER_RESOURCES = [
+  'itemInfo.title',
+  'images.primary.large',
+  'offersV2.listings.price',
+  'offersV2.listings.availability',
+  'offersV2.listings.isBuyBoxWinner',
+]
+
+/** Item-level fields — 1 day TTL, fetched by the daily job, once per tag. */
+const ITEM_RESOURCES = [
+  'itemInfo.title',
+  'images.primary.large',
+  'parentASIN',
+]
+
 async function fetchBatch(
   token: string,
   asins: string[],
   partnerTag: string,
+  resources: string[] = OFFER_RESOURCES,
 ): Promise<CreatorsItem[]> {
   const res = await fetch(CATALOG_ENDPOINT, {
     method: 'POST',
@@ -128,13 +174,7 @@ async function fetchBatch(
       partnerTag,
       partnerType: 'Associates',
       marketplace: MARKETPLACE,
-      resources: [
-        'itemInfo.title',
-        'images.primary.large',
-        'offersV2.listings.price',
-        'offersV2.listings.availability',
-        'offersV2.listings.isBuyBoxWinner',
-      ],
+      resources,
     }),
   })
 
@@ -292,5 +332,125 @@ export const refreshOffers = internalAction({
       `[amazon] refreshed ${updated} asin(s), ${withoutOffer} without a headline offer, ${failed} failed, ${pruned} retired row(s) pruned`,
     )
     return { ok: true, updated, failed, withoutOffer, pruned }
+  },
+})
+
+/**
+ * Daily item refresh: images, title, parent ASIN and one vended link per
+ * Associates tracking ID.
+ *
+ * Separate from refreshOffers on purpose. Amazon caps offer caching at one
+ * hour but allows a day for everything here, so this runs daily and the
+ * offer job stays cheap. It is also the expensive one — seven tracking IDs
+ * means seven passes over the catalogue — which is exactly why it should not
+ * ride along with a half-hourly cron.
+ */
+export const refreshItems = internalAction({
+  args: { asins: v.optional(v.array(v.string())) },
+  returns: v.any(),
+  handler: async (
+    ctx,
+    args,
+  ): Promise<{
+    ok: boolean
+    reason?: string
+    updated: number
+    failed: number
+    trackingIds: number
+  }> => {
+    const asins = args.asins ?? allTrackedAsins()
+    const trackingIds = configuredTrackingIds()
+
+    let token: string
+    try {
+      token = await getAccessToken()
+    } catch (error) {
+      console.error('[amazon] item refresh token failed:', String(error))
+      return {
+        ok: false,
+        reason: 'token',
+        updated: 0,
+        failed: asins.length,
+        trackingIds: trackingIds.length,
+      }
+    }
+
+    // asin -> { itemFields, vended: [{trackingId, url}] }
+    const collected = new Map<
+      string,
+      {
+        title?: string
+        imageUrl?: string
+        imageWidth?: number
+        imageHeight?: number
+        parentAsin?: string
+        vended: Array<{ trackingId: string; url: string }>
+      }
+    >()
+
+    let failed = 0
+    let call = 0
+
+    for (const trackingId of trackingIds) {
+      for (const batch of batchAsins(asins)) {
+        // Same pacing rule as the offer job, and this one makes far more
+        // calls, so it matters more here.
+        if (call > 0) await new Promise((r) => setTimeout(r, 1200))
+        call += 1
+
+        let items: CreatorsItem[]
+        try {
+          items = await fetchBatch(token, batch, trackingId, ITEM_RESOURCES)
+        } catch (error) {
+          const message = String(error)
+          if (message.includes('429') || message.includes('Throttle')) {
+            await new Promise((r) => setTimeout(r, 4000))
+            try {
+              items = await fetchBatch(token, batch, trackingId, ITEM_RESOURCES)
+            } catch {
+              failed += batch.length
+              continue
+            }
+          } else {
+            console.error('[amazon] item batch failed:', message)
+            failed += batch.length
+            continue
+          }
+        }
+
+        for (const item of items) {
+          const entry = collected.get(item.asin) ?? { vended: [] }
+          // Item-level fields are identical across tags; take them once.
+          entry.title ??= item.itemInfo?.title?.displayValue
+          entry.imageUrl ??= item.images?.primary?.large?.url
+          entry.imageWidth ??= item.images?.primary?.large?.width
+          entry.imageHeight ??= item.images?.primary?.large?.height
+          entry.parentAsin ??= item.parentASIN
+          if (item.detailPageURL) {
+            entry.vended.push({ trackingId, url: item.detailPageURL })
+          }
+          collected.set(item.asin, entry)
+        }
+      }
+    }
+
+    let updated = 0
+    for (const [asin, entry] of collected) {
+      await ctx.runMutation(internal.amazonOffers.upsertItem, {
+        asin,
+        title: entry.title,
+        imageUrl: entry.imageUrl,
+        imageWidth: entry.imageWidth,
+        imageHeight: entry.imageHeight,
+        parentAsin: entry.parentAsin,
+        vendedUrls: entry.vended,
+      })
+      updated += 1
+    }
+
+    console.log(
+      `[amazon] item refresh: ${updated} asin(s) across ${trackingIds.length} tracking id(s), ${failed} failed`,
+    )
+    return { ok: true, updated, failed, trackingIds: trackingIds.length }
   },
 })

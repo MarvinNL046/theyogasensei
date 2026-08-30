@@ -20,4 +20,18 @@ crons.interval(
   {},
 )
 
+/**
+ * Item data — images, titles, parent ASINs and the vended links — carries a
+ * one-day TTL rather than the offer hour, so it gets its own daily job. It is
+ * also the expensive one: seven Associates tracking IDs means seven passes,
+ * paced, which is precisely why it must not ride along with the half-hourly
+ * offer refresh.
+ */
+crons.interval(
+  'refresh amazon item data and vended links',
+  { hours: 24 },
+  internal.amazon.refreshItems,
+  {},
+)
+
 export default crons
