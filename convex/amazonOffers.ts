@@ -149,6 +149,91 @@ export const getImagesBySlugs = query({
   },
 })
 
+/**
+ * Item-level upsert from the daily job. Deliberately does NOT touch any offer
+ * field or `offersFetchedAt` — a slow item refresh must never disturb the
+ * hour-long offer window the read side depends on.
+ */
+export const upsertItem = internalMutation({
+  args: {
+    asin: v.string(),
+    title: v.optional(v.string()),
+    imageUrl: v.optional(v.string()),
+    imageWidth: v.optional(v.number()),
+    imageHeight: v.optional(v.number()),
+    parentAsin: v.optional(v.string()),
+    vendedUrls: v.optional(
+      v.array(v.object({ trackingId: v.string(), url: v.string() })),
+    ),
+  },
+  returns: v.null(),
+  handler: async (ctx, args) => {
+    const { asin, ...fields } = args
+    const existing = await ctx.db
+      .query('amazonOffers')
+      .withIndex('by_asin', (q) => q.eq('asin', asin))
+      .unique()
+
+    const patch = { ...fields, itemFetchedAt: Date.now() }
+    if (existing) await ctx.db.patch(existing._id, patch)
+    else await ctx.db.insert('amazonOffers', { asin, ...patch })
+    return null
+  },
+})
+
+/**
+ * The API-vended link for one slug under one Associates tracking ID.
+ *
+ * Used by the /go/ redirect. Returns null when there is no vended link for
+ * that tag yet, and the caller falls back to the hand-built tagged URL — so a
+ * cold cache costs attribution nothing.
+ */
+export const vendedUrlForSlug = query({
+  args: { slug: v.string(), trackingId: v.string() },
+  returns: v.union(v.string(), v.null()),
+  handler: async (ctx, args) => {
+    const asin = AFFILIATE_ASINS[args.slug]
+    if (!asin) return null
+
+    const row = await ctx.db
+      .query('amazonOffers')
+      .withIndex('by_asin', (q) => q.eq('asin', asin))
+      .unique()
+    if (!row?.vendedUrls) return null
+    if (!isOfferFresh(row.itemFetchedAt, Date.now(), ITEM_TTL_MS)) return null
+
+    return (
+      row.vendedUrls.find((v) => v.trackingId === args.trackingId)?.url ?? null
+    )
+  },
+})
+
+/** Slugs with no buyable offer right now, for the on-page availability notice. */
+export const unbuyableSlugs = query({
+  args: { slugs: v.array(v.string()) },
+  returns: v.any(),
+  handler: async (ctx, args) => {
+    const now = Date.now()
+    const out: Record<string, number> = {}
+
+    for (const slug of args.slugs) {
+      const asin = AFFILIATE_ASINS[slug]
+      if (!asin) continue
+      const row = await ctx.db
+        .query('amazonOffers')
+        .withIndex('by_asin', (q) => q.eq('asin', asin))
+        .unique()
+      if (!row) continue
+      // Only report from a FRESH read. A stale cache must not tell a reader
+      // something is unavailable when we simply have not looked lately.
+      if (!isOfferFresh(row.itemFetchedAt, now, ITEM_TTL_MS)) continue
+      const buyable = hasDisplayablePrice(row) && row.availabilityType === 'IN_STOCK'
+      if (!buyable) out[slug] = row.itemFetchedAt
+    }
+    return out
+  },
+})
+
 /** Operational view for the buy-box audit. No price data, so no display rules. */
 export const health = query({
   args: {},
@@ -182,6 +267,15 @@ export const health = query({
         .filter((r) => r.lastError !== undefined)
         .map((r) => ({ asin: r.asin, error: r.lastError, at: r.lastErrorAt })),
       retired,
+      // How many tracked ASINs have a vended link yet, per the daily job. A
+      // low number here means /go/ is still falling back to hand-built URLs.
+      withVendedLinks: live.filter((r) => (r.vendedUrls?.length ?? 0) > 0)
+        .length,
+      // Pinned variations, so a drift from the family we documented in
+      // affiliate-links.ts is visible rather than silent.
+      variations: live
+        .filter((r) => r.parentAsin !== undefined)
+        .map((r) => ({ asin: r.asin, parent: r.parentAsin })),
     }
   },
 })

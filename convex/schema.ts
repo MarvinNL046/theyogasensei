@@ -74,6 +74,19 @@ export default defineSchema({
     // and never recomposed. Currently unused by /go/, which builds its own
     // tagged URL; kept so the switch is a data change, not a fetch change.
     detailPageUrl: v.optional(v.string()),
+    // Parent listing, when the ASIN is one variation of a family. Many of our
+    // slugs are deliberately pinned colourways; storing the parent lets the
+    // audit spot when a pin has drifted from the family we documented.
+    parentAsin: v.optional(v.string()),
+    // API-vended links, one per Associates tracking ID. Amazon's best
+    // practices say a vended link must be passed through unmodified, and our
+    // seven per-page-type tags mean seven links per ASIN — fetching one and
+    // rewriting its tag would be exactly the modification that guidance
+    // forbids. These carry th=1&psc=1, which pins the variation the reader
+    // lands on; our hand-built ?tag= URLs never did.
+    vendedUrls: v.optional(
+      v.array(v.object({ trackingId: v.string(), url: v.string() })),
+    ),
     offersFetchedAt: v.optional(v.number()), // unix ms; absent = never had an offer
     itemFetchedAt: v.number(), // unix ms
     lastErrorAt: v.optional(v.number()),
