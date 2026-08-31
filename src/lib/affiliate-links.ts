@@ -183,6 +183,28 @@ export const affiliateLinks: Record<string, string> = {
   'vevor-stand-hammock-bundle': 'https://www.amazon.com/dp/B0DYDKV4QH',
   //
   'retrospec-solana-half-inch': 'https://www.amazon.com/dp/B091FWPJCL',
+  //
+  // Pilates mini balls, added 2026-08-31 with the pilates-ball guide. Every
+  // ASIN checked live the same day via the DataForSEO Amazon product endpoint
+  // (the same call scripts/audit-affiliate-stock.ts makes): all four report
+  // is_available with a headline offer, and every spec quoted in the guide
+  // comes from the listing's own structured fields, not from the marketing
+  // copy. Diameters: THERABAND 9in, ProBody 9in, Trideer 7.5in, Bala 8in.
+  //
+  // The clinical reference point. #37 in Exercise Balls, inflated by mouth
+  // through the supplied straw rather than a pump.
+  'theraband-mini-ball': 'https://www.amazon.com/dp/B008DIFJT8',
+  // The category default and Amazon's Choice, #4 in Exercise Balls. This is a
+  // pinned colourway (Blue) of parent B071G3HKT9 — pinned so the 3.2 oz weight
+  // and 9in diameter in the guide match the page the reader lands on.
+  'probody-pilates-ball': 'https://www.amazon.com/dp/B010TJC4IM',
+  // The 7.5in option, and the only one here with a needle valve — which is why
+  // it carries the guide's argument that firmness is something you set.
+  'trideer-pilates-ball-7in': 'https://www.amazon.com/dp/B077Q92MCX',
+  // Included with its rating stated plainly: 4.0, the lowest of the four, with
+  // repeat complaints about a slippery surface. The guide says so rather than
+  // quietly dropping it, because it is the one people ask about.
+  'bala-pilates-ball': 'https://www.amazon.com/dp/B0D35ST9RF',
 }
 
 // Keep all outbound affiliate redirects disabled until Associates approval.
