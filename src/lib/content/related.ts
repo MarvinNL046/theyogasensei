@@ -447,6 +447,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Yoga Trapeze: What It Does, and What the Evidence Says',
     category: 'Props',
   },
+  'pilates-ball': {
+    href: '/guides/pilates-ball',
+    title: 'Pilates Ball: Size, Firmness and the Chart That Is Not Yours',
+    category: 'Props',
+  },
   'aerial-yoga-stand': {
     href: '/guides/aerial-yoga-stand',
     title: 'Aerial Yoga Stand: Why the Capacity Number Is Half a Fact',

@@ -65,6 +65,10 @@ export const AFFILIATE_ASINS: Readonly<Record<string, string>> = {
   'hecasa-yoga-stand': 'B0BX8ZT65P',
   'prior-fitness-aerial-rig': 'B0FD3MB4VR',
   'vevor-stand-hammock-bundle': 'B0DYDKV4QH',
+  'theraband-mini-ball': 'B008DIFJT8',
+  'probody-pilates-ball': 'B010TJC4IM',
+  'trideer-pilates-ball-7in': 'B077Q92MCX',
+  'bala-pilates-ball': 'B0D35ST9RF',
   'retrospec-solana-half-inch': 'B091FWPJCL',
 }
 

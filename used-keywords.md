@@ -145,6 +145,7 @@ Append one row per published page in this format:
 | aerial yoga hammock                | aerial-yoga-hammock                | subpillar  | aerial                 | yoga-props               | 2026-08-30 | 2026-08-30    |
 | yoga trapeze                       | yoga-trapeze                       | subpillar  | aerial                 | yoga-props               | 2026-08-30 | 2026-08-30    |
 | aerial yoga stand                  | aerial-yoga-stand                  | subpillar  | aerial                 | yoga-props               | 2026-08-30 | 2026-08-30    |
+| pilates ball                       | pilates-ball                       | subpillar  | pilates                | yoga-props               | 2026-08-31 | 2026-08-31    |
 
 ---
 
