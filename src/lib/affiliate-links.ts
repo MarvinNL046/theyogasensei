@@ -205,6 +205,30 @@ export const affiliateLinks: Record<string, string> = {
   // repeat complaints about a slippery surface. The guide says so rather than
   // quietly dropping it, because it is the one people ask about.
   'bala-pilates-ball': 'https://www.amazon.com/dp/B0D35ST9RF',
+  // Large 55-85cm stability balls, added 2026-09-01 for the yoga-ball-size
+  // guide. All three ASINs verified against the live listing that day: brand
+  // field, Item Diameter 65 centimeters, Material Type PVC and a live headline
+  // offer on each. These are the big ball you sit on, NOT the 7-9in squeeze
+  // ball above — different products, different ASINs, no overlap.
+  //
+  // URBNFit: brand URBNFit, Size "L (24\" - 26\") 65cm", item weight 2.7 lb.
+  // The only one of the three whose listing publishes a wall thickness (1.7mm)
+  // and a load figure (330 lb) in the same range other makers use for body
+  // weight. Its listing also carries the 80%-then-stretch inflation routine the
+  // guide is built around. Pinned to the Blue 65cm variant of parent B08LN9S95N.
+  'urbnfit-yoga-ball-65cm': 'https://www.amazon.com/dp/B010MVAJZ2',
+  // Gaiam: brand Gaiam, manufacturer Fit For Life, Item Diameter 65 centimeters,
+  // "PVC. 6P and latex free", model 05-51982, Green. CAUTION for the next audit:
+  // the listing's own Item Highlight field says 55cm while Measurements, Size
+  // and the bullet copy all say 65cm — the parent (B0DBQZ22QK) mixes sizes.
+  // Kept because the description is unambiguous, but re-check before it ships.
+  'gaiam-balance-ball-kit-65cm': 'https://www.amazon.com/dp/B000VDXFU8',
+  // Black Mountain: brand Black Mountain Products, model "65cm Purple Gym Ball",
+  // Item Diameter 65 centimeters, item weight 1.09 kg, PVC. Included because it
+  // is the only listing of the three that labels its headline number as STATIC
+  // strength rather than leaving a four-digit pound figure unqualified — which
+  // is the argument the guide makes. Pinned variant of parent B0764PP6R8.
+  'black-mountain-stability-ball-65cm': 'https://www.amazon.com/dp/B00K5VUQRG',
 }
 
 // Keep all outbound affiliate redirects disabled until Associates approval.

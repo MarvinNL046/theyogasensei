@@ -452,6 +452,11 @@ const REGISTRY: Record<string, RelatedItem> = {
     title: 'Pilates Ball: Size, Firmness and the Chart That Is Not Yours',
     category: 'Props',
   },
+  'yoga-ball-size': {
+    href: '/guides/yoga-ball-size',
+    title: 'Yoga Ball Size: Five Charts, Five Different Answers',
+    category: 'Props',
+  },
   'aerial-yoga-stand': {
     href: '/guides/aerial-yoga-stand',
     title: 'Aerial Yoga Stand: Why the Capacity Number Is Half a Fact',
