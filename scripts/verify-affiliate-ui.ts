@@ -51,7 +51,7 @@ const expectedProducts = [
     productName: 'Manduka eKO Lite 4mm',
     specs: {
       thickness: '4 mm',
-      weight: '~4.5 lb',
+      weight: '5 lb (standard)',
       material: 'Natural rubber',
       latexFlag: true,
     },
