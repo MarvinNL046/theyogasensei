@@ -68,6 +68,8 @@ export interface DetailReview {
   verdict: string
   alternatives: AltMat[]
   researchStatus?: 'Personally used' | 'Documentation-led'
+  updatedAt?: string
+  sources?: { title: string; url: string }[]
 }
 
 const SITE = 'https://www.theyogasensei.com'
@@ -110,7 +112,7 @@ export function buildReviewHead(detail: DetailReview, slug: string) {
     },
     publisher: REVIEW_ORG,
     datePublished: reviewDateIso(detail.byline.date),
-    dateModified: reviewDateIso(detail.byline.date),
+    dateModified: reviewDateIso(detail.updatedAt ?? detail.byline.date),
     mainEntityOfPage: url,
     url,
   }
@@ -335,7 +337,7 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
             <UpdateHistory
               entries={[
                 {
-                  date: d.byline.date,
+                  date: d.updatedAt ?? d.byline.date,
                   note: 'Specifications, source links, alternatives and editorial conclusion reviewed.',
                 },
               ]}
@@ -441,6 +443,26 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
                   ))}
                 </dl>
               </div>
+
+              {d.sources && d.sources.length > 0 && (
+                <section aria-labelledby="review-sources" className="mt-10">
+                  <h2 id="review-sources" className="font-serif text-2xl">
+                    Sources you can check
+                  </h2>
+                  <ul className="mt-4 space-y-3 text-sm">
+                    {d.sources.map((source) => (
+                      <li key={source.url}>
+                        <a
+                          href={source.url}
+                          className="break-words underline underline-offset-4"
+                        >
+                          {source.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
 
               {/* Who it's for */}
               <div id="who" className="mt-14 scroll-mt-16">
