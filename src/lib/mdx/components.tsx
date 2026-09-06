@@ -26,7 +26,7 @@ import { affiliateLinkHandlers } from '#/lib/affiliate-link-handlers'
  * empty header row) collapse via `empty:hidden` so no blank band shows.
  */
 
-function isGoLink(href: string | undefined): href is string {
+function isGoLink(href: string | undefined): href is `/go/${string}` {
   return typeof href === 'string' && href.startsWith('/go/')
 }
 
@@ -65,7 +65,11 @@ function MdxAnchor({
   }
 
   return (
-    <a href={href} className={className} {...rest}>
+    <a
+      href={href}
+      className={cn(href?.startsWith('#') && 'inline-block', className)}
+      {...rest}
+    >
       {children}
     </a>
   )
