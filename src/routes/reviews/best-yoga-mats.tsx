@@ -1,3 +1,4 @@
+import { ProductImage } from '#/components/affiliate/ProductImage'
 import type { ReactNode } from 'react'
 import type { MatPick } from '#/features/reviews/data'
 import { Link, createFileRoute } from '@tanstack/react-router'
@@ -448,13 +449,13 @@ function ReviewsOverviewPage() {
                 className="group flex flex-col border border-[color:var(--color-border)] bg-[color:var(--color-surface)] transition hover:border-[color:var(--color-olive)]/40"
               >
                 <div className="relative overflow-hidden">
-                  <img
+                  <ProductImage
+                    slug={pick.affiliateSlug}
                     src={pick.image}
                     alt={`${pick.name} yoga mat`}
                     width={800}
                     height={600}
-                    loading="lazy"
-                    className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                    className="aspect-[4/3] w-full  transition duration-500 group-hover:scale-[1.03]"
                   />
                   <span className="absolute left-0 top-0 flex h-9 w-9 items-center justify-center bg-[color:var(--color-olive)] font-serif text-base text-[color:var(--color-bg)]">
                     {pick.rank}

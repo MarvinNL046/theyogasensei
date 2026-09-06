@@ -1,3 +1,4 @@
+import { productSlugForReview } from '#/lib/review-product-slugs'
 import { Link } from '@tanstack/react-router'
 import { ProductImage } from '#/components/affiliate/ProductImage'
 import { ArrowRight, Check, Minus } from 'lucide-react'
@@ -679,13 +680,13 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
               >
                 <a href={alt.href} className="flex flex-1 flex-col">
                   <div className="overflow-hidden">
-                    <img
+                    <ProductImage
+                      slug={productSlugForReview(alt.href)}
                       src={alt.image}
                       alt={`${alt.name} yoga mat`}
                       width={800}
                       height={600}
-                      loading="lazy"
-                      className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                      className="aspect-[4/3] w-full  transition duration-500 group-hover:scale-[1.03]"
                     />
                   </div>
                   <div className="flex flex-1 flex-col p-5">

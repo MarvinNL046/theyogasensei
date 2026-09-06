@@ -1,6 +1,7 @@
 import type { LucideIcon } from 'lucide-react'
 import { Dumbbell, Layers3, Ruler } from 'lucide-react'
 import { cn } from '#/lib/utils'
+import { ProductImage } from '#/components/affiliate/ProductImage'
 
 type ProductSpec = {
   thickness?: string
@@ -11,6 +12,7 @@ type ProductSpec = {
 }
 
 type ProductSpecStripProps = {
+  slug?: string
   productName: string
   specs: ProductSpec
 }
@@ -22,7 +24,7 @@ type SpecItem = {
   icon: LucideIcon
 }
 
-function ProductSpecStrip({ productName, specs }: ProductSpecStripProps) {
+function ProductSpecStrip({ productName, specs, slug }: ProductSpecStripProps) {
   const items = [
     specs.thickness
       ? ({
@@ -57,6 +59,15 @@ function ProductSpecStrip({ productName, specs }: ProductSpecStripProps) {
       aria-label={`${productName} product specs`}
       className="not-prose my-5 rounded-sm border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/80 p-4 shadow-sm"
     >
+      {slug ? (
+        <ProductImage
+          slug={slug}
+          alt={productName}
+          width={500}
+          height={500}
+          className="mx-auto mb-4 max-w-52"
+        />
+      ) : null}
       <div className="flex flex-wrap gap-2.5">
         {items.map(({ key, label, value, icon: Icon }) => (
           <div

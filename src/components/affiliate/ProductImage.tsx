@@ -30,7 +30,7 @@ export interface ProductImageProps {
    */
   slug: string | null
   /** Local editorial image. Always rendered first, and kept if no API photo. */
-  src: string
+  src?: string
   alt: string
   width?: number
   height?: number
@@ -80,28 +80,35 @@ export function ProductImage({
   height = 600,
   className,
 }: ProductImageProps) {
-  const [apiSrc, setApiSrc] = useState<string | null>(null)
+  const [loaded, setLoaded] = useState<{ slug: string; url: string } | null>(
+    null,
+  )
+  const apiSrc = loaded?.slug === slug ? loaded.url : null
 
   useEffect(() => {
     if (!slug || !isConvexConfigured || !asinForSlug(slug)) return
 
-    let cancelled = false
+    const controller = new AbortController()
     loadImage(slug)
       .then(async (image) => {
-        if (!image || cancelled) return
+        if (!image) return
         await preload(image.url)
-        if (!cancelled) setApiSrc(image.url)
+        if (!controller.signal.aborted) setLoaded({ slug, url: image.url })
       })
       .catch(() => {
         // Offline, cold cache, or a dead image URL. Keep the local image.
       })
     return () => {
-      cancelled = true
+      controller.abort()
     }
   }, [slug])
 
+  if (!apiSrc && !src) return null
+
   return (
     <img
+      data-product-slug={slug ?? undefined}
+      data-image-source={apiSrc ? 'creators-api' : 'editorial'}
       src={apiSrc ?? src}
       alt={alt}
       width={width}

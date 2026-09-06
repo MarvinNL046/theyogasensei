@@ -1,3 +1,5 @@
+import { productSlugForReview } from '#/lib/review-product-slugs'
+import { ProductImage } from '#/components/affiliate/ProductImage'
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, RotateCcw } from 'lucide-react'
 import { Container } from '#/components/ui/container'
@@ -125,12 +127,13 @@ export function ReviewsHub({
                     href={`/reviews/${review.slug}`}
                     className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-[color:var(--color-border)] bg-white shadow-[0_20px_55px_-44px_rgba(24,49,41,.7)] transition hover:-translate-y-1 hover:border-[color:var(--color-accent-soft)]"
                   >
-                    <img
+                    <ProductImage
+                      slug={productSlugForReview(review.slug)}
                       src={review.image}
                       alt=""
                       width={900}
                       height={600}
-                      className="aspect-[3/2] w-full object-cover"
+                      className="aspect-[3/2] w-full "
                     />
                     <div className="flex flex-1 flex-col p-6">
                       <div className="flex flex-wrap gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[color:var(--color-accent-deep)]">

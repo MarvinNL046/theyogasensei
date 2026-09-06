@@ -4,6 +4,7 @@ import { Container } from '#/components/ui/container'
 import { Eyebrow } from '#/components/ui/eyebrow'
 import { RatingStars } from '#/components/reviews/RatingStars'
 import { MAT_PICKS } from '#/features/reviews/data'
+import { ProductImage } from '#/components/affiliate/ProductImage'
 
 const PICKS = MAT_PICKS.slice(0, 5)
 
@@ -52,13 +53,13 @@ export function HomeTopPicks() {
             <li key={pick.name}>
               <Link {...pickHref(pick)} className="group block">
                 <div className="overflow-hidden rounded-2xl bg-[color:var(--color-surface)] ring-1 ring-[color:var(--color-border)] shadow-[0_18px_45px_-38px_rgba(24,49,41,.65)] transition group-hover:-translate-y-1">
-                  <img
+                  <ProductImage
+                    slug={pick.affiliateSlug}
                     src={pick.image}
                     alt={`${pick.name} yoga mat`}
                     width={800}
                     height={600}
-                    loading="lazy"
-                    className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                    className="transition duration-500 group-hover:scale-[1.03]"
                   />
                 </div>
                 <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">

@@ -21,9 +21,6 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-[color:var(--color-border)] bg-[color:var(--color-bg)]/95 backdrop-blur-md">
-      <div className="bg-[color:var(--color-olive-deep)] py-2 text-center text-[10px] font-semibold uppercase tracking-[0.13em] text-white/85 sm:text-[11px]">
-        Independent yoga guidance · Sources shown · No paid rankings
-      </div>
       <Container
         size="wide"
         className="flex min-h-16 items-center justify-between gap-4"
