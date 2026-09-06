@@ -182,6 +182,9 @@
 
 :root {
   --color-heading: #183129;
+  --color-cta: #f59e0b;
+  --color-cta-hover: #d97706;
+  --color-cta-ink: #1c1917;
   --background: #fbfaf6;
   --foreground: #183129;
   --card: #ffffff;

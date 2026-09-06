@@ -37,7 +37,7 @@ function loadUnbuyable(slug: string): Promise<number | null> {
   const request = (
     convex.query(api.amazonOffers.unbuyableSlugs, {
       slugs: [slug],
-    }) as Promise<Record<string, number>>
+    })
   )
     .then((result) => result[slug] ?? null)
     .catch(() => null)

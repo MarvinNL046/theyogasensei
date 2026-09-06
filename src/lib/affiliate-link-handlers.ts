@@ -11,10 +11,10 @@ export interface AffiliateAnchorEvent {
   currentTarget: { href: string }
 }
 
-export interface AffiliateLinkHandlers<E extends AffiliateAnchorEvent> {
-  onClick: (event: E) => void
-  onAuxClick: (event: E) => void
-  onContextMenu: (event: E) => void
+export interface AffiliateLinkHandlers<TEvent extends AffiliateAnchorEvent> {
+  onClick: (event: TEvent) => void
+  onAuxClick: (event: TEvent) => void
+  onContextMenu: (event: TEvent) => void
 }
 
 /**
@@ -35,11 +35,11 @@ export interface AffiliateLinkHandlers<E extends AffiliateAnchorEvent> {
  * Opening a context menu is not yet a click-through, and counting it as one
  * would inflate the click number against unchanged Amazon earnings.
  */
-export function affiliateLinkHandlers<E extends AffiliateAnchorEvent>(
+export function affiliateLinkHandlers<TEvent extends AffiliateAnchorEvent>(
   slug: string,
   placement: AffiliatePlacement,
-): AffiliateLinkHandlers<E> {
-  const enrich = (event: E): AffiliateClickContext => {
+): AffiliateLinkHandlers<TEvent> {
+  const enrich = (event: TEvent): AffiliateClickContext => {
     const context = affiliateClickContext(placement)
     event.currentTarget.href = affiliateHref(
       slug,

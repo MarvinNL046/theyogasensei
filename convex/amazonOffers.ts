@@ -203,7 +203,7 @@ export const vendedUrlForSlug = query({
     if (!isOfferFresh(row.itemFetchedAt, Date.now(), ITEM_TTL_MS)) return null
 
     return (
-      row.vendedUrls.find((v) => v.trackingId === args.trackingId)?.url ?? null
+      row.vendedUrls.find((entry) => entry.trackingId === args.trackingId)?.url ?? null
     )
   },
 })

@@ -49,8 +49,8 @@ function MdxAnchor({
         className={cn(
           // not-prose stops Tailwind Typography from re-styling the button
           'not-prose inline-flex items-center gap-1.5 whitespace-nowrap rounded-full',
-          'bg-[color:var(--color-accent)] px-3.5 py-1.5 text-xs font-medium text-[color:var(--color-surface)] no-underline align-middle',
-          'shadow-sm transition-colors duration-200 hover:bg-[color:var(--color-accent-deep)]',
+          'bg-[color:var(--color-cta)] px-3.5 py-1.5 text-xs font-medium text-[color:var(--color-cta-ink)] no-underline align-middle',
+          'shadow-sm transition-colors duration-200 hover:bg-[color:var(--color-cta-hover)]',
           'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-[color:var(--color-ring)]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--color-bg)]',
         )}
       >

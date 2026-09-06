@@ -24,7 +24,7 @@ describe('affiliateLinkHandlers', () => {
     affiliateLinkHandlers('gaiam-mat-bag', 'affiliate-button').onClick({
       ...event,
       currentTarget: event.currentTarget,
-    } as never)
+    })
 
     expect(event.currentTarget.href).toContain('pageType=')
     expect(event.currentTarget.href).toContain('product=gaiam-mat-bag')
@@ -37,7 +37,7 @@ describe('affiliateLinkHandlers', () => {
     // `other` and paid the default tag instead of the channel tag.
     const event = { ...anker(), button: 1 }
     affiliateLinkHandlers('gaiam-mat-bag', 'affiliate-button').onAuxClick(
-      event as never,
+      event,
     )
 
     expect(event.currentTarget.href).toContain('pageType=')
@@ -50,7 +50,7 @@ describe('affiliateLinkHandlers', () => {
     // clicked through yet, so nothing is recorded.
     const event = anker()
     affiliateLinkHandlers('gaiam-mat-bag', 'affiliate-button').onContextMenu(
-      event as never,
+      event,
     )
 
     expect(event.currentTarget.href).toContain('pageType=')
@@ -63,7 +63,7 @@ describe('affiliateLinkHandlers', () => {
     // Amazon earnings.
     const event = { ...anker(), button: 2 }
     affiliateLinkHandlers('gaiam-mat-bag', 'affiliate-button').onAuxClick(
-      event as never,
+      event,
     )
 
     expect(event.currentTarget.href).toContain('pageType=')
@@ -75,7 +75,7 @@ describe('affiliateLinkHandlers', () => {
     affiliateLinkHandlers('gaiam-mat-bag', 'product-title').onClick({
       ...event,
       currentTarget: event.currentTarget,
-    } as never)
+    })
 
     const search = new URL(event.currentTarget.href, 'https://x.test')
       .searchParams

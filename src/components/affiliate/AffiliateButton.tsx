@@ -17,9 +17,9 @@ const variantClasses: Record<
   string
 > = {
   primary:
-    'bg-[color:var(--color-accent-deep)] text-white shadow-sm hover:bg-[color:var(--color-olive-deep)]',
+    'bg-[color:var(--color-cta)] text-[color:var(--color-cta-ink)] shadow-sm hover:bg-[color:var(--color-cta-hover)]',
   secondary:
-    'border border-[color:var(--color-accent-soft)] bg-[color:var(--color-surface)] text-[color:var(--color-accent-deep)] hover:bg-[color:var(--color-surface-muted)]',
+    'border border-[color:var(--color-cta)] bg-[color:var(--color-cta)] text-[color:var(--color-cta-ink)] hover:bg-[color:var(--color-cta-hover)]',
 }
 
 const sizeClasses: Record<NonNullable<AffiliateButtonProps['size']>, string> = {

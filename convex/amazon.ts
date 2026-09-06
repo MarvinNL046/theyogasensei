@@ -137,7 +137,7 @@ interface CreatorsItem {
 function pickListing(item: CreatorsItem): CreatorsListing | null {
   const listings = item.offersV2?.listings
   if (!listings || listings.length === 0) return null
-  return listings.find((l) => l.isBuyBoxWinner) ?? listings[0] ?? null
+  return listings.find((l) => l.isBuyBoxWinner) ?? listings.at(0) ?? null
 }
 
 /** Offer-level fields — 1 hour TTL, fetched by the half-hourly job. */
@@ -295,7 +295,7 @@ export const refreshOffers = internalAction({
       for (const item of items) {
         const listing = pickListing(item)
         const money = listing?.price?.money
-        const hasOffer = Boolean(money?.amount !== undefined && money?.displayAmount)
+        const hasOffer = Boolean(money?.amount !== undefined && money.displayAmount)
         if (!hasOffer) withoutOffer += 1
 
         await ctx.runMutation(internal.amazonOffers.upsert, {
