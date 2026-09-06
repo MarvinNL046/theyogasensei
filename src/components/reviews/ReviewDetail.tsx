@@ -1,3 +1,5 @@
+import { SidebarProduct } from '#/components/affiliate/SidebarProduct'
+import { MobileProductBar } from '#/components/affiliate/MobileProductBar'
 import { productSlugForReview } from '#/lib/review-product-slugs'
 import { Link } from '@tanstack/react-router'
 import { ProductImage } from '#/components/affiliate/ProductImage'
@@ -512,122 +514,134 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
 
             {/* SIDEBAR */}
             <aside className="lg:col-span-4">
-              <div className="space-y-6 lg:sticky lg:top-20">
-                {/* Decision profile */}
-                <div className="border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)]">
-                    Editorial assessment
-                  </p>
-                  <p className="mt-2 font-serif text-4xl leading-none">
-                    {qualitativeScore(d.overall)}
-                  </p>
-                  <p className="mt-2 text-xs leading-relaxed text-[color:var(--color-ink-muted)]">
-                    A qualitative verdict—not a lab score.
-                  </p>
-                  <div className="mt-5 space-y-2 border-t border-[color:var(--color-border)] pt-5">
-                    {d.pros.slice(0, 5).map((pro) => (
-                      <div
-                        key={pro}
-                        className="flex gap-2 text-sm leading-snug text-[color:var(--color-ink-soft)]"
-                      >
-                        <Check
-                          className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--color-olive)]"
-                          strokeWidth={2}
+              {d.affiliateSlug ? (
+                <div className="hidden lg:block lg:sticky lg:top-28">
+                  <SidebarProduct
+                    slug={d.affiliateSlug}
+                    productName={d.productName}
+                    image={d.heroImage}
+                    points={d.pros.slice(0, 2)}
+                    blurb={d.cons[0]}
+                  />
+                </div>
+              ) : (
+                <div className="space-y-6 lg:sticky lg:top-20">
+                  {/* Decision profile */}
+                  <div className="border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)]">
+                      Editorial assessment
+                    </p>
+                    <p className="mt-2 font-serif text-4xl leading-none">
+                      {qualitativeScore(d.overall)}
+                    </p>
+                    <p className="mt-2 text-xs leading-relaxed text-[color:var(--color-ink-muted)]">
+                      A qualitative verdict—not a lab score.
+                    </p>
+                    <div className="mt-5 space-y-2 border-t border-[color:var(--color-border)] pt-5">
+                      {d.pros.slice(0, 5).map((pro) => (
+                        <div
+                          key={pro}
+                          className="flex gap-2 text-sm leading-snug text-[color:var(--color-ink-soft)]"
+                        >
+                          <Check
+                            className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--color-olive)]"
+                            strokeWidth={2}
+                          />
+                          <span>{pro}</span>
+                        </div>
+                      ))}
+                      {d.cons.slice(0, 3).map((con) => (
+                        <div
+                          key={con}
+                          className="flex gap-2 text-sm leading-snug text-[color:var(--color-ink-muted)]"
+                        >
+                          <Minus
+                            className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--color-accent-deep)]"
+                            strokeWidth={2}
+                          />
+                          <span>{con}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-5">
+                      {d.affiliateSlug ? (
+                        <AffiliateButton
+                          slug={d.affiliateSlug}
+                          productName={d.productName}
+                          variant="primary"
+                          placement="review-sidebar"
                         />
-                        <span>{pro}</span>
-                      </div>
-                    ))}
-                    {d.cons.slice(0, 3).map((con) => (
-                      <div
-                        key={con}
-                        className="flex gap-2 text-sm leading-snug text-[color:var(--color-ink-muted)]"
-                      >
-                        <Minus
-                          className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--color-accent-deep)]"
-                          strokeWidth={2}
-                        />
-                        <span>{con}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-5">
-                    {d.affiliateSlug ? (
-                      <AffiliateButton
-                        slug={d.affiliateSlug}
-                        productName={d.productName}
-                        variant="primary"
-                        placement="review-sidebar"
-                      />
-                    ) : (
-                      <Link
-                        to="/reviews/best-yoga-mats"
-                        className="inline-flex w-fit items-center gap-2 rounded-sm bg-[color:var(--color-olive)] px-5 py-3 text-sm font-medium text-[color:var(--color-bg)] no-underline transition hover:bg-[color:var(--color-charcoal)]"
-                      >
-                        See our top picks
-                        <ArrowRight className="h-4 w-4" strokeWidth={1.75} />
-                      </Link>
+                      ) : (
+                        <Link
+                          to="/reviews/best-yoga-mats"
+                          className="inline-flex w-fit items-center gap-2 rounded-sm bg-[color:var(--color-olive)] px-5 py-3 text-sm font-medium text-[color:var(--color-bg)] no-underline transition hover:bg-[color:var(--color-charcoal)]"
+                        >
+                          See our top picks
+                          <ArrowRight className="h-4 w-4" strokeWidth={1.75} />
+                        </Link>
+                      )}
+                    </div>
+                    {d.affiliateSlug && (
+                      <p className="mt-3 text-[11px] text-[color:var(--color-ink-muted)]">
+                        We may earn a commission.
+                      </p>
                     )}
                   </div>
-                  {d.affiliateSlug && (
-                    <p className="mt-3 text-[11px] text-[color:var(--color-ink-muted)]">
-                      We may earn a commission.
+
+                  {/* At a glance */}
+                  <div className="border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)]">
+                      At a glance
                     </p>
-                  )}
-                </div>
-
-                {/* At a glance */}
-                <div className="border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)]">
-                    At a glance
-                  </p>
-                  <dl className="mt-3 text-sm">
-                    {d.atAGlance.map((row) => (
-                      <div
-                        key={row.label}
-                        className="flex justify-between gap-4 border-b border-[color:var(--color-border)] py-2 last:border-b-0"
-                      >
-                        <dt className="text-[color:var(--color-ink-muted)]">
-                          {row.label}
-                        </dt>
-                        <dd className="text-right text-[color:var(--color-ink-soft)]">
-                          {displayAssessment(row.value)}
-                        </dd>
-                      </div>
-                    ))}
-                  </dl>
-                </div>
-
-                {/* Compare */}
-                <div className="border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)]">
-                    Compare to other mats
-                  </p>
-                  <ul className="mt-3 divide-y divide-[color:var(--color-border)]">
-                    {d.alternatives.map((alt) => (
-                      <li key={alt.name} className="py-3">
-                        <a
-                          href={alt.href}
-                          className="group flex items-center justify-between gap-3"
+                    <dl className="mt-3 text-sm">
+                      {d.atAGlance.map((row) => (
+                        <div
+                          key={row.label}
+                          className="flex justify-between gap-4 border-b border-[color:var(--color-border)] py-2 last:border-b-0"
                         >
-                          <span className="text-sm text-[color:var(--color-ink-soft)] transition group-hover:text-[color:var(--color-accent-deep)]">
-                            {alt.name}
-                          </span>
-                          <span className="flex-shrink-0 rounded-full bg-[color:var(--color-surface-muted)] px-2.5 py-1 text-[10px] font-semibold text-[color:var(--color-olive-deep)]">
-                            {qualitativeScore(alt.overall)}
-                          </span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    to="/reviews/best-yoga-mats"
-                    className="mt-4 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--color-accent-deep)] transition hover:text-[color:var(--color-accent)]"
-                  >
-                    View full comparison
-                    <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-                  </Link>
+                          <dt className="text-[color:var(--color-ink-muted)]">
+                            {row.label}
+                          </dt>
+                          <dd className="text-right text-[color:var(--color-ink-soft)]">
+                            {displayAssessment(row.value)}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+
+                  {/* Compare */}
+                  <div className="border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)]">
+                      Compare to other mats
+                    </p>
+                    <ul className="mt-3 divide-y divide-[color:var(--color-border)]">
+                      {d.alternatives.map((alt) => (
+                        <li key={alt.name} className="py-3">
+                          <a
+                            href={alt.href}
+                            className="group flex items-center justify-between gap-3"
+                          >
+                            <span className="text-sm text-[color:var(--color-ink-soft)] transition group-hover:text-[color:var(--color-accent-deep)]">
+                              {alt.name}
+                            </span>
+                            <span className="flex-shrink-0 rounded-full bg-[color:var(--color-surface-muted)] px-2.5 py-1 text-[10px] font-semibold text-[color:var(--color-olive-deep)]">
+                              {qualitativeScore(alt.overall)}
+                            </span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link
+                      to="/reviews/best-yoga-mats"
+                      className="mt-4 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--color-accent-deep)] transition hover:text-[color:var(--color-accent)]"
+                    >
+                      View full comparison
+                      <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+                    </Link>
+                  </div>
                 </div>
-              </div>
+              )}
             </aside>
           </div>
         </Container>
@@ -729,6 +743,13 @@ export function ReviewDetail({ detail: d }: { detail: DetailReview }) {
 
       {/* ===================== CLOSING NEWSLETTER CAPTURE ===================== */}
       <ArticleNewsletterBand source={`review:${d.productName}`} />
+      {d.affiliateSlug ? (
+        <MobileProductBar
+          key={d.affiliateSlug}
+          slug={d.affiliateSlug}
+          productName={d.productName}
+        />
+      ) : null}
     </>
   )
 }

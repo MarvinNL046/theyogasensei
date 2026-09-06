@@ -1,3 +1,4 @@
+import { MobileProductBar } from '#/components/affiliate/MobileProductBar'
 import { Link, createFileRoute, notFound } from '@tanstack/react-router'
 import { ArrowRight } from 'lucide-react'
 import {
@@ -158,8 +159,8 @@ function BlogPostPage() {
           ============================================================ */}
       <section className="bg-[color:var(--color-bg)] pb-16 pt-10 md:pb-24">
         <Container size="wide">
-          <div className="grid min-w-0 gap-12 md:grid-cols-12 lg:gap-16">
-            <article className="prose prose-stone prose-lg min-w-0 max-w-full md:col-span-8 prose-headings:scroll-mt-28 prose-headings:font-serif prose-headings:tracking-tight prose-headings:text-[color:var(--color-ink)] prose-p:text-[color:var(--color-ink-soft)] prose-a:text-[color:var(--color-olive)] prose-a:underline-offset-2 hover:prose-a:text-[color:var(--color-olive-deep)] prose-strong:text-[color:var(--color-ink)] prose-blockquote:border-l-[color:var(--color-olive)] prose-blockquote:text-[color:var(--color-ink-soft)] prose-th:text-[color:var(--color-ink)] prose-td:text-[color:var(--color-ink-soft)]">
+          <div className="grid min-w-0 gap-12 lg:grid-cols-12 lg:gap-16">
+            <article className="prose prose-stone prose-lg min-w-0 max-w-full lg:col-span-8 prose-headings:scroll-mt-28 prose-headings:font-serif prose-headings:tracking-tight prose-headings:text-[color:var(--color-ink)] prose-p:text-[color:var(--color-ink-soft)] prose-a:text-[color:var(--color-olive)] prose-a:underline-offset-2 hover:prose-a:text-[color:var(--color-olive-deep)] prose-strong:text-[color:var(--color-ink)] prose-blockquote:border-l-[color:var(--color-olive)] prose-blockquote:text-[color:var(--color-ink-soft)] prose-th:text-[color:var(--color-ink)] prose-td:text-[color:var(--color-ink-soft)]">
               {frontmatter.clusters.includes('affiliate') ? (
                 <AffiliateDisclosure />
               ) : null}
@@ -174,10 +175,12 @@ function BlogPostPage() {
             {/* Sticky sidebar: contents to navigate with, one product to buy.
                 Stacks under the article on mobile, which puts the promo after
                 the argument rather than in front of it. */}
-            <aside className="min-w-0 md:col-span-4">
-              <div className="md:sticky md:top-24 md:space-y-8">
-                <div className="hidden md:block">
-                  <SidebarToc headings={headings} />
+            <aside className="min-w-0 lg:col-span-4">
+              <div className="lg:sticky lg:top-24 lg:space-y-8">
+                <div className="hidden lg:block">
+                  {!frontmatter.sidebarProduct ? (
+                    <SidebarToc headings={headings} />
+                  ) : null}
                 </div>
                 {frontmatter.sidebarProduct ? (
                   <SidebarProduct {...frontmatter.sidebarProduct} />
@@ -249,6 +252,9 @@ function BlogPostPage() {
       </section>
 
       <ArticleNewsletterBand source={`blog:${slug}`} />
+      {frontmatter.sidebarProduct ? (
+        <MobileProductBar key={slug} {...frontmatter.sidebarProduct} />
+      ) : null}
     </>
   )
 }

@@ -14,7 +14,7 @@ import { AffiliateButton } from '#/components/affiliate/AffiliateButton'
 export interface SidebarProductProps {
   slug: string
   productName: string
-  image: string
+  image?: string
   points: Array<string>
   blurb?: string
 }
@@ -29,9 +29,9 @@ export function SidebarProduct({
   return (
     <aside
       aria-label={`${productName} recommendation`}
-      className="border border-[color:var(--color-border)] bg-[color:var(--color-surface)]"
+      className="max-h-[calc(100dvh-8rem)] overflow-y-auto border border-[color:var(--color-border)] bg-[color:var(--color-surface)]"
     >
-      <div className="overflow-hidden border-b border-[color:var(--color-border)]">
+      <div className="mx-auto max-w-52 overflow-hidden">
         <ProductImage
           slug={slug}
           src={image}
@@ -43,7 +43,7 @@ export function SidebarProduct({
 
       <div className="p-6">
         <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-muted)]">
-          What I use
+          Featured product
         </p>
         <p className="mt-3 font-serif text-lg leading-snug text-[color:var(--color-ink)]">
           {productName}

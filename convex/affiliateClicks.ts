@@ -30,6 +30,7 @@ export const increment = mutation({
       v.literal('product-list-button'),
       v.literal('closing-band'),
       v.literal('sidebar'),
+      v.literal('mobile-sticky'),
       v.literal('review-section'),
       v.literal('review-sidebar'),
       v.literal('review-verdict'),

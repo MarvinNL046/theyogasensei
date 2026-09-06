@@ -18,6 +18,7 @@ export const affiliatePlacements = [
   'product-list-button',
   'closing-band',
   'sidebar',
+  'mobile-sticky',
   'review-section',
   'review-sidebar',
   'review-verdict',
